@@ -1,0 +1,5778 @@
+1
+00:00:00,000 --> 00:00:03,840
+Learning about Spark, and
+Spark is built in layers.
+
+2
+00:00:03,840 --> 00:00:05,420
+At the heart of it is
+
+3
+00:00:05,420 --> 00:00:07,720
+this abstraction of the
+resilient distributed data set.
+
+4
+00:00:07,720 --> 00:00:10,120
+Right to do a couple more
+examples with that today.
+
+5
+00:00:10,120 --> 00:00:12,939
+Most people do not interact
+with Spark at that level.
+
+6
+00:00:12,939 --> 00:00:14,980
+They're interacting
+at a higher level.
+
+7
+00:00:14,980 --> 00:00:16,440
+So a top of the RDDs,
+
+8
+00:00:16,440 --> 00:00:17,900
+they built Spark SQL.
+
+9
+00:00:17,900 --> 00:00:19,339
+It's visually be getting that.
+
+10
+00:00:19,339 --> 00:00:22,299
+U On top of Sparks Equal,
+they built data frabe.
+
+11
+00:00:22,299 --> 00:00:24,239
+Even though the later
+that things are built.
+
+12
+00:00:24,239 --> 00:00:26,000
+I'm going to do
+data frames and xs.
+
+13
+00:00:26,000 --> 00:00:28,179
+I think a fair portion of
+you probably have experience
+
+14
+00:00:28,179 --> 00:00:30,859
+with data frames from Pandas
+and maybe other courses.
+
+15
+00:00:30,859 --> 00:00:33,940
+So we'll do that, and then
+we'll move into Sparks equal.
+
+16
+00:00:33,940 --> 00:00:35,299
+So I'm going to
+head back to this
+
+17
+00:00:35,299 --> 00:00:37,219
+notebook that we
+were in last time.
+
+18
+00:00:37,219 --> 00:00:39,939
+And there were a few
+things going on here.
+
+19
+00:00:39,939 --> 00:00:41,539
+Remember that first, we had to
+
+20
+00:00:41,539 --> 00:00:43,039
+create a Spark session up here.
+
+21
+00:00:43,039 --> 00:00:46,499
+From the Spark session, we
+could have a spark context.
+
+22
+00:00:46,499 --> 00:00:48,759
+And once we have
+that spark context,
+
+23
+00:00:48,759 --> 00:00:49,959
+we could parallelze thing.
+
+24
+00:00:49,959 --> 00:00:51,119
+So I could take any kind of
+
+25
+00:00:51,119 --> 00:00:53,859
+dataset in Python and
+turn it into an RDD.
+
+26
+00:00:53,859 --> 00:00:57,079
+And then I could apply
+transformations to it.
+
+27
+00:00:57,079 --> 00:00:59,879
+So we're seeing how we
+could do that last time.
+
+28
+00:00:59,879 --> 00:01:02,420
+In some cases, we
+could filter or map.
+
+29
+00:01:02,420 --> 00:01:04,799
+Those are transformations
+where I have an RDDDN,
+
+30
+00:01:04,799 --> 00:01:07,419
+and I get an RDD
+out as a result.
+
+31
+00:01:07,419 --> 00:01:09,120
+I could also have
+actions, right?
+
+32
+00:01:09,120 --> 00:01:11,120
+If I have a transformation,
+I don't actually have to do
+
+33
+00:01:11,120 --> 00:01:12,660
+any computation
+until I want to see
+
+34
+00:01:12,660 --> 00:01:14,840
+some result or write
+some results somewhere.
+
+35
+00:01:14,840 --> 00:01:17,320
+So things like me or
+take or collect at
+
+36
+00:01:17,320 --> 00:01:18,360
+the end would actually
+
+37
+00:01:18,360 --> 00:01:20,199
+trigger all those
+transformations to run,
+
+38
+00:01:20,199 --> 00:01:22,539
+and then I would finally
+get some results
+
+39
+00:01:22,539 --> 00:01:23,980
+there at the end.
+
+40
+00:01:23,980 --> 00:01:27,430
+So I want to talk a little
+
+41
+00:01:27,430 --> 00:01:30,829
+bit about how we can
+partition our data.
+
+42
+00:01:30,829 --> 00:01:32,430
+We can have some
+control over that,
+
+43
+00:01:32,430 --> 00:01:34,029
+and also about caching.
+
+44
+00:01:34,029 --> 00:01:35,209
+These both of those
+things are going to have
+
+45
+00:01:35,209 --> 00:01:37,610
+a big implications
+for performance.
+
+46
+00:01:37,610 --> 00:01:40,030
+So the first thing I do is
+I'm going to look at my RDD,
+
+47
+00:01:40,030 --> 00:01:43,255
+and I could say,
+get num partitions.
+
+48
+00:01:43,255 --> 00:01:48,500
+And by default, Spark chose
+to give me two partitions.
+
+49
+00:01:48,500 --> 00:01:50,319
+And that was up here.
+So if I wanted to,
+
+50
+00:01:50,319 --> 00:01:52,279
+I could get a different
+number of partitions.
+
+51
+00:01:52,279 --> 00:01:53,540
+And I'm going to do that now.
+
+52
+00:01:53,540 --> 00:01:56,080
+I'm going to see what would
+happen if I have instead ten.
+
+53
+00:01:56,080 --> 00:01:59,839
+Remember that when I am running
+a task for some purpose,
+
+54
+00:01:59,839 --> 00:02:01,660
+there's going to be
+a task corresponding
+
+55
+00:02:01,660 --> 00:02:03,259
+to each partition of an RDD.
+
+56
+00:02:03,259 --> 00:02:05,699
+And so if I have
+more partitions,
+
+57
+00:02:05,699 --> 00:02:06,899
+I'm going to have more tasks.
+
+58
+00:02:06,899 --> 00:02:09,199
+If I have lots of compute
+power crust from machines,
+
+59
+00:02:09,199 --> 00:02:10,639
+I will let me spread
+that work out.
+
+60
+00:02:10,639 --> 00:02:12,679
+But it also means
+there's more of this
+
+61
+00:02:12,679 --> 00:02:15,280
+fixed overhead to starting
+all of these things.
+
+62
+00:02:15,280 --> 00:02:17,199
+Right? I'm going to
+run this right now.
+
+63
+00:02:17,199 --> 00:02:19,199
+And then at that point, I
+can check it and I can see,
+
+64
+00:02:19,199 --> 00:02:22,025
+well, this one actually has ten.
+
+65
+00:02:22,025 --> 00:02:26,229
+Okay. What I want to do now
+is see how I might have
+
+66
+00:02:26,229 --> 00:02:28,069
+a case where I want to do
+
+67
+00:02:28,069 --> 00:02:30,409
+some caching and maybe change
+that partition account.
+
+68
+00:02:30,409 --> 00:02:32,929
+And what I do is I'm may start
+with this large dataset,
+
+69
+00:02:32,929 --> 00:02:35,409
+and I may sample it
+to shrink it down.
+
+70
+00:02:35,409 --> 00:02:37,769
+Before we were doing
+things like mean,
+
+71
+00:02:37,769 --> 00:02:40,469
+if I have a sample and I
+can't take the sample mean,
+
+72
+00:02:40,469 --> 00:02:42,269
+that will be faster, and
+
+73
+00:02:42,269 --> 00:02:44,509
+the result might also
+be pretty similar.
+
+74
+00:02:44,509 --> 00:02:49,849
+And I come down here, I may
+say sample equals dd sample.
+
+75
+00:02:49,849 --> 00:02:52,210
+And when I do that, there's
+a few things I can pass
+
+76
+00:02:52,210 --> 00:02:55,159
+in The most important
+is the fraction.
+
+77
+00:02:55,159 --> 00:02:57,559
+How many of these do I
+want? I'm may say 10%.
+
+78
+00:02:57,559 --> 00:02:59,760
+When you're sampling, there's
+this idea of replacement.
+
+79
+00:02:59,760 --> 00:03:01,159
+If I have replacement
+true, then it
+
+80
+00:03:01,159 --> 00:03:02,799
+might sample the same
+one more than once.
+
+81
+00:03:02,799 --> 00:03:04,420
+And then there's also a seed
+
+82
+00:03:04,420 --> 00:03:06,720
+here to maybe make it
+more deterministic.
+
+83
+00:03:06,720 --> 00:03:09,359
+I'm just going to say that
+I do want resampling.
+
+84
+00:03:09,359 --> 00:03:11,679
+Let's have 10% of the results,
+
+85
+00:03:11,679 --> 00:03:14,079
+and our seed will be 544.
+
+86
+00:03:14,079 --> 00:03:15,740
+This is a transformation,
+so nothing
+
+87
+00:03:15,740 --> 00:03:18,570
+actually happened yet.
+That was quite fast.
+
+88
+00:03:18,570 --> 00:03:20,439
+And then what I'm
+interested in is
+
+89
+00:03:20,439 --> 00:03:21,979
+if I can take the mean of it.
+
+90
+00:03:21,979 --> 00:03:23,620
+And a simple operation,
+
+91
+00:03:23,620 --> 00:03:24,799
+but what I'm really
+interested in is
+
+92
+00:03:24,799 --> 00:03:26,299
+the performance of
+this operation.
+
+93
+00:03:26,299 --> 00:03:27,919
+And so I'm going to import time
+
+94
+00:03:27,919 --> 00:03:30,999
+here and I'm going to measure
+how long it takes. Right?
+
+95
+00:03:30,999 --> 00:03:33,259
+So maybe I'll print
+off what that mean is,
+
+96
+00:03:33,259 --> 00:03:36,910
+and I will also time,
+how long it takes.
+
+97
+00:03:36,910 --> 00:03:39,409
+I'll say t zero equals time dot,
+
+98
+00:03:39,409 --> 00:03:41,369
+t one equals time dot.
+
+99
+00:03:41,369 --> 00:03:45,429
+Then I'll just print off how
+long that operation talk.
+
+100
+00:03:45,429 --> 00:03:46,329
+I'm going to do that.
+
+101
+00:03:46,329 --> 00:03:47,989
+We can see that there's ten.
+
+102
+00:03:47,989 --> 00:03:49,889
+Maybe I can actually copy this.
+
+103
+00:03:49,889 --> 00:03:51,929
+There were ten tasks
+running because,
+
+104
+00:03:51,929 --> 00:03:54,369
+well, there were ten
+partitions up here.
+
+105
+00:03:54,369 --> 00:03:56,569
+So let me make a note of that.
+
+106
+00:03:56,569 --> 00:03:58,629
+I think that's
+useful to remember.
+
+107
+00:03:58,629 --> 00:04:01,779
+So right?
+
+108
+00:04:01,779 --> 00:04:03,759
+Is this going to help
+you debugging things,
+
+109
+00:04:03,759 --> 00:04:05,079
+right? So what does this mean?
+
+110
+00:04:05,079 --> 00:04:08,240
+This means there are ten tasks,
+
+111
+00:04:08,240 --> 00:04:12,239
+eight are done, two
+are in progress.
+
+112
+00:04:12,239 --> 00:04:14,659
+Gues just chapter there
+at the end. Okay, great.
+
+113
+00:04:14,659 --> 00:04:16,580
+So I'll talk about 4 seconds.
+
+114
+00:04:16,580 --> 00:04:19,579
+And unfortunately, I mean,
+it was kind of cool,
+
+115
+00:04:19,579 --> 00:04:20,740
+this was lazy because I could do
+
+116
+00:04:20,740 --> 00:04:21,960
+this very quickly
+and I didn't have to
+
+117
+00:04:21,960 --> 00:04:24,599
+do the expensive sampling
+operation earlier.
+
+118
+00:04:24,599 --> 00:04:26,400
+Unfortunately though if I
+run it again right now,
+
+119
+00:04:26,400 --> 00:04:28,859
+that means I may have to
+resample original dataset.
+
+120
+00:04:28,859 --> 00:04:30,440
+So just to rerun this, I have to
+
+121
+00:04:30,440 --> 00:04:32,900
+again sample all those
+million numbers.
+
+122
+00:04:32,900 --> 00:04:34,220
+It has to do that again.
+
+123
+00:04:34,220 --> 00:04:35,860
+And maybe it's a
+little bit faster,
+
+124
+00:04:35,860 --> 00:04:37,179
+maybe not. In the
+morning lecture.
+
+125
+00:04:37,179 --> 00:04:39,680
+The second one was actually
+a little bit slower, right?
+
+126
+00:04:39,680 --> 00:04:41,499
+Because I have to have
+that big expensive
+
+127
+00:04:41,499 --> 00:04:43,060
+thing each time, right?
+
+128
+00:04:43,060 --> 00:04:48,960
+Yeah, question right
+here. Exactly, right?
+
+129
+00:04:48,960 --> 00:04:50,220
+Because I have two
+cores to run on.
+
+130
+00:04:50,220 --> 00:04:52,220
+So when I started this up,
+
+131
+00:04:52,220 --> 00:04:54,319
+I had two worker containers,
+
+132
+00:04:54,319 --> 00:04:58,260
+and I told them each that
+they may use one core each.
+
+133
+00:04:58,260 --> 00:04:59,600
+So normally, it'd be a lot
+
+134
+00:04:59,600 --> 00:05:00,840
+more in progress
+at the same time.
+
+135
+00:05:00,840 --> 00:05:02,734
+Yeah, thanks for clarifying.
+
+136
+00:05:02,734 --> 00:05:05,570
+So what I want to do is
+I want to see if I can
+
+137
+00:05:05,570 --> 00:05:08,370
+avoid having to
+resample every time.
+
+138
+00:05:08,370 --> 00:05:10,530
+In both these cases,
+it's basically re
+
+139
+00:05:10,530 --> 00:05:12,930
+running this sampling up here.
+
+140
+00:05:12,930 --> 00:05:16,270
+And so I'm going to just come
+back to this line up here.
+
+141
+00:05:16,270 --> 00:05:18,290
+And this time, I'm going to say
+
+142
+00:05:18,290 --> 00:05:21,050
+a sample dot cache, right?
+
+143
+00:05:21,050 --> 00:05:24,449
+And neither of these two
+lines actually do anything.
+
+144
+00:05:24,449 --> 00:05:27,789
+So caching does not immediately
+materialize those bytes,
+
+145
+00:05:27,789 --> 00:05:29,270
+but it's saying that
+when it does eventually
+
+146
+00:05:29,270 --> 00:05:31,129
+have to materialize those bytes,
+
+147
+00:05:31,129 --> 00:05:32,729
+we should save that in memory.
+
+148
+00:05:32,729 --> 00:05:34,465
+So we don't have to keep
+doing the same thing.
+
+149
+00:05:34,465 --> 00:05:36,880
+Again and again.
+Remember that an RDD is
+
+150
+00:05:36,880 --> 00:05:38,339
+a recipe to have some piece
+
+151
+00:05:38,339 --> 00:05:39,779
+of data that you
+can do on demand.
+
+152
+00:05:39,779 --> 00:05:41,160
+By default, there's no bytes,
+
+153
+00:05:41,160 --> 00:05:42,520
+but in some cases,
+you can say, well,
+
+154
+00:05:42,520 --> 00:05:44,600
+this would actually be a
+scenario where it makes sense to
+
+155
+00:05:44,600 --> 00:05:47,299
+have those bytes in memory
+for performance reasons.
+
+156
+00:05:47,299 --> 00:05:48,880
+So I do that. And so
+
+157
+00:05:48,880 --> 00:05:51,380
+given that it's not already
+been in the cache yet,
+
+158
+00:05:51,380 --> 00:05:53,420
+I've just marked it so that'll
+be in the cache later,
+
+159
+00:05:53,420 --> 00:05:55,160
+this should actually
+be a little bit slower
+
+160
+00:05:55,160 --> 00:05:56,900
+because I have to do all
+the same work plus I have
+
+161
+00:05:56,900 --> 00:05:58,739
+to write that intermediate data
+
+162
+00:05:58,739 --> 00:06:01,020
+to memory and my workers, right?
+
+163
+00:06:01,020 --> 00:06:02,559
+So this was actually
+a little bit
+
+164
+00:06:02,559 --> 00:06:05,989
+slower than these
+other two cases.
+
+165
+00:06:05,989 --> 00:06:09,810
+Now, in theory, it should
+be a bit faster this time,
+
+166
+00:06:09,810 --> 00:06:12,389
+but our performance gains
+are not going to be as
+
+167
+00:06:12,389 --> 00:06:15,629
+significant as you might
+expect. 3 seconds.
+
+168
+00:06:15,629 --> 00:06:17,270
+This is not great. I
+mean, we were talking
+
+169
+00:06:17,270 --> 00:06:19,169
+about 3.25 seconds earlier.
+
+170
+00:06:19,169 --> 00:06:20,710
+Shaving off a quarter
+second by having
+
+171
+00:06:20,710 --> 00:06:22,749
+all our data in
+memory is not great.
+
+172
+00:06:22,749 --> 00:06:24,570
+I mean, we went from having to
+
+173
+00:06:24,570 --> 00:06:28,109
+scan 1 million numbers
+to 100,000 numbers.
+
+174
+00:06:28,109 --> 00:06:29,789
+It feels like should
+be a lot faster.
+
+175
+00:06:29,789 --> 00:06:31,810
+The reason is not
+a lot faster is
+
+176
+00:06:31,810 --> 00:06:34,709
+that we have to
+start so many tasks.
+
+177
+00:06:34,709 --> 00:06:36,089
+100,000 number is can actually
+
+178
+00:06:36,089 --> 00:06:37,469
+be processed relatively quickly.
+
+179
+00:06:37,469 --> 00:06:39,309
+And so the cost of starting
+
+180
+00:06:39,309 --> 00:06:42,809
+a JVM process to do that
+work is pretty significant.
+
+181
+00:06:42,809 --> 00:06:45,849
+And I chose this specifically
+because there's a lot of
+
+182
+00:06:45,849 --> 00:06:49,089
+cases where you have
+a large data set,
+
+183
+00:06:49,089 --> 00:06:50,710
+and then you filter it down.
+
+184
+00:06:50,710 --> 00:06:54,139
+You crunch it down a
+lot, and By default,
+
+185
+00:06:54,139 --> 00:06:54,959
+Spark is trying to have,
+
+186
+00:06:54,959 --> 00:06:57,060
+while one input partition
+is one output partition.
+
+187
+00:06:57,060 --> 00:06:58,239
+And they have a good
+reason for that, right?
+
+188
+00:06:58,239 --> 00:07:00,360
+They don't have to shuffle
+data across the network.
+
+189
+00:07:00,360 --> 00:07:02,340
+But what that often means
+is that the partition
+
+190
+00:07:02,340 --> 00:07:05,000
+account originally
+for the big data is
+
+191
+00:07:05,000 --> 00:07:06,420
+not a good partition account for
+
+192
+00:07:06,420 --> 00:07:08,140
+your later data after you
+
+193
+00:07:08,140 --> 00:07:12,459
+shrink it down by a filter
+or a sample or whatever.
+
+194
+00:07:12,459 --> 00:07:14,960
+And so what I want to show
+now is that if we are
+
+195
+00:07:14,960 --> 00:07:16,100
+smart about how we use
+
+196
+00:07:16,100 --> 00:07:18,219
+repartitioning in
+combination with caching,
+
+197
+00:07:18,219 --> 00:07:19,800
+then we can actually get a
+
+198
+00:07:19,800 --> 00:07:21,400
+good performance
+improvement, right?
+
+199
+00:07:21,400 --> 00:07:22,860
+So I come back here again,
+
+200
+00:07:22,860 --> 00:07:24,480
+and you can see I'm doing
+
+201
+00:07:24,480 --> 00:07:26,390
+it in pairs, I did
+it twice up here.
+
+202
+00:07:26,390 --> 00:07:29,159
+I did caching, got a lot slower,
+
+203
+00:07:29,159 --> 00:07:30,860
+a little bit faster
+with the cash.
+
+204
+00:07:30,860 --> 00:07:34,359
+I may do it again, but
+this time after sampling,
+
+205
+00:07:34,359 --> 00:07:39,180
+what I may do is I may say a
+repartition, and I want one.
+
+206
+00:07:39,180 --> 00:07:41,400
+What that means is that
+I may have one partition
+
+207
+00:07:41,400 --> 00:07:43,760
+and that's what's going to get
+cashed and I may run that.
+
+208
+00:07:43,760 --> 00:07:45,740
+Again, nothing happens yet.
+
+209
+00:07:45,740 --> 00:07:47,639
+That will just happen
+
+210
+00:07:47,639 --> 00:07:49,620
+later when I do it
+for the first time?
+
+211
+00:07:49,620 --> 00:07:51,180
+This one is going to be
+slower again, right?
+
+212
+00:07:51,180 --> 00:07:52,660
+Because it has to do
+the original work
+
+213
+00:07:52,660 --> 00:07:55,140
+plus cah that one
+partition somewhere.
+
+214
+00:07:55,140 --> 00:07:57,260
+But when I finally get to speed
+
+215
+00:07:57,260 --> 00:08:00,060
+up should be after this one,
+
+216
+00:08:00,060 --> 00:08:02,020
+when I finally run this because
+
+217
+00:08:02,020 --> 00:08:03,619
+my data is going
+to be in memory,
+
+218
+00:08:03,619 --> 00:08:06,399
+and there's only going to be
+one partition of the data.
+
+219
+00:08:06,399 --> 00:08:09,460
+So now I get down
+to 1 second, right?
+
+220
+00:08:09,460 --> 00:08:11,000
+So, be fast, you have
+
+221
+00:08:11,000 --> 00:08:12,559
+to figure out, well, when
+should I cash something?
+
+222
+00:08:12,559 --> 00:08:13,840
+When should I be
+partition something and
+
+223
+00:08:13,840 --> 00:08:15,320
+you'll kind of build
+some intuition for that.
+
+224
+00:08:15,320 --> 00:08:17,380
+But those are some
+important decisions you're
+
+225
+00:08:17,380 --> 00:08:18,439
+going to have to
+make to get the best
+
+226
+00:08:18,439 --> 00:08:19,839
+performance out of the system.
+
+227
+00:08:19,839 --> 00:08:22,159
+Any questions about either
+of those techniques?
+
+228
+00:08:22,159 --> 00:08:29,220
+Yeah, right here. Is there
+
+229
+00:08:29,220 --> 00:08:32,379
+ever a benefit to having
+more partitions than cores?
+
+230
+00:08:32,379 --> 00:08:35,480
+Yeah, there could be, because
+not all the partitions
+
+231
+00:08:35,480 --> 00:08:38,859
+might have an equal cost, right?
+
+232
+00:08:38,859 --> 00:08:40,260
+For example, I
+mean, I might have
+
+233
+00:08:40,260 --> 00:08:42,679
+some partitions where let's
+say I'm filtering, right?
+
+234
+00:08:42,679 --> 00:08:45,045
+Let's have ten partitions,
+and they're all filtering.
+
+235
+00:08:45,045 --> 00:08:48,630
+Maybe the first partition,
+maybe half the rows,
+
+236
+00:08:48,630 --> 00:08:49,810
+kind of pass through the filter,
+
+237
+00:08:49,810 --> 00:08:50,769
+maybe other partitions like
+
+238
+00:08:50,769 --> 00:08:52,169
+almost none of them do, right?
+
+239
+00:08:52,169 --> 00:08:53,469
+So what I'm going
+to say is that even
+
+240
+00:08:53,469 --> 00:08:55,010
+though we might equally
+partition the data,
+
+241
+00:08:55,010 --> 00:08:57,509
+doesn't mean the partitions
+are equal amounts of work.
+
+242
+00:08:57,509 --> 00:09:00,170
+If the number of partitions far
+
+243
+00:09:00,170 --> 00:09:03,189
+exceeds the number of CPUs,
+
+244
+00:09:03,189 --> 00:09:05,450
+then even if the partitions
+are different sizes,
+
+245
+00:09:05,450 --> 00:09:07,610
+probabilistically,
+I'm more likely
+
+246
+00:09:07,610 --> 00:09:09,249
+to be able to evenly
+distribute the work.
+
+247
+00:09:09,249 --> 00:09:11,189
+Does that make sense? Yeah, hm.
+
+248
+00:09:11,189 --> 00:09:13,189
+Yeah. So lots of
+factors in play, right?
+
+249
+00:09:13,189 --> 00:09:15,269
+You have to think through
+those things to decide what is
+
+250
+00:09:15,269 --> 00:09:18,230
+the right partition
+hunt in your scenario.
+
+251
+00:09:18,230 --> 00:09:23,980
+Okay. Yeah. Any questions
+about that? Cool.
+
+252
+00:09:23,980 --> 00:09:26,059
+So I am going to head over,
+
+253
+00:09:26,059 --> 00:09:27,679
+and we are going
+
+254
+00:09:27,679 --> 00:09:30,859
+to do some stuff
+
+255
+00:09:30,859 --> 00:09:32,140
+with data frames now and I may
+
+256
+00:09:32,140 --> 00:09:33,900
+be using somewhat bigger data,
+
+257
+00:09:33,900 --> 00:09:36,359
+and it's going to
+be a new notebook.
+
+258
+00:09:36,359 --> 00:09:37,540
+So first, let me just show
+
+259
+00:09:37,540 --> 00:09:42,119
+you over here in the
+lecture snippets.
+
+260
+00:09:43,540 --> 00:09:45,720
+I have some stuff about Swap.
+
+261
+00:09:45,720 --> 00:09:47,019
+We've talked about Swap before.
+
+262
+00:09:47,019 --> 00:09:50,040
+Remember that sometimes if
+you're tight on memory,
+
+263
+00:09:50,040 --> 00:09:51,560
+and there's some
+memory that you're
+
+264
+00:09:51,560 --> 00:09:53,160
+not accessing super often,
+
+265
+00:09:53,160 --> 00:09:56,140
+maybe you can write some of
+that data to swap instead.
+
+266
+00:09:56,140 --> 00:09:58,239
+There's no swap
+enabled right now.
+
+267
+00:09:58,239 --> 00:09:59,920
+I'm just going to copy and paste
+
+268
+00:09:59,920 --> 00:10:03,440
+those commands
+from the notebook.
+
+269
+00:10:03,440 --> 00:10:04,859
+There's a few things
+it's doing. Maybe I'll
+
+270
+00:10:04,859 --> 00:10:06,359
+just run in then
+I'll talk about it.
+
+271
+00:10:06,359 --> 00:10:08,139
+Allocate is like it's
+touching a file,
+
+272
+00:10:08,139 --> 00:10:09,360
+but int of creating
+an empty file.
+
+273
+00:10:09,360 --> 00:10:11,440
+I can say I want to
+have a 1 gigabyte file.
+
+274
+00:10:11,440 --> 00:10:13,559
+Here I'm changing some
+permissions on it.
+
+275
+00:10:13,559 --> 00:10:15,320
+Thesenumbers correspond to read,
+
+276
+00:10:15,320 --> 00:10:16,799
+write, and execute bits.
+
+277
+00:10:16,799 --> 00:10:18,320
+I won't worry about that
+too much right now,
+
+278
+00:10:18,320 --> 00:10:19,560
+but this is basically
+saying the owner
+
+279
+00:10:19,560 --> 00:10:20,699
+should be able to
+read and write it,
+
+280
+00:10:20,699 --> 00:10:22,239
+and nobody else can
+read and write it.
+
+281
+00:10:22,239 --> 00:10:24,754
+The owner is the root
+since we did pseudo.
+
+282
+00:10:24,754 --> 00:10:27,569
+I'm turning into a swap
+file and I'm enableing it.
+
+283
+00:10:27,569 --> 00:10:28,989
+And so now if I say H top,
+
+284
+00:10:28,989 --> 00:10:32,150
+I can see that I have
+about one tick abite here.
+
+285
+00:10:32,150 --> 00:10:34,270
+You'll probably have to do
+that on next Project five,
+
+286
+00:10:34,270 --> 00:10:36,769
+because it a little
+tight on memory.
+
+287
+00:10:36,930 --> 00:10:39,730
+If you don't do that, you might
+be running out of memory,
+
+288
+00:10:39,730 --> 00:10:41,089
+the system might be freezing up.
+
+289
+00:10:41,089 --> 00:10:43,110
+It's a trick you
+can push so far,
+
+290
+00:10:43,110 --> 00:10:44,670
+and I've played with
+it a little bit.
+
+291
+00:10:44,670 --> 00:10:46,630
+If I can have a bigger data set,
+
+292
+00:10:46,630 --> 00:10:48,770
+and I'm trying to use more swap.
+
+293
+00:10:48,770 --> 00:10:51,169
+Sure, maybe it runs, but
+it's constantly reading and
+
+294
+00:10:51,169 --> 00:10:53,910
+writing data back
+and forth to desk,
+
+295
+00:10:53,910 --> 00:10:55,350
+and that so slow that
+it's like, Well,
+
+296
+00:10:55,350 --> 00:10:57,110
+it's going to be like hours
+to do something simple,
+
+297
+00:10:57,110 --> 00:10:59,229
+and it effectively feels
+like it's frozen up.
+
+298
+00:10:59,229 --> 00:11:01,130
+So you can try to push the
+boundaries a little bit,
+
+299
+00:11:01,130 --> 00:11:02,484
+but not a whole lot.
+
+300
+00:11:02,484 --> 00:11:04,639
+Right, great. So I
+have that swap there.
+
+301
+00:11:04,639 --> 00:11:06,339
+Another thing I'm going to do
+
+302
+00:11:06,339 --> 00:11:09,080
+is I started a new
+notebook actually.
+
+303
+00:11:09,080 --> 00:11:10,899
+I was just easier for
+me to keep this in
+
+304
+00:11:10,899 --> 00:11:13,739
+the same Jupiter lab instances.
+
+305
+00:11:13,739 --> 00:11:15,300
+I'm kind of working at
+
+306
+00:11:15,300 --> 00:11:16,940
+the boundary of two
+lectures right now.
+
+307
+00:11:16,940 --> 00:11:19,699
+I'm going to create a new
+notebook and I will call
+
+308
+00:11:19,699 --> 00:11:24,919
+this one Lecture two B,
+
+309
+00:11:26,240 --> 00:11:29,319
+why did that not rename?
+
+310
+00:11:34,360 --> 00:11:37,059
+That was kind of
+weird. Okay, I'm
+
+311
+00:11:37,059 --> 00:11:38,420
+to start this new notebook.
+
+312
+00:11:38,420 --> 00:11:40,339
+And the hand do
+
+313
+00:11:40,339 --> 00:11:42,260
+is I come over here and look
+at my not running notebook.
+
+314
+00:11:42,260 --> 00:11:43,740
+If I have all these
+other ones running,
+
+315
+00:11:43,740 --> 00:11:47,579
+I'm going to run out of
+memory too quickly, right?
+
+316
+00:11:47,579 --> 00:11:50,100
+I'm actually shut
+down all my kernels.
+
+317
+00:11:50,100 --> 00:11:51,340
+Most importantly,
+when I shut down
+
+318
+00:11:51,340 --> 00:11:52,799
+those kernels, some of
+those had spark sessions.
+
+319
+00:11:52,799 --> 00:11:54,320
+I'm closing out those
+spark sessions.
+
+320
+00:11:54,320 --> 00:11:55,839
+Even that data cache, right?
+
+321
+00:11:55,839 --> 00:11:57,279
+I want to free that up.
+
+322
+00:11:57,279 --> 00:11:59,419
+So that will all
+be freed up now.
+
+323
+00:11:59,419 --> 00:12:01,500
+I have a fresh
+notebook over here.
+
+324
+00:12:01,500 --> 00:12:03,680
+I need to create
+my spark session.
+
+325
+00:12:03,680 --> 00:12:05,159
+And so I have a
+snippet for that,
+
+326
+00:12:05,159 --> 00:12:07,660
+so I don't have to
+remember all those things.
+
+327
+00:12:07,660 --> 00:12:09,199
+And this is very
+similar to last time,
+
+328
+00:12:09,199 --> 00:12:10,780
+except I'm making a few changes.
+
+329
+00:12:10,780 --> 00:12:11,960
+I highlighted that and read so
+
+330
+00:12:11,960 --> 00:12:13,220
+you can see what is different.
+
+331
+00:12:13,220 --> 00:12:14,720
+This one I changed
+because I actually
+
+332
+00:12:14,720 --> 00:12:15,900
+want to show an
+error and talk more
+
+333
+00:12:15,900 --> 00:12:17,120
+again about how we walk
+
+334
+00:12:17,120 --> 00:12:18,799
+through reading these errors
+and dealing with them,
+
+335
+00:12:18,799 --> 00:12:19,999
+so that was an
+intentional error.
+
+336
+00:12:19,999 --> 00:12:21,539
+And these two lines are going to
+
+337
+00:12:21,539 --> 00:12:23,219
+apply more to the next lecture.
+
+338
+00:12:23,219 --> 00:12:25,480
+So I just thought it was easier
+to have one snippet here
+
+339
+00:12:25,480 --> 00:12:26,879
+that if I move
+
+340
+00:12:26,879 --> 00:12:28,519
+into the next content,
+we'll be ready to go.
+
+341
+00:12:28,519 --> 00:12:30,199
+Otherwise, this is the
+same as last time.
+
+342
+00:12:30,199 --> 00:12:31,779
+So we come over here and I'm
+
+343
+00:12:31,779 --> 00:12:34,125
+going to create
+this spark session.
+
+344
+00:12:34,125 --> 00:12:37,729
+Remember that when we get
+errors in this environment,
+
+345
+00:12:37,729 --> 00:12:39,069
+it's usually pretty
+awful because
+
+346
+00:12:39,069 --> 00:12:41,009
+we have this combination
+like Python,
+
+347
+00:12:41,009 --> 00:12:43,390
+scala, Java, all in
+the stack trace.
+
+348
+00:12:43,390 --> 00:12:45,370
+So fairly intimidating errors,
+
+349
+00:12:45,370 --> 00:12:46,889
+but we're going to dig
+through and see how we
+
+350
+00:12:46,889 --> 00:12:49,510
+can find what's relevant
+for us in this case.
+
+351
+00:12:49,510 --> 00:12:51,889
+And so lots of things going on.
+
+352
+00:12:51,889 --> 00:12:53,349
+In this case, the error was
+
+353
+00:12:53,349 --> 00:12:55,409
+actually deep in
+the Java and scala
+
+354
+00:12:55,409 --> 00:12:57,050
+stuff and I got this error here
+
+355
+00:12:57,050 --> 00:12:59,130
+coming out of the
+Spark library itself,
+
+356
+00:12:59,130 --> 00:13:01,229
+and it's telling that the
+executor memory must be
+
+357
+00:13:01,229 --> 00:13:04,029
+this and that I actually
+set it to this.
+
+358
+00:13:04,029 --> 00:13:06,050
+That's in bytes. I
+have somehow figure
+
+359
+00:13:06,050 --> 00:13:07,790
+out how to change
+that executor memory.
+
+360
+00:13:07,790 --> 00:13:09,089
+I'm just trying to
+pull this out and
+
+361
+00:13:09,089 --> 00:13:11,069
+see what are they telling me,
+
+362
+00:13:11,069 --> 00:13:12,629
+how many bites of memory
+
+363
+00:13:12,629 --> 00:13:14,469
+are they actually
+asking me to have?
+
+364
+00:13:14,469 --> 00:13:16,829
+And somebody say 24 squared,
+
+365
+00:13:16,829 --> 00:13:18,209
+and they say, Okay,
+for whatever reason,
+
+366
+00:13:18,209 --> 00:13:21,129
+they have a minimum
+of 450 per executor,
+
+367
+00:13:21,129 --> 00:13:23,849
+and somebody come over here
+and maybe just do like 512,
+
+368
+00:13:23,849 --> 00:13:26,549
+make it a nice even
+number, so I can do that.
+
+369
+00:13:26,549 --> 00:13:28,710
+When I run this the second
+time, I get an error.
+
+370
+00:13:28,710 --> 00:13:30,949
+Another Spark context
+is being constructed.
+
+371
+00:13:30,949 --> 00:13:32,830
+Well, it was, but it failed.
+
+372
+00:13:32,830 --> 00:13:34,490
+And so this is a warning.
+
+373
+00:13:34,490 --> 00:13:36,170
+Spark tends to be
+kind of verbose
+
+374
+00:13:36,170 --> 00:13:38,010
+about having warnings that
+are not actually problems.
+
+375
+00:13:38,010 --> 00:13:40,069
+This is one of
+those cases, right?
+
+376
+00:13:40,069 --> 00:13:41,509
+So if you're trying to
+fix something, I could
+
+377
+00:13:41,509 --> 00:13:43,490
+just restart everything
+and have a clean slate.
+
+378
+00:13:43,490 --> 00:13:45,150
+But if you see something
+like that, well,
+
+379
+00:13:45,150 --> 00:13:47,489
+and you just fixed the
+problem, you're good to go.
+
+380
+00:13:47,489 --> 00:13:49,329
+Right? I'm going to
+carry on. I have
+
+381
+00:13:49,329 --> 00:13:50,810
+my Spark session here.
+
+382
+00:13:50,810 --> 00:13:54,379
+I can start working it if I
+would like to. All right.
+
+383
+00:13:54,379 --> 00:13:59,639
+Cool. The data I'm going to
+do is from Lecture Snippets,
+
+384
+00:13:59,639 --> 00:14:02,200
+and it's down here.
+
+385
+00:14:02,200 --> 00:14:04,280
+I have this station data.
+
+386
+00:14:04,280 --> 00:14:06,440
+This is basically a file
+
+387
+00:14:06,440 --> 00:14:07,840
+containing all these
+weather stations
+
+388
+00:14:07,840 --> 00:14:08,920
+from around the world.
+
+389
+00:14:08,920 --> 00:14:10,999
+And I already downloaded it,
+
+390
+00:14:10,999 --> 00:14:12,380
+so just save a little time.
+
+391
+00:14:12,380 --> 00:14:12,879
+You could do that.
+
+392
+00:14:12,879 --> 00:14:14,659
+I'll just open it and
+take a look at it.
+
+393
+00:14:14,659 --> 00:14:18,979
+It's a text file. And just
+
+394
+00:14:18,979 --> 00:14:21,740
+like my DM is trying
+to go on slow today.
+
+395
+00:14:21,740 --> 00:14:24,539
+But I think it's coming.
+
+396
+00:14:25,250 --> 00:14:27,670
+There we go. It's a text file.
+
+397
+00:14:27,670 --> 00:14:29,130
+Definitely not a CSV file.
+
+398
+00:14:29,130 --> 00:14:30,470
+It's not comma separated.
+
+399
+00:14:30,470 --> 00:14:32,350
+We can see that to
+analyze this data,
+
+400
+00:14:32,350 --> 00:14:33,570
+we'd have to read
+the documentation
+
+401
+00:14:33,570 --> 00:14:34,869
+and see the offsets for
+
+402
+00:14:34,869 --> 00:14:36,350
+each field and maybe do
+
+403
+00:14:36,350 --> 00:14:38,450
+some string slicing
+to actually extract.
+
+404
+00:14:38,450 --> 00:14:40,849
+I'm so how we can do that.
+How we can use Spark to
+
+405
+00:14:40,849 --> 00:14:44,520
+extract individual
+columns of this file.
+
+406
+00:14:44,520 --> 00:14:47,109
+All right. I'm to
+come back here.
+
+407
+00:14:47,109 --> 00:14:52,189
+And what I will do now is
+I will try to read it.
+
+408
+00:14:52,189 --> 00:14:54,049
+And the reading and
+
+409
+00:14:54,049 --> 00:14:55,829
+writing and Spark is
+a little bit differ.
+
+410
+00:14:55,829 --> 00:14:57,210
+If we look at the style up here,
+
+411
+00:14:57,210 --> 00:14:59,290
+they're going to kind of
+borrow from this style.
+
+412
+00:14:59,290 --> 00:15:01,869
+One way to write constructors or
+
+413
+00:15:01,869 --> 00:15:03,249
+functions in general
+is that you just
+
+414
+00:15:03,249 --> 00:15:04,989
+take lots and lots of arguments.
+
+415
+00:15:04,989 --> 00:15:07,250
+And that's not
+necessarily great.
+
+416
+00:15:07,250 --> 00:15:09,410
+It gets more complicated
+than necessary.
+
+417
+00:15:09,410 --> 00:15:12,549
+And if you don't have default
+arguments, it's not great.
+
+418
+00:15:12,549 --> 00:15:16,150
+An alternative for that is
+that you have these builders,
+
+419
+00:15:16,150 --> 00:15:18,949
+and the idea with builders
+is that the builders are
+
+420
+00:15:18,949 --> 00:15:20,450
+doing the ultimate
+creation of objects
+
+421
+00:15:20,450 --> 00:15:22,270
+for you or ultimate invocations.
+
+422
+00:15:22,270 --> 00:15:25,499
+I can do a bunch of different
+method trawls on it,
+
+423
+00:15:25,499 --> 00:15:27,580
+and each one changes
+something about the builder,
+
+424
+00:15:27,580 --> 00:15:29,359
+and then it also
+returns the builder.
+
+425
+00:15:29,359 --> 00:15:30,640
+If it returns itself,
+
+426
+00:15:30,640 --> 00:15:32,359
+then I can call these
+different methods on
+
+427
+00:15:32,359 --> 00:15:34,460
+the same object and create
+something in the end.
+
+428
+00:15:34,460 --> 00:15:36,199
+The style for
+reading and writing
+
+429
+00:15:36,199 --> 00:15:39,279
+files is actually going to
+be very similar to that.
+
+430
+00:15:39,800 --> 00:15:42,499
+The read write style,
+
+431
+00:15:42,499 --> 00:15:43,899
+is going to be
+something like this?
+
+432
+00:15:43,899 --> 00:15:46,380
+It'll often be like
+Spark dot read,
+
+433
+00:15:46,380 --> 00:15:48,320
+do a bunch of stuff,
+
+434
+00:15:48,320 --> 00:15:51,064
+and then it might be
+load at the end or
+
+435
+00:15:51,064 --> 00:15:53,289
+Um, the one I may
+see right now is
+
+436
+00:15:53,289 --> 00:15:55,570
+that it's going to be dot text.
+
+437
+00:15:55,570 --> 00:15:56,849
+In this case, I
+don't actually have
+
+438
+00:15:56,849 --> 00:15:58,929
+any extra arguments I
+want to do with it.
+
+439
+00:15:58,929 --> 00:16:01,389
+And then when I'm writing,
+I say data frame dot right,
+
+440
+00:16:01,389 --> 00:16:02,610
+and there's a bunch of stuff,
+
+441
+00:16:02,610 --> 00:16:03,869
+and then I might say
+
+442
+00:16:03,869 --> 00:16:05,850
+write table or something
+like that at the end.
+
+443
+00:16:05,850 --> 00:16:07,649
+Anyway, that's a style we're
+going to be working with.
+
+444
+00:16:07,649 --> 00:16:10,370
+So down here, I'm going
+to have a spar dot read.
+
+445
+00:16:10,370 --> 00:16:12,729
+In this case, I want
+a text file and I
+
+446
+00:16:12,729 --> 00:16:15,370
+may pass in the name
+of that text file,
+
+447
+00:16:15,370 --> 00:16:17,730
+which is right over here.
+
+448
+00:16:17,730 --> 00:16:19,249
+Let me just actually,
+I'm going to do
+
+449
+00:16:19,249 --> 00:16:23,099
+a NLS and I may
+just py paste that.
+
+450
+00:16:23,099 --> 00:16:25,379
+I'm to try reading this in.
+
+451
+00:16:25,580 --> 00:16:28,460
+All right, and I'm may
+get that in a data frame.
+
+452
+00:16:28,460 --> 00:16:30,280
+So, that's cool.
+
+453
+00:16:30,280 --> 00:16:33,419
+That should work. And
+then I look at this.
+
+454
+00:16:33,419 --> 00:16:36,199
+Because it's a text
+file where there's not
+
+455
+00:16:36,199 --> 00:16:37,600
+necessarily well
+defined columns or
+
+456
+00:16:37,600 --> 00:16:39,260
+at least not columns
+that it understands,
+
+457
+00:16:39,260 --> 00:16:41,159
+it's trying to give me
+this data frame with
+
+458
+00:16:41,159 --> 00:16:43,880
+a single column called value.
+
+459
+00:16:43,880 --> 00:16:46,360
+Okay, that's fine and well.
+I can see the schema.
+
+460
+00:16:46,360 --> 00:16:48,680
+What if I want to do
+something like take
+
+461
+00:16:48,680 --> 00:16:52,739
+the count of all the rows in
+it. I'm to try running that.
+
+462
+00:16:53,380 --> 00:16:57,760
+And just going to hopefully
+count up how many lines there
+
+463
+00:16:57,760 --> 00:17:01,880
+are in that file and
+wait for a moment.
+
+464
+00:17:01,880 --> 00:17:05,000
+And I got this error right here.
+
+465
+00:17:05,000 --> 00:17:06,859
+This file does not exist?
+
+466
+00:17:06,859 --> 00:17:11,580
+This N B, and then is that
+true? It doesn't exist?
+
+467
+00:17:11,580 --> 00:17:12,979
+Let me just take a look at that.
+
+468
+00:17:12,979 --> 00:17:15,299
+Maybe I might try pasting
+that directly and say,
+
+469
+00:17:15,299 --> 00:17:17,019
+well, can I see the head of it?
+
+470
+00:17:17,019 --> 00:17:18,939
+Well, it seems like
+it does exist,
+
+471
+00:17:18,939 --> 00:17:21,499
+but Spark is not
+seeing it, right?
+
+472
+00:17:21,499 --> 00:17:23,979
+The executor is giving me
+this error that I cannot
+
+473
+00:17:23,979 --> 00:17:26,779
+read that file, right?
+
+474
+00:17:26,779 --> 00:17:30,180
+Hm. Does anybody want
+to speculate about why?
+
+475
+00:17:30,180 --> 00:17:32,140
+Since the file is clearly there,
+
+476
+00:17:32,140 --> 00:17:36,259
+I wasn't able to read
+it. Yeah, right here.
+
+477
+00:17:36,860 --> 00:17:39,939
+One idea is that doesn't
+have permission to read it.
+
+478
+00:17:39,939 --> 00:17:41,500
+That's a good jest.
+It's not the case.
+
+479
+00:17:41,500 --> 00:17:42,799
+It's going to be
+something very specific
+
+480
+00:17:42,799 --> 00:17:43,940
+to how Spark runs
+
+481
+00:17:43,940 --> 00:17:48,659
+code. Yeah, right here.
+
+482
+00:17:49,640 --> 00:17:51,839
+Could be like the types.
+
+483
+00:17:51,839 --> 00:17:52,980
+Yeah, often there's
+type trouble,
+
+484
+00:17:52,980 --> 00:17:54,059
+there's not any type trouble
+
+485
+00:17:54,059 --> 00:17:55,820
+going on here. That's
+not my problem.
+
+486
+00:17:55,820 --> 00:17:57,619
+So give some hints and
+
+487
+00:17:57,619 --> 00:17:59,540
+then maybe see if let
+me ask people again,
+
+488
+00:17:59,540 --> 00:18:00,939
+what do you think
+might be happening?
+
+489
+00:18:00,939 --> 00:18:05,639
+So, when I started this
+inside of my notebook, right,
+
+490
+00:18:05,639 --> 00:18:06,899
+I have a spark driver,
+
+491
+00:18:06,899 --> 00:18:08,600
+and the spark driver
+has some insight into
+
+492
+00:18:08,600 --> 00:18:11,099
+all these nodes in the cluster,
+and I can inspect that.
+
+493
+00:18:11,099 --> 00:18:12,799
+If I actually come
+over here, right?
+
+494
+00:18:12,799 --> 00:18:14,879
+And I say, doctor PS,
+
+495
+00:18:14,879 --> 00:18:18,134
+I can see that I have
+my notebook down here.
+
+496
+00:18:18,134 --> 00:18:19,649
+I have 5,000, right,
+
+497
+00:18:19,649 --> 00:18:21,849
+so I can actually talk to my
+notebook from the outside.
+
+498
+00:18:21,849 --> 00:18:24,810
+And I also have this
+40 40 and 40 40,
+
+499
+00:18:24,810 --> 00:18:26,389
+there's a little
+server that shows me
+
+500
+00:18:26,389 --> 00:18:28,369
+a summary of the
+workers in the cluster,
+
+501
+00:18:28,369 --> 00:18:30,309
+and so I'm already
+port forwarding there.
+
+502
+00:18:30,309 --> 00:18:32,429
+I have an SSH tunnel
+for 40 40 as well,
+
+503
+00:18:32,429 --> 00:18:34,950
+so I can actually
+just row directly
+
+504
+00:18:34,950 --> 00:18:38,970
+in here and I can type in 40 40.
+
+505
+00:18:38,970 --> 00:18:40,749
+And what I can
+
+506
+00:18:40,749 --> 00:18:42,810
+see is there's all these
+jobs that are running,
+
+507
+00:18:42,810 --> 00:18:46,044
+and I can come over here
+and look at the executors.
+
+508
+00:18:46,044 --> 00:18:47,899
+And the executors,
+
+509
+00:18:47,899 --> 00:18:49,679
+I guess there's going to
+be a few of them here.
+
+510
+00:18:49,679 --> 00:18:51,019
+One of the things
+I can see is that
+
+511
+00:18:51,019 --> 00:18:53,599
+these failed tasks are
+actually showing up for me,
+
+512
+00:18:53,599 --> 00:18:55,319
+and I can see where they are.
+
+513
+00:18:55,319 --> 00:18:56,819
+There's actually
+three executors here,
+
+514
+00:18:56,819 --> 00:18:57,959
+which is a little
+bit strange, right?
+
+515
+00:18:57,959 --> 00:19:01,219
+Because I have two executors
+that I actually started,
+
+516
+00:19:01,219 --> 00:19:03,479
+right, the Index zero and one.
+
+517
+00:19:03,479 --> 00:19:05,019
+And then it's
+showing the driver.
+
+518
+00:19:05,019 --> 00:19:07,910
+In this case, It's a little
+strange they're calling
+
+519
+00:19:07,910 --> 00:19:09,330
+the driver an executor
+because it'll
+
+520
+00:19:09,330 --> 00:19:11,649
+never ever execute
+a task for me.
+
+521
+00:19:11,649 --> 00:19:12,749
+The reason I think they
+
+522
+00:19:12,749 --> 00:19:13,969
+might have put it here
+is that if I have
+
+523
+00:19:13,969 --> 00:19:16,990
+a different mode where I'm
+doing like, local mode,
+
+524
+00:19:16,990 --> 00:19:19,110
+I don't have a cluster,
+then in that case,
+
+525
+00:19:19,110 --> 00:19:20,450
+the driver would execute tasks,
+
+526
+00:19:20,450 --> 00:19:22,289
+but when I'm in the
+cluster mode like this,
+
+527
+00:19:22,289 --> 00:19:23,769
+then then it'll never do that.
+
+528
+00:19:23,769 --> 00:19:25,090
+So anyway, it's there.
+
+529
+00:19:25,090 --> 00:19:28,449
+But I'm writing my code
+through this driver,
+
+530
+00:19:28,449 --> 00:19:33,460
+and then my code is
+actually running on these.
+
+531
+00:19:33,460 --> 00:19:36,279
+I can see that executors
+have different IP addresses.
+
+532
+00:19:36,279 --> 00:19:38,260
+And those are the IP addresses
+
+533
+00:19:38,260 --> 00:19:39,519
+actually of these
+containers, right?
+
+534
+00:19:39,519 --> 00:19:42,379
+I have a worker here, and
+I have a worker here.
+
+535
+00:19:42,379 --> 00:19:44,360
+These are responsible for
+running all the code.
+
+536
+00:19:44,360 --> 00:19:45,799
+I'm writing the code in here,
+
+537
+00:19:45,799 --> 00:19:47,719
+but I'm running
+the code in here.
+
+538
+00:19:47,719 --> 00:19:51,100
+So on that note, any thoughts
+
+539
+00:19:51,100 --> 00:19:55,620
+on why it cannot find that file.
+
+540
+00:20:02,820 --> 00:20:13,660
+Yeah, right here. Is that final.
+
+541
+00:20:14,340 --> 00:20:17,419
+Excellent. Those files
+are not copied to
+
+542
+00:20:17,419 --> 00:20:20,579
+a place where those executors
+could see them, right?
+
+543
+00:20:20,579 --> 00:20:21,879
+So sure. I see that path here.
+
+544
+00:20:21,879 --> 00:20:23,959
+But if I were to do
+a docker executing,
+
+545
+00:20:23,959 --> 00:20:25,839
+to go into the containers
+where the executors are,
+
+546
+00:20:25,839 --> 00:20:27,199
+and I tried to run this,
+
+547
+00:20:27,199 --> 00:20:28,939
+it would be like, well, I
+don't have that file, right?
+
+548
+00:20:28,939 --> 00:20:30,760
+So I mean, one way I could
+
+549
+00:20:30,760 --> 00:20:32,079
+get rid of this and make it run.
+
+550
+00:20:32,079 --> 00:20:32,979
+It would not be a good way.
+
+551
+00:20:32,979 --> 00:20:35,239
+But one way I could do it is
+I could take that file and
+
+552
+00:20:35,239 --> 00:20:37,820
+copy it to every container
+where there's an executor.
+
+553
+00:20:37,820 --> 00:20:39,659
+If there's like 1,000
+executors because I
+
+554
+00:20:39,659 --> 00:20:41,539
+have a giant cluster, that's
+kind of waffle, right?
+
+555
+00:20:41,539 --> 00:20:43,300
+The other thing I can
+do is instead of having
+
+556
+00:20:43,300 --> 00:20:45,119
+this in a local file system,
+
+557
+00:20:45,119 --> 00:20:47,319
+I could put this in a
+distributed file system
+
+558
+00:20:47,319 --> 00:20:48,859
+that's visible to everything.
+
+559
+00:20:48,859 --> 00:20:51,419
+What works better for
+that than HDS, right?
+
+560
+00:20:51,419 --> 00:20:52,640
+We've already learned HDFS.
+
+561
+00:20:52,640 --> 00:20:55,159
+We're going to be using Spark
+in conjunction with HDFS.
+
+562
+00:20:55,159 --> 00:20:56,979
+Because we need all
+these executors in
+
+563
+00:20:56,979 --> 00:20:59,679
+different places to have
+visibility into the same files.
+
+564
+00:20:59,679 --> 00:21:01,239
+HFS is perfect for that.
+
+565
+00:21:01,239 --> 00:21:02,799
+All right. So I'm
+gonna come down here.
+
+566
+00:21:02,799 --> 00:21:04,799
+And I'm just going
+to upload that,
+
+567
+00:21:04,799 --> 00:21:07,099
+and I will say,
+
+568
+00:21:07,099 --> 00:21:12,140
+maybe I'm going to I'll
+
+569
+00:21:12,140 --> 00:21:14,459
+leave it here for
+everybody, perhaps.
+
+570
+00:21:14,459 --> 00:21:16,059
+One more question
+before I fix it.
+
+571
+00:21:16,059 --> 00:21:19,299
+Any thoughts on why Diven that
+this isn't going to work,
+
+572
+00:21:19,299 --> 00:21:22,260
+why it didn't fail on this
+line instead of later?
+
+573
+00:21:22,340 --> 00:21:26,740
+Yeah, go ahead. It's lazy.
+
+574
+00:21:26,740 --> 00:21:28,159
+It doesn't realize
+that the file is not
+
+575
+00:21:28,159 --> 00:21:29,999
+there until I actually
+try to access it.
+
+576
+00:21:29,999 --> 00:21:31,639
+Okay, great. So what
+I'm going to do now is,
+
+577
+00:21:31,639 --> 00:21:32,840
+I'm going to try
+to copy that file,
+
+578
+00:21:32,840 --> 00:21:34,800
+so I can use that HDFS
+command like before,
+
+579
+00:21:34,800 --> 00:21:36,379
+and remember the
+distributed file system
+
+580
+00:21:36,379 --> 00:21:37,939
+has all these things like copy.
+
+581
+00:21:37,939 --> 00:21:40,880
+And so I could grab this file,
+
+582
+00:21:40,880 --> 00:21:45,359
+and I want to copy it to the
+I I called my name node N N,
+
+583
+00:21:45,359 --> 00:21:47,300
+and so I may copy it to there,
+
+584
+00:21:47,300 --> 00:21:50,379
+and the root directory
+works just fine for me.
+
+585
+00:21:50,379 --> 00:21:51,879
+And then after I do that,
+
+586
+00:21:51,879 --> 00:21:54,435
+I should be able to run
+the same stuff again.
+
+587
+00:21:54,435 --> 00:21:57,569
+Going to come down here. And now
+
+588
+00:21:57,569 --> 00:21:59,970
+I actually have to have
+a full path to HDFS.
+
+589
+00:21:59,970 --> 00:22:02,229
+And this is great because
+all my executors are
+
+590
+00:22:02,229 --> 00:22:03,350
+going to be able
+to use that path
+
+591
+00:22:03,350 --> 00:22:04,689
+and they can find that data.
+
+592
+00:22:04,689 --> 00:22:07,710
+And then I should be able
+to do something like count.
+
+593
+00:22:07,710 --> 00:22:10,249
+Take a while. Are there's a
+couple of partitions there.
+
+594
+00:22:10,249 --> 00:22:11,989
+It'll take some time to do that,
+
+595
+00:22:11,989 --> 00:22:13,230
+but then it should be working.
+
+596
+00:22:13,230 --> 00:22:16,510
+And over here, hopefully I'm
+going to see some executors
+
+597
+00:22:16,510 --> 00:22:17,789
+soon that have actually
+
+598
+00:22:17,789 --> 00:22:20,390
+successfully
+completed some tasks.
+
+599
+00:22:20,390 --> 00:22:21,909
+All right. Any questions or
+
+600
+00:22:21,909 --> 00:22:23,730
+any confusion about
+why it wasn't
+
+601
+00:22:23,730 --> 00:22:27,709
+working initially? All right.
+
+602
+00:22:27,709 --> 00:22:31,369
+Cool. So let me
+just peek on this.
+
+603
+00:22:31,369 --> 00:22:35,029
+So underneath our data frame,
+
+604
+00:22:35,029 --> 00:22:36,590
+which we're working with now,
+
+605
+00:22:36,590 --> 00:22:38,589
+there's actually the RDDs
+
+606
+00:22:38,589 --> 00:22:40,990
+that we've been learning
+about previously.
+
+607
+00:22:40,990 --> 00:22:42,370
+And one of the ways
+I could see these
+
+608
+00:22:42,370 --> 00:22:43,949
+is if I say a data frame dot t,
+
+609
+00:22:43,949 --> 00:22:45,389
+I mean, I could get some number
+
+610
+00:22:45,389 --> 00:22:46,729
+of rows here if I wanted to.
+
+611
+00:22:46,729 --> 00:22:48,170
+And that will come back to me as
+
+612
+00:22:48,170 --> 00:22:49,710
+a list of these row objects.
+
+613
+00:22:49,710 --> 00:22:51,130
+If I wanted to, I could even,
+
+614
+00:22:51,130 --> 00:22:53,589
+you know, just take one
+individually, right?
+
+615
+00:22:53,589 --> 00:22:56,779
+If I take the take one of
+them and I index out of it,
+
+616
+00:22:56,779 --> 00:22:57,999
+I could get this row object,
+
+617
+00:22:57,999 --> 00:23:01,960
+and this one only has
+one cell in that row,
+
+618
+00:23:01,960 --> 00:23:03,339
+but I could pull it out, I
+
+619
+00:23:03,339 --> 00:23:05,320
+could get strings out of there.
+
+620
+00:23:05,320 --> 00:23:07,860
+Now, if I want to, since
+
+621
+00:23:07,860 --> 00:23:09,299
+my RDD is basically
+
+622
+00:23:09,299 --> 00:23:11,780
+this collection of all
+these row objects,
+
+623
+00:23:11,780 --> 00:23:14,960
+I can do the same RDD stuff
+that we did previously,
+
+624
+00:23:14,960 --> 00:23:17,600
+and I can do things like
+root value as I saw here,
+
+625
+00:23:17,600 --> 00:23:21,059
+but as part of RDD operations.
+
+626
+00:23:21,059 --> 00:23:23,540
+So, for example, one
+of the things I could
+
+627
+00:23:23,540 --> 00:23:26,100
+do is I could say RDD I'm sorry,
+
+628
+00:23:26,100 --> 00:23:28,600
+data framed dot RDD map,
+
+629
+00:23:28,600 --> 00:23:32,080
+and that's t get called
+on each individual row.
+
+630
+00:23:32,080 --> 00:23:33,899
+And from that row,
+if I wanted to,
+
+631
+00:23:33,899 --> 00:23:36,199
+I could get the value, right?
+
+632
+00:23:36,199 --> 00:23:37,429
+And then you know,
+
+633
+00:23:37,429 --> 00:23:38,569
+that's just a
+transformation, that
+
+634
+00:23:38,569 --> 00:23:39,889
+does nothing, but
+then I could say,
+
+635
+00:23:39,889 --> 00:23:42,190
+like, give me, well,
+
+636
+00:23:42,190 --> 00:23:44,309
+this is going to give
+me five strings, right?
+
+637
+00:23:44,309 --> 00:23:45,809
+But I could also say I want
+
+638
+00:23:45,809 --> 00:23:48,070
+the first 11 characters
+of each of these.
+
+639
+00:23:48,070 --> 00:23:50,450
+I could just jump in
+and start writing code,
+
+640
+00:23:50,450 --> 00:23:55,089
+RDD level of code on that
+and do various operations.
+
+641
+00:23:55,089 --> 00:23:57,630
+So you can do that.
+More often, though,
+
+642
+00:23:57,630 --> 00:24:01,590
+we're going to be doing calls
+at the data frame level.
+
+643
+00:24:01,590 --> 00:24:03,149
+And so just like there's actions
+
+644
+00:24:03,149 --> 00:24:04,869
+and transformations on RDDs,
+
+645
+00:24:04,869 --> 00:24:06,429
+at the higher level,
+we'll also have
+
+646
+00:24:06,429 --> 00:24:07,870
+these actions and
+transformations,
+
+647
+00:24:07,870 --> 00:24:10,635
+and often they'll have
+the the same name.
+
+648
+00:24:10,635 --> 00:24:14,799
+So I want to look at how
+we my goal right now is to
+
+649
+00:24:14,799 --> 00:24:19,759
+add a station column
+to the data frame.
+
+650
+00:24:19,759 --> 00:24:21,579
+And first, I'm may to
+show how I could do it
+
+651
+00:24:21,579 --> 00:24:23,399
+in Pandas because some people
+are familiar with Pandas,
+
+652
+00:24:23,399 --> 00:24:24,639
+and then I'll show how it's a
+
+653
+00:24:24,639 --> 00:24:25,959
+little bit trickier and spark
+
+654
+00:24:25,959 --> 00:24:27,139
+because data frames are
+
+655
+00:24:27,139 --> 00:24:29,320
+immutable because
+RDDs are immutable.
+
+656
+00:24:29,320 --> 00:24:30,800
+So what I'm may do is I'm may
+
+657
+00:24:30,800 --> 00:24:32,900
+say data framed a two Pandas.
+
+658
+00:24:32,900 --> 00:24:34,539
+This is an action,
+right? Because I
+
+659
+00:24:34,539 --> 00:24:35,840
+actually have to
+materialize the data
+
+660
+00:24:35,840 --> 00:24:38,839
+and put it in a different
+format, but I could do that.
+
+661
+00:24:38,839 --> 00:24:40,804
+I could get a Pandas DF.
+
+662
+00:24:40,804 --> 00:24:43,430
+If I did that, my notebook
+would probably actually crash.
+
+663
+00:24:43,430 --> 00:24:44,589
+There's probably
+too much memory.
+
+664
+00:24:44,589 --> 00:24:46,609
+But just for the
+sake of showing,
+
+665
+00:24:46,609 --> 00:24:49,909
+I can work with some
+smaller data here.
+
+666
+00:24:49,909 --> 00:24:53,069
+I could get that Pandas
+DF to work with.
+
+667
+00:24:53,069 --> 00:24:54,849
+And when I have a Pandas DF,
+
+668
+00:24:54,849 --> 00:24:57,269
+I can pull out columns, right?
+
+669
+00:24:57,269 --> 00:24:59,150
+And when I pull out columns,
+
+670
+00:24:59,150 --> 00:25:01,009
+I can pull SR methods on them.
+
+671
+00:25:01,009 --> 00:25:03,749
+And so one of the ster
+methods is a slice, right?
+
+672
+00:25:03,749 --> 00:25:05,050
+I could slice each of these.
+
+673
+00:25:05,050 --> 00:25:06,749
+And if I wanted to, I could just
+
+674
+00:25:06,749 --> 00:25:09,610
+put this right back
+into my data frame.
+
+675
+00:25:09,610 --> 00:25:11,089
+I could have station, and then
+
+676
+00:25:11,089 --> 00:25:13,749
+Pandas DF and problem
+solve, right?
+
+677
+00:25:13,749 --> 00:25:16,149
+I could do that. Pandas
+data frames are mutable.
+
+678
+00:25:16,149 --> 00:25:17,869
+I can make those
+changes as I go.
+
+679
+00:25:17,869 --> 00:25:20,189
+All right, how would I do it?
+
+680
+00:25:20,250 --> 00:25:24,550
+In Spark. I cannot modify
+my Spark data frame.
+
+681
+00:25:24,550 --> 00:25:26,029
+So instead of I have to
+something like this,
+
+682
+00:25:26,029 --> 00:25:29,229
+data frame two dot I
+need to make a new one.
+
+683
+00:25:29,229 --> 00:25:31,209
+And the way I do this
+is I say with column,
+
+684
+00:25:31,209 --> 00:25:32,830
+and then I put a name here,
+
+685
+00:25:32,830 --> 00:25:35,729
+and then basically
+some kind of like code
+
+686
+00:25:35,729 --> 00:25:37,410
+or expression that
+will calculate
+
+687
+00:25:37,410 --> 00:25:38,929
+the values in that new column.
+
+688
+00:25:38,929 --> 00:25:40,989
+So what I'll call
+this is station,
+
+689
+00:25:40,989 --> 00:25:44,069
+and then over here, I
+have to put something.
+
+690
+00:25:44,069 --> 00:25:46,649
+Now, a lot of the functions
+that we might do in
+
+691
+00:25:46,649 --> 00:25:50,069
+data frames correspond
+directly to function in SQL.
+
+692
+00:25:50,069 --> 00:25:53,529
+Remember that data frames are
+built on top of Spark SQL.
+
+693
+00:25:53,529 --> 00:25:55,909
+And so I can get some of
+these functions up here,
+
+694
+00:25:55,909 --> 00:25:59,250
+I can say from Pi
+spark squal functions.
+
+695
+00:25:59,250 --> 00:26:00,690
+Import two of these.
+
+696
+00:26:00,690 --> 00:26:02,290
+Two of the most
+important ones here
+
+697
+00:26:02,290 --> 00:26:04,570
+are column and expression.
+
+698
+00:26:04,570 --> 00:26:07,709
+From P Park, Pi Spark.
+
+699
+00:26:07,709 --> 00:26:10,389
+Great. What these will do,
+
+700
+00:26:10,389 --> 00:26:12,269
+let me refer to
+different columns
+
+701
+00:26:12,269 --> 00:26:13,689
+of output data I might want.
+
+702
+00:26:13,689 --> 00:26:16,489
+I could say something
+like column X,
+
+703
+00:26:16,489 --> 00:26:18,529
+and I get that column x object.
+
+704
+00:26:18,529 --> 00:26:19,869
+Later I could select that if
+
+705
+00:26:19,869 --> 00:26:21,289
+I wanted to or do
+things like that.
+
+706
+00:26:21,289 --> 00:26:23,409
+I can do other
+computations on it,
+
+707
+00:26:23,409 --> 00:26:25,829
+I could do something
+like that, where
+
+708
+00:26:25,829 --> 00:26:27,849
+I have some computation over it.
+
+709
+00:26:27,849 --> 00:26:31,110
+I could also do an
+expression that directly
+
+710
+00:26:31,110 --> 00:26:32,909
+would modify it as
+
+711
+00:26:32,909 --> 00:26:35,389
+so that would give me a
+column with that computation.
+
+712
+00:26:35,389 --> 00:26:39,390
+In SQL, we have
+SQL, rename things.
+
+713
+00:26:39,390 --> 00:26:41,730
+The equivalent of that is Alias,
+
+714
+00:26:41,730 --> 00:26:46,489
+I could say Alias plus plus
+one, something like that.
+
+715
+00:26:46,489 --> 00:26:48,609
+I could hit these
+different columns, right?
+
+716
+00:26:48,609 --> 00:26:50,509
+And so what I have
+to put here is
+
+717
+00:26:50,509 --> 00:26:52,190
+some column object that is doing
+
+718
+00:26:52,190 --> 00:26:54,429
+the computation I
+want to do, right?
+
+719
+00:26:54,429 --> 00:26:56,650
+And so I may say an expression.
+
+720
+00:26:56,650 --> 00:26:58,514
+I can put some string here.
+
+721
+00:26:58,514 --> 00:27:01,439
+And what strings do
+I have to work with?
+
+722
+00:27:01,439 --> 00:27:03,799
+Well, whatever I put here is
+
+723
+00:27:03,799 --> 00:27:05,300
+referring to one of the columns
+
+724
+00:27:05,300 --> 00:27:06,540
+of my original data frame,
+
+725
+00:27:06,540 --> 00:27:08,319
+and I only have one
+column, which is value.
+
+726
+00:27:08,319 --> 00:27:12,399
+So I can do various computations
+over the value column.
+
+727
+00:27:12,399 --> 00:27:13,879
+Those computations
+are going to be
+
+728
+00:27:13,879 --> 00:27:15,879
+different functions
+that show up in SQL.
+
+729
+00:27:15,879 --> 00:27:19,459
+So SQL doesn't have a simple
+syntax for string slicing.
+
+730
+00:27:19,459 --> 00:27:22,479
+You actually have to call
+the sub string function.
+
+731
+00:27:22,479 --> 00:27:23,759
+So do that and we do that,
+
+732
+00:27:23,759 --> 00:27:26,020
+I have to say some start
+index and some length,
+
+733
+00:27:26,020 --> 00:27:27,979
+but I can do that,
+and I can run that.
+
+734
+00:27:27,979 --> 00:27:31,020
+That was a transformation. So
+no work was actually done.
+
+735
+00:27:31,020 --> 00:27:32,560
+But Spark is smart enough
+
+736
+00:27:32,560 --> 00:27:34,040
+to know that if I were
+to do this computation,
+
+737
+00:27:34,040 --> 00:27:36,189
+I should end up with two Tolus.
+
+738
+00:27:36,189 --> 00:27:37,569
+I have the original
+value column and I have
+
+739
+00:27:37,569 --> 00:27:40,030
+a second column called Station.
+
+740
+00:27:40,030 --> 00:27:41,269
+I I actually want to look at it,
+
+741
+00:27:41,269 --> 00:27:42,270
+then I could do a
+couple of things.
+
+742
+00:27:42,270 --> 00:27:44,069
+I could say dot show.
+That would give me
+
+743
+00:27:44,069 --> 00:27:46,289
+some kind of preview
+of the data, right?
+
+744
+00:27:46,289 --> 00:27:47,369
+I'll have to do a job, right?
+
+745
+00:27:47,369 --> 00:27:48,889
+That's I actually
+has to do some work,
+
+746
+00:27:48,889 --> 00:27:52,250
+or I often just like to limit,
+
+747
+00:27:52,250 --> 00:27:54,730
+you know, get a few rows
+and then do two Pandas.
+
+748
+00:27:54,730 --> 00:27:56,089
+It's okay to convert a
+
+749
+00:27:56,089 --> 00:27:57,850
+few to Pandas because
+it's relatively fast.
+
+750
+00:27:57,850 --> 00:28:00,069
+So I can do that same
+thing. I can figure out how
+
+751
+00:28:00,069 --> 00:28:01,709
+to do that computation
+
+752
+00:28:01,709 --> 00:28:03,369
+with more work than I
+would have in Pandas,
+
+753
+00:28:03,369 --> 00:28:07,289
+but it will be highly
+scalable, right? All right.
+
+754
+00:28:07,289 --> 00:28:08,869
+Any questions about
+how we can do
+
+755
+00:28:08,869 --> 00:28:11,240
+those inds of transformations?
+
+756
+00:28:11,240 --> 00:28:13,610
+Yeah, I'll probably
+give you a project
+
+757
+00:28:13,610 --> 00:28:14,710
+at some point where you're using
+
+758
+00:28:14,710 --> 00:28:16,129
+the station data and you have to
+
+759
+00:28:16,129 --> 00:28:17,669
+do some of that work on it.
+
+760
+00:28:17,669 --> 00:28:21,189
+So hopefully that's a
+helpful example. All right.
+
+761
+00:28:21,189 --> 00:28:22,929
+Cool. What I want to do now is I
+
+762
+00:28:22,929 --> 00:28:24,910
+want to move on and
+use a bigger data set,
+
+763
+00:28:24,910 --> 00:28:27,570
+which will be the fire
+department data set,
+
+764
+00:28:27,570 --> 00:28:30,610
+and let me just get
+that as marked down.
+
+765
+00:28:30,610 --> 00:28:34,090
+I have some lecture
+snippets over here as well.
+
+766
+00:28:34,090 --> 00:28:37,249
+And if I come up here a little
+bit, there's a link to it.
+
+767
+00:28:37,249 --> 00:28:39,549
+So some fire departments,
+including the one,
+
+768
+00:28:39,549 --> 00:28:40,909
+San Francisco, just publish
+
+769
+00:28:40,909 --> 00:28:42,449
+this dataset about all
+the stuff they're doing.
+
+770
+00:28:42,449 --> 00:28:43,750
+It's usually not just fires.
+
+771
+00:28:43,750 --> 00:28:45,330
+If there's a water rescue
+
+772
+00:28:45,330 --> 00:28:47,209
+on in the Bay or
+something like that,
+
+773
+00:28:47,209 --> 00:28:48,049
+then the Fire Department
+
+774
+00:28:48,049 --> 00:28:49,189
+would probably help
+with that as well.
+
+775
+00:28:49,189 --> 00:28:50,710
+Anyway, have a larger file.
+
+776
+00:28:50,710 --> 00:28:52,309
+So I have a WG command here
+
+777
+00:28:52,309 --> 00:28:54,409
+to download it. I've
+already done that.
+
+778
+00:28:54,409 --> 00:28:56,230
+I've extracted that as well.
+
+779
+00:28:56,230 --> 00:28:58,390
+You can see it over here,
+
+780
+00:28:58,390 --> 00:29:00,450
+this San Francisco CSV.
+
+781
+00:29:00,450 --> 00:29:02,229
+I've also uploaded it, right?
+
+782
+00:29:02,229 --> 00:29:05,149
+So if I say LS, actually,
+
+783
+00:29:05,149 --> 00:29:11,829
+let's do like a DU and
+then HDFS name node 9,000.
+
+784
+00:29:11,829 --> 00:29:12,629
+All right.
+
+785
+00:29:12,629 --> 00:29:15,549
+Let's run that and just see
+what we have to work with.
+
+786
+00:29:15,730 --> 00:29:17,870
+Alright, cool. So we've
+
+787
+00:29:17,870 --> 00:29:19,249
+see that we have both
+these files here.
+
+788
+00:29:19,249 --> 00:29:21,110
+The first one was
+like 10 gigabytes.
+
+789
+00:29:21,110 --> 00:29:22,570
+So I'm doing a two
+gigabyte file,
+
+790
+00:29:22,570 --> 00:29:23,930
+not like the biggest file,
+
+791
+00:29:23,930 --> 00:29:26,829
+but I don't have a lot of
+compute resources here.
+
+792
+00:29:26,829 --> 00:29:27,989
+I don't have a giant cluster,
+
+793
+00:29:27,989 --> 00:29:29,590
+and I don't want
+you to be sitting
+
+794
+00:29:29,590 --> 00:29:31,390
+there for 5 minutes
+while the job runs.
+
+795
+00:29:31,390 --> 00:29:33,390
+So if I had more time or
+more compute resources,
+
+796
+00:29:33,390 --> 00:29:34,910
+I'd do much bigger data.
+
+797
+00:29:34,910 --> 00:29:36,749
+This is of nice size
+that nothing takes more
+
+798
+00:29:36,749 --> 00:29:38,769
+than like a minute
+or two to run.
+
+799
+00:29:38,769 --> 00:29:40,509
+Alright, cool. So I
+have that data there,
+
+800
+00:29:40,509 --> 00:29:42,189
+and I want to figure out
+how I can work with it.
+
+801
+00:29:42,189 --> 00:29:44,190
+So before I was working
+with a plain text file,
+
+802
+00:29:44,190 --> 00:29:47,130
+now I want to see how I can
+use Spark to work with CSVs.
+
+803
+00:29:47,130 --> 00:29:48,649
+And in particular, we're
+going ahead with this,
+
+804
+00:29:48,649 --> 00:29:50,290
+I'm going to see that
+CSVs are terrible.
+
+805
+00:29:50,290 --> 00:29:52,249
+Once again, we're
+going to use Spark to
+
+806
+00:29:52,249 --> 00:29:54,589
+get the data into Park, right?
+
+807
+00:29:54,589 --> 00:29:56,809
+Park and HDFS. All right.
+
+808
+00:29:56,809 --> 00:29:59,370
+Cool. So again, I
+have this note,
+
+809
+00:29:59,370 --> 00:30:02,069
+which I just want
+to copy from above.
+
+810
+00:30:02,069 --> 00:30:04,509
+Maybe here's an even
+better place to
+
+811
+00:30:04,509 --> 00:30:07,110
+do it since we're doing
+this in more detail now.
+
+812
+00:30:07,110 --> 00:30:10,490
+But this is the style
+to load these things.
+
+813
+00:30:10,490 --> 00:30:11,789
+It's going to be a little
+bit more complicated.
+
+814
+00:30:11,789 --> 00:30:13,290
+I have more options here now.
+
+815
+00:30:13,290 --> 00:30:15,610
+First I say spark dot read,
+
+816
+00:30:15,610 --> 00:30:18,129
+and that gives me the
+data frame reader object,
+
+817
+00:30:18,129 --> 00:30:19,829
+and I can add other
+options here.
+
+818
+00:30:19,829 --> 00:30:22,350
+What format, I can say
+I want to do a CSV.
+
+819
+00:30:22,350 --> 00:30:24,249
+Great, I have returned itself,
+
+820
+00:30:24,249 --> 00:30:26,729
+so I still have the data
+frame reader object.
+
+821
+00:30:26,729 --> 00:30:29,890
+Then at the end, I could
+actually go ahead and try
+
+822
+00:30:29,890 --> 00:30:33,799
+to load that data from
+that CSV. Let me do that.
+
+823
+00:30:33,799 --> 00:30:38,529
+And before we saw that this
+was a purely lazy operation.
+
+824
+00:30:38,529 --> 00:30:40,490
+And what we see now
+is that there's
+
+825
+00:30:40,490 --> 00:30:42,770
+actually a little bit
+of work being done.
+
+826
+00:30:42,770 --> 00:30:44,150
+Maybe it was felt a
+little bit slower
+
+827
+00:30:44,150 --> 00:30:46,069
+than before. Why is that?
+
+828
+00:30:46,069 --> 00:30:49,369
+Because even though it's
+trying to do things lazily,
+
+829
+00:30:49,369 --> 00:30:51,210
+before it does the
+work on E RDD,
+
+830
+00:30:51,210 --> 00:30:52,549
+you should be able to go and see
+
+831
+00:30:52,549 --> 00:30:54,409
+what the scheme is,
+what the types are.
+
+832
+00:30:54,409 --> 00:30:55,609
+And so I had to peek at
+
+833
+00:30:55,609 --> 00:30:57,009
+that file just briefly
+to figure out,
+
+834
+00:30:57,009 --> 00:31:00,609
+for example, that there are,
+you know, 35 columns, right?
+
+835
+00:31:00,609 --> 00:31:02,730
+So I had to read it,
+even though I wasn't
+
+836
+00:31:02,730 --> 00:31:05,669
+reading it fully. All
+right. So I have that.
+
+837
+00:31:05,669 --> 00:31:09,270
+And if I say data frame dot
+limit three dot two pandas,
+
+838
+00:31:09,270 --> 00:31:11,449
+I see that this was
+not necessarily
+
+839
+00:31:11,449 --> 00:31:14,090
+done the way I
+might have expected
+
+840
+00:31:14,090 --> 00:31:16,489
+Pandas will do a
+lot of automatic
+
+841
+00:31:16,489 --> 00:31:17,709
+things that are kind
+of ice for you.
+
+842
+00:31:17,709 --> 00:31:20,209
+For example, they
+will automatically
+
+843
+00:31:20,209 --> 00:31:21,509
+recognize that
+there's some kind of
+
+844
+00:31:21,509 --> 00:31:22,569
+header row and make that the
+
+845
+00:31:22,569 --> 00:31:23,689
+header. That didn't happen here.
+
+846
+00:31:23,689 --> 00:31:25,330
+I thought that was
+just a row of data.
+
+847
+00:31:25,330 --> 00:31:27,689
+Pandas would automatically
+look at your values.
+
+848
+00:31:27,689 --> 00:31:29,389
+Figure out this is
+a flow. I would
+
+849
+00:31:29,389 --> 00:31:31,150
+do schema inference,
+in other words.
+
+850
+00:31:31,150 --> 00:31:32,730
+This is not doing that. So here
+
+851
+00:31:32,730 --> 00:31:34,210
+everything is a string up here.
+
+852
+00:31:34,210 --> 00:31:37,509
+And so if I want to have a
+header and schema inference,
+
+853
+00:31:37,509 --> 00:31:40,229
+I'm going to have to modify
+this up here, right?
+
+854
+00:31:40,229 --> 00:31:42,530
+And so first, I'm
+going to come down.
+
+855
+00:31:42,530 --> 00:31:44,670
+And when these start to
+get a little bit long,
+
+856
+00:31:44,670 --> 00:31:46,410
+what I'll actually do is I'll
+
+857
+00:31:46,410 --> 00:31:47,930
+split them on multiple lines.
+
+858
+00:31:47,930 --> 00:31:50,309
+So it's almost like this
+little pipeline, right?
+
+859
+00:31:50,309 --> 00:31:51,749
+I can have a bunch of stages in
+
+860
+00:31:51,749 --> 00:31:54,269
+my pipeline to actually
+get my result.
+
+861
+00:31:54,269 --> 00:31:55,569
+And so one of the things I
+
+862
+00:31:55,569 --> 00:31:57,149
+can say here is I
+can say option.
+
+863
+00:31:57,149 --> 00:31:58,509
+And I can say, I actually
+
+864
+00:31:58,509 --> 00:32:01,250
+do want to have a
+header of data here.
+
+865
+00:32:01,250 --> 00:32:04,209
+And when I do that, then
+I can see I'm going to
+
+866
+00:32:04,209 --> 00:32:07,450
+get actual column
+names, which is great.
+
+867
+00:32:07,450 --> 00:32:09,550
+Again, everything is a string,
+
+868
+00:32:09,550 --> 00:32:12,329
+which is not so
+great. All right.
+
+869
+00:32:12,329 --> 00:32:15,650
+Now I'm going to say, let's
+do some schema inference
+
+870
+00:32:15,650 --> 00:32:19,550
+because I don't want to have
+everything being a string.
+
+871
+00:32:19,550 --> 00:32:22,330
+I'm going to say infer schema.
+
+872
+00:32:22,330 --> 00:32:24,250
+We saw that this
+was slow before.
+
+873
+00:32:24,250 --> 00:32:25,370
+Now it's trying to be painfully
+
+874
+00:32:25,370 --> 00:32:26,590
+slow this is a bigger file.
+
+875
+00:32:26,590 --> 00:32:27,830
+2 gigabytes isn't that big,
+
+876
+00:32:27,830 --> 00:32:29,209
+but it's still big enough that
+
+877
+00:32:29,209 --> 00:32:31,609
+this is not going to
+be very fun to do.
+
+878
+00:32:31,609 --> 00:32:33,030
+I see it's actually running
+
+879
+00:32:33,030 --> 00:32:34,990
+17 different spark tasks to read
+
+880
+00:32:34,990 --> 00:32:36,869
+in the whole file and just
+
+881
+00:32:36,869 --> 00:32:39,429
+try to figure out
+what those types are.
+
+882
+00:32:39,429 --> 00:32:40,910
+When I look at the data frame,
+
+883
+00:32:40,910 --> 00:32:42,209
+even before I do any
+computation on it,
+
+884
+00:32:42,209 --> 00:32:43,629
+it has to tell me
+what the types are,
+
+885
+00:32:43,629 --> 00:32:44,890
+and that requires
+
+886
+00:32:44,890 --> 00:32:48,594
+some significant computation
+in and of itself.
+
+887
+00:32:48,594 --> 00:32:50,619
+Okay, so I'll wait
+for a bit for that.
+
+888
+00:32:50,619 --> 00:32:53,079
+Any questions while
+that's running?
+
+889
+00:32:53,560 --> 00:32:57,979
+Yeah, right here. Yeah, the
+
+890
+00:32:57,979 --> 00:33:01,639
+DFS command that
+was like this one.
+
+891
+00:33:02,710 --> 00:33:06,009
+Oh, sure. So here's
+
+892
+00:33:06,009 --> 00:33:07,289
+where we might have
+different things like
+
+893
+00:33:07,289 --> 00:33:12,030
+A survey move or M. I was
+using disc utilization.
+
+894
+00:33:12,030 --> 00:33:15,409
+And that was showing me
+both the logical size,
+
+895
+00:33:15,409 --> 00:33:16,769
+and then the size,
+
+896
+00:33:16,769 --> 00:33:19,650
+if I consider
+replication and HDFS.
+
+897
+00:33:19,650 --> 00:33:22,229
+And then H said that
+human readable.
+
+898
+00:33:22,229 --> 00:33:24,729
+Human readable means
+there's nice suffixes
+
+899
+00:33:24,729 --> 00:33:26,169
+like G instead of just
+
+900
+00:33:26,169 --> 00:33:28,209
+having like a giant
+number and bytes.
+
+901
+00:33:28,209 --> 00:33:30,709
+Yeah, Yeah, thanks for asking.
+
+902
+00:33:31,070 --> 00:33:33,329
+Cool. So I think, Rand and now
+
+903
+00:33:33,329 --> 00:33:34,789
+I can see we call numbers and
+
+904
+00:33:34,789 --> 00:33:39,180
+integer and call
+type is a string.
+
+905
+00:33:39,180 --> 00:33:41,360
+I did a pretty good job.
+
+906
+00:33:41,360 --> 00:33:43,960
+But maybe I want to do better.
+
+907
+00:33:43,960 --> 00:33:49,739
+If I look at let's just look
+at a few of these, right?
+
+908
+00:33:49,739 --> 00:33:52,199
+Some of the things I might
+want to do is I might
+
+909
+00:33:52,199 --> 00:33:54,020
+want to get these call
+dates as actual dates.
+
+910
+00:33:54,020 --> 00:33:58,260
+The call dates are still
+strings, that's not great.
+
+911
+00:33:58,260 --> 00:34:02,300
+Some of these other things
+like the call type,
+
+912
+00:34:02,300 --> 00:34:04,260
+which I guess is
+head in the case
+
+913
+00:34:04,260 --> 00:34:06,299
+might not be very uniform on it.
+
+914
+00:34:06,299 --> 00:34:08,019
+I want to do some
+cleanup on this,
+
+915
+00:34:08,019 --> 00:34:08,959
+and I want to show how we can
+
+916
+00:34:08,959 --> 00:34:10,339
+do various computation on it.
+
+917
+00:34:10,339 --> 00:34:11,419
+Ultimately what I do is
+
+918
+00:34:11,419 --> 00:34:12,739
+I'm to do some
+cleanup where I take
+
+919
+00:34:12,739 --> 00:34:15,019
+this file and I create
+
+920
+00:34:15,019 --> 00:34:20,689
+a Park where I have types
+in it and I have Mlthmtls,
+
+921
+00:34:20,689 --> 00:34:22,510
+I'm going to try to get rid
+of the spaces in the columns.
+
+922
+00:34:22,510 --> 00:34:24,329
+Some tools might not
+play well with that.
+
+923
+00:34:24,329 --> 00:34:25,729
+Anyway, let's see how we can use
+
+924
+00:34:25,729 --> 00:34:27,209
+some of these things
+from before we
+
+925
+00:34:27,209 --> 00:34:30,170
+saw before how we
+had EXPR and column,
+
+926
+00:34:30,170 --> 00:34:32,209
+and we can use those again.
+
+927
+00:34:32,209 --> 00:34:34,850
+The way we'll do this
+is we'll say select.
+
+928
+00:34:34,850 --> 00:34:37,490
+In here, I can have
+different columns.
+
+929
+00:34:37,490 --> 00:34:39,129
+I can have something here, I
+
+930
+00:34:39,129 --> 00:34:40,509
+can have another column here.
+
+931
+00:34:40,509 --> 00:34:42,030
+I can put whatever columns
+
+932
+00:34:42,030 --> 00:34:44,169
+I want and select those from it.
+
+933
+00:34:44,169 --> 00:34:45,409
+Let's just look at a
+couple of these and
+
+934
+00:34:45,409 --> 00:34:46,569
+see how we might transform them.
+
+935
+00:34:46,569 --> 00:34:49,070
+I'm going to look
+at, for example,
+
+936
+00:34:49,070 --> 00:34:52,729
+the call date. What else?
+
+937
+00:34:52,729 --> 00:34:56,369
+I'm going to look
+at the call type.
+
+938
+00:34:56,369 --> 00:34:58,529
+Let's see if we can just
+take a look at those.
+
+939
+00:34:58,529 --> 00:35:01,349
+I'm going to select those,
+and then I might say that
+
+940
+00:35:01,349 --> 00:35:04,290
+limit five to pandus.
+
+941
+00:35:04,290 --> 00:35:06,319
+I can just look at
+a few of these.
+
+942
+00:35:06,319 --> 00:35:09,329
+All right, rolls. I want to
+turn this into a proper date.
+
+943
+00:35:09,329 --> 00:35:11,489
+If I look at the dtypes, right?
+
+944
+00:35:11,489 --> 00:35:13,930
+They're both just
+objects in Pandas,
+
+945
+00:35:13,930 --> 00:35:16,470
+which means that they
+are actually strings.
+
+946
+00:35:16,470 --> 00:35:17,609
+I guess I can see
+it a little bit
+
+947
+00:35:17,609 --> 00:35:18,849
+more easily that
+there's strings here.
+
+948
+00:35:18,849 --> 00:35:20,409
+They're both strings. All right,
+
+949
+00:35:20,409 --> 00:35:22,529
+great. How can I fix that up?
+
+950
+00:35:22,529 --> 00:35:25,529
+Well, let's say for
+the call type first,
+
+951
+00:35:25,529 --> 00:35:26,749
+I may do is I may have an
+
+952
+00:35:26,749 --> 00:35:29,310
+expression instead
+of the column,
+
+953
+00:35:29,310 --> 00:35:30,389
+and then I can say things
+
+954
+00:35:30,389 --> 00:35:33,250
+like in SQL, there's
+an upper function.
+
+955
+00:35:33,250 --> 00:35:34,849
+I could transform
+that if I wanted to,
+
+956
+00:35:34,849 --> 00:35:37,290
+I can make that a little
+bit more uniform.
+
+957
+00:35:38,570 --> 00:35:41,769
+Why is it unhappy with that?
+
+958
+00:35:41,930 --> 00:35:51,800
+Extra t person extra
+
+959
+00:35:51,800 --> 00:35:54,219
+input type online one.
+
+960
+00:35:54,219 --> 00:35:56,800
+Oh, why it is unhappy
+
+961
+00:35:56,800 --> 00:35:59,759
+is that it doesn't
+expect spaces in here.
+
+962
+00:35:59,759 --> 00:36:01,439
+And so I may use BA tex.
+
+963
+00:36:01,439 --> 00:36:02,880
+That's the way we can in SQL
+
+964
+00:36:02,880 --> 00:36:04,679
+have column names
+that have back tex.
+
+965
+00:36:04,679 --> 00:36:05,879
+I could transform that.
+
+966
+00:36:05,879 --> 00:36:08,020
+Then the call date is a
+little bit more tricky,
+
+967
+00:36:08,020 --> 00:36:10,519
+but I can have something
+called two date.
+
+968
+00:36:10,519 --> 00:36:11,979
+And when I do that,
+
+969
+00:36:11,979 --> 00:36:14,579
+I may put in that value and
+
+970
+00:36:14,579 --> 00:36:17,399
+then may put in some
+format strain over here,
+
+971
+00:36:17,399 --> 00:36:19,460
+that'll specify the format.
+
+972
+00:36:19,460 --> 00:36:20,700
+I already looked up the format.
+
+973
+00:36:20,700 --> 00:36:22,679
+I guess this is month year day.
+
+974
+00:36:22,679 --> 00:36:23,839
+Some people do month year day,
+
+975
+00:36:23,839 --> 00:36:25,419
+some people do day month year.
+
+976
+00:36:25,419 --> 00:36:27,180
+I just have figure
+out what the case
+
+977
+00:36:27,180 --> 00:36:28,639
+is here. I'm going to do month.
+
+978
+00:36:28,639 --> 00:36:31,520
+Day and then year
+is four digits.
+
+979
+00:36:31,520 --> 00:36:32,919
+I always read at this up, but
+
+980
+00:36:32,919 --> 00:36:34,179
+I looked up before a lecture and
+
+981
+00:36:34,179 --> 00:36:38,200
+capital M means month and
+lowercase M means minutes.
+
+982
+00:36:38,200 --> 00:36:40,820
+That's why I'm doing that
+a little bit strangely.
+
+983
+00:36:40,820 --> 00:36:44,799
+I could get that as well, what
+
+984
+00:36:44,799 --> 00:36:48,079
+is it unhappy about
+here this time?
+
+985
+00:36:48,620 --> 00:36:53,240
+What would I have to
+do? Oh, Excellent.
+
+986
+00:36:53,240 --> 00:36:54,700
+Thank you. I have to
+do call to expression.
+
+987
+00:36:54,700 --> 00:36:55,699
+There's no column
+with that name.
+
+988
+00:36:55,699 --> 00:36:57,159
+Okay, great, great troll.
+
+989
+00:36:57,159 --> 00:36:59,919
+No fun intended. Great.
+So I have both of these.
+
+990
+00:36:59,919 --> 00:37:02,279
+Then if I want to, I could
+put aliases on them, right?
+
+991
+00:37:02,279 --> 00:37:04,579
+This could be like
+my new troll date,
+
+992
+00:37:04,579 --> 00:37:06,579
+or maybe I might
+even at this point,
+
+993
+00:37:06,579 --> 00:37:08,659
+get rid of those
+spaces if I want to.
+
+994
+00:37:08,659 --> 00:37:11,899
+This might be troll tight.
+
+995
+00:37:13,020 --> 00:37:15,739
+I can just do some of
+this cleanup work.
+
+996
+00:37:15,739 --> 00:37:18,539
+Okay. That's one thing
+I might want to do.
+
+997
+00:37:18,539 --> 00:37:20,360
+Now, for the sake of
+the next example,
+
+998
+00:37:20,360 --> 00:37:22,599
+only I try to do is
+get into a Park file,
+
+999
+00:37:22,599 --> 00:37:25,279
+and try to try to get rid of
+all the spaces in the names.
+
+1000
+00:37:25,279 --> 00:37:26,759
+I want to see how
+I might do that.
+
+1001
+00:37:26,759 --> 00:37:29,619
+So I can, C right here.
+
+1002
+00:37:31,260 --> 00:37:34,879
+Oh, yeah, when I have
+this value here.
+
+1003
+00:37:34,879 --> 00:37:37,199
+I think that let me
+do it like this.
+
+1004
+00:37:37,199 --> 00:37:39,339
+I see that it's
+actually a call date.
+
+1005
+00:37:39,339 --> 00:37:41,999
+So for example, you know,
+
+1006
+00:37:41,999 --> 00:37:43,740
+I I have a float,
+
+1007
+00:37:43,740 --> 00:37:45,079
+and I just print it it like in
+
+1008
+00:37:45,079 --> 00:37:46,800
+one format, just like generic,
+
+1009
+00:37:46,800 --> 00:37:48,299
+whatever the language
+likes to do,
+
+1010
+00:37:48,299 --> 00:37:50,959
+or I could do like a print F
+or have some format string.
+
+1011
+00:37:50,959 --> 00:37:53,099
+So the same thing here.
+So given that it's like
+
+1012
+00:37:53,099 --> 00:37:55,399
+an actual proper date,
+
+1013
+00:37:55,399 --> 00:37:56,939
+it's going to show me in
+
+1014
+00:37:56,939 --> 00:37:59,060
+whatever standard
+way it does dates.
+
+1015
+00:37:59,060 --> 00:38:00,439
+This is just referring to
+
+1016
+00:38:00,439 --> 00:38:02,199
+the format and the
+original string,
+
+1017
+00:38:02,199 --> 00:38:03,400
+not in any kind of output.
+
+1018
+00:38:03,400 --> 00:38:04,599
+I could tvert it back to
+
+1019
+00:38:04,599 --> 00:38:06,699
+an output string in
+whatever format I like.
+
+1020
+00:38:06,699 --> 00:38:08,754
+Yeah, thank you for clarifying.
+
+1021
+00:38:08,754 --> 00:38:10,949
+So I could look at
+the columns here.
+
+1022
+00:38:10,949 --> 00:38:12,029
+One of the things I could do is
+
+1023
+00:38:12,029 --> 00:38:13,109
+I could just loop over these,
+
+1024
+00:38:13,109 --> 00:38:16,950
+I could say C for C in columns.
+
+1025
+00:38:16,950 --> 00:38:18,969
+And then what I
+can do is I could
+
+1026
+00:38:18,969 --> 00:38:20,630
+convert these to one of
+these column objects.
+
+1027
+00:38:20,630 --> 00:38:21,729
+And this would be
+a nice way that I
+
+1028
+00:38:21,729 --> 00:38:23,510
+could automatically
+well, automatically,
+
+1029
+00:38:23,510 --> 00:38:24,929
+but quickly select all
+
+1030
+00:38:24,929 --> 00:38:26,849
+these columns from
+that data frame.
+
+1031
+00:38:26,849 --> 00:38:29,009
+And then I can also
+alias them if I want.
+
+1032
+00:38:29,009 --> 00:38:30,769
+I can alias them as
+
+1033
+00:38:30,769 --> 00:38:35,389
+the name replacing
+spaces with underscores.
+
+1034
+00:38:35,389 --> 00:38:38,629
+I could do that, and I get
+this result right back here.
+
+1035
+00:38:38,629 --> 00:38:41,669
+If I want to, I can
+then select these.
+
+1036
+00:38:41,669 --> 00:38:43,829
+Now I'm going to be
+in pretty good shape.
+
+1037
+00:38:43,829 --> 00:38:45,970
+I have no spaces in my names,
+
+1038
+00:38:45,970 --> 00:38:48,329
+and I have types, at
+least for most of them.
+
+1039
+00:38:48,329 --> 00:38:50,029
+I can go through and
+clean up the dates too,
+
+1040
+00:38:50,029 --> 00:38:51,009
+like I just showed.
+
+1041
+00:38:51,009 --> 00:38:53,589
+I won't do that now
+though. All right.
+
+1042
+00:38:53,589 --> 00:38:56,889
+So far so good. So
+now that I have this,
+
+1043
+00:38:56,889 --> 00:38:58,489
+I could do other things with it.
+
+1044
+00:38:58,489 --> 00:39:01,889
+For example, I could
+filter it if I wanted to.
+
+1045
+00:39:01,889 --> 00:39:03,469
+I could have expressions here.
+
+1046
+00:39:03,469 --> 00:39:05,330
+I could say something
+like the column
+
+1047
+00:39:05,330 --> 00:39:08,829
+of call type. This is
+starting to get long again.
+
+1048
+00:39:08,829 --> 00:39:10,389
+So whenever it gets long, then
+
+1049
+00:39:10,389 --> 00:39:13,189
+I split it up across
+lines like this,
+
+1050
+00:39:13,189 --> 00:39:18,479
+I could Then I could
+
+1051
+00:39:18,479 --> 00:39:23,660
+filter where the call type or
+something starts with odor.
+
+1052
+00:39:23,660 --> 00:39:25,399
+Oftentimes something smells bad
+
+1053
+00:39:25,399 --> 00:39:26,760
+that people call the
+fire department,
+
+1054
+00:39:26,760 --> 00:39:30,239
+maybe it's natural gas smell
+or something like that.
+
+1055
+00:39:30,239 --> 00:39:32,899
+Call type has underscore in it.
+
+1056
+00:39:32,899 --> 00:39:35,599
+That's probably not the
+most fun call to take,
+
+1057
+00:39:35,599 --> 00:39:37,319
+but anyway, they do that.
+
+1058
+00:39:37,319 --> 00:39:38,979
+Then I could take a look at this
+
+1059
+00:39:38,979 --> 00:39:45,380
+and let me just see if
+that's working correctly,
+
+1060
+00:39:45,380 --> 00:39:46,440
+I could do all this cleanup,
+
+1061
+00:39:46,440 --> 00:39:47,419
+and I could process it later.
+
+1062
+00:39:47,419 --> 00:39:49,639
+That's going to be slow because
+every time I re run it,
+
+1063
+00:39:49,639 --> 00:39:51,219
+it's ring back to
+the data frame,
+
+1064
+00:39:51,219 --> 00:39:52,559
+which is ultimately
+reading the file
+
+1065
+00:39:52,559 --> 00:39:54,299
+and so it has to do all
+these stages of work.
+
+1066
+00:39:54,299 --> 00:39:55,839
+What I want to do
+instead of always going
+
+1067
+00:39:55,839 --> 00:39:57,699
+back to the source and running
+all these slow things,
+
+1068
+00:39:57,699 --> 00:39:58,979
+I want to take this data
+
+1069
+00:39:58,979 --> 00:40:00,579
+that was cleaned up,
+write it to our Park,
+
+1070
+00:40:00,579 --> 00:40:01,879
+and then I'm always going to use
+
+1071
+00:40:01,879 --> 00:40:05,274
+that park as my starting point.
+
+1072
+00:40:05,274 --> 00:40:08,509
+Okay. Well, that's running
+this going to take a while.
+
+1073
+00:40:08,509 --> 00:40:11,109
+Let's see how we might start.
+
+1074
+00:40:11,109 --> 00:40:13,530
+And that was strange.
+
+1075
+00:40:13,530 --> 00:40:17,970
+Because I forgot to have
+it do the upper case,
+
+1076
+00:40:18,650 --> 00:40:21,049
+I'm running a little
+short on time.
+
+1077
+00:40:21,049 --> 00:40:26,230
+Maybe I'll come back to that.
+To do fix case on Odor.
+
+1078
+00:40:26,230 --> 00:40:28,209
+Maybe what I should do
+is I should just do
+
+1079
+00:40:28,209 --> 00:40:31,389
+this example on the
+earlier one up here.
+
+1080
+00:40:31,389 --> 00:40:33,589
+That might be a
+little bit better.
+
+1081
+00:40:33,589 --> 00:40:39,789
+Let me just filter
+this here, great.
+
+1082
+00:40:39,789 --> 00:40:41,130
+Then I can just do the example
+
+1083
+00:40:41,130 --> 00:40:43,369
+a little bit more
+quickly, right?
+
+1084
+00:40:56,680 --> 00:40:59,519
+What trouble did I get into now?
+
+1085
+00:40:59,519 --> 00:41:05,149
+So I think maybe I didn't Sorry,
+
+1086
+00:41:05,149 --> 00:41:06,670
+as I'm going between examples,
+
+1087
+00:41:06,670 --> 00:41:08,589
+I'm just making a little
+bit of a mess here.
+
+1088
+00:41:08,589 --> 00:41:10,789
+Let me clean this
+up. Okay, great.
+
+1089
+00:41:10,789 --> 00:41:12,409
+Then I can actually see.
+
+1090
+00:41:12,409 --> 00:41:14,169
+I could filter down
+and do analysis on it.
+
+1091
+00:41:14,169 --> 00:41:16,790
+Okay. But what I really want
+to do is I want to take
+
+1092
+00:41:16,790 --> 00:41:19,869
+this data that I've
+cleaned up to some extent,
+
+1093
+00:41:19,869 --> 00:41:21,889
+and I want to write
+it to a Park file
+
+1094
+00:41:21,889 --> 00:41:24,829
+somewhere instead
+of just viewing it.
+
+1095
+00:41:24,829 --> 00:41:28,209
+What I'm going to do is I'm
+going to say dot write.
+
+1096
+00:41:28,209 --> 00:41:31,010
+When I do that, I get
+this data frame writer.
+
+1097
+00:41:31,010 --> 00:41:32,749
+Just like before, when
+I had all these things,
+
+1098
+00:41:32,749 --> 00:41:36,129
+I can specify, I can keep
+building on top of it.
+
+1099
+00:41:36,129 --> 00:41:37,989
+So I can say, I
+want it to be Park.
+
+1100
+00:41:37,989 --> 00:41:40,070
+I still have a
+data frame writer.
+
+1101
+00:41:40,070 --> 00:41:43,669
+Then at the very end, I can say,
+
+1102
+00:41:44,150 --> 00:41:48,129
+Save. I can save it
+somewhere in HDFS.
+
+1103
+00:41:48,129 --> 00:41:52,650
+Where I will save it
+is HDFS, name node,
+
+1104
+00:41:52,650 --> 00:41:58,189
+9,000 and San Francisco
+dot Park. I could do that.
+
+1105
+00:41:58,189 --> 00:41:59,669
+Often when I'm doing
+this kind of stuff,
+
+1106
+00:41:59,669 --> 00:42:00,769
+I will just try it small
+
+1107
+00:42:00,769 --> 00:42:02,349
+first because the job is
+going to take a while
+
+1108
+00:42:02,349 --> 00:42:03,849
+and I want to see if
+
+1109
+00:42:03,849 --> 00:42:06,349
+I have it working before
+I do something large.
+
+1110
+00:42:06,349 --> 00:42:09,169
+So that seems like
+that works fine.
+
+1111
+00:42:09,169 --> 00:42:10,869
+What if I get rid
+of the limit now?
+
+1112
+00:42:10,869 --> 00:42:11,589
+Well, in that case,
+
+1113
+00:42:11,589 --> 00:42:12,929
+I'm going to get a
+little error because
+
+1114
+00:42:12,929 --> 00:42:16,169
+that file already exists, right?
+
+1115
+00:42:16,169 --> 00:42:19,390
+And so that brings us
+to this idea of mode.
+
+1116
+00:42:19,390 --> 00:42:21,049
+And for the mode,
+I can tell it to
+
+1117
+00:42:21,049 --> 00:42:24,689
+overwrite something or I
+could this could be a no off.
+
+1118
+00:42:24,689 --> 00:42:26,329
+I could just get it if
+it was already there,
+
+1119
+00:42:26,329 --> 00:42:28,550
+or I could raise an error,
+which is the default.
+
+1120
+00:42:28,550 --> 00:42:30,149
+I can specify all
+these things and it's
+
+1121
+00:42:30,149 --> 00:42:32,384
+going to write that
+write that out.
+
+1122
+00:42:32,384 --> 00:42:34,539
+Okay. But why don't
+do a top pad,
+
+1123
+00:42:34,539 --> 00:42:35,880
+and this will take a
+couple of minutes.
+
+1124
+00:42:35,880 --> 00:42:42,779
+And so let me just Let me see
+if I can fix this up here.
+
+1125
+00:42:42,779 --> 00:42:46,520
+I have a nice time where I
+have a couple of dead minutes.
+
+1126
+00:42:46,640 --> 00:42:52,899
+Great. All right.
+
+1127
+00:42:52,899 --> 00:42:55,699
+This is just trying to
+testing your knowledge about
+
+1128
+00:42:55,699 --> 00:43:00,160
+what kinds of things are
+fast and slow and spark.
+
+1129
+00:43:38,750 --> 00:43:42,029
+A 30 seconds left.
+
+1130
+00:43:48,430 --> 00:43:50,469
+Okay.
+
+1131
+00:43:54,710 --> 00:43:59,789
+Yeah. I guess if there's
+technical issues,
+
+1132
+00:43:59,789 --> 00:44:00,889
+you can just follow up with Top
+
+1133
+00:44:00,889 --> 00:44:02,169
+A. I didn't build the app,
+
+1134
+00:44:02,169 --> 00:44:05,069
+I can't really fix any
+technical issues with that.
+
+1135
+00:44:05,069 --> 00:44:07,489
+Or you can always try
+another device to and start
+
+1136
+00:44:07,489 --> 00:44:10,710
+bring another device if
+it's a common occurrence.
+
+1137
+00:44:14,790 --> 00:44:18,309
+C. People are saying Line
+D, which is correct.
+
+1138
+00:44:18,309 --> 00:44:20,329
+In this case, we have a
+bunch of transformations,
+
+1139
+00:44:20,329 --> 00:44:21,549
+and transformations are just
+
+1140
+00:44:21,549 --> 00:44:23,130
+recipes to get the
+data on demand.
+
+1141
+00:44:23,130 --> 00:44:25,309
+It doesn't actually do anything
+until we actually say,
+
+1142
+00:44:25,309 --> 00:44:27,230
+I want to see result.
+
+1143
+00:44:27,230 --> 00:44:30,970
+Mean is an action that
+forces us to see the result,
+
+1144
+00:44:30,970 --> 00:44:33,309
+which brings us back
+nicely to this, right?
+
+1145
+00:44:33,309 --> 00:44:35,989
+I did some transformations here,
+
+1146
+00:44:35,989 --> 00:44:37,389
+but at the end of the day,
+
+1147
+00:44:37,389 --> 00:44:40,110
+when I actually say write some
+bytes to a file somewhere,
+
+1148
+00:44:40,110 --> 00:44:42,569
+that's an action that's actually
+triggering all the work,
+
+1149
+00:44:42,569 --> 00:44:44,829
+which we're watching
+run right now.
+
+1150
+00:44:44,829 --> 00:44:46,569
+Okay, so I don't know
+if people caught it,
+
+1151
+00:44:46,569 --> 00:44:49,150
+but as it was running,
+it was running 17 tasks.
+
+1152
+00:44:49,150 --> 00:44:51,769
+And the reason it was
+running 17 tasks was
+
+1153
+00:44:51,769 --> 00:44:54,629
+that this data frame has
+an RDD underneath it,
+
+1154
+00:44:54,629 --> 00:44:57,509
+and if I look at the
+tam partitions on it,
+
+1155
+00:44:57,509 --> 00:44:59,449
+it has 17 partitions.
+
+1156
+00:44:59,449 --> 00:45:02,089
+And So that makes sense.
+
+1157
+00:45:02,089 --> 00:45:03,670
+Each of these partitions
+is being handled
+
+1158
+00:45:03,670 --> 00:45:05,529
+by a different spark task.
+
+1159
+00:45:05,529 --> 00:45:06,990
+And it would actually
+be difficult
+
+1160
+00:45:06,990 --> 00:45:08,169
+to have all thes
+different spark tasks
+
+1161
+00:45:08,169 --> 00:45:09,709
+writing the same park file
+
+1162
+00:45:09,709 --> 00:45:11,070
+because they'd have
+to coordinate,
+
+1163
+00:45:11,070 --> 00:45:13,470
+and we want to have this
+massively parallel system.
+
+1164
+00:45:13,470 --> 00:45:16,070
+So what they actually did is
+each of the tasks just wrote
+
+1165
+00:45:16,070 --> 00:45:19,329
+its own park file in a
+different place, right?
+
+1166
+00:45:19,329 --> 00:45:21,309
+And I'm going to
+take a look at that.
+
+1167
+00:45:21,309 --> 00:45:28,830
+If if I do HDFS LS,
+
+1168
+00:45:28,830 --> 00:45:32,949
+I'm going to look
+at name node 9,000,
+
+1169
+00:45:33,630 --> 00:45:37,529
+I'm sorry, DFS. All right.
+
+1170
+00:45:37,529 --> 00:45:41,879
+There's going to be San
+Francisco dot p, right?
+
+1171
+00:45:41,879 --> 00:45:43,259
+It seems like it
+would be a file,
+
+1172
+00:45:43,259 --> 00:45:46,460
+but it's actually
+just a a directory,
+
+1173
+00:45:46,460 --> 00:45:48,519
+and I can look inside
+of it if I want to.
+
+1174
+00:45:48,519 --> 00:45:50,099
+And what I can see
+is that each of
+
+1175
+00:45:50,099 --> 00:45:52,140
+these partitions
+written separately.
+
+1176
+00:45:52,140 --> 00:45:53,479
+They're trying to
+different sizes, right?
+
+1177
+00:45:53,479 --> 00:45:54,959
+Maybe they had different
+compressibility.
+
+1178
+00:45:54,959 --> 00:45:57,580
+Who knows what, but it's
+not perfectly balanced,
+
+1179
+00:45:57,580 --> 00:45:58,659
+but it was trying to
+roughly balanced.
+
+1180
+00:45:58,659 --> 00:46:00,879
+And if I look at the
+part number over here,
+
+1181
+00:46:00,879 --> 00:46:05,120
+I can see that the very last
+one has a part number of 16.
+
+1182
+00:46:05,120 --> 00:46:06,920
+So parts zero through 16,
+
+1183
+00:46:06,920 --> 00:46:08,900
+those correspond to
+these 17 partitions.
+
+1184
+00:46:08,900 --> 00:46:11,439
+They each wrote their
+own own file up there.
+
+1185
+00:46:11,439 --> 00:46:12,879
+Where did 17 come from?
+
+1186
+00:46:12,879 --> 00:46:14,519
+Well, Spark tried
+to automatically
+
+1187
+00:46:14,519 --> 00:46:16,479
+decide based on the
+size of that CSV file.
+
+1188
+00:46:16,479 --> 00:46:17,619
+It seemed like 17 was
+
+1189
+00:46:17,619 --> 00:46:20,849
+a good size for that
+two gigabyte file.
+
+1190
+00:46:20,849 --> 00:46:23,139
+Now, what if I want
+to load this back in?
+
+1191
+00:46:23,139 --> 00:46:27,739
+Somebody come down here. Now
+I can say spark dot read.
+
+1192
+00:46:27,739 --> 00:46:30,140
+This is very similar. I
+have a data frame reader,
+
+1193
+00:46:30,140 --> 00:46:33,860
+I can say format, Park.
+
+1194
+00:46:33,860 --> 00:46:36,979
+Then I can say dot load,
+
+1195
+00:46:36,979 --> 00:46:39,979
+and then I actually
+put in the path to it.
+
+1196
+00:46:39,979 --> 00:46:42,139
+I can say HDFS,
+
+1197
+00:46:43,180 --> 00:46:49,489
+name node, 9,000 and
+then San Francisco park.
+
+1198
+00:46:49,489 --> 00:46:51,610
+And in this case,
+it's a directory,
+
+1199
+00:46:51,610 --> 00:46:53,909
+but it's such a common pattern
+that Spark knows about it.
+
+1200
+00:46:53,909 --> 00:46:56,489
+Spark knows that this is a
+directory containing a bunch
+
+1201
+00:46:56,489 --> 00:46:59,269
+of park files and it should
+read it automatically, right?
+
+1202
+00:46:59,269 --> 00:47:02,149
+So I'm going to bring this
+into a data frame like so.
+
+1203
+00:47:02,149 --> 00:47:04,269
+And now a lot of
+things are nice.
+
+1204
+00:47:04,269 --> 00:47:05,489
+So that was fast, and I
+
+1205
+00:47:05,489 --> 00:47:07,250
+actually have types
+on everything.
+
+1206
+00:47:07,250 --> 00:47:09,270
+I didn't have to that
+painful schema inference
+
+1207
+00:47:09,270 --> 00:47:11,150
+that took close to a minute.
+
+1208
+00:47:11,150 --> 00:47:14,149
+It's also interesting if I
+look at this, and I say,
+
+1209
+00:47:14,149 --> 00:47:20,669
+what is the RDD partitions.
+There's actually six.
+
+1210
+00:47:20,669 --> 00:47:23,579
+Why are there six? Because It's
+
+1211
+00:47:23,579 --> 00:47:24,899
+based on the size of the file.
+
+1212
+00:47:24,899 --> 00:47:27,559
+This park file or the set
+of Park file should be much
+
+1213
+00:47:27,559 --> 00:47:31,399
+smaller than the CSV
+file I started with.
+
+1214
+00:47:31,399 --> 00:47:33,399
+The number of partitions
+here does not
+
+1215
+00:47:33,399 --> 00:47:35,819
+have to be the same as the
+number of files, right?
+
+1216
+00:47:35,819 --> 00:47:37,959
+I created six partitions
+and they each read,
+
+1217
+00:47:37,959 --> 00:47:40,429
+you know, roughly, what,
+
+1218
+00:47:40,429 --> 00:47:41,789
+two to three files,
+it doesn't have to
+
+1219
+00:47:41,789 --> 00:47:43,170
+be exactly on file boundaries,
+
+1220
+00:47:43,170 --> 00:47:45,789
+and they pulled
+that data back in.
+
+1221
+00:47:45,789 --> 00:47:47,810
+So file smaller, so I can
+have fewer partitions.
+
+1222
+00:47:47,810 --> 00:47:49,549
+That probably helps
+me downstream as well
+
+1223
+00:47:49,549 --> 00:47:52,350
+because I have less overhead
+of starting all these tasks.
+
+1224
+00:47:52,350 --> 00:47:54,029
+If I do something like count,
+
+1225
+00:47:54,029 --> 00:47:56,549
+it's going to be actually
+very fast because
+
+1226
+00:47:56,549 --> 00:47:58,890
+Part A files already
+have that information
+
+1227
+00:47:58,890 --> 00:48:01,069
+about how many rows there are,
+
+1228
+00:48:01,069 --> 00:48:02,649
+it's baked right
+into the metadata.
+
+1229
+00:48:02,649 --> 00:48:04,649
+If I had something
+like a CSV file,
+
+1230
+00:48:04,649 --> 00:48:05,789
+it's text and each line
+
+1231
+00:48:05,789 --> 00:48:07,330
+might have a different
+number of characters.
+
+1232
+00:48:07,330 --> 00:48:08,989
+The only way you could count
+is you actually have to
+
+1233
+00:48:08,989 --> 00:48:11,569
+loop over all those
+lines of code.
+
+1234
+00:48:11,569 --> 00:48:14,839
+It's a common pattern, right?
+L For the Spark stuff,
+
+1235
+00:48:14,839 --> 00:48:16,000
+maybe you have a bunch of CSVs,
+
+1236
+00:48:16,000 --> 00:48:17,159
+and those are not
+fun to work with,
+
+1237
+00:48:17,159 --> 00:48:19,859
+but you do this extract
+transform load suf.
+
+1238
+00:48:19,859 --> 00:48:22,199
+I'm extracting the data from
+the CSVs, transforming it,
+
+1239
+00:48:22,199 --> 00:48:24,339
+loading it into Park and HDFS or
+
+1240
+00:48:24,339 --> 00:48:26,760
+some other distributed
+file storage,
+
+1241
+00:48:26,760 --> 00:48:28,440
+and then I can have
+this nice environment
+
+1242
+00:48:28,440 --> 00:48:31,099
+where I can analyze that
+in a distributed way.
+
+1243
+00:48:31,099 --> 00:48:32,819
+Alright, thanks. So
+we'll stop there.
+
+1244
+00:48:32,819 --> 00:48:35,860
+Feel free to come up and chat
+if you have any questions.

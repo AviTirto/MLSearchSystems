@@ -1,0 +1,6373 @@
+1
+00:00:00,000 --> 00:00:01,600
+They were going to do
+a couple of things.
+
+2
+00:00:01,600 --> 00:00:04,580
+First, we're a wrap up
+from Wednesday's lecture.
+
+3
+00:00:04,580 --> 00:00:06,360
+So we looked at three
+of the big resources.
+
+4
+00:00:06,360 --> 00:00:08,359
+We looked at tribute,
+Babary storage.
+
+5
+00:00:08,359 --> 00:00:09,839
+We didn't have a
+chance to talk at all
+
+6
+00:00:09,839 --> 00:00:11,939
+about networking, so we'll
+do a little bit of that.
+
+7
+00:00:11,939 --> 00:00:15,279
+I have a recording up
+from Wednesday as well.
+
+8
+00:00:15,279 --> 00:00:16,579
+So if you missed for
+
+9
+00:00:16,579 --> 00:00:18,319
+su reason or you just
+got into the course,
+
+10
+00:00:18,319 --> 00:00:20,240
+that would be a good
+thing to review.
+
+11
+00:00:20,240 --> 00:00:23,299
+There are more Anki
+flashcards coming.
+
+12
+00:00:23,299 --> 00:00:25,320
+How many people have
+already installed Anki
+
+13
+00:00:25,320 --> 00:00:27,794
+and spent at least some
+time studying on it.
+
+14
+00:00:27,794 --> 00:00:29,329
+So just a couple of you.
+
+15
+00:00:29,329 --> 00:00:32,010
+I think that's really a
+good way to get ahead.
+
+16
+00:00:32,010 --> 00:00:34,049
+What I've seen is that some
+people will try to, like,
+
+17
+00:00:34,049 --> 00:00:35,209
+save them up, and then they try
+
+18
+00:00:35,209 --> 00:00:36,709
+to cram for the
+mid term with it.
+
+19
+00:00:36,709 --> 00:00:39,349
+I think that actually you
+end up spending more time
+
+20
+00:00:39,349 --> 00:00:40,829
+overall more time of
+
+21
+00:00:40,829 --> 00:00:42,849
+your life if you try
+to do it all at once,
+
+22
+00:00:42,849 --> 00:00:44,449
+like a little bit here and there
+
+23
+00:00:44,449 --> 00:00:47,130
+can really help you
+remember things.
+
+24
+00:00:47,130 --> 00:00:49,509
+I think now is the easiest
+time in the semester
+
+25
+00:00:49,509 --> 00:00:52,790
+to make a habit of doing
+that. You're not as busy.
+
+26
+00:00:52,790 --> 00:00:54,449
+And if you start a few weeks in,
+
+27
+00:00:54,449 --> 00:00:56,149
+well, you have 30 here,
+
+28
+00:00:56,149 --> 00:00:58,310
+30 here, and all of a
+sudden starts feeling
+
+29
+00:00:58,310 --> 00:01:00,150
+a little bit daunting
+to get started.
+
+30
+00:01:00,150 --> 00:01:02,509
+So I'd strongly encourage
+you to just get started now.
+
+31
+00:01:02,509 --> 00:01:05,250
+That'll give you kind of
+an edge in the course.
+
+32
+00:01:05,250 --> 00:01:06,510
+If you do end up starting later,
+
+33
+00:01:06,510 --> 00:01:07,510
+there's ways to configure it,
+
+34
+00:01:07,510 --> 00:01:09,090
+so we'll show you
+at, like, most,
+
+35
+00:01:09,090 --> 00:01:11,209
+say, like 20 new
+flash cards a day.
+
+36
+00:01:11,209 --> 00:01:12,410
+So do something like that.
+
+37
+00:01:12,410 --> 00:01:15,010
+So whatever it takes to make it,
+
+38
+00:01:15,010 --> 00:01:16,750
+something that's
+not intimidating
+
+39
+00:01:16,750 --> 00:01:19,110
+and something you actually
+want to spend time on.
+
+40
+00:01:19,110 --> 00:01:22,734
+Alright, cool. So I have a
+worksheet for today as well.
+
+41
+00:01:22,734 --> 00:01:24,460
+You know, I used to
+print these, but then,
+
+42
+00:01:24,460 --> 00:01:25,779
+like, a lot of
+people have tablets,
+
+43
+00:01:25,779 --> 00:01:27,360
+and you know, there's
+always some people who are
+
+44
+00:01:27,360 --> 00:01:29,200
+sick or or don't make
+it for whatever reason.
+
+45
+00:01:29,200 --> 00:01:31,080
+So anyway, I'll leave
+these to you all to print.
+
+46
+00:01:31,080 --> 00:01:33,160
+I'll just send a reminder
+when there's one to print.
+
+47
+00:01:33,160 --> 00:01:34,479
+This one is kind
+of a simple one.
+
+48
+00:01:34,479 --> 00:01:36,379
+It's just a bunch of
+terms to remember.
+
+49
+00:01:36,379 --> 00:01:38,320
+And what I'd like
+you to do is as
+
+50
+00:01:38,320 --> 00:01:40,260
+I'm showing you a bunch
+of Linux commands today,
+
+51
+00:01:40,260 --> 00:01:42,159
+I want you to just write
+down in your own words,
+
+52
+00:01:42,159 --> 00:01:43,659
+what each of these does.
+
+53
+00:01:43,659 --> 00:01:45,119
+And then you can
+check back across
+
+54
+00:01:45,119 --> 00:01:47,619
+this list later to
+see if you miss any.
+
+55
+00:01:47,619 --> 00:01:48,700
+And we'll actually spend
+
+56
+00:01:48,700 --> 00:01:50,550
+a couple of lectures
+to get through this.
+
+57
+00:01:50,550 --> 00:01:52,479
+Alright, I'm going to
+head back over here,
+
+58
+00:01:52,479 --> 00:01:56,280
+and we will look at the slides
+where we were last time.
+
+59
+00:01:56,280 --> 00:01:59,539
+And we're going to talk a
+little bit about networking.
+
+60
+00:01:59,539 --> 00:02:01,220
+And networking is really key to
+
+61
+00:02:01,220 --> 00:02:04,020
+this idea of scaling out
+instead of scaling up.
+
+62
+00:02:04,020 --> 00:02:06,160
+Right? If I have a bunch
+of different computers
+
+63
+00:02:06,160 --> 00:02:07,940
+that are working together
+to solve a problem,
+
+64
+00:02:07,940 --> 00:02:09,179
+they have to
+communicate and that
+
+65
+00:02:09,179 --> 00:02:12,015
+communication happens
+over a network.
+
+66
+00:02:12,015 --> 00:02:15,530
+Let's see how that might look
+in a typical data center.
+
+67
+00:02:15,530 --> 00:02:17,530
+So when you're buying a server,
+
+68
+00:02:17,530 --> 00:02:19,909
+it'll often look a bit
+different than say, like,
+
+69
+00:02:19,909 --> 00:02:22,610
+a laptop or maybe a deskop
+computer you might buy.
+
+70
+00:02:22,610 --> 00:02:24,010
+They're just trying
+to make it compact
+
+71
+00:02:24,010 --> 00:02:25,889
+in a nice boxy shape like this.
+
+72
+00:02:25,889 --> 00:02:28,829
+So here's an example of a
+common server you might see.
+
+73
+00:02:28,829 --> 00:02:31,069
+And you can stack all
+of these on top of
+
+74
+00:02:31,069 --> 00:02:33,469
+each other in something
+called a RAC, right?
+
+75
+00:02:33,469 --> 00:02:34,990
+So I have a rack
+up servers there.
+
+76
+00:02:34,990 --> 00:02:36,909
+On the bottom, I have
+some power supply,
+
+77
+00:02:36,909 --> 00:02:40,530
+and also Um, there's
+some network switches,
+
+78
+00:02:40,530 --> 00:02:42,429
+so all of these can
+communicate with each other?
+
+79
+00:02:42,429 --> 00:02:44,169
+They're attached
+to each other via
+
+80
+00:02:44,169 --> 00:02:45,510
+those either net tables.
+
+81
+00:02:45,510 --> 00:02:48,510
+If I have a lot of
+computer resources,
+
+82
+00:02:48,510 --> 00:02:51,069
+I could have a whole data
+center of these, right?
+
+83
+00:02:51,069 --> 00:02:52,970
+Racks upon racks on racks.
+
+84
+00:02:52,970 --> 00:02:55,229
+Now, if I have two
+machines in the same rack,
+
+85
+00:02:55,229 --> 00:02:56,989
+they're directly connected
+that same switch,
+
+86
+00:02:56,989 --> 00:02:58,790
+and they can communicate
+pretty fast.
+
+87
+00:02:58,790 --> 00:03:00,830
+And so sometimes people
+will try to colocate
+
+88
+00:03:00,830 --> 00:03:02,350
+two applications
+that are working
+
+89
+00:03:02,350 --> 00:03:05,229
+together in the same place.
+
+90
+00:03:05,229 --> 00:03:07,269
+Can anybody think of a reason
+
+91
+00:03:07,269 --> 00:03:08,649
+why you might not
+want to do that,
+
+92
+00:03:08,649 --> 00:03:17,490
+even though it's faster?
+Yeah, right here.
+
+93
+00:03:20,850 --> 00:03:24,209
+Excellent, right? If the
+switch goes down and I have
+
+94
+00:03:24,209 --> 00:03:25,830
+maybe two copies of my data
+
+95
+00:03:25,830 --> 00:03:27,350
+or something in the same Iraq,
+
+96
+00:03:27,350 --> 00:03:28,750
+then I would lose it altogether.
+
+97
+00:03:28,750 --> 00:03:31,489
+So Iraq is what we might
+call a fault domain, right?
+
+98
+00:03:31,489 --> 00:03:33,469
+It's kind of a case
+where, like, one problem
+
+99
+00:03:33,469 --> 00:03:36,724
+could take down multiple
+instances, right?
+
+100
+00:03:36,724 --> 00:03:38,620
+Looking a little
+bit more broadly.
+
+101
+00:03:38,620 --> 00:03:39,780
+I mean, there could be a tornado
+
+102
+00:03:39,780 --> 00:03:41,159
+or an earthquake or
+something like that,
+
+103
+00:03:41,159 --> 00:03:42,879
+but we could lose the
+whole data center,
+
+104
+00:03:42,879 --> 00:03:44,520
+there could be a
+local power outage.
+
+105
+00:03:44,520 --> 00:03:46,459
+And so that's also
+a fault domain.
+
+106
+00:03:46,459 --> 00:03:47,759
+You could start imagining having
+
+107
+00:03:47,759 --> 00:03:48,799
+different data centers and
+
+108
+00:03:48,799 --> 00:03:50,160
+maybe even different countries.
+
+109
+00:03:50,160 --> 00:03:51,519
+And so we're going
+to be talking about
+
+110
+00:03:51,519 --> 00:03:53,340
+that in the middle
+part of the semester.
+
+111
+00:03:53,340 --> 00:03:54,479
+We're going to be worried a lot
+
+112
+00:03:54,479 --> 00:03:56,119
+about how we can
+be fault tolerant.
+
+113
+00:03:56,119 --> 00:03:57,239
+When something
+like that happens,
+
+114
+00:03:57,239 --> 00:03:59,420
+how can we make sure
+that we don't lose
+
+115
+00:03:59,420 --> 00:04:02,179
+data or we don't
+lose availability?
+
+116
+00:04:02,179 --> 00:04:03,340
+So for example,
+were going to learn
+
+117
+00:04:03,340 --> 00:04:04,740
+about the Hadu file system,
+
+118
+00:04:04,740 --> 00:04:06,919
+and in the Hadu file system,
+you can configure it,
+
+119
+00:04:06,919 --> 00:04:09,339
+and you can tell it about
+your network topology.
+
+120
+00:04:09,339 --> 00:04:11,939
+Network topology refers to
+kind of the structure of which
+
+121
+00:04:11,939 --> 00:04:13,299
+computers are connected to each
+
+122
+00:04:13,299 --> 00:04:14,920
+other directly or less directly.
+
+123
+00:04:14,920 --> 00:04:17,339
+And so you can see with
+the Hadu file system,
+
+124
+00:04:17,339 --> 00:04:18,340
+you kind of specify that,
+
+125
+00:04:18,340 --> 00:04:20,860
+and it might take some steps
+to make sure you don't have
+
+126
+00:04:20,860 --> 00:04:22,360
+all the copies of your data
+
+127
+00:04:22,360 --> 00:04:24,880
+in the same rack or
+something like that.
+
+128
+00:04:25,680 --> 00:04:29,120
+Some of the metrics that we
+have with networking are
+
+129
+00:04:29,120 --> 00:04:32,399
+actually pretty similar to
+what we saw for a disc.
+
+130
+00:04:32,399 --> 00:04:33,980
+So latency Latency is
+
+131
+00:04:33,980 --> 00:04:36,080
+just a general measure of
+how long something takes.
+
+132
+00:04:36,080 --> 00:04:37,419
+And so there might be different
+
+133
+00:04:37,419 --> 00:04:38,720
+latency measures people have.
+
+134
+00:04:38,720 --> 00:04:40,580
+Maybe people just
+have a question of
+
+135
+00:04:40,580 --> 00:04:42,560
+how long it takes to get
+from point A to point B.
+
+136
+00:04:42,560 --> 00:04:44,459
+People might talk about
+round trip latency,
+
+137
+00:04:44,459 --> 00:04:45,619
+how long it takes to send
+
+138
+00:04:45,619 --> 00:04:47,800
+a message to the server and
+actually get a response back.
+
+139
+00:04:47,800 --> 00:04:51,360
+But ultimately, it's some
+measure of elapsed time.
+
+140
+00:04:51,490 --> 00:04:55,590
+We can also measure performance
+in terms of a rate.
+
+141
+00:04:55,590 --> 00:04:57,990
+So people might talk
+about bandwidth.
+
+142
+00:04:57,990 --> 00:05:01,869
+Bandwidth would be kind of
+a theoretical maximum bytes
+
+143
+00:05:01,869 --> 00:05:03,009
+per second that we might be able
+
+144
+00:05:03,009 --> 00:05:04,229
+to send over our hardware.
+
+145
+00:05:04,229 --> 00:05:05,910
+Throughput is also a rate.
+
+146
+00:05:05,910 --> 00:05:07,330
+Maybe more often used.
+
+147
+00:05:07,330 --> 00:05:08,729
+It's the same idea,
+it's more often
+
+148
+00:05:08,729 --> 00:05:10,310
+used to refer to what
+the application is
+
+149
+00:05:10,310 --> 00:05:11,950
+actually doing instead of
+
+150
+00:05:11,950 --> 00:05:14,109
+perhaps the hardware
+capabilities.
+
+151
+00:05:14,109 --> 00:05:15,889
+And with disks,
+
+152
+00:05:15,889 --> 00:05:17,810
+that's usually measured
+in bytes per second,
+
+153
+00:05:17,810 --> 00:05:19,150
+for whatever reason, when
+
+154
+00:05:19,150 --> 00:05:20,689
+we're talking about
+net networks,
+
+155
+00:05:20,689 --> 00:05:22,809
+it's more common to talk
+about bits per second.
+
+156
+00:05:22,809 --> 00:05:24,790
+And so people might
+say things like this.
+
+157
+00:05:24,790 --> 00:05:26,650
+They might say BPS.
+
+158
+00:05:26,650 --> 00:05:27,930
+And the fact that the B is
+
+159
+00:05:27,930 --> 00:05:30,029
+lower case means it's
+bits per second,
+
+160
+00:05:30,029 --> 00:05:33,950
+and that would be in contrast
+with MB over S, right?
+
+161
+00:05:33,950 --> 00:05:36,409
+So 10 megabits per
+second is in bits.
+
+162
+00:05:36,409 --> 00:05:41,370
+10 megabytes/second would
+be 88 times faster.
+
+163
+00:05:42,110 --> 00:05:44,990
+Often, if things
+are lower latency,
+
+164
+00:05:44,990 --> 00:05:46,669
+I might also have higher
+
+165
+00:05:46,669 --> 00:05:48,249
+bandwidth, but that's
+not always true.
+
+166
+00:05:48,249 --> 00:05:50,070
+You can imagine a scenario
+where this computer in
+
+167
+00:05:50,070 --> 00:05:51,989
+the middle is talking
+with two other computers.
+
+168
+00:05:51,989 --> 00:05:53,230
+And on the one hand side,
+
+169
+00:05:53,230 --> 00:05:57,149
+I have a computer that's kind
+of geographically nearby,
+
+170
+00:05:57,149 --> 00:06:00,210
+but maybe my switch doesn't
+have much bandwidth, right?
+
+171
+00:06:00,210 --> 00:06:01,890
+So maybe I can, you know,
+
+172
+00:06:01,890 --> 00:06:04,369
+send a packet to an
+response very quickly,
+
+173
+00:06:04,369 --> 00:06:06,870
+but I can't send a lot of
+data at the same time.
+
+174
+00:06:06,870 --> 00:06:08,929
+In contrast, maybe this computer
+
+175
+00:06:08,929 --> 00:06:10,850
+is somewhere else on the
+other side of the Internet,
+
+176
+00:06:10,850 --> 00:06:12,190
+and it might take
+a long time for
+
+177
+00:06:12,190 --> 00:06:13,710
+messages to go back and forth,
+
+178
+00:06:13,710 --> 00:06:17,824
+but maybe I have a higher
+capacity on my connection.
+
+179
+00:06:17,824 --> 00:06:19,980
+So I just wanted to do
+a quick top at to make
+
+180
+00:06:19,980 --> 00:06:21,759
+sure people are still
+good on these units.
+
+181
+00:06:21,759 --> 00:06:26,160
+I'm going to pop over
+here and start that.
+
+182
+00:06:26,160 --> 00:06:31,539
+And so a computer can
+download eight B MB pS.
+
+183
+00:06:31,539 --> 00:06:34,019
+What is that in BPS?
+
+184
+00:07:18,930 --> 00:07:22,289
+A 20 seconds left.
+
+185
+00:07:46,910 --> 00:07:49,310
+Alright, fantastic.
+Most people are
+
+186
+00:07:49,310 --> 00:07:51,290
+saying 64 megabits per second.
+
+187
+00:07:51,290 --> 00:07:52,869
+Right? There's eight
+bits per byte.
+
+188
+00:07:52,869 --> 00:07:56,969
+So if I'm going from a byte
+based unit to bit based unit,
+
+189
+00:07:56,969 --> 00:07:58,770
+I'd have to multiply by eight.
+
+190
+00:07:58,770 --> 00:08:02,009
+All right. Cool. So
+that's networking.
+
+191
+00:08:02,009 --> 00:08:04,049
+Let's talk a little
+bit about deployment.
+
+192
+00:08:04,049 --> 00:08:06,010
+Deployment means
+actually figuring out
+
+193
+00:08:06,010 --> 00:08:08,009
+how to go and run
+your code somewhere.
+
+194
+00:08:08,009 --> 00:08:09,189
+That's often quite challenging,
+
+195
+00:08:09,189 --> 00:08:10,949
+especially if you have
+kind of a large cluster,
+
+196
+00:08:10,949 --> 00:08:12,410
+and you have to get your
+software running out
+
+197
+00:08:12,410 --> 00:08:14,949
+all the different
+workers in the cluster.
+
+198
+00:08:14,949 --> 00:08:16,709
+This semester, we're at
+
+199
+00:08:16,709 --> 00:08:18,130
+least for the first
+half of the semester,
+
+200
+00:08:18,130 --> 00:08:19,529
+we'll deploy on Google's Cloud,
+
+201
+00:08:19,529 --> 00:08:22,790
+which is called GCP
+Google Cloud Platform.
+
+202
+00:08:22,790 --> 00:08:25,369
+And basically what all
+these cloud providers
+
+203
+00:08:25,369 --> 00:08:26,649
+are doing is they're
+buying large,
+
+204
+00:08:26,649 --> 00:08:29,850
+powerful physical machines
+that are in a data center,
+
+205
+00:08:29,850 --> 00:08:31,630
+kind of like in that
+picture I showed you,
+
+206
+00:08:31,630 --> 00:08:35,949
+and then they're running
+virtual machines on top of it.
+
+207
+00:08:35,949 --> 00:08:37,369
+And so a virtual machine,
+
+208
+00:08:37,369 --> 00:08:39,170
+it really kind of feels
+like a physical machine.
+
+209
+00:08:39,170 --> 00:08:41,589
+You can interact with it
+in a lot of the same ways.
+
+210
+00:08:41,589 --> 00:08:43,429
+But it's only using a fraction
+
+211
+00:08:43,429 --> 00:08:45,130
+of the resources of
+that physical machine.
+
+212
+00:08:45,130 --> 00:08:47,329
+So they might actually pack
+on a lot of virtual machines,
+
+213
+00:08:47,329 --> 00:08:48,769
+and they will rent that to you,
+
+214
+00:08:48,769 --> 00:08:50,429
+of course, with some
+kind of mark up.
+
+215
+00:08:50,429 --> 00:08:52,429
+I put rented in quotes
+because you're going to get
+
+216
+00:08:52,429 --> 00:08:53,629
+some free Google credits that
+
+217
+00:08:53,629 --> 00:08:55,490
+you'll use for that
+this semester.
+
+218
+00:08:55,490 --> 00:08:59,590
+Your VMs are going to be
+running Ubuntu Linux 2404.
+
+219
+00:08:59,590 --> 00:09:01,090
+So that's their most recent
+
+220
+00:09:01,090 --> 00:09:04,190
+long term support
+support version.
+
+221
+00:09:04,300 --> 00:09:07,079
+So I've shared some
+details about that.
+
+222
+00:09:07,079 --> 00:09:11,280
+This link here shows you
+how to get those resources.
+
+223
+00:09:11,280 --> 00:09:13,479
+We need to make sure we
+don't run out of credits,
+
+224
+00:09:13,479 --> 00:09:15,499
+otherwise you have to start
+paying out of out of pocket.
+
+225
+00:09:15,499 --> 00:09:17,500
+And if you follow all the
+directions carefully,
+
+226
+00:09:17,500 --> 00:09:20,020
+you will not find yourself
+in that situation.
+
+227
+00:09:20,020 --> 00:09:21,479
+And so what we're
+going to be using is
+
+228
+00:09:21,479 --> 00:09:25,120
+E two small instances
+with 25 gigabyte disks.
+
+229
+00:09:25,120 --> 00:09:26,739
+And basically what I've done is
+
+230
+00:09:26,739 --> 00:09:28,459
+I've entered the
+daily cost here,
+
+231
+00:09:28,459 --> 00:09:30,739
+and I show the cumulative
+how much you should be
+
+232
+00:09:30,739 --> 00:09:33,240
+spending of your free
+credits by a given date.
+
+233
+00:09:33,240 --> 00:09:35,620
+So for example, on October 15,
+
+234
+00:09:35,620 --> 00:09:38,650
+check in and make sure you've
+not spent more than $20 Um,
+
+235
+00:09:38,650 --> 00:09:39,810
+this is what is going to happen.
+
+236
+00:09:39,810 --> 00:09:41,329
+Unless you somehow
+misconfigured.
+
+237
+00:09:41,329 --> 00:09:42,450
+If you have multiple VMs
+
+238
+00:09:42,450 --> 00:09:43,729
+at the same time or
+something like that,
+
+239
+00:09:43,729 --> 00:09:45,690
+you might burn
+through that faster.
+
+240
+00:09:45,690 --> 00:09:47,870
+I guess you could
+end up spending
+
+241
+00:09:47,870 --> 00:09:49,250
+a little bit of money depending
+
+242
+00:09:49,250 --> 00:09:50,350
+on whether that matters to you.
+
+243
+00:09:50,350 --> 00:09:52,330
+But one way to catch up
+would be just be turning off
+
+244
+00:09:52,330 --> 00:09:53,529
+the virtual machine
+when you're not
+
+245
+00:09:53,529 --> 00:09:55,170
+using it, say, like overnight.
+
+246
+00:09:55,170 --> 00:09:56,849
+I somehow you make
+a mistake and you
+
+247
+00:09:56,849 --> 00:09:58,470
+need to catch up on the budget,
+
+248
+00:09:58,470 --> 00:10:00,090
+so you can save yourself
+a bit of money there.
+
+249
+00:10:00,090 --> 00:10:02,290
+We'll see what happens
+after October 15.
+
+250
+00:10:02,290 --> 00:10:03,529
+I think the department's getting
+
+251
+00:10:03,529 --> 00:10:04,870
+some new servers that will
+
+252
+00:10:04,870 --> 00:10:06,349
+probably use for a
+portion of the course.
+
+253
+00:10:06,349 --> 00:10:08,490
+So I'll kind of
+fill this in based
+
+254
+00:10:08,490 --> 00:10:10,849
+on when those servers
+are ready for us to use.
+
+255
+00:10:10,849 --> 00:10:12,330
+But we might get
+some more resources
+
+256
+00:10:12,330 --> 00:10:14,109
+than we've had in
+previous semesters,
+
+257
+00:10:14,109 --> 00:10:18,689
+which would be pretty
+exciting. So check up on that.
+
+258
+00:10:18,689 --> 00:10:20,769
+And there's a few
+responsibilities that
+
+259
+00:10:20,769 --> 00:10:22,950
+you're going to have
+with regard to your VM,
+
+260
+00:10:22,950 --> 00:10:25,149
+the semester, you have to
+go create it yourself,
+
+261
+00:10:25,149 --> 00:10:26,269
+and if somehow gets
+
+262
+00:10:26,269 --> 00:10:27,789
+messed up you're going
+to have to recreate it.
+
+263
+00:10:27,789 --> 00:10:29,609
+You have to figure out what
+region you want it in.
+
+264
+00:10:29,609 --> 00:10:32,229
+I choose Iowa because
+it's close to us,
+
+265
+00:10:32,229 --> 00:10:34,009
+right, so it's going
+to be lower latency.
+
+266
+00:10:34,009 --> 00:10:35,930
+You have to figure out how
+to connect it with SSH.
+
+267
+00:10:35,930 --> 00:10:37,709
+I'll show an example
+of that, but you're
+
+268
+00:10:37,709 --> 00:10:38,489
+going to have to
+kind of get that
+
+269
+00:10:38,489 --> 00:10:39,490
+set up on your computer.
+
+270
+00:10:39,490 --> 00:10:40,389
+You're going to have to install
+
+271
+00:10:40,389 --> 00:10:42,369
+some software on your
+virtual machines.
+
+272
+00:10:42,369 --> 00:10:44,010
+As we talk about
+like, we just give
+
+273
+00:10:44,010 --> 00:10:45,449
+you like a strip that
+does all that for you,
+
+274
+00:10:45,449 --> 00:10:47,570
+but I think it's actually
+valuable to learn how to
+
+275
+00:10:47,570 --> 00:10:50,289
+set things up yourself so
+that after the semester,
+
+276
+00:10:50,289 --> 00:10:52,179
+if you have some project
+idea, you can go
+
+277
+00:10:52,179 --> 00:10:53,589
+Do stuff, even if you don't
+
+278
+00:10:53,589 --> 00:10:54,710
+have the supportive
+office hours.
+
+279
+00:10:54,710 --> 00:10:56,409
+So we're trying to making
+you do some extra work,
+
+280
+00:10:56,409 --> 00:10:58,769
+but I do think it has
+pedagogical value.
+
+281
+00:10:58,769 --> 00:11:00,830
+You might have to
+reboot after updates.
+
+282
+00:11:00,830 --> 00:11:02,269
+Make sure you back up your work.
+
+283
+00:11:02,269 --> 00:11:03,849
+You know, occasionally,
+people's VMs get
+
+284
+00:11:03,849 --> 00:11:06,310
+messed up and they
+might lose work there.
+
+285
+00:11:06,310 --> 00:11:08,509
+You know, you could
+do that by pushing to
+
+286
+00:11:08,509 --> 00:11:11,049
+a private repository
+on ditab or GitHub,
+
+287
+00:11:11,049 --> 00:11:13,630
+or I'm going to teach
+a tool SCP today that
+
+288
+00:11:13,630 --> 00:11:16,269
+you could use to download
+stuff off of your laptop.
+
+289
+00:11:16,269 --> 00:11:18,530
+And then you have to
+resolve any issues
+
+290
+00:11:18,530 --> 00:11:20,709
+directly with Google
+if they show up.
+
+291
+00:11:20,709 --> 00:11:22,629
+By far, the most common issue
+
+292
+00:11:22,629 --> 00:11:25,030
+is that they think
+people are cryptomining,
+
+293
+00:11:25,030 --> 00:11:26,249
+and I'll believe
+my students that
+
+294
+00:11:26,249 --> 00:11:27,944
+always tell me they
+weren't cryptomining.
+
+295
+00:11:27,944 --> 00:11:28,580
+Basically,
+
+296
+00:11:28,580 --> 00:11:30,379
+Google is worried that they
+give you free credits,
+
+297
+00:11:30,379 --> 00:11:32,079
+and then you basically
+turn those credits into
+
+298
+00:11:32,079 --> 00:11:34,400
+money by min mining
+crypto, right?
+
+299
+00:11:34,400 --> 00:11:36,339
+That's against their policies,
+and they try to detect,
+
+300
+00:11:36,339 --> 00:11:38,439
+based on your CPU
+usage or whatever,
+
+301
+00:11:38,439 --> 00:11:40,019
+if you're doing
+something like that,
+
+302
+00:11:40,019 --> 00:11:41,379
+and then they'll
+sometimes flag you
+
+303
+00:11:41,379 --> 00:11:42,839
+and they'll, block
+your account for Wb.
+
+304
+00:11:42,839 --> 00:11:44,140
+H is like, Oh, you're
+a crypto mining,
+
+305
+00:11:44,140 --> 00:11:45,419
+and you just submit
+a form saying,
+
+306
+00:11:45,419 --> 00:11:46,659
+I'm very sorry I
+wasn't doing that,
+
+307
+00:11:46,659 --> 00:11:47,940
+and they're like,
+Okay, ok, fine.
+
+308
+00:11:47,940 --> 00:11:48,980
+You can have another chance.
+
+309
+00:11:48,980 --> 00:11:51,360
+Anyway, I tried to interject
+myself in that process,
+
+310
+00:11:51,360 --> 00:11:52,780
+and I mean, they're a business,
+
+311
+00:11:52,780 --> 00:11:54,859
+and they're like, Oh,
+you're not the customer.
+
+312
+00:11:54,859 --> 00:11:56,859
+We will not talk to you.
+They're not really set
+
+313
+00:11:56,859 --> 00:11:57,739
+up to think about while
+
+314
+00:11:57,739 --> 00:11:58,999
+there's an instructor
+and students.
+
+315
+00:11:58,999 --> 00:12:00,220
+So anyway, You know,
+
+316
+00:12:00,220 --> 00:12:01,419
+you'll have to
+interact directly with
+
+317
+00:12:01,419 --> 00:12:02,999
+Google if that happens
+because they don't
+
+318
+00:12:02,999 --> 00:12:04,240
+want me as an instructor
+
+319
+00:12:04,240 --> 00:12:05,959
+in the middle, but it's
+always been sorted out.
+
+320
+00:12:05,959 --> 00:12:07,299
+If you just kind of
+follow up with them.
+
+321
+00:12:07,299 --> 00:12:08,760
+Do it quickly, right
+because there might be
+
+322
+00:12:08,760 --> 00:12:11,259
+some delay to them
+getting back to you.
+
+323
+00:12:11,910 --> 00:12:14,970
+We're also going to be in
+addition to virtual machines,
+
+324
+00:12:14,970 --> 00:12:16,270
+we're to be using containers,
+
+325
+00:12:16,270 --> 00:12:19,349
+this semester and particular
+docker containers.
+
+326
+00:12:19,349 --> 00:12:21,210
+We'll talk more about what
+containers are, but for now,
+
+327
+00:12:21,210 --> 00:12:22,370
+we can think of it
+as a lightweight
+
+328
+00:12:22,370 --> 00:12:24,010
+alternative to virtual machines.
+
+329
+00:12:24,010 --> 00:12:26,629
+And so on your one and
+only virtual machine,
+
+330
+00:12:26,629 --> 00:12:27,750
+you'll have this semester.
+
+331
+00:12:27,750 --> 00:12:30,949
+You can have a bunch of
+different docker containers.
+
+332
+00:12:30,949 --> 00:12:32,909
+And by doing that,
+they're going to have
+
+333
+00:12:32,909 --> 00:12:35,350
+kind of like a virtual
+container network.
+
+334
+00:12:35,350 --> 00:12:36,889
+And so it'll feel like you have
+
+335
+00:12:36,889 --> 00:12:38,950
+a small little cluster of
+
+336
+00:12:38,950 --> 00:12:41,869
+systems that are interoperating
+with each other.
+
+337
+00:12:41,869 --> 00:12:43,489
+And you're going to be alone the
+
+338
+00:12:43,489 --> 00:12:45,339
+same skills you would
+directly apply.
+
+339
+00:12:45,339 --> 00:12:47,469
+Someday when you actually
+have a real cluster of
+
+340
+00:12:47,469 --> 00:12:48,730
+machines available
+to you and you're
+
+341
+00:12:48,730 --> 00:12:49,949
+deploying these systems on them.
+
+342
+00:12:49,949 --> 00:12:52,010
+So everybody will have
+these many clusters
+
+343
+00:12:52,010 --> 00:12:54,740
+running on top of their
+own virtual machines.
+
+344
+00:12:54,740 --> 00:12:56,549
+A quick conclusion, right?
+
+345
+00:12:56,549 --> 00:12:59,209
+Systems, manage resources,
+whether you're writing
+
+346
+00:12:59,209 --> 00:13:02,389
+analysis code or
+building applications.
+
+347
+00:13:02,389 --> 00:13:03,550
+You're going to
+be using systems.
+
+348
+00:13:03,550 --> 00:13:05,449
+Maybe you're even making
+new systems yourselves.
+
+349
+00:13:05,449 --> 00:13:06,769
+So this is stuff
+we have to learn.
+
+350
+00:13:06,769 --> 00:13:09,009
+And these systems manage
+resources, right?
+
+351
+00:13:09,009 --> 00:13:10,870
+Like compute memory
+storage network.
+
+352
+00:13:10,870 --> 00:13:13,449
+We want to figure out how to
+use systems in a way that we
+
+353
+00:13:13,449 --> 00:13:16,350
+use those efficient
+resources efficiently.
+
+354
+00:13:16,350 --> 00:13:18,549
+We're learning about big
+data systems a semester,
+
+355
+00:13:18,549 --> 00:13:20,110
+and that means we're
+going to be specifically
+
+356
+00:13:20,110 --> 00:13:21,469
+looking at cases where we need
+
+357
+00:13:21,469 --> 00:13:23,270
+either specialized
+hardware or more
+
+358
+00:13:23,270 --> 00:13:25,990
+typically just a
+cluster of machines.
+
+359
+00:13:25,990 --> 00:13:28,129
+So I'm going to head over.
+
+360
+00:13:28,129 --> 00:13:29,609
+We're actually going to
+jump in and start doing
+
+361
+00:13:29,609 --> 00:13:31,270
+some examples on the
+virtual machine,
+
+362
+00:13:31,270 --> 00:13:32,949
+and I've sent direction
+so people can
+
+363
+00:13:32,949 --> 00:13:34,954
+start setting that up
+if you would like.
+
+364
+00:13:34,954 --> 00:13:39,459
+M. Yeah um, so how can we
+deploy things on Linux?
+
+365
+00:13:39,459 --> 00:13:41,100
+I have a few things I
+want you to learn today.
+
+366
+00:13:41,100 --> 00:13:42,339
+I want you to navigate
+
+367
+00:13:42,339 --> 00:13:44,000
+your way around a
+Linux file system,
+
+368
+00:13:44,000 --> 00:13:45,520
+operate in a Linux shell.
+
+369
+00:13:45,520 --> 00:13:48,860
+I want you to learn how to
+automate repetitive tasks.
+
+370
+00:13:48,860 --> 00:13:50,300
+You can imagine if
+you have to deploy
+
+371
+00:13:50,300 --> 00:13:51,700
+the same thing on 100 machines.
+
+372
+00:13:51,700 --> 00:13:53,239
+Wow, that's very important.
+
+373
+00:13:53,239 --> 00:13:54,559
+Where I learn how we can chain
+
+374
+00:13:54,559 --> 00:13:56,840
+multiple Linux programs together
+
+375
+00:13:56,840 --> 00:13:58,760
+to accomplish more
+complicated things.
+
+376
+00:13:58,760 --> 00:14:00,220
+And finally, how can we capture
+
+377
+00:14:00,220 --> 00:14:02,380
+the output of a
+process in a file?
+
+378
+00:14:02,380 --> 00:14:04,480
+In this kind of environment
+that's hugely important,
+
+379
+00:14:04,480 --> 00:14:05,699
+maybe most of you
+are used to kind of,
+
+380
+00:14:05,699 --> 00:14:07,560
+like running programs and
+directly seeing the output.
+
+381
+00:14:07,560 --> 00:14:09,379
+If there's a bunch of
+things running at once,
+
+382
+00:14:09,379 --> 00:14:10,559
+it kind of makes more sense to
+
+383
+00:14:10,559 --> 00:14:12,119
+put that output to
+different files.
+
+384
+00:14:12,119 --> 00:14:14,219
+And so we're kind of
+redirecting output to files and
+
+385
+00:14:14,219 --> 00:14:16,799
+then checking up on what
+those files contain.
+
+386
+00:14:16,799 --> 00:14:19,219
+Okay, so to do all
+this, you have to get
+
+387
+00:14:19,219 --> 00:14:22,040
+extremely comfortable with
+a program called the shell.
+
+388
+00:14:22,040 --> 00:14:23,539
+You all have used shells before.
+
+389
+00:14:23,539 --> 00:14:25,259
+But let's just think a
+little bit more deeply
+
+390
+00:14:25,259 --> 00:14:27,179
+about what a shell is
+and what it's doing.
+
+391
+00:14:27,179 --> 00:14:28,680
+If I was write pseudocode for
+
+392
+00:14:28,680 --> 00:14:30,179
+a shell, it might look
+something like this.
+
+393
+00:14:30,179 --> 00:14:32,379
+It's just a big loop that prints
+
+394
+00:14:32,379 --> 00:14:35,179
+a prompt and the prompt means,
+tell me something to do.
+
+395
+00:14:35,179 --> 00:14:38,699
+It takes some input
+from the keyboard,
+
+396
+00:14:38,699 --> 00:14:41,299
+and that input is the
+name of some command,
+
+397
+00:14:41,299 --> 00:14:42,500
+and then it will
+run that command.
+
+398
+00:14:42,500 --> 00:14:44,020
+And it's really a
+super helpful program
+
+399
+00:14:44,020 --> 00:14:45,239
+because it's just
+constantly asking,
+
+400
+00:14:45,239 --> 00:14:47,019
+what can I do for you,
+and then it does it,
+
+401
+00:14:47,019 --> 00:14:48,819
+right, so you can kind
+of type those things in.
+
+402
+00:14:48,819 --> 00:14:50,700
+So there's no graphical
+user interface.
+
+403
+00:14:50,700 --> 00:14:53,430
+We're just doing everything
+based on typing.
+
+404
+00:14:53,430 --> 00:14:55,899
+One of the reasons this is
+really powerful is that if
+
+405
+00:14:55,899 --> 00:14:58,040
+you figure out how to do
+it manually via typing,
+
+406
+00:14:58,040 --> 00:14:59,479
+then you can put
+all those commands
+
+407
+00:14:59,479 --> 00:15:01,180
+in a text file with
+some extension,
+
+408
+00:15:01,180 --> 00:15:03,020
+maybe SH or whatever,
+it doesn't matter.
+
+409
+00:15:03,020 --> 00:15:04,999
+And you can feed
+all those commands
+
+410
+00:15:04,999 --> 00:15:06,820
+from that text file
+into the shell,
+
+411
+00:15:06,820 --> 00:15:09,519
+and it will automatically
+do all those steps for you.
+
+412
+00:15:09,519 --> 00:15:10,739
+How many of you have ever
+
+413
+00:15:10,739 --> 00:15:12,459
+automated something where
+you kind of have to, like,
+
+414
+00:15:12,459 --> 00:15:13,959
+click buttons or actually, like,
+
+415
+00:15:13,959 --> 00:15:16,359
+manipulate a real browser
+or anything like that.
+
+416
+00:15:16,359 --> 00:15:19,769
+So a few of you, was that,
+like, a fun thing to do?
+
+417
+00:15:19,769 --> 00:15:21,979
+So if some people are
+nodding their heads,
+
+418
+00:15:21,979 --> 00:15:23,239
+yes, I hate doing that, right?
+
+419
+00:15:23,239 --> 00:15:24,540
+It's kind of finicky,
+
+420
+00:15:24,540 --> 00:15:25,760
+and I kind of get it working,
+
+421
+00:15:25,760 --> 00:15:27,760
+and then, you know,
+buttons change position,
+
+422
+00:15:27,760 --> 00:15:29,000
+and it doesn't work anymore.
+
+423
+00:15:29,000 --> 00:15:30,640
+So this will be much more robust
+
+424
+00:15:30,640 --> 00:15:32,139
+and faster than trying to
+
+425
+00:15:32,139 --> 00:15:36,084
+automate something with a
+graphical user interface.
+
+426
+00:15:36,084 --> 00:15:39,869
+So a shell can let
+you run programs,
+
+427
+00:15:39,869 --> 00:15:42,390
+and a shell is itself a program.
+
+428
+00:15:42,390 --> 00:15:44,589
+And so maybe you can infer
+from that that you can
+
+429
+00:15:44,589 --> 00:15:46,710
+actually use a shell
+to run other shells.
+
+430
+00:15:46,710 --> 00:15:49,290
+And I'm actually doing that
+here. I have a bash shell.
+
+431
+00:15:49,290 --> 00:15:51,629
+I'm typing some stuff in it.
+
+432
+00:15:51,629 --> 00:15:54,869
+That's fine and well, and then
+putting what directory in.
+
+433
+00:15:54,869 --> 00:15:56,330
+And then I run ZSH.
+
+434
+00:15:56,330 --> 00:15:58,369
+That's the Z shell, and
+I'll start running that,
+
+435
+00:15:58,369 --> 00:16:00,459
+and I could start running
+commands and that
+
+436
+00:16:00,459 --> 00:16:02,030
+The most common situation
+
+437
+00:16:02,030 --> 00:16:02,930
+where you're going to be running
+
+438
+00:16:02,930 --> 00:16:05,470
+a shell inside of a
+shell is with SSH,
+
+439
+00:16:05,470 --> 00:16:06,910
+which is the secure shell.
+
+440
+00:16:06,910 --> 00:16:09,229
+And SSH is a special
+shell because
+
+441
+00:16:09,229 --> 00:16:12,109
+it lets me type my
+commands on one computer,
+
+442
+00:16:12,109 --> 00:16:14,470
+but then they execute on
+a different computer,
+
+443
+00:16:14,470 --> 00:16:15,789
+say that virtual machine
+
+444
+00:16:15,789 --> 00:16:17,389
+that I'm running in
+the Cloud, right?
+
+445
+00:16:17,389 --> 00:16:19,850
+So here I type SSH.
+
+446
+00:16:19,850 --> 00:16:21,969
+And then down here, I run
+some more commands and
+
+447
+00:16:21,969 --> 00:16:24,190
+those commands are
+running in the Cloud.
+
+448
+00:16:24,190 --> 00:16:25,390
+So that's extremely powerful.
+
+449
+00:16:25,390 --> 00:16:27,989
+And you're going to be doing
+you're going to be living in
+
+450
+00:16:27,989 --> 00:16:31,630
+SSH this whole course this
+semester. Alright, cool.
+
+451
+00:16:31,630 --> 00:16:34,184
+So I'm I jump over, I'm
+going to do some examples.
+
+452
+00:16:34,184 --> 00:16:36,500
+Just trying to help everybody
+get on the same page.
+
+453
+00:16:36,500 --> 00:16:38,579
+I know some people who have
+used virtual machines before,
+
+454
+00:16:38,579 --> 00:16:39,840
+maybe even on Google Cloud.
+
+455
+00:16:39,840 --> 00:16:42,080
+So my apologies if some
+of this is repetitive,
+
+456
+00:16:42,080 --> 00:16:43,179
+but I just want to
+make sure we're
+
+457
+00:16:43,179 --> 00:16:45,539
+all coming at it with
+the same background.
+
+458
+00:16:45,539 --> 00:16:50,280
+So right here, I am signed
+into the Google Cloud Console.
+
+459
+00:16:50,280 --> 00:16:52,699
+And what I want to go to is
+
+460
+00:16:52,699 --> 00:16:55,320
+their Compute engine because
+under Compute Engine,
+
+461
+00:16:55,320 --> 00:16:57,225
+they have a virtual machine.
+
+462
+00:16:57,225 --> 00:16:59,109
+Instances, and I have a few.
+
+463
+00:16:59,109 --> 00:17:00,310
+If you have a few that's
+probably actually
+
+464
+00:17:00,310 --> 00:17:01,650
+a problem you're going to
+burn through your credit,
+
+465
+00:17:01,650 --> 00:17:02,970
+but I was just try
+messing around.
+
+466
+00:17:02,970 --> 00:17:05,170
+I only have one really
+running right now.
+
+467
+00:17:05,170 --> 00:17:07,710
+And you can see this
+one's up and running.
+
+468
+00:17:07,710 --> 00:17:10,389
+And I can see that it has
+an external IP address.
+
+469
+00:17:10,389 --> 00:17:11,849
+I'm going to click on
+this to copy that.
+
+470
+00:17:11,849 --> 00:17:13,950
+We may be talking
+more about networking
+
+471
+00:17:13,950 --> 00:17:16,809
+and IP addresses
+pretty soon, actually.
+
+472
+00:17:16,809 --> 00:17:19,170
+But what I can do now is
+I can use a secure shell,
+
+473
+00:17:19,170 --> 00:17:21,090
+and I can say my user name at,
+
+474
+00:17:21,090 --> 00:17:23,050
+and then I can paste
+that IP address
+
+475
+00:17:23,050 --> 00:17:24,969
+and try to get access to it.
+
+476
+00:17:24,969 --> 00:17:26,410
+So, okay, great.
+
+477
+00:17:26,410 --> 00:17:27,550
+What is my user name?
+
+478
+00:17:27,550 --> 00:17:29,510
+So I'm mana come
+over here and I'm
+
+479
+00:17:29,510 --> 00:17:32,259
+going to go down to metadata.
+
+480
+00:17:32,259 --> 00:17:35,739
+And under metadata, I have
+these things called SSH keys.
+
+481
+00:17:35,739 --> 00:17:37,379
+And I actually see
+I have two of them.
+
+482
+00:17:37,379 --> 00:17:38,359
+You'll just have one,
+
+483
+00:17:38,359 --> 00:17:39,919
+and you're going to have
+to create it yourself.
+
+484
+00:17:39,919 --> 00:17:42,460
+And I'm going to
+use this one TRH.
+
+485
+00:17:42,460 --> 00:17:45,159
+I'm going to put that SSH,
+
+486
+00:17:45,159 --> 00:17:49,399
+my user name, and then that
+IP address. You to run that.
+
+487
+00:17:49,399 --> 00:17:51,519
+And now I'm inside of
+my virtual machine,
+
+488
+00:17:51,519 --> 00:17:53,079
+and I can run commands here.
+
+489
+00:17:53,079 --> 00:17:56,759
+So how did this SSH
+stuff get set up?
+
+490
+00:17:56,759 --> 00:18:00,700
+Well, I created what is
+called an SSH key pair.
+
+491
+00:18:00,700 --> 00:18:02,940
+The way I did that
+is I came over here,
+
+492
+00:18:02,940 --> 00:18:06,440
+and I ran this program
+called SSH key gen,
+
+493
+00:18:06,440 --> 00:18:08,500
+and it kind of walked me through
+
+494
+00:18:08,500 --> 00:18:10,400
+this step a few steps you
+can kind of go through.
+
+495
+00:18:10,400 --> 00:18:11,339
+I'm not trying to
+do it right now
+
+496
+00:18:11,339 --> 00:18:12,400
+because I already did it before.
+
+497
+00:18:12,400 --> 00:18:15,399
+I actually hit Control C.
+Control C doesn't copy things,
+
+498
+00:18:15,399 --> 00:18:17,480
+that actually kills
+what I was doing.
+
+499
+00:18:17,480 --> 00:18:19,839
+Anyway, that will generate
+a key payer for me,
+
+500
+00:18:19,839 --> 00:18:21,679
+and it's showing
+me right here that
+
+501
+00:18:21,679 --> 00:18:24,099
+this is where one
+of my keys will be.
+
+502
+00:18:24,099 --> 00:18:26,119
+So let me just take
+a look at this.
+
+503
+00:18:26,119 --> 00:18:28,589
+And This one that it
+
+504
+00:18:28,589 --> 00:18:31,130
+generated is what we
+call a private key.
+
+505
+00:18:31,130 --> 00:18:32,370
+And a private key is really
+
+506
+00:18:32,370 --> 00:18:35,110
+an alternative to
+like a password.
+
+507
+00:18:35,110 --> 00:18:37,829
+That's what how I show
+that I am, who I say I am.
+
+508
+00:18:37,829 --> 00:18:39,169
+So I'm not going
+to show you that
+
+509
+00:18:39,169 --> 00:18:40,670
+right now because that
+would be terrible.
+
+510
+00:18:40,670 --> 00:18:43,590
+All of you could do all
+kinds of horrible things.
+
+511
+00:18:43,590 --> 00:18:45,489
+What I will show you is what is
+
+512
+00:18:45,489 --> 00:18:46,630
+associated with
+that private key,
+
+513
+00:18:46,630 --> 00:18:47,690
+and that's the public key.
+
+514
+00:18:47,690 --> 00:18:49,740
+So here's a public
+key right here.
+
+515
+00:18:49,740 --> 00:18:52,050
+So these two things
+come in a pair,
+
+516
+00:18:52,050 --> 00:18:53,769
+and I think the private
+key, it works like
+
+517
+00:18:53,769 --> 00:18:55,649
+an actual key based on
+your intuition, right?
+
+518
+00:18:55,649 --> 00:18:57,489
+I kind of open
+things up for you.
+
+519
+00:18:57,489 --> 00:18:59,110
+I think the public key,
+
+520
+00:18:59,110 --> 00:19:02,389
+maybe it's more intuitively
+like a lock, right?
+
+521
+00:19:02,389 --> 00:19:05,010
+We can put the public if you
+install a lock on something,
+
+522
+00:19:05,010 --> 00:19:06,649
+you have the key for it,
+and you can open it.
+
+523
+00:19:06,649 --> 00:19:08,470
+So things you might
+do is you might put
+
+524
+00:19:08,470 --> 00:19:10,850
+your public key on Git Hub,
+
+525
+00:19:10,850 --> 00:19:12,289
+and then it'll
+give you access to
+
+526
+00:19:12,289 --> 00:19:14,089
+if you have the
+corresponding private key.
+
+527
+00:19:14,089 --> 00:19:18,709
+I might put my public
+key on the Google Cloud,
+
+528
+00:19:18,709 --> 00:19:19,969
+and then I can get access to
+
+529
+00:19:19,969 --> 00:19:21,269
+those VMs because I have
+
+530
+00:19:21,269 --> 00:19:22,909
+the associated
+private key, right?
+
+531
+00:19:22,909 --> 00:19:24,729
+It's try to I'm comfortable
+
+532
+00:19:24,729 --> 00:19:25,569
+showing you my public he
+
+533
+00:19:25,569 --> 00:19:26,709
+is there's not much
+you can do it.
+
+534
+00:19:26,709 --> 00:19:29,070
+You can just give me access
+to stuff, and if you do, why?
+
+535
+00:19:29,070 --> 00:19:30,649
+Thank you very much. So what
+
+536
+00:19:30,649 --> 00:19:33,089
+I could do is I could copy this.
+
+537
+00:19:33,190 --> 00:19:36,470
+And I've already done this.
+I'm not going to do it again.
+
+538
+00:19:36,470 --> 00:19:39,209
+But under this
+metadata SSH stuff,
+
+539
+00:19:39,209 --> 00:19:41,569
+what I had done before
+is I pasted it in,
+
+540
+00:19:41,569 --> 00:19:43,670
+and that's how I was able
+to get that set off.
+
+541
+00:19:43,670 --> 00:19:46,390
+And you can actually see
+that I had done it twice.
+
+542
+00:19:46,390 --> 00:19:48,069
+I actually have two
+different users
+
+543
+00:19:48,069 --> 00:19:49,670
+each with a different SSH keys.
+
+544
+00:19:49,670 --> 00:19:50,869
+You might end up
+in that situation
+
+545
+00:19:50,869 --> 00:19:52,310
+if you like switch laptops,
+
+546
+00:19:52,310 --> 00:19:55,350
+mid semester, I guess I' just
+having fun with SSH keys.
+
+547
+00:19:55,350 --> 00:19:56,490
+I be kind a little bit weird,
+
+548
+00:19:56,490 --> 00:19:58,449
+great, but whatever
+is fun for you.
+
+549
+00:19:58,449 --> 00:20:00,549
+Cool. So I was able to do that.
+
+550
+00:20:00,549 --> 00:20:03,009
+Because I have that is
+
+551
+00:20:03,009 --> 00:20:05,589
+why I'm able to do
+this SSH, right?
+
+552
+00:20:05,589 --> 00:20:07,829
+So when I do this SSH,
+
+553
+00:20:08,030 --> 00:20:10,170
+let me just do it again.
+
+554
+00:20:10,170 --> 00:20:10,989
+When I'm doing that,
+
+555
+00:20:10,989 --> 00:20:12,910
+it's automatically
+finding my private key.
+
+556
+00:20:12,910 --> 00:20:14,050
+If I had more than one private
+
+557
+00:20:14,050 --> 00:20:15,230
+key I'm like a more course,
+
+558
+00:20:15,230 --> 00:20:16,370
+I might have to change it a bit
+
+559
+00:20:16,370 --> 00:20:17,690
+to tell it which one I'm using.
+
+560
+00:20:17,690 --> 00:20:19,010
+But because I have
+that private key,
+
+561
+00:20:19,010 --> 00:20:20,790
+I don't need to password
+or anything else.
+
+562
+00:20:20,790 --> 00:20:22,470
+That private key says,
+
+563
+00:20:22,470 --> 00:20:24,189
+I am who I say I
+am, and I'm able to
+
+564
+00:20:24,189 --> 00:20:26,129
+get get access to
+this virtual machine.
+
+565
+00:20:26,129 --> 00:20:28,489
+Right? So if I type up here
+it's on my virtual machine,
+
+566
+00:20:28,489 --> 00:20:30,709
+I I hit Control D, Control D
+
+567
+00:20:30,709 --> 00:20:32,649
+means I'm done typing,
+and I drop out of it.
+
+568
+00:20:32,649 --> 00:20:34,849
+Now I'm back to typing
+things on my laptop.
+
+569
+00:20:34,849 --> 00:20:37,849
+You know, I could do
+like SSH, TRH each time.
+
+570
+00:20:37,849 --> 00:20:39,369
+That would be
+annoying. I can use
+
+571
+00:20:39,369 --> 00:20:40,929
+up and down arrow keys, right?
+
+572
+00:20:40,929 --> 00:20:42,409
+To get to these
+different commands.
+
+573
+00:20:42,409 --> 00:20:44,100
+That's one thing I can do Let
+
+574
+00:20:44,100 --> 00:20:45,519
+me just do Control
+C to kill that.
+
+575
+00:20:45,519 --> 00:20:46,759
+The other thing that's
+going to be a big
+
+576
+00:20:46,759 --> 00:20:48,299
+time saver is Control R.
+
+577
+00:20:48,299 --> 00:20:50,720
+If I do Control R, I can
+do a reverse search,
+
+578
+00:20:50,720 --> 00:20:52,160
+and I start typing SSH,
+
+579
+00:20:52,160 --> 00:20:54,359
+and I jump back to that
+previous command, right?
+
+580
+00:20:54,359 --> 00:20:55,799
+So it's really important.
+
+581
+00:20:55,799 --> 00:20:56,579
+If you get dread at
+
+582
+00:20:56,579 --> 00:20:57,999
+all these commands,
+you memorize them,
+
+583
+00:20:57,999 --> 00:20:59,359
+you're going to have be able to
+
+584
+00:20:59,359 --> 00:21:01,459
+complete this course
+with spending less time,
+
+585
+00:21:01,459 --> 00:21:03,059
+and it'll be more enjoyable.
+
+586
+00:21:03,059 --> 00:21:05,299
+So get dread at these commands.
+It's really important.
+
+587
+00:21:05,299 --> 00:21:09,099
+Alright. Fantastic. So now
+I am on my virtual machine.
+
+588
+00:21:09,099 --> 00:21:10,480
+Maybe I just pause
+there because maybe
+
+589
+00:21:10,480 --> 00:21:11,979
+some of that is
+new to some folks.
+
+590
+00:21:11,979 --> 00:21:13,779
+People have any
+questions about my BM
+
+591
+00:21:13,779 --> 00:21:15,779
+or my SSH keys or any of that.
+
+592
+00:21:15,779 --> 00:21:17,719
+Yeah, right here.
+
+593
+00:21:23,040 --> 00:21:24,959
+Cloud.
+
+594
+00:21:24,959 --> 00:21:29,459
+Are we supposed to be at
+this at this point or Yeah,
+
+595
+00:21:29,459 --> 00:21:33,399
+I think that I didn't add
+anybody to anything, right?
+
+596
+00:21:33,399 --> 00:21:38,639
+I think that if I come back
+here or where it was it.
+
+597
+00:21:38,639 --> 00:21:43,859
+So I updated all the
+links to on Project one,
+
+598
+00:21:43,859 --> 00:21:45,499
+if you just start
+doing Project one,
+
+599
+00:21:45,499 --> 00:21:48,059
+it will tell you how to get
+access to the stuff, right?
+
+600
+00:21:48,059 --> 00:21:49,759
+So you'll have to go to
+
+601
+00:21:49,759 --> 00:21:50,839
+this Canvas page and that will
+
+602
+00:21:50,839 --> 00:21:52,139
+tell you how to get
+like the free credits,
+
+603
+00:21:52,139 --> 00:21:53,399
+and you have to create
+an account with that.
+
+604
+00:21:53,399 --> 00:21:55,199
+So I don't know if you've had
+a chance to look at that.
+
+605
+00:21:55,199 --> 00:21:56,859
+So drove through that and
+if you get stuck on that,
+
+606
+00:21:56,859 --> 00:21:58,740
+you know just show somebody
+in person like during
+
+607
+00:21:58,740 --> 00:21:59,899
+office hours or after lecture
+
+608
+00:21:59,899 --> 00:22:01,539
+and we'll make sure
+everybody gets on.
+
+609
+00:22:01,539 --> 00:22:03,399
+Yeah, Thank you.
+Yeah, other questions
+
+610
+00:22:03,399 --> 00:22:07,459
+people have. All right.
+
+611
+00:22:07,459 --> 00:22:09,919
+Cool. So I'm on my
+virtual machine,
+
+612
+00:22:09,919 --> 00:22:11,059
+and I can start running stuff.
+
+613
+00:22:11,059 --> 00:22:12,979
+One of the first
+things I do is PWD.
+
+614
+00:22:12,979 --> 00:22:15,820
+That shows me the
+working directory.
+
+615
+00:22:15,820 --> 00:22:17,299
+So one of the things
+you're ready notice is
+
+616
+00:22:17,299 --> 00:22:19,279
+that I'm not trying to
+use the word folder,
+
+617
+00:22:19,279 --> 00:22:20,479
+I'm going to use
+the word directory.
+
+618
+00:22:20,479 --> 00:22:21,719
+They mean the same thing, but
+
+619
+00:22:21,719 --> 00:22:23,319
+directory is the
+more technical term,
+
+620
+00:22:23,319 --> 00:22:26,079
+and all the acronyms have D
+in them for directory, right?
+
+621
+00:22:26,079 --> 00:22:27,839
+So if you remember
+directory, you remember the.
+
+622
+00:22:27,839 --> 00:22:29,060
+So print working directory,
+
+623
+00:22:29,060 --> 00:22:29,979
+that means that this is
+
+624
+00:22:29,979 --> 00:22:32,079
+the location I'm
+currently in right now.
+
+625
+00:22:32,079 --> 00:22:34,499
+It's one of the first
+commands I run when I jump on
+
+626
+00:22:34,499 --> 00:22:37,220
+a on a new environment.
+
+627
+00:22:37,220 --> 00:22:39,219
+The other thing I
+often run is I run LS.
+
+628
+00:22:39,219 --> 00:22:41,560
+LS is short for list,
+
+629
+00:22:41,560 --> 00:22:43,719
+but it shows me what
+files are there.
+
+630
+00:22:43,719 --> 00:22:45,519
+You already notice
+that Linux commands
+
+631
+00:22:45,519 --> 00:22:47,124
+are notoriously turf.
+
+632
+00:22:47,124 --> 00:22:48,910
+That means they're going
+to be harder to learn,
+
+633
+00:22:48,910 --> 00:22:49,849
+but once you learn them
+
+634
+00:22:49,849 --> 00:22:51,389
+you're going to be a
+lot faster, right?
+
+635
+00:22:51,389 --> 00:22:53,929
+I don't know how many
+hundreds of thousands
+
+636
+00:22:53,929 --> 00:22:55,009
+of times I've typed LS,
+
+637
+00:22:55,009 --> 00:22:56,530
+but probably adds up that I've
+
+638
+00:22:56,530 --> 00:22:58,309
+been typing two characters
+instead of four.
+
+639
+00:22:58,309 --> 00:22:59,869
+So spend time, get rid of these,
+
+640
+00:22:59,869 --> 00:23:02,729
+and then it's going to save
+you time in the long run.
+
+641
+00:23:02,729 --> 00:23:04,909
+Let's talk about files.
+
+642
+00:23:04,909 --> 00:23:06,649
+Let's create some files on here.
+
+643
+00:23:06,649 --> 00:23:08,050
+One way I can create a file
+
+644
+00:23:08,050 --> 00:23:09,349
+is with the Touch
+command, right?
+
+645
+00:23:09,349 --> 00:23:11,970
+So if I touch example dot TXT,
+
+646
+00:23:11,970 --> 00:23:14,029
+and then do LS, I see
+all of a sudden I
+
+647
+00:23:14,029 --> 00:23:17,140
+have an empty file there
+called example dot TXT.
+
+648
+00:23:17,140 --> 00:23:18,729
+I probably want to edit
+
+649
+00:23:18,729 --> 00:23:20,269
+it and write something
+inside of it.
+
+650
+00:23:20,269 --> 00:23:21,730
+So I need some kind of editor.
+
+651
+00:23:21,730 --> 00:23:23,830
+Now, in an intra level
+course, I would tell you, Oh,
+
+652
+00:23:23,830 --> 00:23:25,610
+use exactly this editor,
+
+653
+00:23:25,610 --> 00:23:27,409
+whatever it is I
+want you to use.
+
+654
+00:23:27,409 --> 00:23:28,630
+We're in an upper level course.
+
+655
+00:23:28,630 --> 00:23:30,269
+I think now is a point
+where you can kind of,
+
+656
+00:23:30,269 --> 00:23:31,509
+like, explore different editors,
+
+657
+00:23:31,509 --> 00:23:33,630
+figure out what you
+like, find one tool,
+
+658
+00:23:33,630 --> 00:23:35,489
+get really good at it, right?
+
+659
+00:23:35,489 --> 00:23:38,129
+And so I'm just trying to
+quick show you a few options,
+
+660
+00:23:38,129 --> 00:23:39,210
+and you can talk
+with your friends,
+
+661
+00:23:39,210 --> 00:23:41,234
+see what they're using,
+do a little research.
+
+662
+00:23:41,234 --> 00:23:44,359
+One of the simplest
+command line editors.
+
+663
+00:23:44,359 --> 00:23:45,119
+I'm kind of interesting in
+
+664
+00:23:45,119 --> 00:23:46,460
+command line editors
+because I'm inside
+
+665
+00:23:46,460 --> 00:23:48,859
+of SSH right now is Nano.
+
+666
+00:23:48,859 --> 00:23:50,259
+And so I could do NO this,
+
+667
+00:23:50,259 --> 00:23:52,479
+and I could say, hello, world.
+
+668
+00:23:52,479 --> 00:23:53,879
+Why is Nano so simple?
+
+669
+00:23:53,879 --> 00:23:55,219
+Well, all the
+commands you need to
+
+670
+00:23:55,219 --> 00:23:57,319
+know are right down here
+on the bottom, right?
+
+671
+00:23:57,319 --> 00:23:59,259
+So that little arrow
+means control.
+
+672
+00:23:59,259 --> 00:24:01,919
+And so if I say control X,
+
+673
+00:24:01,919 --> 00:24:03,239
+I know that's going to it
+
+674
+00:24:03,239 --> 00:24:04,719
+for me, right? I can do control.
+
+675
+00:24:04,719 --> 00:24:08,774
+Oh, H. I can do control X.
+
+676
+00:24:08,774 --> 00:24:10,969
+See how simple it is to use.
+
+677
+00:24:10,969 --> 00:24:12,369
+So Control X, do I want to
+
+678
+00:24:12,369 --> 00:24:14,630
+say buffer is just
+my memory file?
+
+679
+00:24:14,630 --> 00:24:17,149
+Yes, I want to save it.
+That sounds good to me.
+
+680
+00:24:17,149 --> 00:24:19,809
+And then I can see
+it's there, right?
+
+681
+00:24:19,809 --> 00:24:22,069
+Another editor you might use.
+
+682
+00:24:22,069 --> 00:24:23,389
+That's a bit more complicated,
+
+683
+00:24:23,389 --> 00:24:25,590
+but we'll save you
+some time is VM.
+
+684
+00:24:25,590 --> 00:24:27,749
+And so I'm going
+to do VM on this,
+
+685
+00:24:27,749 --> 00:24:29,869
+and I can open it up, and I
+can see it's the same thing.
+
+686
+00:24:29,869 --> 00:24:32,045
+Do you have any Vn
+users in the room?
+
+687
+00:24:32,045 --> 00:24:34,979
+Yeah, maybe maybe
+ten or 15% of you.
+
+688
+00:24:34,979 --> 00:24:36,479
+So I think that's kind of one
+
+689
+00:24:36,479 --> 00:24:38,220
+of the more popular
+command line ones.
+
+690
+00:24:38,220 --> 00:24:40,479
+I'm not a VM user, but kind of,
+
+691
+00:24:40,479 --> 00:24:41,619
+like, what is interesting about
+
+692
+00:24:41,619 --> 00:24:42,979
+is it kind of switches
+between, like,
+
+693
+00:24:42,979 --> 00:24:44,800
+a typing mode and
+a command mode,
+
+694
+00:24:44,800 --> 00:24:47,999
+and I can hit escape to
+kind of toggle those.
+
+695
+00:24:47,999 --> 00:24:50,200
+And so when I'm here
+in the command mode,
+
+696
+00:24:50,200 --> 00:24:52,679
+I can say colon, and
+then I could say Q.
+
+697
+00:24:52,679 --> 00:24:55,099
+And then I could quit out
+of that if I wanted to.
+
+698
+00:24:55,099 --> 00:24:57,039
+The one I'm going to be
+doing my examples in
+
+699
+00:24:57,039 --> 00:24:59,499
+because I'm most familiar
+with it is EMAC.
+
+700
+00:24:59,499 --> 00:25:02,779
+Any EMAC users in the
+room? A few of you.
+
+701
+00:25:02,779 --> 00:25:05,360
+Cool. So I'm going to use E MAC,
+
+702
+00:25:05,360 --> 00:25:09,779
+and then I can edit this and
+change it however I like.
+
+703
+00:25:10,960 --> 00:25:14,219
+Alright, C, I can do
+any of those, right?
+
+704
+00:25:14,219 --> 00:25:15,660
+So those are all options.
+
+705
+00:25:15,660 --> 00:25:17,259
+Another thing that's
+becoming very
+
+706
+00:25:17,259 --> 00:25:19,920
+popular is visual studio code,
+
+707
+00:25:19,920 --> 00:25:21,940
+any visual studio
+code users here.
+
+708
+00:25:21,940 --> 00:25:23,640
+That's graphical,
+but it would still
+
+709
+00:25:23,640 --> 00:25:25,239
+it has like an SFH plug in.
+
+710
+00:25:25,239 --> 00:25:26,620
+So you kind of have
+that graphical
+
+711
+00:25:26,620 --> 00:25:28,060
+experience on your laptop,
+
+712
+00:25:28,060 --> 00:25:30,879
+but you can edit files remotely.
+
+713
+00:25:30,879 --> 00:25:33,059
+And so you can look
+into that if you want.
+
+714
+00:25:33,059 --> 00:25:37,789
+Actually, Under resources, I
+have these lecture snippets,
+
+715
+00:25:37,789 --> 00:25:39,029
+where sometimes I
+just like paste
+
+716
+00:25:39,029 --> 00:25:41,709
+random stuff that I might
+give people access to.
+
+717
+00:25:41,709 --> 00:25:43,009
+So you can see some
+links here for
+
+718
+00:25:43,009 --> 00:25:45,029
+visual studio code
+and the SSH bug in.
+
+719
+00:25:45,029 --> 00:25:47,549
+So feel free to do that
+if you like, as well.
+
+720
+00:25:47,549 --> 00:25:48,929
+I think the important
+thing is choose
+
+721
+00:25:48,929 --> 00:25:50,789
+one thing and get really
+good at it, right?
+
+722
+00:25:50,789 --> 00:25:54,510
+So you can operate quickly
+in this environment.
+
+723
+00:25:54,510 --> 00:25:56,809
+Some of these things
+were already installed.
+
+724
+00:25:56,809 --> 00:25:58,770
+This virtual machine
+came with an AON VM.
+
+725
+00:25:58,770 --> 00:26:00,329
+It didn't have emaCs on it when
+
+726
+00:26:00,329 --> 00:26:02,309
+I did it before, so
+I had to install it.
+
+727
+00:26:02,309 --> 00:26:05,300
+So I go back and I'm
+going to search for APT.
+
+728
+00:26:05,300 --> 00:26:09,649
+And look for my command I
+use to install that, right?
+
+729
+00:26:09,649 --> 00:26:12,229
+So I have the pseudo
+app to install,
+
+730
+00:26:12,229 --> 00:26:13,929
+and then EMAC with
+
+731
+00:26:13,929 --> 00:26:16,649
+no user interface is what
+I had to install for that.
+
+732
+00:26:16,649 --> 00:26:18,329
+Let me just get rid of some of
+
+733
+00:26:18,329 --> 00:26:20,829
+these things to show kind
+of a simpler version of it.
+
+734
+00:26:20,829 --> 00:26:24,109
+So APT is what we use to
+install software on Ubuntu.
+
+735
+00:26:24,109 --> 00:26:25,829
+And when I run it like that, it
+
+736
+00:26:25,829 --> 00:26:27,089
+doesn't give me access to it.
+
+737
+00:26:27,089 --> 00:26:29,209
+So I can have access to root or
+
+738
+00:26:29,209 --> 00:26:31,929
+what we'd call administrator
+privileges if I want to,
+
+739
+00:26:31,929 --> 00:26:33,169
+but I have to say that this
+
+740
+00:26:33,169 --> 00:26:34,429
+is something I want
+to use it for.
+
+741
+00:26:34,429 --> 00:26:36,649
+I can kind of help me not use
+
+742
+00:26:36,649 --> 00:26:39,029
+my powers to do something
+I'm not very confident in.
+
+743
+00:26:39,029 --> 00:26:41,089
+So if I come back to
+this, the way I can use
+
+744
+00:26:41,089 --> 00:26:43,769
+those powers is I
+can say switch users
+
+745
+00:26:43,769 --> 00:26:45,549
+And do this one command.
+
+746
+00:26:45,549 --> 00:26:47,469
+So I can say pseudo, and
+then it would do it and
+
+747
+00:26:47,469 --> 00:26:49,830
+it won't complain about
+about the permission stuff.
+
+748
+00:26:49,830 --> 00:26:52,150
+So you can be using
+pseudo freal.
+
+749
+00:26:52,150 --> 00:26:53,829
+You all have pseudo axis.
+
+750
+00:26:53,829 --> 00:26:55,169
+Sometimes when you
+do something this,
+
+751
+00:26:55,169 --> 00:26:56,270
+it'll put up a prop,
+
+752
+00:26:56,270 --> 00:26:58,050
+that says, Oh, this is
+like so many megabytes.
+
+753
+00:26:58,050 --> 00:26:59,970
+Are you sure you want to
+install it? Do you have space?
+
+754
+00:26:59,970 --> 00:27:01,510
+And if you're automating things,
+
+755
+00:27:01,510 --> 00:27:02,850
+which you all will be doing,
+
+756
+00:27:02,850 --> 00:27:04,490
+you don't want to be
+propped at anything,
+
+757
+00:27:04,490 --> 00:27:05,689
+is it just like you
+want to hit like
+
+758
+00:27:05,689 --> 00:27:07,010
+go and everything should happen.
+
+759
+00:27:07,010 --> 00:27:10,249
+And so that's why I might
+say d y here, right?
+
+760
+00:27:10,249 --> 00:27:12,369
+So Apt can have a
+dash that means, say,
+
+761
+00:27:12,369 --> 00:27:13,649
+like, yes to
+everything, just get
+
+762
+00:27:13,649 --> 00:27:15,749
+it installed, get
+it done, right?
+
+763
+00:27:15,749 --> 00:27:21,390
+Alright. Cool. So
+That's all good.
+
+764
+00:27:21,390 --> 00:27:24,729
+Let's get like a real file
+with some actual stuff in it.
+
+765
+00:27:24,729 --> 00:27:27,009
+So if I come back to
+these lecture snippets
+
+766
+00:27:27,009 --> 00:27:28,930
+that you can again
+find from the website,
+
+767
+00:27:28,930 --> 00:27:31,129
+or you could use this tiny URL.
+
+768
+00:27:31,129 --> 00:27:34,050
+I have a little dataset here
+that I'm just going to grab
+
+769
+00:27:34,050 --> 00:27:36,909
+and use as an example.
+Somebody come over here.
+
+770
+00:27:36,909 --> 00:27:38,750
+I'm going to download
+it using W GT,
+
+771
+00:27:38,750 --> 00:27:41,470
+so we'll get something
+from the web.
+
+772
+00:27:41,470 --> 00:27:42,749
+And again, like, your notes now
+
+773
+00:27:42,749 --> 00:27:44,269
+should have a bunch of
+commands in them, right?
+
+774
+00:27:44,269 --> 00:27:49,050
+You should have W
+G, SSH, LS, PWD.
+
+775
+00:27:49,050 --> 00:27:51,789
+All these different things
+we've been learning, right?
+
+776
+00:27:51,789 --> 00:27:54,430
+So I'm going to do that, I'm
+going to download that file.
+
+777
+00:27:54,430 --> 00:27:58,270
+If I do LS, I can see now
+I have that right here.
+
+778
+00:27:58,270 --> 00:28:01,769
+If I wanted to, I can move it.
+
+779
+00:28:01,769 --> 00:28:04,729
+I could say move, and then
+I could say that and I
+
+780
+00:28:04,729 --> 00:28:07,869
+could say like some
+directory I wanted to go to.
+
+781
+00:28:07,869 --> 00:28:09,890
+I could also give it a new name.
+
+782
+00:28:09,890 --> 00:28:12,470
+So Move is also for renaming.
+
+783
+00:28:12,470 --> 00:28:13,969
+So this is the old name. This is
+
+784
+00:28:13,969 --> 00:28:15,469
+the new name. I'm
+going to do that.
+
+785
+00:28:15,469 --> 00:28:18,010
+LS. I can see that this is gone,
+
+786
+00:28:18,010 --> 00:28:20,310
+and I have stations instead.
+
+787
+00:28:20,310 --> 00:28:22,589
+CP is for copy, right?
+
+788
+00:28:22,589 --> 00:28:23,929
+So I could copy stations,
+
+789
+00:28:23,929 --> 00:28:26,150
+and maybe I call
+that backup dot TXT.
+
+790
+00:28:26,150 --> 00:28:27,769
+Those are commands
+you're going to be using
+
+791
+00:28:27,769 --> 00:28:30,075
+all the time to just
+move stuff around.
+
+792
+00:28:30,075 --> 00:28:32,040
+Sometimes I might want to copy
+
+793
+00:28:32,040 --> 00:28:33,160
+something not on
+the same machine,
+
+794
+00:28:33,160 --> 00:28:35,180
+but I might want to copy
+it to a different machine.
+
+795
+00:28:35,180 --> 00:28:37,439
+Maybe I want to copy
+my homework off of
+
+796
+00:28:37,439 --> 00:28:40,680
+my virtual machine onto my
+laptop for backup purposes.
+
+797
+00:28:40,680 --> 00:28:42,380
+I'm exit out of the
+shell right now.
+
+798
+00:28:42,380 --> 00:28:44,999
+And maybe, what is a
+shortcut to get out
+
+799
+00:28:44,999 --> 00:28:48,899
+of here? Right here.
+
+800
+00:28:48,899 --> 00:28:51,380
+Control D, excellent.
+I'm out of here now.
+
+801
+00:28:51,380 --> 00:28:54,399
+And this is going to be
+a combination of SSH,
+
+802
+00:28:54,399 --> 00:28:55,919
+which we've seen and CP,
+
+803
+00:28:55,919 --> 00:28:58,280
+and the final thing
+is just called SCP.
+
+804
+00:28:58,280 --> 00:29:00,199
+I'm actually trying
+to go back to
+
+805
+00:29:00,199 --> 00:29:02,660
+that SH command. I'll do SCP.
+
+806
+00:29:02,660 --> 00:29:06,019
+And what I can do is I
+can say colon after that,
+
+807
+00:29:06,019 --> 00:29:07,925
+I can say my VM file.
+
+808
+00:29:07,925 --> 00:29:10,069
+Space, and then
+I'll say, where I
+
+809
+00:29:10,069 --> 00:29:12,069
+want it to go on
+my laptop, right?
+
+810
+00:29:12,069 --> 00:29:13,590
+What file do I want there.
+
+811
+00:29:13,590 --> 00:29:18,049
+And so on over here on
+my virtual machine,
+
+812
+00:29:18,049 --> 00:29:19,990
+it was called stations dot TXT.
+
+813
+00:29:19,990 --> 00:29:21,689
+And I have to say what
+directory it's in,
+
+814
+00:29:21,689 --> 00:29:23,569
+and I was just trying like
+in my home directory.
+
+815
+00:29:23,569 --> 00:29:24,949
+That's where I land by default.
+
+816
+00:29:24,949 --> 00:29:28,949
+And Tilda is basically a
+shortcut from my home directory.
+
+817
+00:29:28,949 --> 00:29:30,609
+So I can copy that, and I
+
+818
+00:29:30,609 --> 00:29:32,609
+can tell whatever I
+want over here, right?
+
+819
+00:29:32,609 --> 00:29:36,310
+So I can maybe call this
+my Stations dot TXT,
+
+820
+00:29:36,310 --> 00:29:38,349
+that will download it from my
+
+821
+00:29:38,349 --> 00:29:40,069
+virtual machine onto my laptop,
+
+822
+00:29:40,069 --> 00:29:41,629
+and then I can open
+up my stations,
+
+823
+00:29:41,629 --> 00:29:44,530
+dot TXT if I wanted
+and use it there.
+
+824
+00:29:44,530 --> 00:29:48,649
+All right. So let me pop back
+into my virtual machine.
+
+825
+00:29:48,649 --> 00:29:52,069
+So I could download it and I
+could view my data that way.
+
+826
+00:29:52,069 --> 00:29:54,229
+Another thing I can do is I
+can actually view it on here.
+
+827
+00:29:54,229 --> 00:29:55,770
+A lot of these
+commands are named.
+
+828
+00:29:55,770 --> 00:29:57,110
+Again, you just have to memorize
+
+829
+00:29:57,110 --> 00:29:59,130
+a bunch of stuff here at the
+beginning of the semester.
+
+830
+00:29:59,130 --> 00:30:01,850
+So CAT is a way to see
+what's inside of a file.
+
+831
+00:30:01,850 --> 00:30:03,509
+So I can say CAT stations at
+
+832
+00:30:03,509 --> 00:30:05,549
+TXT and try to dump
+what all is there.
+
+833
+00:30:05,549 --> 00:30:07,310
+That kind of took a
+while and if we're
+
+834
+00:30:07,310 --> 00:30:09,310
+actually dealing with
+like a serious data set,
+
+835
+00:30:09,310 --> 00:30:10,689
+it will take even longer.
+
+836
+00:30:10,689 --> 00:30:12,089
+So some other commands people
+
+837
+00:30:12,089 --> 00:30:14,190
+typically use are head and tail.
+
+838
+00:30:14,190 --> 00:30:16,789
+T's just the beginning
+or just the end, right?
+
+839
+00:30:16,789 --> 00:30:18,530
+So I could say head of stations.
+
+840
+00:30:18,530 --> 00:30:19,830
+By the way, when I'm typing
+
+841
+00:30:19,830 --> 00:30:21,029
+this, like, don't
+type the whole thing.
+
+842
+00:30:21,029 --> 00:30:22,770
+L type a couple of
+letters and hit tab.
+
+843
+00:30:22,770 --> 00:30:24,229
+That's going to save
+you a lot of time.
+
+844
+00:30:24,229 --> 00:30:26,110
+I could do head of stations,
+
+845
+00:30:26,110 --> 00:30:29,549
+or I could do tail of
+stations if I wanted to,
+
+846
+00:30:29,549 --> 00:30:30,829
+and I could get either like
+
+847
+00:30:30,829 --> 00:30:33,294
+the last ten or the first ten.
+
+848
+00:30:33,294 --> 00:30:34,879
+Right? So you should
+be kind of like
+
+849
+00:30:34,879 --> 00:30:36,479
+noting down like what
+these commands are.
+
+850
+00:30:36,479 --> 00:30:38,439
+And I also want you
+to be able to go and
+
+851
+00:30:38,439 --> 00:30:41,079
+learn more details about
+how these commands work.
+
+852
+00:30:41,079 --> 00:30:42,439
+Now these commands might be
+
+853
+00:30:42,439 --> 00:30:43,599
+on different versions of Linux,
+
+854
+00:30:43,599 --> 00:30:45,539
+they might be on Mac,
+maybe it's on Windows.
+
+855
+00:30:45,539 --> 00:30:46,619
+I don't know. And so one of
+
+856
+00:30:46,619 --> 00:30:47,899
+the challenges is
+when you Google it,
+
+857
+00:30:47,899 --> 00:30:49,180
+sometimes you'll see directions
+
+858
+00:30:49,180 --> 00:30:50,740
+for it that don't
+apply to your system.
+
+859
+00:30:50,740 --> 00:30:52,579
+And so it's actually really
+useful to be to look up
+
+860
+00:30:52,579 --> 00:30:54,879
+directions directly on the
+system you're working on.
+
+861
+00:30:54,879 --> 00:30:56,640
+And so one of the ways I
+could do that is I could
+
+862
+00:30:56,640 --> 00:30:59,259
+say tail dash Hell, right?
+
+863
+00:30:59,259 --> 00:31:01,079
+This is an example of
+a flag that a lot of
+
+864
+00:31:01,079 --> 00:31:02,139
+commands have that can
+
+865
+00:31:02,139 --> 00:31:03,419
+give me some more
+directions, right?
+
+866
+00:31:03,419 --> 00:31:05,204
+And I can tell me
+more how to use this.
+
+867
+00:31:05,204 --> 00:31:08,010
+And so maybe instead
+of getting ten lines,
+
+868
+00:31:08,010 --> 00:31:09,730
+maybe I only wanted
+like three lines.
+
+869
+00:31:09,730 --> 00:31:12,749
+And so can anybody just kind
+of read through this and see
+
+870
+00:31:12,749 --> 00:31:16,469
+any flags I can use to just
+output the last three lines?
+
+871
+00:31:16,469 --> 00:31:19,410
+Yeah, right here. Dash
+in. That was fast.
+
+872
+00:31:19,410 --> 00:31:20,869
+Excellent, right?
+I can do dashN,
+
+873
+00:31:20,869 --> 00:31:22,129
+and I can say three
+lines, right?
+
+874
+00:31:22,129 --> 00:31:26,609
+So I can say tail the
+stations and dash in three,
+
+875
+00:31:26,609 --> 00:31:28,849
+and I would get three
+lines or I can do
+
+876
+00:31:28,849 --> 00:31:31,809
+five lines or however many
+I want to have, right?
+
+877
+00:31:31,809 --> 00:31:33,029
+So get d red at kind
+
+878
+00:31:33,029 --> 00:31:34,309
+of looking up
+documentation like that.
+
+879
+00:31:34,309 --> 00:31:35,730
+It's going to be
+faster than Googling,
+
+880
+00:31:35,730 --> 00:31:36,789
+and it's going to
+be more accurate
+
+881
+00:31:36,789 --> 00:31:38,679
+because it's actually
+on your system.
+
+882
+00:31:38,679 --> 00:31:41,489
+Another one that I
+want you to know.
+
+883
+00:31:41,489 --> 00:31:44,870
+So N F is maybe super
+useful a semester.
+
+884
+00:31:44,870 --> 00:31:46,730
+This is called Tail
+with following.
+
+885
+00:31:46,730 --> 00:31:48,249
+So, like I said, right,
+
+886
+00:31:48,249 --> 00:31:50,129
+you might be running a
+bunch of different programs
+
+887
+00:31:50,129 --> 00:31:51,349
+and it doesn't
+make sense to have
+
+888
+00:31:51,349 --> 00:31:52,710
+all the output coming
+to the screen.
+
+889
+00:31:52,710 --> 00:31:55,369
+You may be redirecting that
+output to the various files,
+
+890
+00:31:55,369 --> 00:31:56,569
+but you might want to watch for
+
+891
+00:31:56,569 --> 00:31:58,629
+a particular process
+like what the output is.
+
+892
+00:31:58,629 --> 00:32:00,339
+And so you could look at
+
+893
+00:32:00,339 --> 00:32:02,550
+Tail of a log file.
+
+894
+00:32:02,550 --> 00:32:04,690
+But maybe that log file
+is constantly growing.
+
+895
+00:32:04,690 --> 00:32:06,589
+If I do a dash F on
+it, it'll follow it.
+
+896
+00:32:06,589 --> 00:32:07,429
+And you can see, like,
+
+897
+00:32:07,429 --> 00:32:08,909
+it's still running
+right now, right?
+
+898
+00:32:08,909 --> 00:32:10,830
+So if there's more stations
+
+899
+00:32:10,830 --> 00:32:12,130
+that are appended to this file,
+
+900
+00:32:12,130 --> 00:32:14,390
+it'll just keep showing
+those as they keep coming,
+
+901
+00:32:14,390 --> 00:32:15,929
+right? So it they'll
+run forever.
+
+902
+00:32:15,929 --> 00:32:18,229
+And it's nobody's writing
+to the file right now,
+
+903
+00:32:18,229 --> 00:32:19,450
+so it's not very interesting,
+
+904
+00:32:19,450 --> 00:32:22,889
+but I can follow that file
+if If I want to kill it,
+
+905
+00:32:22,889 --> 00:32:24,669
+I have to do Control
+C. Control C
+
+906
+00:32:24,669 --> 00:32:27,699
+kills whatever it is
+I'm trying to do.
+
+907
+00:32:27,699 --> 00:32:29,930
+Oh, right. Cool.
+
+908
+00:32:29,930 --> 00:32:33,169
+So that was files. Any
+file questions so far?
+
+909
+00:32:33,570 --> 00:32:38,250
+Fantastic. So files live
+inside of directories.
+
+910
+00:32:38,250 --> 00:32:40,070
+And so let's learn a little
+bit about directories.
+
+911
+00:32:40,070 --> 00:32:41,530
+Maybe I'll make a directory.
+
+912
+00:32:41,530 --> 00:32:44,950
+So MK for M and
+DIR for directory,
+
+913
+00:32:44,950 --> 00:32:46,909
+and I'm going to make
+one called Data.
+
+914
+00:32:46,909 --> 00:32:48,189
+So I do that, and if I do
+
+915
+00:32:48,189 --> 00:32:49,789
+LS, I can see all of these here.
+
+916
+00:32:49,789 --> 00:32:51,069
+Maybe I kind of have a hint that
+
+917
+00:32:51,069 --> 00:32:52,730
+it's a directory
+based on the color,
+
+918
+00:32:52,730 --> 00:32:57,159
+but it's not really telling
+me all I need to know. Right?
+
+919
+00:32:57,159 --> 00:32:59,499
+Like it's not necessarily
+obviously, it's a directory.
+
+920
+00:32:59,499 --> 00:33:01,579
+I need to get more
+information out of LS.
+
+921
+00:33:01,579 --> 00:33:03,340
+Let's learn a little
+bit more about LS.
+
+922
+00:33:03,340 --> 00:33:05,960
+I could do LS help,
+like we did before.
+
+923
+00:33:05,960 --> 00:33:08,819
+Another thing I could do
+is I could say, Man, LS.
+
+924
+00:33:08,819 --> 00:33:10,299
+Man stands for manual,
+
+925
+00:33:10,299 --> 00:33:12,260
+and your Linux distribution
+
+926
+00:33:12,260 --> 00:33:14,259
+comes with a manual.
+Isn't that fantastic?
+
+927
+00:33:14,259 --> 00:33:16,760
+So I could look up in the
+manual and see what LS does,
+
+928
+00:33:16,760 --> 00:33:18,520
+and I can kind of
+stroll through here.
+
+929
+00:33:18,520 --> 00:33:20,560
+And it actually has quite a lot.
+
+930
+00:33:20,560 --> 00:33:23,130
+You could spend a lot of kind
+
+931
+00:33:23,130 --> 00:33:25,170
+of time reading through this
+and getting proficient.
+
+932
+00:33:25,170 --> 00:33:28,649
+But I can see that L will give
+me a long listing format.
+
+933
+00:33:28,649 --> 00:33:31,269
+So let's see what happens
+when I go back to LS,
+
+934
+00:33:31,269 --> 00:33:34,890
+I do L. Now I see instead of
+putting these horizontally,
+
+935
+00:33:34,890 --> 00:33:36,309
+it puts them vertically,
+
+936
+00:33:36,309 --> 00:33:37,529
+and there's a whole bunch of
+
+937
+00:33:37,529 --> 00:33:39,729
+other information
+that trues with it.
+
+938
+00:33:39,729 --> 00:33:41,329
+One of the things
+that trues with
+
+939
+00:33:41,329 --> 00:33:43,529
+it are these permission strings,
+
+940
+00:33:43,529 --> 00:33:44,690
+and those kind of permissions
+
+941
+00:33:44,690 --> 00:33:46,470
+tell you what you can
+do with a resource.
+
+942
+00:33:46,470 --> 00:33:48,029
+And we're going
+to be looking and
+
+943
+00:33:48,029 --> 00:33:49,369
+learning what all
+of these things do.
+
+944
+00:33:49,369 --> 00:33:50,909
+But the very first
+character tells you
+
+945
+00:33:50,909 --> 00:33:52,789
+whether it's a directory
+or a file, right?
+
+946
+00:33:52,789 --> 00:33:55,109
+So data is a directory,
+so I have a D here.
+
+947
+00:33:55,109 --> 00:33:57,189
+These other ones where it's
+a dash are not a directory,
+
+948
+00:33:57,189 --> 00:33:59,830
+so that is kind of implying
+they're a file in that case.
+
+949
+00:33:59,830 --> 00:34:03,485
+I can kind of go through and
+read what's going on there.
+
+950
+00:34:03,485 --> 00:34:05,779
+Other flags are useful are H.
+
+951
+00:34:05,779 --> 00:34:07,459
+So this column right here is
+
+952
+00:34:07,459 --> 00:34:09,559
+telling me how many
+bytes there are.
+
+953
+00:34:09,559 --> 00:34:11,119
+And that's a little
+bit hard to read.
+
+954
+00:34:11,119 --> 00:34:12,320
+It's kind of a large number.
+
+955
+00:34:12,320 --> 00:34:14,039
+If I say H, that means do like
+
+956
+00:34:14,039 --> 00:34:16,019
+a human readable
+format, and I say, Oh,
+
+957
+00:34:16,019 --> 00:34:17,439
+this one is 11 megabytes,
+
+958
+00:34:17,439 --> 00:34:20,099
+or this one's 4 kilobytes.
+I can see it like that.
+
+959
+00:34:20,099 --> 00:34:22,059
+These are flags, and it
+depends on the tool,
+
+960
+00:34:22,059 --> 00:34:24,379
+but a lot of flags, the
+order doesn't matter, right?
+
+961
+00:34:24,379 --> 00:34:26,519
+So LH, HL, doesn't matter.
+
+962
+00:34:26,519 --> 00:34:28,720
+I can get the same output.
+
+963
+00:34:28,720 --> 00:34:30,659
+Another flag for this,
+
+964
+00:34:30,659 --> 00:34:32,139
+that is very important is A.
+
+965
+00:34:32,139 --> 00:34:35,019
+A means, show me
+everything, right?
+
+966
+00:34:35,019 --> 00:34:36,580
+I do A and there's
+a bunch more stuff.
+
+967
+00:34:36,580 --> 00:34:38,340
+The stuff that I got
+now that was missing,
+
+968
+00:34:38,340 --> 00:34:39,619
+where all these files here.
+
+969
+00:34:39,619 --> 00:34:41,160
+They all start with a period.
+
+970
+00:34:41,160 --> 00:34:43,200
+Files and directories
+that start with a period,
+
+971
+00:34:43,200 --> 00:34:45,180
+and Linux are what
+we call hidden.
+
+972
+00:34:45,180 --> 00:34:46,520
+They aren't shown by default.
+
+973
+00:34:46,520 --> 00:34:48,779
+If I want to see everything,
+including the hidden stuff,
+
+974
+00:34:48,779 --> 00:34:51,799
+I'm going to run that
+to see what is there.
+
+975
+00:34:51,799 --> 00:34:53,559
+What happens if I go inside of
+
+976
+00:34:53,559 --> 00:34:56,199
+the stata directory and I
+run that command again.
+
+977
+00:34:56,199 --> 00:34:57,719
+I actually see that
+even though I didn't
+
+978
+00:34:57,719 --> 00:34:59,440
+put anything inside of
+the stata directory,
+
+979
+00:34:59,440 --> 00:35:00,999
+there are two things
+that are already here,
+
+980
+00:35:00,999 --> 00:35:02,839
+and I almost don't even
+really think of these as
+
+981
+00:35:02,839 --> 00:35:05,000
+real things that are existing,
+
+982
+00:35:05,000 --> 00:35:06,699
+even though they are, because
+
+983
+00:35:06,699 --> 00:35:08,939
+I almost think of them
+as like aliases, right?
+
+984
+00:35:08,939 --> 00:35:10,700
+So the dot is like an alias
+
+985
+00:35:10,700 --> 00:35:12,699
+for the directory I'm
+currently in, right?
+
+986
+00:35:12,699 --> 00:35:13,999
+So if I do LS dot,
+
+987
+00:35:13,999 --> 00:35:15,680
+that's the same as just LS.
+
+988
+00:35:15,680 --> 00:35:17,780
+And dot dot means one directory,
+
+989
+00:35:17,780 --> 00:35:19,279
+right? So let me just see.
+
+990
+00:35:19,279 --> 00:35:20,739
+This is the directory
+I'm in now,
+
+991
+00:35:20,739 --> 00:35:25,399
+cd dot dot, This is the directory
+I'm in now, cd dot dot.
+
+992
+00:35:25,399 --> 00:35:27,499
+This is the directory
+I'm in now.
+
+993
+00:35:27,499 --> 00:35:29,159
+You actually see
+that that dot dot
+
+994
+00:35:29,159 --> 00:35:30,499
+was a relative path, right?
+
+995
+00:35:30,499 --> 00:35:31,819
+If I say cd dot dot,
+
+996
+00:35:31,819 --> 00:35:34,319
+where it ends up really
+depends on where I started.
+
+997
+00:35:34,319 --> 00:35:36,140
+It was relative to
+where I started.
+
+998
+00:35:36,140 --> 00:35:37,959
+We can use relative paths or
+
+999
+00:35:37,959 --> 00:35:39,659
+absolute paths in
+general, right?
+
+1000
+00:35:39,659 --> 00:35:42,499
+So I could do CD back to TRH.
+
+1001
+00:35:42,499 --> 00:35:44,459
+Actually, let me
+just see this here.
+
+1002
+00:35:44,459 --> 00:35:46,300
+I could say CD back to TRH,
+
+1003
+00:35:46,300 --> 00:35:48,480
+which is my users directory,
+
+1004
+00:35:48,480 --> 00:35:52,579
+or I could say CD home TRH.
+
+1005
+00:35:52,579 --> 00:35:54,020
+So this one was a relative,
+
+1006
+00:35:54,020 --> 00:35:55,359
+I was relative to where I was.
+
+1007
+00:35:55,359 --> 00:35:56,739
+This one is an absolute.
+
+1008
+00:35:56,739 --> 00:35:58,959
+It tells me from the top
+directory all the way down,
+
+1009
+00:35:58,959 --> 00:36:01,339
+where exactly am I going?
+
+1010
+00:36:01,339 --> 00:36:03,720
+You might see that under
+this home directory,
+
+1011
+00:36:03,720 --> 00:36:06,100
+there's actually things
+for a few different users.
+
+1012
+00:36:06,100 --> 00:36:09,339
+And I kind of actually did that.
+
+1013
+00:36:09,339 --> 00:36:11,099
+The common thing
+is that a student
+
+1014
+00:36:11,099 --> 00:36:12,259
+will come to me panicked
+and they'll be like,
+
+1015
+00:36:12,259 --> 00:36:14,300
+Oh, I lost all my homework.
+
+1016
+00:36:14,300 --> 00:36:16,420
+And the most common reason
+is they switch laptops
+
+1017
+00:36:16,420 --> 00:36:17,339
+or something like
+that or somehow
+
+1018
+00:36:17,339 --> 00:36:18,539
+they end up with
+a different user,
+
+1019
+00:36:18,539 --> 00:36:20,959
+and the new user doesn't
+have any files, right?
+
+1020
+00:36:20,959 --> 00:36:22,919
+So that happens. Well, talk
+
+1021
+00:36:22,919 --> 00:36:24,359
+to me if you want,
+but don't panic.
+
+1022
+00:36:24,359 --> 00:36:26,159
+L check here first.
+There's probably under
+
+1023
+00:36:26,159 --> 00:36:28,080
+a different home
+users directory.
+
+1024
+00:36:28,080 --> 00:36:30,019
+Yeah, question right here.
+
+1025
+00:36:32,270 --> 00:36:34,629
+Oh, that's an
+excellent question.
+
+1026
+00:36:34,629 --> 00:36:37,349
+What's the difference between
+this one and this one?
+
+1027
+00:36:37,349 --> 00:36:39,169
+So I'm an EMAC user,
+
+1028
+00:36:39,169 --> 00:36:41,829
+and EMAC will automatically
+create backups for me,
+
+1029
+00:36:41,829 --> 00:36:44,549
+and backups, it just
+puts a tilt at then.
+
+1030
+00:36:44,549 --> 00:36:45,929
+So it's like an E MAC thing, and
+
+1031
+00:36:45,929 --> 00:36:48,550
+other programs might do
+all kinds of backups.
+
+1032
+00:36:48,550 --> 00:36:49,709
+And I should actually delete
+
+1033
+00:36:49,709 --> 00:36:51,909
+those because I was
+going to create those.
+
+1034
+00:36:51,909 --> 00:36:54,749
+Again, thank you for
+pointing that out.
+
+1035
+00:36:54,749 --> 00:36:56,970
+That was from the
+morning lecture.
+
+1036
+00:36:56,970 --> 00:36:58,329
+Yeah. Anyway, it's
+just a backup,
+
+1037
+00:36:58,329 --> 00:37:00,310
+and you'll see that if
+you're an Emax user.
+
+1038
+00:37:00,310 --> 00:37:03,069
+Yeah, Drew great question.
+Other questions people have.
+
+1039
+00:37:03,069 --> 00:37:04,689
+Again, anybody should feel
+
+1040
+00:37:04,689 --> 00:37:06,149
+free to just pop up
+a hand at any time.
+
+1041
+00:37:06,149 --> 00:37:08,030
+I want to make sure
+that everybody's
+
+1042
+00:37:08,030 --> 00:37:11,590
+following along and getting
+their questions answered.
+
+1043
+00:37:11,590 --> 00:37:16,849
+All right. Fantastic. So
+let me come back here.
+
+1044
+00:37:16,849 --> 00:37:21,129
+And what I want to do
+now is I want to try
+
+1045
+00:37:21,129 --> 00:37:22,989
+creating a file here
+
+1046
+00:37:22,989 --> 00:37:25,169
+because we're going a learn
+about some permission stuff,
+
+1047
+00:37:25,169 --> 00:37:27,310
+and when I try to
+create test at TXT,
+
+1048
+00:37:27,310 --> 00:37:28,610
+which I actually just deleted,
+
+1049
+00:37:28,610 --> 00:37:30,330
+it says, permission denied.
+
+1050
+00:37:30,330 --> 00:37:32,670
+I have permission to create
+stuff in my home directory.
+
+1051
+00:37:32,670 --> 00:37:35,509
+I don't have permission
+to create stuff here.
+
+1052
+00:37:35,509 --> 00:37:36,969
+So I could do, like,
+
+1053
+00:37:36,969 --> 00:37:39,664
+a pseudo if I wanted to,
+and that would work.
+
+1054
+00:37:39,664 --> 00:37:41,859
+Or what I could do is I
+
+1055
+00:37:41,859 --> 00:37:44,079
+could try to switch to
+the root user in general.
+
+1056
+00:37:44,079 --> 00:37:47,439
+If I just say SU, that's to
+switch to a different user.
+
+1057
+00:37:47,439 --> 00:37:50,159
+And so it's asking me, by
+default, it goes to the root.
+
+1058
+00:37:50,159 --> 00:37:51,699
+It's asking me what is the
+password for the root?
+
+1059
+00:37:51,699 --> 00:37:52,859
+I actually never set that, so
+
+1060
+00:37:52,859 --> 00:37:54,479
+there's no password
+that's going to work.
+
+1061
+00:37:54,479 --> 00:37:56,359
+I'm going to do control
+C. And so there's
+
+1062
+00:37:56,359 --> 00:37:57,839
+this weird pattern
+you'll sometimes see
+
+1063
+00:37:57,839 --> 00:37:59,639
+it's pudo pseudo Su.
+
+1064
+00:37:59,639 --> 00:38:01,659
+So pseudo means do
+one thing as root,
+
+1065
+00:38:01,659 --> 00:38:04,119
+and that one thing I'm going
+to do is switch to the root.
+
+1066
+00:38:04,119 --> 00:38:06,339
+If I'm switching to
+the root as root,
+
+1067
+00:38:06,339 --> 00:38:07,739
+I don't need to pass
+word. So I do that.
+
+1068
+00:38:07,739 --> 00:38:09,979
+Now you actually see I'm
+running as the root user,
+
+1069
+00:38:09,979 --> 00:38:12,639
+and now I can do whatever
+I want as a root user.
+
+1070
+00:38:12,639 --> 00:38:15,680
+So I may say, Touch test at TXT.
+
+1071
+00:38:15,680 --> 00:38:18,119
+Then I have that file here.
+
+1072
+00:38:18,119 --> 00:38:20,399
+And then maybe
+I'll just edit it.
+
+1073
+00:38:20,399 --> 00:38:21,940
+I'll say test at TXT,
+
+1074
+00:38:21,940 --> 00:38:25,319
+and I'll say hello
+from root file.
+
+1075
+00:38:25,319 --> 00:38:27,260
+A fantastic.
+
+1076
+00:38:27,260 --> 00:38:29,039
+And if I want to, I can
+see what's inside of
+
+1077
+00:38:29,039 --> 00:38:31,759
+it. All that works.
+
+1078
+00:38:31,759 --> 00:38:33,939
+If I do control D, I'm
+may pop out of the root
+
+1079
+00:38:33,939 --> 00:38:36,399
+and back to my regular user.
+I'm going to try this again.
+
+1080
+00:38:36,399 --> 00:38:38,314
+Can I see what's
+inside of this file?
+
+1081
+00:38:38,314 --> 00:38:40,329
+And kind of surprisingly I can.
+
+1082
+00:38:40,329 --> 00:38:43,569
+I can see the root users
+data in some cases, right?
+
+1083
+00:38:43,569 --> 00:38:45,590
+So why is that? We have
+to dig in and actually
+
+1084
+00:38:45,590 --> 00:38:48,309
+understand how Linux
+file permissions work.
+
+1085
+00:38:48,309 --> 00:38:51,290
+And so I'm do is
+I'm may do an LSL.
+
+1086
+00:38:51,290 --> 00:38:53,550
+I'm going to look at
+this test dot TXT.
+
+1087
+00:38:53,550 --> 00:38:56,189
+And I'm to look at these
+ten things over here.
+
+1088
+00:38:56,189 --> 00:38:58,070
+There's always ten
+characters at the beginning.
+
+1089
+00:38:58,070 --> 00:38:59,409
+We talked about the first one.
+
+1090
+00:38:59,409 --> 00:39:01,389
+That's whether it's a
+directory or a file.
+
+1091
+00:39:01,389 --> 00:39:03,309
+And then there's nine here.
+
+1092
+00:39:03,309 --> 00:39:04,969
+And the nine comes
+in groups of three.
+
+1093
+00:39:04,969 --> 00:39:07,409
+It's RW X, RW X,
+
+1094
+00:39:07,409 --> 00:39:11,189
+RW X, that stands for read
+the file, write the file.
+
+1095
+00:39:11,189 --> 00:39:13,429
+Execute the file. Execute means
+
+1096
+00:39:13,429 --> 00:39:14,769
+it's like running
+like a program.
+
+1097
+00:39:14,769 --> 00:39:16,090
+Some files are programs,
+
+1098
+00:39:16,090 --> 00:39:17,875
+So files are not programs.
+
+1099
+00:39:17,875 --> 00:39:21,240
+Okay? And so why do I have
+to have it three times?
+
+1100
+00:39:21,240 --> 00:39:24,199
+Because it depends on who I am.
+
+1101
+00:39:24,199 --> 00:39:27,979
+The first three are for
+the owner of the file.
+
+1102
+00:39:27,979 --> 00:39:31,379
+Whoever owns this file
+can read it and write it,
+
+1103
+00:39:31,379 --> 00:39:32,959
+but they cannot execute it.
+
+1104
+00:39:32,959 --> 00:39:35,579
+They do not have
+permissions to execute it.
+
+1105
+00:39:35,579 --> 00:39:38,699
+Who owns the file? That's
+this first column here.
+
+1106
+00:39:38,699 --> 00:39:40,360
+The root user owns
+
+1107
+00:39:40,360 --> 00:39:42,834
+the file and they can
+read it or write it.
+
+1108
+00:39:42,834 --> 00:39:46,129
+Okay. The next one is
+for the group, right?
+
+1109
+00:39:46,129 --> 00:39:48,649
+So the group for this file,
+
+1110
+00:39:48,649 --> 00:39:50,569
+anybody in that group can
+
+1111
+00:39:50,569 --> 00:39:52,410
+just read the file. That's
+a little bit confusing.
+
+1112
+00:39:52,410 --> 00:39:55,250
+That's the second element
+that there's a root group,
+
+1113
+00:39:55,250 --> 00:39:57,749
+which I'm in, and then
+there's a root user,
+
+1114
+00:39:57,749 --> 00:39:59,629
+which I am not, right?
+
+1115
+00:39:59,629 --> 00:40:02,949
+And so that person can read it.
+
+1116
+00:40:02,949 --> 00:40:05,649
+And then finally, this
+last one stands for
+
+1117
+00:40:05,649 --> 00:40:09,369
+other users who are not in
+like any relevant group,
+
+1118
+00:40:09,369 --> 00:40:10,789
+and they can just read the file.
+
+1119
+00:40:10,789 --> 00:40:12,369
+And that means I'm another user,
+
+1120
+00:40:12,369 --> 00:40:14,649
+and so I can read
+that file just fine.
+
+1121
+00:40:14,649 --> 00:40:17,109
+Okay? So what if I
+want to change this?
+
+1122
+00:40:17,109 --> 00:40:20,149
+What I could do is I
+could use a CH mod.
+
+1123
+00:40:20,149 --> 00:40:21,669
+And CH Mod works like this.
+
+1124
+00:40:21,669 --> 00:40:23,189
+I say, who is it?
+
+1125
+00:40:23,189 --> 00:40:26,269
+And then what do I want
+to change about them?
+
+1126
+00:40:26,269 --> 00:40:28,729
+So, and then I finally have
+to say what the file is.
+
+1127
+00:40:28,729 --> 00:40:30,249
+I'll say test TXT.
+
+1128
+00:40:30,249 --> 00:40:35,030
+So who, I'm going to
+say that's for others.
+
+1129
+00:40:35,030 --> 00:40:36,689
+And what am I interested in?
+
+1130
+00:40:36,689 --> 00:40:40,009
+I'm interested in being
+able to read the file.
+
+1131
+00:40:40,009 --> 00:40:42,010
+So I'm going to do that.
+And that's not permitted.
+
+1132
+00:40:42,010 --> 00:40:43,309
+I'm going to do a pseudo on it.
+
+1133
+00:40:43,309 --> 00:40:44,989
+I'm going to do LS again.
+
+1134
+00:40:44,989 --> 00:40:46,449
+And that changed nothing, right?
+
+1135
+00:40:46,449 --> 00:40:48,529
+I mean, I said, let
+other people read it.
+
+1136
+00:40:48,529 --> 00:40:49,749
+They already could. It doesn't
+
+1137
+00:40:49,749 --> 00:40:51,249
+hurt to do it more
+than one time.
+
+1138
+00:40:51,249 --> 00:40:53,009
+If I want to take it
+away, then that means
+
+1139
+00:40:53,009 --> 00:40:55,130
+instead of doing plus,
+I'll do a minus.
+
+1140
+00:40:55,130 --> 00:40:58,194
+So I'll say other users can
+no longer read this file.
+
+1141
+00:40:58,194 --> 00:41:00,719
+I'll do that. I see
+that's been taken away.
+
+1142
+00:41:00,719 --> 00:41:02,999
+And so now as a normal user,
+
+1143
+00:41:02,999 --> 00:41:04,359
+If I try to look at it, I can
+
+1144
+00:41:04,359 --> 00:41:06,899
+have permission denied, right?
+
+1145
+00:41:06,899 --> 00:41:11,040
+If I go back to this and
+I give it back to myself,
+
+1146
+00:41:11,040 --> 00:41:14,119
+then then I can
+peek on it again,
+
+1147
+00:41:14,119 --> 00:41:15,479
+and I can see what's
+in side of it.
+
+1148
+00:41:15,479 --> 00:41:17,099
+Right? So you have to
+change that. Most often,
+
+1149
+00:41:17,099 --> 00:41:18,279
+you'll be change
+because you might
+
+1150
+00:41:18,279 --> 00:41:19,639
+be writing some little program,
+
+1151
+00:41:19,639 --> 00:41:21,039
+and you want to
+make it executable,
+
+1152
+00:41:21,039 --> 00:41:22,899
+so I can run it like
+a program. Right?
+
+1153
+00:41:22,899 --> 00:41:24,859
+Even if I'm the root user,
+
+1154
+00:41:24,859 --> 00:41:26,679
+I will get permission denied.
+
+1155
+00:41:26,679 --> 00:41:31,899
+You kind of think the
+root Why did it do that?
+
+1156
+00:41:32,380 --> 00:41:38,309
+I'm There we go.
+
+1157
+00:41:38,309 --> 00:41:39,969
+I'll get a permission
+tonight if I try to run it,
+
+1158
+00:41:39,969 --> 00:41:41,169
+eventhough I'm the
+rode user, well,
+
+1159
+00:41:41,169 --> 00:41:42,470
+if I don't haven't given myself
+
+1160
+00:41:42,470 --> 00:41:44,429
+executable permissions,
+I can't run it.
+
+1161
+00:41:44,429 --> 00:41:45,950
+I can give myself
+those permissions,
+
+1162
+00:41:45,950 --> 00:41:47,390
+but that doesn't mean
+I can do it unless
+
+1163
+00:41:47,390 --> 00:41:50,370
+I choose to give myself
+those permissions.
+
+1164
+00:41:50,370 --> 00:41:57,430
+Oh, right. Any questions
+about Linux permissions?
+
+1165
+00:41:57,430 --> 00:42:05,039
+Yeah, over here. Yeah. How
+would I change the group?
+
+1166
+00:42:05,039 --> 00:42:08,879
+That's a good question.
+Is it like change group?
+
+1167
+00:42:08,879 --> 00:42:10,139
+I don't know. It's
+not something I do
+
+1168
+00:42:10,139 --> 00:42:11,519
+often. I'd have to look at it.
+
+1169
+00:42:11,519 --> 00:42:15,339
+I wonder if this would change
+the group for that file.
+
+1170
+00:42:15,339 --> 00:42:18,620
+Change the group of that staff.
+
+1171
+00:42:18,620 --> 00:42:24,340
+I wonder if I could change
+try change the group of test.
+
+1172
+00:42:24,340 --> 00:42:25,779
+Like I have a docker group
+
+1173
+00:42:25,779 --> 00:42:27,939
+on here. I wonder
+if that would work.
+
+1174
+00:42:28,020 --> 00:42:31,100
+Maybe I have to just switch.
+
+1175
+00:42:35,080 --> 00:42:37,219
+Alright. So there we can do it.
+
+1176
+00:42:37,219 --> 00:42:39,139
+So it's just CH GRP.
+
+1177
+00:42:39,139 --> 00:42:42,319
+Yep. Yeah. Thanks for asking
+and I learned myself, too.
+
+1178
+00:42:42,319 --> 00:42:43,679
+Yeah, other questions people
+
+1179
+00:42:43,679 --> 00:42:46,199
+have. The little
+shortcut I did there.
+
+1180
+00:42:46,199 --> 00:42:47,999
+I typed CH. I hit
+like Tab tab tab,
+
+1181
+00:42:47,999 --> 00:42:50,239
+and then it showed me the
+commands that start with that.
+
+1182
+00:42:50,239 --> 00:42:52,619
+I thought, Oh, say,
+change Mod, change group.
+
+1183
+00:42:52,619 --> 00:42:54,719
+All these things are related,
+and you can just learn
+
+1184
+00:42:54,719 --> 00:42:55,879
+by poking around in
+
+1185
+00:42:55,879 --> 00:42:57,939
+that way and seeing what
+is available to you.
+
+1186
+00:42:57,939 --> 00:43:01,079
+Alright. Cool. So what
+I want to do now is see
+
+1187
+00:43:01,079 --> 00:43:03,939
+how we can actually write a
+program and deploy it, right?
+
+1188
+00:43:03,939 --> 00:43:05,079
+So I want to be, run it.
+
+1189
+00:43:05,079 --> 00:43:06,999
+I need to make sure all
+the permissions are right.
+
+1190
+00:43:06,999 --> 00:43:10,044
+I wanted to work regardless
+of what directory I'm in.
+
+1191
+00:43:10,044 --> 00:43:12,669
+And so I'm going to
+pop out of here.
+
+1192
+00:43:12,669 --> 00:43:14,750
+I'm going to go back
+to my home directory.
+
+1193
+00:43:14,750 --> 00:43:17,289
+And what I want to do
+is I want to be able to
+
+1194
+00:43:17,289 --> 00:43:19,849
+run as a Python three program.
+
+1195
+00:43:19,849 --> 00:43:21,469
+Right? I'm may look
+at Python three.
+
+1196
+00:43:21,469 --> 00:43:23,229
+I can run stuff in there.
+
+1197
+00:43:23,229 --> 00:43:24,829
+I can say control
+D when I'm done.
+
+1198
+00:43:24,829 --> 00:43:27,629
+I want to make a simple
+little Python three program.
+
+1199
+00:43:27,629 --> 00:43:31,150
+And what I'm trying to
+do is it is tra to count
+
+1200
+00:43:31,150 --> 00:43:33,129
+how many stations there are
+
+1201
+00:43:33,129 --> 00:43:36,229
+in my stations file over here.
+
+1202
+00:43:36,229 --> 00:43:40,170
+Oh, I'm going to move all
+my TXT stuff to that data.
+
+1203
+00:43:40,170 --> 00:43:42,869
+All right? So let me
+just say look at data,
+
+1204
+00:43:42,869 --> 00:43:45,370
+and then stations at TXT.
+
+1205
+00:43:45,490 --> 00:43:47,649
+I want to write a
+little program that's
+
+1206
+00:43:47,649 --> 00:43:48,849
+sin count how many
+things are there.
+
+1207
+00:43:48,849 --> 00:43:49,829
+I'm going to show you how we can
+
+1208
+00:43:49,829 --> 00:43:51,129
+then deploy this program.
+
+1209
+00:43:51,129 --> 00:43:51,549
+All right.
+
+1210
+00:43:51,549 --> 00:43:54,209
+So I'm going to make a new
+program called count dot pi.
+
+1211
+00:43:54,209 --> 00:43:57,729
+And what I'll do is I'll
+say the count equals zero,
+
+1212
+00:43:57,729 --> 00:43:59,569
+and then I want to loop
+over all the lines in
+
+1213
+00:43:59,569 --> 00:44:01,749
+that file. So I will open it.
+
+1214
+00:44:01,749 --> 00:44:06,695
+I'll say with open
+data stations dot txt.
+
+1215
+00:44:06,695 --> 00:44:08,819
+I'll open that as F,
+
+1216
+00:44:08,819 --> 00:44:12,199
+and then I can just loop over
+it for line and F. I can
+
+1217
+00:44:12,199 --> 00:44:16,059
+just say count plus equals
+one, and then what?
+
+1218
+00:44:16,059 --> 00:44:18,579
+Then I can just print
+off what that count is.
+
+1219
+00:44:18,579 --> 00:44:22,799
+Just have a simple
+little Python program.
+
+1220
+00:44:22,799 --> 00:44:25,359
+And let me just exit out of
+here and see what it does.
+
+1221
+00:44:25,359 --> 00:44:28,759
+So if I want to, I can say
+Python three count Pi,
+
+1222
+00:44:28,759 --> 00:44:29,879
+and it runs, and it counts
+
+1223
+00:44:29,879 --> 00:44:33,179
+how many lines are in that
+station's file, right?
+
+1224
+00:44:33,179 --> 00:44:35,299
+So what I want to do is
+I want to be able to run
+
+1225
+00:44:35,299 --> 00:44:38,560
+this count Pi program like
+anywhere on my system,
+
+1226
+00:44:38,560 --> 00:44:40,300
+and I don't want to
+have to say Python
+
+1227
+00:44:40,300 --> 00:44:43,299
+three in front of it. All right.
+
+1228
+00:44:43,299 --> 00:44:44,659
+So let's try that. So first,
+
+1229
+00:44:44,659 --> 00:44:47,359
+I'm going to try to say
+count dot Pi like that,
+
+1230
+00:44:47,359 --> 00:44:49,639
+and it's saying that
+it's not found.
+
+1231
+00:44:49,639 --> 00:44:51,919
+Where I come back to
+that. Help it find
+
+1232
+00:44:51,919 --> 00:44:54,240
+M say very explicitly,
+it's in this directory.
+
+1233
+00:44:54,240 --> 00:44:55,859
+So now I know you can find it,
+
+1234
+00:44:55,859 --> 00:44:58,319
+and I can say count dot Pi.
+
+1235
+00:44:58,319 --> 00:45:00,220
+Now it's saying
+permission denied.
+
+1236
+00:45:00,220 --> 00:45:01,679
+I don't have permission
+to run that.
+
+1237
+00:45:01,679 --> 00:45:04,679
+Why do I not have permission
+to run it? Let me check.
+
+1238
+00:45:04,679 --> 00:45:07,519
+M say LL, and I can see,
+
+1239
+00:45:07,519 --> 00:45:10,159
+a, nobody has permissions on it.
+
+1240
+00:45:10,159 --> 00:45:12,999
+Nobody can execute
+that file, right?
+
+1241
+00:45:12,999 --> 00:45:15,419
+So let me make it executable.
+
+1242
+00:45:15,419 --> 00:45:18,039
+So I'm going to say CH Mod,
+
+1243
+00:45:18,039 --> 00:45:20,879
+and then I'm going to say
+
+1244
+00:45:20,879 --> 00:45:25,429
+something and then
+I'm may say count Pi.
+
+1245
+00:45:25,429 --> 00:45:27,929
+Any thoughts on what I might
+
+1246
+00:45:27,929 --> 00:45:29,889
+put here to make it executable.
+
+1247
+00:45:29,889 --> 00:45:32,850
+Maybe for my user or for
+anybody, you can decide.
+
+1248
+00:45:32,850 --> 00:45:39,169
+Yeah, go ahead. Let's try
+plus x. I'm going I do that.
+
+1249
+00:45:39,169 --> 00:45:42,529
+There we go. Now other
+users can execute this.
+
+1250
+00:45:42,529 --> 00:45:44,809
+Let's try executing it.
+
+1251
+00:45:45,490 --> 00:45:47,689
+And what do we get?
+
+1252
+00:45:47,689 --> 00:45:49,249
+I guess before we got something
+
+1253
+00:45:49,249 --> 00:45:51,289
+about permission denied
+when we tried to do it,
+
+1254
+00:45:51,289 --> 00:45:52,690
+it's always good to
+pay close attention
+
+1255
+00:45:52,690 --> 00:45:54,029
+to those errors because
+if you try stuff,
+
+1256
+00:45:54,029 --> 00:45:55,210
+sometimes you're
+making progress,
+
+1257
+00:45:55,210 --> 00:45:56,489
+but you're getting
+a different error.
+
+1258
+00:45:56,489 --> 00:45:59,149
+Different error is often
+progress. I may run this.
+
+1259
+00:45:59,149 --> 00:46:02,610
+And well, that's
+kind of interesting.
+
+1260
+00:46:02,610 --> 00:46:04,509
+I wonder if it's like
+looking at the owner for it.
+
+1261
+00:46:04,509 --> 00:46:08,179
+Let me try The CH mod again.
+
+1262
+00:46:08,179 --> 00:46:10,360
+I'm going to say
+A for everybody.
+
+1263
+00:46:10,360 --> 00:46:12,479
+I can do it. And then let me
+take a look at that again.
+
+1264
+00:46:12,479 --> 00:46:13,619
+I actually thought that
+was during to work.
+
+1265
+00:46:13,619 --> 00:46:15,440
+I was a little
+surprised that doesn't.
+
+1266
+00:46:15,440 --> 00:46:17,660
+Maybe it's just like only
+looks at for me particularly
+
+1267
+00:46:17,660 --> 00:46:20,319
+instead of checking for others
+first. And I can do that.
+
+1268
+00:46:20,319 --> 00:46:22,019
+And now I actually get
+a different error.
+
+1269
+00:46:22,019 --> 00:46:24,499
+It's not permission denied,
+but it's like, Well,
+
+1270
+00:46:24,499 --> 00:46:25,919
+I can run this thing,
+but I don't even know
+
+1271
+00:46:25,919 --> 00:46:27,679
+what to expect in
+there. What's going on?
+
+1272
+00:46:27,679 --> 00:46:29,680
+Now? Well, Linux doesn't
+
+1273
+00:46:29,680 --> 00:46:31,560
+know what kind of file
+this is. Is it Python?
+
+1274
+00:46:31,560 --> 00:46:33,779
+Is it PHP? Is it
+Java? What is it?
+
+1275
+00:46:33,779 --> 00:46:36,949
+And so it's assuming that
+it's a shell stripped, okay?
+
+1276
+00:46:36,949 --> 00:46:39,739
+That's my problem. And so
+I need to tell it this
+
+1277
+00:46:39,739 --> 00:46:43,079
+is a Python program
+specifically, right?
+
+1278
+00:46:43,079 --> 00:46:45,759
+Not just some other
+kind of random program.
+
+1279
+00:46:45,759 --> 00:46:48,520
+I have to run this
+program with Python
+
+1280
+00:46:48,520 --> 00:46:52,179
+like this with the Python three.
+
+1281
+00:46:52,179 --> 00:46:53,919
+And what I have to
+do is I figure out
+
+1282
+00:46:53,919 --> 00:46:55,899
+where is Python three.
+
+1283
+00:46:55,899 --> 00:46:57,199
+So this which command is super
+
+1284
+00:46:57,199 --> 00:46:58,299
+useful in your deploying suf
+
+1285
+00:46:58,299 --> 00:47:00,960
+because it shows you where
+it's installed on your system.
+
+1286
+00:47:00,960 --> 00:47:02,459
+And so Python three on
+
+1287
+00:47:02,459 --> 00:47:05,619
+my system is at this
+location right here.
+
+1288
+00:47:05,619 --> 00:47:08,129
+I'm going to grab that. And I'm
+
+1289
+00:47:08,129 --> 00:47:10,489
+going to come back
+to count of Pi,
+
+1290
+00:47:10,489 --> 00:47:11,809
+and I'm going to
+put something at
+
+1291
+00:47:11,809 --> 00:47:13,349
+the top called a Shabang line.
+
+1292
+00:47:13,349 --> 00:47:14,949
+And the Shabang
+line it starts like
+
+1293
+00:47:14,949 --> 00:47:16,949
+a comment explanation
+mark, and then I say,
+
+1294
+00:47:16,949 --> 00:47:18,729
+this is the program
+that should be
+
+1295
+00:47:18,729 --> 00:47:21,009
+used to run the
+following program.
+
+1296
+00:47:21,009 --> 00:47:26,539
+Right? I'm going to
+do this. All right.
+
+1297
+00:47:26,539 --> 00:47:29,539
+And now I ought to be
+able to say count dot Pi,
+
+1298
+00:47:29,539 --> 00:47:32,559
+and it works just fine, right?
+
+1299
+00:47:32,559 --> 00:47:34,640
+I can run it like that without
+
+1300
+00:47:34,640 --> 00:47:35,899
+saying Python in front of it.
+
+1301
+00:47:35,899 --> 00:47:37,439
+It's executable, and it
+
+1302
+00:47:37,439 --> 00:47:40,039
+antains information internally
+about how to run it.
+
+1303
+00:47:40,039 --> 00:47:41,679
+Now, if I really
+wanted to deploy this,
+
+1304
+00:47:41,679 --> 00:47:43,499
+I'd probably want to be able
+to run this anywhere, right?
+
+1305
+00:47:43,499 --> 00:47:45,440
+So if I go to like a
+different directory,
+
+1306
+00:47:45,440 --> 00:47:49,279
+like I should be able do
+count Pi anywhere, right?
+
+1307
+00:47:49,279 --> 00:47:51,539
+And so I have to figure
+out how to install it.
+
+1308
+00:47:51,539 --> 00:47:53,219
+And how do I install it?
+
+1309
+00:47:53,219 --> 00:47:56,510
+Well, If I run
+something like LS,
+
+1310
+00:47:56,510 --> 00:48:01,270
+that works fine, and LS is
+a program in this location.
+
+1311
+00:48:01,270 --> 00:48:02,669
+So there's certain locations on
+
+1312
+00:48:02,669 --> 00:48:05,430
+my computer where it
+will look for programs.
+
+1313
+00:48:05,430 --> 00:48:07,209
+And if it's not one of
+those, then I have to do
+
+1314
+00:48:07,209 --> 00:48:09,509
+the dot slash and tell
+it exactly where it is.
+
+1315
+00:48:09,509 --> 00:48:12,189
+And what I want to do is I
+want to move my program to one
+
+1316
+00:48:12,189 --> 00:48:14,750
+of these special
+directories where it looks.
+
+1317
+00:48:14,750 --> 00:48:16,590
+And that's defined
+by something called
+
+1318
+00:48:16,590 --> 00:48:18,909
+a path variable.
+So I do echo path.
+
+1319
+00:48:18,909 --> 00:48:21,850
+And this is actually a whole
+bunch of different paths,
+
+1320
+00:48:21,850 --> 00:48:24,350
+and they're separated by colons.
+
+1321
+00:48:24,350 --> 00:48:26,489
+This is a place that look, this
+
+1322
+00:48:26,489 --> 00:48:28,909
+is a place that'll look,
+so on and so forth.
+
+1323
+00:48:28,909 --> 00:48:34,589
+Maybe what I'll do is I'll
+move Pi, into one of these.
+
+1324
+00:48:34,589 --> 00:48:37,109
+Maybe I'll choose
+this one right here.
+
+1325
+00:48:37,630 --> 00:48:40,329
+And let's try that.
+
+1326
+00:48:40,329 --> 00:48:41,789
+And I don't have
+permission to put it there
+
+1327
+00:48:41,789 --> 00:48:43,350
+because I'm really kind of
+installing it for everybody.
+
+1328
+00:48:43,350 --> 00:48:44,869
+I'll do a pseudo for it.
+
+1329
+00:48:44,869 --> 00:48:48,209
+And now I can just say Tount
+top Pi, and it will run it.
+
+1330
+00:48:48,209 --> 00:48:50,230
+If it's not here anymore.
+
+1331
+00:48:50,230 --> 00:48:51,569
+So if I say which on it,
+
+1332
+00:48:51,569 --> 00:48:53,609
+if I say which on Count top Pi,
+
+1333
+00:48:53,609 --> 00:48:55,629
+and I can see there it
+is. These little tools.
+
+1334
+00:48:55,629 --> 00:48:57,069
+I kind of like
+looking at the path,
+
+1335
+00:48:57,069 --> 00:48:58,715
+running the which command.
+
+1336
+00:48:58,715 --> 00:49:01,559
+Change the permissions on
+stuff, adding a haban line.
+
+1337
+00:49:01,559 --> 00:49:03,700
+All those things are going
+to help you install stuff
+
+1338
+00:49:03,700 --> 00:49:06,800
+somewhere and make it
+generally available.
+
+1339
+00:49:06,800 --> 00:49:09,199
+You know, if I come up
+here, I can do it, too.
+
+1340
+00:49:09,199 --> 00:49:11,959
+It'll crash because I
+don't have my local file,
+
+1341
+00:49:11,959 --> 00:49:13,179
+which is maybe not a big deal.
+
+1342
+00:49:13,179 --> 00:49:15,919
+I could fix that other ways,
+but I could have it there.
+
+1343
+00:49:15,919 --> 00:49:19,339
+On Linux, file extensions
+are just for the human.
+
+1344
+00:49:19,339 --> 00:49:20,499
+They just are kind of a way of
+
+1345
+00:49:20,499 --> 00:49:21,919
+telling you what
+is probably there,
+
+1346
+00:49:21,919 --> 00:49:24,479
+but it doesn't actually
+have any meaning to it.
+
+1347
+00:49:24,479 --> 00:49:26,259
+So if I want to, I can move
+
+1348
+00:49:26,259 --> 00:49:30,999
+this user local
+Ben count dot Pi.
+
+1349
+00:49:30,999 --> 00:49:33,279
+And I could call this
+
+1350
+00:49:33,279 --> 00:49:36,179
+like something like Count
+demo, if I wanted to.
+
+1351
+00:49:36,179 --> 00:49:38,979
+Oh. And like I said, I
+have to have pseudo on it.
+
+1352
+00:49:38,979 --> 00:49:40,939
+And now I just have this
+count demo program.
+
+1353
+00:49:40,939 --> 00:49:42,059
+And the way it figures out its
+
+1354
+00:49:42,059 --> 00:49:43,399
+Python is by that a bang line.
+
+1355
+00:49:43,399 --> 00:49:45,859
+Linux doesn't care the
+extension, only I care.
+
+1356
+00:49:45,859 --> 00:49:48,359
+So I was able to take my program
+and basically deploy it.
+
+1357
+00:49:48,359 --> 00:49:49,899
+It's a generally
+runable thing that
+
+1358
+00:49:49,899 --> 00:49:52,020
+anybody can use now
+on this system.
+
+1359
+00:49:52,020 --> 00:49:53,539
+Fantastic. So we'll
+come back next
+
+1360
+00:49:53,539 --> 00:49:54,800
+time and do more examples.
+
+1361
+00:49:54,800 --> 00:49:56,399
+Have a great day, and
+I'll be around for
+
+1362
+00:49:56,399 --> 00:49:57,860
+a while if anybody
+has any questions,
+
+1363
+00:49:57,860 --> 00:50:00,319
+so feel free to
+come up and chat.

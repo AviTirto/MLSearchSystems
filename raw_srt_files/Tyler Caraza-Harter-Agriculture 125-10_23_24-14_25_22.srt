@@ -1,0 +1,5946 @@
+1
+00:00:00,000 --> 00:00:02,180
+Better. By volume
+go to the back.
+
+2
+00:00:02,180 --> 00:00:04,560
+Fantastic. Thank you
+for coming today.
+
+3
+00:00:04,560 --> 00:00:07,000
+Today, we're going be
+learning about Spark SQL.
+
+4
+00:00:07,000 --> 00:00:09,719
+Spark SQL actually
+builds on top of
+
+5
+00:00:09,719 --> 00:00:12,820
+Spark Resilient
+Distributed datasets.
+
+6
+00:00:12,820 --> 00:00:15,860
+And it's also going to
+interact with data frame.
+
+7
+00:00:15,860 --> 00:00:17,199
+So off we have the save data,
+
+8
+00:00:17,199 --> 00:00:18,640
+we could either
+interact with it using
+
+9
+00:00:18,640 --> 00:00:20,599
+the data frame API or SQL API.
+
+10
+00:00:20,599 --> 00:00:22,700
+If I do a SQL query,
+
+11
+00:00:22,700 --> 00:00:24,340
+the results that come
+back to me are also
+
+12
+00:00:24,340 --> 00:00:26,399
+going to be a Spark data frame.
+
+13
+00:00:26,399 --> 00:00:28,059
+So all these layers
+interact and you'll be
+
+14
+00:00:28,059 --> 00:00:29,199
+a better Spark user if
+
+15
+00:00:29,199 --> 00:00:31,170
+you understand each
+of these layers.
+
+16
+00:00:31,170 --> 00:00:34,100
+Alright, I'm going to head
+back here to the notebook.
+
+17
+00:00:34,100 --> 00:00:36,320
+And this is a new
+notebook that's
+
+18
+00:00:36,320 --> 00:00:38,779
+actually pretty similar
+to what we had last time.
+
+19
+00:00:38,779 --> 00:00:41,940
+I just thought it'd be nice
+to have a clean start.
+
+20
+00:00:41,940 --> 00:00:45,760
+If you want, you can
+find the same notebook.
+
+21
+00:00:45,760 --> 00:00:49,280
+I'm trying to grab my pointer.
+
+22
+00:00:49,280 --> 00:00:51,559
+There it is. You can find
+
+23
+00:00:51,559 --> 00:00:54,099
+the same notebook in
+the lecture snippets.
+
+24
+00:00:54,099 --> 00:00:55,759
+Let me just show you
+where that is briefly.
+
+25
+00:00:55,759 --> 00:00:58,800
+So if I come over here
+and go to lecture
+
+26
+00:00:58,800 --> 00:01:02,139
+snippets, There's a lake here.
+
+27
+00:01:02,139 --> 00:01:03,320
+Some of this stuff is actually
+
+28
+00:01:03,320 --> 00:01:05,340
+also in the notebook itself.
+
+29
+00:01:05,340 --> 00:01:07,139
+But I have a starter notebook,
+
+30
+00:01:07,139 --> 00:01:09,260
+and I have the Docker file,
+
+31
+00:01:09,260 --> 00:01:11,080
+the docker depose,
+all that stuff,
+
+32
+00:01:11,080 --> 00:01:12,020
+so you could spend that up and
+
+33
+00:01:12,020 --> 00:01:13,199
+start going if you wanted to.
+
+34
+00:01:13,199 --> 00:01:14,760
+There's a few cells
+already there.
+
+35
+00:01:14,760 --> 00:01:15,880
+I already read them because it
+
+36
+00:01:15,880 --> 00:01:16,900
+takes something like 5 minutes
+
+37
+00:01:16,900 --> 00:01:17,960
+or so and I don't
+want you to just be
+
+38
+00:01:17,960 --> 00:01:19,200
+study watching while I do that.
+
+39
+00:01:19,200 --> 00:01:20,500
+So I'll just walk
+through the code
+
+40
+00:01:20,500 --> 00:01:22,114
+that's already been executed.
+
+41
+00:01:22,114 --> 00:01:23,450
+So up here as usually,
+
+42
+00:01:23,450 --> 00:01:24,749
+we're creating a spark session.
+
+43
+00:01:24,749 --> 00:01:27,890
+The things that are
+new this time are that
+
+44
+00:01:27,890 --> 00:01:32,149
+we are going to enable
+something called Hive support.
+
+45
+00:01:32,149 --> 00:01:36,370
+And we're also going to
+specify a location HDFS,
+
+46
+00:01:36,370 --> 00:01:38,929
+where we have all
+of this hive data.
+
+47
+00:01:38,929 --> 00:01:41,609
+The reason for that is that
+if we want to use SQL,
+
+48
+00:01:41,609 --> 00:01:43,510
+we cannot just have a bunch
+of Park files around.
+
+49
+00:01:43,510 --> 00:01:45,389
+We have to have table names.
+
+50
+00:01:45,389 --> 00:01:48,690
+And we're going be doing
+queries on those tablenames.
+
+51
+00:01:48,690 --> 00:01:50,849
+So let me just head over
+quick to some slides,
+
+52
+00:01:50,849 --> 00:01:53,110
+so I can explain a little
+bit about different names we
+
+53
+00:01:53,110 --> 00:01:56,094
+might be queering from
+in this notebook.
+
+54
+00:01:56,094 --> 00:01:58,060
+I also want to briefly go over
+
+55
+00:01:58,060 --> 00:01:59,940
+some loity objectives for Day.
+
+56
+00:01:59,940 --> 00:02:01,799
+We saw how I have that
+hive configuration.
+
+57
+00:02:01,799 --> 00:02:03,140
+We want to figure out
+how we can create
+
+58
+00:02:03,140 --> 00:02:05,419
+both tables and views and hive,
+
+59
+00:02:05,419 --> 00:02:07,560
+so we can then do queries.
+
+60
+00:02:07,560 --> 00:02:09,280
+We're going to talk broadly
+
+61
+00:02:09,280 --> 00:02:10,579
+about different kinds of queries
+
+62
+00:02:10,579 --> 00:02:13,800
+today that have to pull
+together related data.
+
+63
+00:02:13,800 --> 00:02:15,579
+Often these distributed
+systems where I
+
+64
+00:02:15,579 --> 00:02:17,420
+have related data
+on different nodes,
+
+65
+00:02:17,420 --> 00:02:19,159
+and to do something
+like a group by or
+
+66
+00:02:19,159 --> 00:02:21,120
+a joy or a eis staked operation,
+
+67
+00:02:21,120 --> 00:02:22,419
+or we talk about windowing
+
+68
+00:02:22,419 --> 00:02:23,799
+today, which might be
+new to some people.
+
+69
+00:02:23,799 --> 00:02:25,579
+All these things are
+required to bring
+
+70
+00:02:25,579 --> 00:02:28,850
+related data together in the
+same place in the cluster.
+
+71
+00:02:28,850 --> 00:02:30,940
+And then finally, we
+I see how we can use
+
+72
+00:02:30,940 --> 00:02:32,579
+SQL and data frame operations
+
+73
+00:02:32,579 --> 00:02:33,980
+as part of a single calculation.
+
+74
+00:02:33,980 --> 00:02:35,779
+Sometimes that turns
+out to be more elegant
+
+75
+00:02:35,779 --> 00:02:37,699
+than just using one
+system or the other.
+
+76
+00:02:37,699 --> 00:02:39,040
+Alright, so let's
+talk about views
+
+77
+00:02:39,040 --> 00:02:40,439
+and tables that where
+we have a hive.
+
+78
+00:02:40,439 --> 00:02:43,100
+Here I have an example
+of P A file that you
+
+79
+00:02:43,100 --> 00:02:46,399
+can imagine living
+somewhere in HDFS.
+
+80
+00:02:46,399 --> 00:02:49,379
+I mean it has four rows
+and the x contains A,
+
+81
+00:02:49,379 --> 00:02:53,460
+B A C. And what I'm imagining
+is I'm reading with sparse.
+
+82
+00:02:53,460 --> 00:02:55,219
+I've sparked out
+read fourba part.
+
+83
+00:02:55,219 --> 00:02:57,479
+I'm loading that file,
+and I'm immediately
+
+84
+00:02:57,479 --> 00:03:00,759
+filtering it out to x equals A,
+
+85
+00:03:00,759 --> 00:03:02,480
+Imbod get two of those rows.
+
+86
+00:03:02,480 --> 00:03:04,779
+And you could easily imagine
+that I could directly
+
+87
+00:03:04,779 --> 00:03:07,559
+do computation on that
+data frame at that point,
+
+88
+00:03:07,559 --> 00:03:10,359
+or I could try to save
+those results in some way.
+
+89
+00:03:10,359 --> 00:03:12,214
+And so there's a couple
+of ways I could save it.
+
+90
+00:03:12,214 --> 00:03:13,570
+One is I could say data
+
+91
+00:03:13,570 --> 00:03:15,310
+framed out right and
+then Save as table,
+
+92
+00:03:15,310 --> 00:03:17,070
+and I could gib it a table name.
+
+93
+00:03:17,070 --> 00:03:19,189
+And that's be using i.
+
+94
+00:03:19,189 --> 00:03:21,090
+A i on my behalf, is be creating
+
+95
+00:03:21,090 --> 00:03:22,470
+one or more part files
+
+96
+00:03:22,470 --> 00:03:24,709
+that correspond to this
+by table name, right?
+
+97
+00:03:24,709 --> 00:03:26,289
+So maybe I end up
+with a part file
+
+98
+00:03:26,289 --> 00:03:28,229
+that looks like this down
+here with these two rows.
+
+99
+00:03:28,229 --> 00:03:29,809
+The other thing I
+could do is I could
+
+100
+00:03:29,809 --> 00:03:32,310
+say create temporary view.
+
+101
+00:03:32,310 --> 00:03:34,930
+A view is actually a
+ba data based concept
+
+102
+00:03:34,930 --> 00:03:37,030
+that has been around forever.
+
+103
+00:03:37,030 --> 00:03:38,970
+And the way it works,
+instead of actually
+
+104
+00:03:38,970 --> 00:03:40,209
+materializing these bytes of
+
+105
+00:03:40,209 --> 00:03:41,609
+data and writing it somewhere,
+
+106
+00:03:41,609 --> 00:03:44,189
+the view will just totally have
+
+107
+00:03:44,189 --> 00:03:46,849
+a description of how I could
+get that data if I need it.
+
+108
+00:03:46,849 --> 00:03:48,489
+Maybe that description of
+how to get the data is
+
+109
+00:03:48,489 --> 00:03:51,365
+the actual SQL query itself.
+
+110
+00:03:51,365 --> 00:03:53,740
+I could select data from
+either the table or the view.
+
+111
+00:03:53,740 --> 00:03:55,199
+I'll feel very similar, but
+
+112
+00:03:55,199 --> 00:03:58,460
+the view when necessary will
+actually get be that data,
+
+113
+00:03:58,460 --> 00:04:00,299
+when I actually do
+the query, right?
+
+114
+00:04:00,299 --> 00:04:02,119
+In some ways, it's a little
+bit like an RDD, right?
+
+115
+00:04:02,119 --> 00:04:03,660
+Because an RDD is giving
+
+116
+00:04:03,660 --> 00:04:05,640
+you a recipe to get
+some data on demand.
+
+117
+00:04:05,640 --> 00:04:07,379
+A view is also describing
+how you could get
+
+118
+00:04:07,379 --> 00:04:08,420
+this data even though it doesn't
+
+119
+00:04:08,420 --> 00:04:10,140
+immediately compute it up front.
+
+120
+00:04:10,140 --> 00:04:11,799
+So just want to make
+sure that people are
+
+121
+00:04:11,799 --> 00:04:13,259
+doing the right
+intuition from this.
+
+122
+00:04:13,259 --> 00:04:15,720
+So I have three questions
+comparing these.
+
+123
+00:04:15,720 --> 00:04:17,259
+And for each question,
+
+124
+00:04:17,259 --> 00:04:20,199
+you can say one for the
+table or two for the view.
+
+125
+00:04:20,199 --> 00:04:23,139
+So first one is, what do you
+think is faster to create?
+
+126
+00:04:23,139 --> 00:04:25,939
+On the table or two the view.
+
+127
+00:04:28,900 --> 00:04:32,040
+I'm seeing some twos,
+which is correct, right?
+
+128
+00:04:32,040 --> 00:04:33,980
+There's no real work done
+when we create a view, right?
+
+129
+00:04:33,980 --> 00:04:35,699
+We're just try writing
+that query somewhere.
+
+130
+00:04:35,699 --> 00:04:37,500
+Let's remembering
+that. Alright, W
+
+131
+00:04:37,500 --> 00:04:39,160
+one should I take less space?
+
+132
+00:04:39,160 --> 00:04:41,420
+On the table or to the view?
+
+133
+00:04:41,420 --> 00:04:44,060
+Excellent. People did
+saying, two, right?
+
+134
+00:04:44,060 --> 00:04:45,160
+I don't actually
+have data there.
+
+135
+00:04:45,160 --> 00:04:47,340
+I just have a query, which
+is not taking much space.
+
+136
+00:04:47,340 --> 00:04:48,680
+I Which case would it be faster
+
+137
+00:04:48,680 --> 00:04:50,499
+sum up all the values
+in the y column?
+
+138
+00:04:50,499 --> 00:04:52,859
+On the table to the view.
+
+139
+00:04:55,410 --> 00:04:57,630
+I see some ones people seem
+
+140
+00:04:57,630 --> 00:04:59,070
+a little bit more
+hesitant on that one.
+
+141
+00:04:59,070 --> 00:05:00,870
+It will be faster to select data
+
+142
+00:05:00,870 --> 00:05:02,790
+from the table. Why is that?
+
+143
+00:05:02,790 --> 00:05:05,730
+Well, if I'm looping over all
+the y values in the table,
+
+144
+00:05:05,730 --> 00:05:08,010
+I only loop over the
+one is the three.
+
+145
+00:05:08,010 --> 00:05:11,030
+If I want to add up all
+the y values in the view,
+
+146
+00:05:11,030 --> 00:05:13,470
+then in addition to
+selling those things up,
+
+147
+00:05:13,470 --> 00:05:16,350
+I also have to do the filter
+on demand each time, right?
+
+148
+00:05:16,350 --> 00:05:18,230
+So so really selecting
+over the view,
+
+149
+00:05:18,230 --> 00:05:19,390
+it feels like it's one query,
+
+150
+00:05:19,390 --> 00:05:21,930
+but it's actually two queries
+that's slower, right?
+
+151
+00:05:21,930 --> 00:05:24,430
+So you'll have to figure
+out if you have some data,
+
+152
+00:05:24,430 --> 00:05:25,750
+you know, how big is it,
+
+153
+00:05:25,750 --> 00:05:27,190
+how often are you
+be accessing it?
+
+154
+00:05:27,190 --> 00:05:28,969
+You have to figure out
+whether you want to
+
+155
+00:05:28,969 --> 00:05:30,410
+represent your data as a table
+
+156
+00:05:30,410 --> 00:05:31,959
+or view. Yeah,
+question right here.
+
+157
+00:05:31,959 --> 00:05:37,710
+Create want data Oh,
+
+158
+00:05:37,710 --> 00:05:39,750
+you're actually like,
+Hey, if we actually want
+
+159
+00:05:39,750 --> 00:05:40,930
+to read the data of the view,
+
+160
+00:05:40,930 --> 00:05:42,089
+do you have to do it action?
+
+161
+00:05:42,089 --> 00:05:45,650
+Yeah, the query that is actually
+generating the data for
+
+162
+00:05:45,650 --> 00:05:47,349
+the view will not actually
+
+163
+00:05:47,349 --> 00:05:49,430
+happen until you have some
+kind of action, right?
+
+164
+00:05:49,430 --> 00:05:52,310
+So maybe there's maybe
+internal to the view, right?
+
+165
+00:05:52,310 --> 00:05:54,649
+There's some number of
+steps that were performed
+
+166
+00:05:54,649 --> 00:05:57,269
+or maybe after that there's
+other operations on the view,
+
+167
+00:05:57,269 --> 00:05:58,570
+and then ultimately sub action
+
+168
+00:05:58,570 --> 00:06:00,030
+at the very industry
+to trigger it.
+
+169
+00:06:00,030 --> 00:06:04,229
+Yep. That's exactly how it
+works. Yeah, great question.
+
+170
+00:06:04,229 --> 00:06:06,030
+Cool. So let's head over here,
+
+171
+00:06:06,030 --> 00:06:08,729
+back to doing those
+demos that I had I'll,
+
+172
+00:06:08,729 --> 00:06:09,850
+try to get a little bit ahead
+
+173
+00:06:09,850 --> 00:06:11,090
+of myself by talking about that.
+
+174
+00:06:11,090 --> 00:06:12,410
+So I'm setting this up here.
+
+175
+00:06:12,410 --> 00:06:14,729
+And what we're doing
+is able Hive support.
+
+176
+00:06:14,729 --> 00:06:16,490
+I've talked about Hive
+briefly before how
+
+177
+00:06:16,490 --> 00:06:18,529
+they built this Hive
+query language,
+
+178
+00:06:18,529 --> 00:06:21,309
+Hive QL, that basically takes
+
+179
+00:06:21,309 --> 00:06:22,469
+something that
+looks like SQL and
+
+180
+00:06:22,469 --> 00:06:24,370
+translates as to
+map produced jobs.
+
+181
+00:06:24,370 --> 00:06:26,789
+I don't think anybody's really
+using that much anymore.
+
+182
+00:06:26,789 --> 00:06:28,730
+But one of the things that
+people are still using with
+
+183
+00:06:28,730 --> 00:06:31,030
+Hive is they use it
+as a data catalog.
+
+184
+00:06:31,030 --> 00:06:33,349
+If we have all these
+different Park files HFS,
+
+185
+00:06:33,349 --> 00:06:35,710
+and I want to basically
+
+186
+00:06:35,710 --> 00:06:38,590
+assign table names to
+some set of Park files,
+
+187
+00:06:38,590 --> 00:06:39,950
+then Hive can do that, right?
+
+188
+00:06:39,950 --> 00:06:41,529
+And so Spark
+integrates with Hive.
+
+189
+00:06:41,529 --> 00:06:42,969
+And so they have a
+special function
+
+190
+00:06:42,969 --> 00:06:44,774
+for enabling Hive support.
+
+191
+00:06:44,774 --> 00:06:47,499
+And then I have to specify
+this warehouse directory
+
+192
+00:06:47,499 --> 00:06:49,559
+where I'm may be storing
+all these Park files.
+
+193
+00:06:49,559 --> 00:06:52,499
+That's a path in
+my HDFS cluster.
+
+194
+00:06:52,499 --> 00:06:54,880
+You see the vocabulary is a
+little bit weird here, right?
+
+195
+00:06:54,880 --> 00:06:56,440
+The setup I have
+here is really more
+
+196
+00:06:56,440 --> 00:06:58,299
+like a data lake than
+a data warehouse.
+
+197
+00:06:58,299 --> 00:07:00,860
+There's no integrated
+AP database here,
+
+198
+00:07:00,860 --> 00:07:02,139
+but they're using
+the word warehouse
+
+199
+00:07:02,139 --> 00:07:03,759
+instead of a data lake.
+
+200
+00:07:03,759 --> 00:07:08,390
+Yeah, question right here.
+Does it already exist?
+
+201
+00:07:08,390 --> 00:07:10,029
+No. When I first
+run this in Check,
+
+202
+00:07:10,029 --> 00:07:11,709
+then it created it and I
+already ran it earlier.
+
+203
+00:07:11,709 --> 00:07:13,949
+I won't re run it now, but
+it created it at the moment.
+
+204
+00:07:13,949 --> 00:07:16,650
+I did that. Excellent
+question. All right.
+
+205
+00:07:16,650 --> 00:07:18,729
+So I did that. We had this data
+
+206
+00:07:18,729 --> 00:07:21,189
+last time from the San
+Francisco Fire Department.
+
+207
+00:07:21,189 --> 00:07:22,830
+There was a two gigabyte CSV.
+
+208
+00:07:22,830 --> 00:07:24,890
+And I've already run
+this. I've uploaded it.
+
+209
+00:07:24,890 --> 00:07:27,210
+I've done schema
+inference on it.
+
+210
+00:07:27,210 --> 00:07:30,909
+I wrote it back as a
+Park file an HDFS.
+
+211
+00:07:30,909 --> 00:07:33,230
+When I did that, it had
+
+212
+00:07:33,230 --> 00:07:35,430
+the types from the Schema
+inference, which was great.
+
+213
+00:07:35,430 --> 00:07:36,790
+And I also made sure that
+
+214
+00:07:36,790 --> 00:07:39,830
+all the column names
+didn't have space in them.
+
+215
+00:07:39,830 --> 00:07:41,529
+I replaced it with underscores.
+
+216
+00:07:41,529 --> 00:07:45,010
+So that's all good.
+Remove the CSV file.
+
+217
+00:07:45,010 --> 00:07:48,029
+And at this point, we can
+read in that data frame,
+
+218
+00:07:48,029 --> 00:07:49,809
+and that's relatively fast.
+
+219
+00:07:49,809 --> 00:07:52,110
+It just has to check
+out what the header is.
+
+220
+00:07:52,110 --> 00:07:53,910
+And then I can see what
+all the types are there.
+
+221
+00:07:53,910 --> 00:07:55,430
+It doesn't have to do
+with the schema inference
+
+222
+00:07:55,430 --> 00:07:57,369
+or any of that. Alright, great.
+
+223
+00:07:57,369 --> 00:07:59,790
+So I have this data, and
+I'm ready to go with it.
+
+224
+00:07:59,790 --> 00:08:02,969
+And so what I'm ready to
+do is with the data frame.
+
+225
+00:08:02,969 --> 00:08:04,269
+I'm going to say data frame dot
+
+226
+00:08:04,269 --> 00:08:06,620
+create And I see
+
+227
+00:08:06,620 --> 00:08:08,420
+there's actually four
+different functions here,
+
+228
+00:08:08,420 --> 00:08:10,100
+which are all variants
+on the same thing.
+
+229
+00:08:10,100 --> 00:08:13,099
+Each of them are replacing
+a temporary view.
+
+230
+00:08:13,099 --> 00:08:15,099
+Why is it temporary? If I
+
+231
+00:08:15,099 --> 00:08:17,359
+shut down my notebook and
+then restart it again,
+
+232
+00:08:17,359 --> 00:08:19,220
+the view is gone. I'll
+have to recreate it.
+
+233
+00:08:19,220 --> 00:08:22,240
+Not a big deal, right? Because
+no work has really done.
+
+234
+00:08:22,240 --> 00:08:23,500
+It's fine to recreate the view
+
+235
+00:08:23,500 --> 00:08:25,240
+every time I actually
+want to do it.
+
+236
+00:08:25,240 --> 00:08:26,880
+So there's some
+other things here.
+
+237
+00:08:26,880 --> 00:08:28,664
+There's like the
+create tent view.
+
+238
+00:08:28,664 --> 00:08:30,650
+Or it might have the word
+or replaced in there,
+
+239
+00:08:30,650 --> 00:08:31,470
+that will make a difference
+
+240
+00:08:31,470 --> 00:08:33,330
+whether or not it
+already exists.
+
+241
+00:08:33,330 --> 00:08:36,530
+Some of them, they
+add this word global.
+
+242
+00:08:36,530 --> 00:08:38,710
+I'm never going to use
+the ones that say global.
+
+243
+00:08:38,710 --> 00:08:40,170
+All that means is that, even
+
+244
+00:08:40,170 --> 00:08:41,890
+though I create the
+view in this session,
+
+245
+00:08:41,890 --> 00:08:44,170
+it could be visible to
+other Spark sessions.
+
+246
+00:08:44,170 --> 00:08:45,709
+I don't have a great
+use case for that,
+
+247
+00:08:45,709 --> 00:08:46,530
+so I'm not going to do it.
+
+248
+00:08:46,530 --> 00:08:47,909
+I'll just use these
+two down here.
+
+249
+00:08:47,909 --> 00:08:49,669
+First, I'm going to
+create a temp view,
+
+250
+00:08:49,669 --> 00:08:52,889
+and I will call it calls,
+
+251
+00:08:52,889 --> 00:08:55,530
+B these are calls to
+the fire department.
+
+252
+00:08:55,530 --> 00:08:56,969
+I'm going to do
+that spast because
+
+253
+00:08:56,969 --> 00:08:58,699
+it's not actually
+doing any work.
+
+254
+00:08:58,699 --> 00:09:01,189
+If I were to run
+it again, right?
+
+255
+00:09:01,189 --> 00:09:02,909
+So if I come down
+here and run it,
+
+256
+00:09:02,909 --> 00:09:04,589
+gt error, the second time.
+
+257
+00:09:04,589 --> 00:09:09,070
+So I often do create or replace.
+
+258
+00:09:09,070 --> 00:09:11,229
+And then you can if that's
+the only thing I can do,
+
+259
+00:09:11,229 --> 00:09:12,830
+then I can just
+rerun my notebook.
+
+260
+00:09:12,830 --> 00:09:14,829
+No problem. It will make sure
+
+261
+00:09:14,829 --> 00:09:17,050
+that it's there for
+me. Alright, cool.
+
+262
+00:09:17,050 --> 00:09:19,389
+So now, if I want to
+do operations on it,
+
+263
+00:09:19,389 --> 00:09:21,909
+I can do spark dot squel
+
+264
+00:09:21,909 --> 00:09:23,870
+and I can put some
+kind of query here.
+
+265
+00:09:23,870 --> 00:09:25,370
+So kind of a classic queries,
+
+266
+00:09:25,370 --> 00:09:27,850
+I could select star from calls,
+
+267
+00:09:27,850 --> 00:09:29,389
+and I could just look at say,
+
+268
+00:09:29,389 --> 00:09:31,394
+like, a few rows.
+So I could do that.
+
+269
+00:09:31,394 --> 00:09:33,780
+Whenever I do one
+of these queries,
+
+270
+00:09:33,780 --> 00:09:35,560
+it gives me a data frame.
+
+271
+00:09:35,560 --> 00:09:38,420
+The data frame is based
+on top of an RDD.
+
+272
+00:09:38,420 --> 00:09:41,099
+So no work has actually
+been done yet.
+
+273
+00:09:41,099 --> 00:09:42,980
+If I actually want
+work to be done,
+
+274
+00:09:42,980 --> 00:09:44,039
+then I have to come along
+
+275
+00:09:44,039 --> 00:09:45,619
+and I have to say
+something like,
+
+276
+00:09:45,619 --> 00:09:49,179
+show me the results, right,
+so I could do a show.
+
+277
+00:09:49,179 --> 00:09:51,759
+And this has a lot
+of columns and
+
+278
+00:09:51,759 --> 00:09:54,719
+I just the formatting
+looks terrible for that.
+
+279
+00:09:54,719 --> 00:09:56,179
+We'll just see what
+it looks like.
+
+280
+00:09:56,179 --> 00:09:58,439
+More often, I'll do
+two Pandas, right,
+
+281
+00:09:58,439 --> 00:10:01,200
+because it's just too many
+to really fit nicely.
+
+282
+00:10:01,200 --> 00:10:02,520
+So two Pandas is an action.
+
+283
+00:10:02,520 --> 00:10:04,459
+It's going to trigger
+all the work,
+
+284
+00:10:04,459 --> 00:10:06,199
+both for this view and
+
+285
+00:10:06,199 --> 00:10:08,639
+for the other operations,
+I'm doing on top of it.
+
+286
+00:10:08,639 --> 00:10:11,340
+And then I can come along and
+I can see the data there.
+
+287
+00:10:11,340 --> 00:10:13,139
+The other one I could
+do is I might say,
+
+288
+00:10:13,139 --> 00:10:14,760
+I'm going to do this
+one for a show,
+
+289
+00:10:14,760 --> 00:10:16,960
+but I could say show the tables.
+
+290
+00:10:16,960 --> 00:10:22,540
+And this is a little bit
+confusing because this shows,
+
+291
+00:10:22,540 --> 00:10:25,259
+tables and views, right?
+
+292
+00:10:25,259 --> 00:10:26,739
+So I'll do that.
+
+293
+00:10:26,739 --> 00:10:29,879
+And then what I'll see
+here is that Well,
+
+294
+00:10:29,879 --> 00:10:31,119
+it's doing some
+hive stuff, right?
+
+295
+00:10:31,119 --> 00:10:33,339
+We said all this
+stuff is in hive.
+
+296
+00:10:33,339 --> 00:10:38,299
+And any moment now it
+should pop up and show me,
+
+297
+00:10:38,299 --> 00:10:41,080
+sure enough, I have this calls
+table, and it's temporary.
+
+298
+00:10:41,080 --> 00:10:43,620
+All views are temporary and
+spark for whatever reason.
+
+299
+00:10:43,620 --> 00:10:46,220
+I don't know why they don't
+have persistent views.
+
+300
+00:10:46,220 --> 00:10:48,579
+Cool. So that is
+all fine and well.
+
+301
+00:10:48,579 --> 00:10:50,959
+I could do other queries
+on here if I wanted to.
+
+302
+00:10:50,959 --> 00:10:53,459
+So, for example, let's say
+
+303
+00:10:53,459 --> 00:10:56,999
+I wanted to filter things down,
+right? So I'm going to do
+
+304
+00:10:56,999 --> 00:10:58,880
+When it starts getting bigger,
+
+305
+00:10:58,880 --> 00:11:00,299
+I usually like to space it out a
+
+306
+00:11:00,299 --> 00:11:02,359
+little bit. I'm going
+to select that.
+
+307
+00:11:02,359 --> 00:11:07,800
+And maybe I might want
+to do a filter, right?
+
+308
+00:11:07,800 --> 00:11:09,839
+I'm going to do a
+filter. And I'm
+
+309
+00:11:09,839 --> 00:11:12,599
+going to say we're call type.
+
+310
+00:11:12,599 --> 00:11:15,459
+They have this like
+expression in SQs kind
+
+311
+00:11:15,459 --> 00:11:17,979
+of like regular expressions,
+but more simple.
+
+312
+00:11:17,979 --> 00:11:20,099
+And you can just have
+wild charts in it.
+
+313
+00:11:20,099 --> 00:11:21,759
+So I could say, sometimes
+
+314
+00:11:21,759 --> 00:11:23,059
+they respond to
+bad odors, right?
+
+315
+00:11:23,059 --> 00:11:25,879
+Maybe it's like natural gas
+smell or something like that.
+
+316
+00:11:25,879 --> 00:11:27,799
+And I could go through
+and I could see, Okay,
+
+317
+00:11:27,799 --> 00:11:29,479
+here are all the
+strange and node odors
+
+318
+00:11:29,479 --> 00:11:31,094
+that the Fire Department
+had to deal with.
+
+319
+00:11:31,094 --> 00:11:32,929
+Right? So I can
+filter that down.
+
+320
+00:11:32,929 --> 00:11:35,029
+Now, if I want to do a subset on
+
+321
+00:11:35,029 --> 00:11:37,789
+kind of more analysis on
+this subset of the data,
+
+322
+00:11:37,789 --> 00:11:39,529
+I might want to save it
+somewhere else, right?
+
+323
+00:11:39,529 --> 00:11:41,450
+Because if I use this
+as my starting point,
+
+324
+00:11:41,450 --> 00:11:44,409
+every single query on
+these stinky rows will
+
+325
+00:11:44,409 --> 00:11:45,949
+make me have to go over
+
+326
+00:11:45,949 --> 00:11:48,090
+the entire dataset, which
+could be quite large.
+
+327
+00:11:48,090 --> 00:11:49,370
+Right? So I'm going
+to come down here.
+
+328
+00:11:49,370 --> 00:11:53,229
+And what I'm going to do
+instead is I am going to say,
+
+329
+00:11:53,620 --> 00:11:55,740
+I'm going to say, Well,
+
+330
+00:11:55,740 --> 00:11:57,579
+first off, I get a
+data frame there.
+
+331
+00:11:57,579 --> 00:11:59,420
+Then I am going to say write
+
+332
+00:11:59,420 --> 00:12:01,619
+and I get this
+data frame writer,
+
+333
+00:12:01,619 --> 00:12:05,119
+and then I can say
+save as table, right?
+
+334
+00:12:05,119 --> 00:12:07,239
+I'm going to name this
+table Stinky, right?
+
+335
+00:12:07,239 --> 00:12:09,760
+And I'm going to get
+rid of this limit.
+
+336
+00:12:09,760 --> 00:12:11,440
+Right? I'm going to
+run that. And they'll
+
+337
+00:12:11,440 --> 00:12:12,719
+have this nice
+table that I could
+
+338
+00:12:12,719 --> 00:12:15,700
+do other queries on with
+this subset of the rows.
+
+339
+00:12:15,700 --> 00:12:17,099
+And I can see that there are
+
+340
+00:12:17,099 --> 00:12:18,919
+six tasks. That are doing that.
+
+341
+00:12:18,919 --> 00:12:21,199
+That's because this data
+here that I was working
+
+342
+00:12:21,199 --> 00:12:23,660
+with has six partitions, right?
+And so while that's run.
+
+343
+00:12:23,660 --> 00:12:24,980
+I'm just try to
+get that up here.
+
+344
+00:12:24,980 --> 00:12:26,380
+That would give me a data frame.
+
+345
+00:12:26,380 --> 00:12:27,839
+I can get the RDD underneath it,
+
+346
+00:12:27,839 --> 00:12:30,879
+and I could get the num
+partitions like that.
+
+347
+00:12:30,879 --> 00:12:33,080
+So after this finish is
+running, I'm may see, Oh, wi,
+
+348
+00:12:33,080 --> 00:12:34,439
+there's six partitions,
+that's why there's
+
+349
+00:12:34,439 --> 00:12:37,219
+six tasks that are actually
+writing this thing out.
+
+350
+00:12:37,219 --> 00:12:39,979
+All right. Any questions
+while that's running?
+
+351
+00:12:39,979 --> 00:12:47,019
+Yeah, right here.
+That. Yeah, this
+
+352
+00:12:47,019 --> 00:12:48,520
+is kind of like a regular
+expression match,
+
+353
+00:12:48,520 --> 00:12:49,700
+so it means it begins with Odor,
+
+354
+00:12:49,700 --> 00:12:50,900
+and then this is a wild card.
+
+355
+00:12:50,900 --> 00:12:52,719
+So it's like SQL has this,
+
+356
+00:12:52,719 --> 00:12:54,100
+but just not not as good as
+
+357
+00:12:54,100 --> 00:12:55,739
+real regular expressions, right?
+
+358
+00:12:55,739 --> 00:12:59,439
+Yep. Yeah, question
+right here. Yeah.
+
+359
+00:12:59,439 --> 00:13:00,699
+Where's it saved,
+I'll show that.
+
+360
+00:13:00,699 --> 00:13:02,220
+Excellent. Okay, great.
+
+361
+00:13:02,220 --> 00:13:03,540
+So I see there are
+six partitions.
+
+362
+00:13:03,540 --> 00:13:05,400
+That's why there were six tasks.
+
+363
+00:13:05,400 --> 00:13:06,780
+And so where is it saved? We can
+
+364
+00:13:06,780 --> 00:13:09,059
+actually come back here
+to answer that question.
+
+365
+00:13:09,059 --> 00:13:11,179
+And so I can see that
+it's supposed to
+
+366
+00:13:11,179 --> 00:13:12,980
+be saved somewhere
+in this directory.
+
+367
+00:13:12,980 --> 00:13:14,599
+And somebody come back here,
+
+368
+00:13:14,599 --> 00:13:18,100
+and I can run an HDFS,
+
+369
+00:13:18,100 --> 00:13:21,119
+DFS, LS command on that one.
+
+370
+00:13:21,119 --> 00:13:24,299
+And there's going
+directory there.
+
+371
+00:13:24,299 --> 00:13:26,660
+For every table I created,
+
+372
+00:13:26,660 --> 00:13:28,039
+and I could look
+underneath that,
+
+373
+00:13:28,039 --> 00:13:30,160
+and that table is going
+to be represented as,
+
+374
+00:13:30,160 --> 00:13:32,339
+you know, six different
+part files, right?
+
+375
+00:13:32,339 --> 00:13:34,079
+You can see the part
+number right here.
+
+376
+00:13:34,079 --> 00:13:36,860
+So parts zero through
+five, that six partitions,
+
+377
+00:13:36,860 --> 00:13:38,279
+which cre I'm sorry,
+
+378
+00:13:38,279 --> 00:13:40,379
+six files, corresponding
+to six partitions.
+
+379
+00:13:40,379 --> 00:13:42,460
+Each one had its own own writer.
+
+380
+00:13:42,460 --> 00:13:44,759
+I can also, if I want to, I
+can come back and I can say
+
+381
+00:13:44,759 --> 00:13:48,180
+Spark dot SQL and I could
+say show tables again.
+
+382
+00:13:48,180 --> 00:13:51,079
+And let me just
+actually do an action.
+
+383
+00:13:51,079 --> 00:13:52,879
+And now I can see
+the Stinky table
+
+384
+00:13:52,879 --> 00:13:54,300
+is not temporary. I'll be there.
+
+385
+00:13:54,300 --> 00:13:56,180
+Even if I restart, the
+data will still be there,
+
+386
+00:13:56,180 --> 00:14:00,140
+the calls table would have
+to be regenerated on demand.
+
+387
+00:14:00,140 --> 00:14:02,840
+So any tables about
+Sorry, not any tables.
+
+388
+00:14:02,840 --> 00:14:04,220
+Any questions about
+this difference
+
+389
+00:14:04,220 --> 00:14:06,100
+between these views or
+these tables or any of
+
+390
+00:14:06,100 --> 00:14:10,500
+this code I'm writing?
+Is that a question?
+
+391
+00:14:11,260 --> 00:14:15,520
+Alright. Cool. So
+so far so good.
+
+392
+00:14:15,520 --> 00:14:16,859
+If I want to come back and I
+
+393
+00:14:16,859 --> 00:14:18,520
+want to run this thing again,
+
+394
+00:14:18,520 --> 00:14:21,119
+it's going to complain because
+I've already created it.
+
+395
+00:14:21,119 --> 00:14:25,119
+And so I could do
+a mode overwrite.
+
+396
+00:14:25,119 --> 00:14:26,759
+I think I showed
+that one last time.
+
+397
+00:14:26,759 --> 00:14:28,360
+And that's good at
+least I can rerun
+
+398
+00:14:28,360 --> 00:14:30,219
+my notebook again. It would
+be kind of slow, right?
+
+399
+00:14:30,219 --> 00:14:32,060
+I'd have to do the whole
+thing. So another one I
+
+400
+00:14:32,060 --> 00:14:34,740
+sometimes use with
+caution is ignore.
+
+401
+00:14:34,740 --> 00:14:36,859
+That means if it already
+exists, don't do anything.
+
+402
+00:14:36,859 --> 00:14:38,159
+Then I can just re run again.
+
+403
+00:14:38,159 --> 00:14:39,899
+It'll be really fast. I
+wouldn't want to do that if
+
+404
+00:14:39,899 --> 00:14:40,679
+it's possible that I'm
+
+405
+00:14:40,679 --> 00:14:41,899
+writing different
+data than last time.
+
+406
+00:14:41,899 --> 00:14:43,160
+But in this case, I
+know it would be the
+
+407
+00:14:43,160 --> 00:14:44,459
+same. So I'll do this in case.
+
+408
+00:14:44,459 --> 00:14:47,499
+I just want to rerun my notebook
+from the top. All right.
+
+409
+00:14:47,499 --> 00:14:51,619
+Fantastic. So let me
+see where are we?
+
+410
+00:14:51,619 --> 00:14:54,499
+Um You know, sometimes,
+
+411
+00:14:54,499 --> 00:14:57,859
+even though we have these
+high tables now, me,
+
+412
+00:14:57,859 --> 00:14:59,560
+we might want to access that as
+
+413
+00:14:59,560 --> 00:15:00,740
+a data frame because
+we've already
+
+414
+00:15:00,740 --> 00:15:02,099
+learned all this stuff
+about data frames.
+
+415
+00:15:02,099 --> 00:15:03,940
+The way you can do that is
+going to say spart table,
+
+416
+00:15:03,940 --> 00:15:06,060
+and I could access
+the Stinky table,
+
+417
+00:15:06,060 --> 00:15:08,839
+and that would give
+me a data frame.
+
+418
+00:15:08,839 --> 00:15:14,559
+This is a data
+frame for a table.
+
+419
+00:15:14,559 --> 00:15:17,099
+And I could also say,
+
+420
+00:15:17,099 --> 00:15:18,659
+I want to get the
+calls, and this
+
+421
+00:15:18,659 --> 00:15:20,159
+is kind of a little
+bit misnamed, right?
+
+422
+00:15:20,159 --> 00:15:22,040
+So this is for a view.
+
+423
+00:15:22,040 --> 00:15:24,139
+Right? So in Spark,
+they use table,
+
+424
+00:15:24,139 --> 00:15:26,819
+sometimes they either
+mean table or a view.
+
+425
+00:15:26,819 --> 00:15:27,920
+And I could have that data frame
+
+426
+00:15:27,920 --> 00:15:29,080
+then and I could do
+whatever I wanted
+
+427
+00:15:29,080 --> 00:15:31,940
+with it that I normally
+do with data frames.
+
+428
+00:15:31,940 --> 00:15:34,160
+Oh, right. Well, let's just
+
+429
+00:15:34,160 --> 00:15:36,799
+see on these as well as before,
+
+430
+00:15:36,799 --> 00:15:44,730
+I can say RDD it partitions.
+
+431
+00:15:44,730 --> 00:15:46,650
+I can interact with the
+data with the SQL query,
+
+432
+00:15:46,650 --> 00:15:49,630
+data frame API or the RDD API.
+
+433
+00:15:49,630 --> 00:15:51,969
+All right. Cool. So
+I'm going to head back
+
+434
+00:15:51,969 --> 00:15:54,905
+here and have some more
+slides to look at.
+
+435
+00:15:54,905 --> 00:15:59,459
+And in SQL, right?
+
+436
+00:15:59,459 --> 00:16:01,139
+Sometimes we do a
+group by query,
+
+437
+00:16:01,139 --> 00:16:02,599
+and I may talk about those.
+
+438
+00:16:02,599 --> 00:16:04,979
+But I also want to talk about
+grouping more generally.
+
+439
+00:16:04,979 --> 00:16:07,419
+When do we have to group
+together related data in
+
+440
+00:16:07,419 --> 00:16:10,159
+order to answer a
+question about our data?
+
+441
+00:16:10,159 --> 00:16:12,479
+And there's a few
+very similar queries.
+
+442
+00:16:12,479 --> 00:16:14,819
+And so I'm imagining that I
+
+443
+00:16:14,819 --> 00:16:18,880
+have this dataset here
+where x has ABAC,
+
+444
+00:16:18,880 --> 00:16:20,199
+and that data might be spread
+
+445
+00:16:20,199 --> 00:16:21,500
+across many different machines.
+
+446
+00:16:21,500 --> 00:16:22,600
+One of the things
+that I want to do is
+
+447
+00:16:22,600 --> 00:16:23,780
+that I want to get
+distinct values.
+
+448
+00:16:23,780 --> 00:16:25,060
+If I do that, I may
+have to bring together
+
+449
+00:16:25,060 --> 00:16:26,749
+my values in some
+way to make sure I'm
+
+450
+00:16:26,749 --> 00:16:29,380
+Outputting duplicates more than.
+
+451
+00:16:29,380 --> 00:16:30,620
+So if I have different
+
+452
+00:16:30,620 --> 00:16:31,920
+partition my data
+in different places
+
+453
+00:16:31,920 --> 00:16:34,599
+and they each do
+distinct locally,
+
+454
+00:16:34,599 --> 00:16:37,100
+right, then I may have
+duplicates in my output.
+
+455
+00:16:37,100 --> 00:16:38,559
+That might require us to bring
+
+456
+00:16:38,559 --> 00:16:40,350
+together groups of related data.
+
+457
+00:16:40,350 --> 00:16:42,139
+You know, the classic,
+where you have to
+
+458
+00:16:42,139 --> 00:16:44,119
+group data is the
+actual group bi.
+
+459
+00:16:44,119 --> 00:16:46,980
+Group bi is usually
+followed by an aggregate.
+
+460
+00:16:46,980 --> 00:16:50,939
+And so here what I see is
+that I have three categories.
+
+461
+00:16:50,939 --> 00:16:53,799
+There's an A of B and
+a C. And if I want to,
+
+462
+00:16:53,799 --> 00:16:56,239
+for example, add up
+all the values in
+
+463
+00:16:56,239 --> 00:16:57,380
+the y column for each group,
+
+464
+00:16:57,380 --> 00:16:58,499
+then I have to break
+it down, right?
+
+465
+00:16:58,499 --> 00:17:00,040
+So I have one group up
+here with two rows,
+
+466
+00:17:00,040 --> 00:17:01,460
+a group in the
+middle with one row,
+
+467
+00:17:01,460 --> 00:17:02,920
+and a third group with one row.
+
+468
+00:17:02,920 --> 00:17:05,179
+And then on each of those, I
+could do aggregates, right?
+
+469
+00:17:05,179 --> 00:17:06,440
+That group with multiple rows
+
+470
+00:17:06,440 --> 00:17:07,760
+is going to get crunched down
+
+471
+00:17:07,760 --> 00:17:10,819
+to a single row that has
+some statistics with it.
+
+472
+00:17:10,819 --> 00:17:12,680
+That's a group and an aggregate.
+
+473
+00:17:12,680 --> 00:17:15,239
+Okay. And some of
+
+474
+00:17:15,239 --> 00:17:16,099
+you have seen SQL
+
+475
+00:17:16,099 --> 00:17:17,459
+before you've probably
+encountered this.
+
+476
+00:17:17,459 --> 00:17:20,159
+Maybe some of you might be
+very advanced eQL users,
+
+477
+00:17:20,159 --> 00:17:21,959
+and you might have
+seen something related
+
+478
+00:17:21,959 --> 00:17:25,679
+called partitioning and window
+functions, or maybe not.
+
+479
+00:17:25,679 --> 00:17:27,760
+I'm going to talk
+about this as well.
+
+480
+00:17:27,760 --> 00:17:29,460
+The first thing I want
+to point out is if I'm
+
+481
+00:17:29,460 --> 00:17:31,720
+going back and forth
+between these two slides,
+
+482
+00:17:31,720 --> 00:17:35,219
+the first parts of these things
+look very similar, right?
+
+483
+00:17:35,219 --> 00:17:38,099
+So here, I'm breaking
+the data into groups.
+
+484
+00:17:38,099 --> 00:17:40,440
+SQL partitions, I'm still
+breaking them into groups,
+
+485
+00:17:40,440 --> 00:17:42,580
+but they're just using
+the word partition
+
+486
+00:17:42,580 --> 00:17:44,319
+instead of group. Right?
+
+487
+00:17:44,319 --> 00:17:45,960
+And I want to be very clear.
+
+488
+00:17:45,960 --> 00:17:47,419
+These are SQL partitions,
+
+489
+00:17:47,419 --> 00:17:50,239
+which are distinct from
+Spark partitions, right?
+
+490
+00:17:50,239 --> 00:17:53,299
+So CQL partition is
+trying to have you know,
+
+491
+00:17:53,299 --> 00:17:55,260
+if I'm partitioning you
+say on the x value,
+
+492
+00:17:55,260 --> 00:17:56,739
+each partition is trying to have
+
+493
+00:17:56,739 --> 00:17:59,179
+just one unique
+value there, right?
+
+494
+00:17:59,179 --> 00:18:01,579
+So I have a partition for A,
+I have a partition for B,
+
+495
+00:18:01,579 --> 00:18:03,699
+a petition for C. The
+spart partitions,
+
+496
+00:18:03,699 --> 00:18:04,539
+that might be different, right?
+
+497
+00:18:04,539 --> 00:18:07,559
+The spart partitions when doing
+this work might have say,
+
+498
+00:18:07,559 --> 00:18:09,079
+like a B and a C
+together, right?
+
+499
+00:18:09,079 --> 00:18:10,780
+In the same spark partition.
+
+500
+00:18:10,780 --> 00:18:12,389
+But here, they're all separate.
+
+501
+00:18:12,389 --> 00:18:14,099
+And the big difference
+between this one
+
+502
+00:18:14,099 --> 00:18:15,940
+and the last one is
+that instead of having
+
+503
+00:18:15,940 --> 00:18:18,019
+an aggregate that crunches
+all the rows down to
+
+504
+00:18:18,019 --> 00:18:20,699
+a single row like before.
+
+505
+00:18:20,699 --> 00:18:22,919
+Now what will happen is
+I will actually have
+
+506
+00:18:22,919 --> 00:18:27,399
+output rows for each
+specific row, right?
+
+507
+00:18:27,399 --> 00:18:29,399
+I had four input rows
+at the beginning.
+
+508
+00:18:29,399 --> 00:18:31,379
+Here I have four output
+rows at the end.
+
+509
+00:18:31,379 --> 00:18:32,680
+And so if I'm outputting
+
+510
+00:18:32,680 --> 00:18:34,680
+some statistics for
+every single row,
+
+511
+00:18:34,680 --> 00:18:37,599
+why did I have to bother
+bringing together related data?
+
+512
+00:18:37,599 --> 00:18:39,900
+And the answer is that
+for some of these rows,
+
+513
+00:18:39,900 --> 00:18:42,039
+I might want to compute
+some statistics about it
+
+514
+00:18:42,039 --> 00:18:45,209
+that are in relation to
+the group that it's in.
+
+515
+00:18:45,209 --> 00:18:47,430
+So for example, when I
+look at the A group,
+
+516
+00:18:47,430 --> 00:18:50,510
+I see one and three,
+that adds up to four.
+
+517
+00:18:50,510 --> 00:18:51,749
+And so one way I could look at
+
+518
+00:18:51,749 --> 00:18:53,069
+it is that the first row in
+
+519
+00:18:53,069 --> 00:18:55,750
+the A group represents
+25% of the value,
+
+520
+00:18:55,750 --> 00:18:58,889
+and the second one represents
+75% of the value, right?
+
+521
+00:18:58,889 --> 00:19:00,309
+So I might want
+to get some stats
+
+522
+00:19:00,309 --> 00:19:02,090
+per row that are computed
+
+523
+00:19:02,090 --> 00:19:05,869
+relative to this group or
+partition that it's in.
+
+524
+00:19:05,869 --> 00:19:07,369
+I might also want to,
+
+525
+00:19:07,369 --> 00:19:09,289
+within each group,
+I want to say,
+
+526
+00:19:09,289 --> 00:19:10,830
+like, this is the
+biggest a value.
+
+527
+00:19:10,830 --> 00:19:12,310
+This is the second
+biggest a value.
+
+528
+00:19:12,310 --> 00:19:13,710
+It's the third biggest a value.
+
+529
+00:19:13,710 --> 00:19:15,520
+So I might want to
+get the row number
+
+530
+00:19:15,520 --> 00:19:17,449
+within each group for
+each of these, right?
+
+531
+00:19:17,449 --> 00:19:20,189
+Le, 75 is the first biggest, A,
+
+532
+00:19:20,189 --> 00:19:23,389
+25 is the second biggest A.
+I guess for the B and C,
+
+533
+00:19:23,389 --> 00:19:24,789
+there's just one, so then there
+
+534
+00:19:24,789 --> 00:19:26,689
+would be like the
+one biggest, right?
+
+535
+00:19:26,689 --> 00:19:28,609
+So again, like,
+it's very similar.
+
+536
+00:19:28,609 --> 00:19:30,149
+The main difference is before
+
+537
+00:19:30,149 --> 00:19:34,169
+each group gets one row
+of summary statistics.
+
+538
+00:19:34,169 --> 00:19:37,409
+Here, I get each row
+that's coming in,
+
+539
+00:19:37,409 --> 00:19:40,129
+comes as a row out,
+but the statistics are
+
+540
+00:19:40,129 --> 00:19:43,929
+computed relative to the group
+or partition that it's in.
+
+541
+00:19:43,929 --> 00:19:46,330
+We have any questions about
+the difference between these?
+
+542
+00:19:46,330 --> 00:19:53,619
+Right? Yeah, right here. Yes.
+
+543
+00:19:53,619 --> 00:19:56,779
+Yeah, so we could have
+duplicate x values, right?
+
+544
+00:19:56,779 --> 00:19:58,880
+So we're not aggregate
+gating down,
+
+545
+00:19:58,880 --> 00:20:02,800
+but we still want to compute
+stats relative to a group.
+
+546
+00:20:02,800 --> 00:20:04,660
+Instead of competing
+stats for the group,
+
+547
+00:20:04,660 --> 00:20:07,680
+we want to compute stats for
+a row relative to the group?
+
+548
+00:20:07,680 --> 00:20:09,500
+Do that make sense? Yeah, yeah,
+
+549
+00:20:09,500 --> 00:20:12,399
+great way to clarify
+it. Yeah, a, follow up.
+
+550
+00:20:12,760 --> 00:20:18,380
+Yeah. Yeah, is there any
+real world application?
+
+551
+00:20:18,380 --> 00:20:20,619
+I mean, I guess, if
+if I was managing
+
+552
+00:20:20,619 --> 00:20:23,580
+a bunch of salespeople and
+they were in different cities,
+
+553
+00:20:23,580 --> 00:20:24,900
+I might want to know
+who like my top
+
+554
+00:20:24,900 --> 00:20:26,240
+three people are in every city,
+
+555
+00:20:26,240 --> 00:20:28,439
+right? Yeah, stuff like that.
+
+556
+00:20:28,439 --> 00:20:30,659
+I might want to do,
+right? Yeah, right here.
+
+557
+00:20:30,659 --> 00:20:34,360
+These are spark SQ queries
+Yeah, that's a good question.
+
+558
+00:20:34,360 --> 00:20:36,279
+Are these Spark SQL queries
+or regular queries?
+
+559
+00:20:36,279 --> 00:20:38,719
+And so they're
+actually, you know,
+
+560
+00:20:38,719 --> 00:20:40,079
+organizations that define, like,
+
+561
+00:20:40,079 --> 00:20:41,659
+this is what the
+SQL language is.
+
+562
+00:20:41,659 --> 00:20:42,879
+And so there's
+different standards.
+
+563
+00:20:42,879 --> 00:20:44,599
+Is evolved over time. And so
+
+564
+00:20:44,599 --> 00:20:47,959
+Spark SQL actually is a
+fully compliant sequel.
+
+565
+00:20:47,959 --> 00:20:50,600
+The meet the Spec. So both.
+
+566
+00:20:50,600 --> 00:20:52,759
+Yeah, great thanks
+for clarifying.
+
+567
+00:20:52,759 --> 00:20:55,099
+Yeah, questions people have.
+
+568
+00:20:55,099 --> 00:21:00,259
+All right. Yeah, so
+what else do we have?
+
+569
+00:21:00,259 --> 00:21:02,639
+Sometimes when we're
+doing like grouping,
+
+570
+00:21:02,639 --> 00:21:05,379
+we might have chains that
+have multiple steps of this.
+
+571
+00:21:05,379 --> 00:21:07,059
+So, for example, when
+
+572
+00:21:07,059 --> 00:21:08,859
+I look at this first
+thing over here,
+
+573
+00:21:08,859 --> 00:21:11,199
+maybe I want to get all
+the unique rows, right?
+
+574
+00:21:11,199 --> 00:21:13,579
+I see that I have A one.
+
+575
+00:21:13,579 --> 00:21:16,399
+I have two different B
+threes, and I have an A two.
+
+576
+00:21:16,399 --> 00:21:17,879
+So I might group together by
+
+577
+00:21:17,879 --> 00:21:19,860
+the combination of those,
+like I have that here.
+
+578
+00:21:19,860 --> 00:21:21,179
+And at that point, I might
+
+579
+00:21:21,179 --> 00:21:22,340
+say, well, what is the ro count?
+
+580
+00:21:22,340 --> 00:21:23,779
+How often do each
+of those appear?
+
+581
+00:21:23,779 --> 00:21:26,799
+I might want to further
+roll up those statistics,
+
+582
+00:21:26,799 --> 00:21:28,200
+and I might want to say, well,
+
+583
+00:21:28,200 --> 00:21:30,559
+what is the row count
+for both A and B?
+
+584
+00:21:30,559 --> 00:21:33,579
+But I might also be
+interested for each A and B,
+
+585
+00:21:33,579 --> 00:21:37,359
+how many subcategories there
+were with, Y, for example,
+
+586
+00:21:37,359 --> 00:21:39,300
+When I'm looking at at the As,
+
+587
+00:21:39,300 --> 00:21:41,259
+there's actually two
+different y values.
+
+588
+00:21:41,259 --> 00:21:42,360
+Was I'm looking at the Bs,
+
+589
+00:21:42,360 --> 00:21:43,999
+there's only one
+different y value, right.
+
+590
+00:21:43,999 --> 00:21:45,259
+There might be
+different ways I want
+
+591
+00:21:45,259 --> 00:21:46,740
+to roll out these statistics.
+
+592
+00:21:46,740 --> 00:21:48,780
+I might want to have
+kind of a chain
+
+593
+00:21:48,780 --> 00:21:50,540
+where I group things along.
+
+594
+00:21:50,540 --> 00:21:53,379
+Whenever I have a chain
+or a pipeline like that.
+
+595
+00:21:53,379 --> 00:21:56,039
+Another way to represent it
+would be with nested queries.
+
+596
+00:21:56,039 --> 00:21:57,659
+I may show that a little
+bit later, right?
+
+597
+00:21:57,659 --> 00:21:59,620
+It feels different, but
+fundamentally it's the same.
+
+598
+00:21:59,620 --> 00:22:02,460
+Any kind of nesting is
+identical to a pipeline.
+
+599
+00:22:02,460 --> 00:22:03,760
+And honestly, I
+think the pipeline
+
+600
+00:22:03,760 --> 00:22:05,299
+is the easier way
+to reason about it.
+
+601
+00:22:05,299 --> 00:22:07,500
+But we'll see both.
+
+602
+00:22:07,500 --> 00:22:09,899
+Cool. So let's row ahead
+and we're going to do
+
+603
+00:22:09,899 --> 00:22:13,120
+a quick tophat about
+windowing functions.
+
+604
+00:22:13,120 --> 00:22:19,069
+Right. Let me bring this
+up over here. Cruel.
+
+605
+00:22:56,940 --> 00:23:00,660
+All right. A 30 seconds left.
+
+606
+00:23:37,210 --> 00:23:39,289
+Alright, so most people are
+
+607
+00:23:39,289 --> 00:23:40,709
+saying that it was a grouping by
+
+608
+00:23:40,709 --> 00:23:43,669
+followed by an aggregate.
+Which is correct, right?
+
+609
+00:23:43,669 --> 00:23:44,950
+I I had had partitioning
+
+610
+00:23:44,950 --> 00:23:46,390
+and some windowing
+function done,
+
+611
+00:23:46,390 --> 00:23:47,970
+I would probably
+have some statistic
+
+612
+00:23:47,970 --> 00:23:50,030
+outputed for each of
+these hundred rows.
+
+613
+00:23:50,030 --> 00:23:52,209
+But I don't have that. I don't
+have 100 rows of output.
+
+614
+00:23:52,209 --> 00:23:53,749
+I have 20 rows of output,
+
+615
+00:23:53,749 --> 00:23:56,969
+which corresponds to the number
+of unique values, right?
+
+616
+00:23:56,969 --> 00:23:57,909
+There's probably some kind of
+
+617
+00:23:57,909 --> 00:23:59,270
+grouping for each unique value,
+
+618
+00:23:59,270 --> 00:24:01,609
+and I get one summary
+statistic for
+
+619
+00:24:01,609 --> 00:24:04,489
+each of those. All right.
+
+620
+00:24:04,489 --> 00:24:07,389
+An follow up questions on that?
+
+621
+00:24:07,389 --> 00:24:10,330
+Alright. So I'm ahead over here,
+
+622
+00:24:10,330 --> 00:24:12,409
+and we're going to do some
+more programming demos.
+
+623
+00:24:12,409 --> 00:24:14,589
+Let me just exit
+out of this first.
+
+624
+00:24:14,589 --> 00:24:18,210
+Great. So now we're
+do some queries.
+
+625
+00:24:18,210 --> 00:24:20,769
+And I'm going to
+
+626
+00:24:20,769 --> 00:24:23,129
+do it with the date
+I've been working on.
+
+627
+00:24:23,129 --> 00:24:26,119
+And For the a lot
+of these queries,
+
+628
+00:24:26,119 --> 00:24:27,559
+I'm may be breaking
+down the data by
+
+629
+00:24:27,559 --> 00:24:30,800
+different neighborhoods in San
+Francisco, and they chose,
+
+630
+00:24:30,800 --> 00:24:33,020
+like the longest
+possible variable name,
+
+631
+00:24:33,020 --> 00:24:35,839
+which I don't want to
+keep typing in part,
+
+632
+00:24:35,839 --> 00:24:38,379
+because I can never remember
+how to spell neighborhoods I
+
+633
+00:24:38,379 --> 00:24:39,540
+guess they couldn't really spell
+
+634
+00:24:39,540 --> 00:24:41,040
+neighborhoods correctly, either.
+
+635
+00:24:41,040 --> 00:24:42,599
+L three's there. Anyway, so
+
+636
+00:24:42,599 --> 00:24:43,939
+I'm going to rename that thing,
+
+637
+00:24:43,939 --> 00:24:46,079
+so I don't have to
+keep dealing with it.
+
+638
+00:24:46,079 --> 00:24:48,079
+So I'm may come back earlier
+
+639
+00:24:48,079 --> 00:24:50,579
+when I created my view, right.
+
+640
+00:24:50,579 --> 00:24:53,779
+So I did a great or
+replaced view here.
+
+641
+00:24:53,779 --> 00:24:57,959
+And what I could do is I can
+say, with column renamed,
+
+642
+00:24:57,959 --> 00:25:00,399
+and I want to rename
+that areas is
+
+643
+00:25:00,399 --> 00:25:01,759
+nice and easy to type something.
+
+644
+00:25:01,759 --> 00:25:03,139
+I'll create or replace it.
+
+645
+00:25:03,139 --> 00:25:05,559
+Great. And then
+when I'm down here,
+
+646
+00:25:05,559 --> 00:25:11,219
+I should be able to say
+spark dot table and calls.
+
+647
+00:25:11,219 --> 00:25:12,880
+And hopefully, it says
+
+648
+00:25:12,880 --> 00:25:14,839
+somewhere near to the
+end, I should say, like,
+
+649
+00:25:14,839 --> 00:25:19,960
+area areas somewhere,
+right? Okay, great.
+
+650
+00:25:19,960 --> 00:25:22,834
+Maybe let's just make
+it singular, so,
+
+651
+00:25:22,834 --> 00:25:26,310
+because that's what I have in
+my notes and why I confuse
+
+652
+00:25:26,310 --> 00:25:27,870
+myself by drawing off
+
+653
+00:25:27,870 --> 00:25:29,309
+stripped. Alright,
+so we'll do that.
+
+654
+00:25:29,309 --> 00:25:30,730
+Great. And now I have this area,
+
+655
+00:25:30,730 --> 00:25:32,569
+and I can do queries over it.
+
+656
+00:25:32,569 --> 00:25:33,489
+And so maybe, like,
+
+657
+00:25:33,489 --> 00:25:36,569
+the first simple question
+would be something
+
+658
+00:25:36,569 --> 00:25:41,330
+like what are the
+names of the areas?
+
+659
+00:25:41,330 --> 00:25:43,969
+And so I could do
+that by a Spark SQL,
+
+660
+00:25:43,969 --> 00:25:49,949
+and I could select distinct
+area from calls, right?
+
+661
+00:25:49,949 --> 00:25:52,589
+So instead of getting like
+every entry and every row,
+
+662
+00:25:52,589 --> 00:25:53,909
+I just want to get
+unique ones, right?
+
+663
+00:25:53,909 --> 00:25:56,269
+So if I do that, data frame,
+nothing actually happens,
+
+664
+00:25:56,269 --> 00:25:58,089
+I could say something
+like two Pandas,
+
+665
+00:25:58,089 --> 00:26:00,210
+and then I will
+actually get these.
+
+666
+00:26:00,210 --> 00:26:04,560
+So that will run And I'll
+get those unique values,
+
+667
+00:26:04,560 --> 00:26:06,860
+and that should finish soon.
+
+668
+00:26:06,860 --> 00:26:08,379
+Great. As I can see these are
+
+669
+00:26:08,379 --> 00:26:10,219
+all the different neighborhoods
+in San Francisco,
+
+670
+00:26:10,219 --> 00:26:11,640
+and they get different calls
+
+671
+00:26:11,640 --> 00:26:13,279
+from different ones. All right.
+
+672
+00:26:13,279 --> 00:26:16,219
+C. So the next one I want
+to do is I want to say,
+
+673
+00:26:16,219 --> 00:26:20,399
+how many calls are
+there per area.
+
+674
+00:26:20,399 --> 00:26:22,160
+And for this one
+I may applauded.
+
+675
+00:26:22,160 --> 00:26:24,299
+I don't do probably as many
+plots as I should, right?
+
+676
+00:26:24,299 --> 00:26:25,859
+Gues maybe people learn
+that other courses.
+
+677
+00:26:25,859 --> 00:26:27,179
+But sometimes I think
+it's nice to say,
+
+678
+00:26:27,179 --> 00:26:28,579
+like, Okay, I have a question.
+
+679
+00:26:28,579 --> 00:26:30,439
+I go do some stuff in Spark.
+
+680
+00:26:30,439 --> 00:26:33,279
+I get my data back in Pandas
+or something like that.
+
+681
+00:26:33,279 --> 00:26:36,320
+I do a full end to end plot
+that looks kind of nice.
+
+682
+00:26:36,320 --> 00:26:38,539
+I think that would be
+a useful exercise.
+
+683
+00:26:38,539 --> 00:26:42,040
+Okay, so what I'm going to
+do is I'll say Spark, SQL.
+
+684
+00:26:42,040 --> 00:26:45,599
+And I'm going to say select.
+
+685
+00:26:45,599 --> 00:26:47,580
+I want to get some
+kind of a count,
+
+686
+00:26:47,580 --> 00:26:50,979
+and I'm going to
+select it from calls,
+
+687
+00:26:50,979 --> 00:26:54,459
+and I want to group
+by area, right?
+
+688
+00:26:54,459 --> 00:26:56,220
+So this will give me the
+count for each area.
+
+689
+00:26:56,220 --> 00:26:58,239
+I probably want to take
+what I'm grouping by and
+
+690
+00:26:58,239 --> 00:27:00,759
+put that on the select
+line so I can see it.
+
+691
+00:27:00,759 --> 00:27:02,500
+I'm going to do
+that. I see that's
+
+692
+00:27:02,500 --> 00:27:04,419
+give me some kind
+of data frame back.
+
+693
+00:27:04,419 --> 00:27:07,399
+And if I want to, I
+can say two Pandas.
+
+694
+00:27:07,399 --> 00:27:10,339
+So I have something to
+actually work with.
+
+695
+00:27:10,339 --> 00:27:13,219
+That's going to be my Pandas DF.
+
+696
+00:27:13,219 --> 00:27:17,300
+Great, and two Pandas,
+
+697
+00:27:17,300 --> 00:27:20,579
+I think I just forgot
+how they did that.
+
+698
+00:27:20,579 --> 00:27:24,850
+And I also made the same
+mistake in the morning too.
+
+699
+00:27:24,850 --> 00:27:28,530
+Let me just do a quick PIP
+three Install of Map pot lib.
+
+700
+00:27:28,530 --> 00:27:30,250
+Pandas integrates
+with Matplot lib.
+
+701
+00:27:30,250 --> 00:27:31,209
+So this example I'm going to
+
+702
+00:27:31,209 --> 00:27:32,570
+do needs to have that installed.
+
+703
+00:27:32,570 --> 00:27:34,950
+This is inside of my container.
+
+704
+00:27:34,950 --> 00:27:37,649
+And so there's no
+virtual environment.
+
+705
+00:27:37,649 --> 00:27:39,789
+It complain unless I do that.
+
+706
+00:27:39,789 --> 00:27:42,709
+All right. So I'll just run
+that briefly. All right.
+
+707
+00:27:42,709 --> 00:27:45,070
+Great. And so I'm going
+to get this data frame,
+
+708
+00:27:45,070 --> 00:27:48,450
+and then I can see the
+Pandas data frame.
+
+709
+00:27:48,500 --> 00:27:51,020
+Well, that is a
+pandas data frame.
+
+710
+00:27:51,020 --> 00:27:54,120
+I'm just going to call
+this something like count
+
+711
+00:27:54,120 --> 00:27:59,359
+so that I don't have to
+type the star and all that.
+
+712
+00:27:59,359 --> 00:28:00,979
+Is have a strange name.
+
+713
+00:28:00,979 --> 00:28:02,899
+Alright. So if I
+want to plot this,
+
+714
+00:28:02,899 --> 00:28:04,620
+what I can do is I can try
+
+715
+00:28:04,620 --> 00:28:06,919
+to extract a single
+column from here,
+
+716
+00:28:06,919 --> 00:28:09,560
+so maybe I want to
+get the count column.
+
+717
+00:28:09,560 --> 00:28:11,639
+And if I do that and I plot it,
+
+718
+00:28:11,639 --> 00:28:15,019
+the way that if I make
+a bar plot from it,
+
+719
+00:28:15,019 --> 00:28:16,939
+what Pandas will
+do by default is,
+
+720
+00:28:16,939 --> 00:28:18,479
+we'll have these be my Y values.
+
+721
+00:28:18,479 --> 00:28:21,060
+I think that makes
+sense. And my X values
+
+722
+00:28:21,060 --> 00:28:23,339
+are going to be from
+the dex, right?
+
+723
+00:28:23,339 --> 00:28:26,560
+So if I go ahead and
+say plot do bar,
+
+724
+00:28:26,560 --> 00:28:29,320
+Pandas is going to make
+a MT plot lib plot.
+
+725
+00:28:29,320 --> 00:28:31,820
+And maybe it's kind of okay,
+
+726
+00:28:31,820 --> 00:28:33,419
+but it's also not
+great because I
+
+727
+00:28:33,419 --> 00:28:35,259
+don't have the actual
+neighborhood names.
+
+728
+00:28:35,259 --> 00:28:38,620
+So coming back here momentarily,
+I have this data frame.
+
+729
+00:28:38,620 --> 00:28:41,359
+And if I want to get the
+proper labels on the x axis,
+
+730
+00:28:41,359 --> 00:28:42,799
+that means I need to replace
+
+731
+00:28:42,799 --> 00:28:45,139
+these values with
+something like area.
+
+732
+00:28:45,139 --> 00:28:47,159
+And I can do that
+just fine in Pantas.
+
+733
+00:28:47,159 --> 00:28:50,140
+I'm going to say, let's set
+the index to be the area.
+
+734
+00:28:50,140 --> 00:28:51,700
+That looks pretty good.
+
+735
+00:28:51,700 --> 00:28:57,110
+Let's get out the count like
+before. That looks good.
+
+736
+00:28:57,110 --> 00:28:58,569
+Now I have a series where I have
+
+737
+00:28:58,569 --> 00:29:00,810
+the index can be nice x values,
+
+738
+00:29:00,810 --> 00:29:05,069
+and these can be nice y
+values, let's plot it.
+
+739
+00:29:05,069 --> 00:29:07,110
+All right, so that's
+looking pretty good.
+
+740
+00:29:07,110 --> 00:29:09,250
+Let's try to make a
+very nice pot though.
+
+741
+00:29:09,250 --> 00:29:10,389
+Let's do everything, right?
+
+742
+00:29:10,389 --> 00:29:12,189
+So I think one thing
+that will make this
+
+743
+00:29:12,189 --> 00:29:14,989
+better is if I say,
+
+744
+00:29:14,989 --> 00:29:17,649
+like order by count
+descending, right?
+
+745
+00:29:17,649 --> 00:29:18,489
+I can quickly see like
+
+746
+00:29:18,489 --> 00:29:20,069
+the neighborhoods with
+the most fires or
+
+747
+00:29:20,069 --> 00:29:21,469
+whatever incidents
+and the ones with
+
+748
+00:29:21,469 --> 00:29:23,789
+the fewest fires.
+I'm way around that.
+
+749
+00:29:23,789 --> 00:29:26,439
+Some other things that I
+
+750
+00:29:26,439 --> 00:29:28,260
+can do is that when I
+have too many zeros,
+
+751
+00:29:28,260 --> 00:29:29,679
+it's just a little bit
+hard to read them.
+
+752
+00:29:29,679 --> 00:29:33,460
+And so what I can do is
+when I have this count,
+
+753
+00:29:33,460 --> 00:29:36,559
+I could divide it
+by 1,000, right?
+
+754
+00:29:36,559 --> 00:29:39,099
+So these numbers will be a
+little bit smaller, right?
+
+755
+00:29:39,099 --> 00:29:40,960
+So I can do a plot dot bar.
+
+756
+00:29:40,960 --> 00:29:44,160
+If I'm changing that, I
+better update my Y axis.
+
+757
+00:29:44,160 --> 00:29:46,999
+And so if I get this
+Ax subplot object,
+
+758
+00:29:46,999 --> 00:29:50,420
+then I can change that and
+I can say dot set Y label.
+
+759
+00:29:50,420 --> 00:29:52,860
+This can be like a call count,
+
+760
+00:29:52,860 --> 00:29:54,504
+and it'll be in thousands.
+
+761
+00:29:54,504 --> 00:29:56,530
+Right? So it's starting
+to look pretty good.
+
+762
+00:29:56,530 --> 00:29:57,849
+The plot is too large, right?
+
+763
+00:29:57,849 --> 00:29:59,209
+I think it's nice to have
+
+764
+00:29:59,209 --> 00:30:00,869
+small plots with
+large font, right?
+
+765
+00:30:00,869 --> 00:30:02,249
+Because it doesn't
+tak a lot of room on
+
+766
+00:30:02,249 --> 00:30:04,389
+the page, but it
+should be readable.
+
+767
+00:30:04,389 --> 00:30:05,990
+I won't mess with the
+font size right now,
+
+768
+00:30:05,990 --> 00:30:07,849
+but let's at least make
+this little bit smaller.
+
+769
+00:30:07,849 --> 00:30:10,590
+Let's say it's like 7 " wide,
+
+770
+00:30:10,590 --> 00:30:12,870
+and then maybe something
+like 3 " tall.
+
+771
+00:30:12,870 --> 00:30:15,330
+And there we start to
+get a pretty nice plot,
+
+772
+00:30:15,330 --> 00:30:16,759
+right? And I don't know.
+
+773
+00:30:16,759 --> 00:30:17,999
+I lived in San Francis
+
+774
+00:30:17,999 --> 00:30:19,340
+the Bay area for a
+couple of things,
+
+775
+00:30:19,340 --> 00:30:21,220
+and people told me you
+don't go to the Tenderne.
+
+776
+00:30:21,220 --> 00:30:21,960
+I don't know if they have a lot
+
+777
+00:30:21,960 --> 00:30:22,839
+of fires down there or what,
+
+778
+00:30:22,839 --> 00:30:26,860
+but this plot seems to
+back up that advice I saw.
+
+779
+00:30:26,860 --> 00:30:28,720
+And so I guess if you
+don't like fires,
+
+780
+00:30:28,720 --> 00:30:30,459
+you would maybe go to
+Lincoln Park. I don't know.
+
+781
+00:30:30,459 --> 00:30:32,079
+We can start looking
+at it and see
+
+782
+00:30:32,079 --> 00:30:34,139
+the patterns across
+different neighborhoods.
+
+783
+00:30:34,139 --> 00:30:35,339
+So I'll just pause there
+
+784
+00:30:35,339 --> 00:30:36,619
+for a moment and
+see if anybody has
+
+785
+00:30:36,619 --> 00:30:38,199
+any questions about
+that kind of end
+
+786
+00:30:38,199 --> 00:30:41,280
+end example from Spar to a plot.
+
+787
+00:30:46,310 --> 00:30:48,869
+Right. Cool.
+
+788
+00:30:48,869 --> 00:30:51,429
+So let's carry on.
+So I want to look at
+
+789
+00:30:51,429 --> 00:30:53,729
+a case now where we could
+look at neighborhoods,
+
+790
+00:30:53,729 --> 00:30:55,389
+I'm going to start
+looking at call types,
+
+791
+00:30:55,389 --> 00:30:58,170
+and they have lots of
+different call types,
+
+792
+00:30:58,170 --> 00:31:00,989
+and call types are part of
+bigger call type groups.
+
+793
+00:31:00,989 --> 00:31:03,589
+And so first, I want to look
+at just combination of those
+
+794
+00:31:03,589 --> 00:31:06,489
+and then see how we can break
+it down further, right?
+
+795
+00:31:06,489 --> 00:31:09,309
+I'm going to grab this, right?
+
+796
+00:31:09,309 --> 00:31:12,189
+I'm going to say, my
+question now will
+
+797
+00:31:12,189 --> 00:31:19,900
+be how many calls are there?
+
+798
+00:31:19,900 --> 00:31:25,829
+Per call type call group
+slash type. All right.
+
+799
+00:31:25,829 --> 00:31:27,350
+Great. So instead of area,
+
+800
+00:31:27,350 --> 00:31:30,269
+what I will do is I
+will say call type,
+
+801
+00:31:30,269 --> 00:31:34,430
+and I will also have
+a call type group.
+
+802
+00:31:34,430 --> 00:31:35,890
+I want to get both of these.
+
+803
+00:31:35,890 --> 00:31:37,729
+And that means I can have to
+
+804
+00:31:37,729 --> 00:31:40,370
+group down here as
+well by both of them.
+
+805
+00:31:40,370 --> 00:31:42,529
+So I'm going to group
+by both of them.
+
+806
+00:31:42,529 --> 00:31:44,169
+I'm not ting to worry too much
+
+807
+00:31:44,169 --> 00:31:47,549
+about the order of them
+right now. So I can do that.
+
+808
+00:31:47,549 --> 00:31:49,749
+I should be able to
+summarize that in
+
+809
+00:31:49,749 --> 00:31:51,709
+general for me, right?
+
+810
+00:31:51,709 --> 00:31:54,129
+So I guess, you know,
+
+811
+00:31:54,129 --> 00:31:57,760
+honestly, maybe it's a little
+bit easier to say order by
+
+812
+00:31:57,760 --> 00:32:00,729
+Call type group
+ascending, right?
+
+813
+00:32:00,729 --> 00:32:03,409
+So I can actually see
+the different categories
+
+814
+00:32:03,409 --> 00:32:05,589
+in each of them, right?
+So I can do that.
+
+815
+00:32:05,589 --> 00:32:08,149
+And then I can see,
+
+816
+00:32:08,149 --> 00:32:10,130
+for the potentially life
+threatening things,
+
+817
+00:32:10,130 --> 00:32:11,730
+I can see while there's
+medical incidents
+
+818
+00:32:11,730 --> 00:32:12,849
+or water rescues or
+
+819
+00:32:12,849 --> 00:32:14,349
+traffic collisions or
+
+820
+00:32:14,349 --> 00:32:16,319
+fires, all these
+different things, right?
+
+821
+00:32:16,319 --> 00:32:18,889
+Cool. So I have that.
+And I might want
+
+822
+00:32:18,889 --> 00:32:21,809
+to roll up these
+statistics further
+
+823
+00:32:21,809 --> 00:32:24,350
+because some of these categories
+
+824
+00:32:24,350 --> 00:32:27,749
+might be dominated by
+one subcategory, right?
+
+825
+00:32:27,749 --> 00:32:29,369
+Maybe you can see
+
+826
+00:32:29,369 --> 00:32:31,410
+already the potentially
+life threatening things.
+
+827
+00:32:31,410 --> 00:32:33,270
+They're mostly
+medical incidents.
+
+828
+00:32:33,270 --> 00:32:35,009
+And in contrast, you
+
+829
+00:32:35,009 --> 00:32:36,790
+think of the fire department
+is dealing with fires,
+
+830
+00:32:36,790 --> 00:32:38,769
+but like structure fires
+are relatively rare.
+
+831
+00:32:38,769 --> 00:32:40,629
+So I just want to get a sense,
+
+832
+00:32:40,629 --> 00:32:44,249
+to what extent does the biggest
+category dominate, right?
+
+833
+00:32:44,249 --> 00:32:48,869
+I'm to say, we all phrase
+this is, for each group,
+
+834
+00:32:48,869 --> 00:32:52,889
+what percentage of calls are
+
+835
+00:32:52,889 --> 00:32:59,899
+represented by the most
+common type, right?
+
+836
+00:32:59,899 --> 00:33:04,379
+All right. And so how am I
+going to do this, right?
+
+837
+00:33:04,379 --> 00:33:06,439
+I think that I need to have
+
+838
+00:33:06,439 --> 00:33:09,559
+actually a nested query would
+be one way of doing it.
+
+839
+00:33:09,559 --> 00:33:11,979
+Let's just think about how
+I'd start doing the select.
+
+840
+00:33:11,979 --> 00:33:15,599
+I'm I select something
+from something,
+
+841
+00:33:15,599 --> 00:33:17,660
+and then I have to have
+some kind of group by.
+
+842
+00:33:17,660 --> 00:33:19,079
+I think what I'm grouping
+
+843
+00:33:19,079 --> 00:33:21,319
+by is the call
+type group, right?
+
+844
+00:33:21,319 --> 00:33:22,939
+So how what percentage of
+
+845
+00:33:22,939 --> 00:33:25,600
+calls are represented by
+the most common type?
+
+846
+00:33:25,600 --> 00:33:30,310
+So I'm going to say for
+each call type, group.
+
+847
+00:33:30,310 --> 00:33:31,870
+You know, is that term
+here for each group?
+
+848
+00:33:31,870 --> 00:33:33,769
+I better have that down here.
+
+849
+00:33:33,769 --> 00:33:36,290
+And then I have that
+up here as well.
+
+850
+00:33:36,290 --> 00:33:37,769
+And then I want to know, well,
+
+851
+00:33:37,769 --> 00:33:39,290
+how many are for the
+most common type.
+
+852
+00:33:39,290 --> 00:33:41,089
+And the way I could do
+this is I could say, well,
+
+853
+00:33:41,089 --> 00:33:44,605
+what is like a Max count?
+
+854
+00:33:44,605 --> 00:33:48,779
+Divided by the sum of
+some accounts, right?
+
+855
+00:33:48,779 --> 00:33:50,040
+So within this call type group,
+
+856
+00:33:50,040 --> 00:33:51,500
+I have a bunch of
+different ac counts.
+
+857
+00:33:51,500 --> 00:33:53,280
+I have a bunch of differ
+accounts up here.
+
+858
+00:33:53,280 --> 00:33:55,480
+I want to get the biggest
+one divided by the total.
+
+859
+00:33:55,480 --> 00:33:57,139
+Maybe I'll multiply
+that by 100 and
+
+860
+00:33:57,139 --> 00:33:59,159
+then call that a percent.
+
+861
+00:33:59,159 --> 00:34:00,859
+Maybe I'll call it like
+the top percent, right?
+
+862
+00:34:00,859 --> 00:34:03,480
+Because it's the percentage
+represented by the top group.
+
+863
+00:34:03,480 --> 00:34:04,739
+And then what it's tricky is
+
+864
+00:34:04,739 --> 00:34:06,139
+what I actually
+select from here.
+
+865
+00:34:06,139 --> 00:34:09,959
+What I'd like to select from
+is this data up here, right?
+
+866
+00:34:09,959 --> 00:34:12,279
+And that data came
+from a query, right?
+
+867
+00:34:12,279 --> 00:34:13,659
+And so what could I do? I could
+
+868
+00:34:13,659 --> 00:34:15,389
+actually copy all of this.
+
+869
+00:34:15,389 --> 00:34:18,799
+And I could put some
+parentheses down here, right?
+
+870
+00:34:18,799 --> 00:34:20,519
+I can have some parentheses,
+
+871
+00:34:20,519 --> 00:34:24,559
+and I could say,
+let's print this out.
+
+872
+00:34:24,559 --> 00:34:25,999
+And so I'm going to run that.
+
+873
+00:34:25,999 --> 00:34:28,199
+And I guess that's just actually
+giving me a data frame.
+
+874
+00:34:28,199 --> 00:34:30,659
+I can say two pan to if I
+want to do it for real.
+
+875
+00:34:30,659 --> 00:34:32,259
+And then I should be able to
+
+876
+00:34:32,259 --> 00:34:33,859
+go through and see what it is.
+
+877
+00:34:33,859 --> 00:34:35,399
+It's a little bit hard be
+
+878
+00:34:35,399 --> 00:34:36,879
+hard to see the
+actual names on it.
+
+879
+00:34:36,879 --> 00:34:38,479
+I'd be actually something
+easier to do if I
+
+880
+00:34:38,479 --> 00:34:41,320
+had was using partitioning
+and windowing,
+
+881
+00:34:41,320 --> 00:34:42,600
+which we're going
+to look at shortly.
+
+882
+00:34:42,600 --> 00:34:43,599
+But at least for now,
+
+883
+00:34:43,599 --> 00:34:45,639
+I can get some sort
+of sense, right?
+
+884
+00:34:45,639 --> 00:34:47,499
+These potentially life
+
+885
+00:34:47,499 --> 00:34:48,600
+threatening and not
+life threatening.
+
+886
+00:34:48,600 --> 00:34:50,500
+It seems like they're dominated
+by a single category.
+
+887
+00:34:50,500 --> 00:34:52,019
+I can't quite see
+what it is here,
+
+888
+00:34:52,019 --> 00:34:53,779
+where some of these
+other things like fires,
+
+889
+00:34:53,779 --> 00:34:56,099
+maybe there's numerous
+different kinds of fires and
+
+890
+00:34:56,099 --> 00:34:57,959
+even the most common
+kind of fire is
+
+891
+00:34:57,959 --> 00:35:00,860
+only 38% of all the cases.
+
+892
+00:35:00,860 --> 00:35:02,759
+Now, even though I've
+done nesting here,
+
+893
+00:35:02,759 --> 00:35:04,979
+I want you to think about
+this like a pipeline, right?
+
+894
+00:35:04,979 --> 00:35:06,459
+It's running this query first.
+
+895
+00:35:06,459 --> 00:35:07,839
+And then the output of that is
+
+896
+00:35:07,839 --> 00:35:09,759
+feeding in to this query, right?
+
+897
+00:35:09,759 --> 00:35:12,679
+So nesting pipelines, that's
+the same concept. All right.
+
+898
+00:35:12,679 --> 00:35:14,480
+Any question about
+the nested query
+
+899
+00:35:14,480 --> 00:35:17,800
+before I do it again
+with the data frame API?
+
+900
+00:35:17,860 --> 00:35:21,200
+Yeah, crush right here.
+The indentations.
+
+901
+00:35:21,200 --> 00:35:22,900
+The indentation
+is not necessary.
+
+902
+00:35:22,900 --> 00:35:25,039
+It just looks nicer
+to me, I guess. Yeah.
+
+903
+00:35:25,039 --> 00:35:26,120
+Thanks for clarifying.
+
+904
+00:35:26,120 --> 00:35:28,299
+Yeah, there are
+questions people have.
+
+905
+00:35:28,590 --> 00:35:31,289
+Cool. So let's do
+the same thing,
+
+906
+00:35:31,289 --> 00:35:33,570
+but with a data frame API.
+
+907
+00:35:33,570 --> 00:35:37,710
+So same with data frame API.
+
+908
+00:35:37,710 --> 00:35:39,530
+Now, I've been doing all
+these spark queries,
+
+909
+00:35:39,530 --> 00:35:41,370
+but I can go back and
+use this example.
+
+910
+00:35:41,370 --> 00:35:43,590
+Now, I have all of these calls,
+
+911
+00:35:43,590 --> 00:35:45,029
+and that gives me
+
+912
+00:35:45,029 --> 00:35:46,969
+a data frame that I can
+start working with.
+
+913
+00:35:46,969 --> 00:35:48,709
+And I want to have some
+kind of pipeline here,
+
+914
+00:35:48,709 --> 00:35:50,829
+and so I'm going to
+have many lines, right?
+
+915
+00:35:50,829 --> 00:35:53,009
+Each of which is doing
+one function call.
+
+916
+00:35:53,009 --> 00:35:54,750
+And so I'll start
+with those calls.
+
+917
+00:35:54,750 --> 00:35:57,549
+And the first thing I
+want to do is a group by.
+
+918
+00:35:57,549 --> 00:35:59,349
+What do I want to
+group by? I want to
+
+919
+00:35:59,349 --> 00:36:01,329
+group by both of these.
+
+920
+00:36:01,329 --> 00:36:02,974
+I want to group by call type,
+
+921
+00:36:02,974 --> 00:36:05,239
+group and trol type, right?
+
+922
+00:36:05,239 --> 00:36:06,859
+So let me get both
+
+923
+00:36:06,859 --> 00:36:08,759
+of those in here. And
+so I can do that.
+
+924
+00:36:08,759 --> 00:36:10,540
+I say I get this
+grouped expression,
+
+925
+00:36:10,540 --> 00:36:12,019
+and then I want to get a count
+
+926
+00:36:12,019 --> 00:36:13,979
+for each of them.
+So say dot count.
+
+927
+00:36:13,979 --> 00:36:18,649
+And this is kind of interesting
+because I'm doing count,
+
+928
+00:36:18,649 --> 00:36:22,670
+and is that transformation or
+an action actually depends?
+
+929
+00:36:22,670 --> 00:36:24,229
+Whenever I've done
+it before, I want to
+
+930
+00:36:24,229 --> 00:36:25,949
+get a single number
+out to the strain,
+
+931
+00:36:25,949 --> 00:36:27,790
+and that is an action.
+
+932
+00:36:27,790 --> 00:36:29,210
+I have to see an actual number.
+
+933
+00:36:29,210 --> 00:36:30,709
+In this case, when
+I have a group,
+
+934
+00:36:30,709 --> 00:36:32,369
+followed by an
+aggregate like that,
+
+935
+00:36:32,369 --> 00:36:33,569
+that's producing data that
+
+936
+00:36:33,569 --> 00:36:34,729
+I might use for something else.
+
+937
+00:36:34,729 --> 00:36:37,529
+So in this context, it's
+actually a transformation.
+
+938
+00:36:37,529 --> 00:36:40,310
+I want to be able to look at
+count based on the context,
+
+939
+00:36:40,310 --> 00:36:43,205
+say, Oh, that's a transformation
+or that is an action.
+
+940
+00:36:43,205 --> 00:36:44,399
+Alright, great. So I have this.
+
+941
+00:36:44,399 --> 00:36:45,719
+I have a data frame so far.
+
+942
+00:36:45,719 --> 00:36:46,999
+Let's do more things, right?
+
+943
+00:36:46,999 --> 00:36:49,259
+I think when I'm
+looking up here, right,
+
+944
+00:36:49,259 --> 00:36:52,279
+I've already done
+this part right here.
+
+945
+00:36:52,279 --> 00:36:55,099
+Now I want to do this next part,
+
+946
+00:36:55,099 --> 00:36:57,279
+which involves another
+group by, right?
+
+947
+00:36:57,279 --> 00:36:58,679
+I first grouped by this.
+
+948
+00:36:58,679 --> 00:36:59,939
+Now in the outer query I'm
+
+949
+00:36:59,939 --> 00:37:01,759
+grouping by this. I'm
+going to group it again.
+
+950
+00:37:01,759 --> 00:37:04,099
+I'm going to say group by,
+
+951
+00:37:04,099 --> 00:37:07,370
+and I want to get a call type.
+
+952
+00:37:07,370 --> 00:37:09,299
+Group. Okay, so I'm
+going to have that.
+
+953
+00:37:09,299 --> 00:37:11,139
+Again, nothing has
+actually been done yet.
+
+954
+00:37:11,139 --> 00:37:12,979
+And this is a little bit more
+
+955
+00:37:12,979 --> 00:37:15,499
+complicated because
+for simple aggregates,
+
+956
+00:37:15,499 --> 00:37:16,739
+they have functions that are
+
+957
+00:37:16,739 --> 00:37:18,679
+just there and they're
+named for you.
+
+958
+00:37:18,679 --> 00:37:21,219
+This is kind of a more
+complicated aggregate up here.
+
+959
+00:37:21,219 --> 00:37:23,220
+It's not just a simple function.
+
+960
+00:37:23,220 --> 00:37:25,099
+And so I'm I have to
+say aggregate here,
+
+961
+00:37:25,099 --> 00:37:26,439
+and I have to have some kind of
+
+962
+00:37:26,439 --> 00:37:28,939
+expression. Says
+what I want to do.
+
+963
+00:37:28,939 --> 00:37:31,180
+Now, this expression
+thing, remember this comes
+
+964
+00:37:31,180 --> 00:37:35,160
+from ti spark squ functions.
+
+965
+00:37:35,160 --> 00:37:36,679
+Remember that I have
+both the column and
+
+966
+00:37:36,679 --> 00:37:38,579
+the EXPR there that,
+
+967
+00:37:38,579 --> 00:37:40,439
+you know, we'll
+use all the time.
+
+968
+00:37:40,439 --> 00:37:43,760
+And from Okay,
+great I had a typo.
+
+969
+00:37:43,760 --> 00:37:45,039
+I'm going to import
+those things.
+
+970
+00:37:45,039 --> 00:37:46,359
+And then down here,
+I can actually have
+
+971
+00:37:46,359 --> 00:37:48,299
+some kind of expression.
+
+972
+00:37:48,299 --> 00:37:50,299
+And so what will
+my expression be?
+
+973
+00:37:50,299 --> 00:37:51,819
+Maybe I'll just start
+with this, right?
+
+974
+00:37:51,819 --> 00:37:54,680
+Since it's based on
+top of SQL anyway,
+
+975
+00:37:54,680 --> 00:37:56,599
+there's some changes
+I'll have to do.
+
+976
+00:37:56,599 --> 00:38:01,019
+I think one change is that is
+that when I did this count,
+
+977
+00:38:01,019 --> 00:38:02,699
+I couldn't really name
+it, and so the name of
+
+978
+00:38:02,699 --> 00:38:05,334
+it is actually just
+count in this case.
+
+979
+00:38:05,334 --> 00:38:07,350
+And the other thing
+is that I cannot
+
+980
+00:38:07,350 --> 00:38:09,030
+put an as inside of
+this expression,
+
+981
+00:38:09,030 --> 00:38:11,509
+at least as far as I'm
+aware, so I can do this.
+
+982
+00:38:11,509 --> 00:38:13,349
+If I want to do
+as, then I have to
+
+983
+00:38:13,349 --> 00:38:15,149
+say this alias thing over here.
+
+984
+00:38:15,149 --> 00:38:18,550
+And so then I'll say
+this is the top percent.
+
+985
+00:38:18,550 --> 00:38:21,109
+All right, so I can do that.
+I get this data frame,
+
+986
+00:38:21,109 --> 00:38:23,469
+and then if I really
+want to see it,
+
+987
+00:38:23,469 --> 00:38:26,629
+then I have to go back and
+say two Pandas and I'll run,
+
+988
+00:38:26,629 --> 00:38:28,889
+and I'll get exactly
+the same results back.
+
+989
+00:38:28,889 --> 00:38:32,089
+Before you can make some
+stylistic decisions here.
+
+990
+00:38:32,089 --> 00:38:33,369
+Do you want to use
+one or the other?
+
+991
+00:38:33,369 --> 00:38:35,429
+I personally find like
+the step by step.
+
+992
+00:38:35,429 --> 00:38:36,929
+Imagine when I'm doing the data
+
+993
+00:38:36,929 --> 00:38:38,689
+a little bit more
+intuitive, right?
+
+994
+00:38:38,689 --> 00:38:40,989
+But some people
+really like SQL and
+
+995
+00:38:40,989 --> 00:38:42,370
+don't aren't as troubled
+
+996
+00:38:42,370 --> 00:38:43,830
+maybe as I am by like
+all the nesting.
+
+997
+00:38:43,830 --> 00:38:45,149
+Somehow, like this gets me all
+
+998
+00:38:45,149 --> 00:38:47,669
+confused because it doesn't
+happen in a logical order.
+
+999
+00:38:47,669 --> 00:38:48,789
+If I think about the
+series of things,
+
+1000
+00:38:48,789 --> 00:38:49,709
+I'm kind of jumping around.
+
+1001
+00:38:49,709 --> 00:38:52,509
+I like, you know, it group
+bys, and then it aggregates,
+
+1002
+00:38:52,509 --> 00:38:54,350
+and then it groups by again,
+and then it aggregates,
+
+1003
+00:38:54,350 --> 00:38:56,569
+and it's just not very
+straightforward for me.
+
+1004
+00:38:56,569 --> 00:38:58,810
+Alright, so great. Any questions
+
+1005
+00:38:58,810 --> 00:39:01,529
+about either of these?
+Yeah, right here.
+
+1006
+00:39:17,250 --> 00:39:19,769
+Yeah, well, I think
+the first thing I
+
+1007
+00:39:19,769 --> 00:39:21,570
+wanted to do is I wanted
+to be able to compare
+
+1008
+00:39:21,570 --> 00:39:23,289
+the most important call type
+
+1009
+00:39:23,289 --> 00:39:25,329
+relative to all the
+different call types.
+
+1010
+00:39:25,329 --> 00:39:26,669
+So I first had to just
+
+1011
+00:39:26,669 --> 00:39:28,749
+come back here and did
+some summary statistics.
+
+1012
+00:39:28,749 --> 00:39:31,629
+For every combination of call
+type group and call type,
+
+1013
+00:39:31,629 --> 00:39:33,509
+I had to see how
+often it was, right?
+
+1014
+00:39:33,509 --> 00:39:36,050
+So for a potentially life
+threatening medical incident,
+
+1015
+00:39:36,050 --> 00:39:37,289
+there were this many.
+
+1016
+00:39:37,289 --> 00:39:40,669
+But then I wanted to roll it
+up further and say, well,
+
+1017
+00:39:40,669 --> 00:39:42,290
+how big is this relative
+
+1018
+00:39:42,290 --> 00:39:45,069
+to all of the life
+threatening things.
+
+1019
+00:39:45,069 --> 00:39:46,729
+And so each time,
+
+1020
+00:39:46,729 --> 00:39:48,910
+I roll up the data to
+another level of summary,
+
+1021
+00:39:48,910 --> 00:39:50,369
+I might have another group bye.
+
+1022
+00:39:50,369 --> 00:39:51,529
+And you can imagine
+how that might
+
+1023
+00:39:51,529 --> 00:39:52,829
+happen at many different levels.
+
+1024
+00:39:52,829 --> 00:39:54,230
+You'd have a more
+complicated pipeline
+
+1025
+00:39:54,230 --> 00:39:55,989
+where I start down with
+a very detailed data,
+
+1026
+00:39:55,989 --> 00:39:57,269
+and it becomes kind of more and
+
+1027
+00:39:57,269 --> 00:39:59,869
+more of a core strained
+summary, right?
+
+1028
+00:39:59,869 --> 00:40:02,209
+Do that make sense? Yeah,
+yeah, thank you for asking.
+
+1029
+00:40:02,209 --> 00:40:06,959
+Yeah, other questions
+people have. All right.
+
+1030
+00:40:06,959 --> 00:40:12,400
+Cool. So let's do a
+windowing function.
+
+1031
+00:40:12,400 --> 00:40:13,559
+And I just tried
+to come up with a
+
+1032
+00:40:13,559 --> 00:40:16,160
+simple windowing
+function here example,
+
+1033
+00:40:16,160 --> 00:40:17,980
+even though it's maybe
+a little bit contrived.
+
+1034
+00:40:17,980 --> 00:40:20,919
+And so for each of these
+neighborhoods, right?
+
+1035
+00:40:20,919 --> 00:40:22,299
+They have all these calls, and
+
+1036
+00:40:22,299 --> 00:40:23,620
+each call has a call number.
+
+1037
+00:40:23,620 --> 00:40:26,999
+And so my question is,
+what are the smallest
+
+1038
+00:40:26,999 --> 00:40:30,060
+the smallest three call numbers
+
+1039
+00:40:30,060 --> 00:40:33,379
+for each area, right?
+What are they?
+
+1040
+00:40:33,379 --> 00:40:35,359
+Okay. And The way
+
+1041
+00:40:35,359 --> 00:40:37,380
+we're going to do this
+is rab in two steps.
+
+1042
+00:40:37,380 --> 00:40:38,479
+The first thing
+I'm going to do is
+
+1043
+00:40:38,479 --> 00:40:39,520
+I'm ready to bring together
+
+1044
+00:40:39,520 --> 00:40:42,899
+all the rows in the
+same area, right?
+
+1045
+00:40:42,899 --> 00:40:44,700
+It's going to be a
+this single partition.
+
+1046
+00:40:44,700 --> 00:40:46,299
+And then we're
+going to rank them.
+
+1047
+00:40:46,299 --> 00:40:47,979
+We're going to say, Well,
+this is the number one,
+
+1048
+00:40:47,979 --> 00:40:50,560
+number two, number three,
+from smallest to largest.
+
+1049
+00:40:50,560 --> 00:40:51,799
+And then after that, I could do
+
+1050
+00:40:51,799 --> 00:40:53,559
+a separate step where
+I can say, Well, a,
+
+1051
+00:40:53,559 --> 00:40:54,699
+you put ranks in
+all of them, but
+
+1052
+00:40:54,699 --> 00:40:55,879
+I'm only interested in ranks,
+
+1053
+00:40:55,879 --> 00:40:57,359
+one, two, and three.
+
+1054
+00:40:57,359 --> 00:40:59,585
+So it's going to have
+a two step process.
+
+1055
+00:40:59,585 --> 00:41:03,489
+And so I will write a
+Spark SQL query here,
+
+1056
+00:41:03,489 --> 00:41:05,950
+and I'm going to be selecting
+
+1057
+00:41:05,950 --> 00:41:09,509
+something from calls. All right.
+
+1058
+00:41:09,509 --> 00:41:12,789
+And so one of the things I
+want to know is for each area,
+
+1059
+00:41:12,789 --> 00:41:14,549
+what's going on, right.
+
+1060
+00:41:14,549 --> 00:41:17,829
+And then I want to
+have a call number,
+
+1061
+00:41:17,829 --> 00:41:19,469
+right because I want
+to see what they are.
+
+1062
+00:41:19,469 --> 00:41:22,869
+And here's where it just a
+little bit strange, right?
+
+1063
+00:41:22,869 --> 00:41:24,890
+Because I want to bring
+together related data.
+
+1064
+00:41:24,890 --> 00:41:26,699
+And so You know,
+
+1065
+00:41:26,699 --> 00:41:27,860
+I don't like their syntax,
+
+1066
+00:41:27,860 --> 00:41:29,539
+but I wish just like if I'm
+
+1067
+00:41:29,539 --> 00:41:31,519
+doing a group I wish I could
+somehow indicate down here.
+
+1068
+00:41:31,519 --> 00:41:32,679
+Okay, I want to partition by
+
+1069
+00:41:32,679 --> 00:41:34,019
+this. But but they
+don't do that.
+
+1070
+00:41:34,019 --> 00:41:35,519
+They actually
+combine quite a bit
+
+1071
+00:41:35,519 --> 00:41:37,420
+on the select line itself.
+
+1072
+00:41:37,420 --> 00:41:39,499
+So the first thing I
+have to do is I have to
+
+1073
+00:41:39,499 --> 00:41:41,439
+say which window function
+am I interested in,
+
+1074
+00:41:41,439 --> 00:41:42,579
+and the one I'm interested in
+
+1075
+00:41:42,579 --> 00:41:44,679
+is is the row number, right?
+
+1076
+00:41:44,679 --> 00:41:46,139
+So I'm may bring
+together all the data
+
+1077
+00:41:46,139 --> 00:41:47,399
+in the same area and may
+
+1078
+00:41:47,399 --> 00:41:50,640
+assign within each of these
+partitions a row number.
+
+1079
+00:41:50,640 --> 00:41:52,259
+Alright, so if I'm doing that,
+
+1080
+00:41:52,259 --> 00:41:53,679
+I have to say I'm
+doing the row number,
+
+1081
+00:41:53,679 --> 00:41:55,240
+but it's relative to
+these partitions,
+
+1082
+00:41:55,240 --> 00:41:56,339
+and I have to specify that.
+
+1083
+00:41:56,339 --> 00:41:58,199
+So I have to say
+row number over.
+
+1084
+00:41:58,199 --> 00:42:00,279
+And then inside of here,
+I have to specify what
+
+1085
+00:42:00,279 --> 00:42:03,519
+my partitions actually
+look like, right?
+
+1086
+00:42:03,519 --> 00:42:06,750
+And so You know, normally,
+
+1087
+00:42:06,750 --> 00:42:08,769
+we're doing a group by later on,
+
+1088
+00:42:08,769 --> 00:42:10,469
+Partition by happens right here.
+
+1089
+00:42:10,469 --> 00:42:13,030
+For whatever reason, that's
+how the syntax they designed.
+
+1090
+00:42:13,030 --> 00:42:14,509
+So I may say partition by,
+
+1091
+00:42:14,509 --> 00:42:16,189
+and we want to
+partition by area.
+
+1092
+00:42:16,189 --> 00:42:18,889
+Okay, Fantastic. And then
+
+1093
+00:42:18,889 --> 00:42:20,349
+when I'm doing
+that, Okay, great.
+
+1094
+00:42:20,349 --> 00:42:22,089
+I brought everything
+together in the same area,
+
+1095
+00:42:22,089 --> 00:42:24,490
+but I need to somehow indicate
+
+1096
+00:42:24,490 --> 00:42:26,829
+the order of the rows
+within a partition, right?
+
+1097
+00:42:26,829 --> 00:42:28,449
+If I say it's row number one,
+
+1098
+00:42:28,449 --> 00:42:30,089
+well, one of what?
+
+1099
+00:42:30,089 --> 00:42:32,849
+And so in addition to
+doing a partition here,
+
+1100
+00:42:32,849 --> 00:42:36,349
+I also have to have an order by.
+
+1101
+00:42:36,349 --> 00:42:38,994
+And in this case,
+I may have a call
+
+1102
+00:42:38,994 --> 00:42:41,919
+Number, right? So to
+really do this, right?
+
+1103
+00:42:41,919 --> 00:42:43,639
+I'm still like selecting this
+
+1104
+00:42:43,639 --> 00:42:45,439
+for every single row
+of my input data.
+
+1105
+00:42:45,439 --> 00:42:47,060
+But when I want to
+get this function,
+
+1106
+00:42:47,060 --> 00:42:48,379
+what I have to do
+is I have to pull
+
+1107
+00:42:48,379 --> 00:42:49,979
+together related data by area,
+
+1108
+00:42:49,979 --> 00:42:51,659
+and then say, within that area,
+
+1109
+00:42:51,659 --> 00:42:53,239
+what call number is it?
+
+1110
+00:42:53,239 --> 00:42:55,539
+And I think I want
+to do you know,
+
+1111
+00:42:55,539 --> 00:42:56,619
+I want number one to be the
+
+1112
+00:42:56,619 --> 00:42:57,940
+smallest rather
+than the biggest.
+
+1113
+00:42:57,940 --> 00:43:00,239
+I will say ascending,
+right? So I can do that.
+
+1114
+00:43:00,239 --> 00:43:01,759
+And that will give
+me a data frame
+
+1115
+00:43:01,759 --> 00:43:03,620
+that will answer that question.
+
+1116
+00:43:03,620 --> 00:43:06,999
+And maybe that's a really
+awful column name, isn't it?
+
+1117
+00:43:06,999 --> 00:43:09,154
+I'm just going to call
+that something like num.
+
+1118
+00:43:09,154 --> 00:43:11,449
+Right? So so far so good.
+
+1119
+00:43:11,449 --> 00:43:14,849
+And if I ran this right now
+and actually collected it,
+
+1120
+00:43:14,849 --> 00:43:17,569
+like if I did a two pandas
+or something like that,
+
+1121
+00:43:17,569 --> 00:43:19,770
+my whole VM would
+actually freeze.
+
+1122
+00:43:19,770 --> 00:43:21,529
+Asked me how I know, because
+
+1123
+00:43:21,529 --> 00:43:23,809
+what it's doing is it's
+taking all that spark data,
+
+1124
+00:43:23,809 --> 00:43:25,849
+which is distributed and not
+a memory at the same time,
+
+1125
+00:43:25,849 --> 00:43:27,489
+and it would try to
+bring it into memory.
+
+1126
+00:43:27,489 --> 00:43:28,889
+So I should not do that.
+
+1127
+00:43:28,889 --> 00:43:31,249
+What I need to do somehow
+is filter it down.
+
+1128
+00:43:31,249 --> 00:43:33,030
+So I'm I try to do aware num
+
+1129
+00:43:33,030 --> 00:43:34,489
+is less than or equal to three.
+
+1130
+00:43:34,489 --> 00:43:36,510
+How many rows will that return?
+
+1131
+00:43:36,510 --> 00:43:38,909
+Well, it depends. Let
+me come back here.
+
+1132
+00:43:38,909 --> 00:43:40,769
+How many areas do I have?
+
+1133
+00:43:40,769 --> 00:43:45,469
+There are 41 areas
+in San Francisco.
+
+1134
+00:43:45,469 --> 00:43:47,089
+And so if I have
+three rows reaching,
+
+1135
+00:43:47,089 --> 00:43:48,409
+it's like 120 rows.
+
+1136
+00:43:48,409 --> 00:43:50,109
+That should be
+fine, right? But if
+
+1137
+00:43:50,109 --> 00:43:52,109
+I do it, it's not going to work.
+
+1138
+00:43:52,109 --> 00:43:54,489
+Why? Well, this filtering by
+
+1139
+00:43:54,489 --> 00:43:57,309
+num happens before any
+partitioning happens, right?
+
+1140
+00:43:57,309 --> 00:43:58,309
+It is trying to filter down
+
+1141
+00:43:58,309 --> 00:43:59,770
+the rows before it partitions.
+
+1142
+00:43:59,770 --> 00:44:01,129
+And so that's not good, right?
+
+1143
+00:44:01,129 --> 00:44:04,050
+Num doesn't even exist before
+I do the partitioning.
+
+1144
+00:44:04,050 --> 00:44:06,409
+Okay, fine. If I
+was doing group by,
+
+1145
+00:44:06,409 --> 00:44:08,949
+I similarly cannot do where,
+but I would do having.
+
+1146
+00:44:08,949 --> 00:44:11,034
+So I would try to make sense
+like I'm going to do having.
+
+1147
+00:44:11,034 --> 00:44:12,399
+For whatever reason,
+I think they
+
+1148
+00:44:12,399 --> 00:44:13,699
+should support this,
+but they don't.
+
+1149
+00:44:13,699 --> 00:44:15,619
+They're like, Well, Having
+only works with group B.
+
+1150
+00:44:15,619 --> 00:44:18,340
+And so I'm like, Okay, well,
+this is pretty annoying.
+
+1151
+00:44:18,340 --> 00:44:20,439
+So now I have two
+ways I could do it.
+
+1152
+00:44:20,439 --> 00:44:21,919
+I'm going to start
+doing the bad way,
+
+1153
+00:44:21,919 --> 00:44:23,299
+and then I will abandon it.
+
+1154
+00:44:23,299 --> 00:44:24,619
+I think what the bad way is,
+
+1155
+00:44:24,619 --> 00:44:28,859
+I could do some kind of nested
+query from all of this.
+
+1156
+00:44:28,859 --> 00:44:30,179
+And then at the very end,
+
+1157
+00:44:30,179 --> 00:44:32,679
+I could say where m is less
+than or equal to three.
+
+1158
+00:44:32,679 --> 00:44:34,359
+Something like that,
+I could do, right?
+
+1159
+00:44:34,359 --> 00:44:35,779
+I first, put a rank
+to everything,
+
+1160
+00:44:35,779 --> 00:44:38,670
+and then I filter it
+down. That's annoying.
+
+1161
+00:44:38,670 --> 00:44:40,989
+What I think is better
+is that since this
+
+1162
+00:44:40,989 --> 00:44:43,450
+is just like a
+data frame anyway,
+
+1163
+00:44:43,450 --> 00:44:45,109
+and the data frame
+API doesn't have
+
+1164
+00:44:45,109 --> 00:44:46,589
+all these weird
+restrictions about
+
+1165
+00:44:46,589 --> 00:44:48,829
+which transformations
+happen in what order,
+
+1166
+00:44:48,829 --> 00:44:51,749
+I can do a ware clause
+wherever I want, right?
+
+1167
+00:44:51,749 --> 00:44:53,229
+I could just say where num
+
+1168
+00:44:53,229 --> 00:44:54,709
+is less than or equal to three.
+
+1169
+00:44:54,709 --> 00:44:56,550
+That gives me
+another data frame.
+
+1170
+00:44:56,550 --> 00:44:58,750
+Right? When I'm
+equal so particular.
+
+1171
+00:44:58,750 --> 00:45:00,269
+You have to do the group by,
+
+1172
+00:45:00,269 --> 00:45:02,509
+and then the order by,
+and then the limit.
+
+1173
+00:45:02,509 --> 00:45:04,109
+You can do anything in any order
+
+1174
+00:45:04,109 --> 00:45:05,650
+when you're doing
+Spark directly.
+
+1175
+00:45:05,650 --> 00:45:08,009
+And I think it's a nice
+case where like, Well,
+
+1176
+00:45:08,009 --> 00:45:09,349
+this maybe a little
+bit more readable
+
+1177
+00:45:09,349 --> 00:45:10,510
+than the data frame API,
+
+1178
+00:45:10,510 --> 00:45:11,769
+but kind of just tacking this on
+
+1179
+00:45:11,769 --> 00:45:13,150
+the end is a little
+bit more readable.
+
+1180
+00:45:13,150 --> 00:45:15,549
+And so let's just go
+ahead and do that, right?
+
+1181
+00:45:15,549 --> 00:45:17,469
+So I want to see the top three
+
+1182
+00:45:17,469 --> 00:45:20,250
+for each of these
+different areas.
+
+1183
+00:45:20,250 --> 00:45:21,969
+So that'll run for a moment.
+
+1184
+00:45:21,969 --> 00:45:24,389
+Any questions while
+that's running?
+
+1185
+00:45:26,930 --> 00:45:31,430
+Yeah, right here. Yeah, exactly.
+
+1186
+00:45:31,430 --> 00:45:34,949
+So this row number is
+
+1187
+00:45:34,949 --> 00:45:37,329
+computed with respect to
+
+1188
+00:45:37,329 --> 00:45:39,449
+some partitioning
+of the data, right?
+
+1189
+00:45:39,449 --> 00:45:42,410
+So it's over some
+partitioning of the data.
+
+1190
+00:45:42,410 --> 00:45:44,670
+And, you know, the syntax
+
+1191
+00:45:44,670 --> 00:45:45,689
+is a little bit uglier than if I
+
+1192
+00:45:45,689 --> 00:45:46,889
+had like a group buy down below.
+
+1193
+00:45:46,889 --> 00:45:51,009
+I guess the advantage is
+that I could have, you know,
+
+1194
+00:45:51,009 --> 00:45:52,770
+I could have multiple
+windowing functions,
+
+1195
+00:45:52,770 --> 00:45:54,349
+each of which put the data in
+
+1196
+00:45:54,349 --> 00:45:55,550
+different kinds of partitions,
+
+1197
+00:45:55,550 --> 00:45:56,570
+right, I'd be kind of strange.
+
+1198
+00:45:56,570 --> 00:45:58,070
+But I guess this
+is more flexible,
+
+1199
+00:45:58,070 --> 00:45:59,969
+even though it's much
+uglier to look at.
+
+1200
+00:45:59,969 --> 00:46:02,589
+That makes sense? Alright, cool.
+
+1201
+00:46:02,589 --> 00:46:03,909
+And so I can see, Okay, well,
+
+1202
+00:46:03,909 --> 00:46:05,769
+in the Bayview Hunters Point,
+
+1203
+00:46:05,769 --> 00:46:09,429
+then these are the
+smallest ones, right?
+
+1204
+00:46:09,429 --> 00:46:12,310
+In Western edition, I guess
+they have some repeats,
+
+1205
+00:46:12,310 --> 00:46:14,470
+but these are the three
+smallest numbers,
+
+1206
+00:46:14,470 --> 00:46:15,749
+the smallest second,
+smallest and
+
+1207
+00:46:15,749 --> 00:46:17,269
+third, smallest. Alright, cool.
+
+1208
+00:46:17,269 --> 00:46:18,409
+Any other questions about
+
+1209
+00:46:18,409 --> 00:46:20,010
+partitioning or window functions
+
+1210
+00:46:20,010 --> 00:46:29,770
+or the combination Excellent.
+
+1211
+00:46:29,770 --> 00:46:31,550
+Yeah. So the order by happens
+
+1212
+00:46:31,550 --> 00:46:32,889
+on a per partition basis, right?
+
+1213
+00:46:32,889 --> 00:46:34,710
+So each partition will
+have its own ordering.
+
+1214
+00:46:34,710 --> 00:46:36,629
+And I need to do that because,
+
+1215
+00:46:36,629 --> 00:46:39,189
+you know, I could have
+done a sending, right?
+
+1216
+00:46:39,189 --> 00:46:40,569
+And then number one would
+
+1217
+00:46:40,569 --> 00:46:42,369
+be the biggest one
+instead, right?
+
+1218
+00:46:42,369 --> 00:46:45,610
+So, you know, the row number
+relative to the partition,
+
+1219
+00:46:45,610 --> 00:46:47,509
+it only makes sense
+if I have a order
+
+1220
+00:46:47,509 --> 00:46:49,650
+that's specified for the
+rows within a partition.
+
+1221
+00:46:49,650 --> 00:46:52,029
+Yeah, thank you for clarifying.
+Yeah, ch right here.
+
+1222
+00:46:52,029 --> 00:47:01,410
+41 areas. Oh. Yeah, you were
+saying there are 41 areas,
+
+1223
+00:47:01,410 --> 00:47:04,069
+and why are there.
+
+1224
+00:47:04,270 --> 00:47:08,929
+Because there should
+have been 123, right?
+
+1225
+00:47:08,929 --> 00:47:11,530
+And there's 125 Huh.
+
+1226
+00:47:11,530 --> 00:47:12,870
+Well, that's kind
+of interesting.
+
+1227
+00:47:12,870 --> 00:47:14,589
+Now, I'm curious. I
+don't know the answer.
+
+1228
+00:47:14,589 --> 00:47:16,889
+So let's just I won't spend
+
+1229
+00:47:16,889 --> 00:47:17,989
+a lot of time because I'm just
+
+1230
+00:47:17,989 --> 00:47:19,589
+trying of exploring to
+try to understand myself,
+
+1231
+00:47:19,589 --> 00:47:21,370
+and maybe that might
+take me like 20 minutes.
+
+1232
+00:47:21,370 --> 00:47:22,529
+And then so I might bring
+
+1233
+00:47:22,529 --> 00:47:24,189
+this back to an
+answer next time.
+
+1234
+00:47:24,189 --> 00:47:26,329
+But let's just see
+what it looks like if
+
+1235
+00:47:26,329 --> 00:47:28,549
+I try to print off all
+of the data, right?
+
+1236
+00:47:28,549 --> 00:47:31,090
+So you were saying
+like the area.
+
+1237
+00:47:31,090 --> 00:47:35,249
+And let's just make this
+like a list, right?
+
+1238
+00:47:35,249 --> 00:47:37,389
+Maybe like a sordid list.
+
+1239
+00:47:37,389 --> 00:47:39,669
+Can I see? Are there duplicates?
+
+1240
+00:47:39,669 --> 00:47:43,989
+Where is that happening? Did I
+
+1241
+00:47:43,989 --> 00:47:46,550
+just like to do the math
+wrong or what happened?
+
+1242
+00:47:46,550 --> 00:47:49,729
+Seems like there's
+three for each of them.
+
+1243
+00:47:52,040 --> 00:47:55,839
+Oh, oh, be the 42. Okay, great.
+
+1244
+00:47:55,839 --> 00:47:57,560
+Yeah, I guess I
+looked at the biggest
+
+1245
+00:47:57,560 --> 00:47:58,859
+index and multiplied by three.
+
+1246
+00:47:58,859 --> 00:48:00,079
+So hopefully that's all good.
+
+1247
+00:48:00,079 --> 00:48:02,359
+Hopefully the math checks
+out, let me know if not.
+
+1248
+00:48:02,359 --> 00:48:04,840
+Yeah, thank you for
+paying close attention.
+
+1249
+00:48:04,840 --> 00:48:06,519
+Yeah. Is that a
+question over here?
+
+1250
+00:48:06,519 --> 00:48:15,109
+Yeah. In Yeah.
+
+1251
+00:48:15,109 --> 00:48:16,469
+So maybe I'll raise this.
+
+1252
+00:48:16,469 --> 00:48:17,429
+What is the difference between
+
+1253
+00:48:17,429 --> 00:48:19,150
+an aggregate and a
+window function?
+
+1254
+00:48:19,150 --> 00:48:21,430
+Is that fair or interest.
+
+1255
+00:48:21,430 --> 00:48:23,549
+Yeah. An aggregate will
+take a bunch of rows and
+
+1256
+00:48:23,549 --> 00:48:24,809
+crunch it down to a single row
+
+1257
+00:48:24,809 --> 00:48:26,269
+with some summary statistics.
+
+1258
+00:48:26,269 --> 00:48:27,690
+A window function will actually
+
+1259
+00:48:27,690 --> 00:48:29,669
+compute a statistic for
+each row individually,
+
+1260
+00:48:29,669 --> 00:48:32,109
+but that statistic is in
+
+1261
+00:48:32,109 --> 00:48:34,109
+relation to the bigger group
+
+1262
+00:48:34,109 --> 00:48:36,089
+or partition that
+it's in, right?
+
+1263
+00:48:36,089 --> 00:48:38,729
+So right? Like, when
+I did a row number,
+
+1264
+00:48:38,729 --> 00:48:41,349
+I'm not trying to get just
+one row number for each area.
+
+1265
+00:48:41,349 --> 00:48:43,329
+I'm going to get
+a row number for
+
+1266
+00:48:43,329 --> 00:48:46,289
+every row within an area, right?
+
+1267
+00:48:46,289 --> 00:48:48,069
+So aggregates will just
+crunch it down to one stat?
+
+1268
+00:48:48,069 --> 00:48:49,329
+Row numbers is going to put
+
+1269
+00:48:49,329 --> 00:48:52,029
+a statistic on each
+individual row?
+
+1270
+00:48:52,029 --> 00:48:54,509
+Yeah, follow up here.
+
+1271
+00:48:59,510 --> 00:49:04,590
+Yeah. Yeah, the
+windowing function
+
+1272
+00:49:04,590 --> 00:49:06,449
+will not affect the
+total number of rows,
+
+1273
+00:49:06,449 --> 00:49:09,589
+grouping by with an
+aggregate will. Yes.
+
+1274
+00:49:09,589 --> 00:49:11,189
+Yes. All right.
+
+1275
+00:49:11,189 --> 00:49:13,690
+Great. And so great questions,
+
+1276
+00:49:13,690 --> 00:49:15,289
+and I think we have
+to call time there.
+
+1277
+00:49:15,289 --> 00:49:17,730
+So yeah, see you all on Friday,
+
+1278
+00:49:17,730 --> 00:49:19,110
+and we'll do some more examples
+
+1279
+00:49:19,110 --> 00:49:21,829
+in this notebook.
+Have a great day.

@@ -1,0 +1,6112 @@
+1
+00:00:00,000 --> 00:00:01,440
+It well for you on Monday.
+
+2
+00:00:01,440 --> 00:00:02,720
+I'll try to get those results
+
+3
+00:00:02,720 --> 00:00:03,920
+back to you as soon as possible,
+
+4
+00:00:03,920 --> 00:00:06,700
+probably by the end of the
+weekend if things go well.
+
+5
+00:00:06,700 --> 00:00:09,540
+We're moving into a new
+topic which is streaming.
+
+6
+00:00:09,540 --> 00:00:11,099
+That's the last topic before we
+
+7
+00:00:11,099 --> 00:00:13,120
+start talking about
+Cloud tripute,
+
+8
+00:00:13,120 --> 00:00:16,375
+that will end out this part
+of the semester on clusters.
+
+9
+00:00:16,375 --> 00:00:18,690
+There's a couple of
+things where we look at.
+
+10
+00:00:18,690 --> 00:00:20,809
+What was where we look at Kaka.
+
+11
+00:00:20,809 --> 00:00:23,890
+KPI have these
+streams of messages.
+
+12
+00:00:23,890 --> 00:00:26,409
+And so I have a lot of similar
+ideas we've seen before,
+
+13
+00:00:26,409 --> 00:00:28,289
+like partitioning
+and application.
+
+14
+00:00:28,289 --> 00:00:30,349
+But what's different
+is that the systems we
+
+15
+00:00:30,349 --> 00:00:32,329
+looked at before have the
+data living somewhere.
+
+16
+00:00:32,329 --> 00:00:33,530
+Maybe I have HTFS,
+
+17
+00:00:33,530 --> 00:00:35,469
+and I have some PCA files that
+
+18
+00:00:35,469 --> 00:00:37,550
+are living there long
+term, or I have asadra.
+
+19
+00:00:37,550 --> 00:00:39,569
+I have rows that are
+living there long term.
+
+20
+00:00:39,569 --> 00:00:41,270
+KACA is really for getting
+
+21
+00:00:41,270 --> 00:00:43,189
+data from one point
+to another, right?
+
+22
+00:00:43,189 --> 00:00:45,029
+So we have some things
+that are producing
+
+23
+00:00:45,029 --> 00:00:47,509
+KAFKA data that other places
+are consuming it out.
+
+24
+00:00:47,509 --> 00:00:50,689
+And so that will be a
+very different concept
+
+25
+00:00:50,689 --> 00:00:51,870
+of what we've seen before.
+
+26
+00:00:51,870 --> 00:00:53,469
+There's a few things
+we'll do. We'll talk
+
+27
+00:00:53,469 --> 00:00:55,644
+broadly about Kaka concepts.
+
+28
+00:00:55,644 --> 00:00:57,679
+The kind of programming
+you'll do if you're
+
+29
+00:00:57,679 --> 00:00:59,760
+writing FCA code on Friday,
+
+30
+00:00:59,760 --> 00:01:01,239
+give some hands on demos.
+
+31
+00:01:01,239 --> 00:01:03,660
+And then on Monday, we'll
+talk about reliability.
+
+32
+00:01:03,660 --> 00:01:04,899
+Just like all these
+other systems,
+
+33
+00:01:04,899 --> 00:01:07,019
+we have to handle
+situations where a machine
+
+34
+00:01:07,019 --> 00:01:09,260
+dies or is otherwise
+unavailable.
+
+35
+00:01:09,260 --> 00:01:10,860
+The cluster should keep working.
+
+36
+00:01:10,860 --> 00:01:12,860
+And so we'll take a
+look at that on Monday.
+
+37
+00:01:12,860 --> 00:01:13,419
+There's a lot of
+
+38
+00:01:13,419 --> 00:01:15,079
+interesting kind of
+differences in how they
+
+39
+00:01:15,079 --> 00:01:17,860
+do that than say,
+Cassandra does it.
+
+40
+00:01:17,860 --> 00:01:21,259
+And then to round out next week,
+
+41
+00:01:21,259 --> 00:01:23,459
+what we do is we we look
+at Spark streaming.
+
+42
+00:01:23,459 --> 00:01:25,339
+So Spark, as you're well aware,
+
+43
+00:01:25,339 --> 00:01:30,149
+co loaded data from a Part
+file HDFS or other sources.
+
+44
+00:01:30,149 --> 00:01:34,160
+It could also use the data
+source M Kaka Stream,
+
+45
+00:01:34,160 --> 00:01:36,360
+which is, there's possibly
+new data coming in.
+
+46
+00:01:36,360 --> 00:01:38,000
+And see that sometimes
+
+47
+00:01:38,000 --> 00:01:39,120
+we might have a
+rolling computation.
+
+48
+00:01:39,120 --> 00:01:41,039
+Maybe you have a group
+by with some counts.
+
+49
+00:01:41,039 --> 00:01:42,540
+And as there's new data
+
+50
+00:01:42,540 --> 00:01:43,800
+rather than be run
+that whole query,
+
+51
+00:01:43,800 --> 00:01:46,780
+maybe I can keep my
+results updated, right?
+
+52
+00:01:46,780 --> 00:01:48,079
+Oh, a new roll of data,
+
+53
+00:01:48,079 --> 00:01:49,699
+your counts change a little bit.
+
+54
+00:01:49,699 --> 00:01:50,939
+So we'll see how we can use
+
+55
+00:01:50,939 --> 00:01:53,700
+a spark in combination
+with Kafka.
+
+56
+00:01:53,700 --> 00:01:56,569
+Alright, C. So I had
+a head over here.
+
+57
+00:01:56,569 --> 00:01:59,660
+And there's a few things I
+want you to walk away with.
+
+58
+00:01:59,660 --> 00:02:03,660
+One is that we're a to visit
+ETL, extract transform load.
+
+59
+00:02:03,660 --> 00:02:05,200
+Remember that sometimes
+you extract data
+
+60
+00:02:05,200 --> 00:02:07,500
+from one system and load
+it into another one.
+
+61
+00:02:07,500 --> 00:02:09,600
+We're a to see that
+there are some benefits
+
+62
+00:02:09,600 --> 00:02:11,139
+if we could do that
+on a rolling basis.
+
+63
+00:02:11,139 --> 00:02:13,500
+If we have a constant
+stream of changes,
+
+64
+00:02:13,500 --> 00:02:14,620
+tubing out of one system
+
+65
+00:02:14,620 --> 00:02:16,789
+and getting loaded
+into another one.
+
+66
+00:02:16,789 --> 00:02:19,439
+Second, I want you to understand
+what you have to do to
+
+67
+00:02:19,439 --> 00:02:22,020
+actually go and write
+code for CAPCA.
+
+68
+00:02:22,020 --> 00:02:24,880
+You're going to be writing
+consumer code that's reading
+
+69
+00:02:24,880 --> 00:02:28,559
+these updates or producer
+code that's generating them.
+
+70
+00:02:28,559 --> 00:02:31,999
+All of these changes
+or messages that
+
+71
+00:02:31,999 --> 00:02:33,639
+we're worried about
+are going to show
+
+72
+00:02:33,639 --> 00:02:35,499
+up in different topics, right?
+
+73
+00:02:35,499 --> 00:02:37,480
+And those topics are going
+to be stored on brokers.
+
+74
+00:02:37,480 --> 00:02:39,379
+So you won't really be
+writing code for brokers,
+
+75
+00:02:39,379 --> 00:02:40,500
+but you're going to
+have to understand what
+
+76
+00:02:40,500 --> 00:02:42,239
+they are and how to
+interact with them.
+
+77
+00:02:42,239 --> 00:02:43,979
+And then finally,
+we're going to be
+
+78
+00:02:43,979 --> 00:02:46,180
+concerned with
+scalability as always.
+
+79
+00:02:46,180 --> 00:02:47,399
+So we're going to
+figure out how we
+
+80
+00:02:47,399 --> 00:02:49,339
+could scale out to
+more brokers with
+
+81
+00:02:49,339 --> 00:02:51,880
+partitioning and how
+we could also share
+
+82
+00:02:51,880 --> 00:02:54,989
+work across different
+consumers and consumer groups.
+
+83
+00:02:54,989 --> 00:02:59,219
+So I want to frame this
+in contrast to RPCs,
+
+84
+00:02:59,219 --> 00:03:00,879
+remote procedure calls that
+
+85
+00:03:00,879 --> 00:03:02,520
+we've been using the
+whole semester, right?
+
+86
+00:03:02,520 --> 00:03:04,480
+There's some similarities
+and some differences.
+
+87
+00:03:04,480 --> 00:03:06,560
+Let's just look at
+regular procedure calls.
+
+88
+00:03:06,560 --> 00:03:08,119
+Here I have an example of
+
+89
+00:03:08,119 --> 00:03:10,320
+a procedure or a function
+called increase.
+
+90
+00:03:10,320 --> 00:03:13,000
+It's associated with
+a dictionary of data.
+
+91
+00:03:13,000 --> 00:03:14,840
+When I get a key and amount,
+
+92
+00:03:14,840 --> 00:03:17,139
+then I look at the
+value for that key,
+
+93
+00:03:17,139 --> 00:03:18,380
+and I increase it by the amount,
+
+94
+00:03:18,380 --> 00:03:20,939
+and then I return the
+new final amount, right?
+
+95
+00:03:20,939 --> 00:03:23,720
+I can just call like a
+regular function down here.
+
+96
+00:03:23,720 --> 00:03:26,660
+That's fine. If everything's
+already a one computer.
+
+97
+00:03:26,660 --> 00:03:28,400
+I I have multiple
+computers and I want them
+
+98
+00:03:28,400 --> 00:03:30,399
+to have access to
+the same dictionary,
+
+99
+00:03:30,399 --> 00:03:33,660
+then what I'll probably have
+to do is have that data,
+
+100
+00:03:33,660 --> 00:03:36,919
+that dictionary, and some
+kind of centralized server.
+
+101
+00:03:36,919 --> 00:03:38,360
+And that increased function,
+
+102
+00:03:38,360 --> 00:03:39,900
+that's using the
+counts dictionary,
+
+103
+00:03:39,900 --> 00:03:41,219
+will have to be a
+log slide, right?
+
+104
+00:03:41,219 --> 00:03:42,660
+I have a separate
+machine over here.
+
+105
+00:03:42,660 --> 00:03:44,720
+And then I can have lots
+of different clients.
+
+106
+00:03:44,720 --> 00:03:46,480
+And what I'd like is for
+the to be able to call
+
+107
+00:03:46,480 --> 00:03:48,859
+that increased
+function for me to
+
+108
+00:03:48,859 --> 00:03:50,880
+trigger that execution and to
+
+109
+00:03:50,880 --> 00:03:53,655
+see the centralized
+data that's updated.
+
+110
+00:03:53,655 --> 00:03:55,549
+And so how can I do that?
+
+111
+00:03:55,549 --> 00:03:57,390
+Well, we have to have
+remote procedure calls.
+
+112
+00:03:57,390 --> 00:03:59,049
+The remote procedure
+calls gives us
+
+113
+00:03:59,049 --> 00:04:01,630
+some stub code over
+on the client side,
+
+114
+00:04:01,630 --> 00:04:04,249
+it gives us some server code
+over on the server side.
+
+115
+00:04:04,249 --> 00:04:07,329
+And GRPC will automatically
+generate that for you.
+
+116
+00:04:07,329 --> 00:04:09,089
+This is kind of a
+simplified version,
+
+117
+00:04:09,089 --> 00:04:11,390
+but it gets across
+all the key points.
+
+118
+00:04:11,390 --> 00:04:13,769
+Right so over here, I have
+that increase flection,
+
+119
+00:04:13,769 --> 00:04:15,429
+which doesn't actually
+do the increase work.
+
+120
+00:04:15,429 --> 00:04:19,264
+It's just code to send the
+call over to the server.
+
+121
+00:04:19,264 --> 00:04:21,639
+So how does that
+actually happen?
+
+122
+00:04:21,639 --> 00:04:25,060
+Well, When I call increase
+on the client side,
+
+123
+00:04:25,060 --> 00:04:27,420
+those arguments are going
+into those parameters.
+
+124
+00:04:27,420 --> 00:04:29,340
+And then the code and side of
+
+125
+00:04:29,340 --> 00:04:31,739
+my crease stub is sending
+
+126
+00:04:31,739 --> 00:04:34,200
+a message over the network
+to the server, right?
+
+127
+00:04:34,200 --> 00:04:35,799
+That's listed at
+some kind of port.
+
+128
+00:04:35,799 --> 00:04:37,539
+I send that request message.
+
+129
+00:04:37,539 --> 00:04:40,280
+The code over there is
+going to have to extract
+
+130
+00:04:40,280 --> 00:04:42,280
+those values out again
+that key them out
+
+131
+00:04:42,280 --> 00:04:44,319
+and then it calls the
+real increase function.
+
+132
+00:04:44,319 --> 00:04:46,200
+And then the reverse looks
+much the same, right?
+
+133
+00:04:46,200 --> 00:04:47,750
+I have some kind
+of return value.
+
+134
+00:04:47,750 --> 00:04:49,800
+It gets returned back
+to the RPC server,
+
+135
+00:04:49,800 --> 00:04:51,120
+so I send a response back.
+
+136
+00:04:51,120 --> 00:04:53,339
+And then finally, I
+get that return value
+
+137
+00:04:53,339 --> 00:04:55,320
+back on the client side, right?
+
+138
+00:04:55,320 --> 00:04:57,279
+That's just a classic RPC.
+
+139
+00:04:57,279 --> 00:04:59,139
+And hopefully that's
+just bringing
+
+140
+00:04:59,139 --> 00:05:01,319
+back memories about
+why that's useful.
+
+141
+00:05:01,319 --> 00:05:04,080
+Some things that we have to
+do with both streaming and
+
+142
+00:05:04,080 --> 00:05:07,060
+RPCs are serialization
+and deserialization.
+
+143
+00:05:07,060 --> 00:05:08,339
+Right? I can have this key,
+
+144
+00:05:08,339 --> 00:05:09,879
+which is maybe a Python string,
+
+145
+00:05:09,879 --> 00:05:11,405
+which is a python integer.
+
+146
+00:05:11,405 --> 00:05:12,969
+If I want to send those
+over the network,
+
+147
+00:05:12,969 --> 00:05:14,829
+I actually have to
+represent those as bytes.
+
+148
+00:05:14,829 --> 00:05:16,450
+It's sub a standard forbat.
+
+149
+00:05:16,450 --> 00:05:19,509
+So serialization is converting
+those values to bytes.
+
+150
+00:05:19,509 --> 00:05:21,170
+Deserialization is converting it
+
+151
+00:05:21,170 --> 00:05:22,630
+back, and I have to
+do the same thing.
+
+152
+00:05:22,630 --> 00:05:23,930
+When I send back a return value,
+
+153
+00:05:23,930 --> 00:05:26,349
+you have to serialize it, so
+it's bites over the network.
+
+154
+00:05:26,349 --> 00:05:27,950
+And deserialize it back, so it's
+
+155
+00:05:27,950 --> 00:05:30,310
+a Python type of the receiving.
+
+156
+00:05:30,310 --> 00:05:32,350
+There's lots of different
+ways you could do that.
+
+157
+00:05:32,350 --> 00:05:34,170
+One would be JSO, right?
+
+158
+00:05:34,170 --> 00:05:36,030
+If I have some type
+of dictionary,
+
+159
+00:05:36,030 --> 00:05:38,189
+I could in tote it as
+a JSON string that I
+
+160
+00:05:38,189 --> 00:05:40,499
+could convert that
+stra to bytes,
+
+161
+00:05:40,499 --> 00:05:43,220
+using some of entity
+like maybe UTF A.
+
+162
+00:05:43,220 --> 00:05:44,679
+So I can be seding those values
+
+163
+00:05:44,679 --> 00:05:46,339
+back and forth using JSOD.
+
+164
+00:05:46,339 --> 00:05:48,820
+I could alternatively
+use protocol buffers,
+
+165
+00:05:48,820 --> 00:05:50,379
+which is what GRPC uses,
+
+166
+00:05:50,379 --> 00:05:52,180
+and that might be
+a more compact way
+
+167
+00:05:52,180 --> 00:05:53,459
+to represent those same things.
+
+168
+00:05:53,459 --> 00:05:54,820
+I mean, JSON is easy to look at,
+
+169
+00:05:54,820 --> 00:05:57,039
+but it's not a very
+efficient format.
+
+170
+00:05:57,039 --> 00:06:00,140
+I could use protocol
+buffers for messages here.
+
+171
+00:06:00,140 --> 00:06:03,440
+Just a little bit of
+review about RPCs.
+
+172
+00:06:03,440 --> 00:06:05,380
+And now I want to compare and
+
+173
+00:06:05,380 --> 00:06:07,700
+contrast that with
+streaming, right?
+
+174
+00:06:07,700 --> 00:06:10,519
+So RPCs are an example of
+synchronous communication.
+
+175
+00:06:10,519 --> 00:06:13,080
+It only works if the
+client and the server are
+
+176
+00:06:13,080 --> 00:06:14,280
+up and running at the same time
+
+177
+00:06:14,280 --> 00:06:16,039
+and communicate directly
+with each other.
+
+178
+00:06:16,039 --> 00:06:18,179
+When they are, then the
+client to directly send
+
+179
+00:06:18,179 --> 00:06:21,279
+that message to the server and
+get some kind of response.
+
+180
+00:06:21,279 --> 00:06:23,100
+You're all familiar
+with synchronous
+
+181
+00:06:23,100 --> 00:06:24,719
+communication from
+the real world.
+
+182
+00:06:24,719 --> 00:06:27,220
+I mean, we're having synchronous
+communication right now.
+
+183
+00:06:27,220 --> 00:06:29,020
+As I'm talking to
+you, if you tell
+
+184
+00:06:29,020 --> 00:06:31,060
+somebody out on a phone,
+that's synchronous.
+
+185
+00:06:31,060 --> 00:06:32,815
+RPC calls are synchronous.
+
+186
+00:06:32,815 --> 00:06:34,370
+Now, of course, humans also
+
+187
+00:06:34,370 --> 00:06:36,349
+like to communicate
+asynchronously,
+
+188
+00:06:36,349 --> 00:06:40,269
+and there's equivalence
+to that in computing.
+
+189
+00:06:40,269 --> 00:06:42,849
+So I mean, if I'm trying to
+communicate asynchronously,
+
+190
+00:06:42,849 --> 00:06:44,190
+maybe I send somebody
+an e mail or
+
+191
+00:06:44,190 --> 00:06:45,790
+a text message or
+something like that,
+
+192
+00:06:45,790 --> 00:06:49,050
+and streaming is an example
+of asychres communication.
+
+193
+00:06:49,050 --> 00:06:50,969
+And so just like with
+e mail and texting,
+
+194
+00:06:50,969 --> 00:06:52,349
+there has to be
+some kind of server
+
+195
+00:06:52,349 --> 00:06:54,339
+somewhere that
+stores my message.
+
+196
+00:06:54,339 --> 00:06:56,310
+When the receiver is
+not looking at it.
+
+197
+00:06:56,310 --> 00:06:59,130
+And the same way, the
+simple client server motels
+
+198
+00:06:59,130 --> 00:07:00,849
+may be a little bit
+more complicated.
+
+199
+00:07:00,849 --> 00:07:01,989
+We have to have
+something in the middle
+
+200
+00:07:01,989 --> 00:07:03,030
+that stores the message if
+
+201
+00:07:03,030 --> 00:07:05,830
+the producer and consumer
+aren't online at the same time.
+
+202
+00:07:05,830 --> 00:07:07,629
+So instead of a client I
+may call it a producer,
+
+203
+00:07:07,629 --> 00:07:09,709
+instead of a server I'll
+call it a consumer,
+
+204
+00:07:09,709 --> 00:07:10,890
+and we have a broker in
+
+205
+00:07:10,890 --> 00:07:12,610
+the middle where the
+messages are being set.
+
+206
+00:07:12,610 --> 00:07:14,610
+And in this case, I've
+tried to draw it so that
+
+207
+00:07:14,610 --> 00:07:16,689
+the consumer is not
+currently online.
+
+208
+00:07:16,689 --> 00:07:18,729
+That's fine. The producer
+computer is online.
+
+209
+00:07:18,729 --> 00:07:20,754
+It's sending these
+messages to the broker.
+
+210
+00:07:20,754 --> 00:07:22,500
+The producer could
+go off line and
+
+211
+00:07:22,500 --> 00:07:24,799
+the consumer can come
+back on line later,
+
+212
+00:07:24,799 --> 00:07:25,899
+and then they could
+start getting
+
+213
+00:07:25,899 --> 00:07:27,740
+those messages a sacredously.
+
+214
+00:07:27,740 --> 00:07:29,240
+Right? So there's
+some differences
+
+215
+00:07:29,240 --> 00:07:30,519
+here, also some similarities.
+
+216
+00:07:30,519 --> 00:07:31,800
+Maybe we might want to use
+
+217
+00:07:31,800 --> 00:07:34,820
+protocol buffers with
+a streaming service,
+
+218
+00:07:34,820 --> 00:07:38,000
+for example. All right.
+
+219
+00:07:38,000 --> 00:07:39,680
+So well,
+
+220
+00:07:39,680 --> 00:07:42,160
+any review questions or
+kind of any question about
+
+221
+00:07:42,160 --> 00:07:43,339
+that broad frame before you go a
+
+222
+00:07:43,339 --> 00:07:46,770
+little deeper. All right.
+
+223
+00:07:46,770 --> 00:07:48,549
+So let's see how
+this is all relevant
+
+224
+00:07:48,549 --> 00:07:50,549
+in terms of extract
+transform and load.
+
+225
+00:07:50,549 --> 00:07:53,470
+And again, this is maybe a
+little bit of a review first.
+
+226
+00:07:53,470 --> 00:07:55,989
+Remember that a large
+organization might
+
+227
+00:07:55,989 --> 00:07:58,549
+have lots of different databases
+for different purposes.
+
+228
+00:07:58,549 --> 00:08:00,889
+A lot of those might
+be OLTP databases.
+
+229
+00:08:00,889 --> 00:08:02,670
+Therefore processing
+transactions.
+
+230
+00:08:02,670 --> 00:08:05,510
+A transaction might mean
+that I insert a row,
+
+231
+00:08:05,510 --> 00:08:08,269
+or I edit a row or look up
+a row, that kind of stuff.
+
+232
+00:08:08,269 --> 00:08:09,389
+So I have all these transaction
+
+233
+00:08:09,389 --> 00:08:10,950
+processing databases like that.
+
+234
+00:08:10,950 --> 00:08:12,629
+The storage layoff
+for that is probably
+
+235
+00:08:12,629 --> 00:08:14,429
+row oriented because
+that's most efficient
+
+236
+00:08:14,429 --> 00:08:16,289
+for these row oriented
+
+237
+00:08:16,289 --> 00:08:18,345
+operations that
+we're doing, right?
+
+238
+00:08:18,345 --> 00:08:20,720
+This setup, right, if I
+look at the left hand side,
+
+239
+00:08:20,720 --> 00:08:22,100
+database one and two are
+
+240
+00:08:22,100 --> 00:08:24,499
+terrible for analytics.
+For a couple of reasons.
+
+241
+00:08:24,499 --> 00:08:26,020
+One, a lot of analytics,
+
+242
+00:08:26,020 --> 00:08:27,760
+I'm looking at entire
+columns of data,
+
+243
+00:08:27,760 --> 00:08:28,860
+and that's not efficient if
+
+244
+00:08:28,860 --> 00:08:30,239
+I have a role oriented layout.
+
+245
+00:08:30,239 --> 00:08:31,720
+And second, you might imagine
+
+246
+00:08:31,720 --> 00:08:33,319
+I might do some
+analytics that needs
+
+247
+00:08:33,319 --> 00:08:36,519
+to combine data across these
+two data sources, right?
+
+248
+00:08:36,519 --> 00:08:37,799
+So I'd have to pull
+it off before I
+
+249
+00:08:37,799 --> 00:08:39,324
+could do any kind of analytics.
+
+250
+00:08:39,324 --> 00:08:40,769
+So what people do is they'll
+
+251
+00:08:40,769 --> 00:08:42,270
+go and they'll write
+theseETL jobs,
+
+252
+00:08:42,270 --> 00:08:44,009
+extract transform load that
+
+253
+00:08:44,009 --> 00:08:46,450
+extract data from
+the first database,
+
+254
+00:08:46,450 --> 00:08:47,770
+transformer subway, and then
+
+255
+00:08:47,770 --> 00:08:49,330
+they'll load into a
+separate database.
+
+256
+00:08:49,330 --> 00:08:51,469
+And maybe I have an OLAP
+database over here,
+
+257
+00:08:51,469 --> 00:08:53,810
+so online analytics processing.
+
+258
+00:08:53,810 --> 00:08:56,670
+And that has a very nice
+column oriented format.
+
+259
+00:08:56,670 --> 00:08:58,950
+And if I have these two
+Python jobs I wrote,
+
+260
+00:08:58,950 --> 00:09:00,509
+they can pull data
+from both of these and
+
+261
+00:09:00,509 --> 00:09:02,769
+provided one big
+database over here.
+
+262
+00:09:02,769 --> 00:09:06,045
+And that database is
+called my Data Warehouse.
+
+263
+00:09:06,045 --> 00:09:09,040
+So I could do that.
+And if I've run
+
+264
+00:09:09,040 --> 00:09:10,200
+these Python programs I might
+
+265
+00:09:10,200 --> 00:09:11,440
+need to think about
+how often they run.
+
+266
+00:09:11,440 --> 00:09:13,459
+Maybe they run what's a
+night or what's an hour.
+
+267
+00:09:13,459 --> 00:09:14,780
+At some kind of granularity,
+
+268
+00:09:14,780 --> 00:09:16,660
+they have to realize what
+data has changed and then
+
+269
+00:09:16,660 --> 00:09:18,880
+load that into the
+new system, right?
+
+270
+00:09:18,880 --> 00:09:20,340
+There are tools like Cron.
+
+271
+00:09:20,340 --> 00:09:22,960
+In Linux, rod is a
+program that runs
+
+272
+00:09:22,960 --> 00:09:24,159
+other programs on some kind of
+
+273
+00:09:24,159 --> 00:09:25,839
+schedule that I predetermined.
+
+274
+00:09:25,839 --> 00:09:27,240
+And the Cloud, there's
+similar things.
+
+275
+00:09:27,240 --> 00:09:29,719
+There's Google Cloud
+scheduler that can lodge
+
+276
+00:09:29,719 --> 00:09:33,040
+tasks or do other stuff on
+some kind of a schedule.
+
+277
+00:09:33,040 --> 00:09:34,420
+With any of these approaches,
+
+278
+00:09:34,420 --> 00:09:36,899
+one of the things I might be
+worried about is freshness.
+
+279
+00:09:36,899 --> 00:09:38,339
+Even if it's happy every hour,
+
+280
+00:09:38,339 --> 00:09:39,620
+for some things, that's okay.
+
+281
+00:09:39,620 --> 00:09:42,319
+And for some, that might
+be too sale, right?
+
+282
+00:09:42,319 --> 00:09:45,020
+So I'm worried about
+freshness in this situation.
+
+283
+00:09:45,020 --> 00:09:49,179
+Another thing is that in more
+complicated organizations,
+
+284
+00:09:49,179 --> 00:09:51,560
+there might not be just
+one data warehouse
+
+285
+00:09:51,560 --> 00:09:53,619
+that meets all the needs, right?
+
+286
+00:09:53,619 --> 00:09:56,820
+Maybe I want to do this
+to my data warehouse,
+
+287
+00:09:56,820 --> 00:09:58,540
+but maybe I also
+want a data lake,
+
+288
+00:09:58,540 --> 00:10:00,299
+where I'm, you
+know, writing this
+
+289
+00:10:00,299 --> 00:10:02,239
+as a bunch of Park
+files at HDFS,
+
+290
+00:10:02,239 --> 00:10:04,510
+so I can run map reduced
+jobs, park jobs.
+
+291
+00:10:04,510 --> 00:10:05,339
+Whatever, right?
+
+292
+00:10:05,339 --> 00:10:07,159
+I might have multiple
+things on that side.
+
+293
+00:10:07,159 --> 00:10:10,000
+And so let's just generalize
+this a little bit.
+
+294
+00:10:10,000 --> 00:10:13,379
+On the left hand side, I have
+different OLTP databases.
+
+295
+00:10:13,379 --> 00:10:14,760
+And on the right hand side,
+
+296
+00:10:14,760 --> 00:10:16,740
+I have y different stores.
+
+297
+00:10:16,740 --> 00:10:18,299
+They are really
+like derivatives or
+
+298
+00:10:18,299 --> 00:10:21,660
+secondary copies of the data
+I use for various purposes.
+
+299
+00:10:21,660 --> 00:10:23,219
+So if I have this X and Y,
+
+300
+00:10:23,219 --> 00:10:24,879
+I'm wondering how many ETL
+
+301
+00:10:24,879 --> 00:10:26,280
+jobs I'm going to have to write?
+
+302
+00:10:26,280 --> 00:10:28,460
+How does this scale thoughts?
+
+303
+00:10:28,460 --> 00:10:31,859
+Yeah, go ahead. It'll
+be X times Y, right?
+
+304
+00:10:31,859 --> 00:10:33,699
+So maybe two times
+two isn't a big deal,
+
+305
+00:10:33,699 --> 00:10:35,779
+but you could imagine
+that becoming a problem.
+
+306
+00:10:35,779 --> 00:10:37,579
+Maybe it's straight,
+right? It means that we'll
+
+307
+00:10:37,579 --> 00:10:39,659
+all be well employed
+for a long time.
+
+308
+00:10:39,659 --> 00:10:42,959
+But it's certainly
+not efficient, right?
+
+309
+00:10:43,360 --> 00:10:46,420
+So there's this great
+blog post called
+
+310
+00:10:46,420 --> 00:10:48,780
+the log that some of you might
+be interested in reading.
+
+311
+00:10:48,780 --> 00:10:50,220
+It was written by Jay Kreps,
+
+312
+00:10:50,220 --> 00:10:54,219
+who was at Lichen and identified
+this X times Y problem,
+
+313
+00:10:54,219 --> 00:10:55,619
+where we have to go from
+
+314
+00:10:55,619 --> 00:10:57,320
+every combination to
+every combination.
+
+315
+00:10:57,320 --> 00:11:00,499
+And so at Liked, he had some
+other people built Kafka.
+
+316
+00:11:00,499 --> 00:11:02,400
+Then, you know, he
+left with some folks,
+
+317
+00:11:02,400 --> 00:11:04,160
+and they built a
+separate company
+
+318
+00:11:04,160 --> 00:11:05,859
+around Kafka called fluid.
+
+319
+00:11:05,859 --> 00:11:07,220
+But this is an early blog,
+
+320
+00:11:07,220 --> 00:11:10,159
+really motivating why we need
+to deal with this problem.
+
+321
+00:11:10,159 --> 00:11:12,879
+This kind of X to Y
+every possible pairing.
+
+322
+00:11:12,879 --> 00:11:13,619
+And so, you know,
+
+323
+00:11:13,619 --> 00:11:14,880
+they had a much more complicated
+
+324
+00:11:14,880 --> 00:11:16,019
+example here than what I had.
+
+325
+00:11:16,019 --> 00:11:17,870
+This is, you know,
+straight off the blog.
+
+326
+00:11:17,870 --> 00:11:20,520
+You know, in Likon, they
+had all these kind of
+
+327
+00:11:20,520 --> 00:11:22,979
+primary data stores like
+Espresso, Baltimore,
+
+328
+00:11:22,979 --> 00:11:25,280
+Oracle, other various things,
+
+329
+00:11:25,280 --> 00:11:28,360
+and they would pull the
+data into HDFS for do.
+
+330
+00:11:28,360 --> 00:11:30,299
+They had some type
+of data warehouse.
+
+331
+00:11:30,299 --> 00:11:33,679
+They would have other tools
+that would search over logs.
+
+332
+00:11:33,679 --> 00:11:36,799
+A lot of these type of Aalytics
+things people would do.
+
+333
+00:11:36,799 --> 00:11:38,879
+A lot of the
+secondary stores were
+
+334
+00:11:38,879 --> 00:11:42,700
+also more like customer facing
+or more product oriented.
+
+335
+00:11:42,700 --> 00:11:44,600
+So, for example,
+let's say that you
+
+336
+00:11:44,600 --> 00:11:46,819
+were building an application
+for Piazza, right?
+
+337
+00:11:46,819 --> 00:11:48,599
+I do question answering.
+
+338
+00:11:48,599 --> 00:11:50,399
+You know, I kind of like ask
+
+339
+00:11:50,399 --> 00:11:51,519
+a question or have an answer.
+
+340
+00:11:51,519 --> 00:11:53,699
+Those things could be
+rows. OLTP database like
+
+341
+00:11:53,699 --> 00:11:56,200
+M Sequel would make
+a lot of sense.
+
+342
+00:11:56,200 --> 00:11:58,719
+But there's some use cases
+like if I want to do
+
+343
+00:11:58,719 --> 00:12:00,499
+a text search and
+
+344
+00:12:00,499 --> 00:12:02,740
+find messages that might
+answer my question,
+
+345
+00:12:02,740 --> 00:12:04,219
+that's a little
+bit tricky, right?
+
+346
+00:12:04,219 --> 00:12:05,340
+It's not like an exact match.
+
+347
+00:12:05,340 --> 00:12:06,980
+You can imagine
+building specialized
+
+348
+00:12:06,980 --> 00:12:08,880
+systems for doing text search.
+
+349
+00:12:08,880 --> 00:12:10,699
+And people do. And
+so maybe I have
+
+350
+00:12:10,699 --> 00:12:11,860
+some kind of elastic search
+
+351
+00:12:11,860 --> 00:12:12,860
+or some other thing down here,
+
+352
+00:12:12,860 --> 00:12:14,479
+that's a production
+oriented service.
+
+353
+00:12:14,479 --> 00:12:16,020
+And maybe whenever somebody
+
+354
+00:12:16,020 --> 00:12:18,219
+inserts a message into
+the primary database,
+
+355
+00:12:18,219 --> 00:12:19,839
+I also want to add
+that message to
+
+356
+00:12:19,839 --> 00:12:21,059
+my text search thing so people
+
+357
+00:12:21,059 --> 00:12:23,079
+can have other services
+built on top of it.
+
+358
+00:12:23,079 --> 00:12:24,720
+Right? So we have all
+these primary stores,
+
+359
+00:12:24,720 --> 00:12:27,719
+all these secondary stores
+and lots and lots of work for
+
+360
+00:12:27,719 --> 00:12:29,039
+data engineers kind of to
+
+361
+00:12:29,039 --> 00:12:31,570
+handle every single
+combination of these.
+
+362
+00:12:31,570 --> 00:12:34,839
+And so what that blog
+proposes is that we
+
+363
+00:12:34,839 --> 00:12:38,280
+should have one centralized log,
+
+364
+00:12:38,280 --> 00:12:40,160
+you know, at the
+core of our company,
+
+365
+00:12:40,160 --> 00:12:41,959
+at the core of all data, and
+
+366
+00:12:41,959 --> 00:12:44,560
+anything that's a primary
+store that's producing data,
+
+367
+00:12:44,560 --> 00:12:46,380
+should send copies to that log,
+
+368
+00:12:46,380 --> 00:12:48,140
+and anything that's
+a secondary store
+
+369
+00:12:48,140 --> 00:12:49,900
+should be pulling from that log.
+
+370
+00:12:49,900 --> 00:12:53,220
+And if you do that, then
+instead of having it x times y,
+
+371
+00:12:53,220 --> 00:12:55,079
+then you'll have an x plus y,
+
+372
+00:12:55,079 --> 00:12:57,219
+which scales much better, right?
+
+373
+00:12:57,219 --> 00:12:59,760
+And of course, if you're
+building something like aa,
+
+374
+00:12:59,760 --> 00:13:01,619
+you're very happy
+then your product is
+
+375
+00:13:01,619 --> 00:13:03,659
+at the center of
+everybody's company, right?
+
+376
+00:13:03,659 --> 00:13:05,399
+It's kind of the one place
+where everything is.
+
+377
+00:13:05,399 --> 00:13:07,439
+But it also makes a lot
+of sense, too, right?
+
+378
+00:13:07,439 --> 00:13:10,649
+If you have a very
+complicated a organization
+
+379
+00:13:10,649 --> 00:13:12,649
+of your data across all
+these different systems.
+
+380
+00:13:12,649 --> 00:13:15,009
+It makes sense to have one
+place where you have a copy of
+
+381
+00:13:15,009 --> 00:13:18,209
+everything as a way to
+kind of be a data broker,
+
+382
+00:13:18,209 --> 00:13:21,490
+be in between the primary
+and the secondary stores.
+
+383
+00:13:21,490 --> 00:13:24,109
+Did people have any
+questions about that idea?
+
+384
+00:13:24,109 --> 00:13:30,269
+Yeah, right here. Yeah.
+
+385
+00:13:30,269 --> 00:13:31,450
+What is the derivative stores.
+
+386
+00:13:31,450 --> 00:13:32,749
+So what I have imagined here is
+
+387
+00:13:32,749 --> 00:13:35,210
+that any kind of data,
+these derivative stores.
+
+388
+00:13:35,210 --> 00:13:36,930
+It's not that they
+have unique data
+
+389
+00:13:36,930 --> 00:13:38,329
+that's not in other systems.
+
+390
+00:13:38,329 --> 00:13:41,630
+It's just that maybe I copied
+data out of other systems,
+
+391
+00:13:41,630 --> 00:13:43,929
+and I have a new copy, that's
+a different format, right?
+
+392
+00:13:43,929 --> 00:13:47,129
+By derivative, what I
+mean is that, you know,
+
+393
+00:13:47,129 --> 00:13:51,710
+let's say that let's say
+that HDFS just died here,
+
+394
+00:13:51,710 --> 00:13:53,630
+and I lost all my data
+for whatever reason.
+
+395
+00:13:53,630 --> 00:13:55,289
+I could set up a new HDFS and
+
+396
+00:13:55,289 --> 00:13:57,530
+rerun those ETL jobs.
+I could repopulate it.
+
+397
+00:13:57,530 --> 00:13:58,630
+It's not my primary data.
+
+398
+00:13:58,630 --> 00:14:01,270
+It's really like, kind of
+secondary or derivative data.
+
+399
+00:14:01,270 --> 00:14:02,690
+Does that make sense?
+
+400
+00:14:02,690 --> 00:14:05,669
+Yeah, it would be
+an extra format.
+
+401
+00:14:05,669 --> 00:14:09,249
+Yeah. Yeah, other
+questions people have.
+
+402
+00:14:09,610 --> 00:14:12,150
+You know, maybe I have
+some other apps that
+
+403
+00:14:12,150 --> 00:14:14,289
+are sting marketing e
+mails on here, right?
+
+404
+00:14:14,289 --> 00:14:16,350
+Lots of kind of
+secondary purposes
+
+405
+00:14:16,350 --> 00:14:18,909
+for my data. All right.
+
+406
+00:14:18,909 --> 00:14:21,350
+So that big log in the center
+
+407
+00:14:21,350 --> 00:14:23,969
+is what Kafka can do, right?
+
+408
+00:14:23,969 --> 00:14:28,090
+So let's take a look
+at how Kafka is built.
+
+409
+00:14:28,410 --> 00:14:30,630
+Just like with RPCs,
+
+410
+00:14:30,630 --> 00:14:31,830
+messages are one of these
+
+411
+00:14:31,830 --> 00:14:33,689
+key concepts that
+we worry about,
+
+412
+00:14:33,689 --> 00:14:35,509
+and messages are organized
+
+413
+00:14:35,509 --> 00:14:37,269
+into what we call topics, right?
+
+414
+00:14:37,269 --> 00:14:40,189
+Some messages are about
+the same subject, right?
+
+415
+00:14:40,189 --> 00:14:41,669
+So what I may imagine
+is that I have
+
+416
+00:14:41,669 --> 00:14:43,649
+some kind of news organization.
+
+417
+00:14:43,649 --> 00:14:45,849
+Maybe the news organization has
+
+418
+00:14:45,849 --> 00:14:47,289
+lots of different apps that
+
+419
+00:14:47,289 --> 00:14:48,749
+they might build
+around it, right?
+
+420
+00:14:48,749 --> 00:14:50,549
+It could actually be
+quite complicated.
+
+421
+00:14:50,549 --> 00:14:54,549
+For example, maybe I have a
+tornado warn app, dos, right?
+
+422
+00:14:54,549 --> 00:14:56,970
+And so we have all these
+different messages that
+
+423
+00:14:56,970 --> 00:14:59,129
+are organized across all
+these different topics.
+
+424
+00:14:59,129 --> 00:15:02,450
+And these topics live on
+machines called brokers.
+
+425
+00:15:02,450 --> 00:15:03,929
+That's where they're stored.
+
+426
+00:15:03,929 --> 00:15:05,269
+And if you want to,
+
+427
+00:15:05,269 --> 00:15:07,510
+you can create new topics
+relatively easily.
+
+428
+00:15:07,510 --> 00:15:09,369
+There's different
+Python clients where
+
+429
+00:15:09,369 --> 00:15:11,470
+we use this one
+called Taka Python.
+
+430
+00:15:11,470 --> 00:15:12,670
+And within there, you can create
+
+431
+00:15:12,670 --> 00:15:15,390
+a Kaka Amin client and you
+can create new topics.
+
+432
+00:15:15,390 --> 00:15:17,710
+So, for example, here, I'm
+creating a sports topic,
+
+433
+00:15:17,710 --> 00:15:21,329
+and then that's a place for
+messages to live, right?
+
+434
+00:15:21,570 --> 00:15:23,889
+Where do these
+messages come from?
+
+435
+00:15:23,889 --> 00:15:27,289
+They come from programs
+called producers, right?
+
+436
+00:15:27,289 --> 00:15:28,570
+Maybe there's some sensor,
+
+437
+00:15:28,570 --> 00:15:30,429
+something that automatically
+detects the tornado,
+
+438
+00:15:30,429 --> 00:15:34,869
+that it sends a message to
+the weather topic about that.
+
+439
+00:15:34,869 --> 00:15:37,130
+So one of the things I want
+to throw at is writing
+
+440
+00:15:37,130 --> 00:15:39,429
+code for producers, right?
+
+441
+00:15:39,429 --> 00:15:40,809
+I see, Okay, here
+producer three,
+
+442
+00:15:40,809 --> 00:15:42,410
+is sending a message to sports.
+
+443
+00:15:42,410 --> 00:15:44,370
+Again, the code for
+this is not terrible.
+
+444
+00:15:44,370 --> 00:15:46,090
+After I have that
+package installed,
+
+445
+00:15:46,090 --> 00:15:48,210
+I can create a CCA
+producer object,
+
+446
+00:15:48,210 --> 00:15:49,630
+and I just say dot send.
+
+447
+00:15:49,630 --> 00:15:51,409
+I say the topic, and then I have
+
+448
+00:15:51,409 --> 00:15:54,409
+some information about the
+message that is being set.
+
+449
+00:15:54,409 --> 00:15:56,649
+And then that will end
+up on some topic on
+
+450
+00:15:56,649 --> 00:16:00,010
+some producer or on
+some broker somewhere.
+
+451
+00:16:00,250 --> 00:16:03,089
+On the other side,
+we have consumers,
+
+452
+00:16:03,089 --> 00:16:05,149
+which are also programs
+that you write.
+
+453
+00:16:05,149 --> 00:16:07,549
+And each consumer can
+
+454
+00:16:07,549 --> 00:16:10,949
+subscribe to different
+topics, right?
+
+455
+00:16:10,949 --> 00:16:13,749
+So some of them,
+like, you know, say,
+
+456
+00:16:13,749 --> 00:16:16,210
+Consumer three is getting
+
+457
+00:16:16,210 --> 00:16:18,509
+messages from all
+three of these topics.
+
+458
+00:16:18,509 --> 00:16:21,199
+Consumer four is some
+kind of application that
+
+459
+00:16:21,199 --> 00:16:24,340
+only cares about sport
+related messages.
+
+460
+00:16:24,340 --> 00:16:25,980
+Right? So when I write
+the code over here,
+
+461
+00:16:25,980 --> 00:16:27,940
+I can create this
+CPA consumer object
+
+462
+00:16:27,940 --> 00:16:29,319
+that I say dot subscribe,
+
+463
+00:16:29,319 --> 00:16:30,899
+and I have a list of the topics
+
+464
+00:16:30,899 --> 00:16:32,599
+that I'm interested in, right?
+
+465
+00:16:32,599 --> 00:16:33,519
+So one of the ways people
+
+466
+00:16:33,519 --> 00:16:34,999
+describe these systems
+is that they're
+
+467
+00:16:34,999 --> 00:16:38,239
+a pub sub or a published
+subscribe model.
+
+468
+00:16:38,239 --> 00:16:41,159
+And so that's another
+difference between GRPCs.
+
+469
+00:16:41,159 --> 00:16:43,519
+And the GRPC, it's like Ib
+sending a message to you.
+
+470
+00:16:43,519 --> 00:16:45,900
+Here, it's kind of like the
+producers and consumers
+
+471
+00:16:45,900 --> 00:16:48,299
+don't necessarily have to
+know about each other, right?
+
+472
+00:16:48,299 --> 00:16:50,280
+They both decide
+what topics they're
+
+473
+00:16:50,280 --> 00:16:53,439
+sending to and what topics
+they're receiving from.
+
+474
+00:16:53,439 --> 00:16:55,960
+You can imagine more
+complicated programs,
+
+475
+00:16:55,960 --> 00:16:57,280
+that might be combinations
+
+476
+00:16:57,280 --> 00:16:58,999
+of consumers and
+producers, right?
+
+477
+00:16:58,999 --> 00:17:03,019
+Maybe I have maybe I have
+a consumer that's like,
+
+478
+00:17:03,019 --> 00:17:05,220
+consuming all this data
+from weather stations,
+
+479
+00:17:05,220 --> 00:17:06,939
+and then maybe it produces
+
+480
+00:17:06,939 --> 00:17:09,060
+predictions about
+tomorrow's weather,
+
+481
+00:17:09,060 --> 00:17:10,939
+and it might write that
+to another channel.
+
+482
+00:17:10,939 --> 00:17:14,239
+Alright, This is kind
+of a big structure
+
+483
+00:17:14,239 --> 00:17:15,659
+that you really have to
+be familiar with, right?
+
+484
+00:17:15,659 --> 00:17:17,400
+The producer broker consumer.
+
+485
+00:17:17,400 --> 00:17:18,579
+Those are the three big pieces
+
+486
+00:17:18,579 --> 00:17:19,959
+here that we're gonna
+be talking a lot about.
+
+487
+00:17:19,959 --> 00:17:21,339
+So I'll just pause
+there and see if people
+
+488
+00:17:21,339 --> 00:17:23,929
+already have any
+questions. There here.
+
+489
+00:17:23,929 --> 00:17:32,779
+Consumer is the consumer that
+That's a great question.
+
+490
+00:17:32,779 --> 00:17:35,599
+So when a consumer is
+subscribe to a topic,
+
+491
+00:17:35,599 --> 00:17:37,139
+is it that the broker is
+
+492
+00:17:37,139 --> 00:17:38,539
+sitting or the
+consumer is receiving?
+
+493
+00:17:38,539 --> 00:17:40,600
+The answer the
+consumer is receiving
+
+494
+00:17:40,600 --> 00:17:42,179
+because the consumer is to
+
+495
+00:17:42,179 --> 00:17:43,760
+often have to process
+that in some way,
+
+496
+00:17:43,760 --> 00:17:46,519
+and depending how many
+compute resources you have,
+
+497
+00:17:46,519 --> 00:17:48,939
+right, it might take who
+knows how long, right?
+
+498
+00:17:48,939 --> 00:17:51,479
+And so the consumer will try
+to run as fast as it can.
+
+499
+00:17:51,479 --> 00:17:52,839
+And if the producer or if
+
+500
+00:17:52,839 --> 00:17:54,259
+the broker was just
+sitting stuff out,
+
+501
+00:17:54,259 --> 00:17:55,620
+then maybe the consumer
+
+502
+00:17:55,620 --> 00:17:57,639
+will not be able
+to keep up, right?
+
+503
+00:17:57,639 --> 00:17:59,760
+What kind of work a
+consumer be doing?
+
+504
+00:17:59,760 --> 00:18:02,959
+Well, Oftentimes, these
+messages are going
+
+505
+00:18:02,959 --> 00:18:06,580
+to be describing changes
+to a primary data store.
+
+506
+00:18:06,580 --> 00:18:08,059
+And so the consumers to say,
+
+507
+00:18:08,059 --> 00:18:10,200
+Oh, there was this update
+or change of the data,
+
+508
+00:18:10,200 --> 00:18:13,200
+and that consumer is
+going to be updating,
+
+509
+00:18:13,200 --> 00:18:16,420
+you know, HDFS or data
+warehouse or whatever.
+
+510
+00:18:16,420 --> 00:18:17,859
+That could take
+some time, right?
+
+511
+00:18:17,859 --> 00:18:20,900
+So the consumers will kind of
+go along at their own pace.
+
+512
+00:18:20,900 --> 00:18:23,800
+And the brokers are to keep
+
+513
+00:18:23,800 --> 00:18:25,760
+those messages there
+because who knows
+
+514
+00:18:25,760 --> 00:18:27,760
+who will need it in the
+future. Yeah, great question.
+
+515
+00:18:27,760 --> 00:18:29,519
+I saw another hand upper
+around here somewhere.
+
+516
+00:18:29,519 --> 00:18:31,019
+That was a related question.
+
+517
+00:18:31,019 --> 00:18:35,020
+Other question so
+far. Alright, cool.
+
+518
+00:18:35,870 --> 00:18:39,210
+So maybe this also helps
+answer the question.
+
+519
+00:18:39,210 --> 00:18:40,970
+If you do the optional
+reading for today,
+
+520
+00:18:40,970 --> 00:18:42,350
+they describe this polling loop,
+
+521
+00:18:42,350 --> 00:18:44,729
+and that's like the
+most important loop
+
+522
+00:18:44,729 --> 00:18:46,369
+described in the chapter.
+
+523
+00:18:46,369 --> 00:18:48,789
+Here I have an example of
+a pulling loop over here.
+
+524
+00:18:48,789 --> 00:18:50,389
+Consumers do pulling.
+
+525
+00:18:50,389 --> 00:18:52,789
+So here I have this
+consumer three object,
+
+526
+00:18:52,789 --> 00:18:54,010
+and I say, Wild true.
+
+527
+00:18:54,010 --> 00:18:55,489
+So most consumers just keep
+
+528
+00:18:55,489 --> 00:18:57,729
+looping forever
+because you know,
+
+529
+00:18:57,729 --> 00:18:59,189
+streams never add, right to
+
+530
+00:18:59,189 --> 00:19:00,690
+have an infinite source of data.
+
+531
+00:19:00,690 --> 00:19:02,370
+And what we'll do
+is we'll say batch
+
+532
+00:19:02,370 --> 00:19:04,050
+equals consumer dot poll.
+
+533
+00:19:04,050 --> 00:19:05,790
+There's some arguments
+that we can put there.
+
+534
+00:19:05,790 --> 00:19:07,690
+And whatever you call that poll,
+
+535
+00:19:07,690 --> 00:19:09,130
+I give you back this batch,
+
+536
+00:19:09,130 --> 00:19:11,250
+and this batch will contain
+a bunch of messages.
+
+537
+00:19:11,250 --> 00:19:14,370
+And those messages are
+organized by topic.
+
+538
+00:19:14,370 --> 00:19:15,890
+Right? I have a net loop.
+
+539
+00:19:15,890 --> 00:19:17,089
+I get a batch. And then
+
+540
+00:19:17,089 --> 00:19:18,849
+the batch has different
+topics and messages,
+
+541
+00:19:18,849 --> 00:19:23,209
+and I can loop over each
+message for each topic.
+
+542
+00:19:23,209 --> 00:19:26,739
+Right? So that
+generally runs forever.
+
+543
+00:19:26,739 --> 00:19:29,380
+And one of the
+interesting things
+
+544
+00:19:29,380 --> 00:19:32,680
+about Kafka that was different
+is that early systems,
+
+545
+00:19:32,680 --> 00:19:34,219
+they were just worried about the
+
+546
+00:19:34,219 --> 00:19:35,539
+asic nature of it, right?
+
+547
+00:19:35,539 --> 00:19:36,939
+It would just be kind
+of a broker would
+
+548
+00:19:36,939 --> 00:19:38,619
+be place you'd send a message,
+
+549
+00:19:38,619 --> 00:19:40,180
+and then when a consumer
+
+550
+00:19:40,180 --> 00:19:41,999
+consumed it would
+be Guad, right?
+
+551
+00:19:41,999 --> 00:19:44,139
+But Kafka in addition
+to trying to do that,
+
+552
+00:19:44,139 --> 00:19:46,300
+they're trying to handle
+this Mi to Mei scenario.
+
+553
+00:19:46,300 --> 00:19:49,140
+And so Kafka does
+the Asic stuff,
+
+554
+00:19:49,140 --> 00:19:51,539
+but they're also kind of a
+longer term storage, right?
+
+555
+00:19:51,539 --> 00:19:53,520
+They might keep the
+messages around for weeks,
+
+556
+00:19:53,520 --> 00:19:54,839
+or depending on
+you can figure it
+
+557
+00:19:54,839 --> 00:19:56,859
+maybe maybe forever, right?
+
+558
+00:19:56,859 --> 00:19:58,440
+Because as we can see here,
+
+559
+00:19:58,440 --> 00:20:01,050
+if there's a message
+about sports,
+
+560
+00:20:01,050 --> 00:20:02,899
+Consumer three and consumer
+
+561
+00:20:02,899 --> 00:20:04,159
+four are both
+interested in that,
+
+562
+00:20:04,159 --> 00:20:06,260
+you can't delete
+the message after
+
+563
+00:20:06,260 --> 00:20:07,740
+consumer three had it is there's
+
+564
+00:20:07,740 --> 00:20:10,179
+other applications
+that might need it.
+
+565
+00:20:12,060 --> 00:20:14,939
+Yeah, question right here.
+
+566
+00:20:14,939 --> 00:20:24,099
+Message Yeah,
+
+567
+00:20:24,099 --> 00:20:27,000
+you're asking, what are
+the messages deleted?
+
+568
+00:20:27,000 --> 00:20:28,680
+Like the key word
+is like, there's
+
+569
+00:20:28,680 --> 00:20:30,739
+some needs to be some
+kind of retention policy.
+
+570
+00:20:30,739 --> 00:20:33,744
+So when you were describe,
+like, Oh, if I sat sometime,
+
+571
+00:20:33,744 --> 00:20:35,649
+The word I would use
+for that is like,
+
+572
+00:20:35,649 --> 00:20:36,909
+Okay, that's a retention policy.
+
+573
+00:20:36,909 --> 00:20:37,869
+I'll retain messages for
+
+574
+00:20:37,869 --> 00:20:39,329
+two weeks or
+something like that.
+
+575
+00:20:39,329 --> 00:20:41,829
+Absolutely, the person
+who creates this sets up
+
+576
+00:20:41,829 --> 00:20:44,969
+this cluster will choose
+a retention policy.
+
+577
+00:20:44,969 --> 00:20:48,369
+And you know, I could say,
+like, two weeks or you know,
+
+578
+00:20:48,369 --> 00:20:50,350
+if it's like low volum but
+I have a big hard drive,
+
+579
+00:20:50,350 --> 00:20:52,089
+maybe I say I want
+to keep it forever.
+
+580
+00:20:52,089 --> 00:20:54,189
+You know, they have other kind
+of things you can plug in,
+
+581
+00:20:54,189 --> 00:20:55,689
+where if it's like too
+old, they'll kind of,
+
+582
+00:20:55,689 --> 00:20:57,049
+like, shove it off on HDFS.
+
+583
+00:20:57,049 --> 00:20:59,249
+So this is integrated
+with HDFS too.
+
+584
+00:20:59,249 --> 00:21:01,210
+So sometimes they'll
+keep messages forever,
+
+585
+00:21:01,210 --> 00:21:03,530
+sometimes they'll have a
+retention policy that's shorter.
+
+586
+00:21:03,530 --> 00:21:06,239
+Yeah, question right
+here. This exact example.
+
+587
+00:21:06,239 --> 00:21:07,779
+Is the reason that
+consumer three
+
+588
+00:21:07,779 --> 00:21:10,020
+does not get a message
+from politics?
+
+589
+00:21:10,020 --> 00:21:12,700
+I probably has already
+seen that message before?
+
+590
+00:21:12,700 --> 00:21:14,299
+Yeah. Maybe Consumer three has
+
+591
+00:21:14,299 --> 00:21:16,059
+already got the message from
+
+592
+00:21:16,059 --> 00:21:18,040
+politics or maybe maybe
+
+593
+00:21:18,040 --> 00:21:19,979
+it can process three
+messages at a time,
+
+594
+00:21:19,979 --> 00:21:22,359
+and maybe it'll grab it
+in the next batch, right?
+
+595
+00:21:22,359 --> 00:21:24,859
+So they're trying to have
+nice sized batches as well.
+
+596
+00:21:24,859 --> 00:21:26,500
+If the batch is too big, well,
+
+597
+00:21:26,500 --> 00:21:27,779
+it takes a lot of
+time to process,
+
+598
+00:21:27,779 --> 00:21:28,520
+if it's too small,
+
+599
+00:21:28,520 --> 00:21:30,360
+there's all this extra
+network overhead.
+
+600
+00:21:30,360 --> 00:21:32,439
+Yeah, Consumer three either has
+
+601
+00:21:32,439 --> 00:21:34,680
+seen that message or it
+should see it at some point?
+
+602
+00:21:34,680 --> 00:21:37,139
+Yeah, great point.
+Yeah, right here.
+
+603
+00:21:51,630 --> 00:21:56,450
+That's a great question. I
+guess maybe in the question,
+
+604
+00:21:56,450 --> 00:21:58,049
+I maybe hear a couple
+of observations.
+
+605
+00:21:58,049 --> 00:21:59,669
+What is that? There's lots
+of things where we have to
+
+606
+00:21:59,669 --> 00:22:01,389
+worry about scalability
+bottlenecks.
+
+607
+00:22:01,389 --> 00:22:03,590
+So you were talking
+about the consumers
+
+608
+00:22:03,590 --> 00:22:04,749
+keep up and we're talking about
+
+609
+00:22:04,749 --> 00:22:06,149
+how we scale the consumers.
+
+610
+00:22:06,149 --> 00:22:07,869
+You were talking about
+the brokers keep up,
+
+611
+00:22:07,869 --> 00:22:09,590
+we'll talk about how
+we scale the brokers.
+
+612
+00:22:09,590 --> 00:22:10,889
+Right? If this thing
+
+613
+00:22:10,889 --> 00:22:12,809
+is literally the
+center of our company,
+
+614
+00:22:12,809 --> 00:22:15,829
+and it's pulling all
+data from all places,
+
+615
+00:22:15,829 --> 00:22:17,609
+this thing really
+has to scale, right?
+
+616
+00:22:17,609 --> 00:22:19,849
+That's tricky for both
+brokers and consumers.
+
+617
+00:22:19,849 --> 00:22:21,730
+Producers, I think is
+the only case that's
+
+618
+00:22:21,730 --> 00:22:24,209
+easy because the producers
+don't talk to each other.
+
+619
+00:22:24,209 --> 00:22:25,510
+They just generate
+
+620
+00:22:25,510 --> 00:22:26,869
+whatever they want,
+whatever they want.
+
+621
+00:22:26,869 --> 00:22:28,870
+But yeah, absolutely, we're
+going to have to worry
+
+622
+00:22:28,870 --> 00:22:31,149
+a lot about how to scale
+brokers and consumers.
+
+623
+00:22:31,149 --> 00:22:33,200
+Yeah, good. Alright, ah,
+
+624
+00:22:33,200 --> 00:22:35,320
+lots of good questions
+and good points today.
+
+625
+00:22:35,320 --> 00:22:38,770
+Alright. So we have
+these messages,
+
+626
+00:22:38,770 --> 00:22:41,050
+and I want to talk about
+what exactly is in them.
+
+627
+00:22:41,050 --> 00:22:42,789
+There's a few things. I mean,
+
+628
+00:22:42,789 --> 00:22:46,250
+but there's two important
+things I want you to remember.
+
+629
+00:22:46,250 --> 00:22:48,070
+One is that they can have a key,
+
+630
+00:22:48,070 --> 00:22:49,790
+and the other is that
+they can have a value.
+
+631
+00:22:49,790 --> 00:22:52,330
+And the value is really
+what is the message.
+
+632
+00:22:52,330 --> 00:22:53,949
+Both of those are bytes.
+
+633
+00:22:53,949 --> 00:22:56,849
+The value is required,
+and all has to be there,
+
+634
+00:22:56,849 --> 00:22:59,129
+and you can choose whether
+or not you want to have
+
+635
+00:22:59,129 --> 00:23:01,710
+a key on your message.
+
+636
+00:23:01,710 --> 00:23:03,629
+And so I have some
+examples here.
+
+637
+00:23:03,629 --> 00:23:05,050
+I could say produced
+or not said.
+
+638
+00:23:05,050 --> 00:23:07,450
+I say what topic, and I
+could just have a value,
+
+639
+00:23:07,450 --> 00:23:09,009
+or I could send
+to that topic and
+
+640
+00:23:09,009 --> 00:23:10,630
+had both the value at a key.
+
+641
+00:23:10,630 --> 00:23:12,949
+Either either are reasonable
+
+642
+00:23:12,949 --> 00:23:14,979
+depending on what
+you're trying to do.
+
+643
+00:23:14,979 --> 00:23:17,109
+What we're go to
+see is just like
+
+644
+00:23:17,109 --> 00:23:19,450
+with Spark or other systems.
+
+645
+00:23:19,450 --> 00:23:22,209
+Sometimes we'll want to
+bring related data together.
+
+646
+00:23:22,209 --> 00:23:24,129
+And the key is how we're
+going to do that, right?
+
+647
+00:23:24,129 --> 00:23:26,110
+I I two messages
+have the same key,
+
+648
+00:23:26,110 --> 00:23:28,610
+that are related to
+each other, okay?
+
+649
+00:23:28,610 --> 00:23:30,509
+And so what we'll often see is
+
+650
+00:23:30,509 --> 00:23:31,769
+that that value we're sending.
+
+651
+00:23:31,769 --> 00:23:33,549
+I mean, it just
+bites in general,
+
+652
+00:23:33,549 --> 00:23:35,950
+but it will often
+be some kind of row
+
+653
+00:23:35,950 --> 00:23:38,729
+of data or dictionary of
+data or something like that.
+
+654
+00:23:38,729 --> 00:23:40,809
+And what we'll often do is
+
+655
+00:23:40,809 --> 00:23:44,969
+the key will be one of the
+entries inside of the value.
+
+656
+00:23:44,969 --> 00:23:46,590
+And so it'll be a
+little bit duplicated.
+
+657
+00:23:46,590 --> 00:23:49,289
+We'll have that value with a
+bunch of kind of sub values.
+
+658
+00:23:49,289 --> 00:23:51,530
+And one of those sub
+values will be the key?
+
+659
+00:23:51,530 --> 00:23:54,104
+B that's how we're a group
+related messages together.
+
+660
+00:23:54,104 --> 00:23:55,659
+I have some examples out here,
+
+661
+00:23:55,659 --> 00:23:57,360
+if I had like a
+Python dictionary.
+
+662
+00:23:57,360 --> 00:23:59,600
+I could use JSI to
+du it to a string,
+
+663
+00:23:59,600 --> 00:24:02,359
+and then I could use bites
+with a UTF A and Tding.
+
+664
+00:24:02,359 --> 00:24:04,580
+So I could basically
+take a Python dictionary
+
+665
+00:24:04,580 --> 00:24:07,119
+and turn it into a
+value that's bites.
+
+666
+00:24:07,119 --> 00:24:08,939
+Down here, I'm using
+protocol buffers,
+
+667
+00:24:08,939 --> 00:24:10,739
+right if I have a
+protocol buffer message.
+
+668
+00:24:10,739 --> 00:24:12,940
+I could serialize
+it to a string,
+
+669
+00:24:12,940 --> 00:24:14,700
+and then it's not a real string.
+
+670
+00:24:14,700 --> 00:24:17,059
+It's actually bytes. And
+so what we can see is that
+
+671
+00:24:17,059 --> 00:24:20,500
+we've used protocol
+buffers a lot with GRPC.
+
+672
+00:24:20,500 --> 00:24:24,899
+Here, we might use protocol
+buffers with Kafka, no GRPC.
+
+673
+00:24:24,899 --> 00:24:28,260
+Who have any questions
+about messages.
+
+674
+00:24:28,980 --> 00:24:31,820
+All right. Yeah, right here.
+
+675
+00:24:31,820 --> 00:24:34,379
+Something of value.
+
+676
+00:24:37,540 --> 00:24:40,059
+Oh, oh, how could be?
+
+677
+00:24:40,059 --> 00:24:41,360
+Like you're saying,
+like, why could
+
+678
+00:24:41,360 --> 00:24:43,099
+the key be something
+inside of values?
+
+679
+00:24:43,099 --> 00:24:44,379
+So let's say here, right?
+
+680
+00:24:44,379 --> 00:24:47,200
+In this case, I have
+value is my dictionary
+
+681
+00:24:47,200 --> 00:24:48,979
+D. And so there are
+probably a bunch of
+
+682
+00:24:48,979 --> 00:24:50,860
+different entries inside
+of that dictionary.
+
+683
+00:24:50,860 --> 00:24:52,479
+And I could choose
+one of the entries of
+
+684
+00:24:52,479 --> 00:24:54,480
+that dictionary to be my key,
+
+685
+00:24:54,480 --> 00:24:55,759
+right? And that would
+help me know that.
+
+686
+00:24:55,759 --> 00:24:58,039
+Oh, all these different
+dictionaries are
+
+687
+00:24:58,039 --> 00:25:00,820
+related to each other in some
+way. Does that make sense?
+
+688
+00:25:00,820 --> 00:25:03,659
+Yeah, good question. Oh, right.
+
+689
+00:25:03,659 --> 00:25:08,589
+Cool. So back to the
+scalability questions, right?
+
+690
+00:25:08,589 --> 00:25:11,990
+Some topics are be higher
+volume than others.
+
+691
+00:25:11,990 --> 00:25:13,869
+Let's say I'm like an
+e commerce company,
+
+692
+00:25:13,869 --> 00:25:16,970
+and I'm trying to do athletics.
+
+693
+00:25:16,970 --> 00:25:19,229
+I'm trying to see like, Oh,
+people click on these pages,
+
+694
+00:25:19,229 --> 00:25:21,250
+and then maybe they buy
+something or maybe they don't.
+
+695
+00:25:21,250 --> 00:25:23,249
+And so I have one topic,
+
+696
+00:25:23,249 --> 00:25:24,589
+which is about people clicking,
+
+697
+00:25:24,589 --> 00:25:26,730
+and there's lots of people
+clicking on my website.
+
+698
+00:25:26,730 --> 00:25:29,470
+Sadly, I have a very
+low volume stream,
+
+699
+00:25:29,470 --> 00:25:31,589
+which is related to purchases.
+
+700
+00:25:31,589 --> 00:25:34,449
+Okay. But regardless, I
+have the technical problem
+
+701
+00:25:34,449 --> 00:25:37,329
+of kind of dealing with
+this high volume topic,
+
+702
+00:25:37,329 --> 00:25:39,854
+which is people clicking, right?
+
+703
+00:25:39,854 --> 00:25:43,480
+So we do what we literally
+always do in this situation,
+
+704
+00:25:43,480 --> 00:25:46,119
+which is, we partition
+our data, right?
+
+705
+00:25:46,119 --> 00:25:48,099
+And so we as
+
+706
+00:25:48,099 --> 00:25:49,920
+the programmer, right,
+when you get the topic,
+
+707
+00:25:49,920 --> 00:25:51,659
+you'll say, I want
+this one to have
+
+708
+00:25:51,659 --> 00:25:53,940
+one partition or ten
+partitions, whatever.
+
+709
+00:25:53,940 --> 00:25:56,780
+You decide that, and it's
+fixed forever, pretty much.
+
+710
+00:25:56,780 --> 00:25:58,340
+All right. And so what I'll
+
+711
+00:25:58,340 --> 00:25:59,959
+do here is that we don't
+have any purchases,
+
+712
+00:25:59,959 --> 00:26:02,300
+so we'll just have one
+partition of purchases.
+
+713
+00:26:02,300 --> 00:26:04,140
+And for clicks, I'll
+have three partitions.
+
+714
+00:26:04,140 --> 00:26:05,580
+I'll have Partition zero,
+
+715
+00:26:05,580 --> 00:26:07,799
+partition one, petition two.
+
+716
+00:26:07,799 --> 00:26:09,280
+And then, you know
+I have some number
+
+717
+00:26:09,280 --> 00:26:10,839
+of brokers, and, you know,
+
+718
+00:26:10,839 --> 00:26:12,259
+each broker has some number
+
+719
+00:26:12,259 --> 00:26:14,539
+of topic partitions
+on it, right?
+
+720
+00:26:14,539 --> 00:26:16,859
+Ideally, I have enough brokers
+that can try to spread out
+
+721
+00:26:16,859 --> 00:26:20,199
+that work for my high
+volume partition, right?
+
+722
+00:26:20,199 --> 00:26:23,560
+Now, each topic
+partition behaves
+
+723
+00:26:23,560 --> 00:26:25,540
+kind of like an
+array of messages,
+
+724
+00:26:25,540 --> 00:26:27,060
+and you can see
+these indexes here.
+
+725
+00:26:27,060 --> 00:26:28,299
+Better I use the word index.
+
+726
+00:26:28,299 --> 00:26:30,160
+Im to use the word offset.
+
+727
+00:26:30,160 --> 00:26:32,940
+And that is because once
+
+728
+00:26:32,940 --> 00:26:35,499
+I have a message and it has
+offset associated with it,
+
+729
+00:26:35,499 --> 00:26:37,020
+it will always have that offset.
+
+730
+00:26:37,020 --> 00:26:39,959
+It never changes.
+Okay? So I have that.
+
+731
+00:26:39,959 --> 00:26:42,199
+Each producer using a stream
+
+732
+00:26:42,199 --> 00:26:45,279
+will work with all of
+the partitions, right?
+
+733
+00:26:45,279 --> 00:26:46,719
+If I have a producer
+to produce a message,
+
+734
+00:26:46,719 --> 00:26:48,379
+the producer has to
+figure out which
+
+735
+00:26:48,379 --> 00:26:50,104
+topic partition to send it to.
+
+736
+00:26:50,104 --> 00:26:52,710
+Okay, so how do we
+modify these partitions?
+
+737
+00:26:52,710 --> 00:26:54,850
+On the right hand side,
+we can append things.
+
+738
+00:26:54,850 --> 00:26:57,229
+I can see on the first one,
+I'm appending a message,
+
+739
+00:26:57,229 --> 00:27:01,249
+t at offset eight on the
+click zero partition,
+
+740
+00:27:01,249 --> 00:27:03,190
+I'm deleting these
+messages based
+
+741
+00:27:03,190 --> 00:27:05,350
+on some kind of
+retention policy.
+
+742
+00:27:05,350 --> 00:27:07,709
+And when I do that, the offsets
+
+743
+00:27:07,709 --> 00:27:09,129
+of the other ones do
+not change, right?
+
+744
+00:27:09,129 --> 00:27:11,389
+So when I first start
+a new partition,
+
+745
+00:27:11,389 --> 00:27:12,689
+the first mesion will be at
+
+746
+00:27:12,689 --> 00:27:14,840
+partition will be
+at offset zero.
+
+747
+00:27:14,840 --> 00:27:16,870
+After I delete some messages,
+
+748
+00:27:16,870 --> 00:27:18,949
+then the first message will be
+
+749
+00:27:18,949 --> 00:27:21,909
+a an offset that's
+bigger than zero, right?
+
+750
+00:27:21,909 --> 00:27:23,889
+So I do that. There's some
+things we'll never do.
+
+751
+00:27:23,889 --> 00:27:26,889
+We'll never change an
+offset or an index.
+
+752
+00:27:26,889 --> 00:27:30,589
+We will never modify a message
+after it's been readed.
+
+753
+00:27:30,589 --> 00:27:33,209
+Once it's there, it's
+reded in stone forever.
+
+754
+00:27:33,209 --> 00:27:35,709
+I'll never delete a
+message in the middle.
+
+755
+00:27:35,709 --> 00:27:38,149
+I delete from the left
+hand side, right?
+
+756
+00:27:38,149 --> 00:27:41,269
+So I kind of have all these
+kind of sliding arrays for
+
+757
+00:27:41,269 --> 00:27:42,949
+each of these topic
+partitions that are
+
+758
+00:27:42,949 --> 00:27:44,850
+spread across
+different machines.
+
+759
+00:27:44,850 --> 00:27:47,089
+That's the main
+structure we have.
+
+760
+00:27:49,420 --> 00:27:52,920
+All right, so now, when
+we write these messages,
+
+761
+00:27:52,920 --> 00:27:54,639
+we might just put a value or we
+
+762
+00:27:54,639 --> 00:27:56,379
+might have a value
+and a key together.
+
+763
+00:27:56,379 --> 00:27:58,079
+If I only have a value,
+
+764
+00:27:58,079 --> 00:28:01,059
+then what the producer will
+do is the producer knows
+
+765
+00:28:01,059 --> 00:28:01,439
+that there are
+
+766
+00:28:01,439 --> 00:28:03,979
+these three different
+partitions for clicks,
+
+767
+00:28:03,979 --> 00:28:05,739
+and it will just round
+robin between them.
+
+768
+00:28:05,739 --> 00:28:07,219
+That means that rotates will do
+
+769
+00:28:07,219 --> 00:28:09,860
+partition zero, one, two, zero.
+
+770
+00:28:09,860 --> 00:28:11,779
+One, two, I'll just keep
+rotating between all of
+
+771
+00:28:11,779 --> 00:28:13,839
+the different ones,
+if there's no value.
+
+772
+00:28:13,839 --> 00:28:15,779
+And that means that
+there's no kind of
+
+773
+00:28:15,779 --> 00:28:18,480
+grouping on the messages
+within a partition.
+
+774
+00:28:18,480 --> 00:28:21,379
+Sometimes I don't care.
+There's no natural grouping.
+
+775
+00:28:21,379 --> 00:28:23,219
+If I have a key, then what
+
+776
+00:28:23,219 --> 00:28:25,000
+we'll do is we'll do
+hash partitioning,
+
+777
+00:28:25,000 --> 00:28:27,500
+which is exactly the same
+as Spar hash partitioning.
+
+778
+00:28:27,500 --> 00:28:28,840
+I'll take the hash and the key,
+
+779
+00:28:28,840 --> 00:28:30,880
+modify the partition count.
+
+780
+00:28:30,880 --> 00:28:33,700
+Here I have three
+partitions of clicks.
+
+781
+00:28:33,700 --> 00:28:35,339
+So I will get zero water two,
+
+782
+00:28:35,339 --> 00:28:37,219
+and that will tell me
+where it should go.
+
+783
+00:28:37,219 --> 00:28:38,599
+And what that means, if I have
+
+784
+00:28:38,599 --> 00:28:40,540
+two different messages
+with the same key,
+
+785
+00:28:40,540 --> 00:28:43,599
+they're going to end up in
+the same partition, right?
+
+786
+00:28:43,599 --> 00:28:44,999
+There's other things
+you could do, like you
+
+787
+00:28:44,999 --> 00:28:46,419
+could plug in a
+different policy there,
+
+788
+00:28:46,419 --> 00:28:48,359
+but that's what I'll just
+assume that's a default.
+
+789
+00:28:48,359 --> 00:28:50,139
+That's what I'll
+assume in general
+
+790
+00:28:50,139 --> 00:28:52,800
+for Kafka this semester.
+
+791
+00:28:52,800 --> 00:28:58,580
+All right. Any questions
+about that grouping of data?
+
+792
+00:29:01,700 --> 00:29:04,299
+Yeah, right here.
+
+793
+00:29:11,940 --> 00:29:13,900
+Oh, that's a good question.
+
+794
+00:29:13,900 --> 00:29:15,519
+So are the messages sent by
+
+795
+00:29:15,519 --> 00:29:17,880
+the producer in a
+consistent for bat?
+
+796
+00:29:17,880 --> 00:29:19,200
+Seriously, are they serialized
+
+797
+00:29:19,200 --> 00:29:21,539
+in the same way or
+something like that?
+
+798
+00:29:28,170 --> 00:29:30,430
+Oh, oh, oh, that's
+a good question.
+
+799
+00:29:30,430 --> 00:29:32,690
+C a producer sometimes
+
+800
+00:29:32,690 --> 00:29:35,150
+produce messages that have
+keys and others that don't.
+
+801
+00:29:35,150 --> 00:29:36,829
+Yeah, that would be fight that
+
+802
+00:29:36,829 --> 00:29:40,049
+if there is a key that
+it'll has partition it,
+
+803
+00:29:40,049 --> 00:29:43,109
+if it doesn't have a key,
+that it'll round rob at it.
+
+804
+00:29:43,109 --> 00:29:44,470
+Yeah, that's totally fight.
+
+805
+00:29:44,470 --> 00:29:46,609
+Yep. Yeah, good question.
+
+806
+00:29:46,609 --> 00:29:49,329
+Oh. All right.
+
+807
+00:29:49,329 --> 00:29:54,310
+Cool. So when we're
+reading this date,
+
+808
+00:29:54,310 --> 00:29:56,049
+if we're a consumer,
+something we have to think
+
+809
+00:29:56,049 --> 00:29:58,289
+very carefully about is the
+offset that we're reading it.
+
+810
+00:29:58,289 --> 00:29:59,669
+Because offset is re to tell us
+
+811
+00:29:59,669 --> 00:30:01,350
+what is your next message.
+
+812
+00:30:01,350 --> 00:30:03,589
+Alright, so let's
+imagine now that we have
+
+813
+00:30:03,589 --> 00:30:07,910
+one consumer and it's
+subscribed to both topics.
+
+814
+00:30:07,910 --> 00:30:09,450
+And it's only consumers,
+
+815
+00:30:09,450 --> 00:30:14,090
+so I go to have all of
+these different partitions.
+
+816
+00:30:14,090 --> 00:30:15,869
+I'm sorry. I'm drawing
+a simpler picture.
+
+817
+00:30:15,869 --> 00:30:17,389
+Let's just pretend
+like we are going
+
+818
+00:30:17,389 --> 00:30:19,030
+to worry about
+purchases for now.
+
+819
+00:30:19,030 --> 00:30:20,569
+Let's just worry about clicks.
+
+820
+00:30:20,569 --> 00:30:22,669
+And so the consumer
+
+821
+00:30:22,669 --> 00:30:24,949
+has already seen some
+messages and some it has not.
+
+822
+00:30:24,949 --> 00:30:28,069
+And so these little
+arrows up here refer to
+
+823
+00:30:28,069 --> 00:30:29,430
+the next message I should
+
+824
+00:30:29,430 --> 00:30:32,709
+it for each of these
+partitions, right?
+
+825
+00:30:32,709 --> 00:30:35,350
+You know, for clicks two,
+it's at position four,
+
+826
+00:30:35,350 --> 00:30:37,669
+so that means that there
+is no message four yet.
+
+827
+00:30:37,669 --> 00:30:39,329
+There's nothing more to see on
+
+828
+00:30:39,329 --> 00:30:42,014
+that topic partition. I've
+already read everything.
+
+829
+00:30:42,014 --> 00:30:43,899
+And so somewhere, and
+
+830
+00:30:43,899 --> 00:30:45,639
+we'll talk more
+about where this is,
+
+831
+00:30:45,639 --> 00:30:48,439
+we have a state that kind
+of looks like this, right?
+
+832
+00:30:48,439 --> 00:30:50,159
+We have an offset corresponding
+
+833
+00:30:50,159 --> 00:30:51,280
+to each of these partitions,
+
+834
+00:30:51,280 --> 00:30:53,000
+and that describes basically
+
+835
+00:30:53,000 --> 00:30:55,719
+the same information that
+those arrows are showing you.
+
+836
+00:30:55,719 --> 00:30:57,999
+Okay? Now, the code
+
+837
+00:30:57,999 --> 00:30:59,219
+inside of the consumer looks
+
+838
+00:30:59,219 --> 00:31:00,679
+like this loop up
+at the top, right?
+
+839
+00:31:00,679 --> 00:31:02,140
+It says dot pull.
+
+840
+00:31:02,140 --> 00:31:05,599
+And when you pull, you say
+some number of milliseconds.
+
+841
+00:31:05,599 --> 00:31:08,059
+And the idea here is
+
+842
+00:31:08,059 --> 00:31:11,209
+that poll should return
+to you within that.
+
+843
+00:31:11,209 --> 00:31:13,829
+So this is say, Poll should
+be return within 1 second.
+
+844
+00:31:13,829 --> 00:31:15,409
+It might be faster, right?
+
+845
+00:31:15,409 --> 00:31:16,909
+So what Tropica is trying to
+
+846
+00:31:16,909 --> 00:31:18,730
+do is that it wants
+to give me a lot
+
+847
+00:31:18,730 --> 00:31:20,109
+of messages at the
+same time because
+
+848
+00:31:20,109 --> 00:31:22,290
+it's more efficient
+to do bigger batches,
+
+849
+00:31:22,290 --> 00:31:23,690
+but it doesn't want to wait
+
+850
+00:31:23,690 --> 00:31:25,130
+so long that the data is state.
+
+851
+00:31:25,130 --> 00:31:26,989
+And so poll will return,
+
+852
+00:31:26,989 --> 00:31:29,130
+either when I have
+enough messages
+
+853
+00:31:29,130 --> 00:31:30,889
+or when 1 second has passed.
+
+854
+00:31:30,889 --> 00:31:36,370
+After that returns, I have
+different topics and messages.
+
+855
+00:31:36,370 --> 00:31:37,430
+And actually, this is a little
+
+856
+00:31:37,430 --> 00:31:39,149
+bit kind of strangely
+named, right?
+
+857
+00:31:39,149 --> 00:31:40,370
+So the topic here is actually
+
+858
+00:31:40,370 --> 00:31:43,570
+the combination of a
+topic and a partition.
+
+859
+00:31:43,570 --> 00:31:46,129
+And so I can loop
+over each of those.
+
+860
+00:31:46,129 --> 00:31:49,269
+I can print off what the topic
+partition is that I'm on,
+
+861
+00:31:49,269 --> 00:31:51,170
+and then I can loop
+over all the messages
+
+862
+00:31:51,170 --> 00:31:53,590
+associated with that
+topic partition.
+
+863
+00:31:53,590 --> 00:31:56,190
+And so what I want you
+to think about here
+
+864
+00:31:56,190 --> 00:31:57,969
+is that in this state I'm in
+
+865
+00:31:57,969 --> 00:31:59,709
+right now, it's
+not deterministic.
+
+866
+00:31:59,709 --> 00:32:02,909
+There are some outputs
+that I might get,
+
+867
+00:32:02,909 --> 00:32:04,930
+and some that would
+not be reasonable.
+
+868
+00:32:04,930 --> 00:32:07,229
+And so I'll just show you a
+few different things that
+
+869
+00:32:07,229 --> 00:32:10,449
+this consumer might pret
+in the situation, right?
+
+870
+00:32:10,449 --> 00:32:12,910
+So there's different things
+that could be in the batches.
+
+871
+00:32:12,910 --> 00:32:15,410
+Maybe I get two messages
+from Partition zero.
+
+872
+00:32:15,410 --> 00:32:17,889
+So I pret Partition
+zero, then CD.
+
+873
+00:32:17,889 --> 00:32:20,509
+That's one thing
+that could happen.
+
+874
+00:32:20,510 --> 00:32:23,370
+Maybe I get messages
+
+875
+00:32:23,370 --> 00:32:25,149
+from two different
+partitions, right?
+
+876
+00:32:25,149 --> 00:32:26,909
+And so maybe I'll
+put all those off.
+
+877
+00:32:26,909 --> 00:32:29,709
+I pret Partition one has FGHI,
+
+878
+00:32:29,709 --> 00:32:33,309
+Partition three has R. I can
+just something like that.
+
+879
+00:32:33,309 --> 00:32:34,649
+And you see whenever I do that,
+
+880
+00:32:34,649 --> 00:32:36,709
+the arrow moves from
+the light pak to
+
+881
+00:32:36,709 --> 00:32:38,469
+the dark pak and I can see
+
+882
+00:32:38,469 --> 00:32:40,734
+that the offsets change
+depending on what I get.
+
+883
+00:32:40,734 --> 00:32:42,579
+Another thing I could
+have got it, right?
+
+884
+00:32:42,579 --> 00:32:45,020
+Is that maybe I just
+did one message
+
+885
+00:32:45,020 --> 00:32:46,859
+off of Partition one, right?
+
+886
+00:32:46,859 --> 00:32:49,639
+It would just advance
+that that there, right?
+
+887
+00:32:49,639 --> 00:32:51,179
+So there's some things
+that it'll never do.
+
+888
+00:32:51,179 --> 00:32:52,499
+It'll never, like, skip over
+
+889
+00:32:52,499 --> 00:32:55,159
+a message or droll backwards
+or anything like that.
+
+890
+00:32:55,159 --> 00:32:59,019
+It's strike consecutive on
+partition partition by basis,
+
+891
+00:32:59,019 --> 00:33:00,200
+but that still means there's
+
+892
+00:33:00,200 --> 00:33:01,319
+a lot of different things that I
+
+893
+00:33:01,319 --> 00:33:04,179
+might get when I asked
+for a batch of messages.
+
+894
+00:33:04,179 --> 00:33:08,419
+Okay? All right. Any
+questions about that?
+
+895
+00:33:08,419 --> 00:33:10,469
+Kind of guarantees we
+get. Yeah, right here.
+
+896
+00:33:10,469 --> 00:33:13,580
+Offsets maintained per
+consumer per partition.
+
+897
+00:33:13,580 --> 00:33:16,800
+Yeah, our offsets maintained
+
+898
+00:33:16,800 --> 00:33:18,520
+per consumer or per partition.
+
+899
+00:33:18,520 --> 00:33:19,900
+What would you save
+that question?
+
+900
+00:33:19,900 --> 00:33:21,339
+There's going to be
+more dots to it.
+
+901
+00:33:21,339 --> 00:33:22,459
+You have to talk
+about this thing
+
+902
+00:33:22,459 --> 00:33:23,880
+called a consumer group.
+
+903
+00:33:23,880 --> 00:33:25,239
+And so the answer will
+
+904
+00:33:25,239 --> 00:33:27,019
+involve talking about
+consumer groups.
+
+905
+00:33:27,019 --> 00:33:28,479
+But yeah, you're thinking
+about the right way.
+
+906
+00:33:28,479 --> 00:33:37,900
+Yeah, right here.
+Oh, you're saying,
+
+907
+00:33:37,900 --> 00:33:41,260
+You're saying could the
+offset numbers overflow?
+
+908
+00:33:41,260 --> 00:33:42,919
+I'm not sure how
+they handle that.
+
+909
+00:33:42,919 --> 00:33:43,979
+Is say they just have like,
+
+910
+00:33:43,979 --> 00:33:45,899
+big enough numbers that it will
+
+911
+00:33:45,899 --> 00:33:48,799
+just never
+realistically overflow.
+
+912
+00:33:48,799 --> 00:33:50,339
+So I think that's fine. I mean,
+
+913
+00:33:50,339 --> 00:33:51,820
+you could have a
+consumer that gets
+
+914
+00:33:51,820 --> 00:33:53,359
+farther and farther
+behind, right?
+
+915
+00:33:53,359 --> 00:33:54,699
+And then you would have to
+
+916
+00:33:54,699 --> 00:33:56,579
+figure out how to scale
+up your consumers.
+
+917
+00:33:56,579 --> 00:33:58,199
+But I'm not aware
+
+918
+00:33:58,199 --> 00:34:00,204
+of the offsets being a
+problem. Yeah right.
+
+919
+00:34:00,204 --> 00:34:06,690
+What of Right. Uh huh.
+
+920
+00:34:06,690 --> 00:34:09,710
+What if it offset Da
+of storage reasons,
+
+921
+00:34:09,710 --> 00:34:11,889
+then a consumer could come
+
+922
+00:34:11,889 --> 00:34:14,609
+along that data just
+is not there, right?
+
+923
+00:34:14,609 --> 00:34:17,029
+And so you probably want
+to have some kind of
+
+924
+00:34:17,029 --> 00:34:18,510
+very generous policy like weeks
+
+925
+00:34:18,510 --> 00:34:19,769
+or months that you
+keep the data,
+
+926
+00:34:19,769 --> 00:34:21,470
+or you could say I want
+to keep it forever.
+
+927
+00:34:21,470 --> 00:34:24,089
+Because, yeah, if a consumer
+is down for too long,
+
+928
+00:34:24,089 --> 00:34:26,350
+and it rows pass by
+retention policy.
+
+929
+00:34:26,350 --> 00:34:28,909
+Yeah, I could lose data.
+Yeah. But hopefully
+
+930
+00:34:28,909 --> 00:34:30,269
+somebody would not just leave
+
+931
+00:34:30,269 --> 00:34:31,989
+it broken for two weeks, right?
+
+932
+00:34:31,989 --> 00:34:33,970
+It would require data engineers
+
+933
+00:34:33,970 --> 00:34:35,030
+to keep an eye on the system,
+
+934
+00:34:35,030 --> 00:34:37,290
+right I just row
+and run by itself.
+
+935
+00:34:37,290 --> 00:34:42,239
+Yeah. Alright, Yeah, lots of
+good questions. All right.
+
+936
+00:34:42,239 --> 00:34:43,999
+So what I want you to think
+
+937
+00:34:43,999 --> 00:34:47,779
+about is a concept you might
+have run across at the math,
+
+938
+00:34:47,779 --> 00:34:52,119
+of course, and the concept
+is called ordering, right?
+
+939
+00:34:52,119 --> 00:34:55,220
+Some things in life are what
+we call totally ordered.
+
+940
+00:34:55,220 --> 00:34:57,340
+For example, integers
+are totally ordered.
+
+941
+00:34:57,340 --> 00:34:59,679
+If you give me an integer
+x and an integer y,
+
+942
+00:34:59,679 --> 00:35:01,279
+it doesn't matter what they are.
+
+943
+00:35:01,279 --> 00:35:02,879
+One of these things
+will be true,
+
+944
+00:35:02,879 --> 00:35:04,639
+either x is less than
+
+945
+00:35:04,639 --> 00:35:07,699
+y or y is greater
+than are equal to x.
+
+946
+00:35:07,699 --> 00:35:09,580
+Lots of things in life
+are totally ordered.
+
+947
+00:35:09,580 --> 00:35:11,079
+There are also some
+things that are
+
+948
+00:35:11,079 --> 00:35:13,990
+partially ordered. Like Tom.
+
+949
+00:35:13,990 --> 00:35:17,209
+So it Comets, if you branch
+out and merge back together,
+
+950
+00:35:17,209 --> 00:35:19,670
+it really looks like this
+directed acyclic graph.
+
+951
+00:35:19,670 --> 00:35:22,069
+And sometimes I could look
+at two commits and say,
+
+952
+00:35:22,069 --> 00:35:23,309
+this one happened
+before that one,
+
+953
+00:35:23,309 --> 00:35:24,729
+for example, you know,
+
+954
+00:35:24,729 --> 00:35:27,270
+A happened before
+B or A happened
+
+955
+00:35:27,270 --> 00:35:28,670
+before C or D happened
+
+956
+00:35:28,670 --> 00:35:30,569
+before E. Those are
+all things I can say.
+
+957
+00:35:30,569 --> 00:35:33,390
+It's partially ordered. Other
+times I cannot compare.
+
+958
+00:35:33,390 --> 00:35:36,089
+I cannot say between B and C,
+
+959
+00:35:36,089 --> 00:35:37,769
+which one happened maybe
+
+960
+00:35:37,769 --> 00:35:39,609
+there's some types, but
+I don't care, right?
+
+961
+00:35:39,609 --> 00:35:41,229
+If I have B and C, that
+
+962
+00:35:41,229 --> 00:35:42,809
+means there's two different
+programmers that were
+
+963
+00:35:42,809 --> 00:35:44,289
+independently working
+on something and
+
+964
+00:35:44,289 --> 00:35:46,709
+improving it separately, right?
+
+965
+00:35:46,709 --> 00:35:48,909
+I don't care what type of day
+they were working, right,
+
+966
+00:35:48,909 --> 00:35:50,889
+neither one of these
+commits is necessarily
+
+967
+00:35:50,889 --> 00:35:53,199
+the newer version
+of the code, right?
+
+968
+00:35:53,199 --> 00:35:55,600
+There are some commits I can
+compare, and some I cannot.
+
+969
+00:35:55,600 --> 00:35:57,899
+And KAFKA messages are
+
+970
+00:35:57,899 --> 00:36:00,399
+going to be partially
+ordered, right?
+
+971
+00:36:00,399 --> 00:36:02,720
+It's a partially ordered system.
+
+972
+00:36:02,920 --> 00:36:05,479
+And what that means is that
+
+973
+00:36:05,479 --> 00:36:09,360
+the producers are creating
+messages in some order.
+
+974
+00:36:09,360 --> 00:36:11,559
+But the guarantees I have about
+
+975
+00:36:11,559 --> 00:36:13,180
+the order which
+they'll be consumed
+
+976
+00:36:13,180 --> 00:36:15,599
+are somewhat limited, right?
+
+977
+00:36:15,760 --> 00:36:18,679
+And so here's how
+it works. Right?
+
+978
+00:36:18,679 --> 00:36:20,780
+If you are a producer
+and you're sending
+
+979
+00:36:20,780 --> 00:36:25,180
+multiple messages to the
+same key of the same topic,
+
+980
+00:36:25,180 --> 00:36:28,060
+then they end up in that same
+topic partition together,
+
+981
+00:36:28,060 --> 00:36:30,140
+and we enforce ordering
+
+982
+00:36:30,140 --> 00:36:32,319
+on the granularity of
+topic partitions, right?
+
+983
+00:36:32,319 --> 00:36:34,139
+So if it's the same
+topic and same key,
+
+984
+00:36:34,139 --> 00:36:35,859
+then things will come out in
+
+985
+00:36:35,859 --> 00:36:37,819
+the same order that
+they go ad, right?
+
+986
+00:36:37,819 --> 00:36:39,380
+So let me just give
+you an example.
+
+987
+00:36:39,380 --> 00:36:41,800
+So let's say that A
+and B are messages,
+
+988
+00:36:41,800 --> 00:36:43,439
+and they have the
+same topic and K,
+
+989
+00:36:43,439 --> 00:36:46,279
+and B was produced
+after A, right?
+
+990
+00:36:46,279 --> 00:36:49,079
+So first A and the B,
+The technical word
+
+991
+00:36:49,079 --> 00:36:50,799
+we'll use as happened
+after, right?
+
+992
+00:36:50,799 --> 00:36:53,479
+That's often used in
+like a literature here.
+
+993
+00:36:53,479 --> 00:36:54,980
+So we'll say that B happened
+
+994
+00:36:54,980 --> 00:36:56,879
+after A because it's
+the same topic in
+
+995
+00:36:56,879 --> 00:36:58,859
+G. And that means
+
+996
+00:36:58,859 --> 00:37:01,379
+that A and B will be in the
+same partition of the topic.
+
+997
+00:37:01,379 --> 00:37:04,939
+Assuming we don't change
+the partition couch,
+
+998
+00:37:04,939 --> 00:37:06,340
+which is a big nota with Kaka.
+
+999
+00:37:06,340 --> 00:37:08,054
+You're never supposed
+to change that.
+
+1000
+00:37:08,054 --> 00:37:10,669
+And then because of that,
+
+1001
+00:37:10,669 --> 00:37:13,209
+the offsets will determine
+ordering, right?
+
+1002
+00:37:13,209 --> 00:37:15,029
+And so anybody that's
+consuming both of
+
+1003
+00:37:15,029 --> 00:37:18,109
+these is going to consume
+A before they consume B.
+
+1004
+00:37:18,109 --> 00:37:19,449
+Those are the guarantees we get.
+
+1005
+00:37:19,449 --> 00:37:21,809
+We don't get any
+guarantees beside that.
+
+1006
+00:37:21,809 --> 00:37:23,469
+And so what we can see
+
+1007
+00:37:23,469 --> 00:37:25,290
+here is that to have
+any kind of guarantee,
+
+1008
+00:37:25,290 --> 00:37:27,029
+it all comes down
+to the key, right?
+
+1009
+00:37:27,029 --> 00:37:28,249
+I have to choose that key very
+
+1010
+00:37:28,249 --> 00:37:31,509
+carefully if I want related
+data to be in the same place.
+
+1011
+00:37:31,509 --> 00:37:34,589
+I have to choose that key very
+carefully if I care about
+
+1012
+00:37:34,589 --> 00:37:38,954
+the order in which messages
+get processed, right?
+
+1013
+00:37:38,954 --> 00:37:41,079
+But another piece of advice is
+
+1014
+00:37:41,079 --> 00:37:43,379
+that if I change the
+partition count,
+
+1015
+00:37:43,379 --> 00:37:45,500
+well, hash partitioning
+is totally broken,
+
+1016
+00:37:45,500 --> 00:37:47,360
+like we've seen
+before with Casandra.
+
+1017
+00:37:47,360 --> 00:37:50,440
+That's why Cassandra went
+off a consistent Hashig.
+
+1018
+00:37:50,440 --> 00:37:52,099
+They don't do anything
+so clever here, right?
+
+1019
+00:37:52,099 --> 00:37:53,319
+So the advice of Kata is
+
+1020
+00:37:53,319 --> 00:37:55,479
+never change your
+partition count,
+
+1021
+00:37:55,479 --> 00:37:56,979
+which is not great because you
+
+1022
+00:37:56,979 --> 00:37:58,239
+can't perfectly anticipate it,
+
+1023
+00:37:58,239 --> 00:38:00,059
+so it's better to
+overestimate rather
+
+1024
+00:38:00,059 --> 00:38:01,959
+than understimate
+the partition count.
+
+1025
+00:38:01,959 --> 00:38:08,839
+Yeah, question right here.
+Broker, you're saying,
+
+1026
+00:38:08,839 --> 00:38:11,320
+like, if all our
+brokers are empty,
+
+1027
+00:38:11,320 --> 00:38:15,139
+is already probably change the
+partition account, I mean,
+
+1028
+00:38:15,139 --> 00:38:18,339
+given that they hang on to
+messages for a long time,
+
+1029
+00:38:18,339 --> 00:38:21,640
+maybe indefinitely, W
+you say it's empty,
+
+1030
+00:38:21,640 --> 00:38:25,159
+just there's never ever
+been a message set yet?
+
+1031
+00:38:29,930 --> 00:38:32,090
+You're say all the consumers
+
+1032
+00:38:32,090 --> 00:38:33,769
+have consumed all the messages.
+
+1033
+00:38:33,769 --> 00:38:36,029
+Could you change the
+partition count?
+
+1034
+00:38:36,029 --> 00:38:38,229
+Not necessarily, because I
+
+1035
+00:38:38,229 --> 00:38:39,409
+guess what we're going to see is
+
+1036
+00:38:39,409 --> 00:38:41,209
+that we want all
+the related data
+
+1037
+00:38:41,209 --> 00:38:42,930
+to go to the same consumer.
+
+1038
+00:38:42,930 --> 00:38:44,649
+And if you change
+the partition count,
+
+1039
+00:38:44,649 --> 00:38:46,010
+that won't happen
+even if somebody
+
+1040
+00:38:46,010 --> 00:38:47,510
+has handled keys correctly.
+
+1041
+00:38:47,510 --> 00:38:52,009
+Yeah. Lots of things can,
+you're writing all the code.
+
+1042
+00:38:52,009 --> 00:38:53,409
+So maybe you could
+write some code
+
+1043
+00:38:53,409 --> 00:38:54,810
+to handle some tricky cases.
+
+1044
+00:38:54,810 --> 00:38:56,509
+But in general, if
+you change that,
+
+1045
+00:38:56,509 --> 00:38:57,830
+the nice things Kafka
+
+1046
+00:38:57,830 --> 00:38:59,469
+does for you it won't
+do that for you.
+
+1047
+00:38:59,469 --> 00:39:01,149
+So then you have to
+figure out how to solve
+
+1048
+00:39:01,149 --> 00:39:02,349
+some problems on
+yourself instead
+
+1049
+00:39:02,349 --> 00:39:03,729
+of letting Kafka solve it.
+
+1050
+00:39:03,729 --> 00:39:06,169
+Yeah, that's a good
+question, though.
+
+1051
+00:39:06,169 --> 00:39:08,130
+And again, I just
+want to stress,
+
+1052
+00:39:08,130 --> 00:39:09,329
+if you don't specify any keys,
+
+1053
+00:39:09,329 --> 00:39:10,669
+then there's no guarantee
+
+1054
+00:39:10,669 --> 00:39:12,549
+on what order the
+message will come out.
+
+1055
+00:39:12,549 --> 00:39:13,489
+They can draw in what order,
+
+1056
+00:39:13,489 --> 00:39:14,889
+they come out in a
+different order.
+
+1057
+00:39:14,889 --> 00:39:16,329
+Maybe you care, maybe you don't,
+
+1058
+00:39:16,329 --> 00:39:18,290
+depending on the application.
+
+1059
+00:39:18,640 --> 00:39:23,000
+Oh, right. So these offsets
+
+1060
+00:39:23,000 --> 00:39:24,940
+are going to be very important.
+
+1061
+00:39:24,940 --> 00:39:27,640
+In general, we just go
+forward with our offsets.
+
+1062
+00:39:27,640 --> 00:39:29,659
+That's the normal
+behavior, right?
+
+1063
+00:39:29,659 --> 00:39:31,999
+Sometimes, though,
+we want to go back,
+
+1064
+00:39:31,999 --> 00:39:33,400
+we want to re read a message.
+
+1065
+00:39:33,400 --> 00:39:35,180
+Let me think of an example.
+
+1066
+00:39:35,180 --> 00:39:38,239
+These messages are probably
+describing changes to
+
+1067
+00:39:38,239 --> 00:39:41,480
+the data that I'm supposed
+to perform in some database.
+
+1068
+00:39:41,480 --> 00:39:43,180
+If I try to update
+that database,
+
+1069
+00:39:43,180 --> 00:39:44,139
+the database is doubt or
+
+1070
+00:39:44,139 --> 00:39:45,519
+something like that,
+it might fail.
+
+1071
+00:39:45,519 --> 00:39:47,059
+And so what that
+means, I want to go
+
+1072
+00:39:47,059 --> 00:39:49,279
+back later and retry that.
+
+1073
+00:39:49,279 --> 00:39:51,080
+I want to reprocess
+those messages.
+
+1074
+00:39:51,080 --> 00:39:52,700
+I can do that with
+a SC operation.
+
+1075
+00:39:52,700 --> 00:39:54,080
+SC means that instead
+
+1076
+00:39:54,080 --> 00:39:56,620
+of forward like
+normal, go backwards.
+
+1077
+00:39:56,620 --> 00:39:58,740
+So I could choose an offset.
+
+1078
+00:39:58,740 --> 00:40:00,979
+For a topic partition,
+I could seek to it.
+
+1079
+00:40:00,979 --> 00:40:02,499
+And then at that case,
+that arrow would
+
+1080
+00:40:02,499 --> 00:40:04,479
+go backwards instead of forward.
+
+1081
+00:40:04,479 --> 00:40:06,139
+I see, that's something
+that we might have to
+
+1082
+00:40:06,139 --> 00:40:07,959
+do if there are
+failures in the syst.
+
+1083
+00:40:07,959 --> 00:40:11,144
+Like, we'll see the prob
+project. Yeah, question here.
+
+1084
+00:40:11,144 --> 00:40:15,050
+Turn off offset.
+
+1085
+00:40:15,130 --> 00:40:17,829
+It would bring the
+offset back to sex.
+
+1086
+00:40:17,829 --> 00:40:19,269
+So the next message you
+
+1087
+00:40:19,269 --> 00:40:20,729
+would get would be
+an offset sex from
+
+1088
+00:40:20,729 --> 00:40:24,629
+that partition. All right.
+
+1089
+00:40:24,629 --> 00:40:27,889
+Cool. Now, remember
+when we first started,
+
+1090
+00:40:27,889 --> 00:40:29,189
+we said that one of
+the unique things
+
+1091
+00:40:29,189 --> 00:40:30,369
+about COPPA is that
+there could be
+
+1092
+00:40:30,369 --> 00:40:31,949
+different applications that are
+
+1093
+00:40:31,949 --> 00:40:33,930
+processed the same message.
+
+1094
+00:40:33,930 --> 00:40:37,390
+That's what makes it a
+published subscribe model.
+
+1095
+00:40:37,390 --> 00:40:38,949
+So the way we do
+that is we create
+
+1096
+00:40:38,949 --> 00:40:41,050
+these different things
+called Tsumer groups.
+
+1097
+00:40:41,050 --> 00:40:43,349
+And within each consumer group,
+
+1098
+00:40:43,349 --> 00:40:46,029
+we're going to see all the
+messages that I subscribed to.
+
+1099
+00:40:46,029 --> 00:40:47,569
+And so when I start
+thinking about the state,
+
+1100
+00:40:47,569 --> 00:40:48,509
+it's more complicated now.
+
+1101
+00:40:48,509 --> 00:40:49,909
+I almost imagine you know,
+
+1102
+00:40:49,909 --> 00:40:50,929
+there's not like a table in
+
+1103
+00:40:50,929 --> 00:40:52,069
+one place that looks like this,
+
+1104
+00:40:52,069 --> 00:40:55,010
+but that's what I imagine when
+I think about the offsets.
+
+1105
+00:40:55,010 --> 00:40:57,730
+I have every partition,
+
+1106
+00:40:57,730 --> 00:40:59,130
+and I have all the groups,
+
+1107
+00:40:59,130 --> 00:41:00,449
+so G one and G two.
+
+1108
+00:41:00,449 --> 00:41:01,690
+And for every combination
+
+1109
+00:41:01,690 --> 00:41:03,289
+of a topic partition to a group,
+
+1110
+00:41:03,289 --> 00:41:05,109
+I have an offset,
+which is, you know,
+
+1111
+00:41:05,109 --> 00:41:07,349
+where do I read next
+for that group?
+
+1112
+00:41:07,349 --> 00:41:08,570
+Right here, I have two groups,
+
+1113
+00:41:08,570 --> 00:41:11,849
+so I have those two
+sets of offsets, right?
+
+1114
+00:41:11,849 --> 00:41:13,129
+So let me just show it
+
+1115
+00:41:13,129 --> 00:41:14,430
+at a simple case
+here at the bottom.
+
+1116
+00:41:14,430 --> 00:41:15,929
+I'll look at this.
+
+1117
+00:41:15,929 --> 00:41:20,364
+Both groups are at offset
+three, which is putting to our
+
+1118
+00:41:20,364 --> 00:41:23,859
+So when the message R
+goes to consumer two,
+
+1119
+00:41:23,859 --> 00:41:26,579
+then I update that
+offset to four,
+
+1120
+00:41:26,579 --> 00:41:30,459
+but the consumer group one
+still is at offset three,
+
+1121
+00:41:30,459 --> 00:41:32,779
+so it can also get R, right?
+
+1122
+00:41:32,779 --> 00:41:35,600
+So we have to be a
+good topic programmer,
+
+1123
+00:41:35,600 --> 00:41:38,039
+you have to be thinking
+about offsets all the time.
+
+1124
+00:41:38,039 --> 00:41:41,155
+Ofsets are very important to
+everything that's happening.
+
+1125
+00:41:41,155 --> 00:41:43,189
+You can see how I
+did this up here,
+
+1126
+00:41:43,189 --> 00:41:45,209
+but I created a sum up here.
+
+1127
+00:41:45,209 --> 00:41:48,169
+I just said group
+ID equals G one.
+
+1128
+00:41:48,169 --> 00:41:49,289
+You can just put whatever you
+
+1129
+00:41:49,289 --> 00:41:50,469
+want and if it's
+like a new string,
+
+1130
+00:41:50,469 --> 00:41:51,130
+we all of a sudden,
+
+1131
+00:41:51,130 --> 00:41:53,049
+you're a new group
+by yourself, right?
+
+1132
+00:41:53,049 --> 00:41:54,509
+So it's pretty easy to create
+
+1133
+00:41:54,509 --> 00:41:56,369
+a consumer in a specific group.
+
+1134
+00:41:56,369 --> 00:41:58,369
+If I had a bunch of
+different applications
+
+1135
+00:41:58,369 --> 00:41:59,710
+that are all fe consumers,
+
+1136
+00:41:59,710 --> 00:42:01,269
+I know we would all decide.
+
+1137
+00:42:01,269 --> 00:42:02,669
+They each have a
+different string
+
+1138
+00:42:02,669 --> 00:42:06,910
+to identify themselves. Alright.
+
+1139
+00:42:08,600 --> 00:42:12,719
+Let's figure out how we
+actually aside partitions.
+
+1140
+00:42:12,719 --> 00:42:15,399
+And when we're doing this, it's
+
+1141
+00:42:15,399 --> 00:42:18,379
+because we have more than
+one consumer in a group.
+
+1142
+00:42:18,379 --> 00:42:20,739
+If I just have one consumer
+in a group, Is all of them.
+
+1143
+00:42:20,739 --> 00:42:22,500
+What if I have
+multiple consumers.
+
+1144
+00:42:22,500 --> 00:42:24,520
+So here I may I
+imagine that consumer
+
+1145
+00:42:24,520 --> 00:42:26,039
+one is in its own group,
+
+1146
+00:42:26,039 --> 00:42:29,479
+and consumer group two has
+two consumers two and three.
+
+1147
+00:42:29,479 --> 00:42:32,099
+So I have the same
+information as before.
+
+1148
+00:42:32,099 --> 00:42:34,579
+Each group has its own
+offset that didn't change.
+
+1149
+00:42:34,579 --> 00:42:36,859
+But now I have to have
+additional state.
+
+1150
+00:42:36,859 --> 00:42:39,139
+I have to remember for
+
+1151
+00:42:39,139 --> 00:42:42,389
+each for each partition.
+At each group.
+
+1152
+00:42:42,389 --> 00:42:43,730
+I have to know which consumer
+
+1153
+00:42:43,730 --> 00:42:46,489
+specifically is going
+to be in charge of it,
+
+1154
+00:42:46,489 --> 00:42:48,389
+right? Why do we even
+want to do this?
+
+1155
+00:42:48,389 --> 00:42:50,830
+Because maybe one
+consumer cannot
+
+1156
+00:42:50,830 --> 00:42:53,330
+keep up with the high
+volume of traffic.
+
+1157
+00:42:53,330 --> 00:42:54,930
+We want to share it across
+
+1158
+00:42:54,930 --> 00:42:57,569
+multiple computers, right?
+So I have over here.
+
+1159
+00:42:57,569 --> 00:42:59,530
+Of course, group one
+only has one consumer.
+
+1160
+00:42:59,530 --> 00:43:01,049
+So that whole column
+is consumer one.
+
+1161
+00:43:01,049 --> 00:43:02,830
+Group two is split across
+
+1162
+00:43:02,830 --> 00:43:05,309
+consumer two and consumer three,
+
+1163
+00:43:05,309 --> 00:43:06,869
+both of which are there.
+
+1164
+00:43:06,869 --> 00:43:09,029
+So I can manually assign
+this. Like I end up above.
+
+1165
+00:43:09,029 --> 00:43:10,329
+I just say out a side, and I say
+
+1166
+00:43:10,329 --> 00:43:13,429
+which ones I want
+it to be logged to.
+
+1167
+00:43:14,190 --> 00:43:19,989
+I could also ask Kafka to
+automatically do this for me.
+
+1168
+00:43:20,190 --> 00:43:22,329
+Because I could just say, Oh,
+
+1169
+00:43:22,329 --> 00:43:23,929
+here's a bunch of
+consumers of this group,
+
+1170
+00:43:23,929 --> 00:43:25,050
+you figure out Kafka,
+
+1171
+00:43:25,050 --> 00:43:26,930
+who should do which ones.
+
+1172
+00:43:26,930 --> 00:43:29,109
+Right? I could do that.
+They just show up.
+
+1173
+00:43:29,109 --> 00:43:31,909
+In this case, I guess I have
+consumer two and three.
+
+1174
+00:43:31,909 --> 00:43:33,349
+They just showed
+up, and they got
+
+1175
+00:43:33,349 --> 00:43:35,064
+split like this down here.
+
+1176
+00:43:35,064 --> 00:43:37,419
+The challenges is
+what happens when
+
+1177
+00:43:37,419 --> 00:43:39,699
+a new consumer
+comes along, right?
+
+1178
+00:43:39,699 --> 00:43:41,359
+Consumer four table log,
+
+1179
+00:43:41,359 --> 00:43:42,839
+and it's part of group two,
+
+1180
+00:43:42,839 --> 00:43:45,659
+but the existing
+consumers in group
+
+1181
+00:43:45,659 --> 00:43:48,479
+two are already account for
+all of the partitions, right?
+
+1182
+00:43:48,479 --> 00:43:50,959
+So how do we give
+consumer for some work?
+
+1183
+00:43:50,959 --> 00:43:52,499
+We have to be very careful about
+
+1184
+00:43:52,499 --> 00:43:55,839
+this because we're taking work
+away from the other ones.
+
+1185
+00:43:55,839 --> 00:43:57,279
+And what we never
+want to happen is
+
+1186
+00:43:57,279 --> 00:43:58,959
+have two different consumers in
+
+1187
+00:43:58,959 --> 00:44:01,339
+the same group process
+the same message is,
+
+1188
+00:44:01,339 --> 00:44:02,280
+what are these messages?
+
+1189
+00:44:02,280 --> 00:44:03,479
+These messages say something
+
+1190
+00:44:03,479 --> 00:44:07,180
+like A row was inserted
+in the original system.
+
+1191
+00:44:07,180 --> 00:44:08,639
+And what are these
+consumers doing?
+
+1192
+00:44:08,639 --> 00:44:09,899
+They're probably
+inserting a row in
+
+1193
+00:44:09,899 --> 00:44:12,000
+some other system like
+a data warehouse.
+
+1194
+00:44:12,000 --> 00:44:14,979
+If I process the same message
+twice in the same group,
+
+1195
+00:44:14,979 --> 00:44:17,239
+then I'll probably end
+up with duplicate rows.
+
+1196
+00:44:17,239 --> 00:44:18,519
+I don't want that, right?
+
+1197
+00:44:18,519 --> 00:44:21,999
+So I have to think about,
+I have this consumer four.
+
+1198
+00:44:21,999 --> 00:44:24,299
+How could I reassign some of
+
+1199
+00:44:24,299 --> 00:44:27,634
+the partitions in
+group two, right?
+
+1200
+00:44:27,634 --> 00:44:30,909
+And the key here is that
+there are certain points in
+
+1201
+00:44:30,909 --> 00:44:33,750
+time where it's good to
+steal our partition.
+
+1202
+00:44:33,750 --> 00:44:35,650
+What is that if the
+consumer exited?
+
+1203
+00:44:35,650 --> 00:44:37,129
+If the consumer says that close,
+
+1204
+00:44:37,129 --> 00:44:38,169
+I'm show you out of a schade
+
+1205
+00:44:38,169 --> 00:44:39,249
+or something, then we're like,
+
+1206
+00:44:39,249 --> 00:44:40,969
+great, I know I can
+give that partition to
+
+1207
+00:44:40,969 --> 00:44:43,429
+somebody else. What
+is another good time?
+
+1208
+00:44:43,429 --> 00:44:45,509
+When you call that pull,
+
+1209
+00:44:45,509 --> 00:44:49,129
+that's a fantastic t you
+basically you say pull,
+
+1210
+00:44:49,129 --> 00:44:51,489
+process a batch, p,
+process a patch.
+
+1211
+00:44:51,489 --> 00:44:52,789
+If you're calling
+pull right now,
+
+1212
+00:44:52,789 --> 00:44:54,540
+that means you're
+between patches.
+
+1213
+00:44:54,540 --> 00:44:56,169
+Which means it's a great time
+
+1214
+00:44:56,169 --> 00:44:57,549
+to take away some of your work.
+
+1215
+00:44:57,549 --> 00:44:59,129
+You can say, Hey,
+give me a batch.
+
+1216
+00:44:59,129 --> 00:45:00,989
+I'll be like, here it
+is, and by the way,
+
+1217
+00:45:00,989 --> 00:45:03,349
+you don't have the same
+partitions you used to.
+
+1218
+00:45:03,349 --> 00:45:05,509
+So you want to do that
+at a key time, right?
+
+1219
+00:45:05,509 --> 00:45:07,709
+So at this point in time, is
+
+1220
+00:45:07,709 --> 00:45:10,289
+when we would hand it
+off to consumer f,
+
+1221
+00:45:10,289 --> 00:45:11,889
+and then we can scale this.
+
+1222
+00:45:11,889 --> 00:45:13,850
+If the consumers are
+following behind,
+
+1223
+00:45:13,850 --> 00:45:15,469
+and we have a bunch
+of partitions on
+
+1224
+00:45:15,469 --> 00:45:17,330
+our topic, no problem.
+
+1225
+00:45:17,330 --> 00:45:19,049
+We'll just start some new
+
+1226
+00:45:19,049 --> 00:45:21,649
+we'll start some new
+consumers of the same group.
+
+1227
+00:45:21,649 --> 00:45:23,989
+Let Povka give them some work,
+
+1228
+00:45:23,989 --> 00:45:28,519
+and hopefully together, they
+can catch up. All right.
+
+1229
+00:45:28,519 --> 00:45:30,659
+I want to talk a
+little bit about
+
+1230
+00:45:30,659 --> 00:45:32,899
+how Kafka stores
+all these messages.
+
+1231
+00:45:32,899 --> 00:45:34,560
+They store the messages,
+
+1232
+00:45:34,560 --> 00:45:36,319
+is something called
+a segment file.
+
+1233
+00:45:36,319 --> 00:45:38,819
+And so if I look at a
+topic partition, right,
+
+1234
+00:45:38,819 --> 00:45:40,080
+I have two on this machine,
+
+1235
+00:45:40,080 --> 00:45:42,680
+I break it up across these
+different segment files.
+
+1236
+00:45:42,680 --> 00:45:45,559
+Once a segment file is
+written, it's finalized.
+
+1237
+00:45:45,559 --> 00:45:47,720
+It might be deleted,
+but it's never changed.
+
+1238
+00:45:47,720 --> 00:45:49,459
+I will have one segment file
+
+1239
+00:45:49,459 --> 00:45:51,120
+for each topic partition,
+which is special.
+
+1240
+00:45:51,120 --> 00:45:52,479
+It's active one, as there
+
+1241
+00:45:52,479 --> 00:45:54,259
+are new messages, it's
+appended to that.
+
+1242
+00:45:54,259 --> 00:45:56,720
+These segment files are
+just the normal file system
+
+1243
+00:45:56,720 --> 00:45:58,199
+like EXT four or whatever,
+
+1244
+00:45:58,199 --> 00:46:00,920
+running on top of, like,
+a hard drive or SSD.
+
+1245
+00:46:00,920 --> 00:46:03,849
+Alright. There you see.
+
+1246
+00:46:03,849 --> 00:46:05,209
+I have a new message. It gets
+
+1247
+00:46:05,209 --> 00:46:06,849
+appended to the segment file.
+
+1248
+00:46:06,849 --> 00:46:08,650
+Now, eventually, the segment
+
+1249
+00:46:08,650 --> 00:46:09,989
+files might be
+getting kind of big,
+
+1250
+00:46:09,989 --> 00:46:11,510
+and so I might do a rollover.
+
+1251
+00:46:11,510 --> 00:46:14,809
+Rollover means that I ftalize
+that file and I start
+
+1252
+00:46:14,809 --> 00:46:16,469
+writing to a new rollover is
+
+1253
+00:46:16,469 --> 00:46:18,470
+something that happens in
+logging systems in general,
+
+1254
+00:46:18,470 --> 00:46:21,189
+not just KAPCA, so it's going
+to have that terminology.
+
+1255
+00:46:21,189 --> 00:46:22,909
+Another thing that
+we might do is we
+
+1256
+00:46:22,909 --> 00:46:24,890
+might delete old data.
+
+1257
+00:46:24,890 --> 00:46:26,029
+When we do that, we always start
+
+1258
+00:46:26,029 --> 00:46:27,569
+from the smallest offset first,
+
+1259
+00:46:27,569 --> 00:46:29,330
+and we never partially delete.
+
+1260
+00:46:29,330 --> 00:46:32,809
+It's like, we delete that whole
+segment file or we don't.
+
+1261
+00:46:32,809 --> 00:46:34,189
+But eventually,
+we might clean up
+
+1262
+00:46:34,189 --> 00:46:35,389
+depending on the
+policies, right?
+
+1263
+00:46:35,389 --> 00:46:36,849
+So those are the
+things we worry about.
+
+1264
+00:46:36,849 --> 00:46:39,145
+Rollover and deletion.
+
+1265
+00:46:39,145 --> 00:46:42,160
+Both of these have
+configurable policies.
+
+1266
+00:46:42,160 --> 00:46:44,819
+So for rollover, I could say,
+
+1267
+00:46:44,819 --> 00:46:47,420
+both, like, how big
+can the active segment
+
+1268
+00:46:47,420 --> 00:46:48,959
+be and how old can it be?
+
+1269
+00:46:48,959 --> 00:46:51,620
+Right? I could do that.
+And then for retention.
+
+1270
+00:46:51,620 --> 00:46:53,599
+I guess I either delete
+it or I retate it.
+
+1271
+00:46:53,599 --> 00:46:55,960
+So people often say, I
+have a retention policy.
+
+1272
+00:46:55,960 --> 00:46:57,399
+For that, I could say, how
+
+1273
+00:46:57,399 --> 00:47:00,339
+old is that file allowed to be?
+
+1274
+00:47:00,339 --> 00:47:03,719
+And how big is the tire
+log allowed to be, right?
+
+1275
+00:47:03,719 --> 00:47:05,319
+I could set one
+or both of those.
+
+1276
+00:47:05,319 --> 00:47:07,339
+And one thing I want
+to talk about is
+
+1277
+00:47:07,339 --> 00:47:09,459
+that when I talk about
+how old the segment is,
+
+1278
+00:47:09,459 --> 00:47:10,859
+that's a little
+bit tricky because
+
+1279
+00:47:10,859 --> 00:47:12,519
+there's multiple messages in it,
+
+1280
+00:47:12,519 --> 00:47:15,100
+and those messages might
+have different times staaps.
+
+1281
+00:47:15,100 --> 00:47:17,039
+And so they don't want
+to delete it too soon.
+
+1282
+00:47:17,039 --> 00:47:21,000
+So if I say how big is a segment
+or how old is a segment,
+
+1283
+00:47:21,000 --> 00:47:24,199
+the answer is, however old
+the newest message is.
+
+1284
+00:47:24,199 --> 00:47:25,399
+So you have to be a little bit
+
+1285
+00:47:25,399 --> 00:47:26,539
+careful because if I say, Hey,
+
+1286
+00:47:26,539 --> 00:47:28,540
+delete it after seven days,
+
+1287
+00:47:28,540 --> 00:47:30,359
+There might be messages in there
+
+1288
+00:47:30,359 --> 00:47:31,579
+that are older than seven days.
+
+1289
+00:47:31,579 --> 00:47:33,399
+If you have legal
+reasons for delete after
+
+1290
+00:47:33,399 --> 00:47:34,779
+a certain reason after
+
+1291
+00:47:34,779 --> 00:47:37,059
+a certain time period, then
+that might not help you.
+
+1292
+00:47:37,059 --> 00:47:38,579
+Right? If you're in Europe,
+right, there's this right
+
+1293
+00:47:38,579 --> 00:47:40,399
+to be forgotten within
+some time frame,
+
+1294
+00:47:40,399 --> 00:47:42,599
+and that might not
+help you there.
+
+1295
+00:47:42,599 --> 00:47:45,519
+Alright, so I want to
+wrap up and do a top hat,
+
+1296
+00:47:45,519 --> 00:47:46,979
+and then we'll come back next
+
+1297
+00:47:46,979 --> 00:47:48,679
+time and do more
+examples, right?
+
+1298
+00:47:48,679 --> 00:47:52,380
+So my question is
+about consumer groups.
+
+1299
+00:47:52,380 --> 00:47:54,079
+And after this top hat is done,
+
+1300
+00:47:54,079 --> 00:47:57,439
+feel free to go, and we'll
+just come back next time.
+
+1301
+00:48:37,810 --> 00:48:41,129
+About 30 seconds left.
+
+1302
+00:49:15,210 --> 00:49:17,570
+Alright, so people are mostly
+
+1303
+00:49:17,570 --> 00:49:19,489
+say two which is correct, right?
+
+1304
+00:49:19,489 --> 00:49:21,029
+We have two consumer groups,
+
+1305
+00:49:21,029 --> 00:49:22,509
+so we have two
+distinct applications.
+
+1306
+00:49:22,509 --> 00:49:24,250
+Each group needs to
+get the message.
+
+1307
+00:49:24,250 --> 00:49:25,689
+But within the consumer group,
+
+1308
+00:49:25,689 --> 00:49:27,249
+the idea is not to
+have redundancy,
+
+1309
+00:49:27,249 --> 00:49:29,829
+the idea is that we split up
+the work within the group.
+
+1310
+00:49:29,829 --> 00:49:31,609
+So we wouldn't want each
+of them to have their own.
+
+1311
+00:49:31,609 --> 00:49:32,870
+Alright, I have a fantastic.
+
+1312
+00:49:32,870 --> 00:49:35,970
+Able will come back Friday
+and do some programing demos.

@@ -1,0 +1,5912 @@
+1
+00:00:00,000 --> 00:00:02,960
+Alright. Good afternoon,
+folks. Thanks for coming back.
+
+2
+00:00:02,960 --> 00:00:04,500
+Today, we're mostly going to do
+
+3
+00:00:04,500 --> 00:00:06,580
+some programming
+demos with Big Query.
+
+4
+00:00:06,580 --> 00:00:09,639
+We have a bunch of fun,
+more advanced things to do.
+
+5
+00:00:09,639 --> 00:00:12,619
+We are going to see
+how we can query from
+
+6
+00:00:12,619 --> 00:00:14,640
+Google Spreadsheet
+that's automatically
+
+7
+00:00:14,640 --> 00:00:16,080
+populated with the Form.
+
+8
+00:00:16,080 --> 00:00:17,459
+This is actually
+the only project of
+
+9
+00:00:17,459 --> 00:00:19,480
+the semester where you all
+will go submit the form,
+
+10
+00:00:19,480 --> 00:00:20,400
+and that will kind of generate
+
+11
+00:00:20,400 --> 00:00:22,514
+the dataset that we're
+going to be working with.
+
+12
+00:00:22,514 --> 00:00:25,989
+We're going to look at some
+geographic data, right?
+
+13
+00:00:25,989 --> 00:00:27,489
+So we might have
+latitude and longitude,
+
+14
+00:00:27,489 --> 00:00:28,889
+and we're going to
+see things like when
+
+15
+00:00:28,889 --> 00:00:31,249
+people submit that form
+and give their location,
+
+16
+00:00:31,249 --> 00:00:34,149
+well, what county in
+
+17
+00:00:34,149 --> 00:00:36,249
+Wisconsin are they in? How
+can we do stuff like that?
+
+18
+00:00:36,249 --> 00:00:37,269
+That'll be very similar to
+
+19
+00:00:37,269 --> 00:00:38,889
+the project coming on Wednesday.
+
+20
+00:00:38,889 --> 00:00:42,069
+And then finally, we're
+going to do at least start
+
+21
+00:00:42,069 --> 00:00:45,270
+some machine learning stuff
+with Big query today.
+
+22
+00:00:45,270 --> 00:00:46,849
+Before I jump into all of that,
+
+23
+00:00:46,849 --> 00:00:48,909
+I just want to do a quick tophat
+
+24
+00:00:48,909 --> 00:00:50,109
+to review from last time.
+
+25
+00:00:50,109 --> 00:00:52,710
+So please grab your phones.
+
+26
+00:00:52,830 --> 00:00:57,069
+And I have a question about
+the correlated cross join.
+
+27
+00:01:13,030 --> 00:01:51,230
+30
+
+28
+00:01:51,230 --> 00:01:51,689
+seconds
+
+29
+00:01:51,689 --> 00:01:52,950
+left.
+
+30
+00:02:29,900 --> 00:02:32,279
+All right. So most
+people are saying
+
+31
+00:02:32,279 --> 00:02:33,700
+four, which is correct.
+
+32
+00:02:33,700 --> 00:02:36,380
+So the cross join means we're
+doing every combination
+
+33
+00:02:36,380 --> 00:02:39,899
+across like two lists or a
+arrays or something like that.
+
+34
+00:02:39,899 --> 00:02:41,639
+And the correlate
+de part means that
+
+35
+00:02:41,639 --> 00:02:43,620
+we're doing it on a
+row by row basis.
+
+36
+00:02:43,620 --> 00:02:46,499
+So in some ways, it would
+make more sense or be
+
+37
+00:02:46,499 --> 00:02:47,639
+more intuitive if we had
+
+38
+00:02:47,639 --> 00:02:49,739
+two arrays in the
+same row, right?
+
+39
+00:02:49,739 --> 00:02:51,540
+Because we would be
+getting every combination
+
+40
+00:02:51,540 --> 00:02:53,799
+across those two rays
+in the same row.
+
+41
+00:02:53,799 --> 00:02:55,920
+So why do we call
+a cross join here?
+
+42
+00:02:55,920 --> 00:02:57,380
+Because what we're doing
+is we're combining
+
+43
+00:02:57,380 --> 00:03:00,580
+two with every
+combination of BCD.
+
+44
+00:03:00,580 --> 00:03:03,259
+So we're going to get
+for output one A,
+
+45
+00:03:03,259 --> 00:03:05,020
+and then two BCD.
+
+46
+00:03:05,020 --> 00:03:07,680
+That's why we'll have four
+rows of output total.
+
+47
+00:03:07,680 --> 00:03:09,780
+Alright, C. So I'm
+going to head over here
+
+48
+00:03:09,780 --> 00:03:12,594
+to the Jupiter notebook
+that we were in last time.
+
+49
+00:03:12,594 --> 00:03:16,189
+And what we had done is
+
+50
+00:03:16,189 --> 00:03:19,749
+we were trying to load
+some data into Big query.
+
+51
+00:03:19,749 --> 00:03:22,990
+So big query has their
+own format that they use,
+
+52
+00:03:22,990 --> 00:03:27,309
+and they store that format
+inside of Closss, right?
+
+53
+00:03:27,309 --> 00:03:29,750
+So colossus is Google's
+equivalent to HDFS.
+
+54
+00:03:29,750 --> 00:03:31,209
+I would be kind of
+the closest system.
+
+55
+00:03:31,209 --> 00:03:32,989
+And that format, at
+least the last thing
+
+56
+00:03:32,989 --> 00:03:35,129
+they published about
+was called Tapacitor.
+
+57
+00:03:35,129 --> 00:03:36,429
+And so what is this doing?
+
+58
+00:03:36,429 --> 00:03:38,550
+They are loading data from Park
+
+59
+00:03:38,550 --> 00:03:42,630
+in somewhere in Google
+storage in GCS.
+
+60
+00:03:42,630 --> 00:03:45,169
+And that Park A data, right?
+
+61
+00:03:45,169 --> 00:03:46,909
+Is a different format, right?
+
+62
+00:03:46,909 --> 00:03:48,429
+We could directly query from it,
+
+63
+00:03:48,429 --> 00:03:49,969
+but that part format
+
+64
+00:03:49,969 --> 00:03:51,849
+has not been codesigned
+with big query, right?
+
+65
+00:03:51,849 --> 00:03:55,089
+Big Query and capacitor were
+designed together, right?
+
+66
+00:03:55,089 --> 00:03:56,349
+They're designed to inter
+
+67
+00:03:56,349 --> 00:03:58,009
+operate very efficiently, right?
+
+68
+00:03:58,009 --> 00:03:59,249
+So we're copying that data over
+
+69
+00:03:59,249 --> 00:04:01,370
+from GCS over into big query,
+
+70
+00:04:01,370 --> 00:04:03,069
+and that ran last time.
+
+71
+00:04:03,069 --> 00:04:05,529
+Now, what I want to
+do next is I want to
+
+72
+00:04:05,529 --> 00:04:08,529
+show two external
+use cases, right?
+
+73
+00:04:08,529 --> 00:04:09,790
+So the first one was we actually
+
+74
+00:04:09,790 --> 00:04:11,429
+bring the data in The other two,
+
+75
+00:04:11,429 --> 00:04:12,810
+when we have external data,
+
+76
+00:04:12,810 --> 00:04:16,069
+the big query is a little
+bit more like Spark, right?
+
+77
+00:04:16,069 --> 00:04:18,749
+Like Spark doesn't own any data.
+
+78
+00:04:18,749 --> 00:04:20,210
+Spark, you can just say, Oh,
+
+79
+00:04:20,210 --> 00:04:21,749
+here's some Park files in HDFS.
+
+80
+00:04:21,749 --> 00:04:22,950
+They don't belong
+to you, but start
+
+81
+00:04:22,950 --> 00:04:24,090
+doing some queries over them.
+
+82
+00:04:24,090 --> 00:04:26,029
+It's really kind of an
+ad hoc query engine.
+
+83
+00:04:26,029 --> 00:04:27,810
+And we can use big
+query in the same way.
+
+84
+00:04:27,810 --> 00:04:29,690
+We can say, Hey, here's
+some different data sources
+
+85
+00:04:29,690 --> 00:04:31,529
+in different places, Park, CSV,
+
+86
+00:04:31,529 --> 00:04:33,149
+Google spreadsheet, whatever,
+
+87
+00:04:33,149 --> 00:04:34,350
+and it'll go and
+it'll find that,
+
+88
+00:04:34,350 --> 00:04:35,690
+but we still have to register it
+
+89
+00:04:35,690 --> 00:04:37,950
+first before we can do that.
+
+90
+00:04:37,950 --> 00:04:40,050
+Alright, so how are
+we going to do that?
+
+91
+00:04:40,050 --> 00:04:42,769
+So I have some stuff
+here that will help.
+
+92
+00:04:42,769 --> 00:04:44,350
+And in this case,
+
+93
+00:04:44,350 --> 00:04:46,349
+what I will say is that the data
+
+94
+00:04:46,349 --> 00:04:49,209
+is in the Park format again.
+
+95
+00:04:49,209 --> 00:04:52,529
+And for this source URI,
+
+96
+00:04:52,529 --> 00:04:53,930
+I'm actually going to use
+
+97
+00:04:53,930 --> 00:04:56,470
+the same thing that
+I did before, right?
+
+98
+00:04:56,470 --> 00:04:58,330
+So I'm the only
+difference now is
+
+99
+00:04:58,330 --> 00:05:01,250
+that I'm not going
+to copy it all.
+
+100
+00:05:01,250 --> 00:05:02,650
+I'm just going to keep it where
+
+101
+00:05:02,650 --> 00:05:04,490
+it is in place, right?
+So I'm gonna do that.
+
+102
+00:05:04,490 --> 00:05:07,230
+I don't have to detect
+the schema, right?
+
+103
+00:05:07,230 --> 00:05:09,530
+Be parts have a schema built in.
+
+104
+00:05:09,530 --> 00:05:11,330
+But I do have to say where
+
+105
+00:05:11,330 --> 00:05:13,250
+the data is trying
+to end up, right?
+
+106
+00:05:13,250 --> 00:05:14,710
+So we're to end up last time,
+
+107
+00:05:14,710 --> 00:05:17,150
+it ended up in this
+table here, right?
+
+108
+00:05:17,150 --> 00:05:21,029
+It was project data set table.
+
+109
+00:05:21,029 --> 00:05:23,135
+And so I'm gonna do
+the same down here.
+
+110
+00:05:23,135 --> 00:05:25,020
+I have to give it
+some kind of name.
+
+111
+00:05:25,020 --> 00:05:27,419
+And I'm just trying to
+call this loans external.
+
+112
+00:05:27,419 --> 00:05:28,840
+Okay. So I'm going to run that.
+
+113
+00:05:28,840 --> 00:05:30,780
+And if it's already there,
+we'll just overwrite it.
+
+114
+00:05:30,780 --> 00:05:33,040
+So let's run that as so.
+
+115
+00:05:33,040 --> 00:05:35,220
+And then I should be able to
+come over here and I can see
+
+116
+00:05:35,220 --> 00:05:38,200
+my data in Big query, right?
+
+117
+00:05:38,200 --> 00:05:40,339
+So if I go under
+
+118
+00:05:40,339 --> 00:05:44,219
+Section two and expand
+it, right I have loans.
+
+119
+00:05:44,219 --> 00:05:46,740
+And this data is owned
+by Big Query, right?
+
+120
+00:05:46,740 --> 00:05:47,820
+So if I look at details,
+
+121
+00:05:47,820 --> 00:05:50,320
+for example, I can
+see the sizes of it,
+
+122
+00:05:50,320 --> 00:05:52,000
+how many rows there are there.
+
+123
+00:05:52,000 --> 00:05:53,939
+And then loans external.
+
+124
+00:05:53,939 --> 00:05:55,420
+If I take a look at it,
+
+125
+00:05:55,420 --> 00:05:56,779
+there's no such information.
+
+126
+00:05:56,779 --> 00:05:58,300
+It's basically just a pointer to
+
+127
+00:05:58,300 --> 00:06:00,100
+this other data over there,
+
+128
+00:06:00,100 --> 00:06:01,700
+and who will storage.
+
+129
+00:06:01,700 --> 00:06:03,684
+Okay, cool. So different
+ways I could do it.
+
+130
+00:06:03,684 --> 00:06:05,050
+If I have other tools that are
+
+131
+00:06:05,050 --> 00:06:06,809
+using the Park file
+in Google Storage,
+
+132
+00:06:06,809 --> 00:06:08,450
+it makes sense to kind of
+leave it there, right?
+
+133
+00:06:08,450 --> 00:06:09,789
+If I'm just using a big query,
+
+134
+00:06:09,789 --> 00:06:11,249
+I want it to be in
+the capacitor format,
+
+135
+00:06:11,249 --> 00:06:12,309
+where it's tightly integrated,
+
+136
+00:06:12,309 --> 00:06:14,070
+so I would probably copy it in.
+
+137
+00:06:14,070 --> 00:06:17,230
+So the third thing I
+want to do is I want
+
+138
+00:06:17,230 --> 00:06:20,129
+to access this external
+external data.
+
+139
+00:06:20,129 --> 00:06:24,024
+And if you go to the
+snippets over here,
+
+140
+00:06:24,024 --> 00:06:28,200
+Last time I actually have a
+link to this form, right?
+
+141
+00:06:28,200 --> 00:06:29,720
+So if you go to this link,
+
+142
+00:06:29,720 --> 00:06:32,400
+if you copy it from the
+sheets and you go there,
+
+143
+00:06:32,400 --> 00:06:34,940
+basically, this is a form that
+
+144
+00:06:34,940 --> 00:06:37,620
+lets us apply for
+loans or pretend to.
+
+145
+00:06:37,620 --> 00:06:40,160
+And so kind of like,
+imagine your dream house.
+
+146
+00:06:40,160 --> 00:06:43,159
+T's say it's a $2,000,000 house.
+
+147
+00:06:43,159 --> 00:06:46,235
+Imagine your dream
+income, let's say,
+
+148
+00:06:46,235 --> 00:06:48,610
+500 k. Oh, no,
+
+149
+00:06:48,610 --> 00:06:51,370
+that's too many zeros or not.
+
+150
+00:06:51,370 --> 00:06:54,050
+And then for the
+latitude and longitude,
+
+151
+00:06:54,050 --> 00:06:55,430
+you can put stuff there,
+
+152
+00:06:55,430 --> 00:06:57,130
+maybe 45 and, like,
+
+153
+00:06:57,130 --> 00:06:58,790
+89, and you submit that.
+
+154
+00:06:58,790 --> 00:07:00,010
+And one part of the project
+
+155
+00:07:00,010 --> 00:07:01,090
+for you will be to
+go and you like,
+
+156
+00:07:01,090 --> 00:07:03,070
+submit something here
+because this is generating
+
+157
+00:07:03,070 --> 00:07:05,449
+dataset that we'll be
+analyzing on the project.
+
+158
+00:07:05,449 --> 00:07:06,990
+Okay, so Google Forms,
+
+159
+00:07:06,990 --> 00:07:08,570
+it is really easy to
+set it up so that
+
+160
+00:07:08,570 --> 00:07:10,649
+it will every time
+there's a submission,
+
+161
+00:07:10,649 --> 00:07:12,470
+it'll dump into a
+form else, right?
+
+162
+00:07:12,470 --> 00:07:14,350
+So, lots of people
+have been doing that.
+
+163
+00:07:14,350 --> 00:07:16,290
+I mean, if somebody's on
+their laptop right now,
+
+164
+00:07:16,290 --> 00:07:19,130
+feel free to do that, we
+might see some loans pop up.
+
+165
+00:07:19,130 --> 00:07:21,090
+You know, even as we're
+going, you can see
+
+166
+00:07:21,090 --> 00:07:22,829
+mine right here. Alright, cool.
+
+167
+00:07:22,829 --> 00:07:24,810
+So what I want to do now is
+I want to figure out how to
+
+168
+00:07:24,810 --> 00:07:27,010
+get this data into
+Big query, right?
+
+169
+00:07:27,010 --> 00:07:28,449
+I'm, come over here. And I
+
+170
+00:07:28,449 --> 00:07:29,910
+have some starter code for that.
+
+171
+00:07:29,910 --> 00:07:32,020
+Um One of the first things
+
+172
+00:07:32,020 --> 00:07:34,100
+I have to do is instead
+of having a Parke file.
+
+173
+00:07:34,100 --> 00:07:36,560
+In this case, my code is or
+
+174
+00:07:36,560 --> 00:07:39,300
+my data is in Google
+Sheets, that's the source.
+
+175
+00:07:39,300 --> 00:07:43,500
+And then for the Uniform
+resource identifier
+
+176
+00:07:43,500 --> 00:07:45,740
+or Universal
+resource identifier.
+
+177
+00:07:45,740 --> 00:07:48,020
+It's basically the URL
+for the spreadsheet
+
+178
+00:07:48,020 --> 00:07:50,619
+with all this stuff without
+all this stuff at the end.
+
+179
+00:07:50,619 --> 00:07:53,340
+All right. I'm just
+trying to copy this here.
+
+180
+00:07:53,340 --> 00:07:57,640
+And that will identify the
+sheet I'm trying to copy in.
+
+181
+00:07:57,640 --> 00:08:00,199
+And then where do
+I want it to land?
+
+182
+00:08:00,199 --> 00:08:02,799
+Maybe kind of in a
+similar place as before.
+
+183
+00:08:02,799 --> 00:08:06,030
+I'll have it in the same
+section two dataset.
+
+184
+00:08:06,030 --> 00:08:07,330
+But this time, I'm
+going to put it in
+
+185
+00:08:07,330 --> 00:08:09,070
+a table called
+Applications, right?
+
+186
+00:08:09,070 --> 00:08:11,850
+I'm put this in
+applications, like so.
+
+187
+00:08:11,850 --> 00:08:13,390
+And in this case, right?
+
+188
+00:08:13,390 --> 00:08:16,090
+The Goole Sheet, it just has
+a bunch of strings in it.
+
+189
+00:08:16,090 --> 00:08:18,010
+So in this case, I
+actually do have to tell
+
+190
+00:08:18,010 --> 00:08:20,270
+it you should do Schema
+inference, right?
+
+191
+00:08:20,270 --> 00:08:21,710
+We've seen scheme
+inference with Spark.
+
+192
+00:08:21,710 --> 00:08:24,250
+This is how we do schema
+inference with big query, right?
+
+193
+00:08:24,250 --> 00:08:25,650
+I do something similar if I was
+
+194
+00:08:25,650 --> 00:08:27,230
+bringing data from a CSV file.
+
+195
+00:08:27,230 --> 00:08:30,229
+All I'm I do that.
+And then hopefully,
+
+196
+00:08:30,229 --> 00:08:31,150
+if that works, then I
+
+197
+00:08:31,150 --> 00:08:32,489
+should be able to
+query from it, right?
+
+198
+00:08:32,489 --> 00:08:35,389
+So I can do big
+query select star
+
+199
+00:08:35,389 --> 00:08:38,979
+from from these
+applications, right?
+
+200
+00:08:38,979 --> 00:08:41,399
+And if I'm like, maybe I'll
+even like it a chance to see
+
+201
+00:08:41,399 --> 00:08:44,800
+that maybe somebody is like
+submitting it as we speak.
+
+202
+00:08:44,800 --> 00:08:48,159
+How many rows were there?
+There were 22 rows, right?
+
+203
+00:08:48,159 --> 00:08:50,060
+The last one was 21.
+
+204
+00:08:50,060 --> 00:08:54,840
+Any questions about that
+example? Right here.
+
+205
+00:08:55,840 --> 00:09:03,719
+Yeah. Problem. That's
+a good question.
+
+206
+00:09:03,719 --> 00:09:05,699
+It's not a problem, right
+because I have the scheme.
+
+207
+00:09:05,699 --> 00:09:07,319
+Does it matter if I tell it to?
+
+208
+00:09:07,319 --> 00:09:10,279
+No, it seems like it's
+happy either way.
+
+209
+00:09:10,279 --> 00:09:12,565
+I learned that myself.
+
+210
+00:09:12,565 --> 00:09:15,830
+Is there any harm
+to not using it?
+
+211
+00:09:15,830 --> 00:09:18,090
+Is there any harm to using it?
+
+212
+00:09:18,090 --> 00:09:19,289
+Yeah, I'm not sure.
+
+213
+00:09:19,289 --> 00:09:21,390
+I mean, I think you could also
+
+214
+00:09:21,390 --> 00:09:24,009
+we've seen issues with
+scheme inference, right?
+
+215
+00:09:24,009 --> 00:09:26,069
+It's slow. Like,
+you could there are
+
+216
+00:09:26,069 --> 00:09:28,449
+ways that you can pass in
+the schema manually, right?
+
+217
+00:09:28,449 --> 00:09:30,410
+So if you wanted to be like past
+
+218
+00:09:30,410 --> 00:09:32,470
+and you want to make sure
+it does the correct types,
+
+219
+00:09:32,470 --> 00:09:33,190
+and you'd probably do it
+
+220
+00:09:33,190 --> 00:09:34,709
+manually rather
+than auto detect.
+
+221
+00:09:34,709 --> 00:09:36,170
+But if we're telling
+something like
+
+222
+00:09:36,170 --> 00:09:37,849
+a Google Sheet or a CSV,
+
+223
+00:09:37,849 --> 00:09:38,870
+then we're going to have to have
+
+224
+00:09:38,870 --> 00:09:40,290
+some technique for
+figuring out the types,
+
+225
+00:09:40,290 --> 00:09:42,610
+either auto detect or
+manual specification?
+
+226
+00:09:42,610 --> 00:09:46,159
+Yeah, good question. Let's
+take a peek on this, right?
+
+227
+00:09:46,159 --> 00:09:47,659
+I think the last index is 21.
+
+228
+00:09:47,659 --> 00:09:49,300
+I wonder if anybody else has
+
+229
+00:09:49,300 --> 00:09:52,559
+applied for a loan in
+the meantime. Let's see.
+
+230
+00:09:52,559 --> 00:09:55,439
+Okay, one person did, so
+thank you very much, right.
+
+231
+00:09:55,439 --> 00:09:58,200
+So, that's going to be
+an expensive house,
+
+232
+00:09:58,200 --> 00:09:59,479
+if you're making $1 a year,
+
+233
+00:09:59,479 --> 00:10:01,080
+good luck with that.
+All right, cool.
+
+234
+00:10:01,080 --> 00:10:03,140
+So we can do that. That's
+actually very powerful, right?
+
+235
+00:10:03,140 --> 00:10:05,520
+Because you often have teams
+where different team members
+
+236
+00:10:05,520 --> 00:10:08,039
+have different levels of
+technical expertise, right?
+
+237
+00:10:08,039 --> 00:10:09,219
+Maybe you have some
+people who are
+
+238
+00:10:09,219 --> 00:10:11,375
+not programmers,
+they don't know SQL.
+
+239
+00:10:11,375 --> 00:10:13,750
+But they can do some
+stuff on drool sheets.
+
+240
+00:10:13,750 --> 00:10:15,669
+And then you have people who do,
+
+241
+00:10:15,669 --> 00:10:17,569
+kind of think about scalability,
+
+242
+00:10:17,569 --> 00:10:20,089
+and they can write
+SQL or big query,
+
+243
+00:10:20,089 --> 00:10:21,610
+and they can use
+
+244
+00:10:21,610 --> 00:10:23,490
+that data as part of
+other things as well.
+
+245
+00:10:23,490 --> 00:10:25,289
+So it's a very powerful
+combination. All right.
+
+246
+00:10:25,289 --> 00:10:26,869
+Fantastic. You're going
+to use that same thing
+
+247
+00:10:26,869 --> 00:10:29,289
+on the Project eight,
+which is coming out.
+
+248
+00:10:29,289 --> 00:10:31,489
+Coming out soon. Any
+other questions about
+
+249
+00:10:31,489 --> 00:10:35,280
+that? All right. Cool.
+
+250
+00:10:35,280 --> 00:10:38,600
+So the next piece I want to
+look at is geographic data.
+
+251
+00:10:38,600 --> 00:10:40,500
+I'm going to come down here.
+
+252
+00:10:40,540 --> 00:10:44,880
+And so I think I
+want to be up here.
+
+253
+00:10:44,880 --> 00:10:47,860
+So I'm going to look at
+some geographic data.
+
+254
+00:10:47,860 --> 00:10:48,880
+And you might
+remember a little bit
+
+255
+00:10:48,880 --> 00:10:50,019
+about the geographic
+data, right?
+
+256
+00:10:50,019 --> 00:10:51,459
+We can have some
+type specific to
+
+257
+00:10:51,459 --> 00:10:53,219
+geography, like, you know,
+
+258
+00:10:53,219 --> 00:10:54,920
+a latitude, longitude point,
+
+259
+00:10:54,920 --> 00:10:58,100
+or a string of points or
+some kind of polygon.
+
+260
+00:10:58,100 --> 00:11:00,020
+Yeah, go s right here.
+
+261
+00:11:06,780 --> 00:11:13,719
+Yeah. Oh, excellent question.
+
+262
+00:11:13,719 --> 00:11:15,080
+So is it doing a snapshot?
+
+263
+00:11:15,080 --> 00:11:16,479
+And no. It's doing it live.
+
+264
+00:11:16,479 --> 00:11:19,280
+And so that's that's actually
+why I reran the query,
+
+265
+00:11:19,280 --> 00:11:20,759
+right because I
+saw that there was
+
+266
+00:11:20,759 --> 00:11:22,400
+something like 22 rows.
+
+267
+00:11:22,400 --> 00:11:23,600
+And then after I ran again,
+
+268
+00:11:23,600 --> 00:11:24,660
+there was like 23 rows.
+
+269
+00:11:24,660 --> 00:11:28,280
+And who knows? Maybe. I guess
+like the last index is 22.
+
+270
+00:11:28,280 --> 00:11:29,720
+Maybe in the meantime,
+
+271
+00:11:29,720 --> 00:11:30,980
+somebody else has
+applied for a loan.
+
+272
+00:11:30,980 --> 00:11:34,659
+I guess we'll find out,
+right? Or not, right?
+
+273
+00:11:34,659 --> 00:11:36,919
+Yeah, This is definitely live.
+
+274
+00:11:36,919 --> 00:11:38,099
+Whatever is currently there.
+
+275
+00:11:38,099 --> 00:11:40,879
+Yeah, thanks for
+asking. All right,
+
+276
+00:11:40,879 --> 00:11:42,879
+let's take a look at
+the geographic data.
+
+277
+00:11:42,879 --> 00:11:44,440
+And for these examples,
+
+278
+00:11:44,440 --> 00:11:49,399
+I'm going to take a look
+at at County data, right?
+
+279
+00:11:49,399 --> 00:11:51,119
+So I'm I come over
+here a big query.
+
+280
+00:11:51,119 --> 00:11:53,059
+And let me try searching for it.
+
+281
+00:11:53,059 --> 00:11:58,459
+So this is all under that
+big query public data,
+
+282
+00:11:58,459 --> 00:11:59,979
+that kind of public facing
+
+283
+00:11:59,979 --> 00:12:01,400
+project that we've seen before.
+
+284
+00:12:01,400 --> 00:12:03,359
+And then what do we
+have underneath that?
+
+285
+00:12:03,359 --> 00:12:06,620
+It was Geo US boundaries,
+
+286
+00:12:06,620 --> 00:12:08,880
+and I'm just typing,
+you could dig around
+
+287
+00:12:08,880 --> 00:12:11,640
+and find it more manually
+if you wanted to.
+
+288
+00:12:11,640 --> 00:12:13,859
+So I'm I find that
+thing? And then we have
+
+289
+00:12:13,859 --> 00:12:16,605
+this County's data
+set over here.
+
+290
+00:12:16,605 --> 00:12:19,109
+And the key thing there is,
+
+291
+00:12:19,109 --> 00:12:22,189
+if I look at a preview is
+
+292
+00:12:22,189 --> 00:12:25,509
+that we basically
+have these polygons,
+
+293
+00:12:25,509 --> 00:12:26,729
+which are a bunch of points that
+
+294
+00:12:26,729 --> 00:12:28,250
+detrib the shape
+of these things.
+
+295
+00:12:28,250 --> 00:12:30,810
+Okay. And so I'm going
+to come over here,
+
+296
+00:12:30,810 --> 00:12:34,629
+and where is the There it is.
+
+297
+00:12:34,629 --> 00:12:36,810
+There's the name of it.
+Let me copy that name.
+
+298
+00:12:36,810 --> 00:12:38,589
+And I'm going to do
+something like this.
+
+299
+00:12:38,589 --> 00:12:42,150
+I'm going to say
+big query query.
+
+300
+00:12:42,150 --> 00:12:48,669
+And I'm going to select
+star from from that thing,
+
+301
+00:12:48,669 --> 00:12:50,269
+like, right, I'm gonna do that.
+
+302
+00:12:50,269 --> 00:12:52,649
+And what I want to do
+is I want to limit it.
+
+303
+00:12:52,649 --> 00:12:57,109
+So it turns out that the US
+Census Bureau assigns these,
+
+304
+00:12:57,109 --> 00:12:58,110
+what they call FIPS codes,
+
+305
+00:12:58,110 --> 00:12:59,390
+the different
+geographic regions,
+
+306
+00:12:59,390 --> 00:13:00,730
+and if I was doing
+this properly,
+
+307
+00:13:00,730 --> 00:13:01,910
+I would actually like to join
+
+308
+00:13:01,910 --> 00:13:03,290
+and try to look up Wisconsin.
+
+309
+00:13:03,290 --> 00:13:06,690
+But I happen to know
+that the FIPS code
+
+310
+00:13:06,690 --> 00:13:09,349
+for Wisconsin is 55, right?
+
+311
+00:13:09,349 --> 00:13:10,610
+I'm just trying to
+paste that in here.
+
+312
+00:13:10,610 --> 00:13:12,109
+So I'm to say where
+
+313
+00:13:12,109 --> 00:13:17,169
+the state state FIPS code
+equals, I think it's a string.
+
+314
+00:13:17,169 --> 00:13:19,170
+Let me check my notes.
+Yeah, it is a string.
+
+315
+00:13:19,170 --> 00:13:21,130
+Alright. So I'm I do
+that. I have a query.
+
+316
+00:13:21,130 --> 00:13:22,310
+And when I just type a query,
+
+317
+00:13:22,310 --> 00:13:23,390
+it doesn't actually do anything,
+
+318
+00:13:23,390 --> 00:13:26,219
+right until I try to get
+some data out of it, right?
+
+319
+00:13:26,219 --> 00:13:28,959
+And so we've seen before I
+could do two data frame.
+
+320
+00:13:28,959 --> 00:13:30,819
+And the way this works is that,
+
+321
+00:13:30,819 --> 00:13:33,799
+if I have two data frame,
+
+322
+00:13:33,799 --> 00:13:39,139
+that will give me a Pandas
+data frame, right? Like so.
+
+323
+00:13:39,139 --> 00:13:44,039
+And if I do two Geodata frame.
+
+324
+00:13:44,039 --> 00:13:49,500
+Well, that will give me is
+a GeoPandas Geodata frame.
+
+325
+00:13:49,500 --> 00:13:51,500
+So GeoPandas is just a
+library that's based
+
+326
+00:13:51,500 --> 00:13:53,480
+on top of Pandas. And I'm
+to do that down here.
+
+327
+00:13:53,480 --> 00:13:55,460
+I actually want to
+get a Geodata frame,
+
+328
+00:13:55,460 --> 00:13:57,839
+and I'm going to call
+this thing, Wisconsin,
+
+329
+00:13:57,839 --> 00:13:59,759
+I'm to get Wisconsin
+out of this.
+
+330
+00:13:59,759 --> 00:14:02,040
+And maybe after I do
+that I'm going to say,
+
+331
+00:14:02,040 --> 00:14:03,340
+well, what is the
+type of Wisconsin?
+
+332
+00:14:03,340 --> 00:14:07,380
+I I'm run that?
+Should take a moment.
+
+333
+00:14:07,380 --> 00:14:09,879
+I I have an error. Alright.
+
+334
+00:14:09,879 --> 00:14:12,400
+There's more than one geography
+column in the result.
+
+335
+00:14:12,400 --> 00:14:13,859
+Okay. So I guess there must be
+
+336
+00:14:13,859 --> 00:14:18,019
+multiple geometry aspects
+over here. And that's fine.
+
+337
+00:14:18,019 --> 00:14:19,639
+I guess the one I'm really
+
+338
+00:14:19,639 --> 00:14:21,499
+interested in is the
+county geometry,
+
+339
+00:14:21,499 --> 00:14:23,379
+and then also the
+county name, right?
+
+340
+00:14:23,379 --> 00:14:24,540
+I'm t to come back here.
+
+341
+00:14:24,540 --> 00:14:26,339
+And I'm going to say, give me,
+
+342
+00:14:26,339 --> 00:14:30,880
+the county name, and then
+the county geometry.
+
+343
+00:14:30,880 --> 00:14:33,619
+Let's try that. Alright,
+and I may get this thing.
+
+344
+00:14:33,619 --> 00:14:35,580
+And as you see it's
+a Geo data frame.
+
+345
+00:14:35,580 --> 00:14:36,240
+You know, if I have
+
+346
+00:14:36,240 --> 00:14:37,699
+a new type that I'm
+trying to learn about,
+
+347
+00:14:37,699 --> 00:14:39,539
+one of the things
+I want to see is
+
+348
+00:14:39,539 --> 00:14:42,100
+is it inheriting
+from other types.
+
+349
+00:14:42,100 --> 00:14:43,920
+And one of the ways
+we can understand
+
+350
+00:14:43,920 --> 00:14:45,840
+the inheritance of classes
+
+351
+00:14:45,840 --> 00:14:47,639
+and Python is that we can say
+
+352
+00:14:47,639 --> 00:14:50,039
+method resolution order.
+The idea there, right?
+
+353
+00:14:50,039 --> 00:14:52,079
+I I have some object, and
+I call a method on it,
+
+354
+00:14:52,079 --> 00:14:55,279
+and the class doesn't
+directly define that method,
+
+355
+00:14:55,279 --> 00:14:57,800
+then it will go up the
+hierarchy of inheritance.
+
+356
+00:14:57,800 --> 00:14:58,980
+I'll try to find
+it somewhere else.
+
+357
+00:14:58,980 --> 00:15:00,520
+That's called method
+resolution order,
+
+358
+00:15:00,520 --> 00:15:02,419
+where it tries to see
+where I can find that.
+
+359
+00:15:02,419 --> 00:15:04,240
+And so when I look at
+that, in this case,
+
+360
+00:15:04,240 --> 00:15:06,180
+I can see that the
+Geo data frame
+
+361
+00:15:06,180 --> 00:15:10,289
+inherits from a regular
+Panda stata frame?
+
+362
+00:15:10,289 --> 00:15:12,030
+Anything you can do with
+regular Panda Sata frame
+
+363
+00:15:12,030 --> 00:15:13,190
+you can do here,
+and then of course,
+
+364
+00:15:13,190 --> 00:15:14,549
+more stuff, right
+because we're inheriting
+
+365
+00:15:14,549 --> 00:15:16,429
+from it and extending it.
+
+366
+00:15:16,429 --> 00:15:17,949
+So kind of on
+
+367
+00:15:17,949 --> 00:15:20,110
+that note of things that
+we can do additionally,
+
+368
+00:15:20,110 --> 00:15:24,650
+one of those things we can do
+is say Wisconsin dot plot,
+
+369
+00:15:24,650 --> 00:15:25,830
+and it'll automatically create
+
+370
+00:15:25,830 --> 00:15:27,789
+a plot of all these
+counties for us.
+
+371
+00:15:27,789 --> 00:15:29,589
+Now, if I want to, I can say,
+
+372
+00:15:29,589 --> 00:15:31,510
+what is the face color of these?
+
+373
+00:15:31,510 --> 00:15:33,790
+So I'm I say a face color,
+
+374
+00:15:33,790 --> 00:15:37,355
+and I'm also going to
+say an edge color.
+
+375
+00:15:37,355 --> 00:15:39,360
+L et me just check my notes
+
+376
+00:15:39,360 --> 00:15:40,619
+here. Am I putting
+this down right?
+
+377
+00:15:40,619 --> 00:15:42,860
+Oh, I think it's just
+color. Okay, great.
+
+378
+00:15:42,860 --> 00:15:46,199
+And, you know, I can put
+things like red or whatever.
+
+379
+00:15:46,199 --> 00:15:47,700
+If I want to, I can also put on
+
+380
+00:15:47,700 --> 00:15:49,739
+a gray scale, so, you know,
+
+381
+00:15:49,739 --> 00:15:52,279
+one would be white, so it
+would be completely bright,
+
+382
+00:15:52,279 --> 00:15:53,540
+and then zero would be black.
+
+383
+00:15:53,540 --> 00:15:54,860
+And so I'm going to have
+
+384
+00:15:54,860 --> 00:15:56,919
+the color of this be
+a light gray color,
+
+385
+00:15:56,919 --> 00:15:59,740
+and the lines around it
+will be a dark gray color.
+
+386
+00:15:59,740 --> 00:16:01,019
+So I can plot it and see a
+
+387
+00:16:01,019 --> 00:16:02,279
+little bit easier.
+These counties.
+
+388
+00:16:02,279 --> 00:16:03,860
+It kind of look like
+Wisconsin counties,
+
+389
+00:16:03,860 --> 00:16:05,459
+maybe differ than
+what you've seen.
+
+390
+00:16:05,459 --> 00:16:08,060
+These are not the
+land boundaries.
+
+391
+00:16:08,060 --> 00:16:09,860
+These are political boundaries.
+
+392
+00:16:09,860 --> 00:16:12,460
+And so on the right hand side
+of Wisconsin, for example,
+
+393
+00:16:12,460 --> 00:16:15,399
+there's a bunch of
+relatively narrow counties,
+
+394
+00:16:15,399 --> 00:16:17,020
+but they have a bunch of water,
+
+395
+00:16:17,020 --> 00:16:19,040
+right within their
+political boundaries.
+
+396
+00:16:19,040 --> 00:16:20,780
+Same thing up here
+on Lake Superior.
+
+397
+00:16:20,780 --> 00:16:23,259
+I can see the longitude
+on the x axis,
+
+398
+00:16:23,259 --> 00:16:25,080
+I can see the latitude
+on the Y axis.
+
+399
+00:16:25,080 --> 00:16:26,919
+I wanted to, I could,
+look at this to try to
+
+400
+00:16:26,919 --> 00:16:28,739
+figure out if I'm submitting
+that form, right?
+
+401
+00:16:28,739 --> 00:16:30,300
+I could say, like, negative MD,
+
+402
+00:16:30,300 --> 00:16:31,979
+negative 44,
+something like that.
+
+403
+00:16:31,979 --> 00:16:33,539
+I could fill out
+that form and try to
+
+404
+00:16:33,539 --> 00:16:35,860
+pick a loan application
+for a house
+
+405
+00:16:35,860 --> 00:16:37,999
+somewhere in Wisconsin in
+
+406
+00:16:37,999 --> 00:16:40,529
+these coordinates. Alright,
+course, I have that.
+
+407
+00:16:40,529 --> 00:16:42,700
+And there's a few things
+
+408
+00:16:42,700 --> 00:16:44,399
+that I can do that are
+interesting with it.
+
+409
+00:16:44,399 --> 00:16:46,460
+One of them is that you
+might want to be using
+
+410
+00:16:46,460 --> 00:16:48,480
+a big query in combination
+with other tools.
+
+411
+00:16:48,480 --> 00:16:49,679
+Big query, the strength is
+
+412
+00:16:49,679 --> 00:16:51,579
+that it's highly
+scalable, right?
+
+413
+00:16:51,579 --> 00:16:53,799
+But it's not like very full
+
+414
+00:16:53,799 --> 00:16:54,559
+featured in terms of
+
+415
+00:16:54,559 --> 00:16:56,199
+all this geographic
+stuff you can do.
+
+416
+00:16:56,199 --> 00:16:59,640
+A lot of people doing GS work
+are using tools like R GIS.
+
+417
+00:16:59,640 --> 00:17:00,840
+And what you want to do is, you
+
+418
+00:17:00,840 --> 00:17:02,019
+might want to move your
+data back and forth,
+
+419
+00:17:02,019 --> 00:17:04,559
+kind of a big query for things
+that require scalability.
+
+420
+00:17:04,559 --> 00:17:06,079
+You to make R GIS for
+
+421
+00:17:06,079 --> 00:17:08,040
+things that require
+more functionality.
+
+422
+00:17:08,040 --> 00:17:10,460
+And so if I have
+this geo data frame,
+
+423
+00:17:10,460 --> 00:17:12,620
+I can say two GO JS.
+
+424
+00:17:12,620 --> 00:17:13,979
+And if I look at like
+
+425
+00:17:13,979 --> 00:17:16,459
+the first thousand
+characters of that,
+
+426
+00:17:17,220 --> 00:17:23,099
+it will L et me just
+check my notes.
+
+427
+00:17:23,099 --> 00:17:24,519
+Oh, just two JSN.
+
+428
+00:17:24,519 --> 00:17:27,119
+Okay. Fine. That's
+GO JSN format.
+
+429
+00:17:27,119 --> 00:17:29,119
+I can see that some
+kind of JN format that
+
+430
+00:17:29,119 --> 00:17:32,179
+has a description of all
+these boundaries, right?
+
+431
+00:17:32,179 --> 00:17:33,240
+And so if I wanted to, I could
+
+432
+00:17:33,240 --> 00:17:34,339
+just write that to
+a file somewhere,
+
+433
+00:17:34,339 --> 00:17:36,899
+I could say with
+Open Wisconsin at
+
+434
+00:17:36,899 --> 00:17:40,599
+GO JSN. I'm writing to it.
+
+435
+00:17:41,360 --> 00:17:44,059
+Then I could say f dot right,
+
+436
+00:17:44,059 --> 00:17:46,719
+whatever is that JSN
+stuff that I have.
+
+437
+00:17:46,719 --> 00:17:48,519
+And then comb me
+over here, right?
+
+438
+00:17:48,519 --> 00:17:50,779
+I would have a nice
+file, Wisconsin GeoJSN
+
+439
+00:17:50,779 --> 00:17:52,339
+that I could go ahead
+and I could you know,
+
+440
+00:17:52,339 --> 00:17:53,499
+import into other tools or
+
+441
+00:17:53,499 --> 00:17:55,080
+maybe I import
+back to Big query.
+
+442
+00:17:55,080 --> 00:17:58,719
+I can move fluidly between
+these different tools, right?
+
+443
+00:17:58,719 --> 00:18:00,099
+The other thing I
+might want to do
+
+444
+00:18:00,099 --> 00:18:01,420
+with this is I might
+want to create
+
+445
+00:18:01,420 --> 00:18:02,960
+a Wisconsin data set
+
+446
+00:18:02,960 --> 00:18:05,459
+that belongs to me and
+my project, right?
+
+447
+00:18:05,459 --> 00:18:07,940
+So this Wisconsin data is coming
+
+448
+00:18:07,940 --> 00:18:12,429
+from It's coming from this
+public project, right?
+
+449
+00:18:12,429 --> 00:18:14,249
+And if I want to do a study
+
+450
+00:18:14,249 --> 00:18:16,109
+of Wisconsin, every
+time I'm using this,
+
+451
+00:18:16,109 --> 00:18:18,050
+it's filtering it
+down to Wisconsin,
+
+452
+00:18:18,050 --> 00:18:20,109
+and I'm really paying
+kind of proportionally
+
+453
+00:18:20,109 --> 00:18:22,509
+to the whole data set, right?
+
+454
+00:18:22,509 --> 00:18:24,629
+The whole United States.
+And so what I might want to
+
+455
+00:18:24,629 --> 00:18:27,234
+sometimes do to save money
+is make a copy of it.
+
+456
+00:18:27,234 --> 00:18:29,379
+It's going to be fast
+either way, right?
+
+457
+00:18:29,379 --> 00:18:31,939
+Because it's very parallel
+internally, right?
+
+458
+00:18:31,939 --> 00:18:33,199
+They're using lots of machines.
+
+459
+00:18:33,199 --> 00:18:34,959
+And so we aren't going
+to do this to be faster.
+
+460
+00:18:34,959 --> 00:18:36,980
+We're going to be doing
+it to save money.
+
+461
+00:18:36,980 --> 00:18:38,640
+And right? That's the
+mind set in the Cloud.
+
+462
+00:18:38,640 --> 00:18:40,319
+And the cloud, there's
+lots of things that are
+
+463
+00:18:40,319 --> 00:18:42,179
+fast that are also
+expensive, right?
+
+464
+00:18:42,179 --> 00:18:43,459
+So we're more worried about
+
+465
+00:18:43,459 --> 00:18:45,680
+money than time when
+we're in the Cloud.
+
+466
+00:18:45,680 --> 00:18:48,039
+Anyway, so I want to
+get a copy of this in
+
+467
+00:18:48,039 --> 00:18:50,519
+my own project that is
+just Wisconsin, right?
+
+468
+00:18:50,519 --> 00:18:53,739
+And so the way I will do
+that is tum me down here.
+
+469
+00:18:53,739 --> 00:18:56,214
+I will say a big query.
+
+470
+00:18:56,214 --> 00:18:58,089
+And I will first just
+
+471
+00:18:58,089 --> 00:19:00,489
+paste the query that has
+the information I want.
+
+472
+00:19:00,489 --> 00:19:02,029
+And then above it,
+
+473
+00:19:02,029 --> 00:19:03,869
+I can gibt some name, right?
+
+474
+00:19:03,869 --> 00:19:06,190
+So the name is BCS 544,
+
+475
+00:19:06,190 --> 00:19:08,209
+F 24, section two.
+
+476
+00:19:08,209 --> 00:19:10,449
+And I'm may call this Wisconsin.
+
+477
+00:19:10,449 --> 00:19:13,790
+Okay. And so the way I
+can actually do this now
+
+478
+00:19:13,790 --> 00:19:17,249
+to complete this is I can
+put some ticks around it.
+
+479
+00:19:17,249 --> 00:19:18,510
+I my quoting style,
+
+480
+00:19:18,510 --> 00:19:20,650
+and I can say, create table.
+
+481
+00:19:20,650 --> 00:19:22,589
+I'll create a table like that.
+
+482
+00:19:22,589 --> 00:19:24,510
+I have to put the
+word as down here.
+
+483
+00:19:24,510 --> 00:19:26,029
+I'll space that a little bit.
+
+484
+00:19:26,029 --> 00:19:27,750
+That's going to create a table
+
+485
+00:19:27,750 --> 00:19:30,189
+by copying the results here.
+
+486
+00:19:30,189 --> 00:19:31,969
+And then further on, right?
+
+487
+00:19:31,969 --> 00:19:33,350
+I'll be able to more efficiently
+
+488
+00:19:33,350 --> 00:19:34,869
+just look at Wisconsin, right?
+
+489
+00:19:34,869 --> 00:19:36,370
+Small tweak on this, I'll
+
+490
+00:19:36,370 --> 00:19:38,669
+create or replace table because,
+
+491
+00:19:38,669 --> 00:19:40,549
+you know, I want to
+be able to re run it
+
+492
+00:19:40,549 --> 00:19:42,389
+without any problems. I'm
+going to create that thing.
+
+493
+00:19:42,389 --> 00:19:45,049
+And I'm going to have this
+Wisconsin data frame or
+
+494
+00:19:45,049 --> 00:19:47,029
+this Wisconsin table that I can
+
+495
+00:19:47,029 --> 00:19:49,470
+use for a variety of things.
+
+496
+00:19:49,470 --> 00:19:51,910
+If I come over here, I should
+be able to see it now.
+
+497
+00:19:51,910 --> 00:19:57,169
+And that right if
+I come and look
+
+498
+00:19:57,169 --> 00:20:04,039
+at I span that.
+
+499
+00:20:04,039 --> 00:20:07,359
+Then I think there
+are Section two.
+
+500
+00:20:07,600 --> 00:20:10,099
+Then I have Wisconsin, right?
+
+501
+00:20:10,099 --> 00:20:13,339
+Alright. Cool. And
+then I can preview it.
+
+502
+00:20:13,339 --> 00:20:15,239
+And I can say just have
+
+503
+00:20:15,239 --> 00:20:17,599
+the county name and county
+geometry like expected.
+
+504
+00:20:17,599 --> 00:20:19,159
+I'll for Wisconsin.
+
+505
+00:20:19,159 --> 00:20:21,559
+Alright, cool. Any
+questions so far?
+
+506
+00:20:21,559 --> 00:20:25,280
+Yeah, he? Refer to
+everything else below?
+
+507
+00:20:25,280 --> 00:20:26,779
+Y, Yeah, so what that means is
+
+508
+00:20:26,779 --> 00:20:28,979
+that first it run this query,
+
+509
+00:20:28,979 --> 00:20:31,179
+and then it should
+create a table with
+
+510
+00:20:31,179 --> 00:20:33,860
+this name and dump those
+results into that new table.
+
+511
+00:20:33,860 --> 00:20:35,979
+Exactly. Yeah, thanks
+for saying it that way.
+
+512
+00:20:35,979 --> 00:20:38,399
+No Are other questions
+people have?
+
+513
+00:20:38,570 --> 00:20:41,789
+All right. Cool. Okay,
+so we have that thing.
+
+514
+00:20:41,789 --> 00:20:44,869
+Now, what I want to look
+at are some different,
+
+515
+00:20:44,869 --> 00:20:48,009
+you know, spatial or geographic
+operations we can do.
+
+516
+00:20:48,009 --> 00:20:51,029
+And so the general pattern
+you're going to see is that,
+
+517
+00:20:51,029 --> 00:20:54,429
+where I have something like
+ST and then some function.
+
+518
+00:20:54,429 --> 00:20:58,349
+And that's because ST stands
+for a spatial type, right?
+
+519
+00:20:58,349 --> 00:21:00,789
+So I have a bunch of
+functions of that nature.
+
+520
+00:21:00,789 --> 00:21:03,229
+And so one of them I
+might want to do is I
+
+521
+00:21:03,229 --> 00:21:05,789
+might want to union these
+shapes together, right?
+
+522
+00:21:05,789 --> 00:21:07,009
+I have all these polygons.
+
+523
+00:21:07,009 --> 00:21:08,170
+I might want to combine a bunch
+
+524
+00:21:08,170 --> 00:21:11,389
+of smaller polygons
+into bigger polygons.
+
+525
+00:21:11,389 --> 00:21:13,049
+Right? I might want to have
+some grouping for that.
+
+526
+00:21:13,049 --> 00:21:15,899
+So, for example,
+You know, I forget.
+
+527
+00:21:15,899 --> 00:21:17,280
+I think we have
+something like maybe
+
+528
+00:21:17,280 --> 00:21:18,619
+like six congressional
+districts.
+
+529
+00:21:18,619 --> 00:21:21,000
+Maybe I might want to have
+a congressional district
+
+530
+00:21:21,000 --> 00:21:23,979
+that is the union of a bunch
+of these counties together.
+
+531
+00:21:23,979 --> 00:21:25,419
+In this case, I'm just
+
+532
+00:21:25,419 --> 00:21:26,859
+trying to do a simple
+thing where I have
+
+533
+00:21:26,859 --> 00:21:29,860
+union together into one
+big Wisconsin shape.
+
+534
+00:21:29,860 --> 00:21:31,919
+Okay, so to do that,
+
+535
+00:21:31,919 --> 00:21:34,779
+I will copy this stuff I had up
+
+536
+00:21:34,779 --> 00:21:39,280
+here and strolling down a bit.
+
+537
+00:21:39,760 --> 00:21:43,239
+I will hold this on
+just data frame, right?
+
+538
+00:21:43,239 --> 00:21:47,099
+And what I will do
+is I will select
+
+539
+00:21:47,099 --> 00:21:50,539
+from I don't have
+
+540
+00:21:50,539 --> 00:21:51,959
+to have the wear
+anymore because I
+
+541
+00:21:51,959 --> 00:21:53,140
+only have Wisconsin data.
+
+542
+00:21:53,140 --> 00:21:57,039
+I'm going to select from
+that new table I created.
+
+543
+00:21:59,160 --> 00:22:02,119
+And the name of that
+table is Wisconsin.
+
+544
+00:22:02,119 --> 00:22:04,599
+And then what I'm
+really interested in
+
+545
+00:22:04,599 --> 00:22:07,869
+is for that county geometry
+I want to aggregate.
+
+546
+00:22:07,869 --> 00:22:09,230
+Instead of having a
+bunch of little shapes,
+
+547
+00:22:09,230 --> 00:22:11,109
+I want to have one
+big shape, right?
+
+548
+00:22:11,109 --> 00:22:12,589
+And so what I'm going to
+do is I'm going to say
+
+549
+00:22:12,589 --> 00:22:15,709
+ST union aggregate, right?
+
+550
+00:22:15,709 --> 00:22:17,209
+And this is not that different
+
+551
+00:22:17,209 --> 00:22:18,750
+than other aggregates
+we've seen.
+
+552
+00:22:18,750 --> 00:22:21,790
+If I do like Man, I
+have a bunch of rows,
+
+553
+00:22:21,790 --> 00:22:24,170
+I end up with one
+row, or if I say Max.
+
+554
+00:22:24,170 --> 00:22:25,329
+I have a bunch of
+rows, I end up with
+
+555
+00:22:25,329 --> 00:22:26,709
+one row. Here, I have
+a bunch of shapes.
+
+556
+00:22:26,709 --> 00:22:28,849
+I end up with just one shape.
+
+557
+00:22:28,849 --> 00:22:30,709
+I can see that down here, right?
+
+558
+00:22:30,709 --> 00:22:32,370
+If I take a look at it, there's
+
+559
+00:22:32,370 --> 00:22:34,150
+going to be one row
+in that output.
+
+560
+00:22:34,150 --> 00:22:35,669
+And then if I want to,
+
+561
+00:22:35,669 --> 00:22:37,949
+I can plot it, right?
+
+562
+00:22:37,949 --> 00:22:40,369
+And then what will it be?
+
+563
+00:22:40,369 --> 00:22:43,709
+I'll just try to make
+this the same as before.
+
+564
+00:22:45,140 --> 00:22:48,659
+Alright. I'm just going you
+one big Wisconsin shape.
+
+565
+00:22:48,659 --> 00:22:50,860
+Right? Just like with other
+aggregates, like Man,
+
+566
+00:22:50,860 --> 00:22:53,719
+sometimes you'll do a grouping
+by first, and then do it.
+
+567
+00:22:53,719 --> 00:22:55,039
+I could do the same
+thing up here.
+
+568
+00:22:55,039 --> 00:22:56,820
+I won't right now,
+but I could group
+
+569
+00:22:56,820 --> 00:22:59,099
+the counties in some
+way, and then, you know,
+
+570
+00:22:59,099 --> 00:23:00,319
+union together, the ones that
+
+571
+00:23:00,319 --> 00:23:01,680
+are all in the same category,
+
+572
+00:23:01,680 --> 00:23:03,579
+and I could do a
+few bigger shapes.
+
+573
+00:23:03,579 --> 00:23:06,400
+Yeah. Any questions
+about that aggregate?
+
+574
+00:23:06,400 --> 00:23:08,279
+So a lot of these
+spatial things will
+
+575
+00:23:08,279 --> 00:23:10,360
+have different functions that
+are doing related things.
+
+576
+00:23:10,360 --> 00:23:12,059
+So might be aggregates, and
+some might not be, right?
+
+577
+00:23:12,059 --> 00:23:14,279
+So when I see that that
+AGG is going to show up.
+
+578
+00:23:14,279 --> 00:23:16,959
+And some of the other ones
+we're going to look at.
+
+579
+00:23:16,959 --> 00:23:19,769
+Alright, drawing
+back a little bit.
+
+580
+00:23:19,769 --> 00:23:25,499
+I am t to see how we can do
+centroid aggregates, right?
+
+581
+00:23:25,499 --> 00:23:28,879
+And the way this will work is,
+
+582
+00:23:28,879 --> 00:23:32,815
+I am t to grab that same query.
+
+583
+00:23:32,815 --> 00:23:35,289
+And I'm going to
+modify it, right?
+
+584
+00:23:35,289 --> 00:23:37,329
+And what I want to
+do is I want to get
+
+585
+00:23:37,329 --> 00:23:42,009
+the centroid aggregate of
+all of these together.
+
+586
+00:23:42,009 --> 00:23:43,609
+And that's going to be
+the same thing. I call
+
+587
+00:23:43,609 --> 00:23:44,909
+this DF two, right?
+
+588
+00:23:44,909 --> 00:23:46,469
+And in this case,
+I'm going to get
+
+589
+00:23:46,469 --> 00:23:48,270
+one row again because
+it's an aggregate.
+
+590
+00:23:48,270 --> 00:23:50,070
+And in this case,
+it's a single point.
+
+591
+00:23:50,070 --> 00:23:51,269
+So let's just see what that
+
+592
+00:23:51,269 --> 00:23:52,669
+looks like if I plot it, right?
+
+593
+00:23:52,669 --> 00:23:54,489
+So if I plot this,
+
+594
+00:23:54,489 --> 00:23:56,570
+and then I plot
+this one as well,
+
+595
+00:23:56,570 --> 00:23:58,329
+what I'd really like
+to do is I'd like
+
+596
+00:23:58,329 --> 00:24:00,549
+the second plotting to go
+on top of the first one.
+
+597
+00:24:00,549 --> 00:24:04,620
+And that's very doable
+because when I call plot,
+
+598
+00:24:04,620 --> 00:24:05,860
+what it returns is
+something called
+
+599
+00:24:05,860 --> 00:24:09,719
+an A an axis some
+plot object, right?
+
+600
+00:24:09,719 --> 00:24:11,840
+And if I'm plotting
+something new,
+
+601
+00:24:11,840 --> 00:24:13,500
+I can tell it that, Hey,
+
+602
+00:24:13,500 --> 00:24:15,839
+I want to draw on top
+of that previous one.
+
+603
+00:24:15,839 --> 00:24:19,020
+I may say the color for
+this one is red, and draw.
+
+604
+00:24:19,020 --> 00:24:20,419
+I can see that this
+is the centroid
+
+605
+00:24:20,419 --> 00:24:22,459
+of Wisconsin. What is a cent?
+
+606
+00:24:22,459 --> 00:24:24,280
+You can define in
+different ways,
+
+607
+00:24:24,280 --> 00:24:28,010
+but kind of an informal
+way would be If I cut
+
+608
+00:24:28,010 --> 00:24:29,490
+out this shape and
+kind of balanced
+
+609
+00:24:29,490 --> 00:24:30,789
+my finger in the middle of it,
+
+610
+00:24:30,789 --> 00:24:31,929
+that's where it would be, right?
+
+611
+00:24:31,929 --> 00:24:32,989
+That would be kind
+of the center of
+
+612
+00:24:32,989 --> 00:24:35,849
+mass of this region, right?
+
+613
+00:24:35,849 --> 00:24:37,449
+So I can see that where that is.
+
+614
+00:24:37,449 --> 00:24:38,589
+And you know, just visually,
+
+615
+00:24:38,589 --> 00:24:40,209
+that seems about right.
+
+616
+00:24:40,209 --> 00:24:42,269
+Right? So, oftentimes, right,
+
+617
+00:24:42,269 --> 00:24:44,049
+like I said, we will
+have versions that are
+
+618
+00:24:44,049 --> 00:24:46,090
+an aggregate or
+not an aggregate.
+
+619
+00:24:46,090 --> 00:24:49,190
+And And so there's also
+
+620
+00:24:49,190 --> 00:24:50,749
+a version of this
+spatial function that
+
+621
+00:24:50,749 --> 00:24:52,629
+just called ST centrd, right?
+
+622
+00:24:52,629 --> 00:24:54,470
+And I'm going to
+run this again now,
+
+623
+00:24:54,470 --> 00:24:56,390
+and I'm going to have a version,
+
+624
+00:24:56,390 --> 00:24:59,369
+which is not the
+aggregate version, right?
+
+625
+00:24:59,369 --> 00:25:01,029
+So the aggregate version flaps,
+
+626
+00:25:01,029 --> 00:25:03,009
+it's in one big shape
+to get a centride.
+
+627
+00:25:03,009 --> 00:25:05,369
+This one gets ne
+acentride for each of
+
+628
+00:25:05,369 --> 00:25:08,909
+those individual regions
+that we saw before, right?
+
+629
+00:25:08,909 --> 00:25:11,629
+Maybe I'll just say Wisconsin
+down here when I plot this.
+
+630
+00:25:11,629 --> 00:25:14,830
+And let me plot DF three now,
+
+631
+00:25:14,830 --> 00:25:16,489
+like so on top of it,
+
+632
+00:25:16,489 --> 00:25:17,769
+right? That's be the same one.
+
+633
+00:25:17,769 --> 00:25:19,949
+Maybe I'll use black
+for that shape, right?
+
+634
+00:25:19,949 --> 00:25:23,834
+So DF three is not defined
+because I haven't run it yet.
+
+635
+00:25:23,834 --> 00:25:25,619
+Great. And so now
+I can see I have
+
+636
+00:25:25,619 --> 00:25:27,520
+this red centroid
+for the whole state,
+
+637
+00:25:27,520 --> 00:25:29,079
+and I also have
+centroids for each of
+
+638
+00:25:29,079 --> 00:25:32,959
+the individual
+counties. Oh, right.
+
+639
+00:25:32,959 --> 00:25:35,120
+Well, Any questions so far
+
+640
+00:25:35,120 --> 00:25:38,760
+about any of these
+spatial type functions?
+
+641
+00:25:39,100 --> 00:25:42,419
+Alright. Cool. So what
+I want to do now is I
+
+642
+00:25:42,419 --> 00:25:43,679
+want to tie this
+together because
+
+643
+00:25:43,679 --> 00:25:45,040
+we have that spreadsheet data.
+
+644
+00:25:45,040 --> 00:25:47,039
+And I want to see, for example,
+
+645
+00:25:47,039 --> 00:25:49,559
+how that spreadsheet
+data fits into this.
+
+646
+00:25:49,559 --> 00:25:50,940
+And so if I come over here
+
+647
+00:25:50,940 --> 00:25:53,120
+and look at my spreadsheet data,
+
+648
+00:25:53,120 --> 00:25:55,539
+I see that I have this
+latitude of linitude.
+
+649
+00:25:55,539 --> 00:25:58,180
+And that is not a
+geographic type.
+
+650
+00:25:58,180 --> 00:25:59,499
+Those are just numbers, right?
+
+651
+00:25:59,499 --> 00:26:01,019
+In fact, they're
+just like strings
+
+652
+00:26:01,019 --> 00:26:02,519
+that when I load them in,
+
+653
+00:26:02,519 --> 00:26:04,259
+I infer that they're
+numbers, right?
+
+654
+00:26:04,259 --> 00:26:05,819
+And so if I actually
+want to use this in
+
+655
+00:26:05,819 --> 00:26:07,520
+combination with other
+geographic data,
+
+656
+00:26:07,520 --> 00:26:09,279
+I have to convert
+it to that, right?
+
+657
+00:26:09,279 --> 00:26:10,439
+That's what I'm I do now. I see,
+
+658
+00:26:10,439 --> 00:26:11,760
+can I create a geographic data
+
+659
+00:26:11,760 --> 00:26:14,279
+set based on the
+stuff that's in here?
+
+660
+00:26:14,279 --> 00:26:15,919
+I see that people have
+been loading in more,
+
+661
+00:26:15,919 --> 00:26:17,719
+so thank you very much for that.
+
+662
+00:26:17,719 --> 00:26:19,779
+Alright. So my head over here.
+
+663
+00:26:19,779 --> 00:26:22,040
+Or actually over here.
+
+664
+00:26:22,040 --> 00:26:24,020
+And what I'm going to do is I'm
+
+665
+00:26:24,020 --> 00:26:26,379
+going to first just
+query from it, right?
+
+666
+00:26:26,379 --> 00:26:28,659
+So let's say a big query,
+
+667
+00:26:28,659 --> 00:26:38,629
+select star from
+This is Section two,
+
+668
+00:26:38,629 --> 00:26:40,589
+and then it was
+applications, right?
+
+669
+00:26:40,589 --> 00:26:42,049
+I'm going to do that. I'm going
+
+670
+00:26:42,049 --> 00:26:43,690
+to see that there's
+a bunch of these.
+
+671
+00:26:43,690 --> 00:26:46,689
+And what I want to
+do is I want to say,
+
+672
+00:26:46,689 --> 00:26:48,949
+in addition to all
+that, I want to
+
+673
+00:26:48,949 --> 00:26:51,069
+get a geographic columns.
+
+674
+00:26:51,069 --> 00:26:53,850
+I'm may say geographic point.
+
+675
+00:26:53,850 --> 00:26:56,070
+And here I may put
+linitude and latitude.
+
+676
+00:26:56,070 --> 00:26:57,910
+And people often say
+latitude linitude,
+
+677
+00:26:57,910 --> 00:26:59,870
+but they do linitude latitude.
+
+678
+00:26:59,870 --> 00:27:02,550
+And at least in my head, that
+actually makes more sense
+
+679
+00:27:02,550 --> 00:27:05,949
+because it's like an
+x axis and a y axis,
+
+680
+00:27:05,949 --> 00:27:07,730
+I'll just tell that
+as a location.
+
+681
+00:27:07,730 --> 00:27:11,490
+And then I'll get the rest
+of the stuff over here,
+
+682
+00:27:11,490 --> 00:27:13,949
+that I might have,
+right? So let's do that.
+
+683
+00:27:13,949 --> 00:27:17,230
+And then I have this new
+column in the front,
+
+684
+00:27:17,230 --> 00:27:19,550
+which is this geographic point.
+
+685
+00:27:19,550 --> 00:27:21,169
+Just like before I may
+create a table from.
+
+686
+00:27:21,169 --> 00:27:23,190
+I'm going to say create table.
+
+687
+00:27:23,190 --> 00:27:28,689
+And I may call this I'm may
+call this houses, right?
+
+688
+00:27:28,689 --> 00:27:30,929
+So houses are basically the
+same as applications with
+
+689
+00:27:30,929 --> 00:27:35,229
+this geographic column and
+I'm to create or replace.
+
+690
+00:27:35,390 --> 00:27:37,649
+Alright, let's
+create that thing.
+
+691
+00:27:37,649 --> 00:27:38,970
+And now I have a dataset
+
+692
+00:27:38,970 --> 00:27:40,289
+that I can use in
+combination, right?
+
+693
+00:27:40,289 --> 00:27:42,430
+This is a dataset that
+belongs to my project,
+
+694
+00:27:42,430 --> 00:27:44,929
+but I can combine it with
+the public datasets or with
+
+695
+00:27:44,929 --> 00:27:48,009
+my Wisconsin dataset
+if I want to, right?
+
+696
+00:27:48,009 --> 00:27:50,949
+Alright, C. So I have
+those houses there.
+
+697
+00:27:51,220 --> 00:27:53,559
+Maybe one of the first
+things I can do is
+
+698
+00:27:53,559 --> 00:27:55,039
+I can try to see where
+all these houses
+
+699
+00:27:55,039 --> 00:27:58,139
+are on top of the
+Wisconsin map, right?
+
+700
+00:27:58,139 --> 00:27:59,979
+So let's do that.
+I'm going to have
+
+701
+00:27:59,979 --> 00:28:03,319
+Wisconsin plotting like
+this down here as before.
+
+702
+00:28:03,319 --> 00:28:05,359
+And then what I also
+want to do is I want
+
+703
+00:28:05,359 --> 00:28:07,660
+to get a data frame.
+
+704
+00:28:07,660 --> 00:28:10,660
+Well, geo data frame
+like this up here,
+
+705
+00:28:10,660 --> 00:28:11,819
+where I'm going to select
+
+706
+00:28:11,819 --> 00:28:13,419
+everything from
+these houses, right?
+
+707
+00:28:13,419 --> 00:28:15,940
+So I'm going to say select star
+
+708
+00:28:15,940 --> 00:28:20,464
+from all of all of my
+houses. Let's do that.
+
+709
+00:28:20,464 --> 00:28:23,030
+And then if I come down here,
+
+710
+00:28:23,030 --> 00:28:26,970
+I can say data frame dot plot.
+
+711
+00:28:26,970 --> 00:28:28,749
+Me say Ax equals Ax,
+
+712
+00:28:28,749 --> 00:28:31,229
+and maybe the color
+will be black, right?
+
+713
+00:28:31,229 --> 00:28:33,329
+And it's actually kind
+of hard to see, right?
+
+714
+00:28:33,329 --> 00:28:35,770
+Maybe I have a few on top
+of the Wisconsin map,
+
+715
+00:28:35,770 --> 00:28:36,989
+which is now tiny, right?
+
+716
+00:28:36,989 --> 00:28:38,889
+But people have been
+saying they want houses
+
+717
+00:28:38,889 --> 00:28:40,729
+all over the world and
+probably in some oceans,
+
+718
+00:28:40,729 --> 00:28:42,309
+too, so whatever suits you.
+
+719
+00:28:42,309 --> 00:28:44,189
+Anyway, what we're
+going to have to
+
+720
+00:28:44,189 --> 00:28:45,750
+do is we have to combine
+these data sets.
+
+721
+00:28:45,750 --> 00:28:48,329
+For example, I might want
+to say, I only want to see
+
+722
+00:28:48,329 --> 00:28:51,689
+houses that are inside
+of Wisconsin counties,
+
+723
+00:28:51,689 --> 00:28:54,440
+and that's an example
+of a geographic join,
+
+724
+00:28:54,440 --> 00:28:55,940
+right to kind of pair up a point
+
+725
+00:28:55,940 --> 00:28:57,459
+with a polygon somewhere.
+
+726
+00:28:57,459 --> 00:28:59,239
+All right? You may show
+some different ways we
+
+727
+00:28:59,239 --> 00:29:01,440
+can combine these datasets.
+
+728
+00:29:01,440 --> 00:29:04,799
+One is that I can look
+up distances, right?
+
+729
+00:29:04,799 --> 00:29:07,240
+Let me just check my notes here.
+
+730
+00:29:07,240 --> 00:29:10,099
+Um, I'm going to
+
+731
+00:29:10,099 --> 00:29:12,319
+show a quick example of the
+distance function, right?
+
+732
+00:29:12,319 --> 00:29:14,239
+And what I may do first,
+I may say, Hey, like,
+
+733
+00:29:14,239 --> 00:29:18,200
+show me the houses that are
+near the state capitol,
+
+734
+00:29:18,200 --> 00:29:19,919
+right, based on their distance.
+
+735
+00:29:19,919 --> 00:29:23,839
+And so I'm may say, big
+query, I may select.
+
+736
+00:29:24,760 --> 00:29:26,979
+I have a distance function,
+
+737
+00:29:26,979 --> 00:29:29,239
+which I may come back to and
+
+738
+00:29:29,239 --> 00:29:31,879
+maybe maybe a houses
+dot star from that.
+
+739
+00:29:31,879 --> 00:29:35,239
+And I may do this from a
+section two dot houses.
+
+740
+00:29:35,239 --> 00:29:39,139
+And what I want to see is,
+what is the distance, right?
+
+741
+00:29:39,139 --> 00:29:41,199
+The distance is going
+to be in meters.
+
+742
+00:29:41,199 --> 00:29:44,559
+I'm may divide by 1,000
+and draw that kilometers.
+
+743
+00:29:44,559 --> 00:29:48,959
+And then I'm may order by
+kilometers. Ascending, right?
+
+744
+00:29:48,959 --> 00:29:50,380
+So one of the
+smallest ones close.
+
+745
+00:29:50,380 --> 00:29:53,379
+Who is choosing houses
+near the US Capitol.
+
+746
+00:29:53,379 --> 00:29:54,579
+All right. So how do
+I actually do this?
+
+747
+00:29:54,579 --> 00:29:55,539
+I have to have two points.
+
+748
+00:29:55,539 --> 00:29:57,599
+I 0.1 and 0.2.
+
+749
+00:29:57,599 --> 00:30:00,379
+0.1 comes straight
+out of houses, right?
+
+750
+00:30:00,379 --> 00:30:02,800
+So if I have houses dot
+location, I have that there.
+
+751
+00:30:02,800 --> 00:30:04,740
+And then 0.2, I may a hard code.
+
+752
+00:30:04,740 --> 00:30:07,299
+If I come look at the
+snippets over here,
+
+753
+00:30:07,299 --> 00:30:10,539
+I paste it in the coordinates
+
+754
+00:30:10,539 --> 00:30:15,740
+of as a geographic point of
+the Madison or I'm sorry,
+
+755
+00:30:15,740 --> 00:30:17,479
+the stat Wisconsin State Capitol
+
+756
+00:30:17,479 --> 00:30:18,879
+because I don't want to
+type all that, right?
+
+757
+00:30:18,879 --> 00:30:22,659
+I'm to do that. And so
+let's take a look at that.
+
+758
+00:30:22,659 --> 00:30:25,579
+Maybe I'll limit by ten.
+
+759
+00:30:25,579 --> 00:30:28,579
+And I can see how close
+people are choosing, right?
+
+760
+00:30:28,579 --> 00:30:29,719
+I guess this one's
+the closest so
+
+761
+00:30:29,719 --> 00:30:31,919
+it's only 263 kilometers,
+
+762
+00:30:31,919 --> 00:30:33,840
+and then then it just kind
+of goes up up from there.
+
+763
+00:30:33,840 --> 00:30:35,419
+Right? So that'd be one
+thing I could do, right?
+
+764
+00:30:35,419 --> 00:30:36,679
+Instead of kind of
+plotting all of
+
+765
+00:30:36,679 --> 00:30:38,120
+this scatter over
+the whole world.
+
+766
+00:30:38,120 --> 00:30:39,539
+I can look at the few that are
+
+767
+00:30:39,539 --> 00:30:41,979
+closest to some specific
+location, right?
+
+768
+00:30:41,979 --> 00:30:43,719
+That's one thing we could do.
+
+769
+00:30:43,719 --> 00:30:46,539
+The other Yeah, question right.
+
+770
+00:30:47,230 --> 00:30:50,970
+Yeah, I was just drawing
+to this is in meters,
+
+771
+00:30:50,970 --> 00:30:53,009
+maybe I'll just make a
+note of that, right?
+
+772
+00:30:53,009 --> 00:30:57,329
+So returns distance and meters.
+
+773
+00:30:57,329 --> 00:30:59,889
+And I just want kilometers.
+Yeah, that's all.
+
+774
+00:30:59,889 --> 00:31:01,689
+Good question. Other questions
+
+775
+00:31:01,689 --> 00:31:03,529
+people have. Oh, yeah, here.
+
+776
+00:31:03,529 --> 00:31:05,030
+Address something
+similar earlier,
+
+777
+00:31:05,030 --> 00:31:08,709
+but if I were to form
+right now and you re Yeah.
+
+778
+00:31:08,709 --> 00:31:10,310
+Oh, yeah, that's
+a good question.
+
+779
+00:31:10,310 --> 00:31:12,230
+What adapt right now,
+
+780
+00:31:12,230 --> 00:31:14,289
+and sort of, right?
+
+781
+00:31:14,289 --> 00:31:17,450
+So earlier, the answer was
+yes, because at that point,
+
+782
+00:31:17,450 --> 00:31:22,949
+I was I had done this, right?
+
+783
+00:31:22,949 --> 00:31:24,909
+So when I am
+registering this here,
+
+784
+00:31:24,909 --> 00:31:27,310
+I'm not copying the
+data and to Big Query.
+
+785
+00:31:27,310 --> 00:31:28,829
+I'm just try pointing to
+it externally, right.
+
+786
+00:31:28,829 --> 00:31:30,850
+And so this table is
+called applications.
+
+787
+00:31:30,850 --> 00:31:32,350
+So every time I
+query applications,
+
+788
+00:31:32,350 --> 00:31:33,990
+applications will be
+the most recent version
+
+789
+00:31:33,990 --> 00:31:35,510
+of it, it'll keep refreshing.
+
+790
+00:31:35,510 --> 00:31:38,570
+Now, if I go a little
+bit further down,
+
+791
+00:31:38,570 --> 00:31:40,069
+I start with applications,
+
+792
+00:31:40,069 --> 00:31:41,690
+and at some point,
+
+793
+00:31:41,690 --> 00:31:44,990
+I did create a replace table.
+
+794
+00:31:44,990 --> 00:31:48,089
+No not that one. I did
+
+795
+00:31:48,290 --> 00:31:51,210
+Trader replaced table
+houses down here.
+
+796
+00:31:51,210 --> 00:31:52,629
+And so when I do that creer
+
+797
+00:31:52,629 --> 00:31:54,229
+replaced table, to
+create that table,
+
+798
+00:31:54,229 --> 00:31:55,930
+it gets a snapshot
+at a single point
+
+799
+00:31:55,930 --> 00:31:57,829
+in time of applications, right?
+
+800
+00:31:57,829 --> 00:31:59,789
+So applications will
+always reflect the latest.
+
+801
+00:31:59,789 --> 00:32:03,089
+Houses reflected the state
+at that moment. I did that.
+
+802
+00:32:03,089 --> 00:32:04,449
+Do you have any ideas, like,
+
+803
+00:32:04,449 --> 00:32:07,389
+if I did want houses
+to be updated live,
+
+804
+00:32:07,389 --> 00:32:10,050
+too, or what I do instead
+of creating a table?
+
+805
+00:32:14,410 --> 00:32:17,349
+Ist of a table,
+what else we have?
+
+806
+00:32:17,349 --> 00:32:24,219
+In Sequel. Right here.
+
+807
+00:32:24,219 --> 00:32:27,140
+High views Yeah,
+we've had high views,
+
+808
+00:32:27,140 --> 00:32:29,099
+high views, and
+that's something that
+
+809
+00:32:29,099 --> 00:32:30,320
+exists and big query
+
+810
+00:32:30,320 --> 00:32:31,579
+exists in lots of
+different things, right?
+
+811
+00:32:31,579 --> 00:32:33,980
+So we would just create a
+view if we wanted to be live.
+
+812
+00:32:33,980 --> 00:32:35,740
+Yeah, excellent
+question. Alright, Cl.
+
+813
+00:32:35,740 --> 00:32:37,360
+So I we're in good
+shape. There questions.
+
+814
+00:32:37,360 --> 00:32:39,140
+I say hand up somewhere
+at some point.
+
+815
+00:32:39,140 --> 00:32:41,199
+Maybe it was a related topic.
+
+816
+00:32:41,199 --> 00:32:44,679
+Alright, C. So what I
+want to look at now is,
+
+817
+00:32:44,679 --> 00:32:46,539
+how can we actually
+figure out not just like,
+
+818
+00:32:46,539 --> 00:32:47,800
+who's closest to a point,
+
+819
+00:32:47,800 --> 00:32:50,639
+but which polygon
+are you in, right?
+
+820
+00:32:50,639 --> 00:32:51,859
+And so we're going
+to have a function
+
+821
+00:32:51,859 --> 00:32:53,779
+that is called within.
+
+822
+00:32:53,779 --> 00:32:57,679
+And so let's come down here
+and I'm going to paste
+
+823
+00:32:57,679 --> 00:33:03,679
+this You know what,
+
+824
+00:33:03,679 --> 00:33:08,979
+we could actually even
+just do this again, right?
+
+825
+00:33:08,979 --> 00:33:10,519
+I'll start here. All right.
+
+826
+00:33:10,519 --> 00:33:11,580
+So I want to see the ones
+
+827
+00:33:11,580 --> 00:33:12,879
+that are within some
+counties, right?
+
+828
+00:33:12,879 --> 00:33:18,339
+I'm say DF, and I
+am going to select,
+
+829
+00:33:18,339 --> 00:33:21,359
+you know, some houses, right?
+
+830
+00:33:21,359 --> 00:33:25,840
+And I'm going to do that
+from Section two houses.
+
+831
+00:33:25,840 --> 00:33:29,700
+Okay. And now I want to pair
+it up with that county data,
+
+832
+00:33:29,700 --> 00:33:31,660
+the way I'm going to do
+that is I say a cross join.
+
+833
+00:33:31,660 --> 00:33:36,439
+I'm going to say cross join
+with Wisconsin, right?
+
+834
+00:33:36,439 --> 00:33:38,499
+I have all those Wisconsin
+counties, right?
+
+835
+00:33:38,499 --> 00:33:41,859
+Somewhere. Here they
+are. Cross joining that.
+
+836
+00:33:41,859 --> 00:33:45,539
+And that's going to pair
+up every single house
+
+837
+00:33:45,539 --> 00:33:47,159
+with every single county,
+
+838
+00:33:47,159 --> 00:33:48,979
+right? Okay. So I'm to do that.
+
+839
+00:33:48,979 --> 00:33:52,840
+And then what I may do is I
+may say where houses Well,
+
+840
+00:33:52,840 --> 00:33:56,239
+location is within
+that county, right?
+
+841
+00:33:56,239 --> 00:33:57,800
+So I'm going to do
+that with using
+
+842
+00:33:57,800 --> 00:33:59,519
+this function tel within.
+
+843
+00:33:59,519 --> 00:34:01,379
+So when that location is
+
+844
+00:34:01,379 --> 00:34:06,099
+within the Wisconsin
+county geometry,
+
+845
+00:34:06,099 --> 00:34:07,579
+then I'm going to
+filter that out.
+
+846
+00:34:07,579 --> 00:34:09,139
+I'm going to say
+where that is true.
+
+847
+00:34:09,139 --> 00:34:11,139
+This is my filter I'm
+
+848
+00:34:11,139 --> 00:34:13,360
+use the word predicate for
+that. Here's my predicate.
+
+849
+00:34:13,360 --> 00:34:16,119
+And um When I look at it,
+
+850
+00:34:16,119 --> 00:34:16,979
+and naively seems like
+
+851
+00:34:16,979 --> 00:34:18,199
+something that's going to
+be really slow, right,
+
+852
+00:34:18,199 --> 00:34:19,879
+that I have to pair up
+every single house with
+
+853
+00:34:19,879 --> 00:34:22,019
+every single county and then
+filter down after the fact.
+
+854
+00:34:22,019 --> 00:34:23,159
+But people do this all the time.
+
+855
+00:34:23,159 --> 00:34:24,299
+So then D Google came along,
+
+856
+00:34:24,299 --> 00:34:25,819
+and they optimize it.
+
+857
+00:34:25,819 --> 00:34:26,619
+So even though it looks like
+
+858
+00:34:26,619 --> 00:34:27,759
+something that's
+going to be slow,
+
+859
+00:34:27,759 --> 00:34:29,219
+this is one of the
+things that's going to
+
+860
+00:34:29,219 --> 00:34:30,619
+be fast because they
+documented that they have
+
+861
+00:34:30,619 --> 00:34:33,379
+special optimizations
+for this one, right?
+
+862
+00:34:33,379 --> 00:34:35,799
+So be very careful with
+the cross toin unless it's
+
+863
+00:34:35,799 --> 00:34:36,999
+documented that they
+have some type of
+
+864
+00:34:36,999 --> 00:34:39,039
+optimization. Alright,
+so I have that.
+
+865
+00:34:39,039 --> 00:34:41,180
+And then I think in
+addition to those houses,
+
+866
+00:34:41,180 --> 00:34:43,139
+and I can just say, you know,
+
+867
+00:34:43,139 --> 00:34:45,179
+the co not geometry,
+
+868
+00:34:45,179 --> 00:34:46,519
+but the county name, right?
+
+869
+00:34:46,519 --> 00:34:49,059
+F Wisconsin, let's try that.
+
+870
+00:34:49,059 --> 00:34:50,460
+And see how many people picked
+
+871
+00:34:50,460 --> 00:34:52,539
+houses in Wisconsin, right?
+
+872
+00:34:52,539 --> 00:34:54,255
+So if I look at DF,
+
+873
+00:34:54,255 --> 00:34:57,109
+only one of them right
+now. Okay, so that's fine.
+
+874
+00:34:57,109 --> 00:34:58,949
+So we have one person
+that their dream
+
+875
+00:34:58,949 --> 00:35:00,889
+houses in Wisconsin, for them.
+
+876
+00:35:00,889 --> 00:35:02,469
+And what I'm I do now is I'm
+
+877
+00:35:02,469 --> 00:35:04,389
+plot this on top of
+my Wisconsin map.
+
+878
+00:35:04,389 --> 00:35:07,070
+So if I come back to
+here like before,
+
+879
+00:35:07,070 --> 00:35:10,049
+then fingers cross,
+if I do this right,
+
+880
+00:35:10,049 --> 00:35:12,569
+then I'm only going to
+see that one point,
+
+881
+00:35:12,569 --> 00:35:14,830
+and that's where some
+of these dream houses,
+
+882
+00:35:14,830 --> 00:35:17,310
+and that was in Marinett County.
+
+883
+00:35:17,310 --> 00:35:18,889
+A right? And then, you
+know, I'm sure that
+
+884
+00:35:18,889 --> 00:35:20,729
+as you all are filling
+this out and doing PA,
+
+885
+00:35:20,729 --> 00:35:22,370
+like, we're going to,
+you know, see more stuff
+
+886
+00:35:22,370 --> 00:35:24,209
+like this on the maps, right?
+
+887
+00:35:24,209 --> 00:35:25,769
+If people kind of
+more carefully choose
+
+888
+00:35:25,769 --> 00:35:28,049
+their coordinates.
+Alright, cool.
+
+889
+00:35:28,049 --> 00:35:29,789
+Any question about
+the cross join
+
+890
+00:35:29,789 --> 00:35:31,390
+or this predicate filter
+
+891
+00:35:31,390 --> 00:35:35,479
+here? All right. Cool.
+
+892
+00:35:35,960 --> 00:35:38,599
+Now, there's another
+version of this
+
+893
+00:35:38,599 --> 00:35:41,899
+called WN or D WN, right?
+
+894
+00:35:41,899 --> 00:35:45,580
+And so ST D within
+
+895
+00:35:45,580 --> 00:35:50,539
+means within some
+given distance, right?
+
+896
+00:35:50,539 --> 00:35:52,219
+And you can imagine
+lots of things like,
+
+897
+00:35:52,219 --> 00:35:55,199
+maybe maybe I have
+one data set of like
+
+898
+00:35:55,199 --> 00:35:59,160
+houses and one dataset
+of of restaurants.
+
+899
+00:35:59,160 --> 00:36:00,860
+I'm try to say which restaurants
+
+900
+00:36:00,860 --> 00:36:02,499
+near which houses,
+and then, you know,
+
+901
+00:36:02,499 --> 00:36:04,020
+I can have a marketing campaign
+
+902
+00:36:04,020 --> 00:36:05,959
+based around that
+Dan concept, right?
+
+903
+00:36:05,959 --> 00:36:09,199
+So I want to see how far are
+things away from each other.
+
+904
+00:36:09,199 --> 00:36:12,259
+I, what I'm may to do just
+for simplicity is I'm going
+
+905
+00:36:12,259 --> 00:36:15,579
+to have one data set
+of houses, right?
+
+906
+00:36:15,579 --> 00:36:17,479
+And I may have one data set,
+
+907
+00:36:17,479 --> 00:36:18,819
+which is of the centroids
+
+908
+00:36:18,819 --> 00:36:20,359
+of each county, and I
+can just see, like,
+
+909
+00:36:20,359 --> 00:36:22,974
+Well, for each house, you know,
+
+910
+00:36:22,974 --> 00:36:25,489
+which counties are
+within some range of it.
+
+911
+00:36:25,489 --> 00:36:27,069
+And honestly, there
+probably won't be a lot
+
+912
+00:36:27,069 --> 00:36:28,189
+because right now
+we only have one
+
+913
+00:36:28,189 --> 00:36:29,369
+data point in Wisconsin, right?
+
+914
+00:36:29,369 --> 00:36:30,989
+But we're going to
+set a radius, right?
+
+915
+00:36:30,989 --> 00:36:34,129
+We'll probably get a few of
+these on top of it, right?
+
+916
+00:36:34,129 --> 00:36:35,669
+Alright, so how are
+we going to do this?
+
+917
+00:36:35,669 --> 00:36:39,670
+We are going to
+say big big query.
+
+918
+00:36:40,350 --> 00:36:43,070
+Right? And we're going
+to sect something
+
+919
+00:36:43,070 --> 00:36:47,029
+from the houses, right?
+
+920
+00:36:47,029 --> 00:36:49,909
+And we're a cross join.
+
+921
+00:36:50,350 --> 00:36:56,209
+We're a cross train against
+Wisconsin, right so.
+
+922
+00:36:56,209 --> 00:36:58,069
+Remember that I'm
+just going to do
+
+923
+00:36:58,069 --> 00:37:00,070
+this as a different
+example of the syntax.
+
+924
+00:37:00,070 --> 00:37:01,849
+That means exactly
+the same thing.
+
+925
+00:37:01,849 --> 00:37:04,049
+That is a cross join. I
+have a cross train there.
+
+926
+00:37:04,049 --> 00:37:11,609
+And I'm going to say where
+the distance All right.
+
+927
+00:37:11,609 --> 00:37:13,650
+So what I want to say
+is that the house
+
+928
+00:37:13,650 --> 00:37:16,049
+is within some distance from
+the centroid over here.
+
+929
+00:37:16,049 --> 00:37:18,169
+So which points from
+the left hand side are
+
+930
+00:37:18,169 --> 00:37:20,569
+near points on the
+right hand side, right?
+
+931
+00:37:20,569 --> 00:37:23,930
+I may say the
+houses do location.
+
+932
+00:37:23,930 --> 00:37:26,949
+And on the right hand
+side, I may say, Well,
+
+933
+00:37:26,949 --> 00:37:28,469
+I guess I have the
+county geometry,
+
+934
+00:37:28,469 --> 00:37:30,129
+but I really want to have
+a single point, right?
+
+935
+00:37:30,129 --> 00:37:31,589
+So I'm may say, what is
+
+936
+00:37:31,589 --> 00:37:33,989
+the centroid for
+that? S I have that.
+
+937
+00:37:33,989 --> 00:37:35,329
+And then the last thing that
+
+938
+00:37:35,329 --> 00:37:36,750
+remains is just
+having a distance.
+
+939
+00:37:36,750 --> 00:37:41,344
+And let's say 30,000 kilometers,
+right? So may do that?
+
+940
+00:37:41,344 --> 00:37:43,179
+Oh, then what do I need up here?
+
+941
+00:37:43,179 --> 00:37:45,620
+I need to say, like, the houses
+
+942
+00:37:45,620 --> 00:37:47,660
+Well, let's do everything.
+
+943
+00:37:47,660 --> 00:37:51,179
+And then section
+two or I'm sorry,
+
+944
+00:37:51,179 --> 00:37:54,839
+the wisconsin dot
+county name, right?
+
+945
+00:37:54,839 --> 00:37:58,459
+So, what am I having
+an issue with now?
+
+946
+00:37:58,459 --> 00:38:00,159
+It's called Section two.
+
+947
+00:38:00,159 --> 00:38:05,559
+And this is line three on
+character this line three?
+
+948
+00:38:06,310 --> 00:38:12,389
+Yeah. And it's always kind
+of I always like a little
+
+949
+00:38:12,389 --> 00:38:14,829
+bit picky about when I I
+
+950
+00:38:14,829 --> 00:38:16,109
+haven't quite learned
+the rules about when
+
+951
+00:38:16,109 --> 00:38:17,809
+I need to fully
+qualify it or not.
+
+952
+00:38:17,809 --> 00:38:20,049
+Is that the same thing?
+
+953
+00:38:20,049 --> 00:38:22,789
+Now I guess I probably have
+to put ticks around it.
+
+954
+00:38:22,789 --> 00:38:26,669
+So let's try that. Okay, I
+just gets worse and worse,
+
+955
+00:38:26,669 --> 00:38:28,709
+Okay, what did I do wrong?
+
+956
+00:38:28,709 --> 00:38:35,649
+So under Section
+two, You know what?
+
+957
+00:38:35,649 --> 00:38:37,209
+I just have Wisconsin
+right here.
+
+958
+00:38:37,209 --> 00:38:39,289
+I think I can just say
+Wisconsin actually,
+
+959
+00:38:39,289 --> 00:38:43,409
+Wisconsin G County geometry.
+
+960
+00:38:43,409 --> 00:38:45,149
+County
+
+961
+00:38:59,929 --> 00:39:01,709
+If somebody sees,
+
+962
+00:39:01,709 --> 00:39:04,069
+like, some obvious typo
+that I did, let me know.
+
+963
+00:39:04,069 --> 00:39:06,069
+Did you mean county geometry?
+
+964
+00:39:06,069 --> 00:39:09,229
+For some reason, I'm not
+seeing the difference there.
+
+965
+00:39:09,229 --> 00:39:11,609
+Yeah, that is what I meant.
+
+966
+00:39:11,609 --> 00:39:14,009
+It's like, did you really
+mean to have a typo there?
+
+967
+00:39:14,009 --> 00:39:20,739
+I don't know if anybody I
+mean, this one was working.
+
+968
+00:39:20,739 --> 00:39:21,979
+L' row back to something that's
+
+969
+00:39:21,979 --> 00:39:23,159
+working and try one
+more time, right?
+
+970
+00:39:23,159 --> 00:39:25,499
+So I'm to come back to this one.
+
+971
+00:39:26,619 --> 00:39:29,739
+That was working just fine.
+
+972
+00:39:31,860 --> 00:39:34,699
+That runs, right? And then
+
+973
+00:39:34,699 --> 00:39:36,739
+I wanted to do distance within.
+
+974
+00:39:36,739 --> 00:39:38,999
+And then over on this side,
+
+975
+00:39:38,999 --> 00:39:43,219
+I wanted to get the
+centroid, right?
+
+976
+00:39:43,219 --> 00:39:44,779
+So I don't know
+what I type wrong,
+
+977
+00:39:44,779 --> 00:39:46,219
+but let's see if that works.
+
+978
+00:39:46,219 --> 00:39:47,639
+And then I finally
+need to have an
+
+979
+00:39:47,639 --> 00:39:48,939
+argument over here
+for the distance.
+
+980
+00:39:48,939 --> 00:39:50,479
+And we said 30,000.
+
+981
+00:39:50,479 --> 00:39:52,899
+All right, Now we can see which
+
+982
+00:39:52,899 --> 00:39:55,539
+houses are within
+than kilometers,
+
+983
+00:39:55,539 --> 00:40:00,539
+maybe like 50,000 And
+
+984
+00:40:00,539 --> 00:40:01,779
+now there's like a couple that
+
+985
+00:40:01,779 --> 00:40:03,499
+are within that range, right?
+
+986
+00:40:03,499 --> 00:40:05,559
+Cool. So we can see
+which houses are
+
+987
+00:40:05,559 --> 00:40:07,539
+near which county centroids.
+
+988
+00:40:07,539 --> 00:40:09,819
+Alright. Sorry you got
+so confused on that one,
+
+989
+00:40:09,819 --> 00:40:11,619
+but any questions
+about that one?
+
+990
+00:40:11,619 --> 00:40:17,149
+Here. The distance, yeah,
+can we get the distance.
+
+991
+00:40:17,149 --> 00:40:20,209
+Sure. Absolutely.
+This is just returns,
+
+992
+00:40:20,929 --> 00:40:23,469
+that's returning a
+true false, right?
+
+993
+00:40:23,469 --> 00:40:25,229
+If I did this, it
+would always be true.
+
+994
+00:40:25,229 --> 00:40:27,329
+But if I just wanted the
+distance, then I would say,
+
+995
+00:40:27,329 --> 00:40:30,569
+well, what is the distance?
+
+996
+00:40:30,569 --> 00:40:33,469
+So was one of the
+earlier ones we saw.
+
+997
+00:40:33,469 --> 00:40:35,909
+Sometimes I want to
+turn into a boolean.
+
+998
+00:40:35,909 --> 00:40:37,989
+Sometimes I want
+it to not be that.
+
+999
+00:40:37,989 --> 00:40:42,129
+Then I can see the
+distances over here, right?
+
+1000
+00:40:42,129 --> 00:40:44,909
+All right. Cool. Is that
+what you're going for?
+
+1001
+00:40:44,909 --> 00:40:46,544
+Yeah, other questions
+people have.
+
+1002
+00:40:46,544 --> 00:40:55,439
+Yeah, right here. Both of
+
+1003
+00:40:55,439 --> 00:40:57,539
+these rows have the
+same latitude and
+
+1004
+00:40:57,539 --> 00:40:59,859
+longitude and the
+same time, right?
+
+1005
+00:40:59,859 --> 00:41:02,059
+Because it's It is
+the same time, right?
+
+1006
+00:41:02,059 --> 00:41:03,819
+Yeah, so it's the
+same row, right?
+
+1007
+00:41:03,819 --> 00:41:06,099
+Because, you know, I
+have a bunch of houses,
+
+1008
+00:41:06,099 --> 00:41:08,079
+and I have a bunch
+of locations, right?
+
+1009
+00:41:08,079 --> 00:41:12,499
+And so each house could be
+near a bunch of locations.
+
+1010
+00:41:12,499 --> 00:41:15,060
+Each location could be
+near a bunch of houses.
+
+1011
+00:41:15,060 --> 00:41:17,079
+It's kind of weird data sete is
+
+1012
+00:41:17,079 --> 00:41:18,659
+I have like one point
+actually in Wisconsin.
+
+1013
+00:41:18,659 --> 00:41:20,979
+But in general, right, I would
+have an output here that's
+
+1014
+00:41:20,979 --> 00:41:22,099
+much larger than either of
+
+1015
+00:41:22,099 --> 00:41:23,639
+my two inputs. That makes sense?
+
+1016
+00:41:23,639 --> 00:41:27,079
+Yeah, thanks for asking. Other
+of questions people have.
+
+1017
+00:41:27,659 --> 00:41:31,399
+Right. Cool. So what
+I want to do next is
+
+1018
+00:41:31,399 --> 00:41:32,779
+just show some
+other things where
+
+1019
+00:41:32,779 --> 00:41:34,559
+we actually want less
+precision, right?
+
+1020
+00:41:34,559 --> 00:41:37,939
+And so I want to look
+at some approximations.
+
+1021
+00:41:37,939 --> 00:41:39,619
+And these are for either like
+
+1022
+00:41:39,619 --> 00:41:42,939
+privacy or machine learning.
+
+1023
+00:41:43,699 --> 00:41:47,039
+All right. And the
+first one is that
+
+1024
+00:41:47,039 --> 00:41:48,399
+sometimes we want to round
+
+1025
+00:41:48,399 --> 00:41:49,979
+these latitude and
+longitude points.
+
+1026
+00:41:49,979 --> 00:41:51,419
+And so let me just do this.
+
+1027
+00:41:51,419 --> 00:41:54,639
+I may say big query.
+And so I could select
+
+1028
+00:41:54,639 --> 00:42:01,820
+houses dot star from
+Section two dot Houses.
+
+1029
+00:42:01,820 --> 00:42:04,019
+That's what we've
+been doing, right?
+
+1030
+00:42:04,940 --> 00:42:07,379
+Alright. And you
+can imagine that,
+
+1031
+00:42:07,379 --> 00:42:09,079
+Maybe I want some
+data scientists
+
+1032
+00:42:09,079 --> 00:42:10,559
+to do some work on these things,
+
+1033
+00:42:10,559 --> 00:42:12,219
+but I don't want to tell them,
+like the exact location of
+
+1034
+00:42:12,219 --> 00:42:13,259
+everybody's house because that'd
+
+1035
+00:42:13,259 --> 00:42:14,239
+be kind of creepy, right?
+
+1036
+00:42:14,239 --> 00:42:16,159
+So for this location,
+if I want to,
+
+1037
+00:42:16,159 --> 00:42:18,814
+I can say snap.
+
+1038
+00:42:18,814 --> 00:42:20,789
+Two grid, right?
+
+1039
+00:42:20,789 --> 00:42:22,009
+And then I can have
+
+1040
+00:42:22,009 --> 00:42:23,849
+some drid of some
+granularity that I want.
+
+1041
+00:42:23,849 --> 00:42:26,449
+So I could say location.
+And then I don't know,
+
+1042
+00:42:26,449 --> 00:42:29,729
+0.1, I think would be kind
+of reasonable, right?
+
+1043
+00:42:29,729 --> 00:42:32,749
+So I could do that. And
+then I could you know,
+
+1044
+00:42:32,749 --> 00:42:34,129
+they would use this
+information over here.
+
+1045
+00:42:34,129 --> 00:42:36,189
+I could see approximately
+where these locations are.
+
+1046
+00:42:36,189 --> 00:42:37,469
+They could do a lot of analysis,
+
+1047
+00:42:37,469 --> 00:42:39,429
+but they won't know
+exactly where people live.
+
+1048
+00:42:39,429 --> 00:42:41,169
+So you might have some
+kind of pre processing in
+
+1049
+00:42:41,169 --> 00:42:43,630
+a pipeline that hide
+some information,
+
+1050
+00:42:43,630 --> 00:42:44,889
+but not all the information.
+
+1051
+00:42:44,889 --> 00:42:46,269
+That's one thing you
+might want to do.
+
+1052
+00:42:46,269 --> 00:42:48,549
+An Other case where you might
+want to lose information is
+
+1053
+00:42:48,549 --> 00:42:51,449
+that Maybe we're doing some
+kind of machine learning,
+
+1054
+00:42:51,449 --> 00:42:52,729
+and we want to put
+these houses in
+
+1055
+00:42:52,729 --> 00:42:54,109
+different categories based on
+
+1056
+00:42:54,109 --> 00:42:55,409
+how close they are
+to each other.
+
+1057
+00:42:55,409 --> 00:42:57,929
+I mean, I couldn't use
+the county geometry for
+
+1058
+00:42:57,929 --> 00:43:00,189
+that because I guess
+
+1059
+00:43:00,189 --> 00:43:01,249
+house in the same county
+
+1060
+00:43:01,249 --> 00:43:02,674
+are somewhat close
+to each other.
+
+1061
+00:43:02,674 --> 00:43:04,799
+That doesn't necessarily
+make a lot of sense
+
+1062
+00:43:04,799 --> 00:43:08,119
+because counties are
+different sizes.
+
+1063
+00:43:08,360 --> 00:43:11,839
+You know, metro regions
+might cross counties.
+
+1064
+00:43:11,839 --> 00:43:14,039
+It's a little bit arbitrary
+in a lot of ways, right?
+
+1065
+00:43:14,039 --> 00:43:15,639
+And what I might want to
+do is I might want to
+
+1066
+00:43:15,639 --> 00:43:17,359
+just break up the
+world into grids and
+
+1067
+00:43:17,359 --> 00:43:20,099
+assign names to
+different squares
+
+1068
+00:43:20,099 --> 00:43:21,339
+in that grid and then say,
+
+1069
+00:43:21,339 --> 00:43:23,739
+well, which square
+is each house.
+
+1070
+00:43:23,739 --> 00:43:26,060
+All right, Somebody I do
+that. It's kind of similar.
+
+1071
+00:43:26,060 --> 00:43:29,819
+And the function for that
+is called Geo, right?
+
+1072
+00:43:29,819 --> 00:43:32,509
+Somebo do it Geo
+H. And then I say,
+
+1073
+00:43:32,509 --> 00:43:34,309
+how many, you know,
+
+1074
+00:43:34,309 --> 00:43:35,829
+characters of
+precision do I want?
+
+1075
+00:43:35,829 --> 00:43:38,609
+Right? I'm to do that.
+And so I'm going to
+
+1076
+00:43:38,609 --> 00:43:41,330
+assign these geo Hah codes
+
+1077
+00:43:41,330 --> 00:43:43,129
+to each of these houses, right?
+
+1078
+00:43:43,129 --> 00:43:44,929
+And if they have the same one,
+
+1079
+00:43:44,929 --> 00:43:46,289
+then they're kind of
+close to each other.
+
+1080
+00:43:46,289 --> 00:43:47,829
+I might treat them the same
+
+1081
+00:43:47,829 --> 00:43:49,570
+from a machine
+learning perspective,
+
+1082
+00:43:49,570 --> 00:43:50,929
+right if I have some
+kind of thing that needs
+
+1083
+00:43:50,929 --> 00:43:53,589
+a categorical variable.
+So I could do that.
+
+1084
+00:43:53,589 --> 00:43:58,289
+If I wanted more more grids
+
+1085
+00:43:58,289 --> 00:44:02,169
+that are finer granular area,
+I could do that, right?
+
+1086
+00:44:02,929 --> 00:44:05,009
+Yeah, so I might do that as
+
+1087
+00:44:05,009 --> 00:44:07,849
+a pre processing stop.
+Yeah, question right here.
+
+1088
+00:44:11,250 --> 00:44:14,529
+That's a good question.
+I don't know if it's
+
+1089
+00:44:14,529 --> 00:44:17,449
+26 or if they have fewer.
+
+1090
+00:44:17,449 --> 00:44:21,629
+I'm not sure. I'm not sure
+how many would be in that ts.
+
+1091
+00:44:21,629 --> 00:44:23,329
+Yeah, but it's a good question.
+
+1092
+00:44:23,329 --> 00:44:27,409
+Questions people have? A right.
+
+1093
+00:44:27,409 --> 00:44:29,609
+Cool. So that's what I
+
+1094
+00:44:29,609 --> 00:44:31,749
+have for the geographic
+computing stuff.
+
+1095
+00:44:31,749 --> 00:44:33,889
+I at least want to
+start some machine
+
+1096
+00:44:33,889 --> 00:44:34,989
+learning stuff today to give a
+
+1097
+00:44:34,989 --> 00:44:36,449
+little bit of an overview there.
+
+1098
+00:44:36,449 --> 00:44:39,209
+And it's my head over
+to these slides.
+
+1099
+00:44:39,209 --> 00:44:42,129
+And there's a couple of
+things in the slide deck.
+
+1100
+00:44:42,129 --> 00:44:43,869
+One is the machine
+learning piece.
+
+1101
+00:44:43,869 --> 00:44:44,989
+And then I also want to spend
+
+1102
+00:44:44,989 --> 00:44:46,349
+some more time about
+thinking about
+
+1103
+00:44:46,349 --> 00:44:48,749
+cost and building some intuition
+
+1104
+00:44:48,749 --> 00:44:50,109
+about when are things
+expensive or not?
+
+1105
+00:44:50,109 --> 00:44:52,309
+So I have three learning
+objectives in these slides.
+
+1106
+00:44:52,309 --> 00:44:54,169
+The first, which is for
+today is to create and use
+
+1107
+00:44:54,169 --> 00:44:56,449
+machine learning
+models with big query.
+
+1108
+00:44:56,449 --> 00:44:58,409
+And I think the interesting
+thing here is that,
+
+1109
+00:44:58,409 --> 00:45:01,409
+you know, it's a very
+sequel oriented system.
+
+1110
+00:45:01,409 --> 00:45:03,329
+And so they try to make
+everything that you do with
+
+1111
+00:45:03,329 --> 00:45:05,789
+machine learning look
+like a query, right?
+
+1112
+00:45:05,789 --> 00:45:06,929
+So kind of creating a model
+
+1113
+00:45:06,929 --> 00:45:08,869
+looks a lot like
+creating a table,
+
+1114
+00:45:08,869 --> 00:45:10,769
+getting predictions, looks like
+
+1115
+00:45:10,769 --> 00:45:12,689
+you're querying over
+those predictions, right?
+
+1116
+00:45:12,689 --> 00:45:15,529
+Kind of an elegant novel
+thing that we'll see a little
+
+1117
+00:45:15,529 --> 00:45:18,715
+bit different than the Spark
+API for machine learning.
+
+1118
+00:45:18,715 --> 00:45:20,899
+All right, so let's
+look at some basics.
+
+1119
+00:45:20,899 --> 00:45:22,119
+One of the first
+things you're going to
+
+1120
+00:45:22,119 --> 00:45:23,159
+do if you have some data
+
+1121
+00:45:23,159 --> 00:45:24,559
+set machine learning is
+
+1122
+00:45:24,559 --> 00:45:26,279
+you want to do a
+train test split.
+
+1123
+00:45:26,279 --> 00:45:27,839
+And they provide a function
+
+1124
+00:45:27,839 --> 00:45:29,479
+for that called the
+data split method.
+
+1125
+00:45:29,479 --> 00:45:31,079
+And I'm going to give
+you all the reasons
+
+1126
+00:45:31,079 --> 00:45:32,639
+why you should never use it.
+
+1127
+00:45:32,639 --> 00:45:34,639
+And then I'll suggest
+an alternative, right?
+
+1128
+00:45:34,639 --> 00:45:35,859
+But it's just like
+Dre and I think that
+
+1129
+00:45:35,859 --> 00:45:37,479
+people kind of
+gravitate towards it.
+
+1130
+00:45:37,479 --> 00:45:39,239
+First off, you generally want to
+
+1131
+00:45:39,239 --> 00:45:41,599
+have some data for training
+and some for test.
+
+1132
+00:45:41,599 --> 00:45:43,259
+You train on the training data,
+
+1133
+00:45:43,259 --> 00:45:46,139
+you evaluate on data that the
+model hasn't seen before.
+
+1134
+00:45:46,139 --> 00:45:47,439
+Otherwise, you might overfit.
+
+1135
+00:45:47,439 --> 00:45:48,800
+Like you might
+just t to memorize
+
+1136
+00:45:48,800 --> 00:45:50,519
+a random quirks of the dataset.
+
+1137
+00:45:50,519 --> 00:45:51,839
+And then it looks like
+
+1138
+00:45:51,839 --> 00:45:53,359
+your performance is
+better than it is.
+
+1139
+00:45:53,359 --> 00:45:56,099
+So you might decide normally
+what that split is.
+
+1140
+00:45:56,099 --> 00:45:57,979
+Now, they made some weird
+decisions here, right,
+
+1141
+00:45:57,979 --> 00:46:00,609
+if you have less than 500 rows.
+
+1142
+00:46:00,609 --> 00:46:02,429
+They will automatically train on
+
+1143
+00:46:02,429 --> 00:46:04,589
+all of the data, which
+is weird, right?
+
+1144
+00:46:04,589 --> 00:46:06,469
+If you have less
+than 50,000 rows,
+
+1145
+00:46:06,469 --> 00:46:09,149
+then you will have 80% for
+training, 20% for test.
+
+1146
+00:46:09,149 --> 00:46:10,569
+And then if it's bigger
+than that, it'll
+
+1147
+00:46:10,569 --> 00:46:11,849
+be 10,000 rows for test,
+
+1148
+00:46:11,849 --> 00:46:13,749
+and however much
+else for training.
+
+1149
+00:46:13,749 --> 00:46:15,309
+Is that about a weird decision
+
+1150
+00:46:15,309 --> 00:46:17,729
+there already that they're
+doing that for you?
+
+1151
+00:46:17,729 --> 00:46:20,009
+If you just say, Hey, train a
+model and here's some data,
+
+1152
+00:46:20,009 --> 00:46:22,124
+they're going to do that
+automatically for you.
+
+1153
+00:46:22,124 --> 00:46:24,419
+Now, the other issue I have,
+
+1154
+00:46:24,419 --> 00:46:25,699
+which they document here.
+
+1155
+00:46:25,699 --> 00:46:27,139
+I have a straight quote from it,
+
+1156
+00:46:27,139 --> 00:46:29,139
+is that after they do
+that train test split,
+
+1157
+00:46:29,139 --> 00:46:30,699
+there was some
+randomness involved.
+
+1158
+00:46:30,699 --> 00:46:32,159
+But they remember
+what the split is,
+
+1159
+00:46:32,159 --> 00:46:34,299
+and they remember
+that for 48 hours.
+
+1160
+00:46:34,299 --> 00:46:35,439
+So it'll really feel like
+
+1161
+00:46:35,439 --> 00:46:36,519
+it's deterministic and all that,
+
+1162
+00:46:36,519 --> 00:46:37,939
+and then two days
+later, it's like,
+
+1163
+00:46:37,939 --> 00:46:40,059
+your results will change
+and surprise you.
+
+1164
+00:46:40,059 --> 00:46:42,099
+Right? And so, my
+first piece of advice
+
+1165
+00:46:42,099 --> 00:46:44,280
+is that when you're
+doing the training,
+
+1166
+00:46:44,280 --> 00:46:45,799
+you just want to
+disable that, right?
+
+1167
+00:46:45,799 --> 00:46:46,959
+You want to say when you
+
+1168
+00:46:46,959 --> 00:46:48,539
+train a model, you want
+to say data split,
+
+1169
+00:46:48,539 --> 00:46:49,899
+method equals no split,
+
+1170
+00:46:49,899 --> 00:46:52,629
+and then do it yourself.
+How can you do it yourself?
+
+1171
+00:46:52,629 --> 00:46:55,309
+You need some kind of
+randomness, and fortunately,
+
+1172
+00:46:55,309 --> 00:46:56,769
+Sequel has this rand function,
+
+1173
+00:46:56,769 --> 00:46:59,589
+which returns the number 0-1.
+
+1174
+00:46:59,589 --> 00:47:01,109
+And that's actually
+nice for getting
+
+1175
+00:47:01,109 --> 00:47:02,909
+some sample of a
+given size, right?
+
+1176
+00:47:02,909 --> 00:47:06,309
+If I say, give me a random
+number 0-1, and I say,
+
+1177
+00:47:06,309 --> 00:47:08,329
+if it's less than 0.2, well,
+
+1178
+00:47:08,329 --> 00:47:11,289
+20% of the 20% of the
+time, it will be, right?
+
+1179
+00:47:11,289 --> 00:47:14,309
+So you can specify
+a ratio, do that.
+
+1180
+00:47:14,309 --> 00:47:16,230
+And then after you split,
+
+1181
+00:47:16,230 --> 00:47:17,969
+save that somewhere
+because yours
+
+1182
+00:47:17,969 --> 00:47:19,329
+is not deterministic either.
+
+1183
+00:47:19,329 --> 00:47:23,389
+Save it in like a train park
+file and test park file,
+
+1184
+00:47:23,389 --> 00:47:26,049
+or something like that,
+and then drove from there.
+
+1185
+00:47:26,049 --> 00:47:28,449
+Okay, so how do we
+actually train this?
+
+1186
+00:47:28,449 --> 00:47:29,969
+Like I said, they
+want to integrate
+
+1187
+00:47:29,969 --> 00:47:31,430
+everything with queries.
+
+1188
+00:47:31,430 --> 00:47:35,109
+And before you can
+train a model, right,
+
+1189
+00:47:35,109 --> 00:47:36,869
+you have to show
+it some features
+
+1190
+00:47:36,869 --> 00:47:39,209
+and some labels with some
+data in each of those.
+
+1191
+00:47:39,209 --> 00:47:40,689
+And so what better
+way to prepare
+
+1192
+00:47:40,689 --> 00:47:42,549
+that than with a query, right?
+
+1193
+00:47:42,549 --> 00:47:43,889
+When you start doing
+machine learning
+
+1194
+00:47:43,889 --> 00:47:45,709
+with big query,
+first think, Okay,
+
+1195
+00:47:45,709 --> 00:47:47,530
+let me write a query that brings
+
+1196
+00:47:47,530 --> 00:47:49,550
+all my features and
+labels together.
+
+1197
+00:47:49,550 --> 00:47:51,629
+So maybe I'm trying to predict
+the temperature today,
+
+1198
+00:47:51,629 --> 00:47:53,210
+and I might look at the humidity
+
+1199
+00:47:53,210 --> 00:47:54,949
+today and the
+temperature yesterday.
+
+1200
+00:47:54,949 --> 00:47:56,649
+I could write some
+query to do that.
+
+1201
+00:47:56,649 --> 00:48:01,239
+That its both features and
+my label. Then what do I do?
+
+1202
+00:48:01,239 --> 00:48:02,979
+Well, we already saw
+the syntax earlier
+
+1203
+00:48:02,979 --> 00:48:04,999
+where I could say create
+or replace table.
+
+1204
+00:48:04,999 --> 00:48:06,719
+And instead of that we're
+going to say create
+
+1205
+00:48:06,719 --> 00:48:08,539
+a replace model. Okay?
+
+1206
+00:48:08,539 --> 00:48:10,459
+We're going to do
+that. And then it
+
+1207
+00:48:10,459 --> 00:48:12,860
+has that same as
+syntax as before.
+
+1208
+00:48:12,860 --> 00:48:14,780
+And then we put a query
+down here that's getting
+
+1209
+00:48:14,780 --> 00:48:18,819
+those features and
+labels, right?
+
+1210
+00:48:18,819 --> 00:48:20,760
+So if you know some SQL stuff
+
+1211
+00:48:20,760 --> 00:48:23,179
+and you know how to create
+tables and do queries,
+
+1212
+00:48:23,179 --> 00:48:24,649
+well, all of a sudden,
+
+1213
+00:48:24,649 --> 00:48:25,789
+it's not much more work to make
+
+1214
+00:48:25,789 --> 00:48:27,149
+a machine learning model, right?
+
+1215
+00:48:27,149 --> 00:48:29,010
+So like I said, it's
+of a novel approach.
+
+1216
+00:48:29,010 --> 00:48:30,529
+They have that in
+the same hierarchy
+
+1217
+00:48:30,529 --> 00:48:32,029
+that they do for tables, right?
+
+1218
+00:48:32,029 --> 00:48:34,869
+So a table goes project
+data set table.
+
+1219
+00:48:34,869 --> 00:48:37,689
+Here, they'll have
+project dataset model.
+
+1220
+00:48:37,689 --> 00:48:39,829
+So why are they grouping
+tables and models together?
+
+1221
+00:48:39,829 --> 00:48:41,969
+Well, obviously, I can
+query from a table.
+
+1222
+00:48:41,969 --> 00:48:43,509
+It's a little less
+intuitive, but
+
+1223
+00:48:43,509 --> 00:48:44,749
+I can also query from a model.
+
+1224
+00:48:44,749 --> 00:48:47,289
+Right? If a model has inputs,
+
+1225
+00:48:47,289 --> 00:48:48,769
+then I could query
+and say, well,
+
+1226
+00:48:48,769 --> 00:48:51,659
+what are the predictions,
+right? That it gives me.
+
+1227
+00:48:51,659 --> 00:48:52,289
+Right?
+
+1228
+00:48:52,289 --> 00:48:52,549
+Okay.
+
+1229
+00:48:52,549 --> 00:48:54,609
+So there's some options we
+have to provide two, right?
+
+1230
+00:48:54,609 --> 00:48:56,329
+So after I do the
+creator replace model,
+
+1231
+00:48:56,329 --> 00:48:57,669
+I say options out
+here, and you would
+
+1232
+00:48:57,669 --> 00:48:59,469
+say what kind of model
+type you wanted to.
+
+1233
+00:48:59,469 --> 00:49:01,109
+Like a lintor regression
+
+1234
+00:49:01,109 --> 00:49:03,630
+would put coefficients on
+each of your features.
+
+1235
+00:49:03,630 --> 00:49:05,409
+I say, multiply this
+column by three,
+
+1236
+00:49:05,409 --> 00:49:07,769
+that column by four,
+add it all together.
+
+1237
+00:49:07,769 --> 00:49:09,049
+There you have a
+prediction, right?
+
+1238
+00:49:09,049 --> 00:49:12,169
+So we could do that. A bunch
+of these are based on trees.
+
+1239
+00:49:12,169 --> 00:49:13,829
+They don't have straight
+up decision trees
+
+1240
+00:49:13,829 --> 00:49:15,129
+like we learned the semester,
+
+1241
+00:49:15,129 --> 00:49:16,709
+but all of these four I've
+
+1242
+00:49:16,709 --> 00:49:18,709
+listed here are variants
+on that, right?
+
+1243
+00:49:18,709 --> 00:49:20,649
+They have classifiers
+and regressors.
+
+1244
+00:49:20,649 --> 00:49:24,890
+If you're predicting a
+category or a number,
+
+1245
+00:49:24,890 --> 00:49:27,529
+all of these are kind
+of based on having
+
+1246
+00:49:27,529 --> 00:49:29,259
+a a bunch of
+
+1247
+00:49:29,259 --> 00:49:32,019
+simple trees that are
+basically evoding, right?
+
+1248
+00:49:32,019 --> 00:49:34,760
+The random forest, all the
+trees are kind of equal.
+
+1249
+00:49:34,760 --> 00:49:35,959
+With the boosted one, they're
+
+1250
+00:49:35,959 --> 00:49:37,240
+trying to intentionally choose
+
+1251
+00:49:37,240 --> 00:49:38,819
+new trees that kind of
+
+1252
+00:49:38,819 --> 00:49:40,839
+counteract the weaknesses
+of the previous trees.
+
+1253
+00:49:40,839 --> 00:49:42,119
+Anyway, a lot of the stuff we've
+
+1254
+00:49:42,119 --> 00:49:43,419
+seen, you could do here as well.
+
+1255
+00:49:43,419 --> 00:49:44,919
+They also have some deep
+
+1256
+00:49:44,919 --> 00:49:47,059
+neural network suff
+which is terrible.
+
+1257
+00:49:47,059 --> 00:49:48,219
+I wouldn't ever use it, right?
+
+1258
+00:49:48,219 --> 00:49:49,479
+It's just very expensive
+
+1259
+00:49:49,479 --> 00:49:50,939
+and it doesn't
+perform very well.
+
+1260
+00:49:50,939 --> 00:49:52,240
+Anyway, they have a
+lot of reasonable
+
+1261
+00:49:52,240 --> 00:49:53,969
+stuff in here as well.
+
+1262
+00:49:53,969 --> 00:49:55,879
+Right? And the very
+last thing that
+
+1263
+00:49:55,879 --> 00:49:57,919
+you can do is when
+you feed this in,
+
+1264
+00:49:57,919 --> 00:50:00,639
+you have to specify which
+column you're trying to train.
+
+1265
+00:50:00,639 --> 00:50:03,499
+In this case, I'm trying
+to train and say,
+
+1266
+00:50:03,499 --> 00:50:05,959
+Hey, this temperature is the
+label I'm trying to predict.
+
+1267
+00:50:05,959 --> 00:50:08,579
+I don't have to specify
+the other features,
+
+1268
+00:50:08,579 --> 00:50:09,840
+because it assumes that anything
+
+1269
+00:50:09,840 --> 00:50:11,419
+that's on a label is a feature.
+
+1270
+00:50:11,419 --> 00:50:12,919
+So do your query
+carefully, right?
+
+1271
+00:50:12,919 --> 00:50:15,199
+Because I just do a
+pretty a bunch of
+
+1272
+00:50:15,199 --> 00:50:16,339
+stuff is trying to try to
+
+1273
+00:50:16,339 --> 00:50:17,820
+turn all of those
+things into features.
+
+1274
+00:50:17,820 --> 00:50:20,159
+Alright, I'll end
+there, and feel
+
+1275
+00:50:20,159 --> 00:50:21,339
+free to come up and
+chat if you have
+
+1276
+00:50:21,339 --> 00:50:23,859
+any questions and
+have a fantastic day.

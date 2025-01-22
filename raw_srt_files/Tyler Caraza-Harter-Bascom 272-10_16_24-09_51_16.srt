@@ -1,0 +1,6063 @@
+1
+00:00:00,000 --> 00:00:01,900
+The exam results for most
+
+2
+00:00:01,900 --> 00:00:03,500
+of you unless there
+was some issue,
+
+3
+00:00:03,500 --> 00:00:05,020
+if it was ten with Penn stuff,
+
+4
+00:00:05,020 --> 00:00:07,240
+there's a few weeks
+up to start out or I
+
+5
+00:00:07,240 --> 00:00:08,100
+still need to get back
+
+6
+00:00:08,100 --> 00:00:09,840
+the copies from the
+testing evaluation,
+
+7
+00:00:09,840 --> 00:00:11,739
+c, that might affect
+a few people.
+
+8
+00:00:11,739 --> 00:00:14,099
+But hopefully, most people
+have their exams back,
+
+9
+00:00:14,099 --> 00:00:16,360
+double check it and make
+sure it's actually there.
+
+10
+00:00:16,360 --> 00:00:17,939
+And I'm going to
+be working to get
+
+11
+00:00:17,939 --> 00:00:21,759
+the last few exams out
+out soon for everybody.
+
+12
+00:00:21,759 --> 00:00:23,439
+If you go into resources,
+
+13
+00:00:23,439 --> 00:00:25,359
+you could see your
+exam what ass.
+
+14
+00:00:25,359 --> 00:00:27,939
+That shows you the answers you
+
+15
+00:00:27,939 --> 00:00:30,840
+put down and also the
+answers that were expected.
+
+16
+00:00:30,840 --> 00:00:32,640
+There are eight different
+versions of the exam,
+
+17
+00:00:32,640 --> 00:00:34,400
+so you can see which
+version you took.
+
+18
+00:00:34,400 --> 00:00:36,679
+And then just check
+that Canvas message.
+
+19
+00:00:36,679 --> 00:00:38,199
+I pushed all of the PDFs for
+
+20
+00:00:38,199 --> 00:00:41,760
+the eight versions
+to our git lab repo,
+
+21
+00:00:41,760 --> 00:00:43,919
+so you can draw and kind
+of learn from that.
+
+22
+00:00:43,919 --> 00:00:45,740
+And it's always nice
+to spit a little
+
+23
+00:00:45,740 --> 00:00:47,559
+time after exam to learn
+from the mistakes.
+
+24
+00:00:47,559 --> 00:00:49,449
+So I mean, it's cumulative,
+
+25
+00:00:49,449 --> 00:00:51,830
+so that's kind of the most
+maybe immediate concern,
+
+26
+00:00:51,830 --> 00:00:53,849
+right preparing for other exams.
+
+27
+00:00:53,849 --> 00:00:54,969
+But I think you spent
+
+28
+00:00:54,969 --> 00:00:56,869
+all this time doing the
+exam, prepping for it.
+
+29
+00:00:56,869 --> 00:00:58,649
+There's an opportunity to
+learn a little bit more.
+
+30
+00:00:58,649 --> 00:00:59,609
+Whenever you got
+something wrong,
+
+31
+00:00:59,609 --> 00:01:00,549
+there's something else that you
+
+32
+00:01:00,549 --> 00:01:02,969
+could kind of refine your
+understanding of the material.
+
+33
+00:01:02,969 --> 00:01:04,309
+So I'd encourage you to throw
+
+34
+00:01:04,309 --> 00:01:06,350
+and spend a little
+bit more time on it.
+
+35
+00:01:06,350 --> 00:01:09,470
+So where are we in the semester?
+
+36
+00:01:09,470 --> 00:01:11,609
+So we are doing
+some HDS practice.
+
+37
+00:01:11,609 --> 00:01:13,210
+I want to do a little
+bit more of that today.
+
+38
+00:01:13,210 --> 00:01:16,150
+Make sure you start with
+some top hats so that we can
+
+39
+00:01:16,150 --> 00:01:17,890
+just review some of the
+things we're seeing with
+
+40
+00:01:17,890 --> 00:01:19,965
+HDFS. We'll wrap that up.
+
+41
+00:01:19,965 --> 00:01:22,319
+And then we'll start
+talking about Map reduce,
+
+42
+00:01:22,319 --> 00:01:24,180
+which is a system that runs on
+
+43
+00:01:24,180 --> 00:01:26,760
+top of a distributed
+file system like HTFS,
+
+44
+00:01:26,760 --> 00:01:29,860
+and you can use it to
+analyze large data sets.
+
+45
+00:01:29,860 --> 00:01:31,360
+And then we're going to
+be moving into Spark,
+
+46
+00:01:31,360 --> 00:01:33,799
+which is the thing that
+we'll cover for a week,
+
+47
+00:01:33,799 --> 00:01:34,920
+and a lot of people are using it
+
+48
+00:01:34,920 --> 00:01:36,359
+now instead of a map reduce.
+
+49
+00:01:36,359 --> 00:01:37,880
+Alright, cool. So I'll head over
+
+50
+00:01:37,880 --> 00:01:40,639
+here and do the top hat first.
+
+51
+00:01:40,960 --> 00:01:43,699
+So this is a conceptual question
+
+52
+00:01:43,699 --> 00:01:47,159
+about a client that's
+writing to HDFS,
+
+53
+00:01:47,159 --> 00:01:49,200
+and I just want to
+know how much data
+
+54
+00:01:49,200 --> 00:01:51,779
+does the client send
+over the network.
+
+55
+00:01:51,779 --> 00:01:53,020
+If we're writing to a file that
+
+56
+00:01:53,020 --> 00:01:55,359
+has four times replication.
+
+57
+00:02:33,620 --> 00:02:36,979
+About 30 seconds left.
+
+58
+00:03:09,430 --> 00:03:12,390
+Alright, so people are
+a little bit split
+
+59
+00:03:12,390 --> 00:03:15,110
+between 5 megabytes
+and 20 megabytes.
+
+60
+00:03:15,110 --> 00:03:19,289
+And the answer is actually
+5 megabytes. Why is that?
+
+61
+00:03:19,289 --> 00:03:21,069
+Well, this client has to get
+
+62
+00:03:21,069 --> 00:03:23,890
+this identical 5 megabytes
+
+63
+00:03:23,890 --> 00:03:26,309
+of data on four different
+data nodes, right?
+
+64
+00:03:26,309 --> 00:03:28,669
+And you could imagine
+they could have built it,
+
+65
+00:03:28,669 --> 00:03:30,610
+so it actually sends that
+same data to each of them.
+
+66
+00:03:30,610 --> 00:03:32,170
+That'd be a little bit waste.
+
+67
+00:03:32,170 --> 00:03:34,009
+Instead, there is
+an optimization.
+
+68
+00:03:34,009 --> 00:03:37,359
+I remember the name of the
+optimization, right here.
+
+69
+00:03:37,359 --> 00:03:39,730
+Pipeline rights. And the idea,
+
+70
+00:03:39,730 --> 00:03:40,930
+rather than having this client
+
+71
+00:03:40,930 --> 00:03:42,389
+kind of fan out and
+do all the work.
+
+72
+00:03:42,389 --> 00:03:44,389
+The client sends it to
+the first data node.
+
+73
+00:03:44,389 --> 00:03:46,369
+The first data notes
+the second data node,
+
+74
+00:03:46,369 --> 00:03:47,569
+second data note, sends
+
+75
+00:03:47,569 --> 00:03:48,909
+it to the third data
+node, and so on.
+
+76
+00:03:48,909 --> 00:03:51,370
+So nobody has this big workload.
+
+77
+00:03:51,370 --> 00:03:54,170
+And we can write the data
+faster than we would otherwise.
+
+78
+00:03:54,170 --> 00:03:55,869
+Especially depending on
+where the client is,
+
+79
+00:03:55,869 --> 00:03:57,409
+the client might
+be in a different
+
+80
+00:03:57,409 --> 00:03:58,950
+maybe data center even, right?
+
+81
+00:03:58,950 --> 00:04:01,569
+We might not have as much
+bandwidth there, right?
+
+82
+00:04:01,569 --> 00:04:04,369
+So we want to make sure
+that that kind of link from
+
+83
+00:04:04,369 --> 00:04:07,570
+the client to the first
+data node is not over used.
+
+84
+00:04:07,570 --> 00:04:09,090
+All right, do it
+have any questions
+
+85
+00:04:09,090 --> 00:04:11,669
+about that one?
+Yeah, right here.
+
+86
+00:04:11,669 --> 00:04:14,710
+Does that change doesn't change
+
+87
+00:04:14,710 --> 00:04:18,289
+the fact that you're still
+writing it four times.
+
+88
+00:04:18,350 --> 00:04:21,669
+But it's how much data does
+the clients over the network.
+
+89
+00:04:21,669 --> 00:04:23,269
+Absolutely. So if I was asking
+
+90
+00:04:23,269 --> 00:04:25,089
+how much data was the disk,
+
+91
+00:04:25,089 --> 00:04:27,549
+then the answer would
+be 20 megabytes.
+
+92
+00:04:27,549 --> 00:04:29,809
+If I asked how much data the
+clients is over the network,
+
+93
+00:04:29,809 --> 00:04:30,990
+there would be 5 megabytes.
+
+94
+00:04:30,990 --> 00:04:39,629
+Does that make sense?
+Right. Yeah. So sometimes
+
+95
+00:04:39,629 --> 00:04:41,110
+I might ask about network IO,
+
+96
+00:04:41,110 --> 00:04:44,089
+sometimes I might
+ask about disk IO,
+
+97
+00:04:44,089 --> 00:04:46,349
+Is much data is read from disks.
+
+98
+00:04:46,349 --> 00:04:49,230
+I just want you to understand
+how the read paths work
+
+99
+00:04:49,230 --> 00:04:50,669
+and then be able to answer
+
+100
+00:04:50,669 --> 00:04:52,609
+these questions in that context.
+
+101
+00:04:52,609 --> 00:04:55,115
+Have other questions
+about this one?
+
+102
+00:04:55,115 --> 00:04:59,340
+Alright, cool. So I'm going
+to do another one as well.
+
+103
+00:04:59,340 --> 00:05:02,580
+That's kind of a
+more hands on one.
+
+104
+00:05:02,580 --> 00:05:04,760
+And in this case, right,
+
+105
+00:05:04,760 --> 00:05:07,960
+we spun up our HDFS
+cluster before.
+
+106
+00:05:08,160 --> 00:05:11,700
+And so, oh, let's
+just there we go.
+
+107
+00:05:11,700 --> 00:05:13,879
+It started. Okay, fantastic.
+
+108
+00:05:13,879 --> 00:05:16,599
+Yeah, I'm just wondering
+which type of node do we have
+
+109
+00:05:16,599 --> 00:05:19,440
+to format before we first,
+
+110
+00:05:19,440 --> 00:05:22,320
+you know, launch a client
+and start using it.
+
+111
+00:06:09,120 --> 00:06:12,879
+About 10 seconds left.
+
+112
+00:06:29,980 --> 00:06:32,439
+So the name note
+only is correct,
+
+113
+00:06:32,439 --> 00:06:33,719
+the data notes don't
+require you to do that.
+
+114
+00:06:33,719 --> 00:06:35,420
+And I have to remember
+those things as you're
+
+115
+00:06:35,420 --> 00:06:37,260
+setting up for Project four,
+
+116
+00:06:37,260 --> 00:06:38,559
+right because you have
+to get a name node
+
+117
+00:06:38,559 --> 00:06:39,679
+and some data nodes deployed,
+
+118
+00:06:39,679 --> 00:06:40,460
+and you have to figure out what
+
+119
+00:06:40,460 --> 00:06:42,120
+the steps are for each of those.
+
+120
+00:06:42,120 --> 00:06:43,860
+Of course, you don't
+review the video and
+
+121
+00:06:43,860 --> 00:06:45,700
+I set all this stuff up.
+
+122
+00:06:45,700 --> 00:06:47,560
+Alright, great. So
+we'll head back to
+
+123
+00:06:47,560 --> 00:06:50,500
+this notebook where
+we were last time.
+
+124
+00:06:50,500 --> 00:06:54,440
+And I just want you
+to remember my setup.
+
+125
+00:06:54,440 --> 00:07:00,500
+If I come back here
+and I say, Doctor PS.
+
+126
+00:07:00,500 --> 00:07:02,779
+You see I have two
+containers running.
+
+127
+00:07:02,779 --> 00:07:04,420
+There's one for HDFS.
+
+128
+00:07:04,420 --> 00:07:05,859
+And in that one, I manually
+
+129
+00:07:05,859 --> 00:07:07,960
+started both a name
+node and a data node,
+
+130
+00:07:07,960 --> 00:07:09,439
+and I showed the
+commands for that.
+
+131
+00:07:09,439 --> 00:07:10,320
+And you're project you're going
+
+132
+00:07:10,320 --> 00:07:11,239
+to be doing it a
+little bit different.
+
+133
+00:07:11,239 --> 00:07:13,040
+You have the name node
+running in one container.
+
+134
+00:07:13,040 --> 00:07:14,400
+You'll have a couple of data
+
+135
+00:07:14,400 --> 00:07:15,779
+nodes running in
+different containers,
+
+136
+00:07:15,779 --> 00:07:17,859
+but in this example,
+I ran them together.
+
+137
+00:07:17,859 --> 00:07:21,379
+And then I have a separate
+notebook where I'm sorry,
+
+138
+00:07:21,379 --> 00:07:23,579
+I have a separate container
+where my notebook is running,
+
+139
+00:07:23,579 --> 00:07:25,480
+and it can refer to this one.
+
+140
+00:07:25,480 --> 00:07:28,260
+And when I had started
+this up before,
+
+141
+00:07:28,260 --> 00:07:29,840
+I said that the host name
+
+142
+00:07:29,840 --> 00:07:33,760
+for the HDFS container was Mine.
+
+143
+00:07:33,760 --> 00:07:36,760
+And so I've been using
+Main in a lot of cases.
+
+144
+00:07:36,760 --> 00:07:41,360
+So I've been talking to
+the name node so far,
+
+145
+00:07:41,360 --> 00:07:43,040
+and the name node really
+
+146
+00:07:43,040 --> 00:07:44,760
+is a server on two
+different ports.
+
+147
+00:07:44,760 --> 00:07:46,339
+One port is 9,000.
+
+148
+00:07:46,339 --> 00:07:49,659
+There are RPC calls that
+happen over port 9,000.
+
+149
+00:07:49,659 --> 00:07:51,340
+So all of these
+different things like
+
+150
+00:07:51,340 --> 00:07:54,079
+these different
+command line tools
+
+151
+00:07:54,079 --> 00:07:57,119
+are using 9,000 to
+use those RPC calls.
+
+152
+00:07:57,119 --> 00:07:59,780
+We can also use it with HTDP,
+
+153
+00:07:59,780 --> 00:08:01,880
+and there's a Rs API for
+communicating with it,
+
+154
+00:08:01,880 --> 00:08:03,360
+and that's where we
+were in last time.
+
+155
+00:08:03,360 --> 00:08:05,300
+And so for HTP,
+
+156
+00:08:05,300 --> 00:08:07,380
+thenam node is actually
+listed in a different port,
+
+157
+00:08:07,380 --> 00:08:09,644
+which is 8987 oh.
+
+158
+00:08:09,644 --> 00:08:12,549
+And a lot of these
+well, I guess,
+
+159
+00:08:12,549 --> 00:08:15,629
+all these different things
+are documented in this file,
+
+160
+00:08:15,629 --> 00:08:17,630
+and we're only using
+a few of them.
+
+161
+00:08:17,630 --> 00:08:19,850
+Let me just throw up to the top.
+
+162
+00:08:19,850 --> 00:08:22,610
+Right? There's all these
+different things you could do.
+
+163
+00:08:22,610 --> 00:08:26,130
+And they all have
+similar form, right?
+
+164
+00:08:26,130 --> 00:08:27,910
+The form is that we maybe
+
+165
+00:08:27,910 --> 00:08:30,090
+say what file or directory
+we're operating on.
+
+166
+00:08:30,090 --> 00:08:31,550
+And then a question mark
+
+167
+00:08:31,550 --> 00:08:32,950
+and we have some
+arguments over here,
+
+168
+00:08:32,950 --> 00:08:34,630
+and we say what
+operation we're doing.
+
+169
+00:08:34,630 --> 00:08:36,790
+So so far, we are doing
+an open operation,
+
+170
+00:08:36,790 --> 00:08:38,609
+and we can have these
+other arguments that
+
+171
+00:08:38,609 --> 00:08:41,189
+are separated by these
+ampersands, right?
+
+172
+00:08:41,189 --> 00:08:42,809
+So I'm opening a file for
+
+173
+00:08:42,809 --> 00:08:45,290
+reading at this offset
+and this length.
+
+174
+00:08:45,290 --> 00:08:47,009
+And when I did this, right,
+
+175
+00:08:47,009 --> 00:08:50,109
+I'm sending this open
+request to a name node.
+
+176
+00:08:50,109 --> 00:08:51,489
+And I did it with url.
+
+177
+00:08:51,489 --> 00:08:53,550
+And I said dash I so I
+can see the headers.
+
+178
+00:08:53,550 --> 00:08:55,610
+And I actually see that
+it's kind of a little bit
+
+179
+00:08:55,610 --> 00:08:58,349
+unusual because I have
+one set of headers,
+
+180
+00:08:58,349 --> 00:08:59,849
+and then a second set of
+
+181
+00:08:59,849 --> 00:09:01,829
+headers before I
+actually get the data.
+
+182
+00:09:01,829 --> 00:09:03,929
+So can anybody let me know or
+
+183
+00:09:03,929 --> 00:09:06,550
+remind me what's going on here?
+
+184
+00:09:06,550 --> 00:09:09,490
+Why is Carl?
+
+185
+00:09:09,490 --> 00:09:11,810
+Why is Carl actually doing
+
+186
+00:09:11,810 --> 00:09:15,050
+two different HDDP
+requests? Yeah, right here.
+
+187
+00:09:15,050 --> 00:09:28,040
+So a node redirect data data.
+
+188
+00:09:28,040 --> 00:09:30,460
+Excellent, right? So when I
+go to the name node first,
+
+189
+00:09:30,460 --> 00:09:32,539
+the name node should never
+send data anywhere, right?
+
+190
+00:09:32,539 --> 00:09:34,119
+B I have this giant cluster with
+
+191
+00:09:34,119 --> 00:09:35,920
+lots of data. I only
+have one name node.
+
+192
+00:09:35,920 --> 00:09:37,040
+That's the bottleneck,
+so it should
+
+193
+00:09:37,040 --> 00:09:38,520
+only send metadata, never data.
+
+194
+00:09:38,520 --> 00:09:40,060
+And so it's redirecting.
+
+195
+00:09:40,060 --> 00:09:41,920
+It's redirecting assist
+location down here,
+
+196
+00:09:41,920 --> 00:09:43,139
+which is the data node and
+
+197
+00:09:43,139 --> 00:09:45,359
+the L. You're also
+correct follows it.
+
+198
+00:09:45,359 --> 00:09:46,559
+And so we first got
+
+199
+00:09:46,559 --> 00:09:48,560
+a temporary redirect
+from the name node.
+
+200
+00:09:48,560 --> 00:09:51,440
+And then after that we got
+an actual proper response
+
+201
+00:09:51,440 --> 00:09:53,459
+from the data node
+that we redirected to,
+
+202
+00:09:53,459 --> 00:09:54,799
+and then we were able to get
+
+203
+00:09:54,799 --> 00:09:57,159
+the data back. Okay,
+so we can do that.
+
+204
+00:09:57,159 --> 00:09:59,419
+We also saw that
+instead of using curl.
+
+205
+00:09:59,419 --> 00:10:02,820
+Often rest documentation,
+they give curl examples,
+
+206
+00:10:02,820 --> 00:10:05,920
+but we can do very
+similar things
+
+207
+00:10:05,920 --> 00:10:07,760
+with the request module
+
+208
+00:10:07,760 --> 00:10:10,059
+in Python. I'm bring
+that down here.
+
+209
+00:10:10,059 --> 00:10:15,224
+We saw that we can
+say, no redirect.
+
+210
+00:10:15,224 --> 00:10:18,249
+And in that case, it
+will not follow it.
+
+211
+00:10:18,249 --> 00:10:19,669
+Right? I'll just get actually
+
+212
+00:10:19,669 --> 00:10:21,450
+Json back to strike
+me the location.
+
+213
+00:10:21,450 --> 00:10:22,949
+And so I can see
+the location where
+
+214
+00:10:22,949 --> 00:10:24,549
+the name node is telling
+
+215
+00:10:24,549 --> 00:10:26,569
+me I could go get
+that piece of data.
+
+216
+00:10:26,569 --> 00:10:29,070
+And in this case, if I
+run this many times,
+
+217
+00:10:29,070 --> 00:10:31,290
+I would get the same
+output many times.
+
+218
+00:10:31,290 --> 00:10:33,749
+On your project, when you
+have multiple data nodes,
+
+219
+00:10:33,749 --> 00:10:35,689
+this might actually change if I
+
+220
+00:10:35,689 --> 00:10:37,950
+kept rerunning these
+couple pieces of code.
+
+221
+00:10:37,950 --> 00:10:39,290
+Any thoughts about why it might
+
+222
+00:10:39,290 --> 00:10:40,910
+change if I keep
+
+223
+00:10:40,910 --> 00:10:43,570
+rerunning these couple
+lines of code here?
+
+224
+00:10:47,470 --> 00:10:55,669
+Go ahead. Yeah, when
+
+225
+00:10:55,669 --> 00:10:59,029
+you're saying semi sing a
+semi other data node, right?
+
+226
+00:10:59,029 --> 00:11:02,530
+So the name node sometimes
+sends me the one data Node.
+
+227
+00:11:02,530 --> 00:11:03,590
+Sometimes it sends me the other
+
+228
+00:11:03,590 --> 00:11:04,949
+one B there's
+replication, right?
+
+229
+00:11:04,949 --> 00:11:06,729
+They have the same data, right?
+
+230
+00:11:06,729 --> 00:11:08,289
+And, maybe it's based on
+
+231
+00:11:08,289 --> 00:11:10,090
+whether busy or maybe
+it doesn't randomly.
+
+232
+00:11:10,090 --> 00:11:12,189
+Who knows what load
+balancing policy they have?
+
+233
+00:11:12,189 --> 00:11:14,330
+But there's multiple
+places thena could
+
+234
+00:11:14,330 --> 00:11:16,989
+send me and it is choosing one.
+
+235
+00:11:16,989 --> 00:11:19,310
+Okay? So that's what happens
+when we read a file.
+
+236
+00:11:19,310 --> 00:11:21,650
+And sometimes they'll do that
+for part of the project.
+
+237
+00:11:21,650 --> 00:11:23,030
+For another part of the project,
+
+238
+00:11:23,030 --> 00:11:23,849
+you actually have to tell
+
+239
+00:11:23,849 --> 00:11:27,170
+me where the data is on
+different data nodes.
+
+240
+00:11:27,170 --> 00:11:29,669
+And so we have to
+have a separate call.
+
+241
+00:11:29,669 --> 00:11:31,110
+We want to ask the name node.
+
+242
+00:11:31,110 --> 00:11:33,209
+Tell me all of the
+locations where it is,
+
+243
+00:11:33,209 --> 00:11:35,389
+instead of just a
+single location.
+
+244
+00:11:35,389 --> 00:11:38,890
+And so if I come back to the
+documentation over here,
+
+245
+00:11:38,890 --> 00:11:44,229
+that is called a get
+file block locations.
+
+246
+00:11:44,229 --> 00:11:46,130
+And so I can tell them and
+I can see an example here.
+
+247
+00:11:46,130 --> 00:11:47,409
+It's pretty
+straightforward, actually.
+
+248
+00:11:47,409 --> 00:11:49,670
+There's no really extra
+arguments or anything like that.
+
+249
+00:11:49,670 --> 00:11:52,089
+I just say they get
+file block locations.
+
+250
+00:11:52,089 --> 00:11:53,810
+And I'm just going
+to do that briefly
+
+251
+00:11:53,810 --> 00:11:54,689
+because you're going
+to have to do it
+
+252
+00:11:54,689 --> 00:11:55,949
+on the project as well.
+
+253
+00:11:55,949 --> 00:12:01,519
+And some say, instead of all
+this. What will I pass in?
+
+254
+00:12:01,519 --> 00:12:05,279
+I'll say it file,
+block locations.
+
+255
+00:12:05,279 --> 00:12:08,199
+And then I can get r dot JSN,
+
+256
+00:12:08,199 --> 00:12:09,720
+kind of a strange format.
+
+257
+00:12:09,720 --> 00:12:11,060
+I guess they have
+a dictionary here,
+
+258
+00:12:11,060 --> 00:12:13,460
+and I can see the keys
+in the dictionary.
+
+259
+00:12:13,460 --> 00:12:17,105
+It only has one key,
+which is block locations.
+
+260
+00:12:17,105 --> 00:12:20,009
+All right. And then there's
+only one key in that one.
+
+261
+00:12:20,009 --> 00:12:21,470
+There's a dictionary in
+side of a dictionary.
+
+262
+00:12:21,470 --> 00:12:23,169
+That one has block locations.
+I don't really know who
+
+263
+00:12:23,169 --> 00:12:25,509
+designed this or the
+rationale for it.
+
+264
+00:12:25,509 --> 00:12:26,950
+But that's fine.
+
+265
+00:12:26,950 --> 00:12:29,229
+We can just see what we
+have and pull things out.
+
+266
+00:12:29,229 --> 00:12:31,009
+And at this point, I
+get a list, right?
+
+267
+00:12:31,009 --> 00:12:33,009
+So I could say for
+
+268
+00:12:33,009 --> 00:12:36,430
+block and this and I could
+print off each block.
+
+269
+00:12:36,430 --> 00:12:37,930
+And in this case,
+there's only one block,
+
+270
+00:12:37,930 --> 00:12:41,090
+but what I can see here
+is for each block,
+
+271
+00:12:41,090 --> 00:12:42,910
+we how large is it.
+
+272
+00:12:42,910 --> 00:12:45,670
+And I can see more
+importantly the host.
+
+273
+00:12:45,670 --> 00:12:46,870
+This is telling me what data
+
+274
+00:12:46,870 --> 00:12:49,690
+nodes there are. I'm
+going to make a not here.
+
+275
+00:12:49,690 --> 00:12:56,199
+Hosts tells you which
+data nodes Ha it.
+
+276
+00:12:56,199 --> 00:12:57,860
+So you use this maybe
+in a couple of cases.
+
+277
+00:12:57,860 --> 00:12:59,699
+One case, I just want you
+to be able to tell me,
+
+278
+00:12:59,699 --> 00:13:01,640
+where is the data
+for a specific file,
+
+279
+00:13:01,640 --> 00:13:03,319
+including both replicas.
+
+280
+00:13:03,319 --> 00:13:06,419
+In another case, you might
+use it because I want you to
+
+281
+00:13:06,419 --> 00:13:09,580
+tell me after you manually
+kill a data node,
+
+282
+00:13:09,580 --> 00:13:10,960
+which data was lost.
+
+283
+00:13:10,960 --> 00:13:12,679
+And so if you ran
+something like this,
+
+284
+00:13:12,679 --> 00:13:14,520
+you might see that there's
+some blocks of data
+
+285
+00:13:14,520 --> 00:13:16,820
+that don't have any data
+that data was lost.
+
+286
+00:13:16,820 --> 00:13:18,299
+There's no more replicas of it.
+
+287
+00:13:18,299 --> 00:13:20,979
+And so you can use this
+to kind of understand how
+
+288
+00:13:20,979 --> 00:13:22,259
+the replication and fall
+
+289
+00:13:22,259 --> 00:13:24,219
+tolerance are working
+in the system.
+
+290
+00:13:24,219 --> 00:13:26,740
+Can you any questions
+about either of these two,
+
+291
+00:13:26,740 --> 00:13:30,320
+the open and the file
+block locations?
+
+292
+00:13:31,720 --> 00:13:36,020
+All right. Well, I'm just going
+to show one more quickly,
+
+293
+00:13:36,020 --> 00:13:38,820
+and that is list status.
+
+294
+00:13:38,820 --> 00:13:41,459
+And List status could let me
+
+295
+00:13:41,459 --> 00:13:45,359
+see all of the things that
+are in a directory, right?
+
+296
+00:13:45,359 --> 00:13:46,639
+And so in this case,
+I'm going to put
+
+297
+00:13:46,639 --> 00:13:47,740
+a path here that's a directory.
+
+298
+00:13:47,740 --> 00:13:50,219
+Let me just put this down here,
+
+299
+00:13:50,219 --> 00:13:53,100
+so I'm may say the
+data directory,
+
+300
+00:13:53,100 --> 00:13:57,449
+and I may say list
+status. All right.
+
+301
+00:13:57,449 --> 00:13:58,950
+And then let me just throw
+
+302
+00:13:58,950 --> 00:14:00,949
+back and look at the JSN again.
+
+303
+00:14:00,949 --> 00:14:02,310
+That's why I always
+use these restings.
+
+304
+00:14:02,310 --> 00:14:04,389
+I just look at the
+JSI and I figure out,
+
+305
+00:14:04,389 --> 00:14:07,569
+you know, what keys
+are available to me.
+
+306
+00:14:07,569 --> 00:14:09,169
+And then I dig in.
+
+307
+00:14:09,169 --> 00:14:12,350
+I get those. I get those keys.
+
+308
+00:14:12,350 --> 00:14:14,489
+And what do I have
+here? And now I
+
+309
+00:14:14,489 --> 00:14:17,709
+see I have another
+dictionary, right?
+
+310
+00:14:17,709 --> 00:14:19,350
+So I check what keys
+are available here.
+
+311
+00:14:19,350 --> 00:14:20,909
+The are only really
+one again, right?
+
+312
+00:14:20,909 --> 00:14:22,955
+I'm going to say file status.
+
+313
+00:14:22,955 --> 00:14:25,360
+All right, fine. And then
+
+314
+00:14:25,360 --> 00:14:27,299
+here I actually see
+have a list, right?
+
+315
+00:14:27,299 --> 00:14:29,539
+So this is a list of
+all the files, right?
+
+316
+00:14:29,539 --> 00:14:31,899
+So I can go through and I
+can see the names, right?
+
+317
+00:14:31,899 --> 00:14:33,360
+I have like a licensed dot TXT,
+
+318
+00:14:33,360 --> 00:14:35,660
+and I have a v two dot TXT.
+
+319
+00:14:35,660 --> 00:14:37,299
+So all these things that
+you might do in the command
+
+320
+00:14:37,299 --> 00:14:39,140
+like listing files,
+opening files,
+
+321
+00:14:39,140 --> 00:14:41,219
+or listing directories, you can
+
+322
+00:14:41,219 --> 00:14:44,819
+do as well via
+this web HDFS API.
+
+323
+00:14:44,819 --> 00:14:50,169
+Oh, right. So I
+
+324
+00:14:50,169 --> 00:14:53,130
+want to show you a third
+way to access the data.
+
+325
+00:14:53,130 --> 00:14:54,809
+So we've seen the
+command line tools.
+
+326
+00:14:54,809 --> 00:14:56,729
+We've seen Web HDFS.
+
+327
+00:14:56,729 --> 00:15:00,989
+And then the third way is
+that we can use Pi Ro,
+
+328
+00:15:00,989 --> 00:15:03,069
+which we've used before for
+a couple of things, right?
+
+329
+00:15:03,069 --> 00:15:05,710
+We've used it to learn
+about cash friendly layout.
+
+330
+00:15:05,710 --> 00:15:07,629
+We've learned about
+how we can use it to
+
+331
+00:15:07,629 --> 00:15:10,690
+map data from disc.
+
+332
+00:15:10,690 --> 00:15:12,470
+And so let's tub down here.
+
+333
+00:15:12,470 --> 00:15:15,680
+I may say, let's do Pi arrow.
+
+334
+00:15:15,680 --> 00:15:17,620
+And in most case, if
+you're writing a code,
+
+335
+00:15:17,620 --> 00:15:19,139
+this is probably going
+to be an easier way
+
+336
+00:15:19,139 --> 00:15:20,480
+to read your files instead of
+
+337
+00:15:20,480 --> 00:15:23,840
+using that web HDFS API.
+
+338
+00:15:23,840 --> 00:15:25,640
+And so when I'm down here,
+
+339
+00:15:25,640 --> 00:15:27,420
+I'm going to import Pi arrow as
+
+340
+00:15:27,420 --> 00:15:29,460
+PA. And there's
+some other things
+
+341
+00:15:29,460 --> 00:15:31,239
+in there that I'm going to need.
+
+342
+00:15:31,239 --> 00:15:33,379
+So it has different
+file systems, right?
+
+343
+00:15:33,379 --> 00:15:35,359
+So file systems.
+
+344
+00:15:35,359 --> 00:15:37,299
+And based on that,
+
+345
+00:15:37,299 --> 00:15:43,029
+I can say, Pi arrow to file
+system, Hadu file system.
+
+346
+00:15:43,029 --> 00:15:45,849
+And I might have different
+Hadoop clusters, right?
+
+347
+00:15:45,849 --> 00:15:47,909
+So I have to specify
+which one, right?
+
+348
+00:15:47,909 --> 00:15:49,450
+I have to say the name note,
+
+349
+00:15:49,450 --> 00:15:51,029
+in particular is how
+I really identify
+
+350
+00:15:51,029 --> 00:15:52,209
+the cluster B is the name node
+
+351
+00:15:52,209 --> 00:15:53,469
+noes where all the
+data nodes are.
+
+352
+00:15:53,469 --> 00:15:57,590
+And so I have one
+that was at the Main.
+
+353
+00:15:57,590 --> 00:16:00,769
+I have a name node
+there on port 9,000,
+
+354
+00:16:00,769 --> 00:16:05,329
+and I can basically get a
+Hadoop file system like that.
+
+355
+00:16:05,329 --> 00:16:07,069
+And then what I can do is I can
+
+356
+00:16:07,069 --> 00:16:09,350
+open files in the
+Hadoop file system
+
+357
+00:16:09,350 --> 00:16:10,729
+in much the same
+way I would open
+
+358
+00:16:10,729 --> 00:16:13,609
+files on my regular file system.
+
+359
+00:16:13,609 --> 00:16:15,650
+So any one of the calls
+that we've seen before
+
+360
+00:16:15,650 --> 00:16:19,115
+is open input file.
+
+361
+00:16:19,115 --> 00:16:21,419
+Right? And I can do this and say
+
+362
+00:16:21,419 --> 00:16:23,779
+specifically it's from
+this file system.
+
+363
+00:16:23,779 --> 00:16:25,119
+And so I can say something like
+
+364
+00:16:25,119 --> 00:16:29,599
+slash data V two at TX.
+So I can open that.
+
+365
+00:16:29,599 --> 00:16:33,079
+I'm going to open
+it as F, right?
+
+366
+00:16:33,079 --> 00:16:37,439
+And maybe penology pass, so
+I can take a look at it.
+
+367
+00:16:37,439 --> 00:16:39,040
+When I understand these APIs,
+
+368
+00:16:39,040 --> 00:16:40,119
+there's a couple of
+things I might do.
+
+369
+00:16:40,119 --> 00:16:44,339
+I might look at
+the type of F or I
+
+370
+00:16:44,339 --> 00:16:48,930
+might look at the method
+resolution order.
+
+371
+00:16:48,930 --> 00:16:50,289
+So one of the things
+that that would help
+
+372
+00:16:50,289 --> 00:16:52,029
+me do is I could see,
+
+373
+00:16:52,029 --> 00:16:53,709
+not only, like, what type is it,
+
+374
+00:16:53,709 --> 00:16:55,169
+but what other things
+is inherited from,
+
+375
+00:16:55,169 --> 00:16:56,770
+I guess that's not
+telling me so much here,
+
+376
+00:16:56,770 --> 00:16:59,289
+but just trying to a
+general thing to do.
+
+377
+00:16:59,289 --> 00:17:00,889
+And then the final thing
+I might do to try to
+
+378
+00:17:00,889 --> 00:17:02,989
+understand what I can
+do is I might say Dur,
+
+379
+00:17:02,989 --> 00:17:04,529
+and that will list all of
+
+380
+00:17:04,529 --> 00:17:08,029
+the things that I can
+call on this, right?
+
+381
+00:17:08,029 --> 00:17:10,470
+I can do things like
+reading at certain bytes.
+
+382
+00:17:10,470 --> 00:17:12,350
+I see there's some things
+here like read line.
+
+383
+00:17:12,350 --> 00:17:14,049
+Let me just try to
+read line quickly.
+
+384
+00:17:14,049 --> 00:17:17,310
+So I'm going to say F read line.
+
+385
+00:17:17,310 --> 00:17:19,109
+And they're going to
+say it's on support.
+
+386
+00:17:19,109 --> 00:17:20,449
+So even though they're
+trying to this kind of
+
+387
+00:17:20,449 --> 00:17:25,180
+generic standard API for
+interacting with these files,
+
+388
+00:17:25,180 --> 00:17:28,270
+They didn't implement
+the API completely.
+
+389
+00:17:28,270 --> 00:17:29,529
+And so let's say I actually want
+
+390
+00:17:29,529 --> 00:17:31,030
+to use this and read the file.
+
+391
+00:17:31,030 --> 00:17:34,049
+I'm going to have to have some
+other wrappers around it.
+
+392
+00:17:34,049 --> 00:17:35,209
+And so some of these wrappers
+
+393
+00:17:35,209 --> 00:17:36,669
+that are going to help me are
+
+394
+00:17:36,669 --> 00:17:40,910
+from the IO module in Python.
+
+395
+00:17:40,910 --> 00:17:44,509
+And so one of the things that
+is helpful there is that I
+
+396
+00:17:44,509 --> 00:17:48,229
+could have buffered reader.
+
+397
+00:17:48,229 --> 00:17:50,469
+And so if I put
+something in here that
+
+398
+00:17:50,469 --> 00:17:53,089
+just lets me read blocks
+at specific offsets,
+
+399
+00:17:53,089 --> 00:17:55,109
+then this will give me
+something that could actually
+
+400
+00:17:55,109 --> 00:17:57,549
+buffer things up and feed
+me one line at a time.
+
+401
+00:17:57,549 --> 00:17:58,849
+But let me just actually,
+
+402
+00:17:58,849 --> 00:18:01,149
+I wanted to show
+you that I can use
+
+403
+00:18:01,149 --> 00:18:03,869
+this to read at specific
+locations, right?
+
+404
+00:18:03,869 --> 00:18:05,269
+So I could read a offset.
+
+405
+00:18:05,269 --> 00:18:08,990
+I think I could read like
+500 bytes at offset zero.
+
+406
+00:18:08,990 --> 00:18:10,969
+Maybe I'll just put that here
+
+407
+00:18:10,969 --> 00:18:13,169
+and show you what
+that looks like.
+
+408
+00:18:14,210 --> 00:18:18,390
+Right? So this is
+definitely this native file
+
+409
+00:18:18,390 --> 00:18:19,929
+that I got from
+Piero is letting me
+
+410
+00:18:19,929 --> 00:18:21,750
+read bytes at at
+different locations.
+
+411
+00:18:21,750 --> 00:18:22,889
+But the buffered reader is
+
+412
+00:18:22,889 --> 00:18:24,149
+going to actually
+help me pull in
+
+413
+00:18:24,149 --> 00:18:25,389
+a bunch of bytes
+at once and then
+
+414
+00:18:25,389 --> 00:18:26,829
+break it into these lines.
+
+415
+00:18:26,829 --> 00:18:28,549
+Right? So I might
+create a reader
+
+416
+00:18:28,549 --> 00:18:30,049
+from that, and I
+could loophole it.
+
+417
+00:18:30,049 --> 00:18:32,589
+I can say for line and reader.
+
+418
+00:18:32,589 --> 00:18:36,209
+Maybe I could just print
+off what that line is.
+
+419
+00:18:36,209 --> 00:18:38,039
+Alright, so let's try that.
+
+420
+00:18:38,039 --> 00:18:40,190
+I'll just try me
+this out for now.
+
+421
+00:18:40,190 --> 00:18:41,669
+All right, so I could do that.
+
+422
+00:18:41,669 --> 00:18:43,210
+And I can see that it's giving
+
+423
+00:18:43,210 --> 00:18:46,469
+bytes for each of
+these lines, right?
+
+424
+00:18:46,469 --> 00:18:47,809
+So there's different
+things I could do.
+
+425
+00:18:47,809 --> 00:18:50,330
+One is that I could
+use some decoder,
+
+426
+00:18:50,330 --> 00:18:51,589
+I could convert it
+to a string with
+
+427
+00:18:51,589 --> 00:18:53,410
+like UTF eight encoding.
+
+428
+00:18:53,410 --> 00:18:56,649
+Right? There's different ways
+to c rode strings as bytes.
+
+429
+00:18:56,649 --> 00:18:58,489
+UTF eight is the most common,
+
+430
+00:18:58,489 --> 00:19:00,049
+so that would be a good chest.
+
+431
+00:19:00,049 --> 00:19:01,229
+The other way I could do it
+
+432
+00:19:01,229 --> 00:19:02,329
+is I could use
+another thing from
+
+433
+00:19:02,329 --> 00:19:05,239
+IO called the text IO.
+
+434
+00:19:05,239 --> 00:19:07,669
+Wrapper. And the
+text style wrapper
+
+435
+00:19:07,669 --> 00:19:09,489
+would also let me
+specify and toting,
+
+436
+00:19:09,489 --> 00:19:11,470
+but I'm going to use the
+UTF eight by default.
+
+437
+00:19:11,470 --> 00:19:13,669
+And that will, as I get
+all these bytes from it,
+
+438
+00:19:13,669 --> 00:19:16,229
+automatically convert
+them to strings, right?
+
+439
+00:19:16,229 --> 00:19:18,310
+So I can do this, and then
+I get these nice strings.
+
+440
+00:19:18,310 --> 00:19:20,310
+And I think actually,
+it's giving me new lines,
+
+441
+00:19:20,310 --> 00:19:21,609
+and I'm printing them off.
+
+442
+00:19:21,609 --> 00:19:23,470
+So maybe I'll just like n equals
+
+443
+00:19:23,470 --> 00:19:26,129
+that and know the default is
+that it prints a new line e,
+
+444
+00:19:26,129 --> 00:19:27,290
+and I'm sing to
+say I don't print
+
+445
+00:19:27,290 --> 00:19:28,649
+anything Xtra because
+I already have that.
+
+446
+00:19:28,649 --> 00:19:30,189
+And so then I could
+jump in and I
+
+447
+00:19:30,189 --> 00:19:31,809
+could just start
+reading text files.
+
+448
+00:19:31,809 --> 00:19:34,900
+I think that this would
+be more convenient.
+
+449
+00:19:34,900 --> 00:19:39,349
+Then doing something like
+the open up here, right?
+
+450
+00:19:39,349 --> 00:19:40,669
+When I'm kind of
+opening and using
+
+451
+00:19:40,669 --> 00:19:42,409
+at rest API and
+maybe trying to get,
+
+452
+00:19:42,409 --> 00:19:44,389
+you know, a few
+blocks at a time,
+
+453
+00:19:44,389 --> 00:19:47,069
+because when I'm using
+the other web HDFS,
+
+454
+00:19:47,069 --> 00:19:49,950
+since everything is blocking
+it retiring to a data node,
+
+455
+00:19:49,950 --> 00:19:51,109
+I might have to do a bunch of
+
+456
+00:19:51,109 --> 00:19:52,269
+these different open calls so
+
+457
+00:19:52,269 --> 00:19:53,710
+to get different blocks of data.
+
+458
+00:19:53,710 --> 00:19:55,389
+Pero is try to
+take care of that.
+
+459
+00:19:55,389 --> 00:19:57,249
+And if you use the
+extra stuff and Python,
+
+460
+00:19:57,249 --> 00:19:59,289
+it starts to feel very
+much like I'm just
+
+461
+00:19:59,289 --> 00:20:01,630
+reading a regular
+file on my cyst,
+
+462
+00:20:01,630 --> 00:20:03,349
+someone to get all
+that set up going.
+
+463
+00:20:03,349 --> 00:20:06,410
+Right, people have any
+questions about how we access
+
+464
+00:20:06,410 --> 00:20:10,989
+data in HDFS? A few
+different options.
+
+465
+00:20:10,989 --> 00:20:12,110
+Fantastic.
+
+466
+00:20:12,110 --> 00:20:14,109
+And the project we'll go
+to practice all three,
+
+467
+00:20:14,109 --> 00:20:16,570
+and that always makes
+it more concrete.
+
+468
+00:20:16,570 --> 00:20:18,170
+Fantastic. So I'm may to head
+
+469
+00:20:18,170 --> 00:20:19,629
+over and switch
+gears a little bit,
+
+470
+00:20:19,629 --> 00:20:21,390
+we're we move on to a new topic,
+
+471
+00:20:21,390 --> 00:20:23,089
+which is we have all of
+
+472
+00:20:23,089 --> 00:20:26,549
+this data in our
+distributed file system.
+
+473
+00:20:26,549 --> 00:20:27,709
+How do we actually analyze it?
+
+474
+00:20:27,709 --> 00:20:29,309
+Right? How do we
+actually make use of it?
+
+475
+00:20:29,309 --> 00:20:30,549
+And I'm may spend most of
+
+476
+00:20:30,549 --> 00:20:32,569
+the time talking
+about map reduce?
+
+477
+00:20:32,569 --> 00:20:33,849
+And we aren't trying to do
+
+478
+00:20:33,849 --> 00:20:35,449
+any projects in map
+reduce this semester.
+
+479
+00:20:35,449 --> 00:20:36,969
+I think it's like
+a classic system
+
+480
+00:20:36,969 --> 00:20:39,450
+that is inspired a
+lot of other things,
+
+481
+00:20:39,450 --> 00:20:41,569
+and people describe
+other systems
+
+482
+00:20:41,569 --> 00:20:42,869
+in the context of map reduce.
+
+483
+00:20:42,869 --> 00:20:44,369
+So it's something you
+have to know what it is
+
+484
+00:20:44,369 --> 00:20:47,409
+and how you would
+in theory, use it.
+
+485
+00:20:47,409 --> 00:20:50,644
+But then the hands on suf
+we're act to do is with Spark.
+
+486
+00:20:50,644 --> 00:20:52,179
+And set. I'm trying to do
+
+487
+00:20:52,179 --> 00:20:52,699
+a little bit of
+
+488
+00:20:52,699 --> 00:20:54,219
+history lesson and learn
+how map reduce work?
+
+489
+00:20:54,219 --> 00:20:55,659
+And then we'll actually
+be doing projects?
+
+490
+00:20:55,659 --> 00:20:58,199
+Multiple projects with
+Spark this semester.
+
+491
+00:20:58,199 --> 00:21:00,199
+So I have a few goals.
+
+492
+00:21:00,199 --> 00:21:01,899
+Map reduce, the name,
+Map and Reduce.
+
+493
+00:21:01,899 --> 00:21:03,199
+There's mappers and reducers
+
+494
+00:21:03,199 --> 00:21:04,499
+that you write code for these,
+
+495
+00:21:04,499 --> 00:21:05,519
+so you need to be able to
+
+496
+00:21:05,519 --> 00:21:07,559
+describe what the
+role of those are.
+
+497
+00:21:07,559 --> 00:21:09,500
+I want you to also
+be able to describe
+
+498
+00:21:09,500 --> 00:21:11,399
+Spark concepts that we
+
+499
+00:21:11,399 --> 00:21:13,199
+might use when we're doing
+some of this computation.
+
+500
+00:21:13,199 --> 00:21:15,359
+And those concepts are
+related to data linage.
+
+501
+00:21:15,359 --> 00:21:16,999
+Often when I'm trying
+to produce some result,
+
+502
+00:21:16,999 --> 00:21:19,480
+it's not that I go from my
+original data that result.
+
+503
+00:21:19,480 --> 00:21:21,440
+There's a series of steps
+I used to get there,
+
+504
+00:21:21,440 --> 00:21:23,220
+and data linage
+related to Strib.
+
+505
+00:21:23,220 --> 00:21:25,105
+Like, how do I get
+from this output data?
+
+506
+00:21:25,105 --> 00:21:27,190
+What is my linage back
+to my input data.
+
+507
+00:21:27,190 --> 00:21:28,369
+There's a bunch
+of concepts there
+
+508
+00:21:28,369 --> 00:21:29,829
+that we have to
+be familiar with.
+
+509
+00:21:29,829 --> 00:21:32,989
+We should learn how to deploy
+Spark on multiple workers.
+
+510
+00:21:32,989 --> 00:21:34,350
+And then finally, there's
+
+511
+00:21:34,350 --> 00:21:35,990
+a couple of ways we can
+program with Spark.
+
+512
+00:21:35,990 --> 00:21:38,469
+One is with something called
+RDDs and other data frames.
+
+513
+00:21:38,469 --> 00:21:39,809
+We can actually use SQL two,
+
+514
+00:21:39,809 --> 00:21:41,170
+but I want to cover
+
+515
+00:21:41,170 --> 00:21:43,810
+how how we interact
+with it in that way.
+
+516
+00:21:43,810 --> 00:21:45,749
+Okay, so a little
+bit of background.
+
+517
+00:21:45,749 --> 00:21:47,790
+I want to introduce
+this term Data Lake.
+
+518
+00:21:47,790 --> 00:21:50,789
+It's actually kind of a
+relatively newer term,
+
+519
+00:21:50,789 --> 00:21:52,429
+but it's related
+to this concept of
+
+520
+00:21:52,429 --> 00:21:54,369
+a data warehouse
+that we saw earlier.
+
+521
+00:21:54,369 --> 00:21:57,114
+So let me briefly review
+what the data warehouses.
+
+522
+00:21:57,114 --> 00:21:59,400
+Remember that when
+I have a database,
+
+523
+00:21:59,400 --> 00:22:02,760
+it could either be row
+oriented database,
+
+524
+00:22:02,760 --> 00:22:05,279
+and OLTP database where
+I'm handling transactions,
+
+525
+00:22:05,279 --> 00:22:07,699
+adding rows, looking at
+rows, things like that.
+
+526
+00:22:07,699 --> 00:22:09,239
+And a lot of applications
+
+527
+00:22:09,239 --> 00:22:10,419
+that people are
+interacting with,
+
+528
+00:22:10,419 --> 00:22:12,760
+things are happening at
+this row granularity.
+
+529
+00:22:12,760 --> 00:22:14,459
+So an organization
+might typically have
+
+530
+00:22:14,459 --> 00:22:16,459
+lots of different
+OLTP databases,
+
+531
+00:22:16,459 --> 00:22:20,279
+and that's not a great setup
+for doing analysis, right?
+
+532
+00:22:20,279 --> 00:22:22,339
+The file laid out
+is bad for that.
+
+533
+00:22:22,339 --> 00:22:25,280
+I want some kind of column
+oriented layout for analysis.
+
+534
+00:22:25,280 --> 00:22:27,629
+I want to pull data
+from different places
+
+535
+00:22:27,629 --> 00:22:28,849
+to do my analysis, right?
+
+536
+00:22:28,849 --> 00:22:30,170
+So what people
+often do is they'll
+
+537
+00:22:30,170 --> 00:22:31,929
+write these ETL jobs, extract,
+
+538
+00:22:31,929 --> 00:22:34,169
+transform and load, and
+they'll pull data from
+
+539
+00:22:34,169 --> 00:22:36,590
+all these different
+OLTP databases,
+
+540
+00:22:36,590 --> 00:22:38,910
+and they'll dump it
+in OLAP database,
+
+541
+00:22:38,910 --> 00:22:41,290
+and online analytics
+processing database,
+
+542
+00:22:41,290 --> 00:22:42,370
+and they're going
+to call that big
+
+543
+00:22:42,370 --> 00:22:43,890
+database their data warehouse,
+
+544
+00:22:43,890 --> 00:22:45,409
+and then some business
+analysts will be
+
+545
+00:22:45,409 --> 00:22:47,949
+doing SQL queries on it, right?
+
+546
+00:22:47,949 --> 00:22:52,250
+And So looking at this OLAP
+database data warehouse,
+
+547
+00:22:52,250 --> 00:22:54,309
+there's some nice
+things about it.
+
+548
+00:22:54,309 --> 00:22:57,289
+One is that they have
+a storage layout that
+
+549
+00:22:57,289 --> 00:23:00,309
+is codesigned with their
+analysis engine, right?
+
+550
+00:23:00,309 --> 00:23:01,449
+If they have some idea for
+
+551
+00:23:01,449 --> 00:23:02,729
+how they can do analysis faster,
+
+552
+00:23:02,729 --> 00:23:04,370
+but it needs a little
+extra information,
+
+553
+00:23:04,370 --> 00:23:06,349
+they might change
+their data layout
+
+554
+00:23:06,349 --> 00:23:07,949
+to make that analysis
+possible, right?
+
+555
+00:23:07,949 --> 00:23:09,650
+This is generally
+highly efficient.
+
+556
+00:23:09,650 --> 00:23:11,349
+But it's a bit limited, right?
+
+557
+00:23:11,349 --> 00:23:13,790
+What if we want a machine
+learning engineer
+
+558
+00:23:13,790 --> 00:23:16,909
+to train some model
+on that data there.
+
+559
+00:23:16,909 --> 00:23:18,650
+That person is going to have
+to write a giant query,
+
+560
+00:23:18,650 --> 00:23:20,010
+which is like select
+star, and they're
+
+561
+00:23:20,010 --> 00:23:21,949
+just going to dump all the
+data in another format.
+
+562
+00:23:21,949 --> 00:23:23,050
+So the data is already
+
+563
+00:23:23,050 --> 00:23:24,590
+duplicated and it's
+going to be slow.
+
+564
+00:23:24,590 --> 00:23:26,710
+And so this is not great if
+you want to do something
+
+565
+00:23:26,710 --> 00:23:28,129
+beyond the bare minimum
+
+566
+00:23:28,129 --> 00:23:30,209
+of of doing SQL
+queries or whatever.
+
+567
+00:23:30,209 --> 00:23:32,390
+So the alternative to
+the Data warehouse
+
+568
+00:23:32,390 --> 00:23:34,750
+is something called a Data Lake.
+
+569
+00:23:34,750 --> 00:23:37,109
+And a Data Lake is a little
+bit of a free for all.
+
+570
+00:23:37,109 --> 00:23:38,469
+What we'll have is some kind of
+
+571
+00:23:38,469 --> 00:23:40,589
+giant distributed file system.
+
+572
+00:23:40,589 --> 00:23:42,969
+Maybe it's the
+Hadoop file system.
+
+573
+00:23:42,969 --> 00:23:45,409
+People also use things
+like S three on
+
+574
+00:23:45,409 --> 00:23:48,549
+Amazon or Google Cloud Storage.
+
+575
+00:23:48,549 --> 00:23:49,950
+There's different
+systems people use.
+
+576
+00:23:49,950 --> 00:23:51,589
+We talk about HDFS
+
+577
+00:23:51,589 --> 00:23:53,569
+because that's what we
+are just coming out of.
+
+578
+00:23:53,569 --> 00:23:55,869
+And people will put
+files there, right?
+
+579
+00:23:55,869 --> 00:23:56,810
+Maybe some of these files
+
+580
+00:23:56,810 --> 00:23:57,829
+are structured like you can have
+
+581
+00:23:57,829 --> 00:24:00,279
+part files CSV files there.
+
+582
+00:24:00,279 --> 00:24:01,940
+Maybe some of it's
+also unstructured.
+
+583
+00:24:01,940 --> 00:24:04,479
+Maybe they have different
+images or PDFs,
+
+584
+00:24:04,479 --> 00:24:06,520
+or it could be a
+variety of formats.
+
+585
+00:24:06,520 --> 00:24:08,439
+The idea is that
+we have this giant
+
+586
+00:24:08,439 --> 00:24:09,560
+file system where we're putting
+
+587
+00:24:09,560 --> 00:24:12,939
+all our data so that it
+can be analyzed, right?
+
+588
+00:24:12,939 --> 00:24:15,480
+And then what we can
+do is we might still
+
+589
+00:24:15,480 --> 00:24:18,040
+want to do SQL queries
+on some of these.
+
+590
+00:24:18,040 --> 00:24:20,099
+And so Spark, for example,
+will let us do that.
+
+591
+00:24:20,099 --> 00:24:21,640
+Spark, I could
+write a SQL query,
+
+592
+00:24:21,640 --> 00:24:23,939
+and it might run
+that query on top of
+
+593
+00:24:23,939 --> 00:24:26,999
+these Park files
+and HDFS, right?
+
+594
+00:24:26,999 --> 00:24:28,919
+But I could also use
+other engines, right?
+
+595
+00:24:28,919 --> 00:24:30,199
+I could use map reduce on there.
+
+596
+00:24:30,199 --> 00:24:31,400
+Maybe there's some
+people using map
+
+597
+00:24:31,400 --> 00:24:33,100
+reduce and some
+people using Spark.
+
+598
+00:24:33,100 --> 00:24:36,659
+Um, PyTorch is a famous
+machine learning framework.
+
+599
+00:24:36,659 --> 00:24:38,080
+Maybe people are using PyTorch
+
+600
+00:24:38,080 --> 00:24:39,660
+to train on some of
+the images there.
+
+601
+00:24:39,660 --> 00:24:41,739
+The idea is that even
+though we don't have
+
+602
+00:24:41,739 --> 00:24:44,659
+any system that's closely
+coupled with the data layout,
+
+603
+00:24:44,659 --> 00:24:46,499
+we can have a lot of
+different tools that are
+
+604
+00:24:46,499 --> 00:24:48,419
+taking advantage of this data,
+
+605
+00:24:48,419 --> 00:24:51,619
+which is now in one big
+centralized place, right?
+
+606
+00:24:51,619 --> 00:24:53,060
+So there's going to
+be some people maybe
+
+607
+00:24:53,060 --> 00:24:54,860
+their job is getting the
+data into this place,
+
+608
+00:24:54,860 --> 00:24:56,599
+other people that are
+taking advantage of
+
+609
+00:24:56,599 --> 00:24:59,295
+this data that's
+in our data lay.
+
+610
+00:24:59,295 --> 00:25:03,149
+All right. So when we look
+at Map reduce first, right,
+
+611
+00:25:03,149 --> 00:25:04,609
+which is one of the
+things we might use to
+
+612
+00:25:04,609 --> 00:25:07,410
+analyze the data in our data.
+
+613
+00:25:07,410 --> 00:25:11,570
+And so Map reduce was originally
+built on top of HDFS,
+
+614
+00:25:11,570 --> 00:25:13,289
+although you can
+imagine integrating it
+
+615
+00:25:13,289 --> 00:25:15,485
+with other things as well.
+
+616
+00:25:15,485 --> 00:25:19,459
+Okay, so I want to contrast
+this with how we use SQL.
+
+617
+00:25:19,459 --> 00:25:22,819
+When I am using SQL, Well,
+in both cases, right?
+
+618
+00:25:22,819 --> 00:25:24,020
+I have questions about the data,
+
+619
+00:25:24,020 --> 00:25:25,140
+and I want to answer them.
+
+620
+00:25:25,140 --> 00:25:28,159
+In SQL, I would formulate
+my question as a query,
+
+621
+00:25:28,159 --> 00:25:29,679
+send it to a database,
+and it would
+
+622
+00:25:29,679 --> 00:25:31,620
+send me back some results.
+
+623
+00:25:31,620 --> 00:25:35,380
+A Map reduced job is
+significantly harder to write,
+
+624
+00:25:35,380 --> 00:25:38,659
+but it has advantage that it
+can be more scalable, right?
+
+625
+00:25:38,659 --> 00:25:40,460
+So I have map produced
+as a platform,
+
+626
+00:25:40,460 --> 00:25:41,740
+and I have to give
+it a few things.
+
+627
+00:25:41,740 --> 00:25:42,820
+Instead of writing a query,
+
+628
+00:25:42,820 --> 00:25:44,159
+I actually write code,
+
+629
+00:25:44,159 --> 00:25:46,259
+like in Java or Python
+or something like that.
+
+630
+00:25:46,259 --> 00:25:47,959
+And I have to write
+code for two functions.
+
+631
+00:25:47,959 --> 00:25:49,859
+There's a map function
+and a reduced function.
+
+632
+00:25:49,859 --> 00:25:52,259
+I write that code,
+and I feed that in.
+
+633
+00:25:52,259 --> 00:25:54,100
+It's also highly distributed.
+
+634
+00:25:54,100 --> 00:25:56,100
+So I will say, like, how many
+mappers do I want to run?
+
+635
+00:25:56,100 --> 00:25:57,900
+How many reducers
+do I want to run?
+
+636
+00:25:57,900 --> 00:26:00,299
+I'll feed those
+configuration settings in.
+
+637
+00:26:00,299 --> 00:26:02,499
+And then finally,
+rather than just like
+
+638
+00:26:02,499 --> 00:26:04,879
+sending a query and ding
+some results directly back,
+
+639
+00:26:04,879 --> 00:26:08,419
+data comes from HDFS and
+it ends up in HDFS, right?
+
+640
+00:26:08,419 --> 00:26:10,319
+So I might have a
+big table somewhere,
+
+641
+00:26:10,319 --> 00:26:11,720
+maybe Park files or whatever,
+
+642
+00:26:11,720 --> 00:26:13,439
+and I'm feeding those
+into map reduce.
+
+643
+00:26:13,439 --> 00:26:15,619
+And then instead of the query
+results coming back to me,
+
+644
+00:26:15,619 --> 00:26:17,360
+the query results
+might be too big
+
+645
+00:26:17,360 --> 00:26:19,879
+to just have coming
+back to one machine.
+
+646
+00:26:19,879 --> 00:26:23,079
+So those query results are
+also going to go right back to
+
+647
+00:26:23,079 --> 00:26:24,759
+HDFS in the end and
+then I could have
+
+648
+00:26:24,759 --> 00:26:25,980
+all the other tool that helps
+
+649
+00:26:25,980 --> 00:26:28,190
+me use those results
+for something.
+
+650
+00:26:28,190 --> 00:26:31,340
+Alright, cool. So that's
+the general structure.
+
+651
+00:26:31,340 --> 00:26:32,960
+And so I want to
+give you a sense
+
+652
+00:26:32,960 --> 00:26:34,620
+of how we would write
+code for these.
+
+653
+00:26:34,620 --> 00:26:35,980
+I think Java is probably
+
+654
+00:26:35,980 --> 00:26:37,059
+the most common language people
+
+655
+00:26:37,059 --> 00:26:38,200
+used to write these things.
+
+656
+00:26:38,200 --> 00:26:39,719
+I'm going to be just showing
+
+657
+00:26:39,719 --> 00:26:40,879
+pseudocode and the pseudo
+
+658
+00:26:40,879 --> 00:26:42,199
+code will kind of
+look like Python,
+
+659
+00:26:42,199 --> 00:26:43,980
+so it feels a little
+bit familiar.
+
+660
+00:26:43,980 --> 00:26:45,280
+But it's just pseudo code.
+
+661
+00:26:45,280 --> 00:26:46,759
+It's not something that
+would actually run.
+
+662
+00:26:46,759 --> 00:26:48,299
+So how would we write
+a map function?
+
+663
+00:26:48,299 --> 00:26:49,844
+What would we achieve here?
+
+664
+00:26:49,844 --> 00:26:53,630
+Okay, so a map function is
+going to take two inputs.
+
+665
+00:26:53,630 --> 00:26:56,609
+It's going to take
+a key and a value.
+
+666
+00:26:56,609 --> 00:26:58,649
+And it's going to be
+getting these keys and
+
+667
+00:26:58,649 --> 00:27:00,610
+values from some
+sort of input data.
+
+668
+00:27:00,610 --> 00:27:03,349
+So here I have an input
+dot CSV file on HTFS,
+
+669
+00:27:03,349 --> 00:27:06,049
+and I'm describing a bunch
+of different shapes, right?
+
+670
+00:27:06,049 --> 00:27:07,609
+The different shapes
+have different
+
+671
+00:27:07,609 --> 00:27:09,270
+colors and different sizes.
+
+672
+00:27:09,270 --> 00:27:11,250
+And I want to write some code,
+
+673
+00:27:11,250 --> 00:27:12,769
+that's going to help me
+answer this question.
+
+674
+00:27:12,769 --> 00:27:14,569
+And the question is,
+
+675
+00:27:14,569 --> 00:27:17,049
+what are the colors of
+the squares, right?
+
+676
+00:27:17,049 --> 00:27:18,470
+So I guess there's two squares.
+
+677
+00:27:18,470 --> 00:27:20,809
+There's a red square
+and a green square,
+
+678
+00:27:20,809 --> 00:27:22,249
+and in SQL, I
+
+679
+00:27:22,249 --> 00:27:23,649
+would write a query down
+here like the bottom.
+
+680
+00:27:23,649 --> 00:27:27,200
+I say select color from table
+where shape equals square.
+
+681
+00:27:27,200 --> 00:27:29,509
+But I want to accomplish
+the same thing now by
+
+682
+00:27:29,509 --> 00:27:32,410
+writing a little map
+function instead.
+
+683
+00:27:32,410 --> 00:27:33,989
+And so to do this,
+
+684
+00:27:33,989 --> 00:27:35,650
+I have to think about well,
+
+685
+00:27:35,650 --> 00:27:37,270
+how is this going to be called?
+
+686
+00:27:37,270 --> 00:27:38,749
+And so the cool thing
+about map reduce is,
+
+687
+00:27:38,749 --> 00:27:40,330
+I write the map
+reduce functions,
+
+688
+00:27:40,330 --> 00:27:41,530
+but I don't actually call them.
+
+689
+00:27:41,530 --> 00:27:44,569
+They get automatically
+called for me with the data.
+
+690
+00:27:44,569 --> 00:27:46,529
+And so what will happen is
+
+691
+00:27:46,529 --> 00:27:49,249
+that Map reduce the
+platform is going to
+
+692
+00:27:49,249 --> 00:27:51,590
+loop over all of these
+lines and it's try
+
+693
+00:27:51,590 --> 00:27:54,189
+to feed them in to
+my key in value.
+
+694
+00:27:54,189 --> 00:27:55,569
+And what we're going to do right
+
+695
+00:27:55,569 --> 00:27:57,290
+now is actually
+take the whole row,
+
+696
+00:27:57,290 --> 00:28:00,149
+the entire thing and feed
+that in as my value, right?
+
+697
+00:28:00,149 --> 00:28:01,950
+So my value is just
+the whole row.
+
+698
+00:28:01,950 --> 00:28:03,540
+And what is my key?
+
+699
+00:28:03,540 --> 00:28:04,869
+For this particular case, I
+
+700
+00:28:04,869 --> 00:28:06,229
+don't actually care
+too much what it is,
+
+701
+00:28:06,229 --> 00:28:07,549
+and different important sources
+
+702
+00:28:07,549 --> 00:28:08,370
+might do different things.
+
+703
+00:28:08,370 --> 00:28:09,890
+I may imagine that in this case,
+
+704
+00:28:09,890 --> 00:28:12,669
+the key is just the
+line number, right?
+
+705
+00:28:12,669 --> 00:28:14,470
+So line number zero.
+
+706
+00:28:14,470 --> 00:28:16,809
+That's my key. And
+then Red circle
+
+707
+00:28:16,809 --> 00:28:19,729
+three is my value, right?
+
+708
+00:28:19,729 --> 00:28:21,729
+And it's a very
+flexible framework.
+
+709
+00:28:21,729 --> 00:28:24,689
+You can write different classes
+that will take data from
+
+710
+00:28:24,689 --> 00:28:25,909
+different places and kind
+
+711
+00:28:25,909 --> 00:28:27,929
+of identify the key
+and value differently,
+
+712
+00:28:27,929 --> 00:28:30,869
+but this would be one setup
+you might have, right?
+
+713
+00:28:30,869 --> 00:28:32,189
+So next one on line one,
+
+714
+00:28:32,189 --> 00:28:34,669
+I have Red Square five, right?
+
+715
+00:28:34,669 --> 00:28:37,609
+And so these are all
+feeding into my function.
+
+716
+00:28:37,609 --> 00:28:38,829
+And so then you can start to
+
+717
+00:28:38,829 --> 00:28:40,909
+imagine how I could write
+code here that would
+
+718
+00:28:40,909 --> 00:28:44,890
+identify all the
+colors of the squares.
+
+719
+00:28:44,890 --> 00:28:46,909
+And so inside of the function,
+
+720
+00:28:46,909 --> 00:28:49,070
+there's another function
+we call called EMT,
+
+721
+00:28:49,070 --> 00:28:51,569
+and EMIT produces
+output data, right?
+
+722
+00:28:51,569 --> 00:28:55,349
+So there's data coming in
+and EMIT has data going out.
+
+723
+00:28:55,349 --> 00:28:57,009
+And EMIT really has
+
+724
+00:28:57,009 --> 00:28:59,149
+the same form as the
+input data, right?
+
+725
+00:28:59,149 --> 00:29:00,779
+So we have a key going out.
+
+726
+00:29:00,779 --> 00:29:02,909
+And a value going out.
+
+727
+00:29:02,909 --> 00:29:05,029
+And you know, I could
+emit whatever I want.
+
+728
+00:29:05,029 --> 00:29:07,350
+It's an extremely
+flexible framework.
+
+729
+00:29:07,350 --> 00:29:08,050
+But in this case,
+
+730
+00:29:08,050 --> 00:29:09,270
+what I'm trying to do
+is I'm just really
+
+731
+00:29:09,270 --> 00:29:11,449
+trying to filter down
+the original data.
+
+732
+00:29:11,449 --> 00:29:13,709
+So when I have this
+row coming in,
+
+733
+00:29:13,709 --> 00:29:15,130
+I'm just interested
+in the color,
+
+734
+00:29:15,130 --> 00:29:17,589
+so I could say dot
+color is my value out.
+
+735
+00:29:17,589 --> 00:29:18,989
+And the key in
+
+736
+00:29:18,989 --> 00:29:20,449
+this example, I don't
+really care what it is,
+
+737
+00:29:20,449 --> 00:29:22,050
+maybe I'll just put the same key
+
+738
+00:29:22,050 --> 00:29:24,089
+out that came into me. I
+could do something different.
+
+739
+00:29:24,089 --> 00:29:25,609
+It doesn't matter
+for this example.
+
+740
+00:29:25,609 --> 00:29:28,009
+But you can see that
+if this function was
+
+741
+00:29:28,009 --> 00:29:30,850
+automatically called for
+me this input data set,
+
+742
+00:29:30,850 --> 00:29:33,130
+the things I mit would
+be red and green.
+
+743
+00:29:33,130 --> 00:29:35,349
+And those were the colors
+of the squares, right?
+
+744
+00:29:35,349 --> 00:29:37,409
+There's a red square
+and a green square.
+
+745
+00:29:37,409 --> 00:29:39,860
+Okay. So I can
+filter things down,
+
+746
+00:29:39,860 --> 00:29:41,259
+right? Would be one example.
+
+747
+00:29:41,259 --> 00:29:42,600
+Any questions about MP,
+
+748
+00:29:42,600 --> 00:29:44,800
+the Map function before
+
+749
+00:29:44,800 --> 00:29:46,339
+I go to the next slide
+about how you might
+
+750
+00:29:46,339 --> 00:29:51,499
+program something
+like this? One.
+
+751
+00:29:53,180 --> 00:29:55,739
+Oh, how did five be column one.
+
+752
+00:29:55,739 --> 00:29:57,899
+So when I emit
+
+753
+00:29:57,899 --> 00:29:59,979
+the key I mean, I can
+emit whatever I want.
+
+754
+00:29:59,979 --> 00:30:01,740
+In this case, I'm
+emitting the input key.
+
+755
+00:30:01,740 --> 00:30:03,799
+And so for me,
+
+756
+00:30:03,799 --> 00:30:06,319
+the input key was one because
+that was the line number.
+
+757
+00:30:06,319 --> 00:30:08,979
+Right? So the line number
+was one. I emitted that.
+
+758
+00:30:08,979 --> 00:30:11,920
+And then five was the size,
+
+759
+00:30:11,920 --> 00:30:13,679
+and I never emitted that.
+I could have, right?
+
+760
+00:30:13,679 --> 00:30:14,480
+I mean, I could have made
+
+761
+00:30:14,480 --> 00:30:16,619
+the size the key if I wanted to,
+
+762
+00:30:16,619 --> 00:30:19,000
+but I just took the input key,
+
+763
+00:30:19,000 --> 00:30:19,800
+which was the line number
+
+764
+00:30:19,800 --> 00:30:20,920
+and use that for the output key.
+
+765
+00:30:20,920 --> 00:30:22,080
+Yeah, thank you for clarifying.
+
+766
+00:30:22,080 --> 00:30:26,529
+Yeah, there are questions
+people have. Oh, right.
+
+767
+00:30:26,529 --> 00:30:29,369
+Cool. So how does this
+thing actually run?
+
+768
+00:30:29,369 --> 00:30:31,290
+Like if the data data is huge?
+
+769
+00:30:31,290 --> 00:30:34,249
+And what they'll do is they
+will split it up, right?
+
+770
+00:30:34,249 --> 00:30:37,210
+I might have a cluster of a
+bunch of different machines,
+
+771
+00:30:37,210 --> 00:30:40,210
+and they will have
+these mapper tasks.
+
+772
+00:30:40,210 --> 00:30:42,049
+And each map or task is
+
+773
+00:30:42,049 --> 00:30:44,090
+going to get a piece
+of the input data.
+
+774
+00:30:44,090 --> 00:30:45,969
+And each mapper task
+is going to have
+
+775
+00:30:45,969 --> 00:30:48,289
+that map function called
+many times, right?
+
+776
+00:30:48,289 --> 00:30:52,139
+So here I have two map or tasks,
+
+777
+00:30:52,139 --> 00:30:53,959
+and each of these tasks
+is starting to have
+
+778
+00:30:53,959 --> 00:30:56,339
+the map function
+called twice, right?
+
+779
+00:30:56,339 --> 00:30:57,539
+So I'm cutting up
+
+780
+00:30:57,539 --> 00:30:59,340
+the data that's coming
+from some source,
+
+781
+00:30:59,340 --> 00:31:01,539
+in this case, is
+coming from HDFS.
+
+782
+00:31:01,539 --> 00:31:04,539
+I'm not really showing the
+whole HDFS architecture,
+
+783
+00:31:04,539 --> 00:31:06,840
+but remember that this
+file has probably also
+
+784
+00:31:06,840 --> 00:31:09,719
+broken up a bunch across a
+bunch of different data nodes.
+
+785
+00:31:09,719 --> 00:31:11,900
+And you can imagine
+that you might even,
+
+786
+00:31:11,900 --> 00:31:13,999
+side to relate these
+things, right?
+
+787
+00:31:13,999 --> 00:31:17,059
+If I know that the block
+size is, I don't know,
+
+788
+00:31:17,059 --> 00:31:19,039
+64 megabytes, maybe I'll have
+
+789
+00:31:19,039 --> 00:31:21,879
+64 megabytes chunks of the
+file going to each mapper.
+
+790
+00:31:21,879 --> 00:31:23,339
+And so the great thing
+
+791
+00:31:23,339 --> 00:31:25,139
+about this is that
+if I have, you know,
+
+792
+00:31:25,139 --> 00:31:27,079
+a very large amount of hardware,
+
+793
+00:31:27,079 --> 00:31:29,959
+then this scales quite well.
+
+794
+00:31:29,959 --> 00:31:30,920
+Like the data is spread
+
+795
+00:31:30,920 --> 00:31:32,319
+across a bunch of
+different machines.
+
+796
+00:31:32,319 --> 00:31:33,679
+The computation is spread across
+
+797
+00:31:33,679 --> 00:31:34,839
+a bunch of different machines.
+
+798
+00:31:34,839 --> 00:31:36,299
+As long as I have
+enough computers,
+
+799
+00:31:36,299 --> 00:31:37,660
+it doesn't matter
+how big the data
+
+800
+00:31:37,660 --> 00:31:39,099
+is and a fixed amount of time,
+
+801
+00:31:39,099 --> 00:31:41,399
+I can filter down
+this large data
+
+802
+00:31:41,399 --> 00:31:44,039
+set to a smaller
+piece of data, right?
+
+803
+00:31:44,039 --> 00:31:45,879
+To a smaller subset matching
+
+804
+00:31:45,879 --> 00:31:48,019
+some condition that
+I want to filter to.
+
+805
+00:31:48,019 --> 00:31:51,499
+So that's already powerful
+in and of itself, right?
+
+806
+00:31:51,790 --> 00:31:54,750
+Now, eventually, we have
+to get some output data,
+
+807
+00:31:54,750 --> 00:31:57,949
+and that's where a
+reducer comes in, right?
+
+808
+00:31:57,949 --> 00:32:00,689
+And so these mappers
+are going to have data.
+
+809
+00:32:00,689 --> 00:32:02,269
+The data coming
+out of the mappers
+
+810
+00:32:02,269 --> 00:32:03,450
+is called intermediate data,
+
+811
+00:32:03,450 --> 00:32:06,569
+that intermediate data is
+try to be sent to a reducer.
+
+812
+00:32:06,569 --> 00:32:08,630
+And the reducer can
+do different things.
+
+813
+00:32:08,630 --> 00:32:10,450
+But one of the things it might
+do is it might just take
+
+814
+00:32:10,450 --> 00:32:12,549
+the output data from these
+different sources and just
+
+815
+00:32:12,549 --> 00:32:14,749
+concatenate it and
+plop it all goes in
+
+816
+00:32:14,749 --> 00:32:17,449
+one output file
+somewhere, right?
+
+817
+00:32:17,449 --> 00:32:19,409
+So these are going to be
+put in all the data here,
+
+818
+00:32:19,409 --> 00:32:20,650
+and then I could just combine
+
+819
+00:32:20,650 --> 00:32:23,010
+that into a single output file.
+
+820
+00:32:23,010 --> 00:32:25,369
+That'd be one thing
+a reducer. Could do.
+
+821
+00:32:25,369 --> 00:32:26,749
+And that's what
+it'll do by default.
+
+822
+00:32:26,749 --> 00:32:28,409
+You get one reducer
+that does that.
+
+823
+00:32:28,409 --> 00:32:31,770
+But you can also write
+custom reducer code
+
+824
+00:32:31,770 --> 00:32:33,209
+that could further process
+
+825
+00:32:33,209 --> 00:32:35,009
+the data in different
+ways, right?
+
+826
+00:32:35,009 --> 00:32:38,090
+So I have a reduced
+function here.
+
+827
+00:32:38,090 --> 00:32:40,229
+And the things that
+
+828
+00:32:40,229 --> 00:32:41,849
+it is emitting is
+actually the same, right?
+
+829
+00:32:41,849 --> 00:32:45,829
+It emits keys and values,
+right? Why did I say?
+
+830
+00:32:45,829 --> 00:32:48,890
+I guess I used the word
+ro, right? But row value.
+
+831
+00:32:48,890 --> 00:32:50,489
+It doesn't matter
+what I name it.
+
+832
+00:32:50,489 --> 00:32:51,889
+I'm emitting keys and values.
+
+833
+00:32:51,889 --> 00:32:54,070
+Again, I could probably emit
+as many times I wanted.
+
+834
+00:32:54,070 --> 00:32:55,490
+The input to this function
+
+835
+00:32:55,490 --> 00:32:56,789
+is a little bit
+different, though, right?
+
+836
+00:32:56,789 --> 00:33:01,109
+So the map the map function
+had a key and a single value.
+
+837
+00:33:01,109 --> 00:33:02,709
+Here you actually see
+it's plural, right?
+
+838
+00:33:02,709 --> 00:33:04,229
+I have a key and
+
+839
+00:33:04,229 --> 00:33:07,269
+one or more values that
+are coming in, right?
+
+840
+00:33:07,269 --> 00:33:10,759
+And so I'm writing these two
+functions, Map and reduce,
+
+841
+00:33:10,759 --> 00:33:12,519
+but the map reduced
+framework itself
+
+842
+00:33:12,519 --> 00:33:14,439
+is doing a lot of
+work on my behalf.
+
+843
+00:33:14,439 --> 00:33:16,739
+And so what they're
+going to do is when they
+
+844
+00:33:16,739 --> 00:33:17,859
+get the data coming out of
+
+845
+00:33:17,859 --> 00:33:19,220
+all of these different mappers,
+
+846
+00:33:19,220 --> 00:33:20,839
+they're automatically going to
+
+847
+00:33:20,839 --> 00:33:22,819
+shuffled across the
+network for me,
+
+848
+00:33:22,819 --> 00:33:27,039
+and they're going to make sure
+that all of the map output
+
+849
+00:33:27,039 --> 00:33:28,879
+with the same key is grouped
+
+850
+00:33:28,879 --> 00:33:31,339
+together in the
+same place, right?
+
+851
+00:33:31,339 --> 00:33:32,559
+And so what that will mean is
+
+852
+00:33:32,559 --> 00:33:36,229
+that For one unique key
+coming out of the Mappers,
+
+853
+00:33:36,229 --> 00:33:37,610
+I will have one reduced call,
+
+854
+00:33:37,610 --> 00:33:40,150
+and I will get all the
+values with that key
+
+855
+00:33:40,150 --> 00:33:44,449
+together with a single function
+call like this, right?
+
+856
+00:33:44,449 --> 00:33:46,129
+It turns out to
+be very powerful.
+
+857
+00:33:46,129 --> 00:33:48,509
+It's kind of it's not
+doing a lot for you,
+
+858
+00:33:48,509 --> 00:33:50,149
+but we can based on
+
+859
+00:33:50,149 --> 00:33:51,850
+that simple property accomplish
+
+860
+00:33:51,850 --> 00:33:54,249
+a lot of things. Yeah,
+a question right here.
+
+861
+00:33:57,940 --> 00:34:00,440
+Yeah, excellent point.
+So in this case,
+
+862
+00:34:00,440 --> 00:34:01,759
+for the example I
+was drawing for,
+
+863
+00:34:01,759 --> 00:34:03,379
+the key would be the row number,
+
+864
+00:34:03,379 --> 00:34:04,679
+and so nothing would be grouped
+
+865
+00:34:04,679 --> 00:34:06,759
+together, right? Exactly, right?
+
+866
+00:34:06,759 --> 00:34:09,779
+In this case, for that
+particular input data,
+
+867
+00:34:09,779 --> 00:34:13,859
+every time values, we just
+have a single thing, right?
+
+868
+00:34:13,859 --> 00:34:15,399
+But in other cases, we
+
+869
+00:34:15,399 --> 00:34:17,079
+might do something more
+interesting with it.
+
+870
+00:34:17,079 --> 00:34:18,859
+Yeah, Excellent point, though.
+
+871
+00:34:18,859 --> 00:34:20,879
+That's why for the first case
+
+872
+00:34:20,879 --> 00:34:22,539
+where I'm just trying to, like,
+
+873
+00:34:22,539 --> 00:34:24,640
+filter down to squares,
+
+874
+00:34:24,640 --> 00:34:26,039
+I probably want
+to actually write
+
+875
+00:34:26,039 --> 00:34:27,479
+a reduced function, right?
+
+876
+00:34:27,479 --> 00:34:30,139
+I just write a map or a
+map function, and I'd say,
+
+877
+00:34:30,139 --> 00:34:31,720
+give me the default,
+reduced function
+
+878
+00:34:31,720 --> 00:34:33,140
+because I'm not doing
+anything interesting.
+
+879
+00:34:33,140 --> 00:34:35,199
+For more complicated analysis,
+
+880
+00:34:35,199 --> 00:34:37,659
+then we might write
+both of them.
+
+881
+00:34:37,659 --> 00:34:39,119
+Yeah, yeah, excellent point.
+
+882
+00:34:39,119 --> 00:34:40,239
+Yeah, there are
+questions people have
+
+883
+00:34:40,239 --> 00:34:42,420
+about the reduced function.
+
+884
+00:34:42,500 --> 00:34:44,679
+All right. And let's
+
+885
+00:34:44,679 --> 00:34:46,299
+just see how this
+data would flow in.
+
+886
+00:34:46,299 --> 00:34:48,079
+And I've changed it,
+
+887
+00:34:48,079 --> 00:34:50,719
+so I have a different map
+function than I used to have,
+
+888
+00:34:50,719 --> 00:34:52,560
+because I'm doing something
+a little more complicated.
+
+889
+00:34:52,560 --> 00:34:54,519
+So first, I'm going
+to just walk through
+
+890
+00:34:54,519 --> 00:34:56,939
+how the data is flowing through
+and what the results are.
+
+891
+00:34:56,939 --> 00:34:58,799
+And then after that,
+
+892
+00:34:58,799 --> 00:35:00,539
+we're try to talk about, well,
+
+893
+00:35:00,539 --> 00:35:03,280
+what question was this code
+
+894
+00:35:03,280 --> 00:35:05,239
+trying to answer about
+the data, right?
+
+895
+00:35:05,239 --> 00:35:07,260
+So I have the same input data,
+
+896
+00:35:07,260 --> 00:35:09,880
+and the map is doing something
+a little bit different.
+
+897
+00:35:09,880 --> 00:35:12,400
+It's still taking
+the input values
+
+898
+00:35:12,400 --> 00:35:14,099
+and putting the output
+values of the same.
+
+899
+00:35:14,099 --> 00:35:15,799
+I see there's no if
+statement in there,
+
+900
+00:35:15,799 --> 00:35:19,499
+so every input row is start
+to be outputted as well.
+
+901
+00:35:19,499 --> 00:35:21,120
+And what's really interesting
+
+902
+00:35:21,120 --> 00:35:22,619
+about this one is I'm
+changing the key.
+
+903
+00:35:22,619 --> 00:35:24,540
+The key coming in
+was the line number,
+
+904
+00:35:24,540 --> 00:35:29,270
+but the key coming out of the
+map is actually the color.
+
+905
+00:35:29,270 --> 00:35:32,659
+Right? And so when I run this
+map on all these things,
+
+906
+00:35:32,659 --> 00:35:34,119
+I may have some
+intermediate data that
+
+907
+00:35:34,119 --> 00:35:35,939
+looks like this
+over here, right?
+
+908
+00:35:35,939 --> 00:35:38,100
+Now I have the key is the color,
+
+909
+00:35:38,100 --> 00:35:39,739
+and then the value
+is that whole rope.
+
+910
+00:35:39,739 --> 00:35:41,739
+So there's a little bit of
+redundancy between the key
+
+911
+00:35:41,739 --> 00:35:44,239
+and the value because the
+value also contains it.
+
+912
+00:35:44,239 --> 00:35:46,179
+That's fine, and
+it's common, right?
+
+913
+00:35:46,179 --> 00:35:47,559
+But I can see that was the key.
+
+914
+00:35:47,559 --> 00:35:51,220
+I was able to choose key
+to be whatever I wanted.
+
+915
+00:35:51,420 --> 00:35:54,739
+The Map reduce
+framework itself is
+
+916
+00:35:54,739 --> 00:35:55,679
+going to do a lot of work on
+
+917
+00:35:55,679 --> 00:35:57,619
+that intermediate data for you.
+
+918
+00:35:57,619 --> 00:35:58,899
+The things that it's going to do
+
+919
+00:35:58,899 --> 00:36:00,199
+is it's going to
+group together all of
+
+920
+00:36:00,199 --> 00:36:02,979
+the related keys, right?
+
+921
+00:36:02,979 --> 00:36:04,920
+So I can see that the two reds
+
+922
+00:36:04,920 --> 00:36:06,119
+are part of the same group and
+
+923
+00:36:06,119 --> 00:36:07,379
+it'll actually
+sort them as well.
+
+924
+00:36:07,379 --> 00:36:11,320
+So I guess BG R is how things
+are alphabetically sorted.
+
+925
+00:36:11,320 --> 00:36:12,899
+And what they're
+going to do now is
+
+926
+00:36:12,899 --> 00:36:14,699
+they're going to
+call on your behalf,
+
+927
+00:36:14,699 --> 00:36:16,360
+they're going to call
+the reduced function
+
+928
+00:36:16,360 --> 00:36:19,119
+three times are three
+unique keys, right?
+
+929
+00:36:19,119 --> 00:36:21,399
+And they'll just try
+to feed this through.
+
+930
+00:36:21,399 --> 00:36:23,950
+So the first group,
+
+931
+00:36:23,950 --> 00:36:26,109
+where the blue group
+is trying to come in.
+
+932
+00:36:26,109 --> 00:36:27,669
+And what am I doing over in
+
+933
+00:36:27,669 --> 00:36:29,429
+this reduce? I have
+a count of zero.
+
+934
+00:36:29,429 --> 00:36:30,789
+I'm looping over all the rows in
+
+935
+00:36:30,789 --> 00:36:32,289
+the group and just
+counting them and then I'm
+
+936
+00:36:32,289 --> 00:36:35,669
+emitting my key and
+my count, right?
+
+937
+00:36:35,669 --> 00:36:37,809
+So in this case, my
+input key was blue,
+
+938
+00:36:37,809 --> 00:36:39,449
+my output key is blue.
+
+939
+00:36:39,449 --> 00:36:41,369
+There was one row I looped over,
+
+940
+00:36:41,369 --> 00:36:44,309
+so my output value is one.
+
+941
+00:36:44,309 --> 00:36:46,769
+And so as this first group
+
+942
+00:36:46,769 --> 00:36:49,204
+feeds the reduced function,
+I may say blue one.
+
+943
+00:36:49,204 --> 00:36:52,219
+Okay? The next one
+
+944
+00:36:52,219 --> 00:36:54,279
+I think is very similar. I'm
+going to get a green one.
+
+945
+00:36:54,279 --> 00:36:57,739
+And then finally, for
+this third group, right?
+
+946
+00:36:57,739 --> 00:36:59,959
+I'll just have one
+single reduced call
+
+947
+00:36:59,959 --> 00:37:01,419
+and it's going to emit red.
+
+948
+00:37:01,419 --> 00:37:04,179
+But this time it will have
+two rows that loop over,
+
+949
+00:37:04,179 --> 00:37:06,179
+and it'll be a red too.
+
+950
+00:37:06,179 --> 00:37:07,439
+And I'm just kind of
+
+951
+00:37:07,439 --> 00:37:09,279
+looking at how I
+wrote this code here.
+
+952
+00:37:09,279 --> 00:37:11,540
+This is the kind of results
+
+953
+00:37:11,540 --> 00:37:13,059
+I could have produced
+with a SQL query.
+
+954
+00:37:13,059 --> 00:37:14,339
+I'm wondering if anybody
+to help me figure
+
+955
+00:37:14,339 --> 00:37:15,839
+out what is the SQL query that
+
+956
+00:37:15,839 --> 00:37:19,659
+this code is
+basically resembling.
+
+957
+00:37:19,659 --> 00:37:21,699
+Yeah, right here.
+
+958
+00:37:24,050 --> 00:37:27,929
+Yeah, select count star
+and then group by color.
+
+959
+00:37:27,929 --> 00:37:30,789
+Absolutely, right? Was
+there another time Sorry.
+
+960
+00:37:30,789 --> 00:37:33,589
+Okay. Great. Yeah. So that's
+
+961
+00:37:33,589 --> 00:37:35,489
+what this code is
+doing here, right?
+
+962
+00:37:35,489 --> 00:37:37,309
+It can do a group by.
+
+963
+00:37:37,309 --> 00:37:40,610
+All right. Any questions
+about that example?
+
+964
+00:37:42,710 --> 00:37:46,429
+All right. So how would
+this actually run?
+
+965
+00:37:46,470 --> 00:37:49,429
+We already talked about when
+our input data is large,
+
+966
+00:37:49,429 --> 00:37:50,750
+we might have a lot of mappers.
+
+967
+00:37:50,750 --> 00:37:52,329
+In this case, the mappers are
+
+968
+00:37:52,329 --> 00:37:53,549
+outputting the same amount
+
+969
+00:37:53,549 --> 00:37:54,629
+of data that they
+have coming in.
+
+970
+00:37:54,629 --> 00:37:56,450
+So the intermediate
+data is also large,
+
+971
+00:37:56,450 --> 00:37:59,589
+and the data that the reducers
+are taking is also large.
+
+972
+00:37:59,589 --> 00:38:00,849
+So just like we wanted to split
+
+973
+00:38:00,849 --> 00:38:02,290
+up and have multiple mappers,
+
+974
+00:38:02,290 --> 00:38:04,709
+we might want to have
+multiple reducers, right?
+
+975
+00:38:04,709 --> 00:38:06,609
+The number of reducers
+doesn't have to be the
+
+976
+00:38:06,609 --> 00:38:08,549
+same as the number
+of groups because
+
+977
+00:38:08,549 --> 00:38:10,409
+a single reducer can have
+
+978
+00:38:10,409 --> 00:38:12,849
+multiple calls to the
+reduced function, right?
+
+979
+00:38:12,849 --> 00:38:14,489
+So in this case,
+I'm going to end up
+
+980
+00:38:14,489 --> 00:38:16,890
+with three groups of data,
+
+981
+00:38:16,890 --> 00:38:19,129
+and maybe one reducer has
+
+982
+00:38:19,129 --> 00:38:20,309
+two reduced calls and maybe
+
+983
+00:38:20,309 --> 00:38:23,309
+the other reducer has
+one reduced call.
+
+984
+00:38:23,470 --> 00:38:26,250
+And then each reducer
+is trying to produce
+
+985
+00:38:26,250 --> 00:38:28,969
+its own file in HDFS.
+
+986
+00:38:28,969 --> 00:38:31,509
+And so maybe that's a
+little bit annoying, right?
+
+987
+00:38:31,509 --> 00:38:33,749
+It's highly scalable
+because I run this thing,
+
+988
+00:38:33,749 --> 00:38:35,769
+and I had my results,
+and my results is
+
+989
+00:38:35,769 --> 00:38:37,989
+in some set of HFS files.
+
+990
+00:38:37,989 --> 00:38:39,229
+So I could go track
+it down and read
+
+991
+00:38:39,229 --> 00:38:42,749
+all those HFS files and do
+something with it, right?
+
+992
+00:38:42,749 --> 00:38:44,169
+But it's straight
+because there's
+
+993
+00:38:44,169 --> 00:38:46,069
+no central bottleenck
+here, right?
+
+994
+00:38:46,069 --> 00:38:47,849
+Like the mapper scale out.
+
+995
+00:38:47,849 --> 00:38:51,289
+HTFS scales out very nicely.
+The reducers scale out.
+
+996
+00:38:51,289 --> 00:38:53,349
+R I can work on
+very large datasets
+
+997
+00:38:53,349 --> 00:38:55,990
+and do things like a group
+bi and an aggregate.
+
+998
+00:38:55,990 --> 00:39:03,169
+Oh, right. So I
+
+999
+00:39:03,169 --> 00:39:04,909
+want to talk a little
+bit about how the things
+
+1000
+00:39:04,909 --> 00:39:06,989
+we do in SQL could
+correspond here.
+
+1001
+00:39:06,989 --> 00:39:08,670
+Basically, everything
+you can do in SQL,
+
+1002
+00:39:08,670 --> 00:39:10,149
+there's a way you
+could do it with
+
+1003
+00:39:10,149 --> 00:39:11,610
+more pain with Mp reduced,
+
+1004
+00:39:11,610 --> 00:39:13,249
+but also in a more scalable way.
+
+1005
+00:39:13,249 --> 00:39:15,409
+So something like select, right?
+
+1006
+00:39:15,409 --> 00:39:18,209
+You're choosing which columns
+you're interested in.
+
+1007
+00:39:18,250 --> 00:39:20,569
+In the map phase, right?
+
+1008
+00:39:20,569 --> 00:39:21,749
+When you're outputting
+a value, you
+
+1009
+00:39:21,749 --> 00:39:23,209
+could choose which
+columns there.
+
+1010
+00:39:23,209 --> 00:39:24,469
+Same thing with the
+reduced, right?
+
+1011
+00:39:24,469 --> 00:39:28,049
+I a value that the
+reducer is is a row,
+
+1012
+00:39:28,049 --> 00:39:30,829
+you could figure out what
+columns you want there, right?
+
+1013
+00:39:30,829 --> 00:39:32,030
+So the select that's choosing
+
+1014
+00:39:32,030 --> 00:39:33,389
+specific columns could be there.
+
+1015
+00:39:33,389 --> 00:39:36,049
+We already saw how where
+it could be accomplished
+
+1016
+00:39:36,049 --> 00:39:39,139
+with with a map, right?
+
+1017
+00:39:39,139 --> 00:39:40,539
+If I'm doing the wear,
+
+1018
+00:39:40,539 --> 00:39:42,740
+I can just like
+emit certain rows.
+
+1019
+00:39:42,740 --> 00:39:45,039
+Group by is really
+accomplished with
+
+1020
+00:39:45,039 --> 00:39:47,339
+all three of these
+stages, right?
+
+1021
+00:39:47,339 --> 00:39:49,379
+In the map phase, I had to
+
+1022
+00:39:49,379 --> 00:39:51,839
+choose the keys for
+what I was grouping by.
+
+1023
+00:39:51,839 --> 00:39:54,680
+And on the reduced phase
+was where I actually
+
+1024
+00:39:54,680 --> 00:39:57,580
+had everything in
+the same groups.
+
+1025
+00:39:57,580 --> 00:39:58,839
+And I had to do the
+aggregate, right?
+
+1026
+00:39:58,839 --> 00:40:00,659
+So the aggregate is paired
+with the stroop by.
+
+1027
+00:40:00,659 --> 00:40:02,200
+The shuffle phase happens
+
+1028
+00:40:02,200 --> 00:40:03,360
+in between the
+mapping and reducing.
+
+1029
+00:40:03,360 --> 00:40:04,979
+Even though I'm not
+writing code for that,
+
+1030
+00:40:04,979 --> 00:40:06,599
+that was a key part of that.
+
+1031
+00:40:06,599 --> 00:40:08,780
+Map reduce itself was shuffling
+
+1032
+00:40:08,780 --> 00:40:11,679
+data to bring groups
+together for me.
+
+1033
+00:40:11,679 --> 00:40:14,219
+What about having, right?
+
+1034
+00:40:14,219 --> 00:40:16,340
+So the reduce is the one
+doing the aggregate.
+
+1035
+00:40:16,340 --> 00:40:17,959
+And so let's say,
+
+1036
+00:40:17,959 --> 00:40:20,380
+like the reduce is
+counting up bros,
+
+1037
+00:40:20,380 --> 00:40:22,700
+the reduce could
+have a final filter
+
+1038
+00:40:22,700 --> 00:40:24,079
+like Having does to figure out,
+
+1039
+00:40:24,079 --> 00:40:27,399
+do I want to print out the
+summary statistic or not?
+
+1040
+00:40:27,399 --> 00:40:30,020
+So we could do
+having and reduce.
+
+1041
+00:40:30,020 --> 00:40:31,919
+What about order by?
+
+1042
+00:40:31,919 --> 00:40:34,275
+So when the shuffle happens,
+
+1043
+00:40:34,275 --> 00:40:37,370
+there's may be different chunks
+of data for each reducer,
+
+1044
+00:40:37,370 --> 00:40:40,649
+and each chunk of data might
+have multiple groups in it,
+
+1045
+00:40:40,649 --> 00:40:42,170
+and those groups are
+going to be sorted.
+
+1046
+00:40:42,170 --> 00:40:44,049
+So one of the ways you
+could do an order by is you
+
+1047
+00:40:44,049 --> 00:40:46,049
+could is you could have
+
+1048
+00:40:46,049 --> 00:40:47,669
+a single reducer because
+
+1049
+00:40:47,669 --> 00:40:49,029
+that single reducer is
+
+1050
+00:40:49,029 --> 00:40:50,189
+going to have a bunch
+of reduced calls,
+
+1051
+00:40:50,189 --> 00:40:51,930
+and we're guaranteed
+that those keys
+
+1052
+00:40:51,930 --> 00:40:53,349
+will be an ascending
+order, right?
+
+1053
+00:40:53,349 --> 00:40:55,649
+So you could do an
+order by as well.
+
+1054
+00:40:55,649 --> 00:40:57,049
+And then I think
+joint is probably
+
+1055
+00:40:57,049 --> 00:40:59,869
+the most complicated one
+to think about here.
+
+1056
+00:40:59,869 --> 00:41:01,910
+But there's different
+kinds of joins,
+
+1057
+00:41:01,910 --> 00:41:03,369
+and the joint I have in mind
+
+1058
+00:41:03,369 --> 00:41:05,509
+is where I have a foi and key
+
+1059
+00:41:05,509 --> 00:41:07,069
+that is exactly equal to
+
+1060
+00:41:07,069 --> 00:41:09,789
+some primary key in a
+different table, right?
+
+1061
+00:41:09,789 --> 00:41:12,039
+So in the examples
+I've given so far,
+
+1062
+00:41:12,039 --> 00:41:14,129
+I just have like one kind
+
+1063
+00:41:14,129 --> 00:41:15,890
+of table coming into the mapper.
+
+1064
+00:41:15,890 --> 00:41:17,469
+But there's no reason
+I couldn't have
+
+1065
+00:41:17,469 --> 00:41:19,709
+two different tables
+coming into a mapper.
+
+1066
+00:41:19,709 --> 00:41:21,229
+And then the map function
+will have to figure out,
+
+1067
+00:41:21,229 --> 00:41:22,909
+like, well, which
+table is it from.
+
+1068
+00:41:22,909 --> 00:41:24,449
+But the idea then is that
+
+1069
+00:41:24,449 --> 00:41:26,929
+as I have these two tables
+coming into the mapper,
+
+1070
+00:41:26,929 --> 00:41:28,209
+it could figure
+out, well, what is
+
+1071
+00:41:28,209 --> 00:41:30,309
+the value we're joining in,
+
+1072
+00:41:30,309 --> 00:41:31,749
+that primary or fog and key,
+
+1073
+00:41:31,749 --> 00:41:33,869
+and it could emit
+based on that because
+
+1074
+00:41:33,869 --> 00:41:36,909
+to have two tables
+and match them up,
+
+1075
+00:41:36,909 --> 00:41:38,809
+I have to figure
+out which rows and
+
+1076
+00:41:38,809 --> 00:41:40,929
+one table match which
+ones and the other table.
+
+1077
+00:41:40,929 --> 00:41:42,529
+And if I have the
+same both of them,
+
+1078
+00:41:42,529 --> 00:41:45,049
+I can bring those rows
+together in the same place.
+
+1079
+00:41:45,049 --> 00:41:47,994
+And then what would happen
+is that the reducer,
+
+1080
+00:41:47,994 --> 00:41:49,699
+is going to get some rows from
+
+1081
+00:41:49,699 --> 00:41:51,719
+one table and some
+rows from other table.
+
+1082
+00:41:51,719 --> 00:41:53,760
+So I'm going to be mixed
+together in that same values.
+
+1083
+00:41:53,760 --> 00:41:55,219
+But that reducer can say, well,
+
+1084
+00:41:55,219 --> 00:41:56,699
+these are the rows from
+
+1085
+00:41:56,699 --> 00:41:58,739
+one table that match with
+the rows of the other table,
+
+1086
+00:41:58,739 --> 00:42:01,259
+and it could complete the join.
+
+1087
+00:42:01,259 --> 00:42:04,300
+Right? So all of these things
+that we can do in SQL,
+
+1088
+00:42:04,300 --> 00:42:07,059
+we can do as map reduce as
+well if we're clever, right?
+
+1089
+00:42:07,059 --> 00:42:08,879
+It would be more difficult,
+but we could do it.
+
+1090
+00:42:08,879 --> 00:42:10,899
+I also want to point
+out that map reduce is
+
+1091
+00:42:10,899 --> 00:42:13,859
+actually more flexible, right?
+
+1092
+00:42:13,859 --> 00:42:19,610
+So For example, when I
+do a group by in SQL,
+
+1093
+00:42:19,610 --> 00:42:22,729
+every input row rows
+to a single group.
+
+1094
+00:42:22,729 --> 00:42:25,989
+But you can imagine
+cases where you have
+
+1095
+00:42:25,989 --> 00:42:27,489
+some kind of analysis where
+
+1096
+00:42:27,489 --> 00:42:29,709
+a single row might d
+throw a multiple groups.
+
+1097
+00:42:29,709 --> 00:42:32,969
+So for example, imagine some
+Facebook messages, right?
+
+1098
+00:42:32,969 --> 00:42:35,790
+A message has both a
+sender and receiver,
+
+1099
+00:42:35,790 --> 00:42:37,149
+and if I'm trying to count
+
+1100
+00:42:37,149 --> 00:42:41,189
+how many messages each person
+would have in their mail,
+
+1101
+00:42:41,189 --> 00:42:42,809
+right, then I might
+have a single row
+
+1102
+00:42:42,809 --> 00:42:44,069
+that would d throw
+to multiple groups.
+
+1103
+00:42:44,069 --> 00:42:45,569
+Very easy to do in
+map reduce, right?
+
+1104
+00:42:45,569 --> 00:42:47,409
+You can say, for
+this one input row,
+
+1105
+00:42:47,409 --> 00:42:50,094
+I might emit multiple
+output rows.
+
+1106
+00:42:50,094 --> 00:42:51,720
+Or let's say even bigger.
+
+1107
+00:42:51,720 --> 00:42:53,299
+Maybe my input data is
+
+1108
+00:42:53,299 --> 00:42:55,539
+something like images
+or something like that.
+
+1109
+00:42:55,539 --> 00:42:57,980
+And maybe the key I'm outputting
+
+1110
+00:42:57,980 --> 00:43:00,819
+on is what some classification
+model has, right?
+
+1111
+00:43:00,819 --> 00:43:02,360
+Maybe the map is
+taking an image,
+
+1112
+00:43:02,360 --> 00:43:04,739
+and then the key output
+will be a cat or dog or
+
+1113
+00:43:04,739 --> 00:43:07,679
+it'll kind of identify what
+it thinks that image is of.
+
+1114
+00:43:07,679 --> 00:43:09,659
+Right? So map reduce
+is going to be more
+
+1115
+00:43:09,659 --> 00:43:12,000
+scalable than a lot of
+traditional SQL systems,
+
+1116
+00:43:12,000 --> 00:43:14,079
+is going to be more
+flexible as well.
+
+1117
+00:43:14,079 --> 00:43:15,739
+But it's more
+difficult to write.
+
+1118
+00:43:15,739 --> 00:43:18,139
+And so means there have
+been projects out there,
+
+1119
+00:43:18,139 --> 00:43:22,019
+that will try to build SQL
+basically on top of it.
+
+1120
+00:43:22,019 --> 00:43:23,780
+So, for example, Hive QL
+
+1121
+00:43:23,780 --> 00:43:25,900
+builds a little language
+that looks like SQL,
+
+1122
+00:43:25,900 --> 00:43:27,939
+and we'll translate
+those SQL queries to
+
+1123
+00:43:27,939 --> 00:43:30,359
+to Map reduce jobs
+for you, right?
+
+1124
+00:43:30,359 --> 00:43:32,619
+And we see something similar
+to that when we learn Spark.
+
+1125
+00:43:32,619 --> 00:43:35,420
+When we're doing Spark, we're
+going to write SQL queries,
+
+1126
+00:43:35,420 --> 00:43:36,820
+and that's going
+to get translated
+
+1127
+00:43:36,820 --> 00:43:38,779
+to these Spark jobs
+that will run.
+
+1128
+00:43:38,779 --> 00:43:41,199
+And Spark will be a little bit
+
+1129
+00:43:41,199 --> 00:43:44,240
+more flexible than
+the MapR Produce,
+
+1130
+00:43:44,240 --> 00:43:45,139
+but it'll still kind of have
+
+1131
+00:43:45,139 --> 00:43:46,479
+a lot of these same concepts,
+
+1132
+00:43:46,479 --> 00:43:48,940
+and it will produce
+our final results
+
+1133
+00:43:48,940 --> 00:43:51,519
+to accomplish whatever that
+query is trying to do.
+
+1134
+00:43:51,519 --> 00:43:53,200
+All right, people have questions
+
+1135
+00:43:53,200 --> 00:43:54,639
+about SQL or how it fits in with
+
+1136
+00:43:54,639 --> 00:44:00,870
+the Map reduce. Oh, right.
+
+1137
+00:44:00,870 --> 00:44:05,169
+Cool. Let me talk about
+an optimization here,
+
+1138
+00:44:05,169 --> 00:44:06,790
+which is called data locality.
+
+1139
+00:44:06,790 --> 00:44:08,409
+I've been trying to
+talking about HDFS and
+
+1140
+00:44:08,409 --> 00:44:10,190
+map reduce like their
+separate systems.
+
+1141
+00:44:10,190 --> 00:44:13,449
+But again, they're designed
+by the same people,
+
+1142
+00:44:13,449 --> 00:44:15,509
+and there's optimizations
+that you can
+
+1143
+00:44:15,509 --> 00:44:17,710
+do where they will
+be located together.
+
+1144
+00:44:17,710 --> 00:44:19,250
+So what will often happen
+
+1145
+00:44:19,250 --> 00:44:20,989
+is you'll have a cluster
+of machines, each box,
+
+1146
+00:44:20,989 --> 00:44:22,349
+the red machine, and
+
+1147
+00:44:22,349 --> 00:44:24,750
+maybe I have a data
+note on each machine.
+
+1148
+00:44:24,750 --> 00:44:26,910
+And then maybe on some
+of these I have mappers
+
+1149
+00:44:26,910 --> 00:44:27,789
+running and other ones that I
+
+1150
+00:44:27,789 --> 00:44:28,989
+might have reducers running.
+
+1151
+00:44:28,989 --> 00:44:31,309
+You could try to choose
+which piece of data go to
+
+1152
+00:44:31,309 --> 00:44:34,369
+mapper based on locality, right?
+
+1153
+00:44:34,369 --> 00:44:36,009
+So for my input data,
+
+1154
+00:44:36,009 --> 00:44:37,829
+maybe I could say that
+
+1155
+00:44:37,829 --> 00:44:39,629
+the block coming
+from this data node,
+
+1156
+00:44:39,629 --> 00:44:40,869
+we'll go to that that map,
+
+1157
+00:44:40,869 --> 00:44:42,630
+and I could avoid a
+network transfer.
+
+1158
+00:44:42,630 --> 00:44:44,409
+Same thing for the
+reducers, right?
+
+1159
+00:44:44,409 --> 00:44:46,169
+Maybe the reducers
+could try to write out
+
+1160
+00:44:46,169 --> 00:44:48,470
+those data node blocks
+on the same machine.
+
+1161
+00:44:48,470 --> 00:44:51,849
+We could avoid some network
+transfers there as well.
+
+1162
+00:44:51,849 --> 00:44:53,749
+Right? We have a couple
+of things we do, right?
+
+1163
+00:44:53,749 --> 00:44:55,050
+We have data that
+lives somewhere,
+
+1164
+00:44:55,050 --> 00:44:57,069
+and we have to have
+computation on that data,
+
+1165
+00:44:57,069 --> 00:44:59,550
+and a very general strategy
+
+1166
+00:44:59,550 --> 00:45:01,369
+that people use in a lot
+of cases is you want to
+
+1167
+00:45:01,369 --> 00:45:03,229
+try to take your computation
+
+1168
+00:45:03,229 --> 00:45:06,289
+and do that computation
+where the data already is.
+
+1169
+00:45:06,289 --> 00:45:08,470
+So we don't have to move
+the data over the network.
+
+1170
+00:45:08,470 --> 00:45:12,149
+The bigger the data, the more
+important that strategy is.
+
+1171
+00:45:12,530 --> 00:45:18,509
+Alright. So, you know,
+
+1172
+00:45:18,509 --> 00:45:20,629
+Writing one map reduced job,
+
+1173
+00:45:20,629 --> 00:45:21,609
+there's some complexity there.
+
+1174
+00:45:21,609 --> 00:45:23,270
+I guess it's an insane
+amount of complexity.
+
+1175
+00:45:23,270 --> 00:45:24,529
+Once you kind of
+practice and think about
+
+1176
+00:45:24,529 --> 00:45:26,430
+different examples
+with Map and reduced.
+
+1177
+00:45:26,430 --> 00:45:28,309
+You know, you can kind
+of get got at it,
+
+1178
+00:45:28,309 --> 00:45:31,109
+but Once you do that,
+
+1179
+00:45:31,109 --> 00:45:33,470
+that's not the full complexity
+because one map produced
+
+1180
+00:45:33,470 --> 00:45:36,309
+job generally doesn't do
+everything we need to do.
+
+1181
+00:45:36,309 --> 00:45:38,869
+So, for example, I
+showed how we could
+
+1182
+00:45:38,869 --> 00:45:42,249
+use map produced to do a
+join. Okay, that's one join.
+
+1183
+00:45:42,249 --> 00:45:43,929
+It's very common to
+have SQL queries where
+
+1184
+00:45:43,929 --> 00:45:46,049
+somebody has like this table
+that they're selecting from,
+
+1185
+00:45:46,049 --> 00:45:47,289
+and the table has a lot of
+
+1186
+00:45:47,289 --> 00:45:49,170
+foreign Ps referring
+to other tables.
+
+1187
+00:45:49,170 --> 00:45:51,169
+And so you might want to pull
+
+1188
+00:45:51,169 --> 00:45:52,309
+in some data from one table,
+
+1189
+00:45:52,309 --> 00:45:54,069
+and pull in some other
+data from another table,
+
+1190
+00:45:54,069 --> 00:45:55,870
+tell me to get
+this final result.
+
+1191
+00:45:55,870 --> 00:45:57,209
+There might be many
+joins, right where
+
+1192
+00:45:57,209 --> 00:45:59,030
+I'm keeping on adding
+more information.
+
+1193
+00:45:59,030 --> 00:46:01,889
+And so it's very common that
+we'll have some input data,
+
+1194
+00:46:01,889 --> 00:46:03,429
+and we'll feed it through
+a map produced job,
+
+1195
+00:46:03,429 --> 00:46:05,329
+to get some intermediate data,
+
+1196
+00:46:05,329 --> 00:46:07,949
+feed it through another map
+produced job, get other data.
+
+1197
+00:46:07,949 --> 00:46:09,650
+We could have this long pipe
+
+1198
+00:46:09,650 --> 00:46:12,149
+wouldn't be crazy to have
+a pipeline that's say,
+
+1199
+00:46:12,149 --> 00:46:13,729
+like 100 map produced
+jobs, right?
+
+1200
+00:46:13,729 --> 00:46:14,989
+And it's like, Well,
+there would be
+
+1201
+00:46:14,989 --> 00:46:16,389
+like teams that their job is
+
+1202
+00:46:16,389 --> 00:46:19,409
+to maintain this pipeline
+of map reduced jobs, right?
+
+1203
+00:46:19,409 --> 00:46:21,109
+So we could totally do that.
+
+1204
+00:46:21,109 --> 00:46:23,249
+And when you look at that,
+
+1205
+00:46:23,249 --> 00:46:24,630
+you have to ask yourself,
+
+1206
+00:46:24,630 --> 00:46:25,769
+is this really efficient, right?
+
+1207
+00:46:25,769 --> 00:46:28,069
+Map reduce is kind of great
+for just like one job,
+
+1208
+00:46:28,069 --> 00:46:29,629
+but does it really work well
+
+1209
+00:46:29,629 --> 00:46:31,430
+when we chain a bunch
+of them together?
+
+1210
+00:46:31,430 --> 00:46:33,710
+And I have some concerns
+
+1211
+00:46:33,710 --> 00:46:35,529
+about it related to
+intermediate data, right?
+
+1212
+00:46:35,529 --> 00:46:37,629
+So there's a bunch of
+HTFS files that we're
+
+1213
+00:46:37,629 --> 00:46:40,269
+producing that we don't care
+about in the long term.
+
+1214
+00:46:40,269 --> 00:46:42,789
+We're only doing this as a
+step towards some other end.
+
+1215
+00:46:42,789 --> 00:46:44,089
+We don't care about
+the intermediate data.
+
+1216
+00:46:44,089 --> 00:46:45,510
+We just want to have
+the final result.
+
+1217
+00:46:45,510 --> 00:46:47,369
+And so there's a few
+things that are bad here.
+
+1218
+00:46:47,369 --> 00:46:48,609
+One would be if we went with
+
+1219
+00:46:48,609 --> 00:46:50,289
+default replication and we
+
+1220
+00:46:50,289 --> 00:46:51,930
+have intermediate
+data replicated.
+
+1221
+00:46:51,930 --> 00:46:53,229
+That's just wasteful, right?
+
+1222
+00:46:53,229 --> 00:46:55,729
+Because if I lose that data,
+I could reproduce it, right?
+
+1223
+00:46:55,729 --> 00:46:58,629
+So anyway, we could set
+replication to one to fix that.
+
+1224
+00:46:58,629 --> 00:47:00,759
+But that'd be one
+thing to think about.
+
+1225
+00:47:00,759 --> 00:47:02,949
+Another thing to think about is
+
+1226
+00:47:02,949 --> 00:47:04,169
+whether we can ever
+
+1227
+00:47:04,169 --> 00:47:05,530
+change this together
+more efficiently,
+
+1228
+00:47:05,530 --> 00:47:07,250
+we have the output
+from one reduce,
+
+1229
+00:47:07,250 --> 00:47:09,129
+and then we're about
+to do a map again,
+
+1230
+00:47:09,129 --> 00:47:11,629
+do we have to write it to
+some separate HTFS file,
+
+1231
+00:47:11,629 --> 00:47:14,369
+or could I immediately take
+that data coming out of
+
+1232
+00:47:14,369 --> 00:47:15,909
+one reducer and just
+immediately start
+
+1233
+00:47:15,909 --> 00:47:18,509
+running another maper, right?
+
+1234
+00:47:18,509 --> 00:47:21,189
+And then, finally, when you
+do something like this,
+
+1235
+00:47:21,189 --> 00:47:23,709
+you're materializing results for
+
+1236
+00:47:23,709 --> 00:47:24,889
+all the intermediate
+data, right?
+
+1237
+00:47:24,889 --> 00:47:26,489
+You're saying like, I have
+to have this data here,
+
+1238
+00:47:26,489 --> 00:47:28,149
+because that's the way
+we're programming it.
+
+1239
+00:47:28,149 --> 00:47:29,559
+And There might be
+
+1240
+00:47:29,559 --> 00:47:31,560
+different ways to get
+the same end result,
+
+1241
+00:47:31,560 --> 00:47:33,440
+and optimization tools
+could potentially
+
+1242
+00:47:33,440 --> 00:47:35,479
+come along and find a
+better way to do it.
+
+1243
+00:47:35,479 --> 00:47:37,499
+But if I'm doing
+this like this, say,
+
+1244
+00:47:37,499 --> 00:47:39,739
+run this map produced job,
+run this map produced job.
+
+1245
+00:47:39,739 --> 00:47:40,679
+There's no opportunity for
+
+1246
+00:47:40,679 --> 00:47:42,599
+an optimization tool
+to come along and see,
+
+1247
+00:47:42,599 --> 00:47:44,459
+Oh, this is your end
+result you want.
+
+1248
+00:47:44,459 --> 00:47:46,639
+Here's a faster way
+to do it, right?
+
+1249
+00:47:46,639 --> 00:47:48,039
+So when we're doing this,
+
+1250
+00:47:48,039 --> 00:47:49,639
+either it might not be very
+
+1251
+00:47:49,639 --> 00:47:51,219
+efficient or the
+programmer doing
+
+1252
+00:47:51,219 --> 00:47:52,380
+it might have to do some crazy
+
+1253
+00:47:52,380 --> 00:47:54,380
+optimizations to get
+good performance.
+
+1254
+00:47:54,380 --> 00:47:55,580
+It's hard to build tooling
+
+1255
+00:47:55,580 --> 00:47:57,259
+that will automatically
+optimize that.
+
+1256
+00:47:57,259 --> 00:48:00,319
+So I'll say is that,
+intermediate data is one of
+
+1257
+00:48:00,319 --> 00:48:03,580
+the big weaknesses
+of map reduce.
+
+1258
+00:48:03,580 --> 00:48:05,900
+And so that's trying
+to bring us to Spark.
+
+1259
+00:48:05,900 --> 00:48:07,899
+And so Spark said,
+
+1260
+00:48:07,899 --> 00:48:09,299
+we're going to do a lot
+of these same things,
+
+1261
+00:48:09,299 --> 00:48:10,819
+and Spark, they have
+MAP. They have reduce.
+
+1262
+00:48:10,819 --> 00:48:12,839
+They actually have a bunch
+of other functions as well.
+
+1263
+00:48:12,839 --> 00:48:15,259
+But the most interesting
+thing they do is that they
+
+1264
+00:48:15,259 --> 00:48:18,559
+handle intermediate data
+very differently, right?
+
+1265
+00:48:18,559 --> 00:48:21,299
+So here I have some
+HTFS files for Spark.
+
+1266
+00:48:21,299 --> 00:48:23,519
+There's some operations,
+some intermediate data,
+
+1267
+00:48:23,519 --> 00:48:25,880
+more operations, and
+then final HTFS files.
+
+1268
+00:48:25,880 --> 00:48:27,560
+The difference is that
+for that intermediate
+
+1269
+00:48:27,560 --> 00:48:29,059
+data, HFS files now,
+
+1270
+00:48:29,059 --> 00:48:30,540
+it's something called an RDD,
+
+1271
+00:48:30,540 --> 00:48:33,499
+and an RDD stands for resilient
+distributed data set.
+
+1272
+00:48:33,499 --> 00:48:36,200
+And what's really cool
+about is look at an RDD,
+
+1273
+00:48:36,200 --> 00:48:37,580
+there's actually not always
+
+1274
+00:48:37,580 --> 00:48:39,339
+bytes of data
+associated with it.
+
+1275
+00:48:39,339 --> 00:48:43,259
+An RDD is more actually a
+description of the computation
+
+1276
+00:48:43,259 --> 00:48:44,679
+you need to do to get
+
+1277
+00:48:44,679 --> 00:48:47,459
+that data if you wanted
+that data, right?
+
+1278
+00:48:47,459 --> 00:48:49,500
+So if you go to be
+like, Here's the data.
+
+1279
+00:48:49,500 --> 00:48:50,900
+Oh, here are our directions,
+
+1280
+00:48:50,900 --> 00:48:52,199
+how you could get the data if
+
+1281
+00:48:52,199 --> 00:48:53,839
+you needed to. So it's
+going to be lazy.
+
+1282
+00:48:53,839 --> 00:48:55,760
+And so we can have
+RDDs based on RDDs.
+
+1283
+00:48:55,760 --> 00:48:56,659
+And S's going to give us
+
+1284
+00:48:56,659 --> 00:48:58,079
+this concept of data
+lineage, right?
+
+1285
+00:48:58,079 --> 00:48:59,300
+Where I have this RDD,
+
+1286
+00:48:59,300 --> 00:49:00,559
+and it's based on
+that one, which is
+
+1287
+00:49:00,559 --> 00:49:01,939
+based on this other one, right?
+
+1288
+00:49:01,939 --> 00:49:03,719
+It's going to be
+lazily evaluator.
+
+1289
+00:49:03,719 --> 00:49:06,139
+I can run this whole thing.
+
+1290
+00:49:06,139 --> 00:49:08,539
+But until I actually want to
+look at some bytes of data,
+
+1291
+00:49:08,539 --> 00:49:10,939
+I might not actually
+do any work, right?
+
+1292
+00:49:10,939 --> 00:49:12,359
+And then the final thing is
+
+1293
+00:49:12,359 --> 00:49:15,339
+that A RDDs is that
+they're immutable, right?
+
+1294
+00:49:15,339 --> 00:49:17,899
+Like, I can define one, and
+then I cannot change it.
+
+1295
+00:49:17,899 --> 00:49:19,179
+I could define
+another one based on
+
+1296
+00:49:19,179 --> 00:49:20,580
+it that looks a
+little bit different.
+
+1297
+00:49:20,580 --> 00:49:23,179
+But once I have it,
+it's fixed, right?
+
+1298
+00:49:23,179 --> 00:49:24,899
+So we're going to
+spend more time
+
+1299
+00:49:24,899 --> 00:49:26,759
+next time talking
+about these RDDs.
+
+1300
+00:49:26,759 --> 00:49:28,959
+And that's going to be
+like the key concept that
+
+1301
+00:49:28,959 --> 00:49:32,039
+is build on for the
+next, like, week or so.
+
+1302
+00:49:32,039 --> 00:49:34,799
+Alright, have a fantastic day.

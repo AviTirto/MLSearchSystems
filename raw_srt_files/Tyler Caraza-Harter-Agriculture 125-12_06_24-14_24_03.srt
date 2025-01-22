@@ -1,0 +1,6221 @@
+1
+00:00:00,000 --> 00:00:02,620
+About big query, and
+we're to wrap it up.
+
+2
+00:00:02,620 --> 00:00:04,180
+That'll be about half a day.
+
+3
+00:00:04,180 --> 00:00:06,040
+And then we're a
+little bit ahead.
+
+4
+00:00:06,040 --> 00:00:07,860
+So we'll also get to
+start talking about how
+
+5
+00:00:07,860 --> 00:00:09,940
+we deploy things in the cloud.
+
+6
+00:00:09,940 --> 00:00:11,399
+I'm looking ahead
+at the schedule.
+
+7
+00:00:11,399 --> 00:00:14,459
+You can see that we have pretty
+much the worst exam time.
+
+8
+00:00:14,459 --> 00:00:17,180
+It's like the first
+day at 7:45 A.M.
+
+9
+00:00:17,180 --> 00:00:18,579
+I'm just as sad about
+that as you are.
+
+10
+00:00:18,579 --> 00:00:19,939
+I don't have any choice in it.
+
+11
+00:00:19,939 --> 00:00:22,039
+But anyway, we'll
+get through it.
+
+12
+00:00:22,039 --> 00:00:23,399
+On that Wednesday, I'm to have
+
+13
+00:00:23,399 --> 00:00:25,200
+a lecture dedicated to review.
+
+14
+00:00:25,200 --> 00:00:27,199
+Best to be a student
+driven section, right?
+
+15
+00:00:27,199 --> 00:00:29,139
+I'm a pet thing for that.
+
+16
+00:00:29,139 --> 00:00:31,280
+I'll be here. I'll put
+off some old exams.
+
+17
+00:00:31,280 --> 00:00:32,620
+You could ask questions really
+
+18
+00:00:32,620 --> 00:00:34,120
+about anything that
+might be on the exam.
+
+19
+00:00:34,120 --> 00:00:36,959
+You could, asked about
+old exam questions,
+
+20
+00:00:36,959 --> 00:00:39,459
+specific topics, whatever
+you think will help you?
+
+21
+00:00:39,459 --> 00:00:41,879
+Maybe old quizzes. And then we
+
+22
+00:00:41,879 --> 00:00:44,719
+might do a little bit of
+that on Monday as well,
+
+23
+00:00:44,719 --> 00:00:46,140
+right if we finish early.
+
+24
+00:00:46,140 --> 00:00:47,919
+And so maybe come
+with some questions.
+
+25
+00:00:47,919 --> 00:00:48,980
+If people have any questions,
+
+26
+00:00:48,980 --> 00:00:50,600
+we'll just have maybe
+a shorter lecture
+
+27
+00:00:50,600 --> 00:00:52,100
+on Monday. I think
+that would be fine.
+
+28
+00:00:52,100 --> 00:00:55,579
+It's really up to
+you all. I think
+
+29
+00:00:55,579 --> 00:00:57,040
+that's the main
+logistical stuff.
+
+30
+00:00:57,040 --> 00:00:58,840
+I just posted a bunch
+more Aki flash cards.
+
+31
+00:00:58,840 --> 00:01:00,840
+I realize I forgot to post
+them for a couple of days,
+
+32
+00:01:00,840 --> 00:01:01,979
+but those are all
+
+33
+00:01:01,979 --> 00:01:03,879
+posted through the end
+of the semester now.
+
+34
+00:01:03,879 --> 00:01:05,739
+Do people have any
+logistical questions
+
+35
+00:01:05,739 --> 00:01:07,109
+here at the end?
+Yeah, right here.
+
+36
+00:01:07,109 --> 00:01:10,720
+By get set. Just one note sheet.
+
+37
+00:01:10,720 --> 00:01:13,040
+Yep. So evict some more
+things, unfortunately.
+
+38
+00:01:13,040 --> 00:01:17,280
+Yep. Location. Yeah, I mean,
+
+39
+00:01:17,280 --> 00:01:19,700
+I guess I'll just like
+do it as soon as I can.
+
+40
+00:01:19,700 --> 00:01:22,040
+They give me a few different
+locations and it's
+
+41
+00:01:22,040 --> 00:01:24,540
+my job to divide you
+up and tell you.
+
+42
+00:01:24,540 --> 00:01:26,500
+So, it's known.
+
+43
+00:01:26,500 --> 00:01:29,160
+It's just on me to tell you
+before that actual day.
+
+44
+00:01:29,160 --> 00:01:31,100
+It's kind of over, like,
+
+45
+00:01:31,100 --> 00:01:33,820
+kind of like Charter Street
+near the Math belly.
+
+46
+00:01:33,820 --> 00:01:35,220
+They give us a few
+buildings there,
+
+47
+00:01:35,220 --> 00:01:36,739
+so it'll be in
+that general area.
+
+48
+00:01:36,739 --> 00:01:41,170
+Yeah, other questions
+people? Oh right.
+
+49
+00:01:41,170 --> 00:01:43,929
+Fantastic. So I'm going head
+over here to the slides,
+
+50
+00:01:43,929 --> 00:01:45,570
+and we wrapped up last
+
+51
+00:01:45,570 --> 00:01:48,349
+time by finishing
+machine learning.
+
+52
+00:01:48,349 --> 00:01:50,330
+And now I want to talk
+
+53
+00:01:50,330 --> 00:01:52,389
+about how we can do
+cross management.
+
+54
+00:01:52,389 --> 00:01:55,010
+That's going to be the
+last topic for Big query.
+
+55
+00:01:55,010 --> 00:01:57,479
+And If you're Google,
+
+56
+00:01:57,479 --> 00:01:58,979
+what you do is you
+buy a bunch of
+
+57
+00:01:58,979 --> 00:02:01,199
+machines and those
+machines have CPUs,
+
+58
+00:02:01,199 --> 00:02:02,540
+and they have RAM.
+
+59
+00:02:02,540 --> 00:02:04,299
+And rather than thinking
+
+60
+00:02:04,299 --> 00:02:05,480
+about as each
+individual machine,
+
+61
+00:02:05,480 --> 00:02:07,100
+they kind of take a broader
+picture of like, Okay,
+
+62
+00:02:07,100 --> 00:02:10,779
+I have a zone with a bunch of
+CPUs and RAM in it, right?
+
+63
+00:02:10,779 --> 00:02:12,360
+And what's running
+on those machines?
+
+64
+00:02:12,360 --> 00:02:16,100
+Well, the Dremel
+query engine, right?
+
+65
+00:02:16,100 --> 00:02:18,219
+And Dremel is going to
+use a lot of CPU and
+
+66
+00:02:18,219 --> 00:02:20,500
+memory to answer
+questions about the data.
+
+67
+00:02:20,500 --> 00:02:22,519
+The data lives in ploss,
+
+68
+00:02:22,519 --> 00:02:25,539
+which remember resembles HDFS,
+
+69
+00:02:25,539 --> 00:02:27,819
+but is better and
+more scalable, right?
+
+70
+00:02:27,819 --> 00:02:30,344
+So that's the setup
+we're working with.
+
+71
+00:02:30,344 --> 00:02:32,209
+And so there's three
+different types of
+
+72
+00:02:32,209 --> 00:02:33,689
+resources that we
+could look at here.
+
+73
+00:02:33,689 --> 00:02:36,230
+We have the Compute
+bebery resource.
+
+74
+00:02:36,230 --> 00:02:39,170
+We have Closs storage,
+we have Clous IO.
+
+75
+00:02:39,170 --> 00:02:40,969
+And they actually have
+different billing models
+
+76
+00:02:40,969 --> 00:02:42,569
+you can use with Big Query.
+
+77
+00:02:42,569 --> 00:02:44,930
+You could have a
+capacity billing model
+
+78
+00:02:44,930 --> 00:02:47,150
+where you basically
+reserve resources.
+
+79
+00:02:47,150 --> 00:02:49,209
+And when you do
+that, then you get
+
+80
+00:02:49,209 --> 00:02:51,670
+compute and memory
+and closa storage.
+
+81
+00:02:51,670 --> 00:02:53,334
+Those are things you pay for.
+
+82
+00:02:53,334 --> 00:02:57,220
+Upfront, but then any kind
+of closus IO would be free.
+
+83
+00:02:57,220 --> 00:02:58,499
+On demand billing is what
+
+84
+00:02:58,499 --> 00:02:59,779
+we've been doing,
+and in that case,
+
+85
+00:02:59,779 --> 00:03:00,879
+computer memory is free,
+
+86
+00:03:00,879 --> 00:03:04,400
+but we pay for Closss
+storage and Closss IO.
+
+87
+00:03:04,400 --> 00:03:07,159
+And this is kind of a common
+pattern in billing models.
+
+88
+00:03:07,159 --> 00:03:08,459
+They might have different modes
+
+89
+00:03:08,459 --> 00:03:10,140
+that kind of fit
+different needs.
+
+90
+00:03:10,140 --> 00:03:11,579
+And they don't want to make
+
+91
+00:03:11,579 --> 00:03:13,499
+every billing model so
+complicated, right?
+
+92
+00:03:13,499 --> 00:03:15,739
+Any kind of system. There's
+so many different kinds
+
+93
+00:03:15,739 --> 00:03:17,320
+of resources you might be using.
+
+94
+00:03:17,320 --> 00:03:18,799
+What they'll often do is they'll
+
+95
+00:03:18,799 --> 00:03:19,999
+charge you for a subset of that,
+
+96
+00:03:19,999 --> 00:03:21,959
+and then something
+else will be free.
+
+97
+00:03:21,959 --> 00:03:23,140
+And I'm putting free in quotes
+
+98
+00:03:23,140 --> 00:03:24,279
+because whatever
+they charge you for,
+
+99
+00:03:24,279 --> 00:03:25,439
+they probably marked it up to
+
+100
+00:03:25,439 --> 00:03:27,619
+compensate for something
+else else being free.
+
+101
+00:03:27,619 --> 00:03:30,380
+Okay, so you can pick
+your billing model
+
+102
+00:03:30,380 --> 00:03:33,319
+and try and choose what you're
+paying for based on that.
+
+103
+00:03:33,319 --> 00:03:35,399
+Now, they want to
+take a little bit of
+
+104
+00:03:35,399 --> 00:03:36,580
+a simpler picture since they
+
+105
+00:03:36,580 --> 00:03:38,239
+are running when
+they run dribble,
+
+106
+00:03:38,239 --> 00:03:40,319
+it needs to use both
+compute and memory.
+
+107
+00:03:40,319 --> 00:03:43,490
+And so rather than trate
+each give a machine,
+
+108
+00:03:43,490 --> 00:03:44,809
+you kind of squint at it, and
+
+109
+00:03:44,809 --> 00:03:47,190
+they break it up into
+what we call a slot.
+
+110
+00:03:47,190 --> 00:03:49,769
+So a slot is about one half of
+
+111
+00:03:49,769 --> 00:03:52,969
+a CPU core and 1
+gigabyte of RAM, right?
+
+112
+00:03:52,969 --> 00:03:54,509
+So a slot is the unit in
+
+113
+00:03:54,509 --> 00:03:56,190
+which we're going to
+be allocating stuff.
+
+114
+00:03:56,190 --> 00:03:58,609
+And this is approximate because,
+
+115
+00:03:58,609 --> 00:04:00,530
+you know, as they
+add new servers,
+
+116
+00:04:00,530 --> 00:04:04,329
+they might have different CPU
+memory ratios or, you know,
+
+117
+00:04:04,329 --> 00:04:06,149
+if they were giving you
+like a half a core and
+
+118
+00:04:06,149 --> 00:04:08,189
+then they get a new
+server with faster CPUs,
+
+119
+00:04:08,189 --> 00:04:09,989
+maybe it's like 45% of a core.
+
+120
+00:04:09,989 --> 00:04:11,089
+It's kind of approximate, right?
+
+121
+00:04:11,089 --> 00:04:12,290
+But they have all these slots,
+
+122
+00:04:12,290 --> 00:04:16,350
+and that's what they're
+going to either sell or use.
+
+123
+00:04:16,590 --> 00:04:19,509
+Okay, so there's
+2 billion models.
+
+124
+00:04:19,509 --> 00:04:22,109
+Remember, the first one
+is the capacity pricing,
+
+125
+00:04:22,109 --> 00:04:24,809
+and that's where we pay
+for computed memory.
+
+126
+00:04:24,809 --> 00:04:28,030
+So in that case, what you are
+renting are slots, right?
+
+127
+00:04:28,030 --> 00:04:29,789
+You pay to reserve slots,
+
+128
+00:04:29,789 --> 00:04:33,629
+and it's about last time I
+checked about $0.96 per day,
+
+129
+00:04:33,629 --> 00:04:34,829
+a little less than $1 per
+
+130
+00:04:34,829 --> 00:04:37,550
+day to rent a slot. And
+it's reserved, right?
+
+131
+00:04:37,550 --> 00:04:38,950
+So that means whether or
+
+132
+00:04:38,950 --> 00:04:40,709
+not you're actually
+using it for anything,
+
+133
+00:04:40,709 --> 00:04:42,930
+you pay that flat rate.
+
+134
+00:04:42,930 --> 00:04:44,370
+Now, when you reserve it,
+
+135
+00:04:44,370 --> 00:04:45,570
+you aren't really
+reserving it in
+
+136
+00:04:45,570 --> 00:04:49,680
+a specific location
+because with big query,
+
+137
+00:04:49,680 --> 00:04:50,959
+I have all this colossus data,
+
+138
+00:04:50,959 --> 00:04:52,880
+and it could be in different
+places around the world,
+
+139
+00:04:52,880 --> 00:04:54,060
+and when they're
+running the query,
+
+140
+00:04:54,060 --> 00:04:55,640
+they want to run it
+near where the data is,
+
+141
+00:04:55,640 --> 00:04:57,620
+and I might be using
+some queries that are
+
+142
+00:04:57,620 --> 00:04:59,760
+near some data or other queries
+that are near other data,
+
+143
+00:04:59,760 --> 00:05:01,670
+or I could be doing a query that
+
+144
+00:05:01,670 --> 00:05:04,590
+is maybe joining tables in
+two different places, right?
+
+145
+00:05:04,590 --> 00:05:06,629
+And so anyway, I've
+reserved these slots,
+
+146
+00:05:06,629 --> 00:05:08,190
+but then they'll
+decide when I need it,
+
+147
+00:05:08,190 --> 00:05:10,930
+where it actually runs and
+they'll kind of put it
+
+148
+00:05:10,930 --> 00:05:12,429
+close to the data to the extent
+
+149
+00:05:12,429 --> 00:05:14,150
+that they're able to, right?
+
+150
+00:05:14,150 --> 00:05:17,489
+I've reserved these
+slots somewhere, right?
+
+151
+00:05:17,489 --> 00:05:19,950
+Now, I want to think about
+
+152
+00:05:19,950 --> 00:05:22,090
+the cost of these things, right?
+
+153
+00:05:22,090 --> 00:05:26,750
+So an e two medium is kind
+of close to $1 a day, right?
+
+154
+00:05:26,750 --> 00:05:27,910
+E two medium is what we use for
+
+155
+00:05:27,910 --> 00:05:29,509
+the second half of the semester.
+
+156
+00:05:29,509 --> 00:05:31,130
+Now an E two medium has
+
+157
+00:05:31,130 --> 00:05:34,250
+twice as much CPU as
+
+158
+00:05:34,250 --> 00:05:37,800
+a slot and it has four times
+as much memory, right?
+
+159
+00:05:37,800 --> 00:05:41,070
+Okay. So what we're seeing
+here is that Big query,
+
+160
+00:05:41,070 --> 00:05:42,510
+we're paying a lot
+more for computed
+
+161
+00:05:42,510 --> 00:05:43,709
+memory than we would with VMs.
+
+162
+00:05:43,709 --> 00:05:45,370
+And that goes back to that
+point I made earlier about
+
+163
+00:05:45,370 --> 00:05:48,489
+infrastructure as a service
+versus platform as a service.
+
+164
+00:05:48,489 --> 00:05:50,129
+Infrastructure as a service,
+
+165
+00:05:50,129 --> 00:05:52,229
+you have to install stuff
+and manage it yourself,
+
+166
+00:05:52,229 --> 00:05:55,009
+and that tends to be
+cheaper as a result.
+
+167
+00:05:55,009 --> 00:05:56,689
+You have to be more
+skilled to use it,
+
+168
+00:05:56,689 --> 00:05:57,910
+and there's more
+competition because
+
+169
+00:05:57,910 --> 00:05:59,909
+it kind of looks the
+same across clouds.
+
+170
+00:05:59,909 --> 00:06:01,669
+Whenever you have a
+platform as a service,
+
+171
+00:06:01,669 --> 00:06:03,500
+like, you know, big query,
+
+172
+00:06:03,500 --> 00:06:06,570
+They're going to market
+up perhaps substantially,
+
+173
+00:06:06,570 --> 00:06:07,850
+right? That's what
+we're seeing here.
+
+174
+00:06:07,850 --> 00:06:09,290
+To be fair, right? There's also
+
+175
+00:06:09,290 --> 00:06:11,190
+giving us free class
+SIO in the mix,
+
+176
+00:06:11,190 --> 00:06:12,970
+but I'm guessing that
+that would be less
+
+177
+00:06:12,970 --> 00:06:16,510
+valuable than these compute
+resources. Alright, cool.
+
+178
+00:06:16,510 --> 00:06:17,930
+So we're looking at
+this, and right now we
+
+179
+00:06:17,930 --> 00:06:19,390
+have customer one
+on the top left,
+
+180
+00:06:19,390 --> 00:06:21,050
+and they have four
+slots reserved up here.
+
+181
+00:06:21,050 --> 00:06:22,570
+They're using two
+of them right now.
+
+182
+00:06:22,570 --> 00:06:24,010
+This other one, I guess, has
+
+183
+00:06:24,010 --> 00:06:26,429
+some slots across a couple
+of different zones,
+
+184
+00:06:26,429 --> 00:06:28,930
+and they're also using
+a subset of them.
+
+185
+00:06:28,930 --> 00:06:30,969
+Okay. And so when I
+look at this picture,
+
+186
+00:06:30,969 --> 00:06:34,289
+I see that there's excess
+capacity for two reasons.
+
+187
+00:06:34,289 --> 00:06:36,770
+One, maybe nobody
+paid to reserve it.
+
+188
+00:06:36,770 --> 00:06:39,030
+Or two, maybe
+somebody reserved it,
+
+189
+00:06:39,030 --> 00:06:41,190
+but they're not using it
+at the moment, right?
+
+190
+00:06:41,190 --> 00:06:43,670
+Maybe the data scientists
+are at home sleeping, right?
+
+191
+00:06:43,670 --> 00:06:45,770
+And there's nothing running
+on big query, right?
+
+192
+00:06:45,770 --> 00:06:47,430
+And so the second billing model,
+
+193
+00:06:47,430 --> 00:06:50,490
+the on demand model is
+where they basically try to
+
+194
+00:06:50,490 --> 00:06:53,890
+sell this excess capacity
+in some way, right?
+
+195
+00:06:53,890 --> 00:06:55,489
+So for this second
+billing model,
+
+196
+00:06:55,489 --> 00:06:56,990
+the on demand model, what
+
+197
+00:06:56,990 --> 00:06:57,670
+they'll do is they'll
+
+198
+00:06:57,670 --> 00:06:58,669
+charge you a little
+bit differently.
+
+199
+00:06:58,669 --> 00:07:01,410
+They're going to
+charge you for ClosIO.
+
+200
+00:07:01,410 --> 00:07:03,470
+And after the free tier is done,
+
+201
+00:07:03,470 --> 00:07:06,650
+that might be something
+like, $6 per tapyte.
+
+202
+00:07:06,650 --> 00:07:09,170
+Okay. Well, what's
+cool is that all these
+
+203
+00:07:09,170 --> 00:07:12,149
+slots that they use to
+execute on that data,
+
+204
+00:07:12,149 --> 00:07:14,670
+they actually just give that
+to you for free, right?
+
+205
+00:07:14,670 --> 00:07:17,730
+Sometimes it was like leftover
+from Billing bottle one.
+
+206
+00:07:17,730 --> 00:07:19,030
+So they'll just tribute to you.
+
+207
+00:07:19,030 --> 00:07:20,750
+And that's actually
+very powerful.
+
+208
+00:07:20,750 --> 00:07:22,289
+I'll kind of how much resources
+
+209
+00:07:22,289 --> 00:07:23,669
+you get varies by
+the time of day,
+
+210
+00:07:23,669 --> 00:07:24,789
+but for a single query,
+
+211
+00:07:24,789 --> 00:07:28,710
+they'll give you up to 2000
+slots. A slot is half a core.
+
+212
+00:07:28,710 --> 00:07:31,090
+So they're giving you
+potentially 1,000
+
+213
+00:07:31,090 --> 00:07:34,050
+cores for free if you're
+running at the right time.
+
+214
+00:07:34,050 --> 00:07:35,900
+Now, This capacity that
+
+215
+00:07:35,900 --> 00:07:38,299
+they're giving you for
+the on demand model
+
+216
+00:07:38,299 --> 00:07:40,340
+is perhaps leftover from
+
+217
+00:07:40,340 --> 00:07:43,619
+the reserved model,
+the capacity model.
+
+218
+00:07:43,619 --> 00:07:45,119
+And so if somebody who reserved
+
+219
+00:07:45,119 --> 00:07:46,440
+that only want to
+start using it,
+
+220
+00:07:46,440 --> 00:07:48,740
+and they were letting
+somebody else run their job,
+
+221
+00:07:48,740 --> 00:07:51,780
+they need to interrupt the
+on demand job so they can
+
+222
+00:07:51,780 --> 00:07:55,300
+give those resources to whoever
+actually reserved that.
+
+223
+00:07:55,300 --> 00:07:57,580
+And so what we'll say
+is that these tasks
+
+224
+00:07:57,580 --> 00:08:00,009
+that run on these
+slots are preemptable.
+
+225
+00:08:00,009 --> 00:08:01,750
+Preemptable means that
+I can start running it,
+
+226
+00:08:01,750 --> 00:08:03,629
+and then I am capable
+of interrupting
+
+227
+00:08:03,629 --> 00:08:05,630
+it before it finishes
+running, right?
+
+228
+00:08:05,630 --> 00:08:07,250
+That's the main case,
+right? I'm going to
+
+229
+00:08:07,250 --> 00:08:09,989
+preempt a slot if somebody
+actually reserve it.
+
+230
+00:08:09,989 --> 00:08:11,209
+I'll take it away
+from somebody who's
+
+231
+00:08:11,209 --> 00:08:12,970
+just kind of getting
+the spare capacity.
+
+232
+00:08:12,970 --> 00:08:15,069
+The other situation is
+that maybe I have lots of
+
+233
+00:08:15,069 --> 00:08:17,410
+spare capacity and somebody's
+like using all of it,
+
+234
+00:08:17,410 --> 00:08:20,710
+and then somebody else runs
+a second on demand job.
+
+235
+00:08:20,710 --> 00:08:22,949
+They'll want to try to
+share those slots fairly,
+
+236
+00:08:22,949 --> 00:08:24,229
+so they might preempt some of
+
+237
+00:08:24,229 --> 00:08:26,390
+those slots and hand
+them over, right?
+
+238
+00:08:26,390 --> 00:08:29,310
+So really the on demand one,
+
+239
+00:08:29,310 --> 00:08:30,990
+sometimes it's great, but
+
+240
+00:08:30,990 --> 00:08:32,109
+it's really a best
+effort, right?
+
+241
+00:08:32,109 --> 00:08:33,630
+Sometimes it's fast,
+sometimes it's slow.
+
+242
+00:08:33,630 --> 00:08:36,385
+It really depends on what's
+happening at the moment.
+
+243
+00:08:36,385 --> 00:08:38,820
+Now, when it preempted,
+
+244
+00:08:38,820 --> 00:08:41,439
+it's really similar to as if
+it crashed and restarted.
+
+245
+00:08:41,439 --> 00:08:43,480
+And so all the stuff
+we talked about before
+
+246
+00:08:43,480 --> 00:08:46,879
+with item potents and retry
+applies again, right?
+
+247
+00:08:46,879 --> 00:08:48,239
+Because if you get
+preempted, then you
+
+248
+00:08:48,239 --> 00:08:50,599
+retry again later, right?
+
+249
+00:08:50,599 --> 00:08:51,899
+And so we want to make sure
+
+250
+00:08:51,899 --> 00:08:53,259
+that if I'm running
+a big query job,
+
+251
+00:08:53,259 --> 00:08:55,419
+I'm not getting
+duplicate output rows.
+
+252
+00:08:55,419 --> 00:08:58,219
+And unfortunately, they give
+you exactly one semantics.
+
+253
+00:08:58,219 --> 00:09:00,179
+And that's because these
+big query tasks are
+
+254
+00:09:00,179 --> 00:09:03,125
+atomic and also item potent.
+
+255
+00:09:03,125 --> 00:09:05,089
+So to compare this,
+
+256
+00:09:05,089 --> 00:09:06,389
+there's trade offs here, right?
+
+257
+00:09:06,389 --> 00:09:08,670
+And if you are using Big
+query and a company,
+
+258
+00:09:08,670 --> 00:09:10,569
+you should be able to
+kind of think about
+
+259
+00:09:10,569 --> 00:09:13,409
+the needs of the company and
+make a recommendation here.
+
+260
+00:09:13,409 --> 00:09:15,130
+One is that capacity billing is
+
+261
+00:09:15,130 --> 00:09:16,929
+going to have very
+predictable costs, right?
+
+262
+00:09:16,929 --> 00:09:18,490
+You just pay a flat
+rate per month.
+
+263
+00:09:18,490 --> 00:09:20,209
+Very predictable
+performance, too, right?
+
+264
+00:09:20,209 --> 00:09:21,570
+If you need to do something,
+
+265
+00:09:21,570 --> 00:09:23,289
+you get that compute
+whenever you need it.
+
+266
+00:09:23,289 --> 00:09:25,710
+You have what you call the
+first right of refusal.
+
+267
+00:09:25,710 --> 00:09:26,989
+That means I reserve the thing.
+
+268
+00:09:26,989 --> 00:09:28,369
+If I want it, I can use it.
+
+269
+00:09:28,369 --> 00:09:31,649
+I only goes to somebody
+else if I refuse it.
+
+270
+00:09:31,649 --> 00:09:34,069
+You can get discounts
+for that mode, right?
+
+271
+00:09:34,069 --> 00:09:35,250
+You kind of You're
+
+272
+00:09:35,250 --> 00:09:36,370
+a very predictable customer
+
+273
+00:09:36,370 --> 00:09:37,709
+because you're always
+paid the same thing.
+
+274
+00:09:37,709 --> 00:09:39,069
+And if you agree to
+do that for say,
+
+275
+00:09:39,069 --> 00:09:40,310
+like a year or multiple years,
+
+276
+00:09:40,310 --> 00:09:43,209
+give you a reduced
+rate for it, right?
+
+277
+00:09:43,209 --> 00:09:45,769
+Now, there's some downsides
+to capacity billing, right?
+
+278
+00:09:45,769 --> 00:09:48,849
+We pay when you are using
+nothing, so that's not dread.
+
+279
+00:09:48,849 --> 00:09:50,529
+And it's hard to say, you know,
+
+280
+00:09:50,529 --> 00:09:53,209
+use 1,000 cores for a
+short period of time.
+
+281
+00:09:53,209 --> 00:09:55,229
+Alright, so Ooma is
+kind of the flip of it.
+
+282
+00:09:55,229 --> 00:09:58,109
+It's what we might call a
+server less billing model
+
+283
+00:09:58,109 --> 00:09:59,529
+or a pay as you go,
+
+284
+00:09:59,529 --> 00:10:01,730
+a billing model or maybe a
+pay for use billing model,
+
+285
+00:10:01,730 --> 00:10:03,070
+different terms people use.
+
+286
+00:10:03,070 --> 00:10:04,509
+And basically when you're
+
+287
+00:10:04,509 --> 00:10:05,770
+using nothing, then
+you pay nothing,
+
+288
+00:10:05,770 --> 00:10:08,229
+which is fantastic
+because for a lot of us,
+
+289
+00:10:08,229 --> 00:10:09,749
+most of the time, we're
+not using it, right?
+
+290
+00:10:09,749 --> 00:10:11,330
+We use it, occasionally when I'm
+
+291
+00:10:11,330 --> 00:10:13,770
+saying in my computer,
+working question right here.
+
+292
+00:10:13,770 --> 00:10:17,809
+Yeah. Oh, yeah.
+
+293
+00:10:17,809 --> 00:10:19,730
+So is it a problem if
+the task is preempted?
+
+294
+00:10:19,730 --> 00:10:21,789
+It's a problem that
+it'll take longer for
+
+295
+00:10:21,789 --> 00:10:23,469
+my self to run because it'll,
+
+296
+00:10:23,469 --> 00:10:24,729
+you know, eventually, right?
+
+297
+00:10:24,729 --> 00:10:27,529
+So imagine like I have,
+like 100 tasks running,
+
+298
+00:10:27,529 --> 00:10:29,970
+and then they steal 50 away.
+
+299
+00:10:29,970 --> 00:10:31,329
+Well, I still will finish
+
+300
+00:10:31,329 --> 00:10:33,149
+those 50 and those 50 slots that
+
+301
+00:10:33,149 --> 00:10:35,009
+eventually my other
+50 tasks that
+
+302
+00:10:35,009 --> 00:10:37,210
+got interrupted, we'll
+get a chance to run.
+
+303
+00:10:37,210 --> 00:10:38,470
+So it's a performance problem,
+
+304
+00:10:38,470 --> 00:10:39,950
+but it's not a
+correctness problem.
+
+305
+00:10:39,950 --> 00:10:41,129
+Yeah, thanks for asking.
+
+306
+00:10:41,129 --> 00:10:43,144
+Yeah other questions
+people have. Yeah.
+
+307
+00:10:43,144 --> 00:10:51,100
+Free
+
+308
+00:10:54,060 --> 00:10:55,359
+Yeah,
+
+309
+00:10:55,359 --> 00:10:56,920
+A Bad slots are free.
+
+310
+00:10:56,920 --> 00:10:58,599
+And so pay as you go,
+what are you pay for,
+
+311
+00:10:58,599 --> 00:11:00,659
+you're paid for
+closss, Io, right?
+
+312
+00:11:00,659 --> 00:11:02,580
+And this is the second
+
+313
+00:11:02,580 --> 00:11:04,559
+what Oda Bad Billy is what
+we all have been doing.
+
+314
+00:11:04,559 --> 00:11:07,699
+And so like what I
+write a query, right?
+
+315
+00:11:07,699 --> 00:11:10,080
+I'm paying nothing until
+I rated the what I rated.
+
+316
+00:11:10,080 --> 00:11:12,219
+I can see how many bites
+I got billed for, right?
+
+317
+00:11:12,219 --> 00:11:13,959
+So I just try to pay at
+
+318
+00:11:13,959 --> 00:11:16,819
+the gradularity of
+each query, right?
+
+319
+00:11:18,720 --> 00:11:21,160
+On demand is not fixed.
+
+320
+00:11:21,160 --> 00:11:23,680
+The terminology sometimes
+flips in my head, too,
+
+321
+00:11:23,680 --> 00:11:24,919
+but the capacity billing
+
+322
+00:11:24,919 --> 00:11:26,400
+is where you have
+this fixed cost.
+
+323
+00:11:26,400 --> 00:11:29,599
+And A Daad is that when
+Ida did I pay for it?
+
+324
+00:11:29,599 --> 00:11:31,479
+Demand I don't pay for it.
+
+325
+00:11:31,479 --> 00:11:33,259
+Yeah. Like Ada Bad
+
+326
+00:11:33,259 --> 00:11:34,980
+feels like you would
+have higher priority,
+
+327
+00:11:34,980 --> 00:11:39,679
+but Ada Bad is actually
+lower priority. Pay for the.
+
+328
+00:11:42,840 --> 00:11:49,489
+That is. You pay by
+the Terabyte, right?
+
+329
+00:11:49,489 --> 00:11:51,470
+And so with A D Bad Billy,
+
+330
+00:11:51,470 --> 00:11:53,210
+they have a free tier, right?
+
+331
+00:11:53,210 --> 00:11:55,490
+That's I made a
+distinction here,
+
+332
+00:11:55,490 --> 00:11:57,670
+like between casi
+Billy and Adama Billy.
+
+333
+00:11:57,670 --> 00:11:59,029
+That's a little bit
+orthogonal to like
+
+334
+00:11:59,029 --> 00:12:01,139
+the free tier versus
+paid tier tier.
+
+335
+00:12:01,139 --> 00:12:03,690
+Yeah, thanks for clarifying.
+
+336
+00:12:03,730 --> 00:12:05,890
+Add billing. It's cool.
+
+337
+00:12:05,890 --> 00:12:07,930
+Sometimes you get
+a 100 s for free.
+
+338
+00:12:07,930 --> 00:12:09,750
+You have to be very
+careful, though,
+
+339
+00:12:09,750 --> 00:12:12,009
+because it's totally possible
+to write a query that
+
+340
+00:12:12,009 --> 00:12:14,809
+runs kind of fast and
+maybe blows a $100, right?
+
+341
+00:12:14,809 --> 00:12:16,829
+We don't want to do
+that. And so what I'm
+
+342
+00:12:16,829 --> 00:12:18,989
+talking about now is some
+different strategies with
+
+343
+00:12:18,989 --> 00:12:21,210
+Adoma billing to avoid
+
+344
+00:12:21,210 --> 00:12:23,709
+that horrible situation,
+right? What is that?
+
+345
+00:12:23,709 --> 00:12:26,329
+You could set limits or
+quotas per day to say,
+
+346
+00:12:26,329 --> 00:12:28,929
+like, how many bytes
+of IO will I do?
+
+347
+00:12:28,929 --> 00:12:32,009
+You know, the cost is directly
+proportional to the byte,
+
+348
+00:12:32,009 --> 00:12:35,775
+so I can kind of indirectly
+max out my daily cost.
+
+349
+00:12:35,775 --> 00:12:38,179
+They have this
+cool configuration
+
+350
+00:12:38,179 --> 00:12:39,640
+you can do called a dry Rd.
+
+351
+00:12:39,640 --> 00:12:42,000
+If I have a query
+and I pass a dry Rd,
+
+352
+00:12:42,000 --> 00:12:43,720
+it won't actually do anything,
+
+353
+00:12:43,720 --> 00:12:45,300
+it won't actually
+build me anything,
+
+354
+00:12:45,300 --> 00:12:46,720
+but it'll estimate how
+
+355
+00:12:46,720 --> 00:12:49,140
+much it would cost
+to do that query.
+
+356
+00:12:49,140 --> 00:12:52,599
+And the estimate I get is an
+upper upper bound, right?
+
+357
+00:12:52,599 --> 00:12:55,439
+Oftentimes upper bound estimate
+is exactly what it is,
+
+358
+00:12:55,439 --> 00:12:56,740
+trying to for simpler queries.
+
+359
+00:12:56,740 --> 00:12:58,379
+We're talking about
+some optimizations
+
+360
+00:12:58,379 --> 00:13:00,420
+later that the dry Rd
+has trouble estimating.
+
+361
+00:13:00,420 --> 00:13:02,280
+So there's some
+cases where there's
+
+362
+00:13:02,280 --> 00:13:03,439
+a kind of a weird optimization.
+
+363
+00:13:03,439 --> 00:13:05,099
+The Dry Run doesn't know about
+it, but when you run it,
+
+364
+00:13:05,099 --> 00:13:09,140
+it actually will be
+cheaper than the estimate.
+
+365
+00:13:09,290 --> 00:13:11,590
+Given the estimates
+aren't perfect,
+
+366
+00:13:11,590 --> 00:13:13,289
+another thing you could do is
+when you start running it,
+
+367
+00:13:13,289 --> 00:13:15,170
+you just say, well, how
+
+368
+00:13:15,170 --> 00:13:17,230
+much am I willing to
+pay to do this query?
+
+369
+00:13:17,230 --> 00:13:19,830
+You put a maximum on it for
+that one individual query,
+
+370
+00:13:19,830 --> 00:13:21,209
+and they'll start running it.
+
+371
+00:13:21,209 --> 00:13:22,889
+They'll do the task,
+and they see if
+
+372
+00:13:22,889 --> 00:13:25,469
+the kind of total cost
+ticks up past that.
+
+373
+00:13:25,469 --> 00:13:26,789
+They'll just kill your job,
+
+374
+00:13:26,789 --> 00:13:28,350
+and they won't charge
+you for anything.
+
+375
+00:13:28,350 --> 00:13:31,795
+Even though they did some
+compute for a while.
+
+376
+00:13:31,795 --> 00:13:37,099
+Finally, they have these it's
+almost like a view over,
+
+377
+00:13:37,099 --> 00:13:39,759
+kind of a metadata view over
+all the queries I'm doing,
+
+378
+00:13:39,759 --> 00:13:40,379
+and I can see for
+
+379
+00:13:40,379 --> 00:13:41,979
+all these different
+jobs I've submitted,
+
+380
+00:13:41,979 --> 00:13:43,980
+how much they are all costing.
+
+381
+00:13:43,980 --> 00:13:45,999
+So I have an organization,
+I can draw and see,
+
+382
+00:13:45,999 --> 00:13:47,999
+who's racking up the big bills.
+
+383
+00:13:47,999 --> 00:13:49,479
+All right. Well, I'm going to
+
+384
+00:13:49,479 --> 00:13:51,100
+do a quick demo
+for all of these.
+
+385
+00:13:51,100 --> 00:13:52,800
+So for the first one,
+I'll just d row to
+
+386
+00:13:52,800 --> 00:13:59,880
+the Google Cloud
+Cosle over here,
+
+387
+00:13:59,880 --> 00:14:02,979
+we'll actually see
+that they have,
+
+388
+00:14:04,050 --> 00:14:08,529
+They have 17,000 different
+quota limits I could do,
+
+389
+00:14:08,529 --> 00:14:09,910
+different kinds of services.
+
+390
+00:14:09,910 --> 00:14:11,690
+And even if it's
+somebody a big query,
+
+391
+00:14:11,690 --> 00:14:13,990
+I could go and say
+for specific regions,
+
+392
+00:14:13,990 --> 00:14:15,189
+I have different limits, right?
+
+393
+00:14:15,189 --> 00:14:17,350
+So kind of a complicated system.
+
+394
+00:14:17,350 --> 00:14:19,370
+You know, a common
+taste where I've had to
+
+395
+00:14:19,370 --> 00:14:21,110
+adjust that is when
+you're launching VMs,
+
+396
+00:14:21,110 --> 00:14:23,049
+usually, providers will
+say you can launch
+
+397
+00:14:23,049 --> 00:14:25,289
+like three VMs or five VMs
+or something like that.
+
+398
+00:14:25,289 --> 00:14:27,150
+And then if you want
+to do a lot more,
+
+399
+00:14:27,150 --> 00:14:28,089
+well, they want to make
+
+400
+00:14:28,089 --> 00:14:29,189
+sure you're actually
+going to pay, right?
+
+401
+00:14:29,189 --> 00:14:30,870
+So they don't want to just
+be like casually do that.
+
+402
+00:14:30,870 --> 00:14:32,910
+You have to request,
+like, can I increase it?
+
+403
+00:14:32,910 --> 00:14:34,969
+And then based on your
+history with them,
+
+404
+00:14:34,969 --> 00:14:37,489
+they may or may not let
+you launch more VMs,
+
+405
+00:14:37,489 --> 00:14:39,420
+right You know,
+just an individual,
+
+406
+00:14:39,420 --> 00:14:40,739
+maybe they'll say,
+Okay, you can do
+
+407
+00:14:40,739 --> 00:14:42,240
+ted or whatever be you asked.
+
+408
+00:14:42,240 --> 00:14:42,880
+You know, if you're
+
+409
+00:14:42,880 --> 00:14:44,279
+a big company who's been
+paying the millions,
+
+410
+00:14:44,279 --> 00:14:45,719
+I'm sure they'll just
+like trust you to do
+
+411
+00:14:45,719 --> 00:14:47,499
+whatever you you
+want to do, right?
+
+412
+00:14:47,499 --> 00:14:50,199
+Okay. So we're just trying
+to do this for big query.
+
+413
+00:14:50,199 --> 00:14:52,899
+And so I spent some time
+before looking for it.
+
+414
+00:14:52,899 --> 00:14:55,629
+I'm just to search
+for it query, usage.
+
+415
+00:14:55,629 --> 00:14:59,899
+Per day, and then I see that
+I get this setting here.
+
+416
+00:14:59,899 --> 00:15:01,940
+And right now it's 1 terabyte,
+
+417
+00:15:01,940 --> 00:15:03,919
+and if I want to, I
+can edit that, right?
+
+418
+00:15:03,919 --> 00:15:05,379
+So edit that quota.
+
+419
+00:15:05,379 --> 00:15:06,819
+And remember that like
+
+420
+00:15:06,819 --> 00:15:10,080
+1 terabyte might trust
+me something like $6.
+
+421
+00:15:10,080 --> 00:15:12,419
+Let's say that I really
+only want to pay
+
+422
+00:15:12,419 --> 00:15:14,800
+like $3 a day because I'm cheap,
+
+423
+00:15:14,800 --> 00:15:16,379
+right or worried about it.
+
+424
+00:15:16,379 --> 00:15:17,899
+So maybe I'll say, Hey,
+
+425
+00:15:17,899 --> 00:15:20,400
+let's max it out at
+half a terabyte,
+
+426
+00:15:20,400 --> 00:15:21,879
+that'll be about $3 a day.
+
+427
+00:15:21,879 --> 00:15:24,120
+I can submit that, confirm,
+
+428
+00:15:24,120 --> 00:15:26,599
+and you know, if I
+try to increase it,
+
+429
+00:15:26,599 --> 00:15:27,879
+they may or may
+not let me do it.
+
+430
+00:15:27,879 --> 00:15:29,759
+But if I'm decreasing it,
+
+431
+00:15:29,759 --> 00:15:32,049
+you know, There's a lot
+
+432
+00:15:32,049 --> 00:15:33,509
+of good reason that
+they would reject it.
+
+433
+00:15:33,509 --> 00:15:36,430
+Okay, great. So I did that
+and now last time I say here.
+
+434
+00:15:36,430 --> 00:15:37,849
+Maybe some of you will do
+that while you're working
+
+435
+00:15:37,849 --> 00:15:40,309
+on the project, if you like.
+
+436
+00:15:40,309 --> 00:15:43,310
+Alright, I'm a head over
+here to my notebook,
+
+437
+00:15:43,310 --> 00:15:45,369
+where we've been
+working last time.
+
+438
+00:15:45,369 --> 00:15:49,230
+And let me just do a
+dry run of the query.
+
+439
+00:15:49,230 --> 00:15:52,289
+I'd to go back to last time.
+
+440
+00:15:52,289 --> 00:15:53,809
+And we have this
+Counties data set.
+
+441
+00:15:53,809 --> 00:15:57,749
+Somb say where are the
+counties somewhere here.
+
+442
+00:15:57,749 --> 00:16:02,879
+Let me just grab Grab
+this query here.
+
+443
+00:16:02,879 --> 00:16:04,660
+I'm just tacking this stuff onto
+
+444
+00:16:04,660 --> 00:16:06,060
+the machine learning notebook,
+
+445
+00:16:06,060 --> 00:16:06,720
+so there's not
+
+446
+00:16:06,720 --> 00:16:08,720
+too many different
+notebooks floating around.
+
+447
+00:16:08,720 --> 00:16:11,439
+Normally, we do a
+big query like this,
+
+448
+00:16:11,439 --> 00:16:13,139
+but this convenience thing
+
+449
+00:16:13,139 --> 00:16:15,679
+doesn't let me
+specify options like,
+
+450
+00:16:15,679 --> 00:16:17,999
+you know, do it as a dry
+rod or stuff like that.
+
+451
+00:16:17,999 --> 00:16:19,940
+And so I may instead do this as
+
+452
+00:16:19,940 --> 00:16:22,959
+a big query like
+this. All right.
+
+453
+00:16:22,959 --> 00:16:28,579
+And then I have to say job
+fig equals something, right?
+
+454
+00:16:28,579 --> 00:16:31,440
+And so up here, I
+may specify a K Fig,
+
+455
+00:16:31,440 --> 00:16:37,339
+which will be a big
+query query Job Fig.
+
+456
+00:16:37,339 --> 00:16:39,079
+You saw last time
+how we could put
+
+457
+00:16:39,079 --> 00:16:41,799
+caching options in
+there, for example.
+
+458
+00:16:41,799 --> 00:16:43,880
+Here, one of the
+options I could do
+
+459
+00:16:43,880 --> 00:16:45,559
+is whether or not it's
+a dry run, right?
+
+460
+00:16:45,559 --> 00:16:48,959
+I'm go to create this Fig thing
+and pass it in down here.
+
+461
+00:16:48,959 --> 00:16:50,820
+And you know what? First, let's
+
+462
+00:16:50,820 --> 00:16:52,799
+just select
+everything from this,
+
+463
+00:16:52,799 --> 00:16:54,779
+right? I'm select everything.
+
+464
+00:16:54,779 --> 00:16:59,419
+From that. And this will return
+to query objects for me.
+
+465
+00:16:59,419 --> 00:17:02,119
+Normally, I actually have
+to get results back from
+
+466
+00:17:02,119 --> 00:17:03,359
+it before it'll tell me how much
+
+467
+00:17:03,359 --> 00:17:04,699
+it costs because it's a dry run.
+
+468
+00:17:04,699 --> 00:17:05,919
+It's not getting any results,
+
+469
+00:17:05,919 --> 00:17:07,319
+and I can just check
+down here, right?
+
+470
+00:17:07,319 --> 00:17:10,079
+I'm going to say
+Total bytes build.
+
+471
+00:17:10,079 --> 00:17:12,860
+And that will be zero
+because I'm doing a dry run.
+
+472
+00:17:12,860 --> 00:17:15,055
+If I look at total
+bytes processed,
+
+473
+00:17:15,055 --> 00:17:16,810
+It didn't actually
+process anything,
+
+474
+00:17:16,810 --> 00:17:18,549
+but now this is an
+estimate, right?
+
+475
+00:17:18,549 --> 00:17:22,829
+This is an upper bound
+estimate on how much it is.
+
+476
+00:17:22,829 --> 00:17:25,349
+And so what is that?
+I guess I'll divide
+
+477
+00:17:25,349 --> 00:17:28,629
+by 1024 squared, right?
+
+478
+00:17:28,629 --> 00:17:30,630
+So it's like an megabytes.
+
+479
+00:17:30,630 --> 00:17:33,510
+Let me just like print
+that off as a string,
+
+480
+00:17:33,510 --> 00:17:36,179
+right so we can
+easily see All right.
+
+481
+00:17:36,179 --> 00:17:37,979
+And maybe I'll just say
+like megabytes here.
+
+482
+00:17:37,979 --> 00:17:40,479
+Alright, so that's
+like 182 megabytes.
+
+483
+00:17:40,479 --> 00:17:43,379
+That's cool. What if I
+try to limit it, right?
+
+484
+00:17:43,379 --> 00:17:46,119
+So instead of having all
+the rows, I want like ten?
+
+485
+00:17:46,119 --> 00:17:47,620
+Well, it turns out
+that that's the same
+
+486
+00:17:47,620 --> 00:17:49,179
+because it's a column
+oriented format.
+
+487
+00:17:49,179 --> 00:17:50,500
+And so they aren't really
+
+488
+00:17:50,500 --> 00:17:52,520
+charging the less if
+I touch fewer rows.
+
+489
+00:17:52,520 --> 00:17:53,899
+They're only charging the s
+
+490
+00:17:53,899 --> 00:17:56,059
+if I touch fewer columns, right?
+
+491
+00:17:56,059 --> 00:17:57,899
+So I could do that. Let me
+
+492
+00:17:57,899 --> 00:17:59,340
+try to look at some of
+these other things.
+
+493
+00:17:59,340 --> 00:18:01,179
+I can check, for example,
+
+494
+00:18:01,179 --> 00:18:02,900
+like the county name.
+
+495
+00:18:02,900 --> 00:18:05,020
+Maybe I'll get every
+single county name.
+
+496
+00:18:05,020 --> 00:18:06,500
+That's pretty cheap
+because there's
+
+497
+00:18:06,500 --> 00:18:07,839
+not a lot of information
+in there, right?
+
+498
+00:18:07,839 --> 00:18:09,640
+That's a relatively
+small data set.
+
+499
+00:18:09,640 --> 00:18:13,274
+If I get the name of every
+county in the United States,
+
+500
+00:18:13,274 --> 00:18:16,929
+The one that really gets me is
+
+501
+00:18:16,929 --> 00:18:19,449
+the county geometry
+because there's where I
+
+502
+00:18:19,449 --> 00:18:22,190
+have the polygons that
+specify all the borders,
+
+503
+00:18:22,190 --> 00:18:24,389
+and I can really see
+that that's almost all
+
+504
+00:18:24,389 --> 00:18:26,629
+of my costs,
+selecting everything.
+
+505
+00:18:26,629 --> 00:18:28,449
+You're selecting that
+one is very similar.
+
+506
+00:18:28,449 --> 00:18:30,309
+And so what you want to
+do is instead of being
+
+507
+00:18:30,309 --> 00:18:32,650
+somebody who just optimizes
+stuff when it's slow,
+
+508
+00:18:32,650 --> 00:18:33,729
+you can play around with
+
+509
+00:18:33,729 --> 00:18:34,929
+this and you can
+try to figure out,
+
+510
+00:18:34,929 --> 00:18:38,110
+well, which columns
+are expensive.
+
+511
+00:18:38,110 --> 00:18:40,489
+If you're like filtering it
+down before you select it,
+
+512
+00:18:40,489 --> 00:18:43,050
+you might copy that filtered
+down data somewhere else,
+
+513
+00:18:43,050 --> 00:18:45,389
+so you don't have
+such big big columns.
+
+514
+00:18:45,389 --> 00:18:46,609
+Yeah, question right here.
+
+515
+00:18:46,609 --> 00:18:51,589
+Select not select You mean,
+
+516
+00:18:51,589 --> 00:18:54,049
+like, a star minus something?
+
+517
+00:18:54,049 --> 00:18:55,990
+I'm not sure. I don't
+
+518
+00:18:55,990 --> 00:18:57,609
+know if there's any
+SQL experts here.
+
+519
+00:18:57,609 --> 00:18:58,929
+I mean, is there
+a way to do like
+
+520
+00:18:58,929 --> 00:19:01,229
+star minus something?
+You are here?
+
+521
+00:19:04,710 --> 00:19:06,770
+My understanding
+is that you don't
+
+522
+00:19:06,770 --> 00:19:08,049
+get billed for any dry run.
+
+523
+00:19:08,049 --> 00:19:09,309
+And I personally don't know
+
+524
+00:19:09,309 --> 00:19:11,390
+any way to do like
+star minus something.
+
+525
+00:19:11,390 --> 00:19:15,549
+Yeah, other questions
+people have. All right.
+
+526
+00:19:15,549 --> 00:19:18,689
+Cool. So that's one of
+the things I can do.
+
+527
+00:19:18,689 --> 00:19:20,429
+You know, the other
+thing I can do, right?
+
+528
+00:19:20,429 --> 00:19:21,870
+So again, this is
+an upper bound.
+
+529
+00:19:21,870 --> 00:19:23,309
+So I might just want to try it,
+
+530
+00:19:23,309 --> 00:19:25,629
+but specify a limit that's
+a little bit smaller.
+
+531
+00:19:25,629 --> 00:19:28,569
+And so I'm going to
+copy this down here.
+
+532
+00:19:28,569 --> 00:19:30,910
+And in this case,
+
+533
+00:19:30,910 --> 00:19:34,009
+instead of doing a dry
+run, what I will say is,
+
+534
+00:19:34,009 --> 00:19:38,609
+I have maximum bytes build,
+
+535
+00:19:38,609 --> 00:19:41,909
+and that will be 100
+megabytes, right?
+
+536
+00:19:41,909 --> 00:19:46,629
+So 100 megabytes. And
+then when I run this,
+
+537
+00:19:46,629 --> 00:19:48,990
+it won't actually do
+anything at first.
+
+538
+00:19:48,990 --> 00:19:53,069
+I'm getting what's that?
+Maximum good catch.
+
+539
+00:19:53,069 --> 00:19:56,729
+Max pretty horribly, actually.
+
+540
+00:19:56,729 --> 00:19:59,630
+Thanks. So I'm
+trying to say none.
+
+541
+00:19:59,630 --> 00:20:01,769
+Q is none because it
+
+542
+00:20:01,769 --> 00:20:03,410
+doesn't set down until I
+actually run the query.
+
+543
+00:20:03,410 --> 00:20:04,629
+It's not a dry run anymore, so I
+
+544
+00:20:04,629 --> 00:20:06,409
+actually have to get
+the data somewhere.
+
+545
+00:20:06,409 --> 00:20:08,330
+I'm say data frame equals.
+
+546
+00:20:08,330 --> 00:20:10,249
+You know, I'm just trying
+to put a limit here, right,
+
+547
+00:20:10,249 --> 00:20:11,429
+so that when I
+eventually run it,
+
+548
+00:20:11,429 --> 00:20:13,050
+it's not going to
+give me too much.
+
+549
+00:20:13,050 --> 00:20:15,529
+This is a geodata frame
+right because it has
+
+550
+00:20:15,529 --> 00:20:18,329
+that column of
+boundaries, right?
+
+551
+00:20:18,329 --> 00:20:22,989
+I'm say Q two Geodata frame.
+
+552
+00:20:23,380 --> 00:20:26,580
+Let me run that thing and I
+get an internal server error,
+
+553
+00:20:26,580 --> 00:20:29,780
+which is good because
+that error says
+
+554
+00:20:29,780 --> 00:20:33,759
+that this costs more than
+you're willing to pay, right?
+
+555
+00:20:33,759 --> 00:20:36,260
+So that will not run.
+
+556
+00:20:36,260 --> 00:20:39,320
+What happens if I try
+running it down here?
+
+557
+00:20:39,320 --> 00:20:44,619
+And this time, I'm going
+to say, What did I do?
+
+558
+00:20:44,619 --> 00:20:48,419
+Did I actually not copy
+that well? Let me copy it.
+
+559
+00:20:48,419 --> 00:20:51,459
+I think I pasted the
+wrong thing. All right.
+
+560
+00:20:51,459 --> 00:20:52,700
+I think before it was something
+
+561
+00:20:52,700 --> 00:20:56,720
+like like it was like 180
+megabytes, something.
+
+562
+00:20:56,720 --> 00:20:58,280
+So let's try 200.
+
+563
+00:20:58,280 --> 00:21:01,600
+In theory, this should
+actually run now.
+
+564
+00:21:01,600 --> 00:21:03,460
+And so it's running for real.
+
+565
+00:21:03,460 --> 00:21:04,939
+And I see the estimate
+before it was
+
+566
+00:21:04,939 --> 00:21:07,619
+actually quite accurate
+is a simple query, right?
+
+567
+00:21:07,619 --> 00:21:09,840
+More complicated cases,
+it might be an upper
+
+568
+00:21:09,840 --> 00:21:12,500
+bound. All right, cool.
+
+569
+00:21:12,500 --> 00:21:14,899
+Any questions about that
+upper bound idea or
+
+570
+00:21:14,899 --> 00:21:19,589
+the maximum price
+idea? All right.
+
+571
+00:21:19,589 --> 00:21:22,729
+Fantastic. So, what I want to
+do now is I want to try to
+
+572
+00:21:22,729 --> 00:21:25,929
+figure out who is running
+up my big big query costs.
+
+573
+00:21:25,929 --> 00:21:28,470
+And so I can do a
+big query here.
+
+574
+00:21:28,470 --> 00:21:32,189
+And what I'm going to do is
+I'm may select a star from,
+
+575
+00:21:32,189 --> 00:21:33,769
+and then there's a
+special table they
+
+576
+00:21:33,769 --> 00:21:36,009
+create for me. It's my project.
+
+577
+00:21:36,009 --> 00:21:39,109
+And then within there, I
+have to say which region.
+
+578
+00:21:39,109 --> 00:21:41,389
+And usually a region
+is something like
+
+579
+00:21:41,389 --> 00:21:44,269
+US Central or US
+West or whatever.
+
+580
+00:21:44,269 --> 00:21:46,550
+But in big query, you
+can have it's almost
+
+581
+00:21:46,550 --> 00:21:48,609
+like a pseudo region that
+encompass a bunch of them.
+
+582
+00:21:48,609 --> 00:21:49,810
+When I say a region, US,
+
+583
+00:21:49,810 --> 00:21:51,009
+it's like they decide where
+
+584
+00:21:51,009 --> 00:21:52,530
+it actually runs within the US.
+
+585
+00:21:52,530 --> 00:21:53,829
+So anyway, I want to see kind of
+
+586
+00:21:53,829 --> 00:21:55,510
+across the US where it goes.
+
+587
+00:21:55,510 --> 00:21:58,109
+And then there's information.
+
+588
+00:21:58,590 --> 00:22:03,949
+Schema jobs by by project,
+
+589
+00:22:03,949 --> 00:22:07,310
+to be able to just do
+like a limit of ten.
+
+590
+00:22:07,630 --> 00:22:12,530
+And that will show
+
+591
+00:22:12,530 --> 00:22:15,170
+me like these ten
+most recent jobs ore.
+
+592
+00:22:15,170 --> 00:22:16,610
+I can sometimes
+I'm loading data,
+
+593
+00:22:16,610 --> 00:22:17,910
+sometimes I'm doing queries.
+
+594
+00:22:17,910 --> 00:22:19,690
+I can see, like,
+Oh, that Tyler guy
+
+595
+00:22:19,690 --> 00:22:20,970
+keeps running up the big costs.
+
+596
+00:22:20,970 --> 00:22:23,490
+I'd better talk to
+him. And so lots
+
+597
+00:22:23,490 --> 00:22:24,989
+of stuff here that I could do.
+
+598
+00:22:24,989 --> 00:22:27,390
+What I may do is I may
+have sort it by a field,
+
+599
+00:22:27,390 --> 00:22:29,530
+which is a I guess
+I can't see it yet,
+
+600
+00:22:29,530 --> 00:22:31,390
+but I'll just use
+it from my notes.
+
+601
+00:22:31,390 --> 00:22:33,030
+You could figure it
+out by digging around.
+
+602
+00:22:33,030 --> 00:22:35,650
+I may order by
+
+603
+00:22:35,650 --> 00:22:44,640
+total total bytes,
+build, descending.
+
+604
+00:22:44,640 --> 00:22:47,019
+I'm with the most expensive
+one first, right?
+
+605
+00:22:47,019 --> 00:22:48,760
+So do that. Then what I'll
+
+606
+00:22:48,760 --> 00:22:50,879
+do is I'll put that
+in a data frame.
+
+607
+00:22:50,879 --> 00:22:52,779
+So My run that thing, and
+
+608
+00:22:52,779 --> 00:22:57,070
+then And then I have
+that data frame.
+
+609
+00:22:57,070 --> 00:22:58,569
+And if I want to, I can say,
+
+610
+00:22:58,569 --> 00:23:00,589
+give me give me
+
+611
+00:23:00,589 --> 00:23:01,849
+the first row because
+
+612
+00:23:01,849 --> 00:23:03,410
+that's the one that's
+most expensive.
+
+613
+00:23:03,410 --> 00:23:05,009
+I can see who did it if
+
+614
+00:23:05,009 --> 00:23:06,890
+I want to go talk to them
+about what they're doing.
+
+615
+00:23:06,890 --> 00:23:09,970
+I can see lots of stuff in here,
+
+616
+00:23:09,970 --> 00:23:13,389
+like the total Bytes
+build, I can see.
+
+617
+00:23:13,389 --> 00:23:17,569
+I can also see what Query
+was actually done, right?
+
+618
+00:23:17,569 --> 00:23:19,989
+And so I'm going to print
+some of those things off.
+
+619
+00:23:19,989 --> 00:23:23,529
+I'm going to print the
+total bytes build.
+
+620
+00:23:23,529 --> 00:23:26,289
+And let's do megabytes.
+
+621
+00:23:26,289 --> 00:23:32,254
+Megabytes. Let me convert
+that to Python float.
+
+622
+00:23:32,254 --> 00:23:35,139
+All right, you know,
+about 300 megabytes
+
+623
+00:23:35,139 --> 00:23:37,199
+was my most expensive query.
+
+624
+00:23:37,199 --> 00:23:39,900
+And then I finally
+want to see, well,
+
+625
+00:23:39,900 --> 00:23:42,819
+what was that query
+actually doing, right?
+
+626
+00:23:42,819 --> 00:23:46,279
+So what was the expensive query?
+
+627
+00:23:46,279 --> 00:23:48,920
+And let me print it off
+because it's a string.
+
+628
+00:23:48,920 --> 00:23:52,959
+I was selecting every single
+road in the United States.
+
+629
+00:23:52,959 --> 00:23:54,780
+So that's surprisingly
+that's a big data set,
+
+630
+00:23:54,780 --> 00:23:56,500
+it would be bigger than
+the county boundaries
+
+631
+00:23:56,500 --> 00:23:57,679
+because there's more roads than
+
+632
+00:23:57,679 --> 00:24:01,480
+there are our edges
+around counties.
+
+633
+00:24:01,480 --> 00:24:05,959
+Cool. So Those are
+
+634
+00:24:05,959 --> 00:24:07,239
+all my strategies for kind of
+
+635
+00:24:07,239 --> 00:24:09,199
+understanding how
+you're being built.
+
+636
+00:24:09,199 --> 00:24:12,980
+Any questions about any
+of that? All right, cool.
+
+637
+00:24:12,980 --> 00:24:16,020
+So let's talk about some
+more advanced optimizations
+
+638
+00:24:16,020 --> 00:24:19,439
+that can reduce
+the costs, right?
+
+639
+00:24:19,439 --> 00:24:22,539
+Costs get big when I
+select a whole column and
+
+640
+00:24:22,539 --> 00:24:23,940
+that column is large or even
+
+641
+00:24:23,940 --> 00:24:25,519
+when I select a
+part of the column.
+
+642
+00:24:25,519 --> 00:24:27,199
+And so what we might
+sometimes want to do is
+
+643
+00:24:27,199 --> 00:24:29,120
+we might want to break
+up a bigger table
+
+644
+00:24:29,120 --> 00:24:31,439
+into smaller tables or chunks
+
+645
+00:24:31,439 --> 00:24:33,780
+of tables that are
+relatively independent.
+
+646
+00:24:33,780 --> 00:24:36,040
+One strategy for that
+is called partitioning.
+
+647
+00:24:36,040 --> 00:24:38,639
+If I'm doing partitioning,
+I choose a column,
+
+648
+00:24:38,639 --> 00:24:40,959
+and then every unique value in
+
+649
+00:24:40,959 --> 00:24:43,779
+that column goes to its own
+separate little chunk, right?
+
+650
+00:24:43,779 --> 00:24:45,680
+So maybe I have May
+1 data over here,
+
+651
+00:24:45,680 --> 00:24:48,019
+May 2 data over here.
+
+652
+00:24:48,019 --> 00:24:49,750
+I have all these
+little partitions.
+
+653
+00:24:49,750 --> 00:24:51,419
+When I do a query,
+
+654
+00:24:51,419 --> 00:24:54,000
+there's different queries
+I could do obviously.
+
+655
+00:24:54,000 --> 00:24:55,299
+And if I have a ware statement,
+
+656
+00:24:55,299 --> 00:24:57,080
+I could filter on
+different things.
+
+657
+00:24:57,080 --> 00:24:58,559
+If I have a ware statement that
+
+658
+00:24:58,559 --> 00:25:00,520
+necessarily limits me
+down to one chunk.
+
+659
+00:25:00,520 --> 00:25:04,020
+Like if I say where
+the date equals May 1,
+
+660
+00:25:04,020 --> 00:25:06,659
+then they will automatically
+only access those chunks.
+
+661
+00:25:06,659 --> 00:25:08,080
+They'll touch less data,
+
+662
+00:25:08,080 --> 00:25:09,660
+and they'll bill me less.
+
+663
+00:25:09,660 --> 00:25:11,259
+You can imagine that's a
+little bit complicated?
+
+664
+00:25:11,259 --> 00:25:14,739
+I mean, I could say, what if
+it's like May 1 or May 2,
+
+665
+00:25:14,739 --> 00:25:16,839
+or if I say, is it May 1,
+
+666
+00:25:16,839 --> 00:25:18,719
+and B is straighter
+than three, right?
+
+667
+00:25:18,719 --> 00:25:20,020
+But they will do their best
+
+668
+00:25:20,020 --> 00:25:21,220
+to try to figure out that, hey,
+
+669
+00:25:21,220 --> 00:25:22,800
+they only have to
+look at some of these
+
+670
+00:25:22,800 --> 00:25:24,999
+instead of looking at
+all of them, right?
+
+671
+00:25:24,999 --> 00:25:26,700
+So when they do that, that's
+going to save IO cost.
+
+672
+00:25:26,700 --> 00:25:28,399
+If I only have to touch
+a subset of them,
+
+673
+00:25:28,399 --> 00:25:30,375
+and they'll save me money.
+
+674
+00:25:30,375 --> 00:25:32,149
+Now, it's a little
+bit limited, right,
+
+675
+00:25:32,149 --> 00:25:33,789
+because I didn't really
+do it for certain types,
+
+676
+00:25:33,789 --> 00:25:34,789
+like, you know, states.
+
+677
+00:25:34,789 --> 00:25:37,049
+I don't think it works
+for strings, for example.
+
+678
+00:25:37,049 --> 00:25:38,910
+And it only really
+works well if there's
+
+679
+00:25:38,910 --> 00:25:41,229
+a substantial amount of
+data per partition, right?
+
+680
+00:25:41,229 --> 00:25:44,550
+If I just have a few rows
+here and a few rows there,
+
+681
+00:25:44,550 --> 00:25:47,529
+then if I do a query over a
+lot of these different dates,
+
+682
+00:25:47,529 --> 00:25:49,290
+it'll generate a
+lot of random IO,
+
+683
+00:25:49,290 --> 00:25:52,450
+and it'll be a slow
+expensive operation.
+
+684
+00:25:52,450 --> 00:25:56,750
+All right. Alternative
+partitioning is called clustering.
+
+685
+00:25:56,750 --> 00:25:58,029
+When we do clustering, we
+
+686
+00:25:58,029 --> 00:26:00,590
+specify one or more
+cluster columns,
+
+687
+00:26:00,590 --> 00:26:04,209
+what we're going to do is
+sesort the data, right?
+
+688
+00:26:04,209 --> 00:26:05,729
+When I say semisot,
+
+689
+00:26:05,729 --> 00:26:07,549
+what it means is that
+we'll have these chunks,
+
+690
+00:26:07,549 --> 00:26:10,350
+and each chunk will have a
+mutually exclusive range.
+
+691
+00:26:10,350 --> 00:26:13,529
+So this chunk is first, it
+contains one to one on B,
+
+692
+00:26:13,529 --> 00:26:15,529
+this chunk is xs four to ten.
+
+693
+00:26:15,529 --> 00:26:17,529
+This chunk is exits ten to ten.
+
+694
+00:26:17,529 --> 00:26:19,209
+Within here, it's
+totally fine at
+
+695
+00:26:19,209 --> 00:26:21,630
+seven tums be fo
+four or vice versa.
+
+696
+00:26:21,630 --> 00:26:23,250
+It's not sorted within a chunk.
+
+697
+00:26:23,250 --> 00:26:25,610
+It is sorted across chunk.
+
+698
+00:26:25,610 --> 00:26:27,909
+And clustering is
+more flexible, right.
+
+699
+00:26:27,909 --> 00:26:30,389
+It works for all kinds of data.
+
+700
+00:26:30,389 --> 00:26:33,370
+They're trying to decide
+how to chunk these things.
+
+701
+00:26:33,370 --> 00:26:37,449
+And so, in contrast to
+partitioning, right?
+
+702
+00:26:37,449 --> 00:26:39,090
+If I search for exactly one day,
+
+703
+00:26:39,090 --> 00:26:40,930
+I know I'm not having
+anything else here.
+
+704
+00:26:40,930 --> 00:26:43,809
+With clustering, maybe
+different values
+
+705
+00:26:43,809 --> 00:26:44,369
+might end up in
+
+706
+00:26:44,369 --> 00:26:45,929
+the same chunk and I'll
+end up paying more.
+
+707
+00:26:45,929 --> 00:26:47,389
+So it's a little bit
+hard to reason about.
+
+708
+00:26:47,389 --> 00:26:49,149
+They might reshuffle
+the data over time,
+
+709
+00:26:49,149 --> 00:26:50,989
+so the costs might
+change over time.
+
+710
+00:26:50,989 --> 00:26:53,230
+This is something that
+the dry run is trying
+
+711
+00:26:53,230 --> 00:26:55,629
+to have trouble
+estimating, right?
+
+712
+00:26:55,629 --> 00:26:57,969
+But in general, it'll
+be cheaper if we
+
+713
+00:26:57,969 --> 00:26:59,329
+can somehow look at a subset
+
+714
+00:26:59,329 --> 00:27:00,790
+of chunks instead
+of all of them.
+
+715
+00:27:00,790 --> 00:27:04,000
+All right. Now, We've
+
+716
+00:27:04,000 --> 00:27:06,460
+mostly talked about
+reading data for queries,
+
+717
+00:27:06,460 --> 00:27:09,599
+but big query can also
+let you insert new rows.
+
+718
+00:27:09,599 --> 00:27:12,400
+And if I'm inserting
+
+719
+00:27:12,400 --> 00:27:14,439
+a bunch of rows with
+different B values,
+
+720
+00:27:14,439 --> 00:27:15,339
+one of the problems in
+
+721
+00:27:15,339 --> 00:27:17,019
+this picture is that
+I'll have to insert,
+
+722
+00:27:17,019 --> 00:27:19,380
+a row over in this truck
+or roll over that truck.
+
+723
+00:27:19,380 --> 00:27:21,279
+I may have to do a
+bunch of random writes.
+
+724
+00:27:21,279 --> 00:27:22,719
+Random writes are terrible.
+
+725
+00:27:22,719 --> 00:27:24,379
+They're bad for
+hard drives because
+
+726
+00:27:24,379 --> 00:27:25,419
+hard drives actually have
+
+727
+00:27:25,419 --> 00:27:27,219
+to seek to these
+different places.
+
+728
+00:27:27,219 --> 00:27:29,039
+They're also bad
+for SSDs because
+
+729
+00:27:29,039 --> 00:27:31,515
+SSDs are broken to
+these big blocks.
+
+730
+00:27:31,515 --> 00:27:34,269
+That have to be erased
+altogether, right?
+
+731
+00:27:34,269 --> 00:27:36,070
+So if I'm kind of doing
+all these small rights,
+
+732
+00:27:36,070 --> 00:27:37,250
+then it'll trigger eventually
+
+733
+00:27:37,250 --> 00:27:38,749
+garbage collection of the SSD,
+
+734
+00:27:38,749 --> 00:27:40,949
+the SSD will start having
+slower performance, right?
+
+735
+00:27:40,949 --> 00:27:42,930
+So they don't want to
+have random rights,
+
+736
+00:27:42,930 --> 00:27:45,430
+even though they have
+the data clustered.
+
+737
+00:27:45,430 --> 00:27:46,729
+And so what they'll do is if I
+
+738
+00:27:46,729 --> 00:27:48,469
+have a bunch of new
+data coming in,
+
+739
+00:27:48,469 --> 00:27:51,409
+rather than splitting it up
+across all these chunks,
+
+740
+00:27:51,409 --> 00:27:53,249
+they will just write it all into
+
+741
+00:27:53,249 --> 00:27:55,469
+one place sequentially, right?
+
+742
+00:27:55,469 --> 00:27:58,629
+And that area is called
+clustered data, right?
+
+743
+00:27:58,629 --> 00:28:00,450
+So having some amount
+
+744
+00:28:00,450 --> 00:28:03,079
+of clustered data means
+that rights will be faster,
+
+745
+00:28:03,079 --> 00:28:05,289
+But now I have a problem.
+
+746
+00:28:05,289 --> 00:28:08,009
+Whenever I have a query, I can
+
+747
+00:28:08,009 --> 00:28:09,649
+look at it and I can figure out
+
+748
+00:28:09,649 --> 00:28:11,669
+which cluster chunks it rows to,
+
+749
+00:28:11,669 --> 00:28:14,669
+but any rows I'm interested
+in could also be here, right?
+
+750
+00:28:14,669 --> 00:28:16,969
+So every single query
+has to look at all of
+
+751
+00:28:16,969 --> 00:28:19,969
+the n cluster data
+every single time.
+
+752
+00:28:19,969 --> 00:28:22,450
+Okay, so now we
+have a trade off.
+
+753
+00:28:22,450 --> 00:28:24,909
+How big can we let the
+unclustered data be?
+
+754
+00:28:24,909 --> 00:28:26,369
+If we let it be bigger,
+
+755
+00:28:26,369 --> 00:28:27,909
+our writes will be faster,
+
+756
+00:28:27,909 --> 00:28:31,389
+but it'll be slower to do
+queries. If it's smaller.
+
+757
+00:28:31,389 --> 00:28:34,570
+Well, then our queries will
+be cheap because we don't
+
+758
+00:28:34,570 --> 00:28:37,549
+ever have that data that's
+part of every query,
+
+759
+00:28:37,549 --> 00:28:39,289
+but writes will be
+more expensive?
+
+760
+00:28:39,289 --> 00:28:41,729
+I'm constantly pulling rows
+of the unclustered area and
+
+761
+00:28:41,729 --> 00:28:43,310
+inserting them mostly randomly
+
+762
+00:28:43,310 --> 00:28:44,409
+to different places, right?
+
+763
+00:28:44,409 --> 00:28:46,010
+That's just like something
+you'll see again
+
+764
+00:28:46,010 --> 00:28:47,469
+in systems, right? That
+there's a trade off.
+
+765
+00:28:47,469 --> 00:28:48,849
+You can either optimize for
+
+766
+00:28:48,849 --> 00:28:50,990
+making reads fast
+or writes fast.
+
+767
+00:28:50,990 --> 00:28:52,229
+Here, they just set some kind of
+
+768
+00:28:52,229 --> 00:28:54,010
+threshold on how much
+can be unclustered.
+
+769
+00:28:54,010 --> 00:28:56,390
+And so they're trying to go
+for a more balanced read
+
+770
+00:28:56,390 --> 00:28:57,830
+versus write approach.
+
+771
+00:28:57,830 --> 00:28:59,889
+Any question about
+partitioning or clustering?
+
+772
+00:28:59,889 --> 00:29:03,339
+Yeah, right here. And the
+strategy only works if
+
+773
+00:29:03,339 --> 00:29:07,859
+the clause would
+include. Exactly.
+
+774
+00:29:07,859 --> 00:29:09,279
+Yep.
+
+775
+00:29:09,279 --> 00:29:11,779
+Yeah, it only helps if
+
+776
+00:29:11,779 --> 00:29:14,040
+we're kind of filtering
+on Colm B. F other cases,
+
+777
+00:29:14,040 --> 00:29:15,920
+I'll end up having to
+pay the whole price.
+
+778
+00:29:15,920 --> 00:29:18,479
+And that's part of this
+cost estimation here.
+
+779
+00:29:18,479 --> 00:29:20,299
+You can't just look at the table
+
+780
+00:29:20,299 --> 00:29:21,499
+and say, Oh I'm going
+to optimize it.
+
+781
+00:29:21,499 --> 00:29:23,700
+You have to say, Oh,
+here's the table,
+
+782
+00:29:23,700 --> 00:29:25,980
+and here are the
+queries I'm doing.
+
+783
+00:29:25,980 --> 00:29:27,739
+And here are the
+expensive queries.
+
+784
+00:29:27,739 --> 00:29:29,459
+And if I cluster on this thing,
+
+785
+00:29:29,459 --> 00:29:31,379
+I can make this query
+cheaper, right?
+
+786
+00:29:31,379 --> 00:29:33,039
+You can imagine that somebody
+
+787
+00:29:33,039 --> 00:29:34,439
+could be assigned as
+a task to do, right?
+
+788
+00:29:34,439 --> 00:29:36,000
+Go figure out how to
+make these things
+
+789
+00:29:36,000 --> 00:29:38,479
+cheaper and it's a
+tricky job, right?
+
+790
+00:29:38,479 --> 00:29:39,740
+Yeah, good question.
+
+791
+00:29:39,740 --> 00:29:41,899
+Yeah there are
+questions people have.
+
+792
+00:29:42,500 --> 00:29:44,859
+All right. Well, I just
+
+793
+00:29:44,859 --> 00:29:46,600
+wanted to do a couple
+more demos over here.
+
+794
+00:29:46,600 --> 00:29:48,279
+Let's actually look at
+that Roads data that we
+
+795
+00:29:48,279 --> 00:29:50,860
+saw that popping up
+that was so expensive.
+
+796
+00:29:50,860 --> 00:29:54,340
+Somebody come over
+here to the tonsil,
+
+797
+00:29:54,340 --> 00:29:59,039
+and big query is way
+down here. Excuse me.
+
+798
+00:29:59,039 --> 00:30:01,580
+And I may search for
+what is it called?
+
+799
+00:30:01,580 --> 00:30:06,279
+It is called Go Go US Roads.
+
+800
+00:30:06,279 --> 00:30:08,899
+And I'm may to look
+at everything.
+
+801
+00:30:10,060 --> 00:30:13,159
+And I'm going to come
+look at this over here.
+
+802
+00:30:13,159 --> 00:30:15,559
+And basically, they have
+
+803
+00:30:15,559 --> 00:30:18,520
+a bunch of different data
+tables within this dataset.
+
+804
+00:30:18,520 --> 00:30:20,739
+I think these are broken
+down by FIPS code, right?
+
+805
+00:30:20,739 --> 00:30:22,799
+I think that, you know,
+
+806
+00:30:22,799 --> 00:30:25,840
+like Wisconsin is state
+55 for a FIPS code,
+
+807
+00:30:25,840 --> 00:30:27,979
+so we could look at
+Wisconsin roads if we want.
+
+808
+00:30:27,979 --> 00:30:29,599
+What I'm going to do
+now is I'm actually
+
+809
+00:30:29,599 --> 00:30:31,419
+look at all the roads,
+
+810
+00:30:31,419 --> 00:30:33,984
+which is in US National Roads.
+
+811
+00:30:33,984 --> 00:30:36,389
+Down here. I'm me
+take a peek at this,
+
+812
+00:30:36,389 --> 00:30:38,250
+kind of a bigger dataset
+
+813
+00:30:38,250 --> 00:30:39,629
+than we've been
+working with, right?
+
+814
+00:30:39,629 --> 00:30:42,370
+So it's like, you
+know, 9 gigabytes.
+
+815
+00:30:42,370 --> 00:30:43,850
+And I see a couple of things.
+
+816
+00:30:43,850 --> 00:30:46,270
+What is that they partition
+it by day? Okay, that's cool.
+
+817
+00:30:46,270 --> 00:30:48,589
+And then they also have
+clustering enabled.
+
+818
+00:30:48,589 --> 00:30:50,289
+And rather than
+clustering a one column,
+
+819
+00:30:50,289 --> 00:30:52,149
+they clustered on a few
+different ones, right?
+
+820
+00:30:52,149 --> 00:30:53,949
+So you can imagine for each row,
+
+821
+00:30:53,949 --> 00:30:55,930
+I could have a tuple where
+it's like, state name,
+
+822
+00:30:55,930 --> 00:30:58,010
+FIPS code, route, full name,
+
+823
+00:30:58,010 --> 00:31:00,169
+and then I would sort
+based on those, right?
+
+824
+00:31:00,169 --> 00:31:01,550
+So, kind of first I'd sort
+
+825
+00:31:01,550 --> 00:31:03,530
+by state and so on and so forth.
+
+826
+00:31:03,530 --> 00:31:05,269
+And so what this
+means is that if
+
+827
+00:31:05,269 --> 00:31:07,189
+I'm filtering to say Wisconsin,
+
+828
+00:31:07,189 --> 00:31:08,469
+then it'll be cheaper, right?
+
+829
+00:31:08,469 --> 00:31:09,529
+Because I don't have to look at
+
+830
+00:31:09,529 --> 00:31:12,219
+every cluster chunk, right?
+
+831
+00:31:12,219 --> 00:31:15,170
+It might not be as
+cheap as partitioning,
+
+832
+00:31:15,170 --> 00:31:17,430
+though because I don't
+
+833
+00:31:17,430 --> 00:31:18,949
+know what the boundaries
+are of these chunks.
+
+834
+00:31:18,949 --> 00:31:21,269
+Maybe if I search for Wisconsin,
+
+835
+00:31:21,269 --> 00:31:23,069
+it might be in a
+chunk that also has
+
+836
+00:31:23,069 --> 00:31:24,730
+like Wyoming and Washington,
+
+837
+00:31:24,730 --> 00:31:26,489
+right I might end up
+paying a little bit more.
+
+838
+00:31:26,489 --> 00:31:28,670
+Right? It's a little bit hard
+to say how much I'll pay.
+
+839
+00:31:28,670 --> 00:31:31,614
+But I'll probably pay less
+than I would otherwise.
+
+840
+00:31:31,614 --> 00:31:35,340
+What if I a filter data based
+on a state's FIPS code?
+
+841
+00:31:35,340 --> 00:31:36,719
+Well, there's a one to
+
+842
+00:31:36,719 --> 00:31:38,320
+one correspondence
+between state name
+
+843
+00:31:38,320 --> 00:31:39,420
+and States FIPS code?
+
+844
+00:31:39,420 --> 00:31:42,039
+So if I do State's FIPS
+code, it will figure out,
+
+845
+00:31:42,039 --> 00:31:44,440
+while this chunk has
+this range of FIPS code,
+
+846
+00:31:44,440 --> 00:31:47,199
+codes, which will be small,
+that'll be fast too.
+
+847
+00:31:47,199 --> 00:31:49,740
+What if I want to get
+a specific route type?
+
+848
+00:31:49,740 --> 00:31:51,839
+So, for example, you
+know, they have, like,
+
+849
+00:31:51,839 --> 00:31:53,179
+made highways, they have,
+
+850
+00:31:53,179 --> 00:31:54,739
+like, service roads, whatever.
+
+851
+00:31:54,739 --> 00:31:56,439
+What if I want a
+specific type of
+
+852
+00:31:56,439 --> 00:31:59,619
+road in Wisconsin? That
+would be fast as well.
+
+853
+00:31:59,619 --> 00:32:02,039
+It's cluster on that, so
+I can kind of get it to
+
+854
+00:32:02,039 --> 00:32:04,040
+one chunk or relatively
+fewer chunks
+
+855
+00:32:04,040 --> 00:32:06,220
+of the cluster data.
+That'd be fast.
+
+856
+00:32:06,220 --> 00:32:08,279
+What if I want all
+
+857
+00:32:08,279 --> 00:32:12,279
+of the service roads
+across the whole country?
+
+858
+00:32:12,279 --> 00:32:15,480
+That would be slow. It's
+part of the cluster key.
+
+859
+00:32:15,480 --> 00:32:18,060
+But since I sort
+first on State Name,
+
+860
+00:32:18,060 --> 00:32:20,139
+and then later on
+Route type, you know,
+
+861
+00:32:20,139 --> 00:32:21,660
+I'll be a little
+bit of this chuck,
+
+862
+00:32:21,660 --> 00:32:23,800
+maybe like the Alabama
+chuck over here,
+
+863
+00:32:23,800 --> 00:32:24,959
+and so on and
+
+864
+00:32:24,959 --> 00:32:27,000
+so I kind of like get little
+pieces of each chuck.
+
+865
+00:32:27,000 --> 00:32:28,399
+I'll touch all the
+chucks, and I'll have to
+
+866
+00:32:28,399 --> 00:32:29,959
+pay the full price, right?
+
+867
+00:32:29,959 --> 00:32:32,179
+So Route type, I can
+only create for that
+
+868
+00:32:32,179 --> 00:32:35,999
+efficiently if I do it in
+combination with a state name.
+
+869
+00:32:35,999 --> 00:32:36,380
+Right?
+
+870
+00:32:36,380 --> 00:32:37,059
+So you want to be able to
+
+871
+00:32:37,059 --> 00:32:38,019
+think about these
+and then try to
+
+872
+00:32:38,019 --> 00:32:40,900
+reason about what will be
+fast or what will be cheap.
+
+873
+00:32:40,900 --> 00:32:46,420
+Alright. Cool. L et
+me head over here.
+
+874
+00:32:46,420 --> 00:32:51,239
+And I want to do a query
+with a dry run of this.
+
+875
+00:32:51,239 --> 00:32:54,919
+So where was my dry
+run from earlier?
+
+876
+00:32:54,919 --> 00:32:58,699
+I think it was Here's a dry run.
+
+877
+00:32:58,699 --> 00:33:03,159
+Let's do this one. And so
+
+878
+00:33:03,159 --> 00:33:05,520
+maybe what I will do is I'm
+
+879
+00:33:05,520 --> 00:33:09,179
+going to just say
+select everything from.
+
+880
+00:33:09,500 --> 00:33:12,820
+Let me just check what
+this thing is called.
+
+881
+00:33:12,820 --> 00:33:15,280
+There is its name.
+
+882
+00:33:15,280 --> 00:33:17,519
+Let's select everything
+from that table.
+
+883
+00:33:17,519 --> 00:33:18,779
+It's a dry run. I just want to
+
+884
+00:33:18,779 --> 00:33:21,159
+see how how expensive it is.
+
+885
+00:33:21,159 --> 00:33:25,919
+Alright, so that's about 9
+gigabytes of data, right?
+
+886
+00:33:25,919 --> 00:33:27,300
+So kind of bit more expensive,
+
+887
+00:33:27,300 --> 00:33:29,139
+but but not horrible, right?
+
+888
+00:33:29,139 --> 00:33:32,519
+What if I filter down and I say,
+
+889
+00:33:32,519 --> 00:33:40,599
+maybe where the state FIPS
+code equals 55, right?
+
+890
+00:33:40,599 --> 00:33:42,619
+Still 9 gigabytes, right?
+
+891
+00:33:42,619 --> 00:33:47,040
+That should be faster and
+cheaper because it's clustered,
+
+892
+00:33:47,040 --> 00:33:49,119
+but the dry run is bad
+at estimating that.
+
+893
+00:33:49,119 --> 00:33:50,860
+It doesn't reason well
+about clustering.
+
+894
+00:33:50,860 --> 00:33:53,399
+So this is the case I'm
+actually go ahead and run it,
+
+895
+00:33:53,399 --> 00:33:55,879
+and so no dry run.
+
+896
+00:33:55,879 --> 00:34:00,620
+And So no job can figure either.
+
+897
+00:34:00,620 --> 00:34:02,379
+When I actually run this thing,
+
+898
+00:34:02,379 --> 00:34:04,199
+I won't be able to do
+it until I have to
+
+899
+00:34:04,199 --> 00:34:05,540
+be I want to have total
+
+900
+00:34:05,540 --> 00:34:07,179
+bytes process until
+I actually run it?
+
+901
+00:34:07,179 --> 00:34:10,540
+It's say query two
+GO data frame,
+
+902
+00:34:10,540 --> 00:34:14,819
+and I'm going to put
+that in DF like that.
+
+903
+00:34:14,819 --> 00:34:17,079
+These are lines,
+right? Lines are
+
+904
+00:34:17,079 --> 00:34:18,799
+geographic data.
+Let's run that thing.
+
+905
+00:34:18,799 --> 00:34:19,979
+It's going to take
+a while, right?
+
+906
+00:34:19,979 --> 00:34:22,939
+It's kind of a bigger
+query to be done.
+
+907
+00:34:22,939 --> 00:34:27,560
+But what I should expect is
+that the total bytes process
+
+908
+00:34:27,560 --> 00:34:29,339
+is going to be less than
+the estimate because we
+
+909
+00:34:29,339 --> 00:34:32,159
+have that cluster of the data.
+
+910
+00:34:32,159 --> 00:34:33,599
+Any question about
+clustering while
+
+911
+00:34:33,599 --> 00:34:39,829
+that's running? Yeah, here.
+
+912
+00:34:39,829 --> 00:34:45,429
+Cinder to the cluster Yeah.
+
+913
+00:34:45,950 --> 00:34:49,910
+Yeah, can I explain the ordering
+of it? Yeah, absolutely.
+
+914
+00:34:49,910 --> 00:34:53,710
+I think if you
+specify a cluster,
+
+915
+00:34:53,710 --> 00:34:55,049
+you could imagine that you
+
+916
+00:34:55,049 --> 00:34:58,929
+could do a total sort
+the data, right?
+
+917
+00:34:58,929 --> 00:35:02,070
+And when data is lots
+of things are faster,
+
+918
+00:35:02,070 --> 00:35:04,209
+you can do like a binary
+search and try to find some
+
+919
+00:35:04,209 --> 00:35:05,769
+quickly or you can
+try to quickly
+
+920
+00:35:05,769 --> 00:35:07,729
+find a range of values, right?
+
+921
+00:35:07,729 --> 00:35:09,989
+Here it's like se sorted, right?
+
+922
+00:35:09,989 --> 00:35:12,579
+So the data Like,
+
+923
+00:35:12,579 --> 00:35:14,679
+each chunk is the chunks
+
+924
+00:35:14,679 --> 00:35:15,999
+can be sorted relative
+to each other,
+
+925
+00:35:15,999 --> 00:35:17,580
+but with that a chunk,
+it's not sorted.
+
+926
+00:35:17,580 --> 00:35:19,259
+So like what we could do.
+
+927
+00:35:19,259 --> 00:35:20,839
+It's kind of analogous to
+
+928
+00:35:20,839 --> 00:35:23,599
+that binary search, but
+I can see like, Oh,
+
+929
+00:35:23,599 --> 00:35:24,720
+I have to touch these chunks,
+
+930
+00:35:24,720 --> 00:35:26,879
+but then it can't be
+find rated off that,
+
+931
+00:35:26,879 --> 00:35:28,819
+I touch like half
+a chunk, right?
+
+932
+00:35:28,819 --> 00:35:30,760
+So that sort order
+will determine
+
+933
+00:35:30,760 --> 00:35:32,619
+what I can look up
+things quickly for.
+
+934
+00:35:32,619 --> 00:35:34,959
+If I try to look up something
+that it's not sorted by,
+
+935
+00:35:34,959 --> 00:35:35,940
+well, then I have to scat
+
+936
+00:35:35,940 --> 00:35:37,100
+all the data to find everything.
+
+937
+00:35:37,100 --> 00:35:38,499
+I can't have any
+strategy to just
+
+938
+00:35:38,499 --> 00:35:40,079
+narrow it on the data
+I'm interested in.
+
+939
+00:35:40,079 --> 00:35:42,200
+Does that make sense?
+Yeah, good question.
+
+940
+00:35:42,200 --> 00:35:45,020
+Now, this was zero because
+of a cash by results.
+
+941
+00:35:45,020 --> 00:35:46,219
+And so I should actually bring
+
+942
+00:35:46,219 --> 00:35:48,789
+back the job could
+figure after all,
+
+943
+00:35:48,789 --> 00:35:51,430
+because I want to actually
+see how much that cost.
+
+944
+00:35:51,430 --> 00:35:54,389
+And in this case,
+I'm going to say,
+
+945
+00:35:54,630 --> 00:35:57,669
+I'm going to say something like
+
+946
+00:35:58,110 --> 00:36:00,609
+that was a good time
+actually for me to come
+
+947
+00:36:00,609 --> 00:36:03,469
+back here and remember
+what it was last time.
+
+948
+00:36:05,990 --> 00:36:09,110
+Or do I have the caching stuff?
+
+949
+00:36:09,110 --> 00:36:11,029
+I'm going to say
+let's not do any
+
+950
+00:36:11,029 --> 00:36:12,229
+caching because I
+actually want to
+
+951
+00:36:12,229 --> 00:36:13,869
+know how much this thing cost.
+
+952
+00:36:13,869 --> 00:36:17,509
+Alright, I pass that in here.
+
+953
+00:36:19,190 --> 00:36:22,789
+Job fig equals fig.
+
+954
+00:36:22,789 --> 00:36:25,009
+Let's run it. All right.
+
+955
+00:36:25,009 --> 00:36:27,249
+Any other questions while
+I brought it again?
+
+956
+00:36:27,249 --> 00:36:28,789
+Sorry that I goofed that.
+
+957
+00:36:28,789 --> 00:36:30,909
+Yeah. We, what's that?
+
+958
+00:36:30,909 --> 00:36:32,310
+Oh, where was it cached?
+
+959
+00:36:32,310 --> 00:36:34,430
+So I did this query,
+like, for example,
+
+960
+00:36:34,430 --> 00:36:35,709
+in the morning lecture and then
+
+961
+00:36:35,709 --> 00:36:37,309
+Google is caching it for me.
+
+962
+00:36:37,309 --> 00:36:38,789
+And so they know
+it's the same query,
+
+963
+00:36:38,789 --> 00:36:39,829
+the same input data.
+
+964
+00:36:39,829 --> 00:36:42,210
+And so rather than
+redoing classes,
+
+965
+00:36:42,210 --> 00:36:44,949
+I, they're just ever be
+the same data set back.
+
+966
+00:36:44,949 --> 00:36:48,469
+Yeah, quest questions
+people have?
+
+967
+00:36:48,469 --> 00:36:54,249
+Um, then what am I do for fun?
+
+968
+00:36:54,249 --> 00:36:55,989
+I guess it's not super
+related to big query,
+
+969
+00:36:55,989 --> 00:36:57,629
+but it would just be
+nice to see, well,
+
+970
+00:36:57,629 --> 00:36:59,469
+we see that it's quite
+a bit less, right?
+
+971
+00:36:59,469 --> 00:37:02,250
+So the dry run
+overestimated the cost.
+
+972
+00:37:02,250 --> 00:37:04,509
+This would be an example
+where you might want to use
+
+973
+00:37:04,509 --> 00:37:06,729
+those MAX bytes sil if
+
+974
+00:37:06,729 --> 00:37:07,909
+you're kind worried
+about it because
+
+975
+00:37:07,909 --> 00:37:09,630
+we can't trust the estimate.
+
+976
+00:37:09,630 --> 00:37:11,809
+Okay, let's just for fun just
+
+977
+00:37:11,809 --> 00:37:14,969
+plot this to see what it
+looks like in Wisconsin.
+
+978
+00:37:14,969 --> 00:37:17,609
+There's the lines for
+rows are too thick,
+
+979
+00:37:17,609 --> 00:37:19,349
+so they'll just look
+like a big blue mass.
+
+980
+00:37:19,349 --> 00:37:22,150
+So I'm going to say
+transparency equals
+
+981
+00:37:22,150 --> 00:37:26,769
+0.05 and You know,
+
+982
+00:37:26,769 --> 00:37:28,629
+Wisconsin is kind
+of a rural state,
+
+983
+00:37:28,629 --> 00:37:30,570
+but we still have
+built a lot of roads,
+
+984
+00:37:30,570 --> 00:37:33,449
+such as there's basically
+roads everywhere, right?
+
+985
+00:37:33,449 --> 00:37:35,789
+If we draw the roads,
+
+986
+00:37:35,789 --> 00:37:37,410
+look exactly like Wisconsin,
+
+987
+00:37:37,410 --> 00:37:39,329
+right it's just filled
+in. And there we go.
+
+988
+00:37:39,329 --> 00:37:41,070
+There's all the
+roads in Wisconsin.
+
+989
+00:37:41,070 --> 00:37:41,869
+Of course, you can see,
+
+990
+00:37:41,869 --> 00:37:44,709
+in metro areas, there's
+more roads, right?
+
+991
+00:37:44,709 --> 00:37:46,929
+But there you have
+it. Alright, cool.
+
+992
+00:37:46,929 --> 00:37:49,869
+Any questions about Big
+query before we move on?
+
+993
+00:37:50,970 --> 00:37:53,629
+All right. May I save that.
+
+994
+00:37:53,629 --> 00:37:58,069
+Let's head over to
+these slides, right?
+
+995
+00:37:58,069 --> 00:37:59,930
+So but a big query,
+
+996
+00:37:59,930 --> 00:38:01,930
+and let's talk about
+Cloud deployment.
+
+997
+00:38:01,930 --> 00:38:03,330
+So this is my last lecture.
+
+998
+00:38:03,330 --> 00:38:06,270
+I'm going to split it
+between today and Monday.
+
+999
+00:38:06,270 --> 00:38:07,829
+And what I want to talk
+
+1000
+00:38:07,829 --> 00:38:09,729
+about is how we can run
+things in the Cloud.
+
+1001
+00:38:09,729 --> 00:38:10,489
+We've learned a lot of
+
+1002
+00:38:10,489 --> 00:38:11,930
+techniques for deployment
+this semester.
+
+1003
+00:38:11,930 --> 00:38:13,830
+We've kind of
+comfortable with Linux.
+
+1004
+00:38:13,830 --> 00:38:16,250
+We've learned how to
+build Docker images.
+
+1005
+00:38:16,250 --> 00:38:18,890
+We can run a Docker
+image of the container,
+
+1006
+00:38:18,890 --> 00:38:20,350
+we can do that with compose.
+
+1007
+00:38:20,350 --> 00:38:22,329
+I want to talk a little bit
+
+1008
+00:38:22,329 --> 00:38:24,409
+about how we can expand
+those skills into the Cloud.
+
+1009
+00:38:24,409 --> 00:38:25,729
+Right? A lot of those
+things are going to use
+
+1010
+00:38:25,729 --> 00:38:27,410
+similar or related tooling.
+
+1011
+00:38:27,410 --> 00:38:29,669
+Now, to really explain
+that stuff well,
+
+1012
+00:38:29,669 --> 00:38:31,729
+We have to understand a
+little bit more about
+
+1013
+00:38:31,729 --> 00:38:34,030
+Docker and containers
+and images.
+
+1014
+00:38:34,030 --> 00:38:36,289
+Right? Let me explain how
+those things work and
+
+1015
+00:38:36,289 --> 00:38:38,890
+then talk about how that
+relates to some other tools.
+
+1016
+00:38:38,890 --> 00:38:40,549
+Let's talk about
+containers first.
+
+1017
+00:38:40,549 --> 00:38:41,789
+And if I want to really give
+
+1018
+00:38:41,789 --> 00:38:42,970
+a good history of containers,
+
+1019
+00:38:42,970 --> 00:38:45,329
+I have to do a little bit
+of review of a couple of
+
+1020
+00:38:45,329 --> 00:38:46,869
+operating system principles that
+
+1021
+00:38:46,869 --> 00:38:48,650
+we saw earlier in the semester.
+
+1022
+00:38:48,650 --> 00:38:51,690
+First, if I have a program
+and I run it, it's a process.
+
+1023
+00:38:51,690 --> 00:38:53,249
+The process is the
+running program,
+
+1024
+00:38:53,249 --> 00:38:54,649
+and every process has what
+
+1025
+00:38:54,649 --> 00:38:56,469
+is called a virtual
+address space.
+
+1026
+00:38:56,469 --> 00:38:58,250
+I see here there's two processes
+
+1027
+00:38:58,250 --> 00:38:59,810
+with virtual address spaces.
+
+1028
+00:38:59,810 --> 00:39:01,869
+That's where I would
+store any data,
+
+1029
+00:39:01,869 --> 00:39:04,964
+like code or variables
+or anything, right?
+
+1030
+00:39:04,964 --> 00:39:06,719
+That virtual adder space is
+
+1031
+00:39:06,719 --> 00:39:08,640
+broken up into four t by chunks.
+
+1032
+00:39:08,640 --> 00:39:10,680
+Some of those are not valid,
+
+1033
+00:39:10,680 --> 00:39:12,240
+and then other pages mapped
+
+1034
+00:39:12,240 --> 00:39:14,714
+actual physical memory, right?
+
+1035
+00:39:14,714 --> 00:39:17,710
+That's virtual memory.
+And this actually
+
+1036
+00:39:17,710 --> 00:39:20,669
+provides a form of
+safety called isolation.
+
+1037
+00:39:20,669 --> 00:39:23,409
+The first process
+cannot mess with
+
+1038
+00:39:23,409 --> 00:39:24,869
+other process because it
+
+1039
+00:39:24,869 --> 00:39:27,389
+doesn't have anything
+pointing to its data, right?
+
+1040
+00:39:27,389 --> 00:39:29,430
+I can only change
+virtual memory.
+
+1041
+00:39:29,430 --> 00:39:31,429
+I can only change physical
+memory that I have
+
+1042
+00:39:31,429 --> 00:39:33,989
+virtual memory
+associated with it.
+
+1043
+00:39:33,989 --> 00:39:36,789
+So for example, if I
+want to somehow mess
+
+1044
+00:39:36,789 --> 00:39:40,149
+up the data in
+page at Index one,
+
+1045
+00:39:40,149 --> 00:39:41,890
+that will only hurt my process.
+
+1046
+00:39:41,890 --> 00:39:43,470
+I cannot hurt the memory
+
+1047
+00:39:43,470 --> 00:39:45,390
+for other process.
+That's isolation.
+
+1048
+00:39:45,390 --> 00:39:46,719
+They can't see each other.
+
+1049
+00:39:46,719 --> 00:39:49,390
+In another idea from
+operating systems.
+
+1050
+00:39:49,390 --> 00:39:50,750
+We have CPU schedulers.
+
+1051
+00:39:50,750 --> 00:39:52,509
+What do CPU schedulers do.
+
+1052
+00:39:52,509 --> 00:39:54,350
+While they look at all
+the threads across
+
+1053
+00:39:54,350 --> 00:39:56,810
+all the programs running all
+the proceeds on the system,
+
+1054
+00:39:56,810 --> 00:39:58,530
+at any given time, they decide
+
+1055
+00:39:58,530 --> 00:40:01,570
+which CPUs are running
+which threads.
+
+1056
+00:40:01,570 --> 00:40:02,909
+They run it by having
+
+1057
+00:40:02,909 --> 00:40:04,510
+an instruction pointer
+and then the CPU
+
+1058
+00:40:04,510 --> 00:40:08,124
+advances the instruction
+pointer as the code runs.
+
+1059
+00:40:08,124 --> 00:40:10,379
+We don't have to wait until
+that process is done.
+
+1060
+00:40:10,379 --> 00:40:13,360
+And any time the
+operating system
+
+1061
+00:40:13,360 --> 00:40:15,519
+can context switch
+to different threat.
+
+1062
+00:40:15,519 --> 00:40:16,659
+We can say, Okay,
+you're done running,
+
+1063
+00:40:16,659 --> 00:40:18,439
+and we start running a
+different one, right?
+
+1064
+00:40:18,439 --> 00:40:20,139
+This is another form
+of safety, right?
+
+1065
+00:40:20,139 --> 00:40:22,879
+What we are doing
+is by taking turns,
+
+1066
+00:40:22,879 --> 00:40:24,380
+is we don't let a single process
+
+1067
+00:40:24,380 --> 00:40:26,479
+dominate the whole
+system, right?
+
+1068
+00:40:26,479 --> 00:40:27,839
+We can preempt it. We can
+
+1069
+00:40:27,839 --> 00:40:29,759
+give those resources
+to somebody else.
+
+1070
+00:40:29,759 --> 00:40:32,519
+Right? It's another form
+of isolation, right?
+
+1071
+00:40:32,519 --> 00:40:34,519
+And so let's talk
+about this idea of
+
+1072
+00:40:34,519 --> 00:40:36,459
+isolation a little bit
+more broadly, right?
+
+1073
+00:40:36,459 --> 00:40:38,060
+We have a few concerns
+
+1074
+00:40:38,060 --> 00:40:40,479
+related to programs
+interfering with each other.
+
+1075
+00:40:40,479 --> 00:40:42,059
+Sometimes people
+straight up write
+
+1076
+00:40:42,059 --> 00:40:44,060
+malicious programs that
+are trying to do damage.
+
+1077
+00:40:44,060 --> 00:40:46,279
+We want to be able to run
+those on the same machines as
+
+1078
+00:40:46,279 --> 00:40:48,739
+our other programs without
+
+1079
+00:40:48,739 --> 00:40:50,259
+having harm. We want
+to isolate them.
+
+1080
+00:40:50,259 --> 00:40:51,919
+You know, when somebody
+writes a buggy program,
+
+1081
+00:40:51,919 --> 00:40:53,479
+that's almost as bad as
+a malicious program,
+
+1082
+00:40:53,479 --> 00:40:54,719
+because if you have
+a buggy program
+
+1083
+00:40:54,719 --> 00:40:55,980
+and you feed it the right input,
+
+1084
+00:40:55,980 --> 00:40:59,319
+you might be able to get it
+to do something bad, right?
+
+1085
+00:40:59,319 --> 00:41:01,419
+Fans refers to hey,
+
+1086
+00:41:01,419 --> 00:41:04,780
+is there one program that's
+getting 99% of the CPU.
+
+1087
+00:41:04,780 --> 00:41:06,720
+The other one has 1%.
+
+1088
+00:41:06,720 --> 00:41:08,319
+So when I look at
+all these things,
+
+1089
+00:41:08,319 --> 00:41:09,739
+I see that there's two
+different ways for
+
+1090
+00:41:09,739 --> 00:41:11,579
+programs to interfere
+with each other.
+
+1091
+00:41:11,579 --> 00:41:12,880
+We could directly interfere,
+
+1092
+00:41:12,880 --> 00:41:15,980
+and that means that like this
+process modifies your data
+
+1093
+00:41:15,980 --> 00:41:17,559
+or maybe it spies on
+
+1094
+00:41:17,559 --> 00:41:19,639
+you and extracts secrets
+that shouldn't see.
+
+1095
+00:41:19,639 --> 00:41:21,400
+And then there's
+more indirectly,
+
+1096
+00:41:21,400 --> 00:41:22,559
+where maybe I'm just making
+
+1097
+00:41:22,559 --> 00:41:25,410
+the performance bad for
+that other process.
+
+1098
+00:41:25,410 --> 00:41:27,119
+Tying this in to the virtual
+
+1099
+00:41:27,119 --> 00:41:28,640
+memory and virtual scheduler,
+
+1100
+00:41:28,640 --> 00:41:30,140
+we see that these tools
+
+1101
+00:41:30,140 --> 00:41:31,620
+are providing different
+kinds of isolation.
+
+1102
+00:41:31,620 --> 00:41:32,939
+The virtual memory
+provides, what I
+
+1103
+00:41:32,939 --> 00:41:34,740
+may call namespace isolation.
+
+1104
+00:41:34,740 --> 00:41:36,459
+The namespace refers
+to what things
+
+1105
+00:41:36,459 --> 00:41:38,280
+I can name like
+addresses and memory.
+
+1106
+00:41:38,280 --> 00:41:40,759
+And if I can't name
+somebody else's data,
+
+1107
+00:41:40,759 --> 00:41:42,459
+I can't see it or
+change it, right?
+
+1108
+00:41:42,459 --> 00:41:44,900
+Virtual memory is an example
+namespace isolation.
+
+1109
+00:41:44,900 --> 00:41:47,640
+Schedulers are an example
+of performance isolation.
+
+1110
+00:41:47,640 --> 00:41:49,360
+I limit the impact
+that one process
+
+1111
+00:41:49,360 --> 00:41:51,434
+can have on other processes.
+
+1112
+00:41:51,434 --> 00:41:52,830
+These are old ideas.
+
+1113
+00:41:52,830 --> 00:41:53,549
+They've been in, you know,
+
+1114
+00:41:53,549 --> 00:41:55,489
+operating system from
+the beginning of time.
+
+1115
+00:41:55,489 --> 00:41:57,889
+But unfortunately, CPU
+and memory are not
+
+1116
+00:41:57,889 --> 00:41:59,609
+the only resources we
+
+1117
+00:41:59,609 --> 00:42:00,890
+have. They're not
+the only resources.
+
+1118
+00:42:00,890 --> 00:42:02,930
+We have DI, we have network IO.
+
+1119
+00:42:02,930 --> 00:42:05,589
+We have kind of more abstract
+sounding resources like
+
+1120
+00:42:05,589 --> 00:42:08,029
+process IDs or you know, maybe,
+
+1121
+00:42:08,029 --> 00:42:11,549
+like the time that
+
+1122
+00:42:11,549 --> 00:42:14,349
+my system thinks it is
+is a resource, right?
+
+1123
+00:42:14,349 --> 00:42:15,909
+If I have one container,
+and I want to
+
+1124
+00:42:15,909 --> 00:42:17,609
+let that container
+change the time,
+
+1125
+00:42:17,609 --> 00:42:20,370
+will that appear as a time
+change in other containers?
+
+1126
+00:42:20,370 --> 00:42:21,750
+Lots and lots of resources.
+
+1127
+00:42:21,750 --> 00:42:24,549
+And the goal over
+time in Lenox has
+
+1128
+00:42:24,549 --> 00:42:27,580
+been to add namespace isolation,
+
+1129
+00:42:27,580 --> 00:42:31,339
+performance isolation for
+more and more resources,
+
+1130
+00:42:31,339 --> 00:42:33,120
+right? That's an ongoing effort.
+
+1131
+00:42:33,120 --> 00:42:35,379
+And so we have two
+broad categories.
+
+1132
+00:42:35,379 --> 00:42:36,780
+For the performance isolation,
+
+1133
+00:42:36,780 --> 00:42:38,700
+we have C groups,
+
+1134
+00:42:38,700 --> 00:42:40,820
+and that's short
+for control groups,
+
+1135
+00:42:40,820 --> 00:42:42,440
+and it's like for CPU memory
+
+1136
+00:42:42,440 --> 00:42:43,559
+and lots of other stuff, right?
+
+1137
+00:42:43,559 --> 00:42:44,979
+There's a bunch of
+them there now.
+
+1138
+00:42:44,979 --> 00:42:46,780
+And for namespace isolation,
+
+1139
+00:42:46,780 --> 00:42:48,759
+we have abstraction called
+a name space, right?
+
+1140
+00:42:48,759 --> 00:42:51,919
+And maybe that's network or
+there's a mount name space.
+
+1141
+00:42:51,919 --> 00:42:53,360
+Remember that for file systems,
+
+1142
+00:42:53,360 --> 00:42:55,399
+they get mounted, so that's
+a storage related one.
+
+1143
+00:42:55,399 --> 00:42:58,179
+Time, lots of different
+name spaces, right?
+
+1144
+00:42:58,179 --> 00:42:59,819
+And if you wanted to, you
+
+1145
+00:42:59,819 --> 00:43:01,699
+could run two
+different processes,
+
+1146
+00:43:01,699 --> 00:43:04,939
+and you could configure like
+the ten things I have here.
+
+1147
+00:43:04,939 --> 00:43:07,239
+You could configure other stuff
+that I'm not even talking
+
+1148
+00:43:07,239 --> 00:43:08,299
+about because it's
+kind of beyond
+
+1149
+00:43:08,299 --> 00:43:09,599
+the scope I want to get into.
+
+1150
+00:43:09,599 --> 00:43:10,919
+That'd be very complicated.
+
+1151
+00:43:10,919 --> 00:43:12,460
+But if you're very careful,
+
+1152
+00:43:12,460 --> 00:43:13,919
+you could more or less
+
+1153
+00:43:13,919 --> 00:43:16,079
+protect two processes
+from each other,
+
+1154
+00:43:16,079 --> 00:43:18,139
+but it'd be very
+complicated, be very hard.
+
+1155
+00:43:18,139 --> 00:43:19,919
+That's where Docker comes in.
+
+1156
+00:43:19,919 --> 00:43:23,339
+Docker said, we're going to
+automatically configure like
+
+1157
+00:43:23,339 --> 00:43:25,160
+these dozen or so Linux
+
+1158
+00:43:25,160 --> 00:43:27,119
+features for you and where
+to make it really easy.
+
+1159
+00:43:27,119 --> 00:43:29,259
+You say, like, Docker
+run, and we're
+
+1160
+00:43:29,259 --> 00:43:30,320
+going to start some processes
+
+1161
+00:43:30,320 --> 00:43:31,660
+that are using all this stuff.
+
+1162
+00:43:31,660 --> 00:43:33,600
+And the combination
+of all this stuff,
+
+1163
+00:43:33,600 --> 00:43:35,359
+we're going to call that
+a container, right?
+
+1164
+00:43:35,359 --> 00:43:37,120
+So what is a container?
+
+1165
+00:43:37,120 --> 00:43:39,300
+Well, it's basically the usage
+
+1166
+00:43:39,300 --> 00:43:41,920
+of all these different
+Linux features,
+
+1167
+00:43:41,920 --> 00:43:46,979
+and it roughly is trying to
+isolate them from each other.
+
+1168
+00:43:46,979 --> 00:43:48,900
+A container is not
+a single concept,
+
+1169
+00:43:48,900 --> 00:43:50,299
+and a container is not something
+
+1170
+00:43:50,299 --> 00:43:51,620
+that's like
+implemented in Docker.
+
+1171
+00:43:51,620 --> 00:43:53,720
+It's really something
+that Docker is stitching
+
+1172
+00:43:53,720 --> 00:43:55,180
+together from these features
+
+1173
+00:43:55,180 --> 00:43:57,019
+that are directly
+in Linux, right?
+
+1174
+00:43:57,019 --> 00:43:58,999
+But Docker became
+very popular in
+
+1175
+00:43:58,999 --> 00:44:01,729
+part because this solves
+an important problem.
+
+1176
+00:44:01,729 --> 00:44:03,849
+It makes it relatively
+easy, right?
+
+1177
+00:44:03,849 --> 00:44:05,929
+Now, one thing I want you to
+think about is that given
+
+1178
+00:44:05,929 --> 00:44:07,169
+a container is really a
+
+1179
+00:44:07,169 --> 00:44:08,869
+combination of a lot
+of different things,
+
+1180
+00:44:08,869 --> 00:44:10,590
+there's different ways
+you could combine
+
+1181
+00:44:10,590 --> 00:44:12,230
+that and you could
+maybe build containers
+
+1182
+00:44:12,230 --> 00:44:13,909
+differently or you could even
+
+1183
+00:44:13,909 --> 00:44:16,510
+build other things that are
+not quite like containers.
+
+1184
+00:44:16,510 --> 00:44:18,029
+You could invent
+new abstractions.
+
+1185
+00:44:18,029 --> 00:44:19,539
+And so, yeah, se right here.
+
+1186
+00:44:19,539 --> 00:44:21,510
+Is there a space isolation
+
+1187
+00:44:21,510 --> 00:44:24,030
+from its isolation within
+a single container?
+
+1188
+00:44:24,030 --> 00:44:26,630
+Is there you mean like
+within a single container,
+
+1189
+00:44:26,630 --> 00:44:27,789
+can you protect processes from
+
+1190
+00:44:27,789 --> 00:44:29,410
+each other within a
+single container?
+
+1191
+00:44:29,410 --> 00:44:32,069
+Docker doesn't do that, but
+these Linux abstractions
+
+1192
+00:44:32,069 --> 00:44:33,889
+are inherently
+hierarchical, right?
+
+1193
+00:44:33,889 --> 00:44:35,310
+So for example, you
+could have C groups
+
+1194
+00:44:35,310 --> 00:44:36,930
+within C groups within C groups.
+
+1195
+00:44:36,930 --> 00:44:39,249
+So Docker doesn't do it for you,
+
+1196
+00:44:39,249 --> 00:44:40,890
+but if you wanted to have
+containers and containers,
+
+1197
+00:44:40,890 --> 00:44:42,550
+you could go build a new system
+
+1198
+00:44:42,550 --> 00:44:44,869
+based on what Linux
+gives to you, right?
+
+1199
+00:44:44,869 --> 00:44:46,049
+But I don't think there's
+
+1200
+00:44:46,049 --> 00:44:48,049
+tools that make that easy to do.
+
+1201
+00:44:48,049 --> 00:44:50,244
+Yeah, good question, though.
+
+1202
+00:44:50,244 --> 00:44:52,239
+So let me look at
+something that uses
+
+1203
+00:44:52,239 --> 00:44:53,820
+these features a little
+bit differently.
+
+1204
+00:44:53,820 --> 00:44:55,619
+And that thing is
+called C Kubernetes.
+
+1205
+00:44:55,619 --> 00:44:57,599
+C Kubernetes can run
+containers as well.
+
+1206
+00:44:57,599 --> 00:44:58,879
+We often abbreviate like this,
+
+1207
+00:44:58,879 --> 00:45:00,800
+k8s because there's
+eight letters
+
+1208
+00:45:00,800 --> 00:45:02,999
+between the K and the S. I'm
+
+1209
+00:45:02,999 --> 00:45:04,579
+going to contrast Docker on
+
+1210
+00:45:04,579 --> 00:45:07,200
+the top with C
+Kubernetes down below.
+
+1211
+00:45:07,200 --> 00:45:08,340
+So on the top, we have Docker,
+
+1212
+00:45:08,340 --> 00:45:09,580
+we just have containers
+
+1213
+00:45:09,580 --> 00:45:11,079
+that have processes
+inside of them,
+
+1214
+00:45:11,079 --> 00:45:12,839
+and each container
+is basically using
+
+1215
+00:45:12,839 --> 00:45:15,579
+all the name spaces and
+all the C groups, right?
+
+1216
+00:45:15,579 --> 00:45:17,439
+And we can isolate them.
+
+1217
+00:45:17,439 --> 00:45:20,039
+Now, with Kubernetes, what they
+
+1218
+00:45:20,039 --> 00:45:22,780
+do is they have containers
+that are similar,
+
+1219
+00:45:22,780 --> 00:45:24,300
+and they have most
+of the name spaces
+
+1220
+00:45:24,300 --> 00:45:26,300
+and most of the C groups.
+
+1221
+00:45:26,300 --> 00:45:27,179
+But one thing that they do
+
+1222
+00:45:27,179 --> 00:45:28,519
+differently is they
+sometimes want to
+
+1223
+00:45:28,519 --> 00:45:30,740
+have different containers
+that share networking.
+
+1224
+00:45:30,740 --> 00:45:31,960
+So additionally the containers,
+
+1225
+00:45:31,960 --> 00:45:34,560
+Kubernetes define
+something called a Pod.
+
+1226
+00:45:34,560 --> 00:45:37,080
+A Pod has the same
+network namespace,
+
+1227
+00:45:37,080 --> 00:45:38,059
+and then within there,
+
+1228
+00:45:38,059 --> 00:45:39,060
+I have different processes
+
+1229
+00:45:39,060 --> 00:45:40,040
+that are in different containers
+
+1230
+00:45:40,040 --> 00:45:42,320
+that try to share
+things more closely.
+
+1231
+00:45:42,320 --> 00:45:44,279
+So you can invent
+new abstractions
+
+1232
+00:45:44,279 --> 00:45:47,359
+giving these building blocks
+that Linux gives to us.
+
+1233
+00:45:47,359 --> 00:45:48,919
+Why if you're Kubernetes,
+
+1234
+00:45:48,919 --> 00:45:50,099
+would you want to do
+something like that?
+
+1235
+00:45:50,099 --> 00:45:51,539
+Often, you want to aploly
+
+1236
+00:45:51,539 --> 00:45:54,659
+multiple applications that
+work together in some way.
+
+1237
+00:45:54,659 --> 00:45:56,079
+So for example, let's say
+
+1238
+00:45:56,079 --> 00:45:57,300
+have some kind of
+web application.
+
+1239
+00:45:57,300 --> 00:45:59,679
+I built it in Flast or Jango,
+
+1240
+00:45:59,679 --> 00:46:01,119
+or whatever it is people use,
+
+1241
+00:46:01,119 --> 00:46:02,959
+I could have that
+in one container,
+
+1242
+00:46:02,959 --> 00:46:04,519
+and in the other container,
+
+1243
+00:46:04,519 --> 00:46:06,439
+maybe I have a MEQL
+database that has
+
+1244
+00:46:06,439 --> 00:46:08,819
+all the data for my
+application, right?
+
+1245
+00:46:08,819 --> 00:46:10,439
+I want them to be able to see
+
+1246
+00:46:10,439 --> 00:46:12,619
+all the same ports of each
+other and communicate easily.
+
+1247
+00:46:12,619 --> 00:46:14,039
+So I have them in the same pod.
+
+1248
+00:46:14,039 --> 00:46:16,199
+They have the same
+network name space.
+
+1249
+00:46:16,199 --> 00:46:17,439
+They're going to have
+to be on the same
+
+1250
+00:46:17,439 --> 00:46:19,439
+machine because of that.
+
+1251
+00:46:19,439 --> 00:46:21,559
+But Other than that,
+
+1252
+00:46:21,559 --> 00:46:23,700
+they can still have all
+their stuff be independent.
+
+1253
+00:46:23,700 --> 00:46:25,739
+And really important is
+that mount name space
+
+1254
+00:46:25,739 --> 00:46:27,680
+because if they have
+different mount name spaces,
+
+1255
+00:46:27,680 --> 00:46:29,459
+they have different files.
+
+1256
+00:46:29,459 --> 00:46:31,840
+So these applications
+are working together,
+
+1257
+00:46:31,840 --> 00:46:36,099
+but maybe the last application
+has Ubuntu 20 404,
+
+1258
+00:46:36,099 --> 00:46:38,599
+and maybe my SQL has
+
+1259
+00:46:38,599 --> 00:46:42,019
+some version of the Debian
+Linux distribution,
+
+1260
+00:46:42,019 --> 00:46:44,159
+like, I don't know, bookworm
+or whatever, right?
+
+1261
+00:46:44,159 --> 00:46:46,779
+They can both have the act
+set of files they want.
+
+1262
+00:46:46,779 --> 00:46:49,119
+And that might be really
+helpful if they have,
+
+1263
+00:46:49,119 --> 00:46:52,169
+maybe contradictory
+dependency requirements.
+
+1264
+00:46:52,169 --> 00:46:54,329
+Maybe one needs a specific
+version of something,
+
+1265
+00:46:54,329 --> 00:46:56,089
+and the other one needs a
+different version, right?
+
+1266
+00:46:56,089 --> 00:46:57,349
+So they're closely coupled,
+
+1267
+00:46:57,349 --> 00:46:59,049
+and they communicate over this
+
+1268
+00:46:59,049 --> 00:47:02,369
+single network interface
+that's shared between them,
+
+1269
+00:47:02,369 --> 00:47:04,209
+but otherwise they're
+decoupled, right?
+
+1270
+00:47:04,209 --> 00:47:06,809
+So, you can see that
+you can mix and match
+
+1271
+00:47:06,809 --> 00:47:10,569
+these things in new ways.
+Yeah, question right.
+
+1272
+00:47:12,579 --> 00:47:16,379
+They will communicate
+over virtual neck, right?
+
+1273
+00:47:16,379 --> 00:47:17,639
+So when we create a new pod,
+
+1274
+00:47:17,639 --> 00:47:19,219
+there will be like
+a new nick for it.
+
+1275
+00:47:19,219 --> 00:47:21,119
+Normally, when I create
+like a new container,
+
+1276
+00:47:21,119 --> 00:47:23,099
+it gives it a virtual Nick that
+
+1277
+00:47:23,099 --> 00:47:25,500
+has an IP address that's
+on a virtual network.
+
+1278
+00:47:25,500 --> 00:47:28,400
+So they're communicating
+over the network,
+
+1279
+00:47:28,400 --> 00:47:30,240
+but that doesn't mean
+that traffic is actually
+
+1280
+00:47:30,240 --> 00:47:32,219
+going over anything
+physical, right?
+
+1281
+00:47:32,219 --> 00:47:33,380
+Because it's the same machine.
+
+1282
+00:47:33,380 --> 00:47:35,759
+A virtual neck could allow
+
+1283
+00:47:35,759 --> 00:47:38,439
+you to share data between
+them very efficiently, right?
+
+1284
+00:47:38,439 --> 00:47:40,579
+You would never have
+packet drops, for example,
+
+1285
+00:47:40,579 --> 00:47:43,359
+because it's actually on
+the same machine, right?
+
+1286
+00:47:43,359 --> 00:47:45,400
+You'll code it as if it's
+going over the Internet,
+
+1287
+00:47:45,400 --> 00:47:48,419
+but it actually will be
+faster and more reliable.
+
+1288
+00:47:49,300 --> 00:47:52,239
+T. Yeah.
+
+1289
+00:47:52,239 --> 00:47:53,999
+Yeah. For the application
+of developer,
+
+1290
+00:47:53,999 --> 00:47:57,199
+it feels as if it was
+running somewhere else.
+
+1291
+00:47:57,199 --> 00:47:59,279
+Yep. Yep. Yeah, good
+
+1292
+00:47:59,279 --> 00:48:01,319
+question. Other
+questions people have.
+
+1293
+00:48:01,319 --> 00:48:05,979
+Oh, right. Co Bernie
+
+1294
+00:48:05,979 --> 00:48:07,459
+is more broadly is
+something that we would
+
+1295
+00:48:07,459 --> 00:48:09,199
+refer to as a container
+orchestrator.
+
+1296
+00:48:09,199 --> 00:48:10,819
+There's actually a really
+nice article here.
+
+1297
+00:48:10,819 --> 00:48:12,719
+People are interested
+in this topic.
+
+1298
+00:48:12,719 --> 00:48:15,619
+But beyond just like launching
+individual containers,
+
+1299
+00:48:15,619 --> 00:48:17,479
+often we want to have kind of
+
+1300
+00:48:17,479 --> 00:48:19,419
+like sets of containers
+that are working together.
+
+1301
+00:48:19,419 --> 00:48:22,279
+Maybe like they're each
+having a HDFS data no.
+
+1302
+00:48:22,279 --> 00:48:23,659
+Maybe I have different kinds
+
+1303
+00:48:23,659 --> 00:48:25,379
+of containers that cooperate.
+
+1304
+00:48:25,379 --> 00:48:27,959
+A container orchestrator is
+going to help you with that.
+
+1305
+00:48:27,959 --> 00:48:30,859
+And by far, the most popular
+container orchestrator
+
+1306
+00:48:30,859 --> 00:48:32,579
+is Kubernetes, right?
+
+1307
+00:48:32,579 --> 00:48:34,059
+So that's the big
+one out there that
+
+1308
+00:48:34,059 --> 00:48:35,679
+people should learn if
+they want to go learn one.
+
+1309
+00:48:35,679 --> 00:48:36,919
+Now, there's other ones, right?
+
+1310
+00:48:36,919 --> 00:48:38,199
+Like doctor Compose.
+
+1311
+00:48:38,199 --> 00:48:40,359
+You might think of that as
+a container orchestrator.
+
+1312
+00:48:40,359 --> 00:48:41,739
+Some people might nit pick it,
+
+1313
+00:48:41,739 --> 00:48:43,260
+and they say that to
+be an orchestrator,
+
+1314
+00:48:43,260 --> 00:48:44,479
+you have to have
+multiple machines and
+
+1315
+00:48:44,479 --> 00:48:45,959
+be able to schedule across them.
+
+1316
+00:48:45,959 --> 00:48:48,499
+But, you know, it's kind
+of sort of a orchestrator.
+
+1317
+00:48:48,499 --> 00:48:51,280
+And even though
+it's complicated,
+
+1318
+00:48:51,280 --> 00:48:52,919
+there's a steep learning curve
+
+1319
+00:48:52,919 --> 00:48:54,439
+that you will experience
+this semester,
+
+1320
+00:48:54,439 --> 00:48:57,199
+it's still on the simpler end
+of all these orchestrators.
+
+1321
+00:48:57,199 --> 00:48:59,260
+So that's why I chose
+it for the course.
+
+1322
+00:48:59,260 --> 00:49:01,079
+Doctor Swarm is like
+doctor Compose,
+
+1323
+00:49:01,079 --> 00:49:02,620
+but it's a little bit
+more complicated.
+
+1324
+00:49:02,620 --> 00:49:04,220
+Feel similar, but
+you can actually
+
+1325
+00:49:04,220 --> 00:49:06,139
+run containers across
+different machines.
+
+1326
+00:49:06,139 --> 00:49:08,459
+And then nomad is one out there
+
+1327
+00:49:08,459 --> 00:49:10,970
+that's just trying
+to be more complete,
+
+1328
+00:49:10,970 --> 00:49:14,069
+but also simpler than
+Tubers because Cubers.
+
+1329
+00:49:14,069 --> 00:49:16,069
+Like, I'm not that
+great at Tubernettes,
+
+1330
+00:49:16,069 --> 00:49:17,969
+and everybody who is says
+it's a big pain, right?
+
+1331
+00:49:17,969 --> 00:49:19,409
+So most popular but
+
+1332
+00:49:19,409 --> 00:49:22,689
+also very complicated
+and difficult to use.
+
+1333
+00:49:23,050 --> 00:49:25,749
+Am I doing on time here?
+
+1334
+00:49:25,749 --> 00:49:27,409
+I think I will end there,
+
+1335
+00:49:27,409 --> 00:49:30,569
+and I will start talking
+about images next time.
+
+1336
+00:49:30,569 --> 00:49:32,269
+So I have a fantastic weekend,
+
+1337
+00:49:32,269 --> 00:49:33,769
+and we'll wrap up on Monday and
+
+1338
+00:49:33,769 --> 00:49:37,009
+then bring me some review
+questions if you have them.

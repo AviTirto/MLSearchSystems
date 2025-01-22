@@ -1,0 +1,6153 @@
+1
+00:00:00,000 --> 00:00:03,680
+I'll be back today, and we're
+learning more about HDFS.
+
+2
+00:00:03,680 --> 00:00:05,980
+And I may have a
+few more concepts.
+
+3
+00:00:05,980 --> 00:00:07,700
+I'm going to go over
+the slides, but mostly,
+
+4
+00:00:07,700 --> 00:00:09,359
+I want to give you some heads on
+
+5
+00:00:09,359 --> 00:00:11,880
+practice actually using HDFS.
+
+6
+00:00:11,880 --> 00:00:16,580
+P four is going to be released
+some day before midnight,
+
+7
+00:00:16,580 --> 00:00:19,420
+and that's going to
+be all about HDS.
+
+8
+00:00:19,420 --> 00:00:21,019
+So I think the things I'm
+do today are very very
+
+9
+00:00:21,019 --> 00:00:22,219
+naturally set you up
+
+10
+00:00:22,219 --> 00:00:23,459
+for what you're doing
+in the project.
+
+11
+00:00:23,459 --> 00:00:25,420
+There's going to be a
+lot of similar examples.
+
+12
+00:00:25,420 --> 00:00:26,899
+So hopefully this will set
+
+13
+00:00:26,899 --> 00:00:28,560
+you up for success
+on that project.
+
+14
+00:00:28,560 --> 00:00:31,800
+I'm head back here to the
+slides where we were.
+
+15
+00:00:31,800 --> 00:00:34,159
+And what we were
+learning about last time
+
+16
+00:00:34,159 --> 00:00:37,979
+is that we have these Hadoop
+file system clusters,
+
+17
+00:00:37,979 --> 00:00:39,239
+and they have a
+bunch of computers
+
+18
+00:00:39,239 --> 00:00:41,779
+running these programs
+called data nodes, right?
+
+19
+00:00:41,779 --> 00:00:43,860
+I have a bunch of data nodes,
+each on a different server.
+
+20
+00:00:43,860 --> 00:00:45,859
+Maybe there's a bunch of
+hard drives on each of them.
+
+21
+00:00:45,859 --> 00:00:47,899
+And the data nodes are
+
+22
+00:00:47,899 --> 00:00:50,520
+responsible for storing
+blocks of data,
+
+23
+00:00:50,520 --> 00:00:52,120
+physical blocks of data.
+
+24
+00:00:52,120 --> 00:00:54,959
+When we have files up here
+like F one and F two,
+
+25
+00:00:54,959 --> 00:00:57,740
+we might break them
+into partitions,
+
+26
+00:00:57,740 --> 00:00:58,959
+and then we might have
+
+27
+00:00:58,959 --> 00:01:00,839
+multiple replicas
+of each of those,
+
+28
+00:01:00,839 --> 00:01:02,319
+and then we'll save those as
+
+29
+00:01:02,319 --> 00:01:03,939
+blocks on each of these systems.
+
+30
+00:01:03,939 --> 00:01:05,820
+The data nodes are
+running on top
+
+31
+00:01:05,820 --> 00:01:08,359
+of just a regular
+local file system.
+
+32
+00:01:08,359 --> 00:01:09,760
+So even though HDFS is
+
+33
+00:01:09,760 --> 00:01:11,419
+a file system that's
+across machines,
+
+34
+00:01:11,419 --> 00:01:14,060
+it's built on top of just a
+regular local file system.
+
+35
+00:01:14,060 --> 00:01:15,560
+And so when it stores
+one of these blocks,
+
+36
+00:01:15,560 --> 00:01:17,199
+it just creates a file somewhere
+
+37
+00:01:17,199 --> 00:01:19,999
+to store the data
+inside of those blocks.
+
+38
+00:01:19,999 --> 00:01:22,299
+This design makes
+it more reliable.
+
+39
+00:01:22,299 --> 00:01:24,039
+If one of these machines dies,
+
+40
+00:01:24,039 --> 00:01:26,500
+sure, we lose some
+physical data,
+
+41
+00:01:26,500 --> 00:01:28,680
+but fortunately, we have
+
+42
+00:01:28,680 --> 00:01:32,839
+this logical data up here
+that's replicated elsewhere.
+
+43
+00:01:33,240 --> 00:01:36,660
+So, this is the way that HFS and
+
+44
+00:01:36,660 --> 00:01:39,359
+also the Gool file system
+were originally built,
+
+45
+00:01:39,359 --> 00:01:41,239
+and so we'll have
+these multiple copies
+
+46
+00:01:41,239 --> 00:01:42,899
+of data. That's
+called replication.
+
+47
+00:01:42,899 --> 00:01:45,599
+That's the main strategy
+we're learning this semester.
+
+48
+00:01:45,599 --> 00:01:47,480
+I just wanted you to be
+aware of it even though
+
+49
+00:01:47,480 --> 00:01:49,620
+I'm not try to ask you about
+it or do anything with it.
+
+50
+00:01:49,620 --> 00:01:51,659
+But the latest version of
+
+51
+00:01:51,659 --> 00:01:54,390
+HFS have something else
+called erase Code.
+
+52
+00:01:54,390 --> 00:01:56,620
+And that's a different
+kind of redundancy that
+
+53
+00:01:56,620 --> 00:01:59,760
+doesn't just play and have
+multiple copies of it.
+
+54
+00:01:59,760 --> 00:02:02,140
+I td to details
+about how it works.
+
+55
+00:02:02,140 --> 00:02:04,420
+But if you take the
+operating systems class,
+
+56
+00:02:04,420 --> 00:02:06,000
+for example, you'll learn about
+
+57
+00:02:06,000 --> 00:02:08,479
+erasure and tote
+with rate of arrays.
+
+58
+00:02:08,479 --> 00:02:11,540
+And it's basically that
+idea applied to data note.
+
+59
+00:02:11,540 --> 00:02:12,659
+So if that's helpful to you,
+
+60
+00:02:12,659 --> 00:02:14,319
+great, otherwise, don't
+worry too much about it.
+
+61
+00:02:14,319 --> 00:02:15,159
+I just want you to know if
+
+62
+00:02:15,159 --> 00:02:16,260
+they have a different strategy.
+
+63
+00:02:16,260 --> 00:02:19,240
+This other strategy
+tends to make our data
+
+64
+00:02:19,240 --> 00:02:22,459
+reliable without quite
+as much overhead.
+
+65
+00:02:22,459 --> 00:02:25,685
+We don't have to have all
+these full copies of data.
+
+66
+00:02:25,685 --> 00:02:28,770
+Which is good, but it tends
+to be less o efficient.
+
+67
+00:02:28,770 --> 00:02:31,930
+And so what the D pile system
+will do is it will use
+
+68
+00:02:31,930 --> 00:02:33,749
+this general strategy that
+I've been describing so
+
+69
+00:02:33,749 --> 00:02:36,430
+far for any kind of
+new or hot data.
+
+70
+00:02:36,430 --> 00:02:38,130
+And if there's some data
+that's sitting around
+
+71
+00:02:38,130 --> 00:02:39,969
+for a long time and
+not being modified,
+
+72
+00:02:39,969 --> 00:02:44,310
+they might put it under this
+erasure coding instead.
+
+73
+00:02:44,750 --> 00:02:48,090
+Great. So those are all those
+data node nodes out here.
+
+74
+00:02:48,090 --> 00:02:49,750
+Let's look at some
+other computers
+
+75
+00:02:49,750 --> 00:02:50,870
+that might be involved.
+
+76
+00:02:50,870 --> 00:02:53,810
+Up here, I may have a
+system called a name node.
+
+77
+00:02:53,810 --> 00:02:56,649
+And what the name node is
+responsible for doing is
+
+78
+00:02:56,649 --> 00:03:00,229
+keeping track of all the
+logical blocks of data, right?
+
+79
+00:03:00,229 --> 00:03:01,509
+So all our files are broken into
+
+80
+00:03:01,509 --> 00:03:03,290
+these blocks, these
+logical blocks.
+
+81
+00:03:03,290 --> 00:03:04,770
+And the name node knows,
+
+82
+00:03:04,770 --> 00:03:06,470
+for any given logical block,
+
+83
+00:03:06,470 --> 00:03:08,789
+what data nodes has it, right?
+
+84
+00:03:08,789 --> 00:03:11,929
+So I can see up here that
+for block one of file one,
+
+85
+00:03:11,929 --> 00:03:13,270
+the name node knows
+
+86
+00:03:13,270 --> 00:03:15,510
+that data nodes one,
+two, and three it.
+
+87
+00:03:15,510 --> 00:03:19,669
+And indeed, it does for let's
+say file two, block two.
+
+88
+00:03:19,669 --> 00:03:21,789
+It says, data nodes
+two and three have
+
+89
+00:03:21,789 --> 00:03:24,869
+that, which is also true.
+
+90
+00:03:25,190 --> 00:03:28,329
+We also have client programs
+
+91
+00:03:28,329 --> 00:03:30,170
+that actually want
+to read the data.
+
+92
+00:03:30,170 --> 00:03:31,850
+Sometimes the client
+program might actually
+
+93
+00:03:31,850 --> 00:03:33,710
+be already on the same
+machine as a data node.
+
+94
+00:03:33,710 --> 00:03:36,510
+Here, I may imagine it is a
+separate machines by laptop.
+
+95
+00:03:36,510 --> 00:03:38,930
+And if the client
+wants to read data,
+
+96
+00:03:38,930 --> 00:03:41,169
+then it's I have to talk
+to the name node because
+
+97
+00:03:41,169 --> 00:03:43,689
+the name node knows
+where that data left.
+
+98
+00:03:43,689 --> 00:03:46,089
+So I'll send down a message
+to the name node saying,
+
+99
+00:03:46,089 --> 00:03:48,084
+I want to read file, too.
+
+100
+00:03:48,084 --> 00:03:51,659
+And then the Dabb will
+respond and say, Okay,
+
+101
+00:03:51,659 --> 00:03:55,740
+well, here is where you can
+grow and a fide that data.
+
+102
+00:03:55,740 --> 00:03:58,319
+And then the cli industry to
+
+103
+00:03:58,319 --> 00:03:59,599
+directly talk to
+the data Dodes and
+
+104
+00:03:59,599 --> 00:04:01,379
+do the network transfers.
+
+105
+00:04:01,379 --> 00:04:04,939
+The really important thing
+here was that the data,
+
+106
+00:04:04,939 --> 00:04:06,260
+which is probably large,
+
+107
+00:04:06,260 --> 00:04:08,299
+did not flow through
+the DAB node.
+
+108
+00:04:08,299 --> 00:04:09,799
+The Da Bode was only
+responsible for
+
+109
+00:04:09,799 --> 00:04:11,599
+beta data about where
+the data lived.
+
+110
+00:04:11,599 --> 00:04:13,780
+The big data transfers
+are with the data nodes,
+
+111
+00:04:13,780 --> 00:04:15,159
+and that's supported
+because we have
+
+112
+00:04:15,159 --> 00:04:16,800
+lots and lots of data nodes,
+
+113
+00:04:16,800 --> 00:04:18,680
+and so we can spread
+out all that work,
+
+114
+00:04:18,680 --> 00:04:20,640
+but we only have one name node
+
+115
+00:04:20,640 --> 00:04:21,720
+at our whole cluster, right?
+
+116
+00:04:21,720 --> 00:04:22,840
+So it'd be very easy for a
+
+117
+00:04:22,840 --> 00:04:24,659
+nab node to become
+a bottle deck.
+
+118
+00:04:24,659 --> 00:04:25,759
+It will become a bottle deck
+
+119
+00:04:25,759 --> 00:04:27,835
+if we have to transfer
+all the data.
+
+120
+00:04:27,835 --> 00:04:32,170
+Through that name node. All
+right, so we might do that.
+
+121
+00:04:32,170 --> 00:04:34,329
+We might also say that
+I want to write a file.
+
+122
+00:04:34,329 --> 00:04:35,930
+So I write file three.
+
+123
+00:04:35,930 --> 00:04:37,450
+And when we do that,
+
+124
+00:04:37,450 --> 00:04:39,350
+we'll specify how many
+replicas, we want to write.
+
+125
+00:04:39,350 --> 00:04:40,810
+Let's say we want to
+write three of them.
+
+126
+00:04:40,810 --> 00:04:42,550
+And in this case, the name node
+
+127
+00:04:42,550 --> 00:04:43,949
+could really choose anything.
+
+128
+00:04:43,949 --> 00:04:45,749
+That data doesn't
+already exist somewhere,
+
+129
+00:04:45,749 --> 00:04:48,350
+so we'll try to choose
+a good place for it.
+
+130
+00:04:48,350 --> 00:04:50,310
+Maybe it might take
+into consideration
+
+131
+00:04:50,310 --> 00:04:52,670
+how heavily loaded
+each data node is,
+
+132
+00:04:52,670 --> 00:04:55,210
+I might trying to spread out
+the data somewhat evenly.
+
+133
+00:04:55,210 --> 00:04:57,990
+In this case, it'll say the
+locations, I'll record.
+
+134
+00:04:57,990 --> 00:04:59,050
+Okay, we're going to write it
+
+135
+00:04:59,050 --> 00:05:00,765
+to nodes one, two, and three.
+
+136
+00:05:00,765 --> 00:05:03,900
+And then the client program is
+
+137
+00:05:03,900 --> 00:05:06,800
+going to write that data in
+each of those places, right?
+
+138
+00:05:06,800 --> 00:05:08,459
+Now, one thing that's
+a little unfortunate
+
+139
+00:05:08,459 --> 00:05:09,760
+is the lie program is
+
+140
+00:05:09,760 --> 00:05:11,459
+sending the same data
+
+141
+00:05:11,459 --> 00:05:12,840
+over the network to
+a lot of places.
+
+142
+00:05:12,840 --> 00:05:14,139
+That could be a
+bottleneck, right?
+
+143
+00:05:14,139 --> 00:05:16,939
+We're kind of sending a lot
+of data from a single node,
+
+144
+00:05:16,939 --> 00:05:18,460
+especially if my client is not
+
+145
+00:05:18,460 --> 00:05:20,380
+in the same data center, right?
+
+146
+00:05:20,380 --> 00:05:21,460
+Maybe I'm in the same rack,
+
+147
+00:05:21,460 --> 00:05:22,780
+or I'm just like somewhere else.
+
+148
+00:05:22,780 --> 00:05:24,179
+I might have limited bad width.
+
+149
+00:05:24,179 --> 00:05:26,260
+I'm wondering? Does
+anybody have any ideas for
+
+150
+00:05:26,260 --> 00:05:27,520
+a faster way to get
+
+151
+00:05:27,520 --> 00:05:30,419
+that same data on each of
+these three data nodes?
+
+152
+00:05:30,419 --> 00:05:37,620
+Yeah, right over here. XL.
+
+153
+00:05:37,620 --> 00:05:39,180
+That's a great idea. That's
+exactly what they do.
+
+154
+00:05:39,180 --> 00:05:41,819
+So we could send XY Z to
+one of the data nodes,
+
+155
+00:05:41,819 --> 00:05:43,999
+and that could send
+it to the rest,
+
+156
+00:05:43,999 --> 00:05:46,760
+and that's called a
+right pipeline, right?
+
+157
+00:05:46,760 --> 00:05:47,900
+So they're go to use
+
+158
+00:05:47,900 --> 00:05:50,419
+pipeline rights when
+we're writing HFS data,
+
+159
+00:05:50,419 --> 00:05:52,060
+and that's going to
+be that we don't have
+
+160
+00:05:52,060 --> 00:05:56,120
+as much bad width consumed
+for any given computer,
+
+161
+00:05:56,120 --> 00:05:58,180
+especially important, if that
+
+162
+00:05:58,180 --> 00:06:01,440
+first has limited bad width.
+
+163
+00:06:02,040 --> 00:06:03,960
+Alright, so I just want to
+
+164
+00:06:03,960 --> 00:06:05,439
+think about how
+all this happens.
+
+165
+00:06:05,439 --> 00:06:07,620
+The different questions I
+like to ask to make sure
+
+166
+00:06:07,620 --> 00:06:09,820
+people understand
+HDFS is I might say,
+
+167
+00:06:09,820 --> 00:06:12,000
+Oh, I'm writing this much
+data, this kind of file,
+
+168
+00:06:12,000 --> 00:06:13,300
+or I'm reading this much data
+
+169
+00:06:13,300 --> 00:06:14,719
+from some other type of file,
+
+170
+00:06:14,719 --> 00:06:15,960
+and I might ask
+things like, Well,
+
+171
+00:06:15,960 --> 00:06:18,980
+how much data is transferred
+over the network or
+
+172
+00:06:18,980 --> 00:06:20,819
+how much data is
+going to have to be
+
+173
+00:06:20,819 --> 00:06:23,159
+read from disc or how much
+is going to be rented?
+
+174
+00:06:23,159 --> 00:06:25,805
+And so I want to have a
+couple of examples here.
+
+175
+00:06:25,805 --> 00:06:29,610
+So I have a client and it's
+writing 4 megabytes of data,
+
+176
+00:06:29,610 --> 00:06:32,390
+and it's ready into a file
+that's two times replicated.
+
+177
+00:06:32,390 --> 00:06:35,489
+And so it's sad is data nodes
+is I have to get ready.
+
+178
+00:06:35,489 --> 00:06:37,449
+I'm wondering how
+much total data
+
+179
+00:06:37,449 --> 00:06:38,729
+across all these nodes
+
+180
+00:06:38,729 --> 00:06:40,229
+is ready to be read
+into hard drives.
+
+181
+00:06:40,229 --> 00:06:41,330
+Maybe everybody can hold up sub
+
+182
+00:06:41,330 --> 00:06:42,689
+number of figures to indicate
+
+183
+00:06:42,689 --> 00:06:44,390
+how many gigabytes
+of data will be
+
+184
+00:06:44,390 --> 00:06:47,010
+a into hard drives
+and by cluster.
+
+185
+00:06:52,170 --> 00:06:55,230
+Yeah, so I'm looking for
+everybody to answer, right?
+
+186
+00:06:55,230 --> 00:06:57,150
+So you can say, I mean,
+you could say like
+
+187
+00:06:57,150 --> 00:06:59,910
+2 megabytes or 4 megabytes
+or some of that.
+
+188
+00:06:59,910 --> 00:07:01,190
+I'm not looking for a voluntary.
+
+189
+00:07:01,190 --> 00:07:02,969
+I want everybody to hold
+up sub number of figures.
+
+190
+00:07:02,969 --> 00:07:06,489
+How many megabytes of data
+will be a into hard drives?
+
+191
+00:07:10,970 --> 00:07:13,369
+I'm seeing some eights,
+
+192
+00:07:13,369 --> 00:07:14,870
+which is correct, right?
+
+193
+00:07:14,870 --> 00:07:17,549
+Be even though we have
+three data nodes,
+
+194
+00:07:17,549 --> 00:07:19,290
+right we're only writing
+into two of them.
+
+195
+00:07:19,290 --> 00:07:20,530
+We have two times
+replication, and so
+
+196
+00:07:20,530 --> 00:07:22,050
+that four megabyte data will
+
+197
+00:07:22,050 --> 00:07:25,050
+be read in two different
+places, 8 megabytes total.
+
+198
+00:07:25,050 --> 00:07:26,649
+Okay, so now, let's
+
+199
+00:07:26,649 --> 00:07:27,729
+say that we're going
+to read some data.
+
+200
+00:07:27,729 --> 00:07:29,490
+We're going to read
+2 megabytes of data,
+
+201
+00:07:29,490 --> 00:07:31,150
+and this data lives in
+
+202
+00:07:31,150 --> 00:07:33,630
+a file that has three
+times replication.
+
+203
+00:07:33,630 --> 00:07:35,770
+How many megabytes
+data have to be
+
+204
+00:07:35,770 --> 00:07:39,049
+read from hard drives
+by these data nodes?
+
+205
+00:07:42,470 --> 00:07:45,230
+I'm seeing a mix of six and two,
+
+206
+00:07:45,230 --> 00:07:46,510
+the answer is two, right?
+
+207
+00:07:46,510 --> 00:07:48,309
+So even though it's
+strictly replicated,
+
+208
+00:07:48,309 --> 00:07:49,610
+that data is a save
+a in each place.
+
+209
+00:07:49,610 --> 00:07:50,990
+So we're reading it, we just
+
+210
+00:07:50,990 --> 00:07:52,890
+need to have one copy
+of the data, right?
+
+211
+00:07:52,890 --> 00:07:54,429
+So I'll choose. One of
+
+212
+00:07:54,429 --> 00:07:56,170
+the takeaways here
+is that when we have
+
+213
+00:07:56,170 --> 00:07:58,490
+replication rites
+just inherently
+
+214
+00:07:58,490 --> 00:08:01,590
+become more expensive
+than reads.
+
+215
+00:08:01,590 --> 00:08:02,969
+And there's other things higher
+
+216
+00:08:02,969 --> 00:08:04,470
+the stack that make
+that true as well.
+
+217
+00:08:04,470 --> 00:08:05,830
+So I just want you to see
+
+218
+00:08:05,830 --> 00:08:07,529
+that as we start
+adding these layers,
+
+219
+00:08:07,529 --> 00:08:09,110
+rites are more
+expensive than what
+
+220
+00:08:09,110 --> 00:08:11,790
+might expect. Yeah,
+go ahead, right here.
+
+221
+00:08:16,900 --> 00:08:19,400
+They are. They're from
+last time, right?
+
+222
+00:08:19,400 --> 00:08:22,700
+They should be,
+right? Yeah, because
+
+223
+00:08:22,700 --> 00:08:23,860
+we're just catching up from
+
+224
+00:08:23,860 --> 00:08:26,020
+these concepts from last time.
+
+225
+00:08:26,020 --> 00:08:28,360
+Yeah, yeah, please
+check on that.
+
+226
+00:08:28,360 --> 00:08:30,819
+Yeah. Other questions.
+
+227
+00:08:33,340 --> 00:08:39,619
+Yeah, right here. What's that?
+
+228
+00:08:40,480 --> 00:08:43,019
+Yes, the name node, we do
+have to worry about it
+
+229
+00:08:43,019 --> 00:08:45,139
+becoming a single point
+of a failure, right?
+
+230
+00:08:45,139 --> 00:08:49,699
+And so in the original
+like GFS and HTFS,
+
+231
+00:08:49,699 --> 00:08:51,240
+what they did is they would add
+
+232
+00:08:51,240 --> 00:08:52,740
+what they call a secondary node,
+
+233
+00:08:52,740 --> 00:08:55,260
+and they'd have these two
+pairs of nodes together,
+
+234
+00:08:55,260 --> 00:08:58,019
+and they'd try to be ready
+so they can fail over
+
+235
+00:08:58,019 --> 00:09:01,019
+that second node if
+need need be, right?
+
+236
+00:09:01,019 --> 00:09:02,679
+I won't get into a lot
+of the details about
+
+237
+00:09:02,679 --> 00:09:04,560
+that because it's
+not a great design.
+
+238
+00:09:04,560 --> 00:09:07,339
+Its even kind of having two?
+Two is not great, right?
+
+239
+00:09:07,339 --> 00:09:10,559
+And so in Google, right,
+
+240
+00:09:10,559 --> 00:09:13,280
+they actually don't use the
+Google file system anymore,
+
+241
+00:09:13,280 --> 00:09:15,339
+they replace it with
+something called Closs,
+
+242
+00:09:15,339 --> 00:09:16,740
+the Closss file system.
+
+243
+00:09:16,740 --> 00:09:19,419
+And so the Closss file
+system gets rid of that.
+
+244
+00:09:19,419 --> 00:09:20,619
+So they don't just
+have like one or
+
+245
+00:09:20,619 --> 00:09:21,980
+two nodes for this meta data.
+
+246
+00:09:21,980 --> 00:09:24,199
+They really have it
+spread out, right?
+
+247
+00:09:24,199 --> 00:09:27,059
+And HDFS still kind
+of has that design,
+
+248
+00:09:27,059 --> 00:09:28,300
+it's like a name node, and then
+
+249
+00:09:28,300 --> 00:09:30,120
+they call it a secondary node.
+
+250
+00:09:30,120 --> 00:09:32,339
+I won't look too much at it
+because we're going to see
+
+251
+00:09:32,339 --> 00:09:34,299
+other systems later
+like Cassandra,
+
+252
+00:09:34,299 --> 00:09:35,599
+that solve similar problems, but
+
+253
+00:09:35,599 --> 00:09:36,999
+they will have it
+highly distributed.
+
+254
+00:09:36,999 --> 00:09:38,640
+So I think that yeah,
+
+255
+00:09:38,640 --> 00:09:39,819
+this is kind of a bad design.
+
+256
+00:09:39,819 --> 00:09:41,019
+You could imagine some kind of
+
+257
+00:09:41,019 --> 00:09:42,919
+hacks on it, but, you know,
+
+258
+00:09:42,919 --> 00:09:46,100
+other systems like class
+file system or cassaa
+
+259
+00:09:46,100 --> 00:09:47,419
+that we see have a way of
+
+260
+00:09:47,419 --> 00:09:49,379
+making the meta data
+highly distributed,
+
+261
+00:09:49,379 --> 00:09:51,840
+like the actual data
+as Excellent point.
+
+262
+00:09:51,840 --> 00:09:57,099
+Yeah. Other questions or
+concerns people have. Oh, right.
+
+263
+00:09:57,099 --> 00:09:59,779
+Cool. So I just want you know,
+
+264
+00:09:59,779 --> 00:10:01,100
+when you're using these systems,
+
+265
+00:10:01,100 --> 00:10:02,479
+you already have make
+some choices, right?
+
+266
+00:10:02,479 --> 00:10:04,519
+Like, you can decide what
+
+267
+00:10:04,519 --> 00:10:07,020
+is the replication I'm
+using to write my files?
+
+268
+00:10:07,020 --> 00:10:09,339
+What blocks side I have?
+
+269
+00:10:09,339 --> 00:10:11,419
+I just want to think through
+what are the tradeoffs for
+
+270
+00:10:11,419 --> 00:10:14,039
+these that you could
+make informed decisions.
+
+271
+00:10:14,039 --> 00:10:15,759
+And so I'm just to get
+
+272
+00:10:15,759 --> 00:10:18,120
+four different volunteers
+for each of these.
+
+273
+00:10:18,120 --> 00:10:20,619
+So I'm wondering if
+somebody could say,
+
+274
+00:10:20,619 --> 00:10:23,259
+raise your hand if you think
+you know what might be
+
+275
+00:10:23,259 --> 00:10:26,905
+benefit of having a high
+replication factor.
+
+276
+00:10:26,905 --> 00:10:33,629
+Yeah, right here.
+One shuts down.
+
+277
+00:10:33,990 --> 00:10:36,629
+Excellent. I think that's
+the main reason, right?
+
+278
+00:10:36,629 --> 00:10:38,090
+So if we lose some of our data,
+
+279
+00:10:38,090 --> 00:10:39,629
+we have a higher
+replication factor,
+
+280
+00:10:39,629 --> 00:10:40,890
+then our data is safe.
+
+281
+00:10:40,890 --> 00:10:42,569
+The higher the
+replication factor,
+
+282
+00:10:42,569 --> 00:10:45,330
+the more nodes that could die
+and it would still be okay.
+
+283
+00:10:45,330 --> 00:10:46,969
+Are there any other reasons
+we might want to have
+
+284
+00:10:46,969 --> 00:10:50,269
+a high replication factor
+beyond reliability?
+
+285
+00:10:53,480 --> 00:10:59,200
+Yeah, right here. Excellent, I
+
+286
+00:10:59,200 --> 00:11:00,439
+might do it for
+performance, right?
+
+287
+00:11:00,439 --> 00:11:01,980
+Like, I I have some piece
+
+288
+00:11:01,980 --> 00:11:03,579
+of data that is
+extremely hot, right?
+
+289
+00:11:03,579 --> 00:11:05,400
+Like everybody's trying
+to read this data,
+
+290
+00:11:05,400 --> 00:11:07,820
+and I only have a
+replication factor
+
+291
+00:11:07,820 --> 00:11:09,480
+of three and then 1 million
+people are trying to read it.
+
+292
+00:11:09,480 --> 00:11:11,080
+They'll have to send the request
+
+293
+00:11:11,080 --> 00:11:13,159
+to these same data nodes, right?
+
+294
+00:11:13,159 --> 00:11:15,819
+Maybe if I don't even
+care about reliability,
+
+295
+00:11:15,819 --> 00:11:16,820
+but I just have the data
+
+296
+00:11:16,820 --> 00:11:17,919
+that everybody's
+trying to access,
+
+297
+00:11:17,919 --> 00:11:20,079
+maybe I want to have 20
+copies of it, right?
+
+298
+00:11:20,079 --> 00:11:23,319
+Yeah, To are the reasons why
+I have higher replication.
+
+299
+00:11:23,319 --> 00:11:24,819
+Can anybody tell me
+the flip of that?
+
+300
+00:11:24,819 --> 00:11:25,939
+What might be the
+benefit of having
+
+301
+00:11:25,939 --> 00:11:27,219
+a low replication factor?
+
+302
+00:11:27,219 --> 00:11:32,279
+Yeah, right back here.
+Lower cost, right?
+
+303
+00:11:32,279 --> 00:11:33,520
+I'm using less capacity,
+
+304
+00:11:33,520 --> 00:11:35,740
+so maybe I don't have to buy
+as much hardware. Excellent.
+
+305
+00:11:35,740 --> 00:11:38,120
+All right. What about
+the block size?
+
+306
+00:11:38,120 --> 00:11:42,160
+What would be a benefit of
+having a larger block size?
+
+307
+00:11:44,320 --> 00:11:52,540
+Yeah, go ahead. Less overhead,
+
+308
+00:11:52,540 --> 00:11:53,779
+I gus you're saying maybe
+
+309
+00:11:53,779 --> 00:11:56,060
+there's when you're
+transferring the blocks,
+
+310
+00:11:56,060 --> 00:11:58,499
+you know, maybe there's some
+met data with that, right?
+
+311
+00:11:58,499 --> 00:12:00,419
+So you kind of have one big
+transfer with a little bit of
+
+312
+00:12:00,419 --> 00:12:02,499
+metata that might make sense.
+I send another hand up.
+
+313
+00:12:02,499 --> 00:12:04,200
+I think that's true.
+There's something
+
+314
+00:12:04,200 --> 00:12:05,439
+I'm more worried about though,
+
+315
+00:12:05,439 --> 00:12:08,280
+too. The same idea.
+
+316
+00:12:12,490 --> 00:12:16,869
+So the main bottleneck
+in the system,
+
+317
+00:12:16,869 --> 00:12:18,949
+right, that potential botle
+neck is the name node,
+
+318
+00:12:18,949 --> 00:12:21,450
+right because we only
+have one name node.
+
+319
+00:12:21,490 --> 00:12:23,830
+So thinking about the name node,
+
+320
+00:12:23,830 --> 00:12:27,089
+why might we want to
+have a large block size?
+
+321
+00:12:30,490 --> 00:12:32,529
+Yeah.
+
+322
+00:12:45,510 --> 00:12:47,489
+Excellent. Yeah, so
+
+323
+00:12:47,489 --> 00:12:48,689
+we have a smaller
+mapping, right?
+
+324
+00:12:48,689 --> 00:12:50,209
+So it's all the data appears,
+
+325
+00:12:50,209 --> 00:12:51,949
+and sometimes the data
+structure hold a block map.
+
+326
+00:12:51,949 --> 00:12:52,749
+Maybe it's kind of like
+
+327
+00:12:52,749 --> 00:12:54,470
+a dictionary where
+you look up a key,
+
+328
+00:12:54,470 --> 00:12:55,810
+which is the block name,
+
+329
+00:12:55,810 --> 00:12:57,449
+and then the value
+would be that.
+
+330
+00:12:57,449 --> 00:13:01,849
+And so if we have bigger
+blocks per file, right?
+
+331
+00:13:01,849 --> 00:13:04,550
+Then that means there will be
+fewer blocks in each file,
+
+332
+00:13:04,550 --> 00:13:05,910
+which means we can really cut
+
+333
+00:13:05,910 --> 00:13:08,189
+the size of this data
+structure in half.
+
+334
+00:13:08,189 --> 00:13:09,570
+You know, the name
+node is already
+
+335
+00:13:09,570 --> 00:13:11,409
+kind of bottleneck and is
+kind of hard to keep up.
+
+336
+00:13:11,409 --> 00:13:12,730
+So they will try
+to keep that data
+
+337
+00:13:12,730 --> 00:13:13,949
+structure in memory, right?
+
+338
+00:13:13,949 --> 00:13:15,969
+You could easily magine
+ny out of memory, right?
+
+339
+00:13:15,969 --> 00:13:18,349
+So larger block size can help.
+
+340
+00:13:18,349 --> 00:13:20,529
+Now, sometimes people
+might try to sell
+
+341
+00:13:20,529 --> 00:13:21,790
+a larger block size
+
+342
+00:13:21,790 --> 00:13:23,990
+for that reason, and
+it might not help.
+
+343
+00:13:23,990 --> 00:13:28,009
+Because maybe they have a
+bunch of small files a HDFS.
+
+344
+00:13:28,009 --> 00:13:29,469
+If you have a bunch
+of small files,
+
+345
+00:13:29,469 --> 00:13:30,969
+that it might be the case that
+
+346
+00:13:30,969 --> 00:13:33,890
+most files have just
+a single block.
+
+347
+00:13:33,890 --> 00:13:35,190
+I think that's actually
+more common than
+
+348
+00:13:35,190 --> 00:13:37,129
+people anticipated when
+they built the system.
+
+349
+00:13:37,129 --> 00:13:38,429
+But assuming that we have this
+
+350
+00:13:38,429 --> 00:13:39,749
+ideal case that
+it was built for,
+
+351
+00:13:39,749 --> 00:13:41,610
+which where we have
+these giant files,
+
+352
+00:13:41,610 --> 00:13:44,790
+larger blocks will
+be less kind of load
+
+353
+00:13:44,790 --> 00:13:46,449
+on the name node
+for both storing
+
+354
+00:13:46,449 --> 00:13:48,269
+this information and
+transferring it.
+
+355
+00:13:48,269 --> 00:13:50,029
+Alright, great. What
+would be a benefit of
+
+356
+00:13:50,029 --> 00:13:52,949
+having a smaller block size?
+
+357
+00:13:53,870 --> 00:14:02,460
+Yeah, go ahead. We could
+read process and transfer,
+
+358
+00:14:02,460 --> 00:14:04,519
+I guess it's smaller
+chunks, right?
+
+359
+00:14:04,519 --> 00:14:06,060
+If it's smaller chunks,
+
+360
+00:14:06,060 --> 00:14:07,660
+we have to have to
+do more chunks,
+
+361
+00:14:07,660 --> 00:14:09,620
+so why would that be good?
+
+362
+00:14:15,420 --> 00:14:19,899
+Why might we want to have
+a smaller block size?
+
+363
+00:14:20,380 --> 00:14:22,980
+Yeah, right here.
+
+364
+00:14:25,320 --> 00:14:27,700
+Oh, if hardware breaks down,
+
+365
+00:14:27,700 --> 00:14:29,879
+we lose less information.
+
+366
+00:14:30,080 --> 00:14:34,499
+Maybe. I mean, that gets a
+little bit complicated, right,
+
+367
+00:14:34,499 --> 00:14:38,700
+if we kind of think
+about I guess,
+
+368
+00:14:38,700 --> 00:14:41,199
+we're trying to have
+replication to deal with
+
+369
+00:14:41,199 --> 00:14:44,960
+this problem of
+hardware breaking down.
+
+370
+00:14:44,960 --> 00:14:46,659
+And so then the question is,
+
+371
+00:14:46,659 --> 00:14:48,720
+if you keep the
+replication fixed,
+
+372
+00:14:48,720 --> 00:14:50,579
+and you have kind of
+more small blocks
+
+373
+00:14:50,579 --> 00:14:52,840
+or a few big blocks, what
+makes it more reliable?
+
+374
+00:14:52,840 --> 00:14:54,620
+In a lot of cases, if you lose
+
+375
+00:14:54,620 --> 00:14:56,360
+a small piece of
+data in the middle,
+
+376
+00:14:56,360 --> 00:14:58,259
+the data might be
+garbage, right?
+
+377
+00:14:58,259 --> 00:14:59,679
+Because if you had some
+kind of compression
+
+378
+00:14:59,679 --> 00:15:01,139
+or things like
+that on top of it,
+
+379
+00:15:01,139 --> 00:15:03,440
+then kind of losing a piece
+
+380
+00:15:03,440 --> 00:15:04,879
+in the middle makes the
+whole thing corrupt.
+
+381
+00:15:04,879 --> 00:15:06,960
+So I think actually, It
+
+382
+00:15:06,960 --> 00:15:08,280
+depends on the
+nature of the data.
+
+383
+00:15:08,280 --> 00:15:11,359
+But actually, if you have
+kind of more small blocks,
+
+384
+00:15:11,359 --> 00:15:12,880
+there's more opportunities
+to actually lose
+
+385
+00:15:12,880 --> 00:15:13,780
+a piece of data and often
+
+386
+00:15:13,780 --> 00:15:14,899
+that means you lose
+the whole thing.
+
+387
+00:15:14,899 --> 00:15:17,599
+So maybe I think you're onto
+something there, right?
+
+388
+00:15:17,599 --> 00:15:20,100
+I think maybe it depends
+on the file format.
+
+389
+00:15:20,100 --> 00:15:22,559
+I think there's maybe another
+simpler answer why we
+
+390
+00:15:22,559 --> 00:15:25,720
+might want to have a small
+block size there right here.
+
+391
+00:15:30,690 --> 00:15:33,749
+You might be reading a lot
+of data you don't need.
+
+392
+00:15:33,749 --> 00:15:35,290
+Oh, that's an interesting point.
+
+393
+00:15:35,290 --> 00:15:38,330
+So I guess you're
+saying, like, Hey,
+
+394
+00:15:38,330 --> 00:15:39,830
+if you have this
+giant block of data,
+
+395
+00:15:39,830 --> 00:15:42,570
+but you're only using smart
+part of it, is that wasteful?
+
+396
+00:15:42,570 --> 00:15:43,869
+And they've actually
+optimized for
+
+397
+00:15:43,869 --> 00:15:45,349
+that because let's say,
+
+398
+00:15:45,349 --> 00:15:48,010
+the block size is
+like 64 megabytes.
+
+399
+00:15:48,010 --> 00:15:50,370
+Then whatever is at the block,
+
+400
+00:15:50,370 --> 00:15:53,269
+they're going to save it in
+a file a local file system.
+
+401
+00:15:53,269 --> 00:15:54,809
+And so if they're only
+
+402
+00:15:54,809 --> 00:15:57,150
+using 1 megabyte of
+that 64 gigabytes,
+
+403
+00:15:57,150 --> 00:15:58,845
+they will actually just
+create a 1 megabyte.
+
+404
+00:15:58,845 --> 00:16:01,559
+File. Interesting point,
+but they handle it.
+
+405
+00:16:01,559 --> 00:16:03,259
+So what I'm looking for is
+
+406
+00:16:03,259 --> 00:16:04,919
+actually this question
+of load balance.
+
+407
+00:16:04,919 --> 00:16:07,380
+We want to share work
+over the data nodes.
+
+408
+00:16:07,380 --> 00:16:08,739
+We don't have one
+data node that's
+
+409
+00:16:08,739 --> 00:16:10,979
+overloaded and others
+that are not, right?
+
+410
+00:16:10,979 --> 00:16:12,220
+If we just have
+these giant blocks,
+
+411
+00:16:12,220 --> 00:16:14,840
+and we're kind of putting a
+lot of data on a single node.
+
+412
+00:16:14,840 --> 00:16:16,159
+If we have a lot
+of smaller blocks,
+
+413
+00:16:16,159 --> 00:16:17,599
+we can spread the load more
+
+414
+00:16:17,599 --> 00:16:20,180
+evenly over many
+different nodes.
+
+415
+00:16:20,180 --> 00:16:21,680
+Anyway, there's a
+lot of factors here,
+
+416
+00:16:21,680 --> 00:16:22,999
+and I think that it
+would be good if
+
+417
+00:16:22,999 --> 00:16:24,759
+you if you're using HTFS,
+
+418
+00:16:24,759 --> 00:16:27,180
+identify performance
+problems or other issues
+
+419
+00:16:27,180 --> 00:16:30,360
+and then figure out how to
+tune these things accordingly.
+
+420
+00:16:30,360 --> 00:16:34,979
+Alright. So, we have a
+fault tolerance system.
+
+421
+00:16:34,979 --> 00:16:36,620
+We have a strategy
+of replication so we
+
+422
+00:16:36,620 --> 00:16:38,420
+can handle data nodes dying,
+
+423
+00:16:38,420 --> 00:16:40,559
+but we actually have to
+have some way of knowing if
+
+424
+00:16:40,559 --> 00:16:43,219
+a data node does die, right?
+I mean, if it's dead.
+
+425
+00:16:43,219 --> 00:16:44,519
+It's not going to
+announce that, hey,
+
+426
+00:16:44,519 --> 00:16:46,179
+I'm no longer helping.
+It's just Guan, right?
+
+427
+00:16:46,179 --> 00:16:48,239
+Its communicating. And so
+
+428
+00:16:48,239 --> 00:16:49,620
+the name node is going to
+
+429
+00:16:49,620 --> 00:16:50,719
+be the one that recognizes that.
+
+430
+00:16:50,719 --> 00:16:51,839
+And the strategy they use is
+
+431
+00:16:51,839 --> 00:16:53,020
+something a lot of systems use,
+
+432
+00:16:53,020 --> 00:16:54,260
+which is called a heartbeat.
+
+433
+00:16:54,260 --> 00:16:57,319
+So each of these systems will
+regularly send messages,
+
+434
+00:16:57,319 --> 00:16:58,519
+maybe like every 3 seconds or
+
+435
+00:16:58,519 --> 00:16:59,920
+something like that
+to the name node,
+
+436
+00:16:59,920 --> 00:17:01,200
+basically saying I'm still here.
+
+437
+00:17:01,200 --> 00:17:02,319
+They might say other information
+
+438
+00:17:02,319 --> 00:17:04,239
+like this is the
+data I have, right?
+
+439
+00:17:04,239 --> 00:17:05,319
+To make sure that that
+
+440
+00:17:05,319 --> 00:17:06,519
+agrees with what
+the name node has,
+
+441
+00:17:06,519 --> 00:17:08,445
+but they have these
+regular heartbeats.
+
+442
+00:17:08,445 --> 00:17:12,290
+And then if it doesn't see
+a heartbeat for a while,
+
+443
+00:17:12,290 --> 00:17:15,629
+what should we do with
+that data node, right?
+
+444
+00:17:15,710 --> 00:17:18,189
+One thing is that
+we won't do is we
+
+445
+00:17:18,189 --> 00:17:20,649
+probably won't try to
+write any new data on it.
+
+446
+00:17:20,649 --> 00:17:24,369
+Eventually, if I assume that
+data node is really lost,
+
+447
+00:17:24,369 --> 00:17:26,069
+then I want to figure out where
+
+448
+00:17:26,069 --> 00:17:27,909
+other copies are of
+the data that it
+
+449
+00:17:27,909 --> 00:17:32,390
+had and add extra replicas
+of that somewhere else.
+
+450
+00:17:32,390 --> 00:17:33,930
+Right? If I can have
+three replicas,
+
+451
+00:17:33,930 --> 00:17:34,610
+and one of them dies,
+
+452
+00:17:34,610 --> 00:17:36,210
+then for a while, I
+have two replicas.
+
+453
+00:17:36,210 --> 00:17:38,609
+I eventually want to get
+back to three, right?
+
+454
+00:17:38,609 --> 00:17:39,789
+And so what the name node will
+
+455
+00:17:39,789 --> 00:17:41,269
+actually do is we'll
+keep track of these,
+
+456
+00:17:41,269 --> 00:17:43,014
+and I'll see how
+long has it been?
+
+457
+00:17:43,014 --> 00:17:44,740
+Since I had a heartbeat.
+
+458
+00:17:44,740 --> 00:17:45,980
+And then try to
+based on how long
+
+459
+00:17:45,980 --> 00:17:47,360
+it expended it can
+do different things.
+
+460
+00:17:47,360 --> 00:17:48,819
+At some point, it's
+going to be state and
+
+461
+00:17:48,819 --> 00:17:50,520
+it's not t to be
+writing new data there.
+
+462
+00:17:50,520 --> 00:17:52,060
+Eventually, it will
+be considered dead,
+
+463
+00:17:52,060 --> 00:17:53,299
+and then it will
+say, Okay, we have
+
+464
+00:17:53,299 --> 00:17:54,819
+to recover this data elsewhere.
+
+465
+00:17:54,819 --> 00:17:56,419
+You don't want to be too
+aggressive about that
+
+466
+00:17:56,419 --> 00:17:58,599
+because maybe the Data
+node had some updates,
+
+467
+00:17:58,599 --> 00:18:00,579
+maybe, like, the machine
+is just rebooting, right?
+
+468
+00:18:00,579 --> 00:18:02,900
+Maybe it's trying to
+come back. But also,
+
+469
+00:18:02,900 --> 00:18:04,200
+if you wait too long,
+
+470
+00:18:04,200 --> 00:18:06,099
+then maybe you're going to
+in this stable position.
+
+471
+00:18:06,099 --> 00:18:08,320
+I have a three times
+replicated file
+
+472
+00:18:08,320 --> 00:18:10,700
+that is only two times
+replicated for a while.
+
+473
+00:18:10,700 --> 00:18:12,920
+So it's star matter for
+you for the project
+
+474
+00:18:12,920 --> 00:18:14,099
+because one of the things
+you're going to do on
+
+475
+00:18:14,099 --> 00:18:15,839
+the project is you'll
+have your little cluster,
+
+476
+00:18:15,839 --> 00:18:19,379
+and you're going to manually
+kill one of the data nodes,
+
+477
+00:18:19,379 --> 00:18:20,839
+and you see like, Okay,
+
+478
+00:18:20,839 --> 00:18:22,420
+after it's detected as dead,
+
+479
+00:18:22,420 --> 00:18:25,459
+I can still access the data
+that was on it, right?
+
+480
+00:18:25,459 --> 00:18:27,179
+So actually two of those
+things very low for
+
+481
+00:18:27,179 --> 00:18:28,920
+the project because we want
+to see it happen fast,
+
+482
+00:18:28,920 --> 00:18:30,039
+but, you know, normally,
+
+483
+00:18:30,039 --> 00:18:31,199
+it might take like hours or
+
+484
+00:18:31,199 --> 00:18:32,399
+something before we
+say, like, Okay,
+
+485
+00:18:32,399 --> 00:18:36,179
+this dta note is no
+longer part of it, right?
+
+486
+00:18:36,290 --> 00:18:38,870
+All right, so there
+are some key ideas
+
+487
+00:18:38,870 --> 00:18:40,309
+I show up with HTFS.
+
+488
+00:18:40,309 --> 00:18:41,930
+I just want to recap these
+
+489
+00:18:41,930 --> 00:18:43,729
+because you might be
+working with other systems.
+
+490
+00:18:43,729 --> 00:18:45,969
+These are going to
+show up in general.
+
+491
+00:18:45,969 --> 00:18:48,409
+When we're building
+complex systems,
+
+492
+00:18:48,409 --> 00:18:51,549
+we generally want to compose
+them in layers, right?
+
+493
+00:18:51,549 --> 00:18:52,709
+So what are some of
+the layers here?
+
+494
+00:18:52,709 --> 00:18:53,789
+I guess on the very bottom,
+
+495
+00:18:53,789 --> 00:18:55,529
+we have block devices.
+
+496
+00:18:55,529 --> 00:18:58,830
+On top of that, we have
+local file systems.
+
+497
+00:18:58,830 --> 00:18:59,569
+Right on top of that,
+
+498
+00:18:59,569 --> 00:19:01,289
+we have these data nodes,
+and kind of on top of that,
+
+499
+00:19:01,289 --> 00:19:02,790
+we have this view of the data
+
+500
+00:19:02,790 --> 00:19:04,249
+across all all the
+data nodes, right?
+
+501
+00:19:04,249 --> 00:19:06,410
+I helps us decompose
+the complexity into
+
+502
+00:19:06,410 --> 00:19:08,269
+these manageable pieces
+instead of building
+
+503
+00:19:08,269 --> 00:19:11,169
+one giant complex thing.
+
+504
+00:19:11,169 --> 00:19:13,450
+We're trying to scale
+too many nodes.
+
+505
+00:19:13,450 --> 00:19:14,669
+And the key strategy there is
+
+506
+00:19:14,669 --> 00:19:16,069
+we had to partition
+our data, right?
+
+507
+00:19:16,069 --> 00:19:19,489
+We partition into these
+blocks. To handle faults.
+
+508
+00:19:19,489 --> 00:19:20,909
+So like a machine dying,
+
+509
+00:19:20,909 --> 00:19:22,929
+we had to replicate our data.
+
+510
+00:19:22,929 --> 00:19:25,630
+You have to have some way if
+you want to handle faults,
+
+511
+00:19:25,630 --> 00:19:27,709
+you also have to identify
+when it happened.
+
+512
+00:19:27,709 --> 00:19:29,290
+The strategy here is heartbeats.
+
+513
+00:19:29,290 --> 00:19:31,310
+That's a common strategy.
+And then finally,
+
+514
+00:19:31,310 --> 00:19:33,409
+to optimize writing,
+it's good to try to
+
+515
+00:19:33,409 --> 00:19:35,509
+split up that work if you
+can by pipelining, right?
+
+516
+00:19:35,509 --> 00:19:36,869
+So a lot of general idea is
+
+517
+00:19:36,869 --> 00:19:38,670
+that even if you
+aren't using HDFS,
+
+518
+00:19:38,670 --> 00:19:41,150
+you might see these and
+other other systems.
+
+519
+00:19:41,150 --> 00:19:42,550
+Alright, cool.
+
+520
+00:19:42,550 --> 00:19:43,829
+Any conceptual questions about
+
+521
+00:19:43,829 --> 00:19:46,809
+HDFS before we move
+into hands on.
+
+522
+00:19:46,809 --> 00:19:54,339
+Yeah, right here. Yeah.
+
+523
+00:19:54,339 --> 00:19:56,520
+Is there an overhead to
+send you the heartbeats?
+
+524
+00:19:56,520 --> 00:19:58,579
+Yeah, I mean, some, right?
+
+525
+00:19:58,579 --> 00:20:00,299
+You can kind of tune
+how often it is.
+
+526
+00:20:00,299 --> 00:20:02,439
+I mean, I think, if you have
+
+527
+00:20:02,439 --> 00:20:04,860
+it like every 3 seconds or so
+and you have a few hundred,
+
+528
+00:20:04,860 --> 00:20:07,060
+it's probably not a big deal.
+
+529
+00:20:07,060 --> 00:20:09,000
+So there's some other things
+
+530
+00:20:09,000 --> 00:20:10,619
+they do there that
+are useful as well.
+
+531
+00:20:10,619 --> 00:20:12,279
+So, there's some overhead,
+
+532
+00:20:12,279 --> 00:20:13,699
+but you kind of have to, right?
+
+533
+00:20:13,699 --> 00:20:16,299
+You spend some
+resources to detect
+
+534
+00:20:16,299 --> 00:20:18,349
+failures or Like
+another useful thing
+
+535
+00:20:18,349 --> 00:20:19,769
+they do there is where
+they send the heartbeat,
+
+536
+00:20:19,769 --> 00:20:20,990
+they send something
+called a block
+
+537
+00:20:20,990 --> 00:20:22,230
+report as well and that says,
+
+538
+00:20:22,230 --> 00:20:23,729
+these are all the blocks I have,
+
+539
+00:20:23,729 --> 00:20:25,910
+and that could help us
+handle all kinds of faults.
+
+540
+00:20:25,910 --> 00:20:27,189
+So, for example, if one of
+
+541
+00:20:27,189 --> 00:20:28,710
+these machines has
+like ten hard drives,
+
+542
+00:20:28,710 --> 00:20:30,669
+the data Node is managing
+these ten hard drives,
+
+543
+00:20:30,669 --> 00:20:32,050
+and what hard drive dies,
+
+544
+00:20:32,050 --> 00:20:33,369
+we're still sending
+that heartbeat,
+
+545
+00:20:33,369 --> 00:20:35,069
+but then we might
+also say, like,
+
+546
+00:20:35,069 --> 00:20:37,329
+Oh, I used to have
+all these blocks.
+
+547
+00:20:37,329 --> 00:20:38,949
+I just what I don't
+have them anymore.
+
+548
+00:20:38,949 --> 00:20:40,809
+And so you could be
+in a situation where
+
+549
+00:20:40,809 --> 00:20:42,150
+the name node and the data node
+
+550
+00:20:42,150 --> 00:20:43,709
+disagree about what
+data they have.
+
+551
+00:20:43,709 --> 00:20:45,469
+And the data note is right.
+
+552
+00:20:45,469 --> 00:20:46,970
+The data note says, I
+don't have this data,
+
+553
+00:20:46,970 --> 00:20:48,529
+well, then the data
+note doesn't have it.
+
+554
+00:20:48,529 --> 00:20:49,610
+And so there's kind
+
+555
+00:20:49,610 --> 00:20:51,489
+of yeah there's some
+overhead, but, like,
+
+556
+00:20:51,489 --> 00:20:52,929
+lots of things problems get
+
+557
+00:20:52,929 --> 00:20:55,044
+solved by just having
+regular communication.
+
+558
+00:20:55,044 --> 00:20:56,400
+Yep. Yeah, great question.
+
+559
+00:20:56,400 --> 00:20:57,979
+Yeah all questions.
+Yeah right here.
+
+560
+00:20:57,979 --> 00:21:08,319
+Data Yeah,
+
+561
+00:21:08,319 --> 00:21:11,800
+would you say is it
+automatically re generated?
+
+562
+00:21:11,800 --> 00:21:14,179
+I mean, you saying is there like
+
+563
+00:21:14,179 --> 00:21:15,240
+another machine that gets
+
+564
+00:21:15,240 --> 00:21:16,840
+added or you mean like the data?
+
+565
+00:21:16,840 --> 00:21:18,499
+Are you talking about would
+you say regenerate talk
+
+566
+00:21:18,499 --> 00:21:20,920
+about like the data
+or the data node?
+
+567
+00:21:20,920 --> 00:21:25,799
+I guess Yeah. What
+
+568
+00:21:25,799 --> 00:21:28,019
+A. Yeah.
+
+569
+00:21:28,019 --> 00:21:29,339
+So if a data node fails,
+
+570
+00:21:29,339 --> 00:21:31,179
+then after some amount of time,
+
+571
+00:21:31,179 --> 00:21:32,940
+the name node will
+realize it's dead.
+
+572
+00:21:32,940 --> 00:21:35,400
+And the name node will
+then realize that, Oh,
+
+573
+00:21:35,400 --> 00:21:37,640
+this file is supposed to be
+have three times replication,
+
+574
+00:21:37,640 --> 00:21:39,340
+I only has two
+times replication.
+
+575
+00:21:39,340 --> 00:21:40,579
+And so it'll ask one of
+
+576
+00:21:40,579 --> 00:21:42,560
+the data nodes that
+still has the data,
+
+577
+00:21:42,560 --> 00:21:44,379
+send it to this other one.
+
+578
+00:21:44,379 --> 00:21:47,080
+So it'll find a new
+home for the data.
+
+579
+00:21:47,080 --> 00:21:48,980
+Eventually, right, a human
+
+580
+00:21:48,980 --> 00:21:50,879
+might come along and
+realize, like, Oh, like,
+
+581
+00:21:50,879 --> 00:21:52,639
+this machine is dead forever,
+
+582
+00:21:52,639 --> 00:21:54,019
+and they might actually install
+
+583
+00:21:54,019 --> 00:21:55,520
+some new hardware or set
+
+584
+00:21:55,520 --> 00:21:57,139
+up a new virtual machine
+or something like that.
+
+585
+00:21:57,139 --> 00:21:59,359
+That would probably
+involve human invention
+
+586
+00:21:59,359 --> 00:22:01,480
+to kind of add machines.
+
+587
+00:22:01,480 --> 00:22:03,459
+And failures isn't the only
+reason you do that. Right?
+
+588
+00:22:03,459 --> 00:22:04,759
+As the data grows,
+you might want
+
+589
+00:22:04,759 --> 00:22:06,479
+to just add more
+machines over time.
+
+590
+00:22:06,479 --> 00:22:08,119
+To deal with it,
+right? So, you know,
+
+591
+00:22:08,119 --> 00:22:09,759
+you're usually adding
+some machines over time.
+
+592
+00:22:09,759 --> 00:22:12,360
+So machines might be
+leaving because they die,
+
+593
+00:22:12,360 --> 00:22:13,940
+and then the name
+note is making sure
+
+594
+00:22:13,940 --> 00:22:15,839
+that we in the long term,
+
+595
+00:22:15,839 --> 00:22:17,579
+maintain our goals
+with regard to
+
+596
+00:22:17,579 --> 00:22:19,400
+replication factors.
+That makes sense?
+
+597
+00:22:19,400 --> 00:22:20,360
+Yeah, great question.
+
+598
+00:22:20,360 --> 00:22:22,139
+Yeah, all the
+questions people have.
+
+599
+00:22:22,139 --> 00:22:25,039
+All the interesting
+stuff is around, like,
+
+600
+00:22:25,039 --> 00:22:26,719
+what happens when
+something breaks,
+
+601
+00:22:26,719 --> 00:22:27,660
+when something goes wrong.
+
+602
+00:22:27,660 --> 00:22:29,720
+That's a lot of distributed
+systems because those things
+
+603
+00:22:29,720 --> 00:22:32,619
+happen more often. Alright.
+
+604
+00:22:32,619 --> 00:22:38,279
+Cool. So head over
+here to my terminal.
+
+605
+00:22:38,279 --> 00:22:40,999
+And actually, I have some
+stuff in the repo here,
+
+606
+00:22:40,999 --> 00:22:42,599
+which is checked out.
+
+607
+00:22:42,599 --> 00:22:46,240
+And so there is a link here.
+
+608
+00:22:46,240 --> 00:22:49,319
+So you could fan that as
+well if you wanted to.
+
+609
+00:22:49,319 --> 00:22:51,580
+When I'm over here,
+I have a couple
+
+610
+00:22:51,580 --> 00:22:56,679
+HDFS and notebook Docker files
+to set up my environment.
+
+611
+00:22:56,679 --> 00:22:58,159
+I'll just look at
+the first one, which
+
+612
+00:22:58,159 --> 00:22:59,599
+is HDFS docker file.
+
+613
+00:22:59,599 --> 00:23:00,500
+You're going to
+start your project
+
+614
+00:23:00,500 --> 00:23:02,059
+from something very similar.
+
+615
+00:23:02,059 --> 00:23:04,960
+You can see that I'm
+downloading Hadoop.
+
+616
+00:23:04,960 --> 00:23:08,440
+It's just this pressed tar file.
+
+617
+00:23:08,440 --> 00:23:10,779
+I'm extracting it, so
+
+618
+00:23:10,779 --> 00:23:13,259
+that's really like the whole
+install for Hadoop, right?
+
+619
+00:23:13,259 --> 00:23:15,959
+You just download it and
+you extract it somewhere.
+
+620
+00:23:15,959 --> 00:23:18,260
+Hadoop is written in Java.
+
+621
+00:23:18,260 --> 00:23:20,119
+And so there's some Java
+stuff I have to do, like,
+
+622
+00:23:20,119 --> 00:23:24,140
+I have to install install
+the Java virtual machine.
+
+623
+00:23:24,140 --> 00:23:25,800
+I have to set up
+some environment
+
+624
+00:23:25,800 --> 00:23:28,339
+variable stuff with
+regards to that.
+
+625
+00:23:28,339 --> 00:23:29,800
+So I won't get into
+too much detail.
+
+626
+00:23:29,800 --> 00:23:30,900
+It's not super interesting.
+
+627
+00:23:30,900 --> 00:23:34,879
+Anyway, that's how I get Hadoop
+installed on the system.
+
+628
+00:23:34,879 --> 00:23:38,459
+And so the first command
+up here builds that,
+
+629
+00:23:38,459 --> 00:23:42,139
+and so I'm going to
+build HDFS like that.
+
+630
+00:23:42,139 --> 00:23:46,320
+I tagged it as P four HDFS.
+
+631
+00:23:46,320 --> 00:23:49,400
+And I'm going to look at
+the other docker file now,
+
+632
+00:23:49,400 --> 00:23:52,169
+which is for a notebook.
+
+633
+00:23:52,169 --> 00:23:53,720
+And I actually start
+
+634
+00:23:53,720 --> 00:23:55,899
+my notebook from the
+image I created.
+
+635
+00:23:55,899 --> 00:23:57,439
+This is the first time that
+you're kind of seeing that
+
+636
+00:23:57,439 --> 00:23:59,859
+you use a Docker file
+to build an image,
+
+637
+00:23:59,859 --> 00:24:01,900
+and then you use
+another docker file
+
+638
+00:24:01,900 --> 00:24:03,659
+to build a second image
+based on your first one.
+
+639
+00:24:03,659 --> 00:24:05,960
+So I want to call it out
+that's a little bit unique.
+
+640
+00:24:05,960 --> 00:24:07,580
+And you're going to be
+doing that on the project.
+
+641
+00:24:07,580 --> 00:24:08,659
+Why do I do that?
+
+642
+00:24:08,659 --> 00:24:09,900
+Because when we
+have the notebook,
+
+643
+00:24:09,900 --> 00:24:11,240
+we want to have an HHS client
+
+644
+00:24:11,240 --> 00:24:12,580
+there so we can
+actually read our data.
+
+645
+00:24:12,580 --> 00:24:13,679
+I'm intelling all the stuff like
+
+646
+00:24:13,679 --> 00:24:16,299
+Jupiter lab and whatever.
+
+647
+00:24:16,390 --> 00:24:19,429
+To do some class path stuff,
+
+648
+00:24:19,429 --> 00:24:22,389
+tr some JBM thing
+to tell it like,
+
+649
+00:24:22,389 --> 00:24:24,349
+Okay, here's where
+you find these jars.
+
+650
+00:24:24,349 --> 00:24:26,830
+A lot of Java stuff is
+bundled up in jars.
+
+651
+00:24:26,830 --> 00:24:28,369
+Here's how you find
+these jars related to
+
+652
+00:24:28,369 --> 00:24:30,870
+the Hadu client so that
+everything just works.
+
+653
+00:24:30,870 --> 00:24:32,209
+Anyway, it's starting up
+
+654
+00:24:32,209 --> 00:24:33,589
+Jupiter lab and where
+we're going to have that
+
+655
+00:24:33,589 --> 00:24:36,190
+in our environment.
+Alright, cool.
+
+656
+00:24:36,190 --> 00:24:38,430
+I'm going to take a look at
+the doctor Compose file.
+
+657
+00:24:38,430 --> 00:24:40,309
+And this is a little bit simpler
+
+658
+00:24:40,309 --> 00:24:42,449
+than what you're going
+to have for the project.
+
+659
+00:24:42,449 --> 00:24:43,729
+I I want to do something like
+
+660
+00:24:43,729 --> 00:24:45,050
+similar to the project,
+so you get the ideas,
+
+661
+00:24:45,050 --> 00:24:46,449
+but I don't want to do
+exactly the same thing,
+
+662
+00:24:46,449 --> 00:24:48,009
+so you have to
+think a little bit
+
+663
+00:24:48,009 --> 00:24:50,029
+about how things are
+working as well.
+
+664
+00:24:50,029 --> 00:24:53,050
+In my environment, I'm
+going to have two services,
+
+665
+00:24:53,050 --> 00:24:54,569
+each with one replication.
+
+666
+00:24:54,569 --> 00:24:57,049
+So I'm going to have a
+notebook and then HDFS.
+
+667
+00:24:57,049 --> 00:24:58,709
+And so I don't have
+
+668
+00:24:58,709 --> 00:25:01,269
+any replication here I'm try
+to one container with HDFS.
+
+669
+00:25:01,269 --> 00:25:03,109
+And so for me, and
+my environment,
+
+670
+00:25:03,109 --> 00:25:04,370
+inside of that
+container may start
+
+671
+00:25:04,370 --> 00:25:06,050
+both the name node
+and the data node
+
+672
+00:25:06,050 --> 00:25:07,249
+together in the same container.
+
+673
+00:25:07,249 --> 00:25:08,789
+You're going to do something
+a little more interesting.
+
+674
+00:25:08,789 --> 00:25:09,970
+You're going to
+have the name node
+
+675
+00:25:09,970 --> 00:25:11,469
+and one container and
+you're going to have,
+
+676
+00:25:11,469 --> 00:25:13,669
+maybe like two or
+three data nodes
+
+677
+00:25:13,669 --> 00:25:15,289
+and separate containers that
+
+678
+00:25:15,289 --> 00:25:16,229
+are going to be talking to it.
+
+679
+00:25:16,229 --> 00:25:18,424
+And then you'll also
+have this notebook.
+
+680
+00:25:18,424 --> 00:25:20,719
+Alright, I have some
+memory limits here
+
+681
+00:25:20,719 --> 00:25:22,720
+and I have 2 gigabytes
+for each of them.
+
+682
+00:25:22,720 --> 00:25:24,399
+And if you go back here,
+
+683
+00:25:24,399 --> 00:25:26,319
+you actually notice that I'm on
+
+684
+00:25:26,319 --> 00:25:28,760
+a machine with more
+resources now.
+
+685
+00:25:28,760 --> 00:25:31,220
+And indeed, if you
+come to P four,
+
+686
+00:25:31,220 --> 00:25:32,519
+which is not
+released yet, right?
+
+687
+00:25:32,519 --> 00:25:34,400
+It says draft at the top.
+
+688
+00:25:34,400 --> 00:25:36,999
+But if I come down to
+the general directions,
+
+689
+00:25:36,999 --> 00:25:41,660
+I added some details here
+under the budget plan.
+
+690
+00:25:42,120 --> 00:25:47,419
+You should spend $11 of your
+free credit on this project.
+
+691
+00:25:47,419 --> 00:25:48,939
+You need a little
+bit more memory
+
+692
+00:25:48,939 --> 00:25:49,759
+than we have previously.
+
+693
+00:25:49,759 --> 00:25:52,920
+So we've been previously
+using two small instances.
+
+694
+00:25:52,920 --> 00:25:55,320
+Now we're going to do e
+two medium. I apologize.
+
+695
+00:25:55,320 --> 00:25:56,739
+It's going to be a little
+annoying because you have to
+
+696
+00:25:56,739 --> 00:25:58,380
+create a new virtual
+machine and tell
+
+697
+00:25:58,380 --> 00:26:00,099
+your old one and then reinstall
+
+698
+00:26:00,099 --> 00:26:02,539
+the stuff we did in Project
+one L Docker and all that.
+
+699
+00:26:02,539 --> 00:26:05,594
+Don't worry, you're just
+going to fast at it.
+
+700
+00:26:05,594 --> 00:26:07,669
+You know, we have
+some other projects,
+
+701
+00:26:07,669 --> 00:26:09,350
+so we're some new hardware
+
+702
+00:26:09,350 --> 00:26:11,609
+that we're going to use
+for the next few projects.
+
+703
+00:26:11,609 --> 00:26:12,810
+We're going to have
+some more resources
+
+704
+00:26:12,810 --> 00:26:13,910
+and we get on the VMs,
+
+705
+00:26:13,910 --> 00:26:15,249
+and we've been
+experimenting with that.
+
+706
+00:26:15,249 --> 00:26:17,029
+But there's just like
+some weird stuff like,
+
+707
+00:26:17,029 --> 00:26:19,089
+you know, hardware failures
+happening over the weekend.
+
+708
+00:26:19,089 --> 00:26:20,889
+So I thought we would
+do P four on that,
+
+709
+00:26:20,889 --> 00:26:23,029
+but probably P five, I
+think is more realistic.
+
+710
+00:26:23,029 --> 00:26:24,409
+Anyway, keep you updated.
+
+711
+00:26:24,409 --> 00:26:25,809
+This should still keep us within
+
+712
+00:26:25,809 --> 00:26:27,669
+our free credits
+because you have $50.
+
+713
+00:26:27,669 --> 00:26:30,109
+So anyway, go
+create that new VM,
+
+714
+00:26:30,109 --> 00:26:33,229
+D P four on just a bigger VM,
+
+715
+00:26:33,229 --> 00:26:34,370
+and then, hopefully we're
+
+716
+00:26:34,370 --> 00:26:36,669
+ready to go to the
+new hardware soon.
+
+717
+00:26:36,810 --> 00:26:41,690
+Great. So I can do a
+Docker compose up now,
+
+718
+00:26:41,690 --> 00:26:43,350
+and I'm just trying to do
+that in the background,
+
+719
+00:26:43,350 --> 00:26:45,370
+and that will start
+my two containers.
+
+720
+00:26:45,370 --> 00:26:47,990
+If I say Docker, PS, I
+can see them running.
+
+721
+00:26:47,990 --> 00:26:50,029
+What I want to do is I just
+want to jump inside the
+
+722
+00:26:50,029 --> 00:26:52,110
+HDFS one so I can
+show you around.
+
+723
+00:26:52,110 --> 00:26:54,550
+So I'm going to
+say Docker Exact,
+
+724
+00:26:54,550 --> 00:26:57,809
+and that would,
+and I want to get
+
+725
+00:26:57,809 --> 00:27:01,709
+a bash session
+there. Alright, Col.
+
+726
+00:27:01,709 --> 00:27:04,510
+So here I am. I'm inside
+of this container,
+
+727
+00:27:04,510 --> 00:27:07,029
+and we can see like
+this is where we
+
+728
+00:27:07,029 --> 00:27:09,369
+extracted all of
+that Hadoop stuff.
+
+729
+00:27:09,369 --> 00:27:11,149
+There's actually
+a Hadoop command.
+
+730
+00:27:11,149 --> 00:27:12,429
+If I say which, I can see where
+
+731
+00:27:12,429 --> 00:27:13,749
+it is that was under here.
+
+732
+00:27:13,749 --> 00:27:15,849
+I added this to my path
+so that I could just
+
+733
+00:27:15,849 --> 00:27:18,609
+run the HDFS command
+anywhere, right?
+
+734
+00:27:18,609 --> 00:27:19,950
+So there's a few ways
+
+735
+00:27:19,950 --> 00:27:21,530
+I want to be able to
+interact with HS.
+
+736
+00:27:21,530 --> 00:27:22,729
+I want to be able
+to interact with it
+
+737
+00:27:22,729 --> 00:27:23,930
+like from the command line,
+
+738
+00:27:23,930 --> 00:27:25,429
+like topping around files,
+
+739
+00:27:25,429 --> 00:27:26,669
+viewing files, that
+sort of thing.
+
+740
+00:27:26,669 --> 00:27:28,290
+And I also want to
+be able to write
+
+741
+00:27:28,290 --> 00:27:30,750
+Python code that
+interacts with HDFS.
+
+742
+00:27:30,750 --> 00:27:32,049
+So I start with the
+first part from
+
+743
+00:27:32,049 --> 00:27:34,149
+the command line perspective.
+
+744
+00:27:34,149 --> 00:27:37,635
+And so if I just run HDFS,
+
+745
+00:27:37,635 --> 00:27:40,039
+I actually see just like Docker,
+
+746
+00:27:40,039 --> 00:27:43,259
+it's a collection of a lot
+of a lot of different tools.
+
+747
+00:27:43,259 --> 00:27:46,719
+And we just learn the
+tip of the iceberg here.
+
+748
+00:27:46,719 --> 00:27:48,899
+There's a few things
+that I want you to know.
+
+749
+00:27:48,899 --> 00:27:50,479
+Under these demon commands,
+
+750
+00:27:50,479 --> 00:27:52,079
+we can start up different
+kinds of nodes, right?
+
+751
+00:27:52,079 --> 00:27:54,620
+We can start either like a
+data node or a name node.
+
+752
+00:27:54,620 --> 00:27:58,579
+So you'd be aa data do commands
+to start those things up.
+
+753
+00:27:58,579 --> 00:28:01,640
+You are going to be using DFS.
+
+754
+00:28:01,640 --> 00:28:04,039
+DFS stands for a
+distributed file system.
+
+755
+00:28:04,039 --> 00:28:06,559
+And so there's a bunch of
+DFS commands you could do to
+
+756
+00:28:06,559 --> 00:28:09,789
+view a file or upload a
+file or stuff like that.
+
+757
+00:28:09,789 --> 00:28:12,579
+Up a little bit more, there's
+this DFS admin thing.
+
+758
+00:28:12,579 --> 00:28:14,239
+You are going to
+be using that to
+
+759
+00:28:14,239 --> 00:28:15,879
+get reports and see like, Oh,
+
+760
+00:28:15,879 --> 00:28:17,599
+a data note is dead, or this
+
+761
+00:28:17,599 --> 00:28:20,599
+files under replicated,
+that type of thing.
+
+762
+00:28:20,599 --> 00:28:22,559
+Alright. So the first
+thing I want to do is I
+
+763
+00:28:22,559 --> 00:28:24,259
+want to do the dam Node command,
+
+764
+00:28:24,259 --> 00:28:25,459
+and I can get some help with
+
+765
+00:28:25,459 --> 00:28:27,409
+it. Right? So I could do that.
+
+766
+00:28:27,409 --> 00:28:30,510
+Astra, tell me all these
+different options I could use.
+
+767
+00:28:30,510 --> 00:28:33,270
+And if I don't do any of these,
+
+768
+00:28:33,270 --> 00:28:34,769
+then stray trying to do is
+
+769
+00:28:34,769 --> 00:28:36,470
+ist to try to start
+a new name node,
+
+770
+00:28:36,470 --> 00:28:38,250
+and that should fail.
+
+771
+00:28:38,250 --> 00:28:40,729
+And the reason why is that
+
+772
+00:28:40,729 --> 00:28:43,270
+I haven't actually
+formatted it yet.
+
+773
+00:28:43,270 --> 00:28:46,889
+And so if I went back
+to the help earlier,
+
+774
+00:28:46,889 --> 00:28:49,050
+when I see I have
+to do format first.
+
+775
+00:28:49,050 --> 00:28:50,230
+We talked about formatting
+
+776
+00:28:50,230 --> 00:28:51,950
+for local file
+systems formatting,
+
+777
+00:28:51,950 --> 00:28:53,589
+is something you do before you
+
+778
+00:28:53,589 --> 00:28:55,509
+start creating and
+using a file system.
+
+779
+00:28:55,509 --> 00:28:57,930
+You have to create some
+initial data structures
+
+780
+00:28:57,930 --> 00:28:59,670
+usually somewhere on desk.
+
+781
+00:28:59,670 --> 00:29:02,415
+And so I have to do
+the format first.
+
+782
+00:29:02,415 --> 00:29:05,480
+And that's creating
+some stuff there,
+
+783
+00:29:05,480 --> 00:29:08,019
+and I could row look at
+that if I wanted to, right?
+
+784
+00:29:08,019 --> 00:29:09,619
+Maybe some files for
+
+785
+00:29:09,619 --> 00:29:11,759
+different metadata that
+the Dabot keeps track of.
+
+786
+00:29:11,759 --> 00:29:12,979
+It's starting off just epti.
+
+787
+00:29:12,979 --> 00:29:14,360
+I won't worry about it too much.
+
+788
+00:29:14,360 --> 00:29:16,099
+But after that, if I wanted to,
+
+789
+00:29:16,099 --> 00:29:17,560
+I could start the Dabote.
+
+790
+00:29:17,560 --> 00:29:19,339
+It's all formed doo.
+I can spit it up.
+
+791
+00:29:19,339 --> 00:29:22,020
+It will be running.
+That's not good.
+
+792
+00:29:22,020 --> 00:29:23,879
+I think the thing I have
+to tell it as well,
+
+793
+00:29:23,879 --> 00:29:25,620
+is it's going to be a
+server and I have to tell
+
+794
+00:29:25,620 --> 00:29:28,069
+it what server is it?
+
+795
+00:29:28,069 --> 00:29:30,990
+And so I will have the
+name and then the port.
+
+796
+00:29:30,990 --> 00:29:34,229
+And the port just
+traditionally is 9,000.
+
+797
+00:29:34,229 --> 00:29:37,109
+And the name should be the
+same as my host's name, right?
+
+798
+00:29:37,109 --> 00:29:39,270
+I'm to say what is my
+host's name. It's made.
+
+799
+00:29:39,270 --> 00:29:42,370
+That's basically came
+from my Docker container.
+
+800
+00:29:42,370 --> 00:29:47,309
+And so I'm gonna call
+it made here, right?
+
+801
+00:29:47,309 --> 00:29:49,229
+Alright, C. So do that,
+
+802
+00:29:49,229 --> 00:29:52,149
+I can what's stow
+it out here, right?
+
+803
+00:29:52,149 --> 00:29:56,189
+I think I actually have to
+say Dave note over here.
+
+804
+00:29:56,189 --> 00:29:58,229
+I think I got my order.
+
+805
+00:29:58,229 --> 00:30:01,089
+Raw, great. Astraa spit it up.
+
+806
+00:30:01,089 --> 00:30:03,229
+Atraa start listening.
+
+807
+00:30:03,730 --> 00:30:10,050
+You may remember what RPC
+stands for? Yeah, go ahead.
+
+808
+00:30:10,050 --> 00:30:11,909
+Remote procedure call, right?
+
+809
+00:30:11,909 --> 00:30:13,389
+So a lot of suff
+we've learned, right?
+
+810
+00:30:13,389 --> 00:30:15,969
+This is just how systems
+communicate with each other.
+
+811
+00:30:15,969 --> 00:30:17,649
+And so that's helpful
+
+812
+00:30:17,649 --> 00:30:19,009
+that we had all those
+building blocks.
+
+813
+00:30:19,009 --> 00:30:20,389
+Okay, so what I want to do is I
+
+814
+00:30:20,389 --> 00:30:21,890
+want to run this
+in the background.
+
+815
+00:30:21,890 --> 00:30:24,110
+So I'd to do that. But it's
+running in the pack ground,
+
+816
+00:30:24,110 --> 00:30:26,369
+I probably want to collect
+the log somewhere.
+
+817
+00:30:26,369 --> 00:30:27,929
+So I'd put both standard out
+
+818
+00:30:27,929 --> 00:30:31,130
+and standard error to some file.
+
+819
+00:30:31,130 --> 00:30:32,970
+I'll call it just name text.
+
+820
+00:30:32,970 --> 00:30:35,570
+It be up and running.
+That's straight.
+
+821
+00:30:35,570 --> 00:30:37,029
+If I want to, I could follow
+
+822
+00:30:37,029 --> 00:30:40,464
+that file and see what
+it's doing, right?
+
+823
+00:30:40,464 --> 00:30:42,760
+So I will exit that. Okay, cool.
+
+824
+00:30:42,760 --> 00:30:44,239
+So I have the name node up
+
+825
+00:30:44,239 --> 00:30:46,120
+and running. That's
+all fighted, well.
+
+826
+00:30:46,120 --> 00:30:49,160
+If I wanted to, I could run
+the socket statistics tool,
+
+827
+00:30:49,160 --> 00:30:52,379
+and I could see that it's
+listed at port 9,000,
+
+828
+00:30:52,379 --> 00:30:54,059
+like I chose for it to do.
+
+829
+00:30:54,059 --> 00:30:57,400
+And then I also see it's
+on this other port,
+
+830
+00:30:57,400 --> 00:30:59,920
+which is 987 oh.
+
+831
+00:31:00,520 --> 00:31:03,379
+It's t for this web HDFS thing,
+
+832
+00:31:03,379 --> 00:31:06,959
+so it's it's HDFS over HTDP.
+
+833
+00:31:06,959 --> 00:31:08,739
+And so we're be
+using that when we
+
+834
+00:31:08,739 --> 00:31:11,219
+want to access it from
+some of the Python code.
+
+835
+00:31:11,219 --> 00:31:14,139
+It would be using this
+one if we were using like
+
+836
+00:31:14,139 --> 00:31:15,739
+some Java stuff
+that's using like
+
+837
+00:31:15,739 --> 00:31:18,215
+the standard libraries for Hadu.
+
+838
+00:31:18,215 --> 00:31:21,249
+Anyway, you're be using both
+of those on your project.
+
+839
+00:31:21,249 --> 00:31:22,609
+And so I have that all been
+
+840
+00:31:22,609 --> 00:31:25,090
+running well. I could
+do other things now.
+
+841
+00:31:25,090 --> 00:31:27,970
+Like if I do HDFS DFS Ad BID,
+
+842
+00:31:27,970 --> 00:31:30,490
+there's a bunch of
+different tools
+
+843
+00:31:30,490 --> 00:31:33,349
+related to that that
+I could use, right?
+
+844
+00:31:33,349 --> 00:31:35,489
+So I could I don't know,
+trigger block report,
+
+845
+00:31:35,489 --> 00:31:36,929
+surg data Dot info.
+
+846
+00:31:36,929 --> 00:31:38,669
+Lot of different
+things I could do.
+
+847
+00:31:38,669 --> 00:31:42,949
+What I want to do is I
+want to get a report.
+
+848
+00:31:42,949 --> 00:31:45,049
+And when I do it, you
+can imagine I'm in
+
+849
+00:31:45,049 --> 00:31:46,010
+this environment where there's
+
+850
+00:31:46,010 --> 00:31:48,010
+many different doop clusters.
+
+851
+00:31:48,010 --> 00:31:49,669
+And so I have to
+specify which one.
+
+852
+00:31:49,669 --> 00:31:51,950
+So this is just something
+where I do quite often,
+
+853
+00:31:51,950 --> 00:31:55,449
+where I'd be saying, which
+cluster are we talking to?
+
+854
+00:31:55,449 --> 00:31:56,790
+It kind of seems a little silly,
+
+855
+00:31:56,790 --> 00:31:58,669
+B like right now,
+we only have one,
+
+856
+00:31:58,669 --> 00:32:00,249
+but a big company,
+
+857
+00:32:00,249 --> 00:32:02,729
+right we might have many of
+them for different purposes.
+
+858
+00:32:02,729 --> 00:32:04,309
+So I can say which one
+I want to talk to,
+
+859
+00:32:04,309 --> 00:32:06,514
+and I can did a report from it.
+
+860
+00:32:06,514 --> 00:32:09,320
+And right now, I can see, well,
+
+861
+00:32:09,320 --> 00:32:11,539
+it doesn't really have any It
+does't have any data at it.
+
+862
+00:32:11,539 --> 00:32:13,379
+It doesn't have any data nodes.
+
+863
+00:32:13,379 --> 00:32:15,299
+And so what I should
+do to give it
+
+864
+00:32:15,299 --> 00:32:18,639
+some capacity is add a
+data node to the picture.
+
+865
+00:32:18,639 --> 00:32:20,619
+Alright, cool. So
+I'm to go back here.
+
+866
+00:32:20,619 --> 00:32:23,200
+And I'm ready to do
+HDFS data node now.
+
+867
+00:32:23,200 --> 00:32:25,130
+L A Help.
+
+868
+00:32:25,130 --> 00:32:27,140
+And I can do a lot
+of the same things.
+
+869
+00:32:27,140 --> 00:32:30,199
+I have to say, what file
+system is it t to be part of?
+
+870
+00:32:30,199 --> 00:32:32,960
+And I could dive in some
+other options as well.
+
+871
+00:32:32,960 --> 00:32:34,839
+Actually, it can be
+very similar to how I
+
+872
+00:32:34,839 --> 00:32:36,699
+started the name node.
+I'll just modify this.
+
+873
+00:32:36,699 --> 00:32:38,480
+I'm going to say data node now,
+
+874
+00:32:38,480 --> 00:32:42,019
+and I am going to
+specify the same thing.
+
+875
+00:32:42,019 --> 00:32:44,039
+And when I do this, the
+new data node is going
+
+876
+00:32:44,039 --> 00:32:46,259
+to reach out to that
+name node and say,
+
+877
+00:32:46,259 --> 00:32:48,099
+I would like to
+join this cluster.
+
+878
+00:32:48,099 --> 00:32:49,599
+I have so much capacity,
+
+879
+00:32:49,599 --> 00:32:51,439
+start setting blocks, right?
+
+880
+00:32:51,439 --> 00:32:53,619
+And I'll put this to a
+different log, right?
+
+881
+00:32:53,619 --> 00:32:55,785
+So I'm to put this
+to a data node.
+
+882
+00:32:55,785 --> 00:33:00,329
+I wonder if we could
+see the Dam node,
+
+883
+00:33:00,329 --> 00:33:03,330
+see it show up. Alright, great.
+
+884
+00:33:03,330 --> 00:33:06,850
+So I can see now
+that that data node
+
+885
+00:33:06,850 --> 00:33:10,489
+is showing up and I Story
+send reports to right?
+
+886
+00:33:10,489 --> 00:33:12,809
+The data Node, Stay send
+reports to the am node, right?
+
+887
+00:33:12,809 --> 00:33:16,090
+So the am node now knows that
+this data node is there.
+
+888
+00:33:16,090 --> 00:33:17,809
+So what they I want
+you to see is that
+
+889
+00:33:17,809 --> 00:33:19,690
+when you start working
+with distributed systems,
+
+890
+00:33:19,690 --> 00:33:21,509
+there's a lot of this
+like deployment work
+
+891
+00:33:21,509 --> 00:33:22,930
+you have to do before
+you start using.
+
+892
+00:33:22,930 --> 00:33:24,589
+A, you have to start
+up different types
+
+893
+00:33:24,589 --> 00:33:26,209
+of servers in different places,
+
+894
+00:33:26,209 --> 00:33:27,010
+and you have to make sure
+
+895
+00:33:27,010 --> 00:33:28,149
+they're all talking
+to each other.
+
+896
+00:33:28,149 --> 00:33:29,909
+And that's just a skill, I
+
+897
+00:33:29,909 --> 00:33:31,150
+want you to learn in this class.
+
+898
+00:33:31,150 --> 00:33:32,429
+And it's not always fun,
+
+899
+00:33:32,429 --> 00:33:33,529
+but we just have to
+make sure we have
+
+900
+00:33:33,529 --> 00:33:35,829
+all these pieces up
+and working together.
+
+901
+00:33:35,829 --> 00:33:38,009
+Alright, cool. So I have
+that up and running.
+
+902
+00:33:38,009 --> 00:33:41,110
+And if I go back and
+do a report again,
+
+903
+00:33:41,110 --> 00:33:44,429
+I should be able to see
+
+904
+00:33:44,590 --> 00:33:49,429
+that now I have one data
+node that's alive, right?
+
+905
+00:33:49,429 --> 00:33:51,149
+So when you're doing that,
+you're going to kind of check.
+
+906
+00:33:51,149 --> 00:33:52,350
+You're to make sure
+everything's working.
+
+907
+00:33:52,350 --> 00:33:53,289
+Like, before you go out and
+
+908
+00:33:53,289 --> 00:33:54,210
+start running a bunch of code,
+
+909
+00:33:54,210 --> 00:33:55,949
+you should make sure we I
+have a cluster running.
+
+910
+00:33:55,949 --> 00:33:58,610
+I have, you know, some
+number of data nodes there.
+
+911
+00:33:58,610 --> 00:33:59,949
+Eventually, you're a do part of
+
+912
+00:33:59,949 --> 00:34:01,010
+the project where
+you intentionally
+
+913
+00:34:01,010 --> 00:34:03,429
+kill a data node to learn
+about fault tolerance.
+
+914
+00:34:03,429 --> 00:34:04,370
+So then you'll see, like, Oh,
+
+915
+00:34:04,370 --> 00:34:05,530
+there's these live data nodes,
+
+916
+00:34:05,530 --> 00:34:07,770
+and there's this Dad data node.
+
+917
+00:34:07,770 --> 00:34:10,089
+Alright. Cool. So here
+we're up and running.
+
+918
+00:34:10,089 --> 00:34:12,389
+I think that's all
+working pretty well.
+
+919
+00:34:12,389 --> 00:34:19,040
+Does anybody have any
+questions so far? Alright.
+
+920
+00:34:19,040 --> 00:34:21,039
+Cool. So I exit out of here.
+
+921
+00:34:21,039 --> 00:34:23,039
+And so right now,
+
+922
+00:34:23,039 --> 00:34:25,339
+I have inside of this one.
+
+923
+00:34:25,339 --> 00:34:26,839
+I have a date a data node.
+
+924
+00:34:26,839 --> 00:34:28,019
+Sometimes I just like to start
+
+925
+00:34:28,019 --> 00:34:29,780
+a container that I
+exact to do stuff.
+
+926
+00:34:29,780 --> 00:34:31,039
+And so that's why I put sleep in
+
+927
+00:34:31,039 --> 00:34:32,660
+fendi for the start up combat.
+
+928
+00:34:32,660 --> 00:34:34,500
+I just, you know, a container,
+
+929
+00:34:34,500 --> 00:34:36,180
+it's up and Rudy and
+really not doing anything.
+
+930
+00:34:36,180 --> 00:34:38,660
+I jumped into it, I madually
+started some stuff.
+
+931
+00:34:38,660 --> 00:34:40,779
+The project, right you're
+automatically start
+
+932
+00:34:40,779 --> 00:34:44,359
+these things as so as
+soon as it boots up.
+
+933
+00:34:44,359 --> 00:34:47,559
+Alright, this other
+one down here is
+
+934
+00:34:47,559 --> 00:34:50,560
+running by Jupiter Notebook,
+
+935
+00:34:50,560 --> 00:34:54,200
+and I see it's using 5,000
+both inside and outside.
+
+936
+00:34:54,200 --> 00:34:56,820
+And so what I should do
+is I should actually
+
+937
+00:34:56,820 --> 00:35:00,519
+just create port
+tunnel or I'm sorry,
+
+938
+00:35:00,519 --> 00:35:06,299
+a SSH tunnel that does 5,000
+on my laptop to 5,000 my VM.
+
+939
+00:35:06,299 --> 00:35:07,679
+When I was teaching
+all this stuff,
+
+940
+00:35:07,679 --> 00:35:08,940
+I tried to use
+different port numbers
+
+941
+00:35:08,940 --> 00:35:10,020
+to make sure people understand.
+
+942
+00:35:10,020 --> 00:35:12,180
+But when I'm actually
+doing it in practice,
+
+943
+00:35:12,180 --> 00:35:13,739
+I usually use the
+same port number on
+
+944
+00:35:13,739 --> 00:35:16,060
+my laptop on the V of
+the doctor Contaor.
+
+945
+00:35:16,060 --> 00:35:17,899
+So I don't have
+to think about as
+
+946
+00:35:17,899 --> 00:35:19,880
+hard once I understand
+the details.
+
+947
+00:35:19,880 --> 00:35:22,239
+Okay, cool. Soby come
+over here and I can
+
+948
+00:35:22,239 --> 00:35:25,299
+come to Jupiter lab.
+
+949
+00:35:25,299 --> 00:35:28,459
+And so this Jupiter notebook
+is in a container that's
+
+950
+00:35:28,459 --> 00:35:31,719
+on the same network
+that my HTFS stuff is.
+
+951
+00:35:31,719 --> 00:35:32,980
+And so if I did that correctly,
+
+952
+00:35:32,980 --> 00:35:36,039
+I should be able to create
+a notebook and start
+
+953
+00:35:36,039 --> 00:35:40,300
+writing code that interacts
+with that Hadoop cluster.
+
+954
+00:35:40,300 --> 00:35:44,100
+I'd do this under my
+notebook directory.
+
+955
+00:35:44,100 --> 00:35:47,479
+And maybe I'll just tell
+this like Lecture one.
+
+956
+00:35:47,760 --> 00:35:50,600
+Lecture one. Cool.
+
+957
+00:35:50,600 --> 00:36:00,919
+And let me just clean this
+up a little bit. All right.
+
+958
+00:36:00,919 --> 00:36:03,559
+Great. And so, over here,
+
+959
+00:36:03,559 --> 00:36:05,079
+one of the reasons I'm
+doing this here right now,
+
+960
+00:36:05,079 --> 00:36:06,680
+I'm s to be doing
+some shell commands,
+
+961
+00:36:06,680 --> 00:36:08,739
+but I thought it'd be nice to
+do the shell commands from
+
+962
+00:36:08,739 --> 00:36:11,339
+Jupiter just so you have a
+resource to look back on.
+
+963
+00:36:11,339 --> 00:36:12,779
+And so just remember that
+
+964
+00:36:12,779 --> 00:36:14,719
+I can run shell
+commands like this.
+
+965
+00:36:14,719 --> 00:36:18,279
+So, for example, I could do
+
+966
+00:36:18,279 --> 00:36:22,759
+that same report that I did
+over here, not long ago.
+
+967
+00:36:22,759 --> 00:36:26,559
+Let me just copy
+this. All right?
+
+968
+00:36:26,559 --> 00:36:28,339
+And this is so good at
+work, even though I'm be in
+
+969
+00:36:28,339 --> 00:36:29,219
+a different container now
+
+970
+00:36:29,219 --> 00:36:30,580
+because they're on
+that same network.
+
+971
+00:36:30,580 --> 00:36:31,959
+And so this main, right?
+
+972
+00:36:31,959 --> 00:36:33,600
+I be the NoPok container,
+
+973
+00:36:33,600 --> 00:36:35,319
+but this is referring over to
+
+974
+00:36:35,319 --> 00:36:38,399
+HDFS and the container
+called Maine.
+
+975
+00:36:38,399 --> 00:36:39,759
+And so I could do
+that, and I could
+
+976
+00:36:39,759 --> 00:36:41,059
+see the block report right here.
+
+977
+00:36:41,059 --> 00:36:42,800
+That's also how you're
+do your project
+
+978
+00:36:42,800 --> 00:36:44,120
+because I want you to practice
+
+979
+00:36:44,120 --> 00:36:45,379
+some shell commands
+in the project,
+
+980
+00:36:45,379 --> 00:36:46,319
+and then you're going to do
+
+981
+00:36:46,319 --> 00:36:47,460
+the shell commands in Jupiter,
+
+982
+00:36:47,460 --> 00:36:50,799
+so I can actually see
+what you did, right?
+
+983
+00:36:50,799 --> 00:36:53,399
+Cool. That is all fine and well.
+
+984
+00:36:53,399 --> 00:36:56,179
+And so most of the
+commands I'm going to
+
+985
+00:36:56,179 --> 00:36:59,239
+be using are going to
+be under DFS, right?
+
+986
+00:36:59,239 --> 00:37:01,299
+So DFS has all these
+different commands I can
+
+987
+00:37:01,299 --> 00:37:04,160
+use to interact with
+a Hadoop file system.
+
+988
+00:37:04,160 --> 00:37:06,399
+And they kind of have a
+standard form, right?
+
+989
+00:37:06,399 --> 00:37:09,279
+They have some kind
+of command like this.
+
+990
+00:37:09,279 --> 00:37:11,219
+And then they say there's
+
+991
+00:37:11,219 --> 00:37:13,459
+generally some kind of path
+involved with it, right?
+
+992
+00:37:13,459 --> 00:37:16,689
+So 9,000 and something, right?
+
+993
+00:37:16,689 --> 00:37:19,739
+And the idea is that these
+commands might be things like
+
+994
+00:37:19,739 --> 00:37:23,920
+M directory or
+copy or CAT or LS,
+
+995
+00:37:23,920 --> 00:37:25,180
+kind of a strange format,
+
+996
+00:37:25,180 --> 00:37:27,000
+but once you understand
+that format,
+
+997
+00:37:27,000 --> 00:37:28,839
+a lot of the things that
+you already learned about
+
+998
+00:37:28,839 --> 00:37:32,039
+the shell are going to be
+directly applicable here.
+
+999
+00:37:32,039 --> 00:37:33,459
+So, for example, I'm going to do
+
+1000
+00:37:33,459 --> 00:37:35,119
+a make der strange, right?
+
+1001
+00:37:35,119 --> 00:37:36,419
+That there's like a
+dash in front of it,
+
+1002
+00:37:36,419 --> 00:37:39,079
+but we'll just use whatever
+whatever they did.
+
+1003
+00:37:39,079 --> 00:37:42,879
+So I could make a
+directory called Data on
+
+1004
+00:37:42,879 --> 00:37:47,029
+top of my HDFS
+cluster. All right.
+
+1005
+00:37:47,029 --> 00:37:48,809
+Cool. Maybe I want to put
+
+1006
+00:37:48,809 --> 00:37:50,829
+some kind of file
+inside of there.
+
+1007
+00:37:50,829 --> 00:37:52,369
+And I have some files over here,
+
+1008
+00:37:52,369 --> 00:37:56,290
+for example, under the Doop.
+
+1009
+00:37:56,290 --> 00:37:58,549
+For my example data
+is Ibight grab
+
+1010
+00:37:58,549 --> 00:38:01,009
+like this license, right?
+
+1011
+00:38:01,530 --> 00:38:04,569
+Cool. I'm straight grab
+that license data,
+
+1012
+00:38:04,569 --> 00:38:05,989
+and see if I can upload that.
+
+1013
+00:38:05,989 --> 00:38:08,129
+And so I'm going to get
+a command over here,
+
+1014
+00:38:08,129 --> 00:38:13,010
+and I'm going to say,
+I want to do a copy,
+
+1015
+00:38:13,010 --> 00:38:14,729
+and I can copy something from on
+
+1016
+00:38:14,729 --> 00:38:17,190
+my system, which is Hadoop.
+
+1017
+00:38:17,190 --> 00:38:19,370
+And then the license.
+
+1018
+00:38:19,370 --> 00:38:20,890
+Maybe I'll grab that license.
+
+1019
+00:38:20,890 --> 00:38:22,269
+I can copy this from
+
+1020
+00:38:22,269 --> 00:38:24,530
+my regular local file system
+
+1021
+00:38:24,530 --> 00:38:27,569
+into the Hadoop
+file system, right?
+
+1022
+00:38:27,569 --> 00:38:31,069
+Some run that, and then
+that should be there.
+
+1023
+00:38:31,069 --> 00:38:34,449
+And then once it
+is, then I should
+
+1024
+00:38:34,449 --> 00:38:37,389
+be able to see what's
+inside of this.
+
+1025
+00:38:37,389 --> 00:38:39,750
+So I could do
+something like a LS.
+
+1026
+00:38:39,750 --> 00:38:42,529
+Oops. And I can see, well,
+
+1027
+00:38:42,529 --> 00:38:44,190
+what I have inside
+of that directory
+
+1028
+00:38:44,190 --> 00:38:45,949
+and I should see
+that license file.
+
+1029
+00:38:45,949 --> 00:38:48,249
+Cool. And there it is, right?
+
+1030
+00:38:48,620 --> 00:38:51,719
+If I wanted to, I could
+cat it out, right?
+
+1031
+00:38:51,719 --> 00:38:58,120
+So I could say, let's do
+a CT of license dot TXT,
+
+1032
+00:38:58,120 --> 00:38:59,559
+right, all the same
+suf you normally do,
+
+1033
+00:38:59,559 --> 00:39:02,139
+but now we're doing
+it Hadoop style.
+
+1034
+00:39:02,139 --> 00:39:07,339
+All right. Or or not?
+What did I do there?
+
+1035
+00:39:07,339 --> 00:39:10,299
+Oh, it's inside of the
+data directory, right?
+
+1036
+00:39:13,100 --> 00:39:16,459
+Great. And I can see what's
+inside of that license file.
+
+1037
+00:39:16,459 --> 00:39:17,419
+I just want to pause there.
+
+1038
+00:39:17,419 --> 00:39:18,559
+I kind of have done
+a bunch of stuff.
+
+1039
+00:39:18,559 --> 00:39:20,179
+I want to make sure people
+are following along.
+
+1040
+00:39:20,179 --> 00:39:22,039
+Any questions about
+either the deployment or
+
+1041
+00:39:22,039 --> 00:39:25,354
+the interactions with HDFS so
+far? Yeah, right over here.
+
+1042
+00:39:25,354 --> 00:39:31,309
+Is. Oh, yeah, that's
+a good question.
+
+1043
+00:39:31,309 --> 00:39:32,730
+What does ecation of Barth?
+
+1044
+00:39:32,730 --> 00:39:34,810
+That doesn't have anything
+to do with Cotaor.
+
+1045
+00:39:34,810 --> 00:39:36,389
+That's just like a
+Jupiter lab thing.
+
+1046
+00:39:36,389 --> 00:39:38,029
+So when I'm a Jupiter lab,
+
+1047
+00:39:38,029 --> 00:39:39,749
+normally, when I run a cell,
+
+1048
+00:39:39,749 --> 00:39:41,189
+it has like python code in it.
+
+1049
+00:39:41,189 --> 00:39:42,350
+When I put an exclavation,
+
+1050
+00:39:42,350 --> 00:39:44,349
+that means like a python code.
+
+1051
+00:39:44,349 --> 00:39:45,649
+It should be like a shell like
+
+1052
+00:39:45,649 --> 00:39:47,269
+a bash command or
+something like that.
+
+1053
+00:39:47,269 --> 00:39:50,150
+So you could just rely
+bash commands with Python.
+
+1054
+00:39:50,150 --> 00:39:51,569
+The only reason I'm
+doing that here is
+
+1055
+00:39:51,569 --> 00:39:53,209
+just that I could at the end,
+
+1056
+00:39:53,209 --> 00:39:54,670
+I could just like hand
+you this notebook,
+
+1057
+00:39:54,670 --> 00:39:56,470
+and you'll see all the
+examples from Lecture.
+
+1058
+00:39:56,470 --> 00:39:58,029
+It's a little bit strange
+that I'm doing it here,
+
+1059
+00:39:58,029 --> 00:39:58,969
+but it just makes it easier
+
+1060
+00:39:58,969 --> 00:40:00,129
+for you to have a
+resource later.
+
+1061
+00:40:00,129 --> 00:40:02,070
+That makes sense?
+Yeah, other questions
+
+1062
+00:40:02,070 --> 00:40:06,099
+people have. All right.
+
+1063
+00:40:06,099 --> 00:40:11,179
+Cool. What else do
+I want to do here?
+
+1064
+00:40:11,179 --> 00:40:13,579
+So some other commands
+that we've seen so far
+
+1065
+00:40:13,579 --> 00:40:17,899
+are D U for disk utilization,
+
+1066
+00:40:17,899 --> 00:40:21,479
+that I could run
+this on directory.
+
+1067
+00:40:21,479 --> 00:40:23,579
+And I'm going to get the human
+
+1068
+00:40:23,579 --> 00:40:25,919
+readable version like this.
+
+1069
+00:40:25,919 --> 00:40:28,999
+So I can see disc
+utilization there.
+
+1070
+00:40:29,480 --> 00:40:32,619
+And this will tell me
+the size of the file.
+
+1071
+00:40:32,619 --> 00:40:34,619
+And it will also tell me,
+
+1072
+00:40:34,619 --> 00:40:36,560
+this is the logical size,
+
+1073
+00:40:36,560 --> 00:40:38,299
+I will also tell me the
+physical size, right?
+
+1074
+00:40:38,299 --> 00:40:41,119
+So this file is supposed to
+have triple replication.
+
+1075
+00:40:41,119 --> 00:40:42,639
+It doesn't right now because I
+
+1076
+00:40:42,639 --> 00:40:44,200
+only have one data
+node, but ideally,
+
+1077
+00:40:44,200 --> 00:40:46,459
+it would have triple
+replication, and if so,
+
+1078
+00:40:46,459 --> 00:40:47,739
+that's how much space it should
+
+1079
+00:40:47,739 --> 00:40:50,579
+actually consume under
+its ideal state.
+
+1080
+00:40:50,579 --> 00:40:54,719
+So I can go through and
+I can see both of those.
+
+1081
+00:40:55,080 --> 00:40:57,579
+Let me so I can
+see it right now,
+
+1082
+00:40:57,579 --> 00:40:58,459
+this file is probably under
+
+1083
+00:40:58,459 --> 00:40:59,899
+replicated because I
+only have one data node.
+
+1084
+00:40:59,899 --> 00:41:01,599
+There's no way for me
+to have all of those.
+
+1085
+00:41:01,599 --> 00:41:06,140
+I may have another command
+out here, which is FSCK.
+
+1086
+00:41:06,140 --> 00:41:08,759
+So I may say FSC K,
+
+1087
+00:41:09,660 --> 00:41:11,919
+And I want to see
+what's going on
+
+1088
+00:41:11,919 --> 00:41:13,919
+with this file right here.
+
+1089
+00:41:13,919 --> 00:41:17,320
+So FSC stands for
+file system checker.
+
+1090
+00:41:17,320 --> 00:41:18,619
+There's actually other
+tools like that.
+
+1091
+00:41:18,619 --> 00:41:19,500
+I don't know if anybody's
+
+1092
+00:41:19,500 --> 00:41:20,659
+ever seen this on
+your laptop but
+
+1093
+00:41:20,659 --> 00:41:23,179
+sometimes maybe in
+the older days.
+
+1094
+00:41:23,179 --> 00:41:24,280
+They still have
+this, but it doesn't
+
+1095
+00:41:24,280 --> 00:41:25,759
+show up as an obvious way.
+
+1096
+00:41:25,759 --> 00:41:27,739
+But oftentimes if you just
+like turn off the power on
+
+1097
+00:41:27,739 --> 00:41:30,279
+your machine at a bad
+time and reboot, right?
+
+1098
+00:41:30,279 --> 00:41:31,420
+I could have been a corruption.
+
+1099
+00:41:31,420 --> 00:41:34,609
+And so Often, there'll be a
+file system checker that rod,
+
+1100
+00:41:34,609 --> 00:41:35,889
+so they might say FSCK,
+
+1101
+00:41:35,889 --> 00:41:37,390
+maybe you might have
+seen that somewhere.
+
+1102
+00:41:37,390 --> 00:41:39,029
+Anyway, they have
+that here as well.
+
+1103
+00:41:39,029 --> 00:41:41,529
+And it's giving us some
+information about this.
+
+1104
+00:41:41,529 --> 00:41:43,929
+The file system is not
+quite in the stame we want.
+
+1105
+00:41:43,929 --> 00:41:46,029
+We have this data block,
+
+1106
+00:41:46,029 --> 00:41:48,230
+but it should have
+three replicas,
+
+1107
+00:41:48,230 --> 00:41:50,429
+and there was only
+one file, right?
+
+1108
+00:41:50,429 --> 00:41:52,229
+The is the default replication,
+
+1109
+00:41:52,229 --> 00:41:54,109
+right that we have, right?
+
+1110
+00:41:54,109 --> 00:41:55,669
+So we're missing two replicas,
+
+1111
+00:41:55,669 --> 00:41:58,825
+because, of course, I don't
+have enough in my cluster.
+
+1112
+00:41:58,825 --> 00:42:00,859
+What I will do now
+is I'm going to
+
+1113
+00:42:00,859 --> 00:42:03,399
+upload or copy that file again.
+
+1114
+00:42:03,399 --> 00:42:04,979
+And in this case, I want to
+
+1115
+00:42:04,979 --> 00:42:07,120
+get a different
+replication factor.
+
+1116
+00:42:07,120 --> 00:42:10,319
+And so what I will do is
+maybe I will go back to
+
+1117
+00:42:10,319 --> 00:42:14,700
+the copy command I had a
+long time ago, actually.
+
+1118
+00:42:14,700 --> 00:42:20,019
+I'm going to grab this one.
+
+1119
+00:42:21,010 --> 00:42:23,689
+All right. And I'll
+paste this out here.
+
+1120
+00:42:23,689 --> 00:42:25,909
+And this time what I
+do is I make a copy.
+
+1121
+00:42:25,909 --> 00:42:27,589
+Before I was topping from
+
+1122
+00:42:27,589 --> 00:42:31,109
+the local file
+system on to HDFS.
+
+1123
+00:42:31,109 --> 00:42:34,129
+Now I write a copy from HDFS
+
+1124
+00:42:34,129 --> 00:42:37,469
+to another place on HDFS.
+And so I recall this.
+
+1125
+00:42:37,469 --> 00:42:39,789
+That was my original one.
+I recall my new file,
+
+1126
+00:42:39,789 --> 00:42:42,830
+just like version two TXT.
+
+1127
+00:42:42,830 --> 00:42:44,689
+And it's a Java program.
+
+1128
+00:42:44,689 --> 00:42:46,829
+Java. You could pass
+different arguments to
+
+1129
+00:42:46,829 --> 00:42:49,209
+it with D. And so
+
+1130
+00:42:49,209 --> 00:42:54,069
+I DFS replication
+equals one, right?
+
+1131
+00:42:54,069 --> 00:42:55,829
+So I have a single
+replicated copy of
+
+1132
+00:42:55,829 --> 00:42:58,679
+this file. And you're
+going to do that.
+
+1133
+00:42:58,679 --> 00:43:00,559
+When you upload the
+stuff for your project,
+
+1134
+00:43:00,559 --> 00:43:01,999
+you're to specify what
+
+1135
+00:43:01,999 --> 00:43:02,779
+the replication is.
+
+1136
+00:43:02,779 --> 00:43:03,719
+So you're going to do
+something like this.
+
+1137
+00:43:03,719 --> 00:43:05,019
+It's just a little
+bit strange, right?
+
+1138
+00:43:05,019 --> 00:43:06,539
+But if I come and run
+
+1139
+00:43:06,539 --> 00:43:09,519
+this file system
+checker on V two Dow,
+
+1140
+00:43:09,519 --> 00:43:12,179
+it should be a little
+bit happier, right?
+
+1141
+00:43:12,179 --> 00:43:14,260
+Because I only asked
+for one replica,
+
+1142
+00:43:14,260 --> 00:43:16,699
+and one replica is
+what I to get, right?
+
+1143
+00:43:16,699 --> 00:43:20,299
+So it HDFS will not be as
+worried about it, right?
+
+1144
+00:43:20,299 --> 00:43:21,759
+So if I come down
+here and I look
+
+1145
+00:43:21,759 --> 00:43:23,620
+at the missing replicas,
+
+1146
+00:43:23,620 --> 00:43:26,339
+there are no missing
+replicas, right?
+
+1147
+00:43:26,339 --> 00:43:28,539
+In this case, I'm all good.
+
+1148
+00:43:28,539 --> 00:43:33,779
+All right? Cool. Let me
+
+1149
+00:43:33,779 --> 00:43:37,779
+check here. Any
+questions about that?
+
+1150
+00:43:40,660 --> 00:43:43,559
+It. All right.
+
+1151
+00:43:43,559 --> 00:43:45,579
+So we have a little
+bit of time to start
+
+1152
+00:43:45,579 --> 00:43:48,059
+writing Python code or
+
+1153
+00:43:48,059 --> 00:43:50,639
+at least working towards
+that so we could,
+
+1154
+00:43:50,639 --> 00:43:52,559
+you know, read data using like,
+
+1155
+00:43:52,559 --> 00:43:55,260
+Python instead of using all
+just these shell commands.
+
+1156
+00:43:55,260 --> 00:43:57,299
+Okay? So I'm going
+to come down here.
+
+1157
+00:43:57,299 --> 00:43:59,239
+I'm going to say, for this part,
+
+1158
+00:43:59,239 --> 00:44:05,499
+we're going to be using
+the web, HDFS API.
+
+1159
+00:44:05,499 --> 00:44:07,700
+And that's a rest API.
+
+1160
+00:44:07,700 --> 00:44:09,620
+And for the lecture sips
+
+1161
+00:44:09,620 --> 00:44:11,419
+I have some
+documentation for it.
+
+1162
+00:44:11,419 --> 00:44:14,899
+And so I'm going to open
+up this right here.
+
+1163
+00:44:15,120 --> 00:44:18,159
+And these are all these
+different commands that I can
+
+1164
+00:44:18,159 --> 00:44:22,179
+use to check out
+my files at HDFS.
+
+1165
+00:44:22,179 --> 00:44:24,059
+And so one of the things
+I want to do is I might
+
+1166
+00:44:24,059 --> 00:44:25,899
+want to open a file,
+so open a na file.
+
+1167
+00:44:25,899 --> 00:44:28,540
+I'm going to look at
+that. For the rest API,
+
+1168
+00:44:28,540 --> 00:44:30,200
+I could imagine using
+a curl command.
+
+1169
+00:44:30,200 --> 00:44:31,939
+I I did the curl
+command work at first,
+
+1170
+00:44:31,939 --> 00:44:33,539
+and then I figure
+out how to write
+
+1171
+00:44:33,539 --> 00:44:35,859
+the Python code afterwards.
+
+1172
+00:44:35,859 --> 00:44:38,629
+And so I'm going to copy
+all of this right here.
+
+1173
+00:44:38,629 --> 00:44:42,599
+And it's useful to read rest
+documentation like this,
+
+1174
+00:44:42,599 --> 00:44:44,040
+so you can interact
+with different systems.
+
+1175
+00:44:44,040 --> 00:44:46,599
+This is not just an HDFS thing,
+
+1176
+00:44:46,599 --> 00:44:49,399
+but I'm to try to get
+it all on one slide.
+
+1177
+00:44:49,399 --> 00:44:51,819
+And I can see there's some
+parts to fill it, right?
+
+1178
+00:44:51,819 --> 00:44:52,920
+When they put angle packets,
+
+1179
+00:44:52,920 --> 00:44:54,459
+that usually beads you
+have to replace something.
+
+1180
+00:44:54,459 --> 00:44:59,590
+So my HDS host is
+made, The port number.
+
+1181
+00:44:59,590 --> 00:45:00,729
+We're using something a little
+
+1182
+00:45:00,729 --> 00:45:02,209
+different now I've
+been using Port D
+
+1183
+00:45:02,209 --> 00:45:03,869
+thousand for everything
+because that's
+
+1184
+00:45:03,869 --> 00:45:06,169
+where they communicate
+over the RPCs.
+
+1185
+00:45:06,169 --> 00:45:08,230
+With the Java tooling.
+
+1186
+00:45:08,230 --> 00:45:09,889
+Since we're going
+over the web Dow,
+
+1187
+00:45:09,889 --> 00:45:11,609
+they actually have list
+
+1188
+00:45:11,609 --> 00:45:13,450
+at a different port,
+which was Light 87.
+
+1189
+00:45:13,450 --> 00:45:17,130
+If I went back to the
+socket statistics SS,
+
+1190
+00:45:17,130 --> 00:45:18,729
+from what I was thetor before,
+
+1191
+00:45:18,729 --> 00:45:20,429
+I could have also
+seen that there.
+
+1192
+00:45:20,429 --> 00:45:21,349
+That's how I figured out
+
+1193
+00:45:21,349 --> 00:45:23,329
+what port was
+supposed to be there.
+
+1194
+00:45:23,329 --> 00:45:25,489
+Oh, I changed the wrong place.
+
+1195
+00:45:25,489 --> 00:45:27,629
+I. My apologies, right?
+
+1196
+00:45:27,629 --> 00:45:31,650
+So I will change this to 87.
+
+1197
+00:45:31,920 --> 00:45:35,039
+And then I have a sub
+path to a file, right?
+
+1198
+00:45:35,039 --> 00:45:38,280
+So I could say data V two, TXT.
+
+1199
+00:45:38,280 --> 00:45:42,740
+And then brackets, usually
+me that sup is optional.
+
+1200
+00:45:42,740 --> 00:45:46,019
+Okay? So there's lots of
+optional things here.
+
+1201
+00:45:46,019 --> 00:45:48,699
+I delete some of the
+optional things like
+
+1202
+00:45:48,699 --> 00:45:53,099
+buffer size and redirected
+
+1203
+00:45:53,099 --> 00:45:54,820
+have this as a combat
+
+1204
+00:45:54,820 --> 00:45:56,439
+I co come back to
+it later if I want.
+
+1205
+00:45:56,439 --> 00:45:58,719
+I get rid of some of
+these optional things.
+
+1206
+00:45:58,719 --> 00:46:00,859
+One of the things that I
+would like to have those,
+
+1207
+00:46:00,859 --> 00:46:03,079
+I'd like to say, within
+this large file,
+
+1208
+00:46:03,079 --> 00:46:04,339
+what offset am I reading from?
+
+1209
+00:46:04,339 --> 00:46:06,099
+So maybe I'll start offset zero.
+
+1210
+00:46:06,099 --> 00:46:07,859
+And then how many characters do
+
+1211
+00:46:07,859 --> 00:46:09,639
+I want to read?
+And I don't know.
+
+1212
+00:46:09,639 --> 00:46:12,199
+Let's just say, like 200, right?
+
+1213
+00:46:12,640 --> 00:46:16,859
+So I'd read to do that. And I
+
+1214
+00:46:16,859 --> 00:46:19,039
+guess that's a shell command,
+since I'm using curl.
+
+1215
+00:46:19,039 --> 00:46:20,379
+I'd be ready to do that. Oh, I
+
+1216
+00:46:20,379 --> 00:46:22,000
+forgot to delete these brackets.
+
+1217
+00:46:22,000 --> 00:46:23,859
+I'm actually doing it. So
+I want to have brackets in
+
+1218
+00:46:23,859 --> 00:46:26,829
+the final version.
+Great, I may do that.
+
+1219
+00:46:26,829 --> 00:46:29,409
+And the I means I
+
+1220
+00:46:29,409 --> 00:46:32,390
+may see some extra header
+information drawing.
+
+1221
+00:46:32,390 --> 00:46:35,450
+I actually see that there
+were two HTTP requests.
+
+1222
+00:46:35,450 --> 00:46:37,329
+There's this one, which
+is a three oh seven,
+
+1223
+00:46:37,329 --> 00:46:38,890
+and this one, which is a 200.
+
+1224
+00:46:38,890 --> 00:46:41,330
+This one was set
+to the Name node.
+
+1225
+00:46:41,330 --> 00:46:43,129
+And so I said as the Nabod,
+
+1226
+00:46:43,129 --> 00:46:45,090
+please send me this data.
+
+1227
+00:46:45,090 --> 00:46:46,430
+And, of course, the Nabod
+
+1228
+00:46:46,430 --> 00:46:48,029
+should never send
+anybody data, right?
+
+1229
+00:46:48,029 --> 00:46:49,970
+Because it's overload.
+And by design,
+
+1230
+00:46:49,970 --> 00:46:52,109
+all data should be transferred
+for the data node.
+
+1231
+00:46:52,109 --> 00:46:54,149
+And so the way that
+this works is that
+
+1232
+00:46:54,149 --> 00:46:56,889
+the abode will pick a data
+node that should have the job.
+
+1233
+00:46:56,889 --> 00:46:58,329
+And the way it does that is it
+
+1234
+00:46:58,329 --> 00:46:59,709
+redirects the requests, right?
+
+1235
+00:46:59,709 --> 00:47:01,049
+So it's try to redirect it,
+
+1236
+00:47:01,049 --> 00:47:03,594
+and it's choosing
+this over here.
+
+1237
+00:47:03,594 --> 00:47:05,339
+And basically what this is
+
+1238
+00:47:05,339 --> 00:47:09,079
+indicating is what data Dad
+should be doing the job,
+
+1239
+00:47:09,079 --> 00:47:10,860
+right so that it will redirect,
+
+1240
+00:47:10,860 --> 00:47:13,319
+and it will automatically
+go to that second one,
+
+1241
+00:47:13,319 --> 00:47:16,219
+and it will get
+200 bytes of data.
+
+1242
+00:47:16,219 --> 00:47:17,939
+And then finally,
+I get 200 bytes of
+
+1243
+00:47:17,939 --> 00:47:21,099
+data from that
+actual file there.
+
+1244
+00:47:21,180 --> 00:47:23,639
+All right. And so I
+
+1245
+00:47:23,639 --> 00:47:25,099
+could have different
+variants of this.
+
+1246
+00:47:25,099 --> 00:47:27,399
+This would be that it would
+not follow it, right?
+
+1247
+00:47:27,399 --> 00:47:29,000
+So I would just
+get that redirect.
+
+1248
+00:47:29,000 --> 00:47:30,859
+I could do that, for
+example, if I could say,
+
+1249
+00:47:30,859 --> 00:47:33,120
+like, ask the dat bob,
+like, where is this data?
+
+1250
+00:47:33,120 --> 00:47:35,859
+It would just tell me
+without actually reading it.
+
+1251
+00:47:35,859 --> 00:47:38,079
+I think I do actually
+want to do it.
+
+1252
+00:47:38,079 --> 00:47:40,139
+I can also get rid of
+this, and I could just get
+
+1253
+00:47:40,139 --> 00:47:42,959
+the data with
+nothing more, right?
+
+1254
+00:47:42,959 --> 00:47:45,989
+So I'll just keep it as
+this full version for now.
+
+1255
+00:47:45,989 --> 00:47:49,459
+If I want to, I could read
+from other offsets, right?
+
+1256
+00:47:49,459 --> 00:47:51,040
+I could read from,
+let's say offset
+
+1257
+00:47:51,040 --> 00:47:52,680
+one, but the same length.
+
+1258
+00:47:52,680 --> 00:47:54,219
+Oh, I'll just give rid of this,
+
+1259
+00:47:54,219 --> 00:47:55,600
+so it's a little bit simpler.
+
+1260
+00:47:55,600 --> 00:47:58,039
+In that case, you can see
+that I'm reading a little bit
+
+1261
+00:47:58,039 --> 00:47:59,819
+farther because I guess I
+
+1262
+00:47:59,819 --> 00:48:01,939
+skipped a newlide at
+the beginning, right?
+
+1263
+00:48:01,939 --> 00:48:04,439
+Maybe it's a little bit
+hard to see, right?
+
+1264
+00:48:04,440 --> 00:48:07,200
+Alright, cool. Any questions
+
+1265
+00:48:07,200 --> 00:48:10,079
+about that curl request so far?
+
+1266
+00:48:11,890 --> 00:48:14,609
+One of the things that Chat
+
+1267
+00:48:14,609 --> 00:48:15,869
+GPT I think is really nice
+
+1268
+00:48:15,869 --> 00:48:17,669
+at is that you can convert from,
+
+1269
+00:48:17,669 --> 00:48:19,809
+you can figure out
+in one style, like,
+
+1270
+00:48:19,809 --> 00:48:21,009
+maybe a Curl spat,
+
+1271
+00:48:21,009 --> 00:48:22,309
+how do I do it and
+you can ask it to
+
+1272
+00:48:22,309 --> 00:48:24,029
+translate to Python road.
+
+1273
+00:48:24,029 --> 00:48:25,489
+You're welcome to do that
+right on the project,
+
+1274
+00:48:25,489 --> 00:48:26,989
+to make sure that when you do,
+
+1275
+00:48:26,989 --> 00:48:29,630
+you're street hotting the
+chat and then including
+
+1276
+00:48:29,630 --> 00:48:32,850
+it in the citations for
+your project submission.
+
+1277
+00:48:32,850 --> 00:48:34,169
+That's the case I might use it.
+
+1278
+00:48:34,169 --> 00:48:35,770
+I think I kind have figured
+
+1279
+00:48:35,770 --> 00:48:37,409
+it out in some form that
+I'm more comfortable with,
+
+1280
+00:48:37,409 --> 00:48:40,089
+and I will translate
+it to something else.
+
+1281
+00:48:40,089 --> 00:48:41,869
+Alright, cool. So I have that.
+
+1282
+00:48:41,869 --> 00:48:43,789
+I want to, let me see.
+
+1283
+00:48:43,789 --> 00:48:46,330
+I'm a little bit
+ahead of myself.
+
+1284
+00:48:46,520 --> 00:48:48,799
+I want to see how we could do
+
+1285
+00:48:48,799 --> 00:48:51,619
+the equivalent of this
+in Python Code, right?
+
+1286
+00:48:51,619 --> 00:48:52,800
+So I will just do it myself,
+
+1287
+00:48:52,800 --> 00:48:54,739
+even though I might
+normally use chat
+
+1288
+00:48:54,739 --> 00:48:57,159
+GPT for that sort of
+translation work.
+
+1289
+00:48:57,159 --> 00:48:58,740
+I use the request module,
+
+1290
+00:48:58,740 --> 00:49:01,099
+I say requests dot,
+
+1291
+00:49:01,099 --> 00:49:05,559
+and I could use that
+same URL dot here.
+
+1292
+00:49:05,559 --> 00:49:08,610
+And that will give me
+a response object.
+
+1293
+00:49:08,610 --> 00:49:11,259
+Right? Ibo to do that, I'm
+to take a look at that.
+
+1294
+00:49:11,259 --> 00:49:14,199
+And I can see that that's
+giving me some data at the end.
+
+1295
+00:49:14,199 --> 00:49:16,860
+One of the things I'll
+do is I'll say raise
+
+1296
+00:49:16,860 --> 00:49:23,320
+for status so that if there's
+something besides a 200,
+
+1297
+00:49:23,320 --> 00:49:25,879
+that I would have an exception
+to some garbage data.
+
+1298
+00:49:25,879 --> 00:49:27,199
+And at that point,
+I could say, well,
+
+1299
+00:49:27,199 --> 00:49:29,860
+what is the content is
+showing me a bytes?
+
+1300
+00:49:29,860 --> 00:49:32,159
+Well, what is the content
+that I have there.
+
+1301
+00:49:32,159 --> 00:49:33,859
+Right? I could also,
+if I wanted to,
+
+1302
+00:49:33,859 --> 00:49:35,199
+I could say the text,
+
+1303
+00:49:35,199 --> 00:49:36,780
+it'll automatically
+convert it to texts
+
+1304
+00:49:36,780 --> 00:49:39,479
+for me, which I might put out.
+
+1305
+00:49:39,479 --> 00:49:43,879
+So I could do that. And that's
+all very helpful, right?
+
+1306
+00:49:43,879 --> 00:49:45,879
+I think what else
+might I want to do?
+
+1307
+00:49:45,879 --> 00:49:48,420
+You could see that earlier.
+
+1308
+00:49:48,500 --> 00:49:53,280
+I did use this option at
+the Ed called no redirect.
+
+1309
+00:49:53,280 --> 00:49:55,019
+That'll just be like
+the last thing I do.
+
+1310
+00:49:55,019 --> 00:49:56,819
+I do a redirect right now.
+
+1311
+00:49:56,819 --> 00:50:00,459
+So I copy all of this and I may
+
+1312
+00:50:00,459 --> 00:50:05,159
+say add no redirect equals true.
+
+1313
+00:50:05,159 --> 00:50:12,050
+And then what I should
+get down here, content.
+
+1314
+00:50:12,050 --> 00:50:13,569
+I'm going to get some JSI back.
+
+1315
+00:50:13,569 --> 00:50:15,809
+And what I could do is
+I could just say JSI.
+
+1316
+00:50:15,809 --> 00:50:17,369
+It'll automatically
+decode it for me,
+
+1317
+00:50:17,369 --> 00:50:20,370
+and then I can figure out from
+that JSI what is location.
+
+1318
+00:50:20,370 --> 00:50:21,709
+And so in the project, you're
+
+1319
+00:50:21,709 --> 00:50:22,989
+go get some practice,
+I figure out,
+
+1320
+00:50:22,989 --> 00:50:24,409
+Okay, where actually is
+
+1321
+00:50:24,409 --> 00:50:26,269
+this specific piece
+of data stored?
+
+1322
+00:50:26,269 --> 00:50:27,729
+Alright, thanks.
+I'll uphold all this
+
+1323
+00:50:27,729 --> 00:50:29,409
+so that will help you on P four,
+
+1324
+00:50:29,409 --> 00:50:32,070
+which will be released
+before I go to bed tonight.
+
+1325
+00:50:32,070 --> 00:50:34,229
+So have a great day.

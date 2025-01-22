@@ -1,0 +1,6132 @@
+1
+00:00:00,000 --> 00:00:02,120
+Talking about
+Sandra replication.
+
+2
+00:00:02,120 --> 00:00:03,920
+That probably won quite
+
+3
+00:00:03,920 --> 00:00:05,280
+take us to the end
+of lecture today.
+
+4
+00:00:05,280 --> 00:00:07,220
+So I also brought
+some old exams.
+
+5
+00:00:07,220 --> 00:00:08,640
+Maybe we'll look
+at a few questions
+
+6
+00:00:08,640 --> 00:00:10,040
+there, time permitting.
+
+7
+00:00:10,040 --> 00:00:12,059
+I just want to remember.
+Well, actually,
+
+8
+00:00:12,059 --> 00:00:13,680
+before I do that one
+more announcement.
+
+9
+00:00:13,680 --> 00:00:16,480
+As I've been saying, we
+have a mid term on Monday,
+
+10
+00:00:16,480 --> 00:00:18,239
+I sent out some details again.
+
+11
+00:00:18,239 --> 00:00:20,579
+These are basically
+the same as last time,
+
+12
+00:00:20,579 --> 00:00:22,199
+so I just wanted to
+have it fresh for
+
+13
+00:00:22,199 --> 00:00:25,000
+everybody and a
+Canvas announcement.
+
+14
+00:00:25,000 --> 00:00:26,959
+One thing that a few
+people have asked is
+
+15
+00:00:26,959 --> 00:00:28,979
+whether you get one
+note sheet or two,
+
+16
+00:00:28,979 --> 00:00:30,419
+and the answer is just one.
+
+17
+00:00:30,419 --> 00:00:31,859
+So you'll probably want to
+
+18
+00:00:31,859 --> 00:00:33,119
+find the most
+important things on
+
+19
+00:00:33,119 --> 00:00:34,419
+your old note sheet and
+
+20
+00:00:34,419 --> 00:00:36,194
+then write that over
+on your new one.
+
+21
+00:00:36,194 --> 00:00:38,289
+But, do people have any
+logistical questions about
+
+22
+00:00:38,289 --> 00:00:40,610
+the exam before we
+take it on Monday?
+
+23
+00:00:40,610 --> 00:00:41,469
+There here.
+
+24
+00:00:41,469 --> 00:00:43,989
+The final be one? Yep, the
+
+25
+00:00:43,989 --> 00:00:45,290
+final vs will be one note sheet.
+
+26
+00:00:45,290 --> 00:00:46,809
+Always one note sheet.
+Always cumulative.
+
+27
+00:00:46,809 --> 00:00:48,389
+Yeah, right here.
+
+28
+00:00:51,750 --> 00:00:54,349
+Yeah, I don't know.
+Maybe something like a
+
+29
+00:00:54,349 --> 00:00:56,709
+third or maybe a quarter
+from the last one.
+
+30
+00:00:56,709 --> 00:00:58,169
+I don't have an exact account
+
+31
+00:00:58,169 --> 00:00:59,570
+off the top of my
+head, but yeah,
+
+32
+00:00:59,570 --> 00:01:03,089
+I want to put some more emphasis
+on the new stuff. Yeah.
+
+33
+00:01:03,089 --> 00:01:04,530
+Any other logistical questions
+
+34
+00:01:04,530 --> 00:01:07,010
+people have? Alright. Cool.
+
+35
+00:01:07,010 --> 00:01:10,150
+So I head over here
+to the slides.
+
+36
+00:01:10,150 --> 00:01:12,169
+And I just want to
+remember where we were.
+
+37
+00:01:12,169 --> 00:01:13,850
+So what we've been talking about
+
+38
+00:01:13,850 --> 00:01:17,809
+is how we have this ring.
+
+39
+00:01:17,809 --> 00:01:19,130
+We have a token ring, right?
+
+40
+00:01:19,130 --> 00:01:20,830
+And the token ring can tell us,
+
+41
+00:01:20,830 --> 00:01:22,569
+if I have a given row of data,
+
+42
+00:01:22,569 --> 00:01:24,330
+what machines should it be on.
+
+43
+00:01:24,330 --> 00:01:26,109
+So we often the easiest term.
+
+44
+00:01:26,109 --> 00:01:27,689
+I need to walk the ring.
+
+45
+00:01:27,689 --> 00:01:28,130
+Right?
+
+46
+00:01:28,130 --> 00:01:29,830
+And walking the ring isn't
+the only thing we have to do,
+
+47
+00:01:29,830 --> 00:01:31,610
+but it's one of these
+main pieces, right?
+
+48
+00:01:31,610 --> 00:01:35,050
+And when we were first learning
+about just partitioning,
+
+49
+00:01:35,050 --> 00:01:36,630
+we would have
+replication of one.
+
+50
+00:01:36,630 --> 00:01:37,930
+And it was simple.
+
+51
+00:01:37,930 --> 00:01:38,830
+We just walked the ring to
+
+52
+00:01:38,830 --> 00:01:40,149
+the right until you hit a node.
+
+53
+00:01:40,149 --> 00:01:41,370
+The ly tricky case was that
+
+54
+00:01:41,370 --> 00:01:42,750
+sometimes you would
+wrap around, right?
+
+55
+00:01:42,750 --> 00:01:44,209
+It's ring ins of
+
+56
+00:01:44,209 --> 00:01:45,970
+a lie because if you fall
+off the bigges number,
+
+57
+00:01:45,970 --> 00:01:47,629
+you just wrap around to
+the smallest number.
+
+58
+00:01:47,629 --> 00:01:50,670
+So we learned about that with
+just simple partitioning.
+
+59
+00:01:50,670 --> 00:01:52,450
+When we added a replication into
+
+60
+00:01:52,450 --> 00:01:54,250
+that, we just modified it.
+
+61
+00:01:54,250 --> 00:01:55,590
+You would still
+walk to the right.
+
+62
+00:01:55,590 --> 00:01:57,330
+But if you need two replicas,
+
+63
+00:01:57,330 --> 00:01:59,389
+you would walk until
+you find two Vendes,
+
+64
+00:01:59,389 --> 00:02:00,490
+or if you need three,
+then you would
+
+65
+00:02:00,490 --> 00:02:02,149
+walk until you
+have three Vendes.
+
+66
+00:02:02,149 --> 00:02:03,530
+The only tricky
+thing there is that
+
+67
+00:02:03,530 --> 00:02:05,330
+sometimes we would skip Vendes,
+
+68
+00:02:05,330 --> 00:02:06,750
+if maybe it was two Vendes on
+
+69
+00:02:06,750 --> 00:02:08,010
+the same computer or maybe
+
+70
+00:02:08,010 --> 00:02:09,410
+two computers of the same brack.
+
+71
+00:02:09,410 --> 00:02:10,990
+There are certain cases
+where we would skip.
+
+72
+00:02:10,990 --> 00:02:12,329
+But in general,
+the same strategy,
+
+73
+00:02:12,329 --> 00:02:14,409
+we walk to the right
+to find some machines.
+
+74
+00:02:14,409 --> 00:02:16,829
+And so that's all fded well.
+
+75
+00:02:16,829 --> 00:02:19,865
+Another piece on there is that
+if we have a row of data,
+
+76
+00:02:19,865 --> 00:02:22,099
+it has some kind of
+partition key with it.
+
+77
+00:02:22,099 --> 00:02:24,139
+And we would hash
+that to get a token.
+
+78
+00:02:24,139 --> 00:02:25,759
+And that's where we start
+walking in the ring.
+
+79
+00:02:25,759 --> 00:02:26,319
+Okay, great.
+
+80
+00:02:26,319 --> 00:02:28,979
+So we do all that. We find
+some number of machines.
+
+81
+00:02:28,979 --> 00:02:30,479
+And what we're
+talking about now is,
+
+82
+00:02:30,479 --> 00:02:32,499
+how do we actually
+use those machines
+
+83
+00:02:32,499 --> 00:02:34,720
+if we're trying to
+read or write data?
+
+84
+00:02:34,720 --> 00:02:36,499
+And that happens
+with quorums, right?
+
+85
+00:02:36,499 --> 00:02:37,640
+So it's try to be okay.
+
+86
+00:02:37,640 --> 00:02:40,779
+Sometimes if a machine is down
+or maybe permanently dead,
+
+87
+00:02:40,779 --> 00:02:42,219
+if there are enough
+machines up, we
+
+88
+00:02:42,219 --> 00:02:43,780
+can still maybe read
+and write our data.
+
+89
+00:02:43,780 --> 00:02:46,199
+If too many machines are down,
+then we won't be able to.
+
+90
+00:02:46,199 --> 00:02:47,819
+And we have some
+choices there to make
+
+91
+00:02:47,819 --> 00:02:51,144
+about how many machines
+is good enough.
+
+92
+00:02:51,144 --> 00:02:54,890
+Now, in general, when
+you write some data,
+
+93
+00:02:54,890 --> 00:02:57,390
+you want to have subsets
+that your data is safe.
+
+94
+00:02:57,390 --> 00:02:59,530
+And that means that even
+if something bad happens,
+
+95
+00:02:59,530 --> 00:03:01,750
+like a hard drive dying or maybe
+
+96
+00:03:01,750 --> 00:03:04,030
+a whole computer dying or
+maybe multiple computer dying?
+
+97
+00:03:04,030 --> 00:03:06,210
+You want to have subsets
+that your data is be ok,
+
+98
+00:03:06,210 --> 00:03:07,710
+even if these bad things happen.
+
+99
+00:03:07,710 --> 00:03:09,769
+And the technical word for
+
+100
+00:03:09,769 --> 00:03:11,250
+our data being safe
+when something
+
+101
+00:03:11,250 --> 00:03:12,970
+bad happens is committed.
+
+102
+00:03:12,970 --> 00:03:14,650
+And there's lots of
+
+103
+00:03:14,650 --> 00:03:16,089
+different definitions
+of committed because,
+
+104
+00:03:16,089 --> 00:03:17,469
+well, you could think
+about different
+
+105
+00:03:17,469 --> 00:03:18,889
+bad things that
+could happen, right?
+
+106
+00:03:18,889 --> 00:03:21,990
+Is the whole data center
+destroyed or just one machine?
+
+107
+00:03:21,990 --> 00:03:23,569
+So depending on what
+you're worried about,
+
+108
+00:03:23,569 --> 00:03:25,755
+you'll have different
+definitions of committed.
+
+109
+00:03:25,755 --> 00:03:27,999
+And then I want to
+think about how that
+
+110
+00:03:27,999 --> 00:03:30,300
+will play into when we're
+reading or writing data.
+
+111
+00:03:30,300 --> 00:03:32,219
+If you're trying to read
+data from a database,
+
+112
+00:03:32,219 --> 00:03:34,859
+you're doing some query, and
+if you get results back,
+
+113
+00:03:34,859 --> 00:03:36,779
+you know it was okay, right?
+
+114
+00:03:36,779 --> 00:03:40,299
+If you're trying to write
+the database, generally,
+
+115
+00:03:40,299 --> 00:03:41,740
+there's no results coming back,
+
+116
+00:03:41,740 --> 00:03:43,379
+but we still want to
+have some sense, like,
+
+117
+00:03:43,379 --> 00:03:46,539
+did that work or did
+it maybe fail, right?
+
+118
+00:03:46,539 --> 00:03:49,279
+And so where I
+
+119
+00:03:49,279 --> 00:03:51,399
+have this definition of an
+act or acknowledgement.
+
+120
+00:03:51,399 --> 00:03:53,039
+And acknowledgement, is
+something that you get
+
+121
+00:03:53,039 --> 00:03:54,939
+set back when there's
+a right that says,
+
+122
+00:03:54,939 --> 00:03:56,319
+Hey, that worked, right?
+
+123
+00:03:56,319 --> 00:03:57,580
+If I get an acknowledgment,
+
+124
+00:03:57,580 --> 00:03:58,859
+I know my data is
+
+125
+00:03:58,859 --> 00:04:01,060
+committed for some
+definition of committed.
+
+126
+00:04:01,060 --> 00:04:03,239
+And just like we have multiple
+definitions of committed,
+
+127
+00:04:03,239 --> 00:04:05,079
+depending on what bad
+things we're worried about,
+
+128
+00:04:05,079 --> 00:04:08,479
+there's maybe definitions
+of acts, right?
+
+129
+00:04:08,479 --> 00:04:10,540
+And so in WhatsApp, for example,
+
+130
+00:04:10,540 --> 00:04:11,779
+right when I'm
+sending a message,
+
+131
+00:04:11,779 --> 00:04:12,899
+there's different
+levels of acts.
+
+132
+00:04:12,899 --> 00:04:14,840
+And I think it's actually
+cool that they expose
+
+133
+00:04:14,840 --> 00:04:16,560
+this de technical detail about
+
+134
+00:04:16,560 --> 00:04:19,674
+the system to just
+the average user.
+
+135
+00:04:19,674 --> 00:04:21,810
+All right. And so
+even with these,
+
+136
+00:04:21,810 --> 00:04:23,670
+you can imagine other
+definitions of C, right?
+
+137
+00:04:23,670 --> 00:04:26,730
+Like we get the double
+gray check mark if
+
+138
+00:04:26,730 --> 00:04:30,450
+it makes it onto one of the
+receiver's devices, right?
+
+139
+00:04:30,450 --> 00:04:32,550
+You can imagine a
+stronger definition that
+
+140
+00:04:32,550 --> 00:04:34,590
+maybe it has to ladd all
+their devices, right?
+
+141
+00:04:34,590 --> 00:04:36,869
+I want to get that ac
+necessarily as soon.
+
+142
+00:04:36,869 --> 00:04:38,469
+But when it does, I
+would feel even more
+
+143
+00:04:38,469 --> 00:04:41,309
+confident about it
+reaching the person.
+
+144
+00:04:41,309 --> 00:04:43,930
+Now, I want to think about
+what it means, right?
+
+145
+00:04:43,930 --> 00:04:47,669
+So if I send my message and
+I get an AC and whats app,
+
+146
+00:04:47,669 --> 00:04:50,050
+that means they
+definitely got it.
+
+147
+00:04:50,050 --> 00:04:52,209
+If I sent a message to somebody,
+
+148
+00:04:52,209 --> 00:04:53,909
+I don't get any acknowledgement.
+
+149
+00:04:53,909 --> 00:04:56,649
+Does that mean they did
+not get the message?
+
+150
+00:04:56,649 --> 00:05:00,450
+What does it mean if I don't
+get an ACP? Yeah right.
+
+151
+00:05:03,010 --> 00:05:06,349
+X, it might mean
+that the act failed,
+
+152
+00:05:06,349 --> 00:05:08,190
+or maybe they never
+got my message, right?
+
+153
+00:05:08,190 --> 00:05:09,830
+So there's two scenarios here
+
+154
+00:05:09,830 --> 00:05:12,349
+that look very different
+to the receiving side,
+
+155
+00:05:12,349 --> 00:05:14,410
+but to the sender, they're
+very different, right?
+
+156
+00:05:14,410 --> 00:05:16,309
+So maybe my message
+number got through,
+
+157
+00:05:16,309 --> 00:05:19,290
+or maybe my message got
+through and the act back.
+
+158
+00:05:19,290 --> 00:05:22,530
+And be the scenario where
+if I get an ac, great,
+
+159
+00:05:22,530 --> 00:05:25,250
+my data is committed,
+I I don't get an ac,
+
+160
+00:05:25,250 --> 00:05:26,969
+it may or may not be committed,
+
+161
+00:05:26,969 --> 00:05:28,610
+right? That's what
+we're working with.
+
+162
+00:05:28,610 --> 00:05:30,250
+Alright, so with that in mind,
+
+163
+00:05:30,250 --> 00:05:32,570
+let's talk more specifically
+about Cassandra.
+
+164
+00:05:32,570 --> 00:05:37,529
+And if I have a client that
+wants to write some data,
+
+165
+00:05:37,529 --> 00:05:39,150
+the first thing that we'll do is
+
+166
+00:05:39,150 --> 00:05:40,510
+we'll look at the partition kee.
+
+167
+00:05:40,510 --> 00:05:42,369
+I may say that five
+is the partition key,
+
+168
+00:05:42,369 --> 00:05:43,770
+and we need to figure out,
+
+169
+00:05:43,770 --> 00:05:45,390
+well, which computers are
+
+170
+00:05:45,390 --> 00:05:47,410
+own rows of that
+partition, right?
+
+171
+00:05:47,410 --> 00:05:49,490
+The client does not
+have a token map,
+
+172
+00:05:49,490 --> 00:05:51,290
+so the client cannot
+walk the rig.
+
+173
+00:05:51,290 --> 00:05:54,055
+It needs another computer
+involved that can walk the rig.
+
+174
+00:05:54,055 --> 00:05:55,560
+What computer could do that?
+
+175
+00:05:55,560 --> 00:05:57,139
+Well, any worker in the cluster
+
+176
+00:05:57,139 --> 00:05:58,720
+has a copy of the token rig,
+
+177
+00:05:58,720 --> 00:06:00,180
+and they can help us with that.
+
+178
+00:06:00,180 --> 00:06:02,279
+So we'll just choose some
+worker in the cluster.
+
+179
+00:06:02,279 --> 00:06:03,579
+Maybe it's random, maybe
+
+180
+00:06:03,579 --> 00:06:05,020
+it's not random, it
+doesn't really matter.
+
+181
+00:06:05,020 --> 00:06:06,300
+But whatever worker we choose in
+
+182
+00:06:06,300 --> 00:06:07,819
+the cluster is a coordinator.
+
+183
+00:06:07,819 --> 00:06:09,080
+So I have a coordinator here,
+
+184
+00:06:09,080 --> 00:06:11,720
+and the coordinator
+will walk the rig for
+
+185
+00:06:11,720 --> 00:06:12,980
+the token corresponding to
+
+186
+00:06:12,980 --> 00:06:14,600
+partition five, and
+I'll say, Okay,
+
+187
+00:06:14,600 --> 00:06:16,300
+there are these
+three computers that
+
+188
+00:06:16,300 --> 00:06:18,720
+have a copy of that or
+should have a copy of it,
+
+189
+00:06:18,720 --> 00:06:20,280
+and we're going to
+call those nodes one,
+
+190
+00:06:20,280 --> 00:06:22,279
+two and three, because we
+have triple replication.
+
+191
+00:06:22,279 --> 00:06:23,739
+I'm just going to
+abbreviate that RF
+
+192
+00:06:23,739 --> 00:06:25,880
+replication factor
+equals equals three.
+
+193
+00:06:25,880 --> 00:06:27,800
+So the coordinator knows,
+
+194
+00:06:27,800 --> 00:06:29,940
+And now what's
+happened is that we
+
+195
+00:06:29,940 --> 00:06:31,620
+send that rode to
+the coordinator,
+
+196
+00:06:31,620 --> 00:06:33,080
+and the coordinator is to try to
+
+197
+00:06:33,080 --> 00:06:35,459
+send that data to
+each individual node.
+
+198
+00:06:35,459 --> 00:06:38,079
+And at each individual node,
+
+199
+00:06:38,079 --> 00:06:39,540
+if they can do that
+right, they're going to
+
+200
+00:06:39,540 --> 00:06:41,299
+send acknowledgement
+back to the coordinator.
+
+201
+00:06:41,299 --> 00:06:43,939
+I can see node one.
+What was it before?
+
+202
+00:06:43,939 --> 00:06:45,760
+I had A here, we're
+changing A to
+
+203
+00:06:45,760 --> 00:06:47,780
+B. Node says, Hey,
+that worked for me.
+
+204
+00:06:47,780 --> 00:06:49,380
+Node two says that
+worked for me.
+
+205
+00:06:49,380 --> 00:06:51,620
+Let's say that just
+kind of at a bad time.
+
+206
+00:06:51,620 --> 00:06:53,059
+Node three is rebooting.
+
+207
+00:06:53,059 --> 00:06:56,900
+So Node three is not send an
+acknowledgment back. Okay?
+
+208
+00:06:56,900 --> 00:06:58,300
+So now the question here,
+
+209
+00:06:58,300 --> 00:06:59,520
+which is very similar
+to the question
+
+210
+00:06:59,520 --> 00:07:00,840
+we had with WhatsApp is,
+
+211
+00:07:00,840 --> 00:07:02,539
+should the coordinator send
+
+212
+00:07:02,539 --> 00:07:04,720
+an acknowledgment
+back to the client?
+
+213
+00:07:04,720 --> 00:07:06,520
+Right? If the coordinator
+sends that to the client,
+
+214
+00:07:06,520 --> 00:07:09,175
+that means client, you're
+right was successful.
+
+215
+00:07:09,175 --> 00:07:11,290
+Is this successful enough to
+
+216
+00:07:11,290 --> 00:07:13,810
+justify an
+acknowledgement, right?
+
+217
+00:07:13,810 --> 00:07:17,370
+And the answer is that you
+as a programmer get to
+
+218
+00:07:17,370 --> 00:07:20,549
+decide how many
+successful rights
+
+219
+00:07:20,549 --> 00:07:22,309
+is enough to consider
+the whole thing success.
+
+220
+00:07:22,309 --> 00:07:23,549
+And that's another
+variable called
+
+221
+00:07:23,549 --> 00:07:26,410
+W. And so if we
+say W equals two,
+
+222
+00:07:26,410 --> 00:07:29,389
+we'll say, Okay,
+that was a success.
+
+223
+00:07:29,389 --> 00:07:31,850
+If application factor is three,
+
+224
+00:07:31,850 --> 00:07:35,210
+we will always absolutely
+always try to write the three,
+
+225
+00:07:35,210 --> 00:07:38,990
+but maybe we'll say two is
+good enough if W equals two.
+
+226
+00:07:38,990 --> 00:07:40,970
+There's two things like how
+many do I try to write two?
+
+227
+00:07:40,970 --> 00:07:44,010
+That's RF, and then how many
+is good enough and that's W.
+
+228
+00:07:44,010 --> 00:07:45,749
+This case, if I say W equals
+
+229
+00:07:45,749 --> 00:07:48,270
+two, great, it's good enough.
+
+230
+00:07:48,730 --> 00:07:53,650
+Now, I want to contrast this
+with HDFS a little bit.
+
+231
+00:07:53,650 --> 00:07:55,689
+When we write data at HDFS,
+
+232
+00:07:55,689 --> 00:07:56,890
+we end up writing, say,
+
+233
+00:07:56,890 --> 00:07:58,469
+three replicas or whatever.
+
+234
+00:07:58,469 --> 00:08:00,590
+And when we read
+back, we just read
+
+235
+00:08:00,590 --> 00:08:03,309
+one copy back because at HDFS,
+
+236
+00:08:03,309 --> 00:08:06,570
+all the partitions
+have the same value.
+
+237
+00:08:06,570 --> 00:08:08,530
+Here, with Cassandra, we
+
+238
+00:08:08,530 --> 00:08:10,589
+were able to say that that
+write was successful,
+
+239
+00:08:10,589 --> 00:08:12,910
+even though we didn't update
+all the machines properly.
+
+240
+00:08:12,910 --> 00:08:14,470
+And so one of the
+applications here is
+
+241
+00:08:14,470 --> 00:08:16,230
+that when I try to
+read my data back,
+
+242
+00:08:16,230 --> 00:08:19,210
+I can't just look at one
+copy like we do with HDFS.
+
+243
+00:08:19,210 --> 00:08:20,870
+I have to try to see, are
+
+244
+00:08:20,870 --> 00:08:23,010
+there kind of different
+versions out there, right?
+
+245
+00:08:23,010 --> 00:08:24,950
+Because if I read
+from the wrong w,
+
+246
+00:08:24,950 --> 00:08:26,230
+that I would get some
+old data, I would
+
+247
+00:08:26,230 --> 00:08:28,690
+get A instead of B.
+
+248
+00:08:28,690 --> 00:08:31,270
+So what we're going
+to do is we read from
+
+249
+00:08:31,270 --> 00:08:33,569
+multiple nodes before we
+
+250
+00:08:33,569 --> 00:08:35,229
+try to set data
+back to the client.
+
+251
+00:08:35,229 --> 00:08:38,089
+And how many we try to
+read from is configurable.
+
+252
+00:08:38,089 --> 00:08:39,669
+Were they say R
+
+253
+00:08:39,669 --> 00:08:41,589
+equals two in this case, it
+could be different things.
+
+254
+00:08:41,589 --> 00:08:42,869
+And in that case,
+we will try to read
+
+255
+00:08:42,869 --> 00:08:44,529
+from two to make sure we
+
+256
+00:08:44,529 --> 00:08:48,109
+have a better chance of finding
+the latest possible data.
+
+257
+00:08:48,109 --> 00:08:50,490
+You could set r equal
+to three, and say, Hey,
+
+258
+00:08:50,490 --> 00:08:51,690
+I want to read from
+all of them and
+
+259
+00:08:51,690 --> 00:08:53,350
+really make sure I'm
+getting the latest data.
+
+260
+00:08:53,350 --> 00:08:54,829
+If you just want to be
+
+261
+00:08:54,829 --> 00:08:55,570
+fast and you aren't
+
+262
+00:08:55,570 --> 00:08:56,629
+worried about getting
+the laates data,
+
+263
+00:08:56,629 --> 00:08:58,609
+maybe s set R equal to one.
+
+264
+00:08:58,609 --> 00:09:00,229
+All right?
+
+265
+00:09:00,229 --> 00:09:03,409
+Now, the common case is
+
+266
+00:09:03,409 --> 00:09:04,910
+that we're getting
+identical data
+
+267
+00:09:04,910 --> 00:09:06,469
+back from all the nodes, right?
+
+268
+00:09:06,469 --> 00:09:08,190
+So for example, maybe
+node one and node,
+
+269
+00:09:08,190 --> 00:09:09,430
+two send me the same data,
+
+270
+00:09:09,430 --> 00:09:11,070
+that's a little bit
+wasteful that they're both
+
+271
+00:09:11,070 --> 00:09:13,714
+sending me identical
+data back, right?
+
+272
+00:09:13,714 --> 00:09:15,560
+I need to be able to tet
+
+273
+00:09:15,560 --> 00:09:17,299
+if they disagree
+with each other,
+
+274
+00:09:17,299 --> 00:09:19,379
+but in the comments,
+they're going to agree.
+
+275
+00:09:19,379 --> 00:09:21,339
+And so there's an
+optimization on that,
+
+276
+00:09:21,339 --> 00:09:22,739
+and what will happen
+
+277
+00:09:22,739 --> 00:09:24,100
+is that each of the
+nodes individually,
+
+278
+00:09:24,100 --> 00:09:25,779
+will look at the row, and one
+
+279
+00:09:25,779 --> 00:09:27,979
+of them will be in charge
+of sending the data back,
+
+280
+00:09:27,979 --> 00:09:30,279
+and the other one will
+just send a check sum.
+
+281
+00:09:30,279 --> 00:09:32,240
+So a check sum is
+just a hash function
+
+282
+00:09:32,240 --> 00:09:34,019
+where collisions are very rare.
+
+283
+00:09:34,019 --> 00:09:35,879
+And if the coordinator has
+
+284
+00:09:35,879 --> 00:09:38,439
+a check sum of the data
+and it has actual data,
+
+285
+00:09:38,439 --> 00:09:39,720
+well, then it can
+compute what the
+
+286
+00:09:39,720 --> 00:09:41,160
+check sum could be and
+it could compare it.
+
+287
+00:09:41,160 --> 00:09:42,539
+And it could see Okay,
+
+288
+00:09:42,539 --> 00:09:44,559
+even though node one and
+node two didn't send
+
+289
+00:09:44,559 --> 00:09:46,819
+me full data, they
+agree with each other.
+
+290
+00:09:46,819 --> 00:09:49,280
+Okay. So it can detect
+if there's a problem.
+
+291
+00:09:49,280 --> 00:09:51,120
+It can detect if they disagree.
+
+292
+00:09:51,120 --> 00:09:52,779
+If they do disagree,
+then it can draw
+
+293
+00:09:52,779 --> 00:09:54,799
+back and read full
+copies of the data.
+
+294
+00:09:54,799 --> 00:09:57,020
+All right, so is it
+making sense so far,
+
+295
+00:09:57,020 --> 00:09:58,159
+how we can detect if
+
+296
+00:09:58,159 --> 00:10:00,000
+there's disagreement?
+Yeah, question right here.
+
+297
+00:10:00,000 --> 00:10:02,679
+Scenario with the coordinator
+also check some on
+
+298
+00:10:02,679 --> 00:10:05,800
+the data send see if
+they're the same.
+
+299
+00:10:05,800 --> 00:10:08,319
+Yeah, so the coordinator
+needs to see if
+
+300
+00:10:08,319 --> 00:10:10,739
+the data is identical across
+node one and node two.
+
+301
+00:10:10,739 --> 00:10:13,540
+So the coordinator will compute
+a check sum of the data,
+
+302
+00:10:13,540 --> 00:10:14,739
+that it gets back from node two.
+
+303
+00:10:14,739 --> 00:10:16,799
+And then if the check
+sums are the same,
+
+304
+00:10:16,799 --> 00:10:18,860
+it's very unlikely the
+data is different.
+
+305
+00:10:18,860 --> 00:10:20,219
+H.
+
+306
+00:10:27,980 --> 00:10:30,220
+Oh, how does the creator
+
+307
+00:10:30,220 --> 00:10:31,919
+determine which
+two to read from?
+
+308
+00:10:31,919 --> 00:10:33,760
+It could be random or maybe
+
+309
+00:10:33,760 --> 00:10:35,479
+they have some cleverness
+baked into it.
+
+310
+00:10:35,479 --> 00:10:37,700
+But for now, let's
+just say it's random,
+
+311
+00:10:37,700 --> 00:10:40,980
+what we want, if one of
+them is responding slowly,
+
+312
+00:10:40,980 --> 00:10:42,579
+it might try to read it
+from a different one.
+
+313
+00:10:42,579 --> 00:10:44,159
+So just kind of like random
+
+314
+00:10:44,159 --> 00:10:45,959
+performance things
+might affect which one.
+
+315
+00:10:45,959 --> 00:10:47,679
+So we can't have
+
+316
+00:10:47,679 --> 00:10:49,379
+any guarantee about which
+ones it'll read from.
+
+317
+00:10:49,379 --> 00:10:51,440
+It could be a good question ug.
+
+318
+00:10:51,440 --> 00:10:59,419
+Yeah, other questions
+people have. Yep.
+
+319
+00:11:00,380 --> 00:11:05,160
+That's a great question.
+So the coordinator
+
+320
+00:11:05,160 --> 00:11:07,239
+try to write to Node three,
+
+321
+00:11:07,239 --> 00:11:09,939
+it rebooting, does it try again?
+
+322
+00:11:09,939 --> 00:11:12,099
+Let's for now say no, like,
+
+323
+00:11:12,099 --> 00:11:14,110
+a let's say that
+it's just stale.
+
+324
+00:11:14,110 --> 00:11:15,689
+They do have some things that
+
+325
+00:11:15,689 --> 00:11:16,849
+will run in the background where
+
+326
+00:11:16,849 --> 00:11:19,829
+they eventually try to
+fix up differences.
+
+327
+00:11:19,829 --> 00:11:22,030
+Generally, that would
+happen actually be
+
+328
+00:11:22,030 --> 00:11:23,310
+between these nodes talking
+
+329
+00:11:23,310 --> 00:11:24,849
+to each other and
+sorting out because,
+
+330
+00:11:24,849 --> 00:11:27,289
+you know, soon the IO
+operations be over,
+
+331
+00:11:27,289 --> 00:11:28,709
+the coordinator will
+be out of the picture,
+
+332
+00:11:28,709 --> 00:11:31,209
+but these replicas might
+sync up with each other.
+
+333
+00:11:31,209 --> 00:11:32,929
+But, that kind of happens
+
+334
+00:11:32,929 --> 00:11:34,190
+later on any kind of time frame.
+
+335
+00:11:34,190 --> 00:11:35,749
+And so what we're
+re talking about is
+
+336
+00:11:35,749 --> 00:11:37,849
+without considering that
+that gets fixed up,
+
+337
+00:11:37,849 --> 00:11:39,209
+how can we still make a system
+
+338
+00:11:39,209 --> 00:11:41,030
+that behaves in a
+reasonable way?
+
+339
+00:11:41,030 --> 00:11:43,109
+So yes, eventually,
+they try to fix it up,
+
+340
+00:11:43,109 --> 00:11:44,249
+but for now, let's pretend
+
+341
+00:11:44,249 --> 00:11:45,729
+that it doesn't
+try to fix it up.
+
+342
+00:11:45,729 --> 00:11:49,509
+It's just old data, it's
+old data indefinitely.
+
+343
+00:11:49,509 --> 00:11:51,110
+Yeah, great question, though.
+
+344
+00:11:51,110 --> 00:11:52,769
+Yeah, right here.
+
+345
+00:11:58,530 --> 00:12:01,950
+Is it very dangerous to
+get sale data sometimes?
+
+346
+00:12:01,950 --> 00:12:03,830
+Yeah, let's hold that
+for a little bit,
+
+347
+00:12:03,830 --> 00:12:05,790
+cause I want to talk
+about what happens.
+
+348
+00:12:05,790 --> 00:12:08,010
+So we might get
+sale data, right?
+
+349
+00:12:08,010 --> 00:12:10,570
+And if R is larger,
+
+350
+00:12:10,570 --> 00:12:12,090
+I'm less likely
+to get sale data.
+
+351
+00:12:12,090 --> 00:12:13,889
+So we talk about like, Well,
+
+352
+00:12:13,889 --> 00:12:15,890
+how can I make sure that
+if I wrote some data,
+
+353
+00:12:15,890 --> 00:12:17,030
+I read it back again later?
+
+354
+00:12:17,030 --> 00:12:18,449
+That's what that we
+want to talk about.
+
+355
+00:12:18,449 --> 00:12:20,449
+The other thing that I'm
+real talk about, you know,
+
+356
+00:12:20,449 --> 00:12:21,849
+at the end of the
+lecture is that,
+
+357
+00:12:21,849 --> 00:12:23,149
+Okay, if I got back, like,
+
+358
+00:12:23,149 --> 00:12:25,629
+fresh data, se data,
+how do I figure out,
+
+359
+00:12:25,629 --> 00:12:27,089
+this is the proper version,
+
+360
+00:12:27,089 --> 00:12:29,009
+and this is the old
+version, right?
+
+361
+00:12:29,009 --> 00:12:31,569
+Yeah, so great questions, but
+we'll hold them for a bit.
+
+362
+00:12:31,569 --> 00:12:33,250
+Yeah, right here.
+
+363
+00:12:39,090 --> 00:12:42,050
+Yeah, I think that's
+a similar question,
+
+364
+00:12:42,050 --> 00:12:43,970
+if there's a disagreement
+between them,
+
+365
+00:12:43,970 --> 00:12:45,010
+if we get different
+versions, how
+
+366
+00:12:45,010 --> 00:12:46,329
+do we know which is
+the correct one?
+
+367
+00:12:46,329 --> 00:12:48,390
+And that's like there's
+
+368
+00:12:48,390 --> 00:12:49,890
+some even more nuance
+to that questions.
+
+369
+00:12:49,890 --> 00:12:51,449
+We save it. We'll
+come back to it.
+
+370
+00:12:51,449 --> 00:12:52,960
+That's a great question, though.
+
+371
+00:12:52,960 --> 00:12:56,469
+All right, so we can choose,
+right when we're writing,
+
+372
+00:12:56,469 --> 00:12:58,670
+how many successes does
+
+373
+00:12:58,670 --> 00:13:00,729
+it need to have to
+say it's good enough.
+
+374
+00:13:00,729 --> 00:13:03,089
+And we're reading, we say how
+many we try to read from,
+
+375
+00:13:03,089 --> 00:13:05,470
+and we also get to choose
+a replication factor.
+
+376
+00:13:05,470 --> 00:13:07,790
+So what I want you all to
+walk away with is to be
+
+377
+00:13:07,790 --> 00:13:11,009
+a sophisticated user in
+choosing these three numbers.
+
+378
+00:13:11,009 --> 00:13:12,230
+And there's different ways
+
+379
+00:13:12,230 --> 00:13:13,729
+you can do it. I'll
+talk more about that.
+
+380
+00:13:13,729 --> 00:13:16,149
+But there's one very common
+approach people have.
+
+381
+00:13:16,149 --> 00:13:20,110
+And that's what they do
+is they choose RW and RF,
+
+382
+00:13:20,110 --> 00:13:23,154
+such that R plus W
+is greater than RF.
+
+383
+00:13:23,154 --> 00:13:26,239
+Why is that? Well, here I have
+replication factor three.
+
+384
+00:13:26,239 --> 00:13:30,119
+And if I have W equals
+two and R equals two,
+
+385
+00:13:30,119 --> 00:13:31,700
+then I'm guaranteed that if I
+
+386
+00:13:31,700 --> 00:13:33,380
+write the subset and
+read from subset,
+
+387
+00:13:33,380 --> 00:13:36,159
+there's going to be some
+overlap between them.
+
+388
+00:13:36,159 --> 00:13:37,539
+What I'm really
+trying to guarantee,
+
+389
+00:13:37,539 --> 00:13:39,240
+right is if I write some data,
+
+390
+00:13:39,240 --> 00:13:41,280
+and the system says,
+y, that was committed,
+
+391
+00:13:41,280 --> 00:13:42,579
+and I read it later.
+
+392
+00:13:42,579 --> 00:13:44,199
+I'm not trying to
+get a surprise where
+
+393
+00:13:44,199 --> 00:13:46,459
+my data is missing, right?
+
+394
+00:13:46,459 --> 00:13:51,200
+If R plus W is equal
+to RF or it's smaller,
+
+395
+00:13:51,200 --> 00:13:52,899
+then that would happen
+all the time, right?
+
+396
+00:13:52,899 --> 00:13:54,620
+I might write something
+and it says, Hey,
+
+397
+00:13:54,620 --> 00:13:56,479
+it's good, and I read
+it, like, where is it?
+
+398
+00:13:56,479 --> 00:13:57,819
+That would be an anomaly, and we
+
+399
+00:13:57,819 --> 00:13:59,420
+want to avoid those anomalies.
+
+400
+00:13:59,420 --> 00:14:01,119
+Right? So, you know,
+
+401
+00:14:01,119 --> 00:14:02,760
+You can't just
+remember the formula,
+
+402
+00:14:02,760 --> 00:14:05,119
+but also you should
+think about why that is
+
+403
+00:14:05,119 --> 00:14:08,899
+a formula that
+makes sets, right?
+
+404
+00:14:08,899 --> 00:14:11,700
+So I want to talk about some
+different ways people might
+
+405
+00:14:11,700 --> 00:14:14,539
+tune these three variables
+
+406
+00:14:14,539 --> 00:14:17,019
+and what the trade offs
+would be in each case.
+
+407
+00:14:17,019 --> 00:14:19,579
+And so you know, RF
+isn't necessarily three,
+
+408
+00:14:19,579 --> 00:14:22,159
+I may imagine for all
+these cases, it is three.
+
+409
+00:14:22,159 --> 00:14:25,340
+Let's say that you make W equal
+
+410
+00:14:25,340 --> 00:14:28,689
+to three and r equals to one.
+
+411
+00:14:28,689 --> 00:14:32,320
+What that will mean is that
+reads are highly available.
+
+412
+00:14:32,320 --> 00:14:35,199
+Would I say that the system
+is available for something,
+
+413
+00:14:35,199 --> 00:14:37,299
+I mean that you
+could do that thing,
+
+414
+00:14:37,299 --> 00:14:40,099
+even if there are a lot of
+problems going on, right?
+
+415
+00:14:40,099 --> 00:14:42,119
+So if I have three
+copies of my data,
+
+416
+00:14:42,119 --> 00:14:45,359
+and I only need to read
+one copy to call it Dred,
+
+417
+00:14:45,359 --> 00:14:47,360
+that means I can have
+any two machines
+
+418
+00:14:47,360 --> 00:14:49,479
+down astray to work fine.
+
+419
+00:14:49,479 --> 00:14:52,859
+Okay? So, uh W equals three,
+
+420
+00:14:52,859 --> 00:14:55,460
+R equals one, reads are going
+to be highly available,
+
+421
+00:14:55,460 --> 00:14:57,400
+writes will not be
+highly available.
+
+422
+00:14:57,400 --> 00:14:58,460
+If there's three copies,
+
+423
+00:14:58,460 --> 00:14:59,659
+and I have to be
+able to write to all
+
+424
+00:14:59,659 --> 00:15:02,119
+of them to acknowledge
+it is committed,
+
+425
+00:15:02,119 --> 00:15:03,919
+that means if any
+one machine is down,
+
+426
+00:15:03,919 --> 00:15:06,800
+I just won't be able to
+write data for a while.
+
+427
+00:15:06,800 --> 00:15:09,760
+So kind of as you try to
+satisfy that formula,
+
+428
+00:15:09,760 --> 00:15:14,419
+R plus W is greater than
+RF, you can try to choose.
+
+429
+00:15:14,419 --> 00:15:15,420
+Is it more report that I
+
+430
+00:15:15,420 --> 00:15:16,680
+always want to be
+able to write data,
+
+431
+00:15:16,680 --> 00:15:18,340
+or I always want to
+be able to read data.
+
+432
+00:15:18,340 --> 00:15:19,939
+You can make some choices there.
+
+433
+00:15:19,939 --> 00:15:27,739
+The other factor with this
+is that I W is three,
+
+434
+00:15:27,739 --> 00:15:30,059
+that makes my data
+durable, right?
+
+435
+00:15:30,059 --> 00:15:33,280
+Durable means that if there's
+like permanent failures,
+
+436
+00:15:33,280 --> 00:15:35,439
+right, I'm not going to
+lose my data, right?
+
+437
+00:15:35,439 --> 00:15:37,060
+So if I say that
+it's not successful
+
+438
+00:15:37,060 --> 00:15:38,380
+until it's on three machines,
+
+439
+00:15:38,380 --> 00:15:40,640
+even if these machines
+die permanently,
+
+440
+00:15:40,640 --> 00:15:44,020
+as long as I have one
+that survived, it's good.
+
+441
+00:15:44,020 --> 00:15:46,399
+Okay, so the flip of that is we
+
+442
+00:15:46,399 --> 00:15:49,200
+could say that I want rights
+to be highly available,
+
+443
+00:15:49,200 --> 00:15:50,440
+even if maybe reads or not.
+
+444
+00:15:50,440 --> 00:15:53,479
+So I could say W equals
+one, R equals three.
+
+445
+00:15:53,479 --> 00:15:55,040
+In that case, as long as
+
+446
+00:15:55,040 --> 00:15:56,339
+any of these three
+machines are up,
+
+447
+00:15:56,339 --> 00:15:58,520
+I can write data just fine,
+
+448
+00:15:58,520 --> 00:16:00,940
+but if any one of
+them goes down,
+
+449
+00:16:00,940 --> 00:16:03,799
+then I won't be able to
+read my data back, right?
+
+450
+00:16:03,799 --> 00:16:07,570
+And that's actually what
+you're able to do P six.
+
+451
+00:16:07,570 --> 00:16:09,709
+So on P six, I imagine
+you have this server,
+
+452
+00:16:09,709 --> 00:16:12,230
+and there are all these weather
+stations setting a data.
+
+453
+00:16:12,230 --> 00:16:13,930
+And if the weather station tries
+
+454
+00:16:13,930 --> 00:16:15,649
+to write the data
+and it doesn't work,
+
+455
+00:16:15,649 --> 00:16:17,389
+I'm imagining that the
+weather station doesn't
+
+456
+00:16:17,389 --> 00:16:19,209
+have some kind of
+buffer to store it,
+
+457
+00:16:19,209 --> 00:16:21,469
+so the weather report
+would just be lost, right?
+
+458
+00:16:21,469 --> 00:16:24,190
+So you to have a server that's
+very welcoming to writes.
+
+459
+00:16:24,190 --> 00:16:25,869
+Even if sub machines are down,
+
+460
+00:16:25,869 --> 00:16:27,544
+it should take
+rights whatever it.
+
+461
+00:16:27,544 --> 00:16:30,180
+The server also can give
+you some weather stats,
+
+462
+00:16:30,180 --> 00:16:31,959
+and they say, well,
+
+463
+00:16:31,959 --> 00:16:33,420
+to satisfy that formula.
+
+464
+00:16:33,420 --> 00:16:35,439
+R plus W is greater than RF.
+
+465
+00:16:35,439 --> 00:16:37,619
+We they say that R equals three.
+
+466
+00:16:37,619 --> 00:16:39,739
+So, you know, sometimes if
+there's a machine down,
+
+467
+00:16:39,739 --> 00:16:41,859
+you might not be able
+to get statistics like,
+
+468
+00:16:41,859 --> 00:16:43,979
+what is the highest
+temperature ever.
+
+469
+00:16:43,979 --> 00:16:45,939
+Eventually, you will when
+the machines come back.
+
+470
+00:16:45,939 --> 00:16:47,840
+The main thing is
+that this server
+
+471
+00:16:47,840 --> 00:16:50,559
+should be there to be
+recording these things, right?
+
+472
+00:16:50,559 --> 00:16:52,399
+So that would be an
+example where writes
+
+473
+00:16:52,399 --> 00:16:54,699
+are highly available,
+even if reads are not.
+
+474
+00:16:54,699 --> 00:16:56,039
+You know, a very common thing
+
+475
+00:16:56,039 --> 00:16:57,580
+is people have a
+balanced approach.
+
+476
+00:16:57,580 --> 00:16:59,579
+They'll say W and
+R both equals two,
+
+477
+00:16:59,579 --> 00:17:01,279
+then we can lose any one machine
+
+478
+00:17:01,279 --> 00:17:04,139
+and everything
+still works, right?
+
+479
+00:17:04,460 --> 00:17:07,059
+If you want to live dangerously,
+
+480
+00:17:07,059 --> 00:17:11,019
+you could say W equals
+one and R equals one.
+
+481
+00:17:11,019 --> 00:17:13,499
+Now, it's not totally
+
+482
+00:17:13,499 --> 00:17:15,739
+insane because even
+though W equals one,
+
+483
+00:17:15,739 --> 00:17:18,059
+we're going to try to write
+to all three replicas.
+
+484
+00:17:18,059 --> 00:17:19,259
+All that means is that if for
+
+485
+00:17:19,259 --> 00:17:21,020
+some reason the
+machines are down,
+
+486
+00:17:21,020 --> 00:17:22,719
+we'll still call it dro if we
+
+487
+00:17:22,719 --> 00:17:24,740
+can write to at
+least one of them.
+
+488
+00:17:24,740 --> 00:17:26,820
+If some machines are down,
+
+489
+00:17:26,820 --> 00:17:29,339
+it might mean that
+I write some data,
+
+490
+00:17:29,339 --> 00:17:30,479
+get an acknowledgment, and then
+
+491
+00:17:30,479 --> 00:17:31,659
+I can't read it later, right?
+
+492
+00:17:31,659 --> 00:17:33,819
+So there are some anomalies
+that could happen here.
+
+493
+00:17:33,819 --> 00:17:36,020
+But this system is
+going to be fast,
+
+494
+00:17:36,020 --> 00:17:38,000
+and it's going to be
+highly available.
+
+495
+00:17:38,000 --> 00:17:41,239
+Can anybody think of an
+application where that make
+
+496
+00:17:41,239 --> 00:17:45,060
+sense? Let me put it this way.
+
+497
+00:17:45,060 --> 00:17:46,000
+Like a baking application,
+
+498
+00:17:46,000 --> 00:17:47,059
+this would not
+make sense, right?
+
+499
+00:17:47,059 --> 00:17:48,639
+Baking application has
+to do the right thing.
+
+500
+00:17:48,639 --> 00:17:50,480
+Is there an application
+where I might just care
+
+501
+00:17:50,480 --> 00:17:52,379
+about speed and availability
+
+502
+00:17:52,379 --> 00:17:54,620
+even if it's wrong sometimes?
+
+503
+00:17:54,620 --> 00:17:57,679
+Yeah, right here. Is that?
+
+504
+00:17:59,000 --> 00:18:01,319
+Maybe kind of
+messages, I kind of
+
+505
+00:18:01,319 --> 00:18:04,239
+depends on the nature of the
+messages. Yeah, I out here.
+
+506
+00:18:06,880 --> 00:18:10,260
+Yeah, maybe some kind of
+real time streaming video.
+
+507
+00:18:10,260 --> 00:18:11,580
+Are there other kind
+of real time things
+
+508
+00:18:11,580 --> 00:18:13,019
+where we just want it
+available all the time,
+
+509
+00:18:13,019 --> 00:18:15,879
+and it's okay if
+it's not perfect?
+
+510
+00:18:18,750 --> 00:18:20,509
+Yeah, right here.
+
+511
+00:18:20,509 --> 00:18:23,089
+The weather Yeah, Well,
+
+512
+00:18:23,089 --> 00:18:24,869
+maybe a weather app. I
+guess it depends, right?
+
+513
+00:18:24,869 --> 00:18:26,130
+Is it like recording
+weather things?
+
+514
+00:18:26,130 --> 00:18:27,369
+In that case, you
+want to make sure
+
+515
+00:18:27,369 --> 00:18:29,390
+the records actually
+get recorded.
+
+516
+00:18:29,390 --> 00:18:31,789
+Yeah, I guess there's different
+applications out there.
+
+517
+00:18:31,789 --> 00:18:34,009
+Some applications peel
+higher stakesthan other.
+
+518
+00:18:34,009 --> 00:18:35,610
+I think about something
+that's very low stakes,
+
+519
+00:18:35,610 --> 00:18:38,029
+I imagine like a
+computer game, right?
+
+520
+00:18:38,029 --> 00:18:40,529
+Like, with a computer game,
+it's low stakes, right?
+
+521
+00:18:40,529 --> 00:18:42,229
+People are playing
+it to have fun.
+
+522
+00:18:42,229 --> 00:18:45,610
+And it's probably more
+annoying if it just says,
+
+523
+00:18:45,610 --> 00:18:47,150
+Hey, the game is not
+available right now.
+
+524
+00:18:47,150 --> 00:18:49,989
+Even if there's some weird
+quirks or anomalies,
+
+525
+00:18:49,989 --> 00:18:51,549
+I'd want to keep playing
+the game, right?
+
+526
+00:18:51,549 --> 00:18:54,449
+So I imagine like
+computer games, right?
+
+527
+00:18:54,449 --> 00:18:55,789
+You might have one
+way to tune that and
+
+528
+00:18:55,789 --> 00:18:57,169
+then you might
+imagine like bake.
+
+529
+00:18:57,169 --> 00:18:58,909
+You'd have a very different
+way to tune that.
+
+530
+00:18:58,909 --> 00:19:00,469
+So, anyway, you
+should be able to
+
+531
+00:19:00,469 --> 00:19:02,110
+think through this and
+ibt your application,
+
+532
+00:19:02,110 --> 00:19:04,810
+choose some settings that
+make sense. Alright, cool.
+
+533
+00:19:04,810 --> 00:19:08,149
+S a head over here
+to the worksheet.
+
+534
+00:19:11,320 --> 00:19:16,559
+Great. I have this
+token g from B four.
+
+535
+00:19:16,559 --> 00:19:19,119
+And I assume now that I have R
+
+536
+00:19:19,119 --> 00:19:22,179
+equals two W equals two
+and RF equals three.
+
+537
+00:19:22,179 --> 00:19:24,019
+I assume the token of
+
+538
+00:19:24,019 --> 00:19:25,979
+a row being read it as
+negative three, right?
+
+539
+00:19:25,979 --> 00:19:28,060
+So we're writing right here.
+
+540
+00:19:28,060 --> 00:19:30,079
+And I want to know
+to which nodes,
+
+541
+00:19:30,079 --> 00:19:33,079
+will the coordinator
+attempt to write the data.
+
+542
+00:19:33,079 --> 00:19:34,479
+Okay? And so this
+is the keyword.
+
+543
+00:19:34,479 --> 00:19:36,099
+What is it attempting
+to write to?
+
+544
+00:19:36,099 --> 00:19:38,739
+And does anybody
+want to help me out?
+
+545
+00:19:38,739 --> 00:19:41,259
+Which of these numbers is
+relevant to this question?
+
+546
+00:19:41,259 --> 00:19:45,650
+Yeah, right here. W at RF.
+
+547
+00:19:45,650 --> 00:19:48,049
+So yes, and does anybody
+
+548
+00:19:48,049 --> 00:19:49,309
+want to elaborate W one matters
+
+549
+00:19:49,309 --> 00:19:51,389
+even more? Yeah right here.
+
+550
+00:19:51,389 --> 00:19:54,429
+The replication factor is
+what I really care about.
+
+551
+00:19:54,429 --> 00:19:56,070
+So the W tells
+
+552
+00:19:56,070 --> 00:19:58,210
+me how many I have to write
+to for it to be good tou,
+
+553
+00:19:58,210 --> 00:20:00,629
+but RF tells me how many I'm
+re to attempt to write to.
+
+554
+00:20:00,629 --> 00:20:02,489
+So I may start here
+at negative three,
+
+555
+00:20:02,489 --> 00:20:05,070
+and I may walk right
+until I hit three node.
+
+556
+00:20:05,070 --> 00:20:06,330
+So I hit a no there,
+
+557
+00:20:06,330 --> 00:20:08,390
+it a do there, hit a do there.
+
+558
+00:20:08,390 --> 00:20:10,669
+And so we're ready
+to try to write at
+
+559
+00:20:10,669 --> 00:20:13,869
+one n two and N three.
+
+560
+00:20:13,869 --> 00:20:15,570
+Right? If I write to two
+of the, we'll say it's
+
+561
+00:20:15,570 --> 00:20:16,369
+good enough but I bet at
+
+562
+00:20:16,369 --> 00:20:17,629
+least try to write
+to both of those.
+
+563
+00:20:17,629 --> 00:20:20,470
+All three of those. Oh, right.
+
+564
+00:20:20,470 --> 00:20:22,129
+Cool. Let's head down here.
+
+565
+00:20:22,129 --> 00:20:25,330
+And I want to look at a scenario
+
+566
+00:20:26,350 --> 00:20:28,709
+We're basically doing that.
+
+567
+00:20:28,709 --> 00:20:31,250
+It's the same row,
+
+568
+00:20:31,250 --> 00:20:33,309
+but a lot of bad things
+are happening, right?
+
+569
+00:20:33,309 --> 00:20:35,790
+So first, node one is down,
+
+570
+00:20:35,790 --> 00:20:37,710
+and then I try to write a row.
+
+571
+00:20:37,710 --> 00:20:40,029
+That's right to work because as
+
+572
+00:20:40,029 --> 00:20:42,050
+long as I can write to
+two, that's good enough.
+
+573
+00:20:42,050 --> 00:20:45,180
+Alright, Node one comes back
+and node three crashes.
+
+574
+00:20:45,180 --> 00:20:46,929
+Then I try to read a row.
+
+575
+00:20:46,929 --> 00:20:48,070
+Okay, well, that's good enough,
+
+576
+00:20:48,070 --> 00:20:51,089
+too because R equals two,
+there's two nodes up.
+
+577
+00:20:51,089 --> 00:20:55,049
+All right, so I want to see
+which nodes perform reads.
+
+578
+00:20:55,049 --> 00:20:57,209
+So at the time I was reading,
+
+579
+00:20:57,209 --> 00:20:59,309
+node three was down, right?
+
+580
+00:20:59,309 --> 00:21:01,689
+So what will this
+mean? This is node one
+
+581
+00:21:01,689 --> 00:21:05,569
+and node two are the ones
+that I'd read to read from.
+
+582
+00:21:05,569 --> 00:21:07,889
+I has to read from two of them.
+
+583
+00:21:07,890 --> 00:21:10,370
+Which nodes perform rights?
+
+584
+00:21:10,370 --> 00:21:12,390
+Well, when I was writing,
+node one was down.
+
+585
+00:21:12,390 --> 00:21:14,230
+So I guess, in that
+case, I'm doing
+
+586
+00:21:14,230 --> 00:21:17,369
+node two and node three.
+
+587
+00:21:17,369 --> 00:21:18,489
+All right?
+
+588
+00:21:18,489 --> 00:21:21,970
+Is the data that was
+written read back later?
+
+589
+00:21:21,970 --> 00:21:25,189
+So I read from these two,
+I wrote to these two.
+
+590
+00:21:25,189 --> 00:21:26,950
+And so I can see
+there's overlap,
+
+591
+00:21:26,950 --> 00:21:29,030
+right? I wrote some data.
+
+592
+00:21:29,030 --> 00:21:30,789
+I got an acknowledgement,
+I read later.
+
+593
+00:21:30,789 --> 00:21:32,069
+I ready to get that data back,
+
+594
+00:21:32,069 --> 00:21:34,490
+at least as one of the
+copies of the data.
+
+595
+00:21:34,490 --> 00:21:39,299
+Alright. And then this
+last one out here.
+
+596
+00:21:39,299 --> 00:21:40,760
+So I have in this case,
+
+597
+00:21:40,760 --> 00:21:43,400
+W equals three RF equals four.
+
+598
+00:21:43,400 --> 00:21:45,419
+Maybe people can up
+some number of figures.
+
+599
+00:21:45,419 --> 00:21:47,360
+What should R equal
+in this case,
+
+600
+00:21:47,360 --> 00:21:52,100
+if I want to make sure that
+that I read my rights.
+
+601
+00:21:52,100 --> 00:21:55,219
+Everybody can up some
+number of figures.
+
+602
+00:22:00,710 --> 00:22:02,970
+I'm seeing some two is also
+
+603
+00:22:02,970 --> 00:22:05,009
+some three. So the
+answer is two.
+
+604
+00:22:05,009 --> 00:22:06,549
+Let's think about this, right?
+
+605
+00:22:06,549 --> 00:22:10,129
+So I have four replicas.
+
+606
+00:22:10,129 --> 00:22:12,869
+And when I write to it,
+
+607
+00:22:12,869 --> 00:22:14,669
+I'd bet to write to
+three of them, right?
+
+608
+00:22:14,669 --> 00:22:17,969
+I'd be to say we equals three.
+
+609
+00:22:17,969 --> 00:22:20,289
+And when I read back,
+
+610
+00:22:20,289 --> 00:22:22,509
+if R was one,
+
+611
+00:22:22,509 --> 00:22:23,769
+then that's not good enough.
+
+612
+00:22:23,769 --> 00:22:24,809
+I might read from the bad one.
+
+613
+00:22:24,809 --> 00:22:27,149
+I have to make sure that R at
+
+614
+00:22:27,149 --> 00:22:30,290
+two to guarantee some overlap.
+
+615
+00:22:30,290 --> 00:22:32,409
+These are how we work
+with read write or.
+
+616
+00:22:32,409 --> 00:22:34,270
+Any questions about
+those examples?
+
+617
+00:22:34,270 --> 00:22:39,570
+Yeah, here. Three and
+four. Two, three and four.
+
+618
+00:22:39,570 --> 00:22:41,769
+Yeah, I could make
+bigger if I wanted to.
+
+619
+00:22:41,769 --> 00:22:44,469
+I don't know if there
+would be a benefit
+
+620
+00:22:44,469 --> 00:22:45,809
+to making it bigger, right?
+
+621
+00:22:45,809 --> 00:22:48,429
+Because I'm guaranteed that
+
+622
+00:22:48,429 --> 00:22:49,849
+it's big enough
+that I'm going to
+
+623
+00:22:49,849 --> 00:22:51,469
+see what has been
+recently rented,
+
+624
+00:22:51,469 --> 00:22:54,229
+but it won't stop me from
+making it bigger if I want to.
+
+625
+00:22:54,229 --> 00:22:57,380
+Yeah, good question. I saw
+the hand up right over here.
+
+626
+00:22:57,380 --> 00:23:01,809
+Even Yeah.
+
+627
+00:23:02,770 --> 00:23:05,429
+Oh, yeah. How did I do that?
+
+628
+00:23:05,429 --> 00:23:08,409
+So I guess maybe 11 kind
+of builds off Ted, right?
+
+629
+00:23:08,409 --> 00:23:09,790
+So in this case,
+
+630
+00:23:09,790 --> 00:23:11,909
+I started at negative three.
+
+631
+00:23:11,909 --> 00:23:14,269
+And then I my replication
+factor is three.
+
+632
+00:23:14,269 --> 00:23:15,729
+So I just walked the reg until I
+
+633
+00:23:15,729 --> 00:23:17,569
+got three. Boom, boom, boom.
+
+634
+00:23:17,569 --> 00:23:18,935
+That, that makes sense?
+
+635
+00:23:18,935 --> 00:23:24,199
+Oh, yeah, exactly, right?
+
+636
+00:23:24,199 --> 00:23:25,859
+So, the first thing we do,
+
+637
+00:23:25,859 --> 00:23:28,679
+Fredy Gvd row is we
+figure out the Tkid,
+
+638
+00:23:28,679 --> 00:23:30,439
+and then we see, Okay, these are
+
+639
+00:23:30,439 --> 00:23:33,559
+the set of workers that
+are going to be involved.
+
+640
+00:23:33,559 --> 00:23:36,340
+And so those are RF workers.
+
+641
+00:23:36,340 --> 00:23:38,420
+And then R and W are both
+
+642
+00:23:38,420 --> 00:23:40,820
+subsets of those.
+That makes sense?
+
+643
+00:23:40,820 --> 00:23:44,380
+Yeah, great question.
+Yeah. Yeah, right here.
+
+644
+00:23:49,620 --> 00:23:52,020
+Mm hmm.
+
+645
+00:24:02,610 --> 00:24:03,769
+Yeah.
+
+646
+00:24:03,769 --> 00:24:06,389
+Well, I think you're
+thinking about
+
+647
+00:24:06,389 --> 00:24:07,629
+the right thing because you're I
+
+648
+00:24:07,629 --> 00:24:09,130
+think what you're thinking
+about now is like, Hey,
+
+649
+00:24:09,130 --> 00:24:12,890
+if I have R equals two, I
+have one good and one bad,
+
+650
+00:24:12,890 --> 00:24:14,089
+and you're saying, would it be
+
+651
+00:24:14,089 --> 00:24:15,910
+nice if we could have
+more, we could vote?
+
+652
+00:24:15,910 --> 00:24:17,730
+Voting is one a. Well there's
+
+653
+00:24:17,730 --> 00:24:19,209
+another idea that they
+used to resolve this.
+
+654
+00:24:19,209 --> 00:24:23,049
+And so having be
+dreaded off for us.
+
+655
+00:24:23,049 --> 00:24:24,749
+There are some
+ideas behind that,
+
+656
+00:24:24,749 --> 00:24:26,629
+but we'll talk about
+that more detail.
+
+657
+00:24:26,629 --> 00:24:31,729
+All right. Yeah, right
+back here. Yeah.
+
+658
+00:24:34,620 --> 00:24:37,320
+The answer is yes,
+
+659
+00:24:37,320 --> 00:24:40,060
+because we wrote and
+read to the same bod.
+
+660
+00:24:40,060 --> 00:24:41,600
+The answer is yes. We'll read
+
+661
+00:24:41,600 --> 00:24:43,679
+back the data that
+was readed. Yeah.
+
+662
+00:24:43,679 --> 00:24:46,219
+Thanks for clarifying.
+Yeah. Follow up.
+
+663
+00:24:53,700 --> 00:24:56,659
+Like you have another
+question, but
+
+664
+00:25:07,440 --> 00:25:10,300
+Yeah. I see what you're saying.
+
+665
+00:25:10,300 --> 00:25:13,499
+Is the data that was re
+read back? Yes, it is.
+
+666
+00:25:13,499 --> 00:25:16,539
+In addition, some bad
+data was read back.
+
+667
+00:25:16,539 --> 00:25:19,360
+It reads back the good
+data plus some bad data.
+
+668
+00:25:19,360 --> 00:25:20,719
+That's the next thing what
+we talk about, right?
+
+669
+00:25:20,719 --> 00:25:21,959
+What we're talking about, I have
+
+670
+00:25:21,959 --> 00:25:24,019
+a mix of good data and bad
+data. How do I deal with that?
+
+671
+00:25:24,019 --> 00:25:24,199
+Right?
+
+672
+00:25:24,199 --> 00:25:25,959
+So you see all these things
+built on top of it, right?
+
+673
+00:25:25,959 --> 00:25:27,720
+First we walk the rig,
+
+674
+00:25:27,720 --> 00:25:29,580
+then we do read write quorums.
+
+675
+00:25:29,580 --> 00:25:30,880
+And then the final piece
+
+676
+00:25:30,880 --> 00:25:32,299
+that we still need
+to talk about is how
+
+677
+00:25:32,299 --> 00:25:35,160
+do we resolve conflicts?
+Yeah, right here.
+
+678
+00:25:35,160 --> 00:25:38,279
+Yeah. Houses are not going to.
+
+679
+00:25:38,440 --> 00:25:43,020
+Let's talk about I think
+everybody is on the right track.
+
+680
+00:25:43,020 --> 00:25:45,419
+Everybody sees the problem
+that we have, right?
+
+681
+00:25:45,419 --> 00:25:47,920
+So the next thing is
+conflict resolution.
+
+682
+00:25:47,920 --> 00:25:49,079
+And this is actually
+going to be kind
+
+683
+00:25:49,079 --> 00:25:50,180
+of similar when you're
+working a ditch.
+
+684
+00:25:50,180 --> 00:25:52,259
+Sometimes you have different
+versions of the same code,
+
+685
+00:25:52,259 --> 00:25:53,820
+and you have to
+resolve conflict.
+
+686
+00:25:53,820 --> 00:25:55,739
+So first, let me show you
+
+687
+00:25:55,739 --> 00:25:58,139
+kind of a really nasty
+conflict because we've been
+
+688
+00:25:58,139 --> 00:26:00,540
+talking about kind of
+oversimplify things.
+
+689
+00:26:00,540 --> 00:26:02,000
+We'd say, Oh, there's
+a good version,
+
+690
+00:26:02,000 --> 00:26:03,060
+there's a bad version.
+
+691
+00:26:03,060 --> 00:26:04,339
+What we really see is that,
+
+692
+00:26:04,339 --> 00:26:05,819
+sometimes you have
+different versions,
+
+693
+00:26:05,819 --> 00:26:08,419
+and neither one is they
+
+694
+00:26:08,419 --> 00:26:09,760
+each have something that's good
+
+695
+00:26:09,760 --> 00:26:11,500
+about them that's not good
+about the other version.
+
+696
+00:26:11,500 --> 00:26:13,320
+There's not always a
+strictly best version,
+
+697
+00:26:13,320 --> 00:26:14,239
+just like it did, right?
+
+698
+00:26:14,239 --> 00:26:15,279
+You can branch out
+and you can say,
+
+699
+00:26:15,279 --> 00:26:16,140
+well, you wrote some code,
+
+700
+00:26:16,140 --> 00:26:18,320
+I wrote some code, the best
+is probably some combination.
+
+701
+00:26:18,320 --> 00:26:19,820
+Okay, so for all these things,
+
+702
+00:26:19,820 --> 00:26:20,459
+when you think about it,
+
+703
+00:26:20,459 --> 00:26:22,079
+you want to think about,
+really perverse cases.
+
+704
+00:26:22,079 --> 00:26:23,860
+L, what's the
+nastiest combination
+
+705
+00:26:23,860 --> 00:26:25,579
+of failures and recoveries
+
+706
+00:26:25,579 --> 00:26:26,880
+that could lead to
+something weird,
+
+707
+00:26:26,880 --> 00:26:28,739
+and then think about
+how you handle those.
+
+708
+00:26:28,739 --> 00:26:30,040
+So, in this case,
+
+709
+00:26:30,040 --> 00:26:31,989
+I have these rows out here.
+
+710
+00:26:31,989 --> 00:26:34,159
+And the partition for
+
+711
+00:26:34,159 --> 00:26:37,099
+or the primary for
+each of them is five.
+
+712
+00:26:37,099 --> 00:26:40,019
+And I see that there's
+one cell, which is A.
+
+713
+00:26:40,019 --> 00:26:42,620
+I want to change A to
+B and each of them.
+
+714
+00:26:42,620 --> 00:26:44,309
+And just at the wrong time,
+
+715
+00:26:44,309 --> 00:26:45,860
+This machine is rebooting.
+
+716
+00:26:45,860 --> 00:26:47,479
+So I change A to B in these two,
+
+717
+00:26:47,479 --> 00:26:50,059
+but there's some sale
+data on known three.
+
+718
+00:26:50,059 --> 00:26:53,379
+Alright, now we're ready to
+try to change X to Y, right?
+
+719
+00:26:53,379 --> 00:26:55,980
+So let me look at this.
+I want to change x to y.
+
+720
+00:26:55,980 --> 00:26:57,479
+And just what I'm doing that,
+
+721
+00:26:57,479 --> 00:26:59,160
+well, there's a different
+machine rebooting.
+
+722
+00:26:59,160 --> 00:27:00,499
+Okay? So on the
+machines that are up,
+
+723
+00:27:00,499 --> 00:27:02,279
+I will change x to y,
+
+724
+00:27:02,279 --> 00:27:04,479
+but now I may have a
+sale value over here.
+
+725
+00:27:04,479 --> 00:27:06,660
+So A is stale and x is sale.
+
+726
+00:27:06,660 --> 00:27:08,660
+And now let's say
+we're ready to read.
+
+727
+00:27:08,660 --> 00:27:12,899
+And just what we want to
+read, known is rebooting.
+
+728
+00:27:12,899 --> 00:27:16,939
+Okay. So now we got ourselves
+in a bad situation because,
+
+729
+00:27:16,939 --> 00:27:18,659
+you know, we get two versions of
+
+730
+00:27:18,659 --> 00:27:20,100
+the data, neither of
+which is perfect.
+
+731
+00:27:20,100 --> 00:27:23,209
+Both of them have something
+old about it, right?
+
+732
+00:27:23,209 --> 00:27:25,440
+And so some systems,
+
+733
+00:27:25,440 --> 00:27:27,219
+a lot of distribution
+systems will be very
+
+734
+00:27:27,219 --> 00:27:30,235
+careful to make sure you don't
+get into this situation.
+
+735
+00:27:30,235 --> 00:27:33,550
+To make sure that your different
+replicas are consistent.
+
+736
+00:27:33,550 --> 00:27:35,709
+Maybe they're not all the
+same state at the same time,
+
+737
+00:27:35,709 --> 00:27:36,909
+but there's a clear liteage,
+
+738
+00:27:36,909 --> 00:27:39,769
+like, this is the
+history for this object.
+
+739
+00:27:39,769 --> 00:27:41,489
+Cassandra is an example of
+
+740
+00:27:41,489 --> 00:27:43,709
+an eventually consistent system
+
+741
+00:27:43,709 --> 00:27:46,010
+where the state can diverge.
+
+742
+00:27:46,010 --> 00:27:47,469
+There's not really
+one best thing.
+
+743
+00:27:47,469 --> 00:27:48,850
+Eventually, we
+want to get things
+
+744
+00:27:48,850 --> 00:27:52,230
+consistent body has the
+same version of the data,
+
+745
+00:27:52,230 --> 00:27:55,550
+but it's okay for it to
+temporarily diverge.
+
+746
+00:27:55,550 --> 00:27:57,649
+Other systems that are
+eventually consistent,
+
+747
+00:27:57,649 --> 00:27:58,870
+what they're often
+trying to do is they're
+
+748
+00:27:58,870 --> 00:28:00,289
+trying to optimize to
+be highly available.
+
+749
+00:28:00,289 --> 00:28:01,649
+Even if things are failing, they
+
+750
+00:28:01,649 --> 00:28:03,109
+want reads and writes to work,
+
+751
+00:28:03,109 --> 00:28:06,549
+and the sacrifices that you
+get yourself into this mass,
+
+752
+00:28:06,549 --> 00:28:09,549
+right? How do we deal with that?
+
+753
+00:28:09,770 --> 00:28:12,889
+There's a couple of approaches.
+
+754
+00:28:13,050 --> 00:28:16,369
+One is that the coordinator that
+
+755
+00:28:16,369 --> 00:28:17,790
+gets these two could
+
+756
+00:28:17,790 --> 00:28:19,230
+just send the both
+back to the client.
+
+757
+00:28:19,230 --> 00:28:21,329
+The client is like, Oh,
+let me read that value.
+
+758
+00:28:21,329 --> 00:28:22,749
+And the coordinator is like,
+
+759
+00:28:22,749 --> 00:28:24,189
+Oops, I have two values.
+
+760
+00:28:24,189 --> 00:28:25,949
+You figure it out, right?
+
+761
+00:28:25,949 --> 00:28:29,189
+That's harder as
+a program, right?
+
+762
+00:28:29,189 --> 00:28:30,410
+Maybe some of you have written
+
+763
+00:28:30,410 --> 00:28:31,889
+a Trode does like SQL queries,
+
+764
+00:28:31,889 --> 00:28:33,609
+like you just hit
+your results back.
+
+765
+00:28:33,609 --> 00:28:35,770
+It would be harder to
+write that code if you got
+
+766
+00:28:35,770 --> 00:28:38,234
+two different results back and
+like, we'll figure it out.
+
+767
+00:28:38,234 --> 00:28:40,300
+In some cases, it
+makes a lot of sense.
+
+768
+00:28:40,300 --> 00:28:42,039
+Like, for example, remember that
+
+769
+00:28:42,039 --> 00:28:44,720
+this idea was pioneered
+in the dynamo paper,
+
+770
+00:28:44,720 --> 00:28:46,560
+which they were using at Amazon.
+
+771
+00:28:46,560 --> 00:28:47,740
+And at Amazon they're always
+
+772
+00:28:47,740 --> 00:28:49,359
+thinking about
+shopping carts, right?
+
+773
+00:28:49,359 --> 00:28:51,720
+If I have an application,
+that's try to you a shop cart,
+
+774
+00:28:51,720 --> 00:28:52,839
+and I'm like, Oh,
+here's actually
+
+775
+00:28:52,839 --> 00:28:54,100
+two versions of
+the shopping cart.
+
+776
+00:28:54,100 --> 00:28:55,480
+They have different
+things in them.
+
+777
+00:28:55,480 --> 00:28:56,039
+I mean,
+
+778
+00:28:56,039 --> 00:28:57,539
+there's some reasonable
+things you could do, right?
+
+779
+00:28:57,539 --> 00:28:58,239
+You could take like
+
+780
+00:28:58,239 --> 00:28:59,659
+the union of all this
+stuff in them and say,
+
+781
+00:28:59,659 --> 00:29:02,739
+well, this is your new
+shopping cart, right?
+
+782
+00:29:02,780 --> 00:29:05,879
+But a lot of applications is
+not clear how to do that.
+
+783
+00:29:05,879 --> 00:29:07,379
+And so the other
+thing you could do
+
+784
+00:29:07,379 --> 00:29:10,159
+is that The coordinator
+
+785
+00:29:10,159 --> 00:29:12,380
+could try to automatically
+combine them into
+
+786
+00:29:12,380 --> 00:29:14,979
+a newest best row,
+right? We could do that.
+
+787
+00:29:14,979 --> 00:29:16,360
+So if you're using Dabo,
+
+788
+00:29:16,360 --> 00:29:18,639
+DDBo actually lets
+programmers choose,
+
+789
+00:29:18,639 --> 00:29:21,159
+which approach, just
+do the best you
+
+790
+00:29:21,159 --> 00:29:24,039
+can automatically or make
+the application do it.
+
+791
+00:29:24,039 --> 00:29:26,319
+Cassandra only uses
+a simpler approach,
+
+792
+00:29:26,319 --> 00:29:29,379
+which is, let's try to merge
+these the best we can.
+
+793
+00:29:29,379 --> 00:29:30,879
+And it doesn't do perfect,
+
+794
+00:29:30,879 --> 00:29:33,279
+but it's the best effort system.
+
+795
+00:29:33,279 --> 00:29:34,980
+And so the way that Cassandra
+
+796
+00:29:34,980 --> 00:29:36,939
+does that is for every value,
+
+797
+00:29:36,939 --> 00:29:38,979
+it's going to record a
+type statap in it, right?
+
+798
+00:29:38,979 --> 00:29:40,884
+When was this value changed?
+
+799
+00:29:40,884 --> 00:29:42,929
+And what we could
+do then, right?
+
+800
+00:29:42,929 --> 00:29:44,529
+Is that when we get
+both these back,
+
+801
+00:29:44,529 --> 00:29:46,210
+we can merge it to
+get the best of both.
+
+802
+00:29:46,210 --> 00:29:47,690
+So is A or B better?
+
+803
+00:29:47,690 --> 00:29:49,630
+I guess B has a bigger type sep
+
+804
+00:29:49,630 --> 00:29:51,189
+than A. So we put B there?
+
+805
+00:29:51,189 --> 00:29:53,430
+Is X or Y better?
+
+806
+00:29:53,430 --> 00:29:54,750
+Y has a bigger type sep,
+
+807
+00:29:54,750 --> 00:29:56,130
+or we put the y there.
+
+808
+00:29:56,130 --> 00:29:58,249
+So we're send that back, right?
+
+809
+00:29:58,249 --> 00:29:59,910
+You know, it's okay.
+
+810
+00:29:59,910 --> 00:30:00,869
+It's tight of reasonable.
+
+811
+00:30:00,869 --> 00:30:02,409
+There's things I
+don't like about it.
+
+812
+00:30:02,409 --> 00:30:03,789
+When we have a
+distributed system
+
+813
+00:30:03,789 --> 00:30:04,829
+and we have a bunch of clocks,
+
+814
+00:30:04,829 --> 00:30:07,029
+they're never perfectly
+in sync, right?
+
+815
+00:30:07,029 --> 00:30:09,549
+And so we might make
+
+816
+00:30:09,549 --> 00:30:11,509
+a role that's not actually
+the latest, right?
+
+817
+00:30:11,509 --> 00:30:13,629
+We could get something
+that's not quite right.
+
+818
+00:30:13,629 --> 00:30:15,370
+That just happens
+sometimes Sandra.
+
+819
+00:30:15,370 --> 00:30:17,829
+It doesn't always give
+you the right answer.
+
+820
+00:30:18,150 --> 00:30:21,109
+What else might happen?
+
+821
+00:30:21,710 --> 00:30:24,170
+We've talked about how
+
+822
+00:30:24,170 --> 00:30:26,230
+there's different rules
+that apply to your data.
+
+823
+00:30:26,230 --> 00:30:28,609
+For example, like a bake
+account to negative.
+
+824
+00:30:28,609 --> 00:30:30,489
+Humans know what
+those rules are,
+
+825
+00:30:30,489 --> 00:30:33,909
+and it's possible that
+the combination of
+
+826
+00:30:33,909 --> 00:30:37,589
+B and Y doesn't
+make sets, right?
+
+827
+00:30:37,589 --> 00:30:39,769
+Maybe for some application,
+there's certain states that
+
+828
+00:30:39,769 --> 00:30:41,009
+Casadra might give you that just
+
+829
+00:30:41,009 --> 00:30:42,549
+to a human, they
+don't make sets.
+
+830
+00:30:42,549 --> 00:30:43,730
+Well, that's too bad.
+
+831
+00:30:43,730 --> 00:30:45,169
+That's just what
+Cesara does, right?
+
+832
+00:30:45,169 --> 00:30:48,529
+There's some cases where that
+might not work. All right.
+
+833
+00:30:48,529 --> 00:30:50,469
+So this conflict
+resolution policy
+
+834
+00:30:50,469 --> 00:30:52,510
+that Casser has is called LW.
+
+835
+00:30:52,510 --> 00:30:54,149
+That's last rider wins,
+and it happens on
+
+836
+00:30:54,149 --> 00:30:56,049
+a per cell basis.
+
+837
+00:30:56,049 --> 00:30:57,389
+Yeah, gosh right here.
+
+838
+00:30:57,389 --> 00:31:01,650
+As very resource intensive.
+
+839
+00:31:01,650 --> 00:31:08,310
+Cob? Is it very
+resource intensive?
+
+840
+00:31:08,310 --> 00:31:11,030
+Yeah, that's probably
+my intition, as well.
+
+841
+00:31:11,030 --> 00:31:13,209
+Does it become a problem?
+
+842
+00:31:13,209 --> 00:31:16,490
+Well, I mean, it's
+definitely an overhead,
+
+843
+00:31:16,490 --> 00:31:18,329
+how much of an overhead?
+
+844
+00:31:18,329 --> 00:31:19,409
+That's a little
+hard to say, right?
+
+845
+00:31:19,409 --> 00:31:21,469
+I would be interesting to try
+to do some measurements and
+
+846
+00:31:21,469 --> 00:31:24,049
+see if you turn that off,
+how much faster is it?
+
+847
+00:31:24,049 --> 00:31:25,809
+I bet I bet it's noticeable.
+
+848
+00:31:25,809 --> 00:31:34,640
+Yeah, s right here. Oh, that's
+a really good question.
+
+849
+00:31:34,640 --> 00:31:37,819
+So why not just always
+use the time stops,
+
+850
+00:31:37,819 --> 00:31:40,159
+instead of using the check subs.
+
+851
+00:31:40,159 --> 00:31:43,659
+Well, I've been focusing on,
+
+852
+00:31:43,659 --> 00:31:44,919
+like these weird
+scenarios, right?
+
+853
+00:31:44,919 --> 00:31:47,699
+It's kind of a little bit
+like constructed, right?
+
+854
+00:31:47,699 --> 00:31:50,440
+Oh, this fails, and that
+fails. That happens sometimes.
+
+855
+00:31:50,440 --> 00:31:53,060
+But let's remember
+that the normal case
+
+856
+00:31:53,060 --> 00:31:54,599
+is that all my machines are up,
+
+857
+00:31:54,599 --> 00:31:56,239
+and they're probably
+up for days, right?
+
+858
+00:31:56,239 --> 00:31:57,999
+The vast majority of the time,
+
+859
+00:31:57,999 --> 00:31:59,899
+all the copies of the data
+
+860
+00:31:59,899 --> 00:32:02,039
+are going to be
+identical, right?
+
+861
+00:32:02,039 --> 00:32:05,279
+And so I don't want to know
+sometimes I have to do
+
+862
+00:32:05,279 --> 00:32:06,540
+the slow thing and carefully
+
+863
+00:32:06,540 --> 00:32:07,439
+construct a new row,
+
+864
+00:32:07,439 --> 00:32:08,539
+but I don't want to
+do that every time.
+
+865
+00:32:08,539 --> 00:32:10,259
+I want to make the
+common chase fast,
+
+866
+00:32:10,259 --> 00:32:12,899
+and I want to make
+the the kind of,
+
+867
+00:32:12,899 --> 00:32:15,339
+like, bad case, do something
+semi reasonable, right?
+
+868
+00:32:15,339 --> 00:32:17,119
+So that's why we wouldn't
+use Type saps every time.
+
+869
+00:32:17,119 --> 00:32:18,560
+As faster as send one copy
+
+870
+00:32:18,560 --> 00:32:20,420
+of the data. Yeah,
+good question.
+
+871
+00:32:20,420 --> 00:32:22,059
+So the other thing here, which I
+
+872
+00:32:22,059 --> 00:32:23,119
+don't really quite show is
+
+873
+00:32:23,119 --> 00:32:24,439
+that we wouldn't like
+
+874
+00:32:24,439 --> 00:32:26,799
+these nodes to eventually
+sake up with each other.
+
+875
+00:32:26,799 --> 00:32:27,819
+So the coordinator when it's
+
+876
+00:32:27,819 --> 00:32:29,279
+sending that row
+back to the client,
+
+877
+00:32:29,279 --> 00:32:30,700
+the coordinator is well
+
+878
+00:32:30,700 --> 00:32:33,019
+aware that there's a
+problem with the system.
+
+879
+00:32:33,019 --> 00:32:34,720
+And so at that point in
+the time, the coordinator,
+
+880
+00:32:34,720 --> 00:32:36,219
+in addition to sending
+this row back,
+
+881
+00:32:36,219 --> 00:32:38,840
+we'll try to write
+that row on top
+
+882
+00:32:38,840 --> 00:32:40,139
+of nodes two and three so that
+
+883
+00:32:40,139 --> 00:32:41,899
+we are to this weird
+state forever.
+
+884
+00:32:41,899 --> 00:32:43,559
+You know, that's
+eventually consistent.
+
+885
+00:32:43,559 --> 00:32:45,860
+Eventually, want all the
+rows to be the same,
+
+886
+00:32:45,860 --> 00:32:48,020
+even if we temporarily
+allow them to diverge,
+
+887
+00:32:48,020 --> 00:32:49,854
+when machines are dying.
+
+888
+00:32:49,854 --> 00:32:52,449
+All right. So I
+
+889
+00:32:52,449 --> 00:32:54,249
+may to do a couple of quick
+demos because I want to
+
+890
+00:32:54,249 --> 00:32:58,469
+save a little time
+for Exa review, too.
+
+891
+00:32:58,469 --> 00:33:02,610
+Let me just head over here
+and I'm going to SSH Ed.
+
+892
+00:33:03,290 --> 00:33:10,420
+And All right, I'm going
+to look at my containers.
+
+893
+00:33:10,420 --> 00:33:11,639
+I have three containers here.
+
+894
+00:33:11,639 --> 00:33:17,099
+I'm going to do a
+doc, a docker Eat IT,
+
+895
+00:33:17,099 --> 00:33:18,640
+and I'm going to jump into.
+
+896
+00:33:18,640 --> 00:33:20,419
+It doesn't really
+matter which one.
+
+897
+00:33:20,419 --> 00:33:25,500
+One of the things I want to
+show you is the node tool,
+
+898
+00:33:25,500 --> 00:33:26,919
+which we've seen before, but
+
+899
+00:33:26,919 --> 00:33:28,480
+you'll understand it
+in more detail now.
+
+900
+00:33:28,480 --> 00:33:29,879
+I can say node tool rig.
+
+901
+00:33:29,879 --> 00:33:31,400
+When I've been drawing
+the rigs on paper,
+
+902
+00:33:31,400 --> 00:33:32,620
+like all the numbers
+are kind of small,
+
+903
+00:33:32,620 --> 00:33:34,560
+I go from like negative
+eight to seven.
+
+904
+00:33:34,560 --> 00:33:37,499
+Here, It's way too big,
+
+905
+00:33:37,499 --> 00:33:39,759
+but I'll kind of spread
+that out a little bit.
+
+906
+00:33:39,759 --> 00:33:42,299
+Here what I see
+is that there are
+
+907
+00:33:42,299 --> 00:33:44,839
+only three different
+IPs in my cluster
+
+908
+00:33:44,839 --> 00:33:47,700
+because there's
+three actual nodes,
+
+909
+00:33:47,700 --> 00:33:49,300
+but each of these appear many
+
+910
+00:33:49,300 --> 00:33:51,780
+times because they each
+have multiple Venodes.
+
+911
+00:33:51,780 --> 00:33:53,519
+The token numbers assigned to
+
+912
+00:33:53,519 --> 00:33:55,440
+each Vende are shown over here.
+
+913
+00:33:55,440 --> 00:33:57,320
+So we can see the tokens
+
+914
+00:33:57,320 --> 00:33:59,200
+for the V nodes start
+from very small,
+
+915
+00:33:59,200 --> 00:34:01,019
+and they go to very large.
+
+916
+00:34:01,019 --> 00:34:03,219
+There's like 16 for each node,
+
+917
+00:34:03,219 --> 00:34:05,480
+so there's like 48 tokens here.
+
+918
+00:34:05,480 --> 00:34:08,379
+And so If you had
+the token for a row,
+
+919
+00:34:08,379 --> 00:34:10,219
+you could go through here
+and you could see, like, Oh,
+
+920
+00:34:10,219 --> 00:34:13,059
+maybe it equals this, so that
+would draw on this V node,
+
+921
+00:34:13,059 --> 00:34:14,519
+or if it was between these two,
+
+922
+00:34:14,519 --> 00:34:16,019
+it would also go on this V node.
+
+923
+00:34:16,019 --> 00:34:16,979
+Right? So you can work through.
+
+924
+00:34:16,979 --> 00:34:18,439
+Sometimes I've had
+people do that in P
+
+925
+00:34:18,439 --> 00:34:19,739
+six but I guess we're being
+
+926
+00:34:19,739 --> 00:34:21,180
+a little bit nicer
+this semester.
+
+927
+00:34:21,180 --> 00:34:22,579
+Then you don't have
+to write prod that
+
+928
+00:34:22,579 --> 00:34:24,919
+walks the rig automatically.
+
+929
+00:34:24,919 --> 00:34:27,780
+But I go to the very
+end, I see this number.
+
+930
+00:34:27,780 --> 00:34:29,499
+And so if there are
+any rows that are to
+
+931
+00:34:29,499 --> 00:34:32,960
+the right of that they have
+a bigger token number,
+
+932
+00:34:32,960 --> 00:34:34,299
+those are the wrapping range.
+
+933
+00:34:34,299 --> 00:34:36,099
+And so just remember
+some digits from this.
+
+934
+00:34:36,099 --> 00:34:38,245
+It's like 919, something.
+
+935
+00:34:38,245 --> 00:34:40,049
+I see that's up here as well.
+
+936
+00:34:40,049 --> 00:34:42,950
+And so this V node is
+a little bit special.
+
+937
+00:34:42,950 --> 00:34:45,889
+It handles any tokens
+that are less than this,
+
+938
+00:34:45,889 --> 00:34:47,330
+and it also handles
+
+939
+00:34:47,330 --> 00:34:49,249
+nodes that are the wrapping
+rags that are big than this.
+
+940
+00:34:49,249 --> 00:34:51,629
+That's why they're showing
+that number twice.
+
+941
+00:34:51,629 --> 00:34:52,849
+Cool. So I can go through.
+
+942
+00:34:52,849 --> 00:34:54,689
+I can inspect a real token ring,
+
+943
+00:34:54,689 --> 00:34:56,129
+which is slightly more
+
+944
+00:34:56,129 --> 00:34:57,409
+complicatedthan what
+we've been looking at,
+
+945
+00:34:57,409 --> 00:34:59,529
+but it's still not crazy, right?
+
+946
+00:34:59,529 --> 00:35:02,590
+The other thing I want to
+show is if I have SQL SH
+
+947
+00:35:02,590 --> 00:35:06,169
+and I connect to Demo DB one.
+
+948
+00:35:06,169 --> 00:35:08,909
+Let me just use baking
+like last time,
+
+949
+00:35:08,909 --> 00:35:12,290
+and I'm going to select
+star from loans.
+
+950
+00:35:12,290 --> 00:35:15,409
+And I see there's a
+bunch of loads here.
+
+951
+00:35:15,409 --> 00:35:17,749
+One of the things that
+I want to show you
+
+952
+00:35:17,749 --> 00:35:24,820
+is This bake ID
+determines by partition,
+
+953
+00:35:24,820 --> 00:35:27,419
+and if I want to, I can
+get a token for it, right?
+
+954
+00:35:27,419 --> 00:35:29,159
+What is the token of bake ID?
+
+955
+00:35:29,159 --> 00:35:31,359
+Right? So this is
+my partition key.
+
+956
+00:35:31,359 --> 00:35:34,559
+And so I can say
+for a given row,
+
+957
+00:35:34,640 --> 00:35:36,819
+what the token is, and I can
+
+958
+00:35:36,819 --> 00:35:38,439
+actually take this number,
+and if I wanted to,
+
+959
+00:35:38,439 --> 00:35:40,719
+I could walk the rig,
+and I could say, k,
+
+960
+00:35:40,719 --> 00:35:42,640
+this row of data has this token,
+
+961
+00:35:42,640 --> 00:35:44,579
+and I can tell you what V node
+
+962
+00:35:44,579 --> 00:35:46,639
+or multiple V nodes is
+straight B. I can use that.
+
+963
+00:35:46,639 --> 00:35:47,959
+I can walk the rig.
+I won't because
+
+964
+00:35:47,959 --> 00:35:49,500
+I don't like looking
+at that many digits,
+
+965
+00:35:49,500 --> 00:35:50,619
+but it's the same concept as
+
+966
+00:35:50,619 --> 00:35:52,659
+what we've been doing
+on the worksheets.
+
+967
+00:35:52,659 --> 00:35:55,384
+Another thing I want to show you
+
+968
+00:35:55,384 --> 00:35:59,429
+is when I come back here,
+
+969
+00:35:59,429 --> 00:36:04,349
+I can look at the right
+time for fields like state.
+
+970
+00:36:04,349 --> 00:36:06,149
+I'm sorry, so that's
+not Wisconsin.
+
+971
+00:36:06,149 --> 00:36:09,619
+I could Maybe let me
+just take a look at
+
+972
+00:36:09,619 --> 00:36:14,060
+the state and that for each
+of these state fields,
+
+973
+00:36:14,060 --> 00:36:15,919
+I can see what the
+right time was for it.
+
+974
+00:36:15,919 --> 00:36:17,340
+What was it last readed?
+
+975
+00:36:17,340 --> 00:36:19,379
+And if I wanted to,
+I could do something
+
+976
+00:36:19,379 --> 00:36:23,740
+like I could update loads,
+
+977
+00:36:23,740 --> 00:36:25,579
+and I could set state
+
+978
+00:36:25,579 --> 00:36:27,819
+I'll just change
+like the case of it,
+
+979
+00:36:27,819 --> 00:36:30,459
+where and I have
+
+980
+00:36:30,459 --> 00:36:32,280
+to specify the whole
+primary key to changes.
+
+981
+00:36:32,280 --> 00:36:34,219
+So the bake ID is 544,
+
+982
+00:36:34,219 --> 00:36:43,299
+and the about is 400
+and the load ID.
+
+983
+00:36:44,400 --> 00:36:47,619
+Loan ID would be.
+
+984
+00:36:47,619 --> 00:36:48,939
+I'd change you this
+one right here.
+
+985
+00:36:48,939 --> 00:36:51,199
+Sutray copy paste this.
+
+986
+00:36:51,920 --> 00:36:54,059
+So I could update that thing,
+
+987
+00:36:54,059 --> 00:36:57,039
+and then if I tub
+selected again,
+
+988
+00:36:57,039 --> 00:37:00,599
+then I can see that it updated
+the right time sap for it.
+
+989
+00:37:00,599 --> 00:37:02,339
+So I could go through it.
+I can actually inspect,
+
+990
+00:37:02,339 --> 00:37:03,620
+like when this field.
+
+991
+00:37:03,620 --> 00:37:05,040
+Let change. Other applications
+
+992
+00:37:05,040 --> 00:37:06,679
+might have some value
+for that as well.
+
+993
+00:37:06,679 --> 00:37:10,059
+One thing I cannot do is I
+cannot get the right type
+
+994
+00:37:10,059 --> 00:37:14,439
+for something that is the
+partition key, right?
+
+995
+00:37:14,439 --> 00:37:17,280
+Because if I have a different
+primary key, by definition,
+
+996
+00:37:17,280 --> 00:37:18,699
+it's a different row, so I never
+
+997
+00:37:18,699 --> 00:37:20,379
+update values of
+the primary key.
+
+998
+00:37:20,379 --> 00:37:21,739
+I just create different rows.
+
+999
+00:37:21,739 --> 00:37:23,579
+So it does't keep track of
+the time staap for that.
+
+1000
+00:37:23,579 --> 00:37:24,719
+It just keeps track of
+
+1001
+00:37:24,719 --> 00:37:27,340
+the time staps for
+the normal fields.
+
+1002
+00:37:27,340 --> 00:37:30,019
+All right. C, that's
+my Cassandra demo.
+
+1003
+00:37:30,019 --> 00:37:32,479
+Any question about
+the Cassandra demo?
+
+1004
+00:37:33,360 --> 00:37:36,679
+All right. Cool. So
+let's head over here
+
+1005
+00:37:36,679 --> 00:37:39,599
+back to the worksheets,
+
+1006
+00:37:39,599 --> 00:37:44,320
+or not the worksheets,
+but the exams.
+
+1007
+00:37:44,320 --> 00:37:46,779
+And so you know,
+
+1008
+00:37:46,779 --> 00:37:47,999
+like I've said, we're going
+
+1009
+00:37:47,999 --> 00:37:49,780
+from two exams to three exams.
+
+1010
+00:37:49,780 --> 00:37:50,519
+And so that means if you're
+
+1011
+00:37:50,519 --> 00:37:52,100
+looking for practice questions,
+
+1012
+00:37:52,100 --> 00:37:55,879
+the old final exams are
+the best place to go.
+
+1013
+00:37:55,879 --> 00:37:57,819
+And I have two of them.
+
+1014
+00:37:57,819 --> 00:38:00,679
+And just to save you
+all a little bit
+
+1015
+00:38:00,679 --> 00:38:04,300
+of doubt about what
+questions are relevant.
+
+1016
+00:38:04,300 --> 00:38:06,239
+I went through it. I just
+marked some of them.
+
+1017
+00:38:06,239 --> 00:38:07,999
+So this might be something
+that you might want
+
+1018
+00:38:07,999 --> 00:38:10,279
+to write down if you're
+trying to study from these.
+
+1019
+00:38:10,279 --> 00:38:13,379
+So this is the final
+exam from Fall 2023.
+
+1020
+00:38:13,379 --> 00:38:15,060
+And there's some
+of these questions
+
+1021
+00:38:15,060 --> 00:38:17,900
+that are relevant based
+on what we've covered.
+
+1022
+00:38:17,900 --> 00:38:22,999
+So questions one, two, five.
+
+1023
+00:38:26,160 --> 00:38:39,139
+813 202-20-6208.
+
+1024
+00:38:39,139 --> 00:38:41,159
+And that's all,
+right? So those are
+
+1025
+00:38:41,159 --> 00:38:42,399
+questions that I'll spend
+
+1026
+00:38:42,399 --> 00:38:43,679
+some time looking at
+some of them now,
+
+1027
+00:38:43,679 --> 00:38:45,059
+but those are questions
+that you could look
+
+1028
+00:38:45,059 --> 00:38:46,760
+at from this final.
+
+1029
+00:38:46,760 --> 00:38:49,359
+Let's take a look
+at the Spring 2023.
+
+1030
+00:38:49,359 --> 00:38:53,079
+So for this final exam
+from Spring 2023,
+
+1031
+00:38:53,079 --> 00:38:59,360
+questions, two, three,
+four, five are relevant.
+
+1032
+00:39:00,180 --> 00:39:03,900
+Question 11 is relevant.
+
+1033
+00:39:04,060 --> 00:39:10,139
+What else do we
+have here? 21 22.
+
+1034
+00:39:10,139 --> 00:39:12,099
+And that's all.
+Right? So you have
+
+1035
+00:39:12,099 --> 00:39:13,039
+at least some questions you
+
+1036
+00:39:13,039 --> 00:39:14,579
+could use to practice for this.
+
+1037
+00:39:14,579 --> 00:39:16,759
+I also want to talk
+
+1038
+00:39:16,759 --> 00:39:18,840
+a little bit about the
+systems we've covered.
+
+1039
+00:39:18,840 --> 00:39:20,560
+So for this part of the
+course, we're spending
+
+1040
+00:39:20,560 --> 00:39:22,680
+almost like a week or so on
+different major systems.
+
+1041
+00:39:22,680 --> 00:39:26,739
+So the first major big
+data system was HDFS.
+
+1042
+00:39:26,739 --> 00:39:29,315
+Then we looked at Spark.
+
+1043
+00:39:29,315 --> 00:39:31,429
+And now we've just
+completed Cassandra.
+
+1044
+00:39:31,429 --> 00:39:32,849
+And so when I write the exam,
+
+1045
+00:39:32,849 --> 00:39:35,070
+I want to make sure I have
+at least several questions
+
+1046
+00:39:35,070 --> 00:39:37,489
+about each of those major
+systems on there, right?
+
+1047
+00:39:37,489 --> 00:39:40,229
+So you're going to have to
+go and review each of those.
+
+1048
+00:39:40,229 --> 00:39:41,529
+One of the ways I might think
+
+1049
+00:39:41,529 --> 00:39:43,149
+about it to kind of make
+sure you understand what
+
+1050
+00:39:43,149 --> 00:39:44,709
+you need to know
+for each of them
+
+1051
+00:39:44,709 --> 00:39:47,869
+is like let's say
+I'm looking at HDFS.
+
+1052
+00:39:47,869 --> 00:39:49,550
+You could ask yourself,
+
+1053
+00:39:49,550 --> 00:39:51,930
+where does HDFS store data?
+
+1054
+00:39:51,930 --> 00:39:53,130
+Right? Like how is
+it partitioned?
+
+1055
+00:39:53,130 --> 00:39:54,989
+How is it replicated? You should
+
+1056
+00:39:54,989 --> 00:39:56,329
+be able to have very
+clear in your mind.
+
+1057
+00:39:56,329 --> 00:39:59,050
+If I write HDFS
+data, what happened?
+
+1058
+00:39:59,050 --> 00:40:00,389
+Was talking to the dat node,
+
+1059
+00:40:00,389 --> 00:40:01,509
+it's writing to the data node?
+
+1060
+00:40:01,509 --> 00:40:03,029
+The data node it's
+like piplighting it.
+
+1061
+00:40:03,029 --> 00:40:05,170
+By trying to read data
+with HF is what happens?
+
+1062
+00:40:05,170 --> 00:40:06,409
+And I want to go through it.
+
+1063
+00:40:06,409 --> 00:40:07,610
+L for each of these systems,
+
+1064
+00:40:07,610 --> 00:40:08,829
+think about how is
+
+1065
+00:40:08,829 --> 00:40:10,609
+the data actually moving
+at each of those?
+
+1066
+00:40:10,609 --> 00:40:12,310
+Right? I think that
+would be helpful.
+
+1067
+00:40:12,310 --> 00:40:14,090
+Then there's some minor systems?
+
+1068
+00:40:14,090 --> 00:40:15,610
+Like we learned
+map reduce HBase.
+
+1069
+00:40:15,610 --> 00:40:17,610
+I didn't actually show
+any programming depos,
+
+1070
+00:40:17,610 --> 00:40:19,909
+but you know, a question or
+two might be fair there.
+
+1071
+00:40:19,909 --> 00:40:22,049
+Anything else we
+covered is fair.
+
+1072
+00:40:22,049 --> 00:40:23,109
+You know, there's may be
+
+1073
+00:40:23,109 --> 00:40:24,889
+some questions from
+the first part.
+
+1074
+00:40:24,889 --> 00:40:26,509
+So at the very
+least, I make sure
+
+1075
+00:40:26,509 --> 00:40:28,649
+you understand what
+you did on the exam.
+
+1076
+00:40:28,649 --> 00:40:31,089
+O, well, both what you got
+right and what you got wrong.
+
+1077
+00:40:31,089 --> 00:40:32,849
+Do we have any, like,
+general questions before
+
+1078
+00:40:32,849 --> 00:40:34,769
+we start looking through
+some specific ones here?
+
+1079
+00:40:34,769 --> 00:40:39,009
+There, right. Pd H
+base. Yep. Yeah.
+
+1080
+00:40:39,009 --> 00:40:41,690
+And so, I want to
+look at the history.
+
+1081
+00:40:41,690 --> 00:40:43,390
+I'm like, Oh, here's Map reduce.
+
+1082
+00:40:43,390 --> 00:40:45,209
+I talked a little
+bit a bit about it.
+
+1083
+00:40:45,209 --> 00:40:46,569
+And then we talked
+a lot about Spark
+
+1084
+00:40:46,569 --> 00:40:48,210
+and Spark is more common.
+
+1085
+00:40:48,210 --> 00:40:50,250
+Same thing, like, we
+looked at H base.
+
+1086
+00:40:50,250 --> 00:40:52,850
+You know, Cassada
+is more popular.
+
+1087
+00:40:52,850 --> 00:40:54,250
+So we spent a bunch
+of time at Csara,
+
+1088
+00:40:54,250 --> 00:40:56,049
+but I want people to
+understand the history a bit,
+
+1089
+00:40:56,049 --> 00:40:58,789
+too. Yeah. Alright, cool.
+
+1090
+00:40:58,789 --> 00:40:59,949
+So I'm just ready to go through
+
+1091
+00:40:59,949 --> 00:41:01,849
+these and talk about them,
+
+1092
+00:41:01,849 --> 00:41:03,809
+and pop up ahead at a time,
+
+1093
+00:41:03,809 --> 00:41:07,110
+to ask about anything you want
+to for ping for the exam.
+
+1094
+00:41:07,110 --> 00:41:09,649
+So let's take a look here.
+
+1095
+00:41:09,980 --> 00:41:12,259
+All right, so I have
+
+1096
+00:41:12,259 --> 00:41:14,919
+an HDFS cluster with
+a single name node,
+
+1097
+00:41:14,919 --> 00:41:17,399
+and that name node is
+becoming a bottleneck.
+
+1098
+00:41:17,399 --> 00:41:22,100
+And so this cluster has
+a small number of files,
+
+1099
+00:41:22,100 --> 00:41:24,439
+but each file is
+extremely large.
+
+1100
+00:41:24,439 --> 00:41:28,540
+I'm wondering what we can
+do to help the name node.
+
+1101
+00:41:28,540 --> 00:41:31,359
+Now, the name node has
+a data structure at it.
+
+1102
+00:41:31,359 --> 00:41:33,600
+Can anybody describe
+what the data structure
+
+1103
+00:41:33,600 --> 00:41:35,700
+is that it has internally?
+
+1104
+00:41:41,540 --> 00:41:48,899
+Yeah, go ahead. Petition file.
+
+1105
+00:41:48,899 --> 00:41:54,079
+Then the name note Yeah,
+
+1106
+00:41:54,079 --> 00:41:58,919
+The Nab node has something
+where there's like a key,
+
+1107
+00:41:58,919 --> 00:42:02,319
+which might be a
+block within a file,
+
+1108
+00:42:02,319 --> 00:42:05,039
+and then the value would be
+the locations of it, right?
+
+1109
+00:42:05,039 --> 00:42:06,559
+So that's called the block map.
+
+1110
+00:42:06,559 --> 00:42:08,420
+So the Nabe has this
+block map that maps.
+
+1111
+00:42:08,420 --> 00:42:10,080
+Okay. Here's a partition.
+
+1112
+00:42:10,080 --> 00:42:11,380
+Here's where it's located.
+
+1113
+00:42:11,380 --> 00:42:13,439
+And what I'm worrying about
+the Nab nod, I'm wondering,
+
+1114
+00:42:13,439 --> 00:42:14,559
+like, are we doing too
+
+1115
+00:42:14,559 --> 00:42:16,080
+many look ups on
+that data structure?
+
+1116
+00:42:16,080 --> 00:42:17,599
+Is the data structure too big?
+
+1117
+00:42:17,599 --> 00:42:20,060
+And so what about, like,
+adding more data nodes?
+
+1118
+00:42:20,060 --> 00:42:22,080
+It might change the contents
+of that data structure,
+
+1119
+00:42:22,080 --> 00:42:25,299
+but we be using it just as
+much, I'll be just as big.
+
+1120
+00:42:25,299 --> 00:42:28,099
+What's did it happen if I
+increase the block size?
+
+1121
+00:42:28,099 --> 00:42:30,979
+What will that do for the M
+data structure? Right here?
+
+1122
+00:42:41,460 --> 00:42:44,239
+Excellent, right? If I
+have a larger block size
+
+1123
+00:42:44,239 --> 00:42:46,280
+it reduces the number
+of blocks in total.
+
+1124
+00:42:46,280 --> 00:42:48,059
+So the size of my block map
+
+1125
+00:42:48,059 --> 00:42:49,699
+will be like half
+of what it was.
+
+1126
+00:42:49,699 --> 00:42:51,499
+And if there's these
+clients reading,
+
+1127
+00:42:51,499 --> 00:42:53,519
+if a client is reading
+like the whole file,
+
+1128
+00:42:53,519 --> 00:42:54,959
+the client won't have to pull
+
+1129
+00:42:54,959 --> 00:42:57,139
+as much data from the
+da node as well, right?
+
+1130
+00:42:57,139 --> 00:42:58,499
+So this is the answer here.
+
+1131
+00:42:58,499 --> 00:43:00,659
+It treats the block size
+
+1132
+00:43:01,150 --> 00:43:04,530
+See what make the problem
+worse for the same reason.
+
+1133
+00:43:04,530 --> 00:43:07,409
+Splitting big files
+into bite small files.
+
+1134
+00:43:07,409 --> 00:43:08,769
+That would be worse,
+too, because the name
+
+1135
+00:43:08,769 --> 00:43:10,669
+has to remember all
+the names for these.
+
+1136
+00:43:10,669 --> 00:43:12,329
+I have maybe a bunch of
+
+1137
+00:43:12,329 --> 00:43:14,249
+files that fit in a
+signal block, right?
+
+1138
+00:43:14,249 --> 00:43:15,829
+So that would be
+the answer here.
+
+1139
+00:43:15,829 --> 00:43:17,169
+All right, I'll just
+keep moving along,
+
+1140
+00:43:17,169 --> 00:43:18,610
+but if anybody has any
+follow up questions,
+
+1141
+00:43:18,610 --> 00:43:20,589
+please just pop up a
+had at eight time.
+
+1142
+00:43:20,589 --> 00:43:21,830
+Alright.
+
+1143
+00:43:21,830 --> 00:43:24,329
+So looking at Cassandra,
+
+1144
+00:43:24,329 --> 00:43:29,349
+so we have W equals eight
+and RF equals nine.
+
+1145
+00:43:29,349 --> 00:43:31,869
+And what should I choose for R
+
+1146
+00:43:31,869 --> 00:43:32,789
+if I want to make sure that
+
+1147
+00:43:32,789 --> 00:43:34,209
+readers see successful rights.
+
+1148
+00:43:34,209 --> 00:43:36,955
+Maybe people can hold up
+some number of fingers.
+
+1149
+00:43:36,955 --> 00:43:39,299
+I'm seeing some twos,
+so that's straight.
+
+1150
+00:43:39,299 --> 00:43:41,979
+I'm glad everybody try to
+freshen people's mind.
+
+1151
+00:43:41,979 --> 00:43:44,139
+You know, if it was one,
+
+1152
+00:43:44,139 --> 00:43:46,599
+that's not good enough because
+maybe I write to these ad,
+
+1153
+00:43:46,599 --> 00:43:47,819
+and then maybe the one is
+
+1154
+00:43:47,819 --> 00:43:49,659
+the other replica that
+hasn't seen the data.
+
+1155
+00:43:49,659 --> 00:43:52,099
+So, so two is to make sure that
+
+1156
+00:43:52,099 --> 00:43:53,759
+at least one of the ones
+
+1157
+00:43:53,759 --> 00:43:56,864
+is from one of the
+ones that we wrote to.
+
+1158
+00:43:56,864 --> 00:43:59,230
+All right. Cool.
+
+1159
+00:43:59,230 --> 00:44:01,109
+So I bet like out here now.
+
+1160
+00:44:01,109 --> 00:44:04,030
+So I bet imagine that in
+my cluster, I have Spark.
+
+1161
+00:44:04,030 --> 00:44:07,129
+And I don't really have as
+much Rab as I would like,
+
+1162
+00:44:07,129 --> 00:44:09,329
+but I have a lot of
+computational power
+
+1163
+00:44:09,329 --> 00:44:11,010
+in terms of CPU cores.
+
+1164
+00:44:11,010 --> 00:44:14,630
+Okay? And so I want
+to cache some data.
+
+1165
+00:44:14,630 --> 00:44:16,289
+And so of these four,
+
+1166
+00:44:16,289 --> 00:44:19,149
+does anybody want
+to make a case for
+
+1167
+00:44:19,149 --> 00:44:20,789
+which caching level will be most
+
+1168
+00:44:20,789 --> 00:44:22,650
+appropriate in my situation?
+
+1169
+00:44:22,650 --> 00:44:23,869
+To be very clear. I don't care
+
+1170
+00:44:23,869 --> 00:44:25,390
+about load balances
+or fault tolerance.
+
+1171
+00:44:25,390 --> 00:44:28,550
+I really just try asking
+in terms of Rab and CPU.
+
+1172
+00:44:28,550 --> 00:44:33,189
+What should I pay?
+Yeah, right here.
+
+1173
+00:44:33,189 --> 00:44:34,769
+Because you want
+to serialize it,
+
+1174
+00:44:34,769 --> 00:44:36,549
+so it doesn't take up much ab.
+
+1175
+00:44:36,549 --> 00:44:39,029
+And you don't care
+about fuller, so.
+
+1176
+00:44:39,029 --> 00:44:40,989
+Excellent, right? So first
+
+1177
+00:44:40,989 --> 00:44:42,589
+of if you're saying, I
+don't care about Toler,
+
+1178
+00:44:42,589 --> 00:44:43,609
+so there's no real point in
+
+1179
+00:44:43,609 --> 00:44:45,289
+having two copies
+of the same thing,
+
+1180
+00:44:45,289 --> 00:44:48,049
+so I agree that quickly
+knocks out these.
+
+1181
+00:44:48,049 --> 00:44:49,289
+If I'm scarce on ab, I
+
+1182
+00:44:49,289 --> 00:44:51,269
+don't want to have two
+copies of it, right?
+
+1183
+00:44:51,269 --> 00:44:54,309
+Between these, remember
+that memory ly,
+
+1184
+00:44:54,309 --> 00:44:56,689
+has a memory, but it's
+in the Java types.
+
+1185
+00:44:56,689 --> 00:44:58,569
+The JVM types are
+pretty bloated, right?
+
+1186
+00:44:58,569 --> 00:45:00,109
+There's a lot of overhead there.
+
+1187
+00:45:00,109 --> 00:45:01,909
+And so if we serialize it,
+
+1188
+00:45:01,909 --> 00:45:03,249
+it's a compact format, almost
+
+1189
+00:45:03,249 --> 00:45:05,059
+like protocol buffers
+or something like that.
+
+1190
+00:45:05,059 --> 00:45:07,510
+When it's in that format,
+it takes much less memory,
+
+1191
+00:45:07,510 --> 00:45:09,749
+but I can't directly
+do computation on it.
+
+1192
+00:45:09,749 --> 00:45:12,269
+That means I may have to do
+some extra instructions,
+
+1193
+00:45:12,269 --> 00:45:13,669
+some extra compute to
+
+1194
+00:45:13,669 --> 00:45:16,109
+deserialize it immediately
+before I access it, right?
+
+1195
+00:45:16,109 --> 00:45:18,490
+So this is to take the
+least amount of memory,
+
+1196
+00:45:18,490 --> 00:45:19,429
+but I will have to use
+
+1197
+00:45:19,429 --> 00:45:21,989
+some extra computational
+resources.
+
+1198
+00:45:22,070 --> 00:45:33,149
+Oh. Alright. Maybe people
+
+1199
+00:45:33,149 --> 00:45:35,749
+will remember this from P four.
+
+1200
+00:45:35,749 --> 00:45:41,169
+So when you were doing CP
+to copy a file into HDFS,
+
+1201
+00:45:41,169 --> 00:45:43,650
+and what granularity
+were you specifying
+
+1202
+00:45:43,650 --> 00:45:46,349
+the replication
+factor of one or two?
+
+1203
+00:45:46,349 --> 00:45:49,809
+Yeah, right here. Per
+file, Excellent, right?
+
+1204
+00:45:49,809 --> 00:45:51,169
+So for the CP,
+
+1205
+00:45:51,169 --> 00:45:53,049
+there was a flag we could
+pass it and say what that is.
+
+1206
+00:45:53,049 --> 00:45:56,050
+So each file could have a
+different replication factor.
+
+1207
+00:45:57,140 --> 00:45:58,939
+All right.
+
+1208
+00:45:58,939 --> 00:46:02,159
+Lo Cassandra questioned
+about the Token rig,
+
+1209
+00:46:02,159 --> 00:46:03,719
+and we have replicas for it.
+
+1210
+00:46:03,719 --> 00:46:05,720
+And what technique do
+we use with updating
+
+1211
+00:46:05,720 --> 00:46:08,539
+the multiple replicas
+of a token rig, right?
+
+1212
+00:46:08,539 --> 00:46:10,379
+So this is not rows
+of data, right?
+
+1213
+00:46:10,379 --> 00:46:11,519
+These are not the actual rows.
+
+1214
+00:46:11,519 --> 00:46:13,360
+This is that token
+Map data structure
+
+1215
+00:46:13,360 --> 00:46:14,699
+that every single machine has.
+
+1216
+00:46:14,699 --> 00:46:17,559
+So Any volunteers,
+what do we use?
+
+1217
+00:46:17,559 --> 00:46:23,250
+Yeah, right, over here.
+What's that? Quorums.
+
+1218
+00:46:23,250 --> 00:46:24,690
+So Cassada does use quorums.
+
+1219
+00:46:24,690 --> 00:46:25,889
+That's a little bit
+of a trick question,
+
+1220
+00:46:25,889 --> 00:46:28,809
+because it uses the quorums
+for the rows, right?
+
+1221
+00:46:28,809 --> 00:46:29,969
+So if I have a row, maybe
+
+1222
+00:46:29,969 --> 00:46:31,449
+there's like three
+replicas of that row,
+
+1223
+00:46:31,449 --> 00:46:33,049
+and I might think
+about, you know,
+
+1224
+00:46:33,049 --> 00:46:35,209
+read and write quorums
+on those three.
+
+1225
+00:46:35,209 --> 00:46:37,489
+So A. Excellent, right?
+
+1226
+00:46:37,489 --> 00:46:41,469
+So for this one, we
+have that token rag.
+
+1227
+00:46:41,469 --> 00:46:42,629
+Maybe there's 100 copies of
+
+1228
+00:46:42,629 --> 00:46:44,330
+the token rags on every machine.
+
+1229
+00:46:44,330 --> 00:46:45,769
+And the way I update those
+
+1230
+00:46:45,769 --> 00:46:47,429
+100 is that I update
+a few of them,
+
+1231
+00:46:47,429 --> 00:46:48,729
+and they start
+gossiping with each
+
+1232
+00:46:48,729 --> 00:46:51,309
+other until it's globally know.
+
+1233
+00:46:51,350 --> 00:46:53,750
+Upright.
+
+1234
+00:46:56,760 --> 00:46:59,740
+All right. What about
+this one for 17?
+
+1235
+00:46:59,740 --> 00:47:04,700
+A single spark task typically
+runs on how many cores,
+
+1236
+00:47:04,700 --> 00:47:08,459
+it operates on how many
+partitions? Any volunteers?
+
+1237
+00:47:08,459 --> 00:47:10,559
+There here.
+
+1238
+00:47:10,559 --> 00:47:13,539
+One core one partition.
+Excellent, right?
+
+1239
+00:47:13,539 --> 00:47:15,499
+That's really important
+because you can
+
+1240
+00:47:15,499 --> 00:47:18,459
+choose how to partition
+your data, right?
+
+1241
+00:47:18,459 --> 00:47:21,279
+You have a lot of small
+partitions or a few pig ones.
+
+1242
+00:47:21,279 --> 00:47:23,900
+Given each task is
+running out of partition.
+
+1243
+00:47:23,900 --> 00:47:25,979
+That's to influence
+how many tasks I have?
+
+1244
+00:47:25,979 --> 00:47:28,320
+Given each task runs on one CPU,
+
+1245
+00:47:28,320 --> 00:47:29,840
+that will determine
+how many CPUs
+
+1246
+00:47:29,840 --> 00:47:31,199
+I can use at the
+same time, right?
+
+1247
+00:47:31,199 --> 00:47:33,159
+So, so remember
+that is to help you
+
+1248
+00:47:33,159 --> 00:47:36,119
+tune that better when you
+repartition your data.
+
+1249
+00:47:36,119 --> 00:47:41,039
+Alright. So down here,
+
+1250
+00:47:41,039 --> 00:47:42,740
+we have another sada question.
+
+1251
+00:47:42,740 --> 00:47:44,979
+And somebody assume
+two times replication.
+
+1252
+00:47:44,979 --> 00:47:47,219
+And I want to know which
+nodes are responsible
+
+1253
+00:47:47,219 --> 00:47:49,459
+for token negative five.
+
+1254
+00:47:49,459 --> 00:47:50,699
+So I kind of drew this out here
+
+1255
+00:47:50,699 --> 00:47:52,199
+just as a convenience for you.
+
+1256
+00:47:52,199 --> 00:47:54,779
+And then what you'll usually do.
+
+1257
+00:47:54,779 --> 00:47:56,679
+If you see somebody like
+this is, you'll draw
+
+1258
+00:47:56,679 --> 00:47:58,139
+these things on top of here
+
+1259
+00:47:58,139 --> 00:47:59,980
+so you can answer the question.
+
+1260
+00:47:59,980 --> 00:48:01,679
+Right? So I can
+see that node one
+
+1261
+00:48:01,679 --> 00:48:04,259
+has Ten negative six, right?
+
+1262
+00:48:04,259 --> 00:48:08,259
+So node one is here. Node two
+
+1263
+00:48:08,259 --> 00:48:10,239
+has negative five and seven.
+
+1264
+00:48:10,239 --> 00:48:18,729
+So Node two. Node three
+
+1265
+00:48:18,729 --> 00:48:25,809
+has four and negative
+two. All right.
+
+1266
+00:48:25,809 --> 00:48:29,270
+Cool. And so I need to
+walk the rig starting
+
+1267
+00:48:29,270 --> 00:48:33,149
+at a row with Token
+negative five, right?
+
+1268
+00:48:33,149 --> 00:48:34,689
+So where is that?
+So it's right here.
+
+1269
+00:48:34,689 --> 00:48:36,069
+We get the exact match,
+
+1270
+00:48:36,069 --> 00:48:38,049
+which is node two, and
+
+1271
+00:48:38,049 --> 00:48:39,269
+we walk until we hit
+
+1272
+00:48:39,269 --> 00:48:40,889
+two replicas. So I
+walk to the right.
+
+1273
+00:48:40,889 --> 00:48:43,549
+I may hit node two
+and node three.
+
+1274
+00:48:43,549 --> 00:48:46,589
+I walk to the rig,
+and now I know that
+
+1275
+00:48:46,589 --> 00:48:50,289
+these are replicas.
+Que right here.
+
+1276
+00:49:03,550 --> 00:49:05,169
+Exactly, right?
+
+1277
+00:49:05,169 --> 00:49:07,209
+So if you hit node two, then
+you hit node two again,
+
+1278
+00:49:07,209 --> 00:49:09,109
+then you would skep right?
+
+1279
+00:49:09,109 --> 00:49:10,830
+Because of the same
+failure domain.
+
+1280
+00:49:10,830 --> 00:49:11,149
+Yep.
+
+1281
+00:49:11,149 --> 00:49:15,549
+Excellent. Yep. Yeah, there
+are questions about that one.
+
+1282
+00:49:15,549 --> 00:49:17,689
+Those are the two complicated
+
+1283
+00:49:17,689 --> 00:49:18,949
+things you do when
+you walk the rig.
+
+1284
+00:49:18,949 --> 00:49:21,570
+Sometimes you sk,
+sometimes you wrap.
+
+1285
+00:49:21,570 --> 00:49:31,629
+Alright. All right.
+
+1286
+00:49:31,629 --> 00:49:35,570
+So I tip to insert
+insert a row into Csdra.
+
+1287
+00:49:35,570 --> 00:49:38,289
+And the primary music is
+already in the table.
+
+1288
+00:49:38,289 --> 00:49:40,770
+Anybody remember what happens?
+
+1289
+00:49:41,970 --> 00:49:43,809
+Here.
+
+1290
+00:49:43,809 --> 00:49:45,949
+Yeah, it just gets
+updated, right?
+
+1291
+00:49:45,949 --> 00:49:48,130
+Because insert they
+call it insert,
+
+1292
+00:49:48,130 --> 00:49:50,070
+but really what it
+is is an upsert.
+
+1293
+00:49:50,070 --> 00:49:52,110
+It updates or inserts,
+
+1294
+00:49:52,110 --> 00:49:54,729
+depending on whether
+there's already there.
+
+1295
+00:49:54,729 --> 00:49:56,710
+Alright. Cool.
+
+1296
+00:49:56,710 --> 00:49:59,169
+Maybe everybody can nod
+their head, yes or no.
+
+1297
+00:49:59,169 --> 00:50:02,689
+Does the planet algorithm
+sometimes collect all the rows
+
+1298
+00:50:02,689 --> 00:50:04,109
+corresponding to
+a single node of
+
+1299
+00:50:04,109 --> 00:50:05,790
+a decision tree on
+a single machine?
+
+1300
+00:50:05,790 --> 00:50:07,770
+Does it do that sometimes?
+
+1301
+00:50:09,570 --> 00:50:12,589
+I see a couple of people
+say yes, which is true.
+
+1302
+00:50:12,589 --> 00:50:14,150
+The main thing about
+the planet algorithm
+
+1303
+00:50:14,150 --> 00:50:16,169
+is that it's a hybrid
+approach, right?
+
+1304
+00:50:16,169 --> 00:50:19,609
+Some nodes in the tree
+have very few rows,
+
+1305
+00:50:19,609 --> 00:50:21,249
+and we can bring them
+all together, right?
+
+1306
+00:50:21,249 --> 00:50:22,789
+And as the tree grows down,
+
+1307
+00:50:22,789 --> 00:50:25,170
+we have fewer and
+fewer rows per node.
+
+1308
+00:50:25,170 --> 00:50:27,609
+So eventually, that's how
+we're going to end out.
+
+1309
+00:50:27,609 --> 00:50:29,910
+I might also have some nodes
+
+1310
+00:50:29,910 --> 00:50:31,530
+that have too many rows
+to bring together.
+
+1311
+00:50:31,530 --> 00:50:33,809
+And in that case, we need
+to find a good split point.
+
+1312
+00:50:33,809 --> 00:50:35,869
+By a split point, I need a
+question, which is like,
+
+1313
+00:50:35,869 --> 00:50:38,290
+is X greater than five or
+is x greater than 100?
+
+1314
+00:50:38,290 --> 00:50:41,889
+In that case, we just are
+competing stats in place.
+
+1315
+00:50:41,950 --> 00:50:44,589
+To try to find a good split pie.
+
+1316
+00:50:44,589 --> 00:50:46,549
+And basically a type.
+
+1317
+00:50:46,549 --> 00:50:48,889
+I'm are to put the answer
+on here that I'll end up.
+
+1318
+00:50:48,889 --> 00:50:52,149
+What is the primary reason
+HDF has to us pipeline right?
+
+1319
+00:50:52,149 --> 00:50:55,370
+Because we don't want one pet,
+
+1320
+00:50:55,370 --> 00:50:57,149
+having to send the same data
+
+1321
+00:50:57,149 --> 00:50:58,170
+to a bunch different machines.
+
+1322
+00:50:58,170 --> 00:51:00,249
+That would be an
+unnecessary amount
+
+1323
+00:51:00,249 --> 00:51:01,830
+of work on a single machine,
+
+1324
+00:51:01,830 --> 00:51:03,889
+better to split up
+that work work.
+
+1325
+00:51:03,889 --> 00:51:05,989
+All right. Thanks
+for an extra minute.
+
+1326
+00:51:05,989 --> 00:51:07,709
+Feel free to come up
+and chat if folks have
+
+1327
+00:51:07,709 --> 00:51:11,070
+any questions, have
+a great weekend.

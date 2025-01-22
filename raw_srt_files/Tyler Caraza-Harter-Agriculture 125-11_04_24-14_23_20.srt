@@ -1,0 +1,5644 @@
+1
+00:00:00,000 --> 00:00:02,180
+At the start. One is,
+
+2
+00:00:02,180 --> 00:00:03,480
+I'm sure most of you are aware
+
+3
+00:00:03,480 --> 00:00:05,420
+there's presidential
+election tomorrow.
+
+4
+00:00:05,420 --> 00:00:08,260
+There's a lot of local things
+on the ballot as well.
+
+5
+00:00:08,260 --> 00:00:10,939
+So if you're eligible
+and you want to vote,
+
+6
+00:00:10,939 --> 00:00:12,819
+you know, I encourage
+you to do so.
+
+7
+00:00:12,819 --> 00:00:15,120
+There's a site for
+Wisconsin called
+
+8
+00:00:15,120 --> 00:00:19,140
+my vote doi dot basically
+what I have here.
+
+9
+00:00:19,140 --> 00:00:21,219
+And that would help you
+figure out where to do it.
+
+10
+00:00:21,219 --> 00:00:23,159
+So you say where to vote and
+you put in your address,
+
+11
+00:00:23,159 --> 00:00:25,079
+and it would tell you um
+
+12
+00:00:25,079 --> 00:00:27,960
+it would also show you what
+your ballot is in advance.
+
+13
+00:00:27,960 --> 00:00:29,300
+It vari state by state.
+
+14
+00:00:29,300 --> 00:00:31,259
+Some states you have to
+register in advance.
+
+15
+00:00:31,259 --> 00:00:33,279
+In Wisconsin, you
+can actually go if
+
+16
+00:00:33,279 --> 00:00:35,920
+you bring evidence of residency,
+
+17
+00:00:35,920 --> 00:00:38,780
+you can actually
+register at the poll.
+
+18
+00:00:38,780 --> 00:00:41,220
+So anyway, just throwing
+it out there in case
+
+19
+00:00:41,220 --> 00:00:44,179
+anybody has not voted and
+is eligible and wants to.
+
+20
+00:00:44,179 --> 00:00:46,779
+Some course related
+announcements as well.
+
+21
+00:00:46,779 --> 00:00:48,620
+I got this quiz
+
+22
+00:00:48,620 --> 00:00:50,519
+released a little later
+than I had intended to.
+
+23
+00:00:50,519 --> 00:00:51,900
+I normally do that on Friday,
+
+24
+00:00:51,900 --> 00:00:55,120
+so you can actually submit
+that as late as Friday.
+
+25
+00:00:55,120 --> 00:00:56,700
+This week would be fine.
+
+26
+00:00:56,700 --> 00:00:59,120
+We also have a mid term one week
+
+27
+00:00:59,120 --> 00:01:01,079
+from today in class here.
+
+28
+00:01:01,079 --> 00:01:02,419
+Same deal as last time,
+
+29
+00:01:02,419 --> 00:01:04,435
+you get your one
+note sheet again.
+
+30
+00:01:04,435 --> 00:01:06,130
+Same amount of time, same
+
+31
+00:01:06,130 --> 00:01:08,689
+number of questions,
+multiple choice again.
+
+32
+00:01:08,689 --> 00:01:11,610
+Any logistical questions
+people have about that,
+
+33
+00:01:11,610 --> 00:01:16,549
+I'll probably mid term.
+Yeah, right here.
+
+34
+00:01:21,270 --> 00:01:23,770
+Yeah, I don't know
+if I'll have time
+
+35
+00:01:23,770 --> 00:01:25,709
+for review or I pushed
+things back a little bit.
+
+36
+00:01:25,709 --> 00:01:27,770
+Unfortunately at some point,
+I was hoping to have review,
+
+37
+00:01:27,770 --> 00:01:32,070
+but yeah, it's not looking
+likely. So sorry about that.
+
+38
+00:01:32,070 --> 00:01:35,230
+Yeah, other questions
+people have?
+
+39
+00:01:35,820 --> 00:01:39,380
+Cool. So thanks again
+
+40
+00:01:39,380 --> 00:01:41,179
+for being flexible
+about last Friday.
+
+41
+00:01:41,179 --> 00:01:42,660
+I wasn't feeling well, so I
+
+42
+00:01:42,660 --> 00:01:44,599
+posted some recordings instead.
+
+43
+00:01:44,599 --> 00:01:46,960
+Hopefully people have had
+a chance to watch that.
+
+44
+00:01:46,960 --> 00:01:49,100
+I'm going to start off doing
+just a little bit of review,
+
+45
+00:01:49,100 --> 00:01:51,439
+and then we're also going to
+do some top hat to make sure
+
+46
+00:01:51,439 --> 00:01:52,800
+everybody is up to speed on what
+
+47
+00:01:52,800 --> 00:01:54,779
+I was talking about last Friday.
+
+48
+00:01:54,779 --> 00:01:58,399
+I am going to head over
+to the slides first.
+
+49
+00:01:58,399 --> 00:02:02,099
+And this is an example
+of a Cassandra scheme.
+
+50
+00:02:02,099 --> 00:02:04,139
+So lots of interesting
+things about Cassandra.
+
+51
+00:02:04,139 --> 00:02:06,740
+What is how we actually
+model data in it?
+
+52
+00:02:06,740 --> 00:02:08,660
+In this case, I have some data
+
+53
+00:02:08,660 --> 00:02:09,900
+related to weather stations.
+
+54
+00:02:09,900 --> 00:02:11,920
+So the weather
+stations have IDs,
+
+55
+00:02:11,920 --> 00:02:13,299
+and for each ID,
+
+56
+00:02:13,299 --> 00:02:15,320
+there's a corresponding name.
+
+57
+00:02:15,320 --> 00:02:18,320
+I could totally have
+different weather stations
+
+58
+00:02:18,320 --> 00:02:20,000
+that might have the same name,
+
+59
+00:02:20,000 --> 00:02:23,010
+but a single weather station
+cannot have multiple names.
+
+60
+00:02:23,010 --> 00:02:25,119
+We also have some weather
+data on each date.
+
+61
+00:02:25,119 --> 00:02:27,219
+Each weather station is
+sending some reports of,
+
+62
+00:02:27,219 --> 00:02:29,739
+like, well, what is the
+temperature, things like that?
+
+63
+00:02:29,739 --> 00:02:31,599
+In a traditional database like
+
+64
+00:02:31,599 --> 00:02:33,779
+my SQL or really a
+lot of databases,
+
+65
+00:02:33,779 --> 00:02:35,519
+these would probably be
+two separate tables.
+
+66
+00:02:35,519 --> 00:02:36,900
+You have a table of stations,
+
+67
+00:02:36,900 --> 00:02:38,960
+and you'd have a table
+of weather events.
+
+68
+00:02:38,960 --> 00:02:41,260
+You'd probably
+have a primary key
+
+69
+00:02:41,260 --> 00:02:42,679
+on your stations and a foi
+
+70
+00:02:42,679 --> 00:02:45,339
+and on your weather events
+
+71
+00:02:45,339 --> 00:02:46,680
+that could associate
+each weather
+
+72
+00:02:46,680 --> 00:02:48,539
+event with the station, right?
+
+73
+00:02:48,539 --> 00:02:52,370
+Now, Castandra doesn't
+really do joins,
+
+74
+00:02:52,370 --> 00:02:55,050
+and so primary and foreign
+keys are not as useful.
+
+75
+00:02:55,050 --> 00:02:56,829
+And so what we'll often do
+
+76
+00:02:56,829 --> 00:02:59,189
+instead is we'll have them
+in one table like this.
+
+77
+00:02:59,189 --> 00:03:00,170
+What would really normally be
+
+78
+00:03:00,170 --> 00:03:01,829
+two tables are going
+to be together.
+
+79
+00:03:01,829 --> 00:03:03,629
+And what we'll do is I
+
+80
+00:03:03,629 --> 00:03:07,209
+have some rows that are
+per partition, right?
+
+81
+00:03:07,209 --> 00:03:09,870
+So here I have some piece of
+data that's per partition,
+
+82
+00:03:09,870 --> 00:03:11,309
+both the partition key,
+
+83
+00:03:11,309 --> 00:03:14,529
+the 123, and the name.
+That's a static column.
+
+84
+00:03:14,529 --> 00:03:15,710
+So a static column doesn't
+
+85
+00:03:15,710 --> 00:03:18,090
+uniquely identify the partition,
+
+86
+00:03:18,090 --> 00:03:19,409
+but there's only one piece of
+
+87
+00:03:19,409 --> 00:03:22,279
+data if it's static
+per partition.
+
+88
+00:03:22,279 --> 00:03:25,919
+In contrast, I could have a
+bunch of different rows with
+
+89
+00:03:25,919 --> 00:03:30,679
+regular values within a
+single partition, right?
+
+90
+00:03:30,679 --> 00:03:32,939
+Some part of that, in this case,
+
+91
+00:03:32,939 --> 00:03:34,719
+the date is a cluster key,
+
+92
+00:03:34,719 --> 00:03:36,840
+and the cluster key uniquely
+
+93
+00:03:36,840 --> 00:03:39,779
+identifies a row within
+a partition, right?
+
+94
+00:03:39,779 --> 00:03:42,620
+So if I have a date and
+I have a partition,
+
+95
+00:03:42,620 --> 00:03:44,540
+then I can uniquely
+identify one row,
+
+96
+00:03:44,540 --> 00:03:46,279
+and then there might
+be some number of
+
+97
+00:03:46,279 --> 00:03:47,639
+just regular columns like
+
+98
+00:03:47,639 --> 00:03:49,480
+temp associated
+with that, right?
+
+99
+00:03:49,480 --> 00:03:50,699
+So in this case, again, right,
+
+100
+00:03:50,699 --> 00:03:52,639
+Station ID is a partition key,
+
+101
+00:03:52,639 --> 00:03:54,699
+date is the cluster key.
+
+102
+00:03:54,699 --> 00:03:58,619
+And the primary key is a
+combination of those, right?
+
+103
+00:03:58,619 --> 00:04:00,579
+Because the primary key
+uniquely identifies
+
+104
+00:04:00,579 --> 00:04:03,415
+exactly exactly one row.
+Yeah. Question right here.
+
+105
+00:04:03,415 --> 00:04:10,409
+C. So that one
+
+106
+00:04:10,409 --> 00:04:12,350
+is not static because there are
+
+107
+00:04:12,350 --> 00:04:14,750
+many different temperatures
+within a single partition,
+
+108
+00:04:14,750 --> 00:04:16,769
+if it was static, then
+this weather station
+
+109
+00:04:16,769 --> 00:04:18,710
+could just have one
+temperature overall.
+
+110
+00:04:18,710 --> 00:04:19,270
+Maybe it be like
+
+111
+00:04:19,270 --> 00:04:20,430
+the current temperature
+or something like that,
+
+112
+00:04:20,430 --> 00:04:21,030
+but if I want to have
+
+113
+00:04:21,030 --> 00:04:22,449
+a records of it and
+multiple things,
+
+114
+00:04:22,449 --> 00:04:24,229
+then it's just a
+regular problem.
+
+115
+00:04:24,229 --> 00:04:26,150
+So I guess in this case, I mean,
+
+116
+00:04:26,150 --> 00:04:27,750
+probably most columns
+are usually going to
+
+117
+00:04:27,750 --> 00:04:29,909
+be temp they're just
+regular columns.
+
+118
+00:04:29,909 --> 00:04:31,830
+But in this case,
+everything is some kind of
+
+119
+00:04:31,830 --> 00:04:33,130
+special column except for
+
+120
+00:04:33,130 --> 00:04:34,909
+temps only ordinary column here.
+
+121
+00:04:34,909 --> 00:04:37,069
+That makes sense? Yeah,
+thanks for asking.
+
+122
+00:04:37,069 --> 00:04:40,450
+U So another interesting
+thing about this is
+
+123
+00:04:40,450 --> 00:04:42,209
+that we're going to
+talk more about how
+
+124
+00:04:42,209 --> 00:04:44,249
+data actually gets placed
+across our cluster.
+
+125
+00:04:44,249 --> 00:04:45,889
+But a given partition
+is going to
+
+126
+00:04:45,889 --> 00:04:47,609
+be on a specific machine,
+
+127
+00:04:47,609 --> 00:04:49,929
+or we have replication a
+specific set of machines.
+
+128
+00:04:49,929 --> 00:04:52,270
+And so if I wanted
+
+129
+00:04:52,270 --> 00:04:54,749
+to get all the data for a
+specific weather station,
+
+130
+00:04:54,749 --> 00:04:57,890
+I know I can talk to just one
+specific machine instead of
+
+131
+00:04:57,890 --> 00:05:01,249
+having to gather the data piece
+me all across my cluster.
+
+132
+00:05:01,249 --> 00:05:03,309
+So I can make some
+informed decisions
+
+133
+00:05:03,309 --> 00:05:04,809
+that are going to
+affect performance.
+
+134
+00:05:04,809 --> 00:05:06,769
+The other thing is
+that this cluster key,
+
+135
+00:05:06,769 --> 00:05:08,730
+in addition to helping uniquely
+
+136
+00:05:08,730 --> 00:05:11,310
+identify a role
+within a partition,
+
+137
+00:05:11,310 --> 00:05:13,809
+that can be used to
+specify a sort order.
+
+138
+00:05:13,809 --> 00:05:16,124
+And then the data will be
+sorted in that order on disk.
+
+139
+00:05:16,124 --> 00:05:19,279
+And remember that when we
+have either hard drives,
+
+140
+00:05:19,279 --> 00:05:21,040
+we want sequential IO because,
+
+141
+00:05:21,040 --> 00:05:23,080
+well, what happens
+when we read our data?
+
+142
+00:05:23,080 --> 00:05:26,399
+We have to move the
+hard drive head.
+
+143
+00:05:26,399 --> 00:05:28,239
+We have to wait for
+the platter to turn.
+
+144
+00:05:28,239 --> 00:05:30,119
+We start transferring data.
+
+145
+00:05:30,119 --> 00:05:32,480
+So if we have a
+big sequential IO,
+
+146
+00:05:32,480 --> 00:05:33,440
+then things are going to be
+
+147
+00:05:33,440 --> 00:05:34,479
+more efficient because we don't
+
+148
+00:05:34,479 --> 00:05:36,820
+pay that upfront cost as much.
+
+149
+00:05:36,820 --> 00:05:38,299
+Even if I have an SSD,
+
+150
+00:05:38,299 --> 00:05:39,720
+right data is transferred at
+
+151
+00:05:39,720 --> 00:05:41,799
+the granularity of these pages.
+
+152
+00:05:41,799 --> 00:05:43,339
+And so if I'm accessing,
+
+153
+00:05:43,339 --> 00:05:45,759
+just a tiny subset of page,
+
+154
+00:05:45,759 --> 00:05:47,860
+that would be inefficient
+for an SSD, right?
+
+155
+00:05:47,860 --> 00:05:49,979
+So both case, I
+want sequential IO.
+
+156
+00:05:49,979 --> 00:05:52,060
+And so it's really
+
+157
+00:05:52,060 --> 00:05:54,540
+important how I choose
+my cluster key, right?
+
+158
+00:05:54,540 --> 00:05:57,610
+Be If I choose my cluster
+key, and it's sorted by that,
+
+159
+00:05:57,610 --> 00:06:01,529
+then consecutive values will
+be consecutive in my files,
+
+160
+00:06:01,529 --> 00:06:03,429
+and I can, you
+know, for example,
+
+161
+00:06:03,429 --> 00:06:06,250
+I can get all the temperatures
+in a given range with
+
+162
+00:06:06,250 --> 00:06:09,469
+just one big IO instead of
+having lots of little IOs.
+
+163
+00:06:09,469 --> 00:06:11,230
+So do people have
+any questions about
+
+164
+00:06:11,230 --> 00:06:14,489
+this idea of data
+modeling in Cassandra?
+
+165
+00:06:14,489 --> 00:06:22,349
+There here. Oh, yeah,
+
+166
+00:06:22,349 --> 00:06:24,130
+what is the primary
+key for the first row?
+
+167
+00:06:24,130 --> 00:06:26,130
+It would be So I would
+
+168
+00:06:26,130 --> 00:06:28,729
+do the partition key together
+with the cluster key.
+
+169
+00:06:28,729 --> 00:06:31,170
+So for the first row, it
+would be one, two, three,
+
+170
+00:06:31,170 --> 00:06:35,790
+200303 oh one would
+be the primary key.
+
+171
+00:06:38,130 --> 00:06:40,230
+Was there adding something about
+
+172
+00:06:40,230 --> 00:06:41,469
+adding a one in the zero?
+
+173
+00:06:41,469 --> 00:06:45,370
+Oh, you know, sometimes, right?
+
+174
+00:06:45,370 --> 00:06:47,030
+Like, with my primary key,
+
+175
+00:06:47,030 --> 00:06:48,610
+I guess you're kind
+of referring back
+
+176
+00:06:48,610 --> 00:06:51,649
+to is that the one in the
+zero you're referring to?
+
+177
+00:06:51,649 --> 00:06:53,390
+Yeah, sometimes I will not
+
+178
+00:06:53,390 --> 00:06:58,109
+have we'll definitely have
+to have a partition key.
+
+179
+00:06:58,109 --> 00:07:00,470
+Sometimes I don't specify
+a cluster key, right?
+
+180
+00:07:00,470 --> 00:07:03,150
+And then the primary key
+doesn't really help me get
+
+181
+00:07:03,150 --> 00:07:06,570
+down to an individual
+row in that case.
+
+182
+00:07:06,570 --> 00:07:08,749
+Right? Because if I don't
+have any cluster keys,
+
+183
+00:07:08,749 --> 00:07:10,070
+well then my primary key and
+
+184
+00:07:10,070 --> 00:07:13,349
+my partition key would
+just be the same.
+
+185
+00:07:13,349 --> 00:07:15,670
+So that would be kind
+of a weird case, right?
+
+186
+00:07:15,670 --> 00:07:17,709
+Because you're kind of
+losing a lot of the benefit.
+
+187
+00:07:17,709 --> 00:07:20,250
+Yeah, but thanks for
+bringing that back.
+
+188
+00:07:20,250 --> 00:07:22,650
+Yeah. Other questions are
+Thomas people have from
+
+189
+00:07:22,650 --> 00:07:25,049
+last time. Alright, cool.
+
+190
+00:07:25,049 --> 00:07:26,350
+So let's do a couple of top pats
+
+191
+00:07:26,350 --> 00:07:27,910
+and make sure we're
+all on the same page.
+
+192
+00:07:27,910 --> 00:07:33,089
+So come over here and
+get that drawing.
+
+193
+00:07:35,330 --> 00:07:37,850
+Excuse me.
+
+194
+00:08:15,070 --> 00:08:18,470
+About 30 seconds left.
+
+195
+00:08:54,110 --> 00:08:56,110
+All right. So people are saying
+
+196
+00:08:56,110 --> 00:08:57,669
+the partition key,
+which is correct.
+
+197
+00:08:57,669 --> 00:08:59,409
+So coming back to
+this picture, right?
+
+198
+00:08:59,409 --> 00:09:01,789
+For this partition key of 123,
+
+199
+00:09:01,789 --> 00:09:04,069
+there's a most one static value
+
+200
+00:09:04,069 --> 00:09:05,249
+associated with it, right?
+
+201
+00:09:05,249 --> 00:09:07,169
+I mean, it could
+also be null, right?
+
+202
+00:09:07,169 --> 00:09:09,290
+Alright. Cool. So
+let's head back here.
+
+203
+00:09:09,290 --> 00:09:17,609
+We're going to
+another one. This one
+
+204
+00:09:17,609 --> 00:09:19,889
+is just to review a bit
+
+205
+00:09:19,889 --> 00:09:23,029
+about the planet algorithm
+that we talked about.
+
+206
+00:09:50,110 --> 00:09:53,510
+About 30 seconds left.
+
+207
+00:10:27,200 --> 00:10:31,400
+Alright, so the second
+answer B is indeed correct.
+
+208
+00:10:31,400 --> 00:10:32,679
+When I'm looking
+at both of these,
+
+209
+00:10:32,679 --> 00:10:33,619
+I see in the first one,
+
+210
+00:10:33,619 --> 00:10:36,660
+they tried to have each
+bucket of with 25.
+
+211
+00:10:36,660 --> 00:10:39,720
+And that's kind of how a
+traditional histogram works.
+
+212
+00:10:39,720 --> 00:10:41,160
+Now, if you look
+at those buckets,
+
+213
+00:10:41,160 --> 00:10:42,300
+some of them are actually empty.
+
+214
+00:10:42,300 --> 00:10:44,740
+Like, the 50 to 75
+bucket is empty.
+
+215
+00:10:44,740 --> 00:10:47,380
+The 25 to 50 bucket is empty.
+
+216
+00:10:47,380 --> 00:10:49,360
+And for our purposes here,
+
+217
+00:10:49,360 --> 00:10:52,760
+that's not good because
+With the decision tree,
+
+218
+00:10:52,760 --> 00:10:54,320
+what we're trying to do
+at each note is we're
+
+219
+00:10:54,320 --> 00:10:55,919
+trying to ask a question
+about the data.
+
+220
+00:10:55,919 --> 00:10:59,680
+And the question of
+the form is my column.
+
+221
+00:10:59,680 --> 00:11:01,359
+Let's say that this
+feature column is called
+
+222
+00:11:01,359 --> 00:11:03,159
+x. I say is x
+
+223
+00:11:03,159 --> 00:11:07,000
+greater than or equal to 50
+or some other threshold.
+
+224
+00:11:07,000 --> 00:11:08,180
+And so what thresholds
+
+225
+00:11:08,180 --> 00:11:09,659
+are we considering
+for the questions?
+
+226
+00:11:09,659 --> 00:11:11,939
+Well, we're considering
+the thresholds that are
+
+227
+00:11:11,939 --> 00:11:14,860
+the boundaries between
+our histogram buckets.
+
+228
+00:11:14,860 --> 00:11:16,530
+And so In the first case,
+
+229
+00:11:16,530 --> 00:11:18,270
+it doesn't lead to very
+interesting questions
+
+230
+00:11:18,270 --> 00:11:20,770
+because I have a x
+greater than equal to 25,
+
+231
+00:11:20,770 --> 00:11:22,710
+is greater than equal to 50,
+
+232
+00:11:22,710 --> 00:11:24,429
+is it greater than equal to 75?
+
+233
+00:11:24,429 --> 00:11:26,089
+Those are all the
+same. We want to have
+
+234
+00:11:26,089 --> 00:11:27,829
+different questions to choose
+
+235
+00:11:27,829 --> 00:11:29,730
+from that split up the
+data in different ways.
+
+236
+00:11:29,730 --> 00:11:32,629
+And so the latter buckets are
+
+237
+00:11:32,629 --> 00:11:34,129
+nice because we're
+trying to have
+
+238
+00:11:34,129 --> 00:11:36,250
+an even amount of
+data in each bucket.
+
+239
+00:11:36,250 --> 00:11:37,370
+And that means if I choose
+
+240
+00:11:37,370 --> 00:11:39,210
+different thresholds
+between the buckets,
+
+241
+00:11:39,210 --> 00:11:40,370
+I will actually be splitting
+
+242
+00:11:40,370 --> 00:11:41,529
+up the data in different ways.
+
+243
+00:11:41,529 --> 00:11:43,390
+And that's why the
+planet algorithm
+
+244
+00:11:43,390 --> 00:11:45,570
+will choose thresholds
+
+245
+00:11:45,570 --> 00:11:47,530
+from the boundaries between
+
+246
+00:11:47,530 --> 00:11:50,329
+equal depth histogram buckets.
+
+247
+00:11:50,329 --> 00:11:54,380
+Alright, Cel. So we're
+going to head over here,
+
+248
+00:11:54,380 --> 00:11:56,579
+back to the notebook
+we were in last time.
+
+249
+00:11:56,579 --> 00:12:00,059
+And I had already started
+up my Cassandra cluster.
+
+250
+00:12:00,059 --> 00:12:01,339
+It's running. I have
+
+251
+00:12:01,339 --> 00:12:03,699
+some Python stuff here
+that connects to it.
+
+252
+00:12:03,699 --> 00:12:05,860
+Remember that a Cssandra cluster
+
+253
+00:12:05,860 --> 00:12:07,440
+has different key spaces.
+
+254
+00:12:07,440 --> 00:12:09,179
+Each keyspace has, you know,
+
+255
+00:12:09,179 --> 00:12:11,039
+maybe a bunch of
+different tables in it.
+
+256
+00:12:11,039 --> 00:12:14,340
+I'm using a key space that
+I created called banking.
+
+257
+00:12:14,340 --> 00:12:17,179
+I just do this in case the
+loans table already exists.
+
+258
+00:12:17,179 --> 00:12:19,159
+I create a loans table here.
+
+259
+00:12:19,159 --> 00:12:21,379
+We saw from last time that
+
+260
+00:12:21,379 --> 00:12:24,530
+the bank idea is
+my partition. Key.
+
+261
+00:12:24,530 --> 00:12:27,049
+These two together
+are my cluster key.
+
+262
+00:12:27,049 --> 00:12:28,269
+It's a little bit srange to have
+
+263
+00:12:28,269 --> 00:12:30,229
+the loan amount be part
+of the cluster key.
+
+264
+00:12:30,229 --> 00:12:32,110
+But I did that because
+then I'm allowed
+
+265
+00:12:32,110 --> 00:12:34,129
+to order my data by amount.
+
+266
+00:12:34,129 --> 00:12:36,109
+And if I wanted to
+then go back and say,
+
+267
+00:12:36,109 --> 00:12:37,869
+find the biggest
+loans for each bank,
+
+268
+00:12:37,869 --> 00:12:40,749
+I could very quickly
+do that, right?
+
+269
+00:12:40,749 --> 00:12:43,829
+We say there's a static
+column here called bank name,
+
+270
+00:12:43,829 --> 00:12:46,830
+and then there's a couple
+of regular columns,
+
+271
+00:12:46,830 --> 00:12:48,610
+such as, well, actually,
+
+272
+00:12:48,610 --> 00:12:50,109
+I think just one.
+
+273
+00:12:50,109 --> 00:12:53,010
+State is the only
+regular column.
+
+274
+00:12:53,010 --> 00:12:55,589
+Alright, so we did some
+inserts last time.
+
+275
+00:12:55,589 --> 00:12:59,509
+So first, I inserted bank
+ID and bank name, right?
+
+276
+00:12:59,509 --> 00:13:01,550
+So this was my partition key
+
+277
+00:13:01,550 --> 00:13:04,269
+and my static column,
+and I did that.
+
+278
+00:13:04,269 --> 00:13:07,489
+And what was a little
+bit strange about that?
+
+279
+00:13:07,489 --> 00:13:12,209
+I wonder if I doesn't really
+quite show it here, does it?
+
+280
+00:13:12,209 --> 00:13:15,150
+What's a little bit strange
+about that is it's allowed,
+
+281
+00:13:15,150 --> 00:13:17,529
+even though I don't have
+
+282
+00:13:17,529 --> 00:13:20,090
+a complete primary key.
+What does that mean?
+
+283
+00:13:20,090 --> 00:13:21,670
+Well, coming back
+to that picture,
+
+284
+00:13:21,670 --> 00:13:24,370
+that means I am just inserting
+this piece of data here.
+
+285
+00:13:24,370 --> 00:13:25,710
+So really, I'm creating
+
+286
+00:13:25,710 --> 00:13:28,669
+a partition that doesn't
+have any rows in it, right?
+
+287
+00:13:28,669 --> 00:13:32,449
+So it's kind of strange
+that I'm running this line,
+
+288
+00:13:32,449 --> 00:13:34,050
+and I don't actually
+have any real
+
+289
+00:13:34,050 --> 00:13:35,949
+rows associated with it.
+
+290
+00:13:35,949 --> 00:13:38,070
+Down here, I'm doing
+an insert again.
+
+291
+00:13:38,070 --> 00:13:40,470
+I actually has the
+same partition key,
+
+292
+00:13:40,470 --> 00:13:42,229
+and that was strange
+that worked too.
+
+293
+00:13:42,229 --> 00:13:44,549
+The reason that worked
+is that Insert and
+
+294
+00:13:44,549 --> 00:13:47,250
+Cassandra would actually
+better be called an Sert.
+
+295
+00:13:47,250 --> 00:13:49,829
+So Usert means update or insert.
+
+296
+00:13:49,829 --> 00:13:52,510
+And so since I already
+have that, it's updated,
+
+297
+00:13:52,510 --> 00:13:56,189
+It to change the bank name
+from test to test two.
+
+298
+00:13:56,189 --> 00:13:57,489
+So I come down here and I
+
+299
+00:13:57,489 --> 00:13:59,089
+query it, and I see a
+couple of things, right.
+
+300
+00:13:59,089 --> 00:14:01,470
+I see that it's test two,
+right? So that dot updated.
+
+301
+00:14:01,470 --> 00:14:03,230
+I also see that all the things
+
+302
+00:14:03,230 --> 00:14:05,289
+related to actual rows
+are just null, right?
+
+303
+00:14:05,289 --> 00:14:07,809
+So it's just showing me
+some information for
+
+304
+00:14:07,809 --> 00:14:10,885
+our partition with no real rows.
+
+305
+00:14:10,885 --> 00:14:12,420
+Whatever we query stuff, we're
+
+306
+00:14:12,420 --> 00:14:13,699
+going to still get
+tables, right?
+
+307
+00:14:13,699 --> 00:14:15,180
+But that's going
+to be a little bit
+
+308
+00:14:15,180 --> 00:14:17,379
+confusing unless you have
+a mental model of how we
+
+309
+00:14:17,379 --> 00:14:19,139
+have some information
+that's per partition
+
+310
+00:14:19,139 --> 00:14:21,900
+and some that is
+per actual rows.
+
+311
+00:14:21,900 --> 00:14:24,399
+For example, right?
+If I see that kind
+
+312
+00:14:24,399 --> 00:14:26,759
+of looks like there's one
+row, even though there's not.
+
+313
+00:14:26,759 --> 00:14:30,259
+So when I insert another row,
+
+314
+00:14:30,259 --> 00:14:32,119
+and I query it, there's
+only going to be
+
+315
+00:14:32,119 --> 00:14:35,479
+one entry that comes
+back to me, right?
+
+316
+00:14:35,479 --> 00:14:37,760
+So when I insert this,
+what am I doing?
+
+317
+00:14:37,760 --> 00:14:40,659
+Right? I'm inserting into
+the bank ID partition,
+
+318
+00:14:40,659 --> 00:14:43,120
+and then the loan
+amount is 300,000,
+
+319
+00:14:43,120 --> 00:14:46,000
+and then I'm giving it a
+UID and I select down here.
+
+320
+00:14:46,000 --> 00:14:48,579
+I see that I'm not creating
+any new partitions
+
+321
+00:14:48,579 --> 00:14:51,800
+and that row that added to
+that existing partition.
+
+322
+00:14:51,800 --> 00:14:55,939
+So even though I only
+had one entry up here,
+
+323
+00:14:55,939 --> 00:14:57,979
+there's only one entry
+back here, too, right?
+
+324
+00:14:57,979 --> 00:15:00,579
+So the fact that everything
+comes back to me,
+
+325
+00:15:00,579 --> 00:15:02,499
+it feels like I'm getting
+a table of results back,
+
+326
+00:15:02,499 --> 00:15:03,899
+that can be a little
+bit misleading.
+
+327
+00:15:03,899 --> 00:15:05,940
+We have to really understand
+how things work internally,
+
+328
+00:15:05,940 --> 00:15:08,080
+or you know, it'll
+just be confusing.
+
+329
+00:15:08,080 --> 00:15:09,599
+So do people have
+any questions about
+
+330
+00:15:09,599 --> 00:15:11,435
+why that worked like
+that? Yeah, right here.
+
+331
+00:15:11,435 --> 00:15:15,829
+I fail name Would it have
+
+332
+00:15:15,829 --> 00:15:20,969
+failed if I had multiple
+bank names under Oh,
+
+333
+00:15:20,969 --> 00:15:22,689
+it's fine that I don't specify
+
+334
+00:15:22,689 --> 00:15:25,549
+the bank name because it's
+already there, right?
+
+335
+00:15:25,549 --> 00:15:30,189
+So I had previously inserted
+a partition, right?
+
+336
+00:15:30,189 --> 00:15:32,370
+And then when I'm
+inserting additional rows,
+
+337
+00:15:32,370 --> 00:15:33,690
+I don't need to specify what
+
+338
+00:15:33,690 --> 00:15:35,249
+the bank name is again, right?
+
+339
+00:15:35,249 --> 00:15:36,549
+It's already there
+for them, right?
+
+340
+00:15:36,549 --> 00:15:38,870
+They're associated with whatever
+the bank name was before
+
+341
+00:15:38,870 --> 00:15:41,829
+because I know they're
+associated with 544.
+
+342
+00:15:41,829 --> 00:15:44,669
+And I know that the bank
+name for that is Test two.
+
+343
+00:15:44,669 --> 00:15:49,880
+Does that make sense? Test 12.
+
+344
+00:15:53,520 --> 00:15:55,740
+Yeah, you're saying, well,
+
+345
+00:15:55,740 --> 00:15:58,460
+if test and test two were
+actually different bank names.
+
+346
+00:15:58,460 --> 00:16:01,739
+Well, in that case, if
+they're actually, like,
+
+347
+00:16:01,739 --> 00:16:04,519
+multiple inserts
+instead of the update,
+
+348
+00:16:04,519 --> 00:16:05,899
+then that would mean this one
+
+349
+00:16:05,899 --> 00:16:07,539
+would have to have a
+different ID, right?
+
+350
+00:16:07,539 --> 00:16:09,439
+And so if this one
+had a different ID,
+
+351
+00:16:09,439 --> 00:16:12,724
+let's say it was
+like 544 and 555,
+
+352
+00:16:12,724 --> 00:16:14,969
+Then I would actually
+have two entries down
+
+353
+00:16:14,969 --> 00:16:15,749
+here because I can see
+
+354
+00:16:15,749 --> 00:16:17,309
+some information
+for each partition.
+
+355
+00:16:17,309 --> 00:16:20,069
+And then the name here
+would really depend on,
+
+356
+00:16:20,069 --> 00:16:22,749
+was it for 544 or 555?
+
+357
+00:16:22,749 --> 00:16:25,149
+Does that make
+sense? So, kind of,
+
+358
+00:16:25,149 --> 00:16:26,949
+like, looking back at
+this picture, right?
+
+359
+00:16:26,949 --> 00:16:32,249
+I I did a query over let's
+say, these values, right?
+
+360
+00:16:32,249 --> 00:16:36,429
+Then I'll see the station name
+as Madison Airport, right?
+
+361
+00:16:36,429 --> 00:16:37,830
+And the same way here, I'm
+
+362
+00:16:37,830 --> 00:16:39,469
+seeing the bank
+name as Test two.
+
+363
+00:16:39,469 --> 00:16:41,689
+That makes sense?
+Yeah, thank you.
+
+364
+00:16:41,689 --> 00:16:43,069
+Yeah, there are
+questions people have.
+
+365
+00:16:43,069 --> 00:16:49,760
+Yeah, right here. The
+partition key is the bank ID.
+
+366
+00:16:49,760 --> 00:16:51,839
+And then sometimes we
+
+367
+00:16:51,839 --> 00:16:53,580
+want extra information
+per partition,
+
+368
+00:16:53,580 --> 00:16:56,420
+but it's not uniquely
+identifying. It's a static.
+
+369
+00:16:56,420 --> 00:17:04,519
+Yeah, so it Yeah. That's
+nice way of putting it.
+
+370
+00:17:04,519 --> 00:17:06,279
+So the way we put down
+is that. It's almost as
+
+371
+00:17:06,279 --> 00:17:09,160
+if the bank name
+or in this case,
+
+372
+00:17:09,160 --> 00:17:11,099
+station name, like, trickles
+down to all the rows.
+
+373
+00:17:11,099 --> 00:17:12,299
+That's a great way
+to think about
+
+374
+00:17:12,299 --> 00:17:13,640
+it. It does that logically.
+
+375
+00:17:13,640 --> 00:17:14,959
+When I ate the data, I see it,
+
+376
+00:17:14,959 --> 00:17:16,419
+but it doesn't trickle down in
+
+377
+00:17:16,419 --> 00:17:17,319
+the sense that it's not actually
+
+378
+00:17:17,319 --> 00:17:18,399
+making multiple copies of it.
+
+379
+00:17:18,399 --> 00:17:20,000
+Whenever I ate the data,
+it looks like there's
+
+380
+00:17:20,000 --> 00:17:22,160
+multiple copies internally
+to the database.
+
+381
+00:17:22,160 --> 00:17:23,719
+There's only one copy.
+Yeah. Thank you.
+
+382
+00:17:23,719 --> 00:17:25,340
+Thank you. Maybe
+I'll use that again.
+
+383
+00:17:25,340 --> 00:17:31,700
+Yeah. Column. What kind
+of column is bank name?
+
+384
+00:17:31,700 --> 00:17:33,499
+Bank name is a static column.
+
+385
+00:17:33,499 --> 00:17:36,959
+Yeah. And then to go back here,
+
+386
+00:17:36,959 --> 00:17:40,459
+we see that we added
+that here. That's why.
+
+387
+00:17:40,459 --> 00:17:50,090
+Yeah, crush here. Rep.
+Oh, why is bake ID?
+
+388
+00:17:50,090 --> 00:17:51,770
+So that one wasn't static
+
+389
+00:17:51,770 --> 00:17:53,269
+because that was the
+partition g, right?
+
+390
+00:17:53,269 --> 00:17:55,949
+So the two pieces of
+information that are just per
+
+391
+00:17:55,949 --> 00:17:59,030
+partition or partition
+g and static columns.
+
+392
+00:17:59,030 --> 00:18:02,069
+And the syntax here
+
+393
+00:18:02,069 --> 00:18:03,550
+is weird because
+I'm not explicitly
+
+394
+00:18:03,550 --> 00:18:04,829
+saying, this is my partition g.
+
+395
+00:18:04,829 --> 00:18:07,070
+But what they will do is
+they'll look at my primary key,
+
+396
+00:18:07,070 --> 00:18:08,330
+and they'll take out
+the first piece,
+
+397
+00:18:08,330 --> 00:18:10,110
+and that's my partition get.
+
+398
+00:18:10,110 --> 00:18:12,109
+So I can see, bak
+ID is my partition
+
+399
+00:18:12,109 --> 00:18:13,229
+g. If I wanted to have a
+
+400
+00:18:13,229 --> 00:18:14,789
+multiple components
+of my partition g,
+
+401
+00:18:14,789 --> 00:18:16,889
+I could have done
+like that, right?
+
+402
+00:18:16,889 --> 00:18:19,129
+But that's why it's look.
+It's looking at this.
+
+403
+00:18:19,129 --> 00:18:20,469
+It's looking at
+this year. And you
+
+404
+00:18:20,469 --> 00:18:21,789
+can imagine nice, you know,
+
+405
+00:18:21,789 --> 00:18:23,969
+exam questions almost kind
+of like read and say,
+
+406
+00:18:23,969 --> 00:18:27,810
+which things are like per
+partition, right? Make sense?
+
+407
+00:18:30,850 --> 00:18:34,210
+Partition cheese are
+not static columns
+
+408
+00:18:34,210 --> 00:18:37,489
+because they uniquely
+identify a partition,
+
+409
+00:18:37,489 --> 00:18:40,069
+but they're very similar
+to static columns because
+
+410
+00:18:40,069 --> 00:18:43,870
+both partition cheese and
+static are per partition,
+
+411
+00:18:43,870 --> 00:18:47,699
+they're similar. All right.
+
+412
+00:18:47,699 --> 00:18:53,960
+So I did that. Now, this is
+a very strange query here.
+
+413
+00:18:53,960 --> 00:18:56,580
+So let's think about
+what this is doing.
+
+414
+00:18:56,580 --> 00:19:01,339
+Okay. So this is inserting
+a new loan, great.
+
+415
+00:19:01,339 --> 00:19:03,819
+I'm inserting it into
+the same psition
+
+416
+00:19:03,819 --> 00:19:05,479
+I've been working in, right?
+
+417
+00:19:05,479 --> 00:19:06,879
+And so all of this stuff is
+
+418
+00:19:06,879 --> 00:19:08,359
+specifying that
+new loan details.
+
+419
+00:19:08,359 --> 00:19:09,679
+But what's very strange that I
+
+420
+00:19:09,679 --> 00:19:12,039
+put in something static, right?
+
+421
+00:19:12,039 --> 00:19:15,380
+That bank 544
+already has a name.
+
+422
+00:19:15,380 --> 00:19:19,490
+And this is Is it up
+like, it's an upsert?
+
+423
+00:19:19,490 --> 00:19:20,950
+Right? Every insert
+is an upsert.
+
+424
+00:19:20,950 --> 00:19:22,190
+But in this case,
+what is it doing?
+
+425
+00:19:22,190 --> 00:19:23,970
+Is it updating or
+is it inserting?
+
+426
+00:19:23,970 --> 00:19:25,909
+And the answer is, B,
+
+427
+00:19:25,909 --> 00:19:29,829
+for this part of it, it's
+creating a new row of data.
+
+428
+00:19:29,829 --> 00:19:34,650
+Like over here. And for
+this part of it, it says,
+
+429
+00:19:34,650 --> 00:19:40,149
+Well, the name of Bank 544
+should now be my bank, right?
+
+430
+00:19:40,149 --> 00:19:42,450
+So it's like it's
+updating this over here.
+
+431
+00:19:42,450 --> 00:19:44,289
+Right? So when I
+come and query this,
+
+432
+00:19:44,289 --> 00:19:45,550
+I see that well,
+
+433
+00:19:45,550 --> 00:19:47,149
+there is test two here, and
+
+434
+00:19:47,149 --> 00:19:48,489
+now they're both my bank, right?
+
+435
+00:19:48,489 --> 00:19:50,389
+So this one well it's an upsert,
+
+436
+00:19:50,389 --> 00:19:51,949
+and this is kind of
+unique in that it was an
+
+437
+00:19:51,949 --> 00:19:54,249
+insert and an update
+at the same time.
+
+438
+00:19:54,249 --> 00:19:56,330
+At the partition level
+it was updating,
+
+439
+00:19:56,330 --> 00:19:58,490
+the role level it was inserting.
+
+440
+00:19:58,490 --> 00:20:00,789
+Any questions about that query?
+
+441
+00:20:04,720 --> 00:20:07,799
+The other thing I see here is
+
+442
+00:20:07,799 --> 00:20:12,400
+that because amount is
+part of my cluster key,
+
+443
+00:20:12,400 --> 00:20:14,939
+that's ascending or it's
+descending from me.
+
+444
+00:20:14,939 --> 00:20:16,520
+I have the biggest one first.
+
+445
+00:20:16,520 --> 00:20:18,900
+Let me insert another
+one down here.
+
+446
+00:20:18,900 --> 00:20:22,160
+And so in this case,
+I am going to insert
+
+447
+00:20:22,210 --> 00:20:26,129
+Let's do a new bank. So
+I'm going to say 999,
+
+448
+00:20:26,129 --> 00:20:29,349
+and this will be the
+UW Credit Union,
+
+449
+00:20:29,349 --> 00:20:33,490
+and we will say it's
+a $500,000 loan,
+
+450
+00:20:33,490 --> 00:20:35,770
+and let's say it's in Illinois.
+
+451
+00:20:35,770 --> 00:20:39,269
+I'm going to do that.
+And in this case,
+
+452
+00:20:39,269 --> 00:20:41,229
+I'm doing actually two insert.
+
+453
+00:20:41,229 --> 00:20:44,910
+I'm inserting a new partition,
+
+454
+00:20:44,910 --> 00:20:48,730
+and it has a new row inside
+of it. And so that's cool.
+
+455
+00:20:48,730 --> 00:20:52,089
+One thing I want you to
+see is that this notion
+
+456
+00:20:52,089 --> 00:20:53,709
+of the cluster and
+the ordering on
+
+457
+00:20:53,709 --> 00:20:55,809
+it is only a a per
+partition basis, right?
+
+458
+00:20:55,809 --> 00:20:58,809
+So within the 544 partition,
+
+459
+00:20:58,809 --> 00:21:03,919
+amount is descending
+Any ordering
+
+460
+00:21:03,919 --> 00:21:06,360
+over here is independent
+of the other ordering.
+
+461
+00:21:06,360 --> 00:21:09,659
+Okay? All right.
+
+462
+00:21:09,659 --> 00:21:11,879
+Any question about that query?
+
+463
+00:21:13,730 --> 00:21:16,870
+All right. So what
+I want to talk
+
+464
+00:21:16,870 --> 00:21:20,149
+about now is how we can
+have some custom types.
+
+465
+00:21:20,149 --> 00:21:22,770
+So custom types.
+
+466
+00:21:22,770 --> 00:21:26,589
+And custom types are almost
+kind of, like, you know,
+
+467
+00:21:26,589 --> 00:21:30,189
+like a struct in C or a
+class in Java or Python,
+
+468
+00:21:30,189 --> 00:21:31,509
+where you have different fields,
+
+469
+00:21:31,509 --> 00:21:33,889
+and then there might be some
+types associated with them.
+
+470
+00:21:33,889 --> 00:21:36,289
+And it's going to be pretty
+similar up here, right?
+
+471
+00:21:36,289 --> 00:21:38,109
+When I create a table,
+it's also that I
+
+472
+00:21:38,109 --> 00:21:40,770
+have some fields and types
+associated with them.
+
+473
+00:21:40,770 --> 00:21:42,309
+So maybe I'll just copy some of
+
+474
+00:21:42,309 --> 00:21:45,509
+this syntax and modify it.
+So I'm to come down here.
+
+475
+00:21:45,509 --> 00:21:47,609
+And instead of creating a table,
+
+476
+00:21:47,609 --> 00:21:49,309
+I'm going to create a
+type, and I'm going to say
+
+477
+00:21:49,309 --> 00:21:51,370
+that this type is
+called full name.
+
+478
+00:21:51,370 --> 00:21:53,790
+And then I can put
+some types in here.
+
+479
+00:21:53,790 --> 00:21:56,509
+And because it's just a type
+and not a actual table,
+
+480
+00:21:56,509 --> 00:21:57,889
+there would be no clustering or
+
+481
+00:21:57,889 --> 00:21:59,669
+any of that business. All right?
+
+482
+00:21:59,669 --> 00:22:02,209
+And so kind of a
+simplification of names,
+
+483
+00:22:02,209 --> 00:22:03,729
+but I'll say that there are
+
+484
+00:22:03,729 --> 00:22:06,089
+first and last names
+in this example,
+
+485
+00:22:06,089 --> 00:22:08,970
+and I'll say they're both text.
+
+486
+00:22:08,970 --> 00:22:11,049
+Alright, so let me create that.
+
+487
+00:22:11,049 --> 00:22:14,370
+And you know, I
+should have started
+
+488
+00:22:14,370 --> 00:22:18,729
+my notebook fresh after
+the morning lecture.
+
+489
+00:22:18,729 --> 00:22:19,849
+I wonder if it'll let me do it.
+
+490
+00:22:19,849 --> 00:22:24,049
+I'll say drop type fullname
+drop type if exists.
+
+491
+00:22:24,049 --> 00:22:30,429
+I wonder if that will
+do it. Finger stress.
+
+492
+00:22:30,429 --> 00:22:34,450
+Okay, great. And so I can
+create that new type.
+
+493
+00:22:34,450 --> 00:22:36,750
+And then if I want to, I can use
+
+494
+00:22:36,750 --> 00:22:39,329
+this as a type name
+and other columns.
+
+495
+00:22:39,329 --> 00:22:40,990
+So let me add
+
+496
+00:22:40,990 --> 00:22:43,190
+a column to my loan
+
+497
+00:22:43,190 --> 00:22:45,429
+so that we can have a user
+name for everybody, right?
+
+498
+00:22:45,429 --> 00:22:49,350
+I may say Let me
+check my notes here.
+
+499
+00:22:49,350 --> 00:22:53,070
+I'm going to say, Al table.
+
+500
+00:22:53,070 --> 00:22:54,889
+Let me just clean all this up.
+
+501
+00:22:54,889 --> 00:22:57,330
+Al table loans.
+
+502
+00:22:57,330 --> 00:23:02,249
+And then I can I can add a
+field and a type in here,
+
+503
+00:23:02,249 --> 00:23:05,499
+a field. And a type.
+
+504
+00:23:05,499 --> 00:23:07,239
+Alright. So I'm gonna
+do that. And so
+
+505
+00:23:07,239 --> 00:23:11,040
+the field name will
+just be my user name.
+
+506
+00:23:11,040 --> 00:23:12,379
+I'm sorry. No comma here.
+
+507
+00:23:12,379 --> 00:23:13,819
+And then the type is going to be
+
+508
+00:23:13,819 --> 00:23:15,979
+a full name. I'm gonna do that.
+
+509
+00:23:15,979 --> 00:23:19,780
+And remember that Cassandra
+tables are sparse.
+
+510
+00:23:19,780 --> 00:23:23,059
+And so a took a
+noticeable of time.
+
+511
+00:23:23,059 --> 00:23:24,779
+But even if my table
+had been giant,
+
+512
+00:23:24,779 --> 00:23:26,299
+like I have millions of rows,
+
+513
+00:23:26,299 --> 00:23:28,340
+that will happen quickly
+because it doesn't
+
+514
+00:23:28,340 --> 00:23:30,479
+actually have to create a
+bunch of empty values in it.
+
+515
+00:23:30,479 --> 00:23:31,819
+Like a traditional
+database would
+
+516
+00:23:31,819 --> 00:23:33,619
+probably have to create
+a bunch of null values,
+
+517
+00:23:33,619 --> 00:23:35,059
+and it might actually
+take some time to
+
+518
+00:23:35,059 --> 00:23:37,060
+add add a column. Not so here.
+
+519
+00:23:37,060 --> 00:23:40,119
+Alright. So if I have that,
+then I can come back and I
+
+520
+00:23:40,119 --> 00:23:49,830
+can I delete this up here
+where I was trying to I guess,
+
+521
+00:23:49,830 --> 00:23:51,070
+I'll just run it
+down here again.
+
+522
+00:23:51,070 --> 00:23:53,790
+That's fine. I can
+see those things.
+
+523
+00:23:53,790 --> 00:23:58,049
+If I want to, I could also
+select specifically user name.
+
+524
+00:23:58,049 --> 00:24:00,509
+And one thing that's kind
+of cool is I can say
+
+525
+00:24:00,509 --> 00:24:05,349
+username do and username last.
+
+526
+00:24:05,349 --> 00:24:09,460
+And If x is null,
+
+527
+00:24:09,460 --> 00:24:12,139
+then x dot y is null two.
+
+528
+00:24:12,139 --> 00:24:13,779
+It doesn't create an
+error like it would in
+
+529
+00:24:13,779 --> 00:24:17,359
+say like Java or Python
+or something like that.
+
+530
+00:24:17,359 --> 00:24:20,739
+Right? That's safe, just like
+I have this chain of dots,
+
+531
+00:24:20,739 --> 00:24:22,520
+the null just passes through,
+
+532
+00:24:22,520 --> 00:24:25,599
+and it all comes out clean.
+All right. I have that.
+
+533
+00:24:25,599 --> 00:24:27,899
+Let me actually insert
+some values in here.
+
+534
+00:24:27,899 --> 00:24:29,359
+So I'm going to come
+back and I'm going to
+
+535
+00:24:29,359 --> 00:24:31,860
+look at my last insert.
+
+536
+00:24:32,300 --> 00:24:36,679
+All I'm going to do
+this one, for this one,
+
+537
+00:24:36,679 --> 00:24:38,700
+instead of having the state,
+
+538
+00:24:38,700 --> 00:24:44,239
+I'm going to have the user
+name for that, what will I do?
+
+539
+00:24:44,239 --> 00:24:47,639
+I will put in and almost looks
+like a dictionary, right?
+
+540
+00:24:47,639 --> 00:24:50,940
+And the fields in it
+are first and last.
+
+541
+00:24:50,940 --> 00:24:52,659
+Unlike a Python dictionary,
+
+542
+00:24:52,659 --> 00:24:54,739
+we aren't going to putting
+quotes around it, right?
+
+543
+00:24:54,739 --> 00:24:56,640
+So I'm just going to
+put my values here.
+
+544
+00:24:56,640 --> 00:24:58,020
+So maybe for the first name,
+
+545
+00:24:58,020 --> 00:25:00,520
+I'll say Tyler,
+and the last name,
+
+546
+00:25:00,520 --> 00:25:02,219
+I'll say C, and I can do that.
+
+547
+00:25:02,219 --> 00:25:03,899
+These have to be
+in single quotes.
+
+548
+00:25:03,899 --> 00:25:08,039
+That's just again kind of
+one of these quirks of,
+
+549
+00:25:09,600 --> 00:25:12,439
+of the syntax, right? So
+I'm going to do that.
+
+550
+00:25:12,439 --> 00:25:14,560
+Let me come and select
+this back here again
+
+551
+00:25:14,560 --> 00:25:15,959
+just so we can see how it looks
+
+552
+00:25:15,959 --> 00:25:17,320
+to actually have values there.
+
+553
+00:25:17,320 --> 00:25:18,979
+And now I can see when I
+select the whole thing,
+
+554
+00:25:18,979 --> 00:25:20,599
+it almost looks like
+a tuple with those,
+
+555
+00:25:20,599 --> 00:25:23,299
+and I can pull out
+individual values
+
+556
+00:25:23,299 --> 00:25:25,299
+from it, if I would like.
+
+557
+00:25:25,299 --> 00:25:32,639
+All right. Cool. A question
+about custom types?
+
+558
+00:25:33,800 --> 00:25:36,359
+Yeah, right here.
+
+559
+00:25:39,440 --> 00:25:43,200
+That's a great question.
+So did insert or upsert?
+
+560
+00:25:43,200 --> 00:25:46,860
+And So I can answer that
+question at two levels,
+
+561
+00:25:46,860 --> 00:25:49,040
+at the partition level
+and the per row level.
+
+562
+00:25:49,040 --> 00:25:51,200
+So at the partition level,
+
+563
+00:25:51,200 --> 00:25:54,440
+this was an existing
+partition key.
+
+564
+00:25:54,440 --> 00:25:58,239
+And so I was updating
+the name to be this.
+
+565
+00:25:58,239 --> 00:26:00,240
+But that happened
+already to be the name.
+
+566
+00:26:00,240 --> 00:26:01,579
+So at the partition
+key, technically,
+
+567
+00:26:01,579 --> 00:26:03,419
+I'm updating, but
+nothing changed.
+
+568
+00:26:03,419 --> 00:26:04,900
+What about at the row level?
+
+569
+00:26:04,900 --> 00:26:06,640
+So at the role level,
+
+570
+00:26:06,640 --> 00:26:08,399
+I have to think about
+what my primary key is.
+
+571
+00:26:08,399 --> 00:26:10,439
+My primary key is
+
+572
+00:26:10,439 --> 00:26:15,820
+the bank ID plus loan
+amount plus loan ID.
+
+573
+00:26:15,820 --> 00:26:17,500
+So because now generates
+
+574
+00:26:17,500 --> 00:26:19,119
+a new ID each time,
+it's a new row.
+
+575
+00:26:19,119 --> 00:26:20,820
+So this is an insert
+at the role level.
+
+576
+00:26:20,820 --> 00:26:22,640
+That makes sense? Yeah,
+thanks for clarifying.
+
+577
+00:26:22,640 --> 00:26:23,900
+That's kind of a fun question.
+
+578
+00:26:23,900 --> 00:26:30,739
+Yeah, here. Oh, for
+comparing custom types.
+
+579
+00:26:30,739 --> 00:26:33,759
+Like Yeah, I'm not
+sure, actually.
+
+580
+00:26:33,759 --> 00:26:37,859
+Like to say you're
+saying, like, say, Oh,
+
+581
+00:26:37,859 --> 00:26:40,239
+like, all the, if I have put in,
+
+582
+00:26:40,239 --> 00:26:41,659
+like a name, can I do it?
+
+583
+00:26:41,659 --> 00:26:43,839
+I imagine they let you do
+it, but I haven't tried it.
+
+584
+00:26:43,839 --> 00:26:45,379
+Yeah. It's a good question.
+They should, right?
+
+585
+00:26:45,379 --> 00:26:47,279
+It seems like that would
+be a very useful feature.
+
+586
+00:26:47,279 --> 00:26:48,999
+Yeah. Yeah, thanks for asking.
+
+587
+00:26:48,999 --> 00:26:51,479
+Yeah, there are
+questions people have.
+
+588
+00:26:52,240 --> 00:26:55,319
+Cool. So we have
+the custom types.
+
+589
+00:26:55,319 --> 00:26:56,979
+They say I want to talk about is
+
+590
+00:26:56,979 --> 00:27:00,800
+something called
+prepared statements.
+
+591
+00:27:02,210 --> 00:27:05,149
+And there's a few reasons
+we would have this.
+
+592
+00:27:05,149 --> 00:27:06,909
+This is like idea in
+a lot of databases,
+
+593
+00:27:06,909 --> 00:27:08,029
+although it's a little bit more
+
+594
+00:27:08,029 --> 00:27:10,850
+powerful in this environment.
+
+595
+00:27:10,850 --> 00:27:13,549
+So You can imagine that I
+
+596
+00:27:13,549 --> 00:27:14,990
+might want to do
+a lot of inserts
+
+597
+00:27:14,990 --> 00:27:16,809
+that are very similar like this.
+
+598
+00:27:16,809 --> 00:27:20,109
+And each time it does this,
+
+599
+00:27:20,109 --> 00:27:22,829
+notice that this is
+just like text, right?
+
+600
+00:27:22,829 --> 00:27:24,649
+So for Cassandra to
+understand this and
+
+601
+00:27:24,649 --> 00:27:26,989
+needs to extract that structure,
+that's called parsing.
+
+602
+00:27:26,989 --> 00:27:28,529
+That actually takes
+some time to parse
+
+603
+00:27:28,529 --> 00:27:30,789
+the s query and figure
+out the structure.
+
+604
+00:27:30,789 --> 00:27:32,049
+And so if I do a bunch of
+
+605
+00:27:32,049 --> 00:27:33,529
+inserts that have
+the same structure,
+
+606
+00:27:33,529 --> 00:27:34,990
+I'm paying that cost repeatedly.
+
+607
+00:27:34,990 --> 00:27:36,909
+It'll be a little slower
+than it would need to be.
+
+608
+00:27:36,909 --> 00:27:38,850
+And so the idea of a
+prepared statement
+
+609
+00:27:38,850 --> 00:27:40,409
+is I say, well, parse it once.
+
+610
+00:27:40,409 --> 00:27:41,949
+And within the statement,
+
+611
+00:27:41,949 --> 00:27:43,049
+there's a few places
+where we might
+
+612
+00:27:43,049 --> 00:27:44,789
+insert a few different values,
+
+613
+00:27:44,789 --> 00:27:47,309
+and then we can reuse
+that parsing work.
+
+614
+00:27:47,309 --> 00:27:49,150
+And instead of execute,
+
+615
+00:27:49,150 --> 00:27:51,659
+what I'll actually
+say is prepare.
+
+616
+00:27:51,659 --> 00:27:58,490
+And the way I'll do this
+is I will couple line,
+
+617
+00:27:58,490 --> 00:28:00,829
+and I'll just specify some
+holes in this, right?
+
+618
+00:28:00,829 --> 00:28:02,749
+So I can say, for example,
+
+619
+00:28:02,749 --> 00:28:05,929
+maybe the amount
+might vary each time.
+
+620
+00:28:05,929 --> 00:28:08,510
+Maybe the first name might vary,
+
+621
+00:28:08,510 --> 00:28:10,890
+maybe the last name might vary.
+
+622
+00:28:10,890 --> 00:28:12,529
+I can do this, and this will get
+
+623
+00:28:12,529 --> 00:28:15,149
+me I'm going to call
+this prepared statement,
+
+624
+00:28:15,149 --> 00:28:17,029
+UW Credit Union Insert.
+
+625
+00:28:17,029 --> 00:28:19,049
+You can see that I kept
+somebodys values in.
+
+626
+00:28:19,049 --> 00:28:21,450
+So if I use this repair
+statement multiple times,
+
+627
+00:28:21,450 --> 00:28:25,130
+it's always inserting loans
+for the UW credit union,
+
+628
+00:28:25,130 --> 00:28:26,529
+because that's baked
+right into it.
+
+629
+00:28:26,529 --> 00:28:28,649
+You can also see that this
+is baked right into it.
+
+630
+00:28:28,649 --> 00:28:30,050
+So I won't have to
+use this repeatedly.
+
+631
+00:28:30,050 --> 00:28:31,429
+So how would I actually do this?
+
+632
+00:28:31,429 --> 00:28:33,589
+Well, I can do a
+Cassandra execute.
+
+633
+00:28:33,589 --> 00:28:37,330
+But instead of putting
+like some CQL here,
+
+634
+00:28:37,330 --> 00:28:40,649
+what I can do is I can say
+that UW Credit Union insert.
+
+635
+00:28:40,649 --> 00:28:43,209
+And then I can put in
+the different arguments.
+
+636
+00:28:43,209 --> 00:28:44,709
+I've put in arguments for this
+
+637
+00:28:44,709 --> 00:28:46,829
+for this, and for this, right?
+
+638
+00:28:46,829 --> 00:28:50,989
+So maybe I'll come along and
+I'll say something like 302,
+
+639
+00:28:50,989 --> 00:28:55,775
+and I'll say test
+first and test last.
+
+640
+00:28:55,775 --> 00:29:00,339
+I can do that. And so
+if I come back here to
+
+641
+00:29:00,339 --> 00:29:02,320
+where I select everything
+
+642
+00:29:02,320 --> 00:29:05,419
+from loans, let's
+take a look at that.
+
+643
+00:29:06,900 --> 00:29:09,479
+I can see it inserted
+down here for me,
+
+644
+00:29:09,479 --> 00:29:11,880
+and it automatically
+figured out this ID.
+
+645
+00:29:11,880 --> 00:29:12,940
+If I were to do that again,
+
+646
+00:29:12,940 --> 00:29:14,479
+I would have did
+a new ID for me.
+
+647
+00:29:14,479 --> 00:29:17,019
+That's going to be a
+few advantage of it.
+
+648
+00:29:17,019 --> 00:29:18,920
+It's faster for parsing.
+
+649
+00:29:18,920 --> 00:29:21,239
+There's actually a
+security angle on it,
+
+650
+00:29:21,239 --> 00:29:24,759
+too, I If I'm always just
+sending strings to it,
+
+651
+00:29:24,759 --> 00:29:26,119
+and I'm pulling values
+
+652
+00:29:26,119 --> 00:29:27,479
+from a web form or
+something like that,
+
+653
+00:29:27,479 --> 00:29:28,899
+there's an opportunity
+for somebody to do
+
+654
+00:29:28,899 --> 00:29:30,459
+something called a
+SQL injection attack,
+
+655
+00:29:30,459 --> 00:29:31,760
+I won't worry about it too much.
+
+656
+00:29:31,760 --> 00:29:33,239
+This helps protect against
+
+657
+00:29:33,239 --> 00:29:34,780
+that from a security
+perspective.
+
+658
+00:29:34,780 --> 00:29:36,259
+We see it's more
+convenient, right?
+
+659
+00:29:36,259 --> 00:29:39,179
+This is a lot more concise
+than using this each time.
+
+660
+00:29:39,179 --> 00:29:42,019
+And why I care about
+it now, specifically,
+
+661
+00:29:42,019 --> 00:29:43,539
+in this course, is that
+
+662
+00:29:43,539 --> 00:29:45,679
+we can put other
+options on it, right?
+
+663
+00:29:45,679 --> 00:29:50,859
+So for example, if I
+look at this and I say,
+
+664
+00:29:50,859 --> 00:29:54,120
+There should be something
+called a consistency level,
+
+665
+00:29:54,120 --> 00:29:56,960
+and I could set
+it for something,
+
+666
+00:29:56,960 --> 00:30:01,300
+and we'll cover this more soon.
+
+667
+00:30:01,300 --> 00:30:03,819
+But what we do is
+as soon see that
+
+668
+00:30:03,819 --> 00:30:04,819
+we can have different
+options for
+
+669
+00:30:04,819 --> 00:30:05,960
+different statements
+we're doing.
+
+670
+00:30:05,960 --> 00:30:09,169
+Sometimes Sometimes I want
+
+671
+00:30:09,169 --> 00:30:12,189
+my data base to give
+me the right answers.
+
+672
+00:30:12,189 --> 00:30:13,649
+I almost always like that.
+
+673
+00:30:13,649 --> 00:30:15,290
+But sometimes when machines
+
+674
+00:30:15,290 --> 00:30:16,670
+are dying, I have
+to make a choice.
+
+675
+00:30:16,670 --> 00:30:18,609
+But I'd rather
+have the database,
+
+676
+00:30:18,609 --> 00:30:20,230
+not respond to my queries,
+
+677
+00:30:20,230 --> 00:30:22,309
+or maybe I wanted
+to always respond,
+
+678
+00:30:22,309 --> 00:30:24,290
+even if it might
+give me information
+
+679
+00:30:24,290 --> 00:30:26,349
+that's slightly old or sale
+or something like that.
+
+680
+00:30:26,349 --> 00:30:28,830
+And so those ideas refer
+to consistency levels,
+
+681
+00:30:28,830 --> 00:30:29,990
+and we're going to
+be able to specify
+
+682
+00:30:29,990 --> 00:30:32,029
+those on a per query basis.
+
+683
+00:30:32,029 --> 00:30:33,349
+And so the way we're
+going to do that on
+
+684
+00:30:33,349 --> 00:30:34,809
+the upcoming project is
+
+685
+00:30:34,809 --> 00:30:36,249
+at the level of these
+prepared statements.
+
+686
+00:30:36,249 --> 00:30:38,664
+Sometimes you're going to
+do some operations where we
+
+687
+00:30:38,664 --> 00:30:40,519
+You know, we want
+it to always do
+
+688
+00:30:40,519 --> 00:30:42,580
+something even if
+it might be wrong.
+
+689
+00:30:42,580 --> 00:30:45,799
+And other times, we want
+it to do the right thing,
+
+690
+00:30:45,799 --> 00:30:47,980
+even if that means it can't
+give me an answer right now.
+
+691
+00:30:47,980 --> 00:30:50,719
+So that's going to be very
+important later. All right.
+
+692
+00:30:50,719 --> 00:30:51,959
+Any questions people have about
+
+693
+00:30:51,959 --> 00:30:57,529
+prepared statements? All right.
+
+694
+00:30:57,529 --> 00:30:59,409
+Let's talk about group by.
+
+695
+00:30:59,409 --> 00:31:02,070
+I'm going to show a group by
+query that's kind of boring
+
+696
+00:31:02,070 --> 00:31:05,089
+because it'll be do exactly
+what you expected to,
+
+697
+00:31:05,089 --> 00:31:06,289
+and I'm going to show
+you one that will
+
+698
+00:31:06,289 --> 00:31:08,069
+probably surprise
+you a little bit.
+
+699
+00:31:08,069 --> 00:31:09,650
+So I'm gonna come back here
+
+700
+00:31:09,650 --> 00:31:11,589
+and maybe I'll just
+
+701
+00:31:11,589 --> 00:31:13,510
+grab this one. This
+one would be fine.
+
+702
+00:31:13,510 --> 00:31:16,149
+So the first thing I want
+to do is I want to just see
+
+703
+00:31:16,149 --> 00:31:20,289
+how many loans there
+are per bank, right?
+
+704
+00:31:20,289 --> 00:31:22,270
+And so that's a
+classic group by.
+
+705
+00:31:22,270 --> 00:31:27,055
+So I will select bank
+ID and account star.
+
+706
+00:31:27,055 --> 00:31:31,999
+From loans, group by bank
+ID. No problem there.
+
+707
+00:31:31,999 --> 00:31:34,160
+I can see how many there
+are for each of these.
+
+708
+00:31:34,160 --> 00:31:37,119
+What is more
+surprising is that if
+
+709
+00:31:37,119 --> 00:31:40,099
+I want to say group by state
+or something like that,
+
+710
+00:31:40,099 --> 00:31:44,179
+it's try to turn out that
+Cassandra simply cannot do it.
+
+711
+00:31:44,179 --> 00:31:46,039
+I'm just trying to copy
+this error message
+
+712
+00:31:46,039 --> 00:31:48,139
+so we can have
+this in the notes,
+
+713
+00:31:48,139 --> 00:31:50,819
+and put this up
+at the beginning.
+
+714
+00:31:50,819 --> 00:31:54,539
+And let me comment that out.
+So what's going on here?
+
+715
+00:31:54,539 --> 00:31:56,119
+So group I is currently
+only support on
+
+716
+00:31:56,119 --> 00:31:58,720
+the columns of the primary key.
+
+717
+00:31:58,720 --> 00:32:00,079
+Why is that? Well, if it's on
+
+718
+00:32:00,079 --> 00:32:01,420
+the columns of the primary key,
+
+719
+00:32:01,420 --> 00:32:04,299
+that means the partition
+key is included in it.
+
+720
+00:32:04,299 --> 00:32:07,114
+And as it's doing
+these aggregates,
+
+721
+00:32:07,114 --> 00:32:09,549
+It's doing aggregates
+over a group
+
+722
+00:32:09,549 --> 00:32:12,730
+that is all on the same machine.
+
+723
+00:32:12,730 --> 00:32:14,889
+Right? There doesn't have
+
+724
+00:32:14,889 --> 00:32:16,809
+to be any kind of data shuffle
+or anything like that.
+
+725
+00:32:16,809 --> 00:32:18,709
+Grouping over partitions,
+
+726
+00:32:18,709 --> 00:32:20,209
+and a partition is
+on one machine.
+
+727
+00:32:20,209 --> 00:32:22,629
+So I can do that aggregate
+on that one machine, right?
+
+728
+00:32:22,629 --> 00:32:25,069
+And so if I want to
+do something else,
+
+729
+00:32:25,069 --> 00:32:26,329
+there has to be some
+kind of shuffle,
+
+730
+00:32:26,329 --> 00:32:27,330
+almost like Spark does.
+
+731
+00:32:27,330 --> 00:32:27,889
+It has to have
+
+732
+00:32:27,889 --> 00:32:30,009
+a hash partitioning or
+something like that.
+
+733
+00:32:30,009 --> 00:32:31,669
+Ca Standard doesn't have
+that built in because
+
+734
+00:32:31,669 --> 00:32:33,869
+it's not built for analytics.
+
+735
+00:32:33,869 --> 00:32:36,510
+It's built for transaction
+processing workloads
+
+736
+00:32:36,510 --> 00:32:37,590
+where we insert some rows,
+
+737
+00:32:37,590 --> 00:32:38,889
+delete some rows, look up
+
+738
+00:32:38,889 --> 00:32:40,749
+rows, that sort of thing, right?
+
+739
+00:32:40,749 --> 00:32:42,930
+And so this is a motivation.
+
+740
+00:32:43,010 --> 00:32:46,229
+This is a motivation
+for ETL, right?
+
+741
+00:32:46,229 --> 00:32:51,379
+Extract. Oh, transform load.
+
+742
+00:32:51,379 --> 00:32:54,139
+And we could you know,
+I may leave this to do.
+
+743
+00:32:54,139 --> 00:32:55,520
+I'm not actually
+going to do it now.
+
+744
+00:32:55,520 --> 00:32:59,879
+We could say copy
+the data to Park,
+
+745
+00:32:59,879 --> 00:33:03,019
+and HDFS or something similar,
+
+746
+00:33:03,019 --> 00:33:05,779
+and then analyze with
+
+747
+00:33:05,779 --> 00:33:08,839
+Spark or some other
+similar thing, right?
+
+748
+00:33:08,839 --> 00:33:12,259
+So I can have my data
+in Cassandra that has,
+
+749
+00:33:12,259 --> 00:33:14,920
+you know, Cassandra is good
+at some very narrow things,
+
+750
+00:33:14,920 --> 00:33:16,600
+and then it's bad
+at a lot of things.
+
+751
+00:33:16,600 --> 00:33:17,899
+But I can have my
+data there, and
+
+752
+00:33:17,899 --> 00:33:19,219
+if I want these other
+benefits, well,
+
+753
+00:33:19,219 --> 00:33:21,579
+then I can have these ETL
+jobs that get it elsewhere,
+
+754
+00:33:21,579 --> 00:33:23,659
+and I could do my analytics and
+
+755
+00:33:23,659 --> 00:33:26,399
+somewhere else,
+right? All right.
+
+756
+00:33:26,399 --> 00:33:29,000
+Does that motivation make sense?
+
+757
+00:33:29,160 --> 00:33:33,079
+Alright. Cool. So that
+was kind of a hands on,
+
+758
+00:33:33,079 --> 00:33:36,539
+just, like, get some
+practice with Cassandra.
+
+759
+00:33:36,539 --> 00:33:38,739
+May I have a couple of lectures
+
+760
+00:33:38,739 --> 00:33:40,900
+on some topics that I
+find very interesting,
+
+761
+00:33:40,900 --> 00:33:42,240
+which is how Cassandra does
+
+762
+00:33:42,240 --> 00:33:44,699
+partitioning and
+replication, right?
+
+763
+00:33:44,699 --> 00:33:46,419
+And we can get pretty
+deep into this.
+
+764
+00:33:46,419 --> 00:33:47,920
+And the things that are doing
+
+765
+00:33:47,920 --> 00:33:50,009
+actually show up in a
+lot of different places.
+
+766
+00:33:50,009 --> 00:33:51,600
+Now, we've already seen
+
+767
+00:33:51,600 --> 00:33:53,919
+a couple of different
+partitioning schemes.
+
+768
+00:33:53,919 --> 00:33:56,439
+HDFS partitions, big files
+
+769
+00:33:56,439 --> 00:33:59,420
+into these smaller
+logical blocks.
+
+770
+00:33:59,420 --> 00:34:02,260
+Cutting off at byte boundaries.
+
+771
+00:34:02,260 --> 00:34:04,660
+Spark does hash partitioning.
+
+772
+00:34:04,660 --> 00:34:05,919
+And so I want you to see
+
+773
+00:34:05,919 --> 00:34:08,260
+the strengths and weaknesses
+of each of those approaches.
+
+774
+00:34:08,260 --> 00:34:09,759
+And then we're going
+to be learning
+
+775
+00:34:09,759 --> 00:34:12,400
+a new one called
+Consistent Hashing.
+
+776
+00:34:12,400 --> 00:34:14,299
+And we're going to see that one
+
+777
+00:34:14,299 --> 00:34:16,199
+has some advantages.
+Others do not.
+
+778
+00:34:16,199 --> 00:34:18,595
+Sander uses consistent hashing.
+
+779
+00:34:18,595 --> 00:34:21,190
+One of the key
+structures understand
+
+780
+00:34:21,190 --> 00:34:23,369
+consistent Ashland is
+something called a token ring.
+
+781
+00:34:23,369 --> 00:34:26,010
+And he spent a lot of time
+looking at token rings.
+
+782
+00:34:26,010 --> 00:34:27,489
+And yeah, just a minute.
+
+783
+00:34:27,489 --> 00:34:28,889
+Where he spent a lot
+of time looking at
+
+784
+00:34:28,889 --> 00:34:32,449
+token rings and learning
+how to interpret them.
+
+785
+00:34:32,449 --> 00:34:35,589
+And for example, if I
+look at a given row,
+
+786
+00:34:35,589 --> 00:34:36,949
+I want you to be able to walk
+
+787
+00:34:36,949 --> 00:34:38,469
+the token ring and
+tell me, well,
+
+788
+00:34:38,469 --> 00:34:40,009
+where is that
+particular piece of
+
+789
+00:34:40,009 --> 00:34:42,609
+data located? Yeah,
+go straight here.
+
+790
+00:34:42,860 --> 00:34:45,579
+I think so, but if they're
+not, you can always just drop
+
+791
+00:34:45,579 --> 00:34:47,440
+me an e mail and I'll make
+sure they're up after lecture.
+
+792
+00:34:47,440 --> 00:34:49,279
+Thanks. So we're going
+
+793
+00:34:49,279 --> 00:34:51,479
+to be learning a lot about
+these token rings as well.
+
+794
+00:34:51,479 --> 00:34:53,139
+And then finally, one
+of the other things
+
+795
+00:34:53,139 --> 00:34:54,220
+that's cool about Cassandra,
+
+796
+00:34:54,220 --> 00:34:56,140
+that's different
+than say Sarka HGFS
+
+797
+00:34:56,140 --> 00:34:57,899
+is that there's no
+centralized boss node.
+
+798
+00:34:57,899 --> 00:34:59,159
+This is the first system we've
+
+799
+00:34:59,159 --> 00:35:01,299
+seen with a
+centralized boss node.
+
+800
+00:35:01,299 --> 00:35:03,700
+Now, each of these workers
+
+801
+00:35:03,700 --> 00:35:05,499
+in the Cassandra clusters are
+going to have lots of data,
+
+802
+00:35:05,499 --> 00:35:07,079
+but we also have
+to have metadata.
+
+803
+00:35:07,079 --> 00:35:08,680
+And when you have
+a boss, the boss
+
+804
+00:35:08,680 --> 00:35:10,260
+is a natural place
+to have metadata.
+
+805
+00:35:10,260 --> 00:35:12,580
+We don't have a boss.
+So our metadata
+
+806
+00:35:12,580 --> 00:35:15,540
+is going to be replicated
+across every single worker.
+
+807
+00:35:15,540 --> 00:35:17,559
+And that's tricky because
+
+808
+00:35:17,559 --> 00:35:19,799
+sometimes the metadata might
+need to change, right?
+
+809
+00:35:19,799 --> 00:35:21,039
+And you can't always talk to
+
+810
+00:35:21,039 --> 00:35:23,359
+every single worker in the
+same instant and update it.
+
+811
+00:35:23,359 --> 00:35:25,179
+And so it's going
+to have a new way
+
+812
+00:35:25,179 --> 00:35:26,559
+of kind of propagating
+
+813
+00:35:26,559 --> 00:35:28,360
+changes called
+gossip or sometimes
+
+814
+00:35:28,360 --> 00:35:30,600
+people call it an
+epidemic algorithm,
+
+815
+00:35:30,600 --> 00:35:32,520
+we're like a change
+will be in some places,
+
+816
+00:35:32,520 --> 00:35:35,340
+but like the data or the
+change will like infect
+
+817
+00:35:35,340 --> 00:35:38,619
+other nodes until eventually
+it's seen everywhere, right?
+
+818
+00:35:38,619 --> 00:35:40,239
+So there's lots of
+interesting things
+
+819
+00:35:40,239 --> 00:35:41,779
+that Cassandra does that
+we're going to dive into.
+
+820
+00:35:41,779 --> 00:35:43,780
+I want to talk a little
+bit about the history.
+
+821
+00:35:43,780 --> 00:35:45,620
+So we've talked about
+some of this before.
+
+822
+00:35:45,620 --> 00:35:49,400
+So the Big Table paper at
+Google inspired HBase,
+
+823
+00:35:49,400 --> 00:35:50,859
+and I think HBase
+just try to be as
+
+824
+00:35:50,859 --> 00:35:53,470
+similar to Big
+Table as possible.
+
+825
+00:35:53,470 --> 00:35:57,219
+HBase was really first
+release in 2008.
+
+826
+00:35:57,219 --> 00:35:59,179
+Cassandra was being
+built at the same time,
+
+827
+00:35:59,179 --> 00:36:00,919
+and Cassandra also took
+
+828
+00:36:00,919 --> 00:36:03,139
+a lot of influence from
+Big Table as we saw,
+
+829
+00:36:03,139 --> 00:36:05,079
+but it took influence from
+
+830
+00:36:05,079 --> 00:36:07,740
+another paper
+published by Amazon,
+
+831
+00:36:07,740 --> 00:36:10,060
+AWS called Dynamo Dynamo
+
+832
+00:36:10,060 --> 00:36:11,920
+Influence Cassandra and
+probably more importantly,
+
+833
+00:36:11,920 --> 00:36:13,639
+influenced DynamoDB,
+which is still
+
+834
+00:36:13,639 --> 00:36:15,600
+an AWS service that
+is very popular.
+
+835
+00:36:15,600 --> 00:36:19,000
+Maybe some of you will end
+up using that someday.
+
+836
+00:36:19,000 --> 00:36:20,939
+And so things about
+like the data model
+
+837
+00:36:20,939 --> 00:36:23,059
+and storage layout that's
+really coming from Big Table.
+
+838
+00:36:23,059 --> 00:36:24,880
+Things about partitioning
+and replication
+
+839
+00:36:24,880 --> 00:36:26,860
+is really inspired by Dynamo.
+
+840
+00:36:26,860 --> 00:36:28,924
+And there's this great
+quote in the paper.
+
+841
+00:36:28,924 --> 00:36:30,530
+So, again, right,
+this is Amazon.
+
+842
+00:36:30,530 --> 00:36:31,909
+And think about
+what Amazon cares
+
+843
+00:36:31,909 --> 00:36:33,510
+about most or finds
+most important.
+
+844
+00:36:33,510 --> 00:36:35,529
+So they said that
+customers should be
+
+845
+00:36:35,529 --> 00:36:37,929
+able to view or add items
+to their shopping cart.
+
+846
+00:36:37,929 --> 00:36:39,330
+Even if disks are failing,
+
+847
+00:36:39,330 --> 00:36:40,770
+network routes are flapping,
+
+848
+00:36:40,770 --> 00:36:42,929
+data centers are being
+destroyed by tornadoes.
+
+849
+00:36:42,929 --> 00:36:44,709
+You still have to shop
+at Amazon, right?
+
+850
+00:36:44,709 --> 00:36:46,489
+So in of sounds
+ridiculous and very,
+
+851
+00:36:46,489 --> 00:36:48,470
+you know, a consumer
+oriented mindset.
+
+852
+00:36:48,470 --> 00:36:50,129
+But, you know, there might
+
+853
+00:36:50,129 --> 00:36:52,449
+be applications that we
+all care about more,
+
+854
+00:36:52,449 --> 00:36:54,670
+for example, like an EMS,
+
+855
+00:36:54,670 --> 00:36:56,630
+like an emergency
+medical services.
+
+856
+00:36:56,630 --> 00:36:58,169
+I have some
+application for that.
+
+857
+00:36:58,169 --> 00:37:01,249
+There's a tornado that stuff
+still has to work, right?
+
+858
+00:37:01,249 --> 00:37:04,059
+And so, Sometimes you
+
+859
+00:37:04,059 --> 00:37:04,559
+really need to have
+
+860
+00:37:04,559 --> 00:37:05,880
+applications that are
+highly available.
+
+861
+00:37:05,880 --> 00:37:07,699
+They always have to be on
+and they have to work,
+
+862
+00:37:07,699 --> 00:37:10,260
+even in very adverse conditions,
+
+863
+00:37:10,260 --> 00:37:13,259
+and Cassandra is one
+such system like that.
+
+864
+00:37:13,259 --> 00:37:16,059
+All right. So to review a bit
+
+865
+00:37:16,059 --> 00:37:19,360
+about how we've seen
+partitioning working before.
+
+866
+00:37:19,360 --> 00:37:22,759
+In general, partitioning
+is this question of,
+
+867
+00:37:22,759 --> 00:37:24,399
+like, a, you have
+a piece of data.
+
+868
+00:37:24,399 --> 00:37:26,899
+We should live, right?
+
+869
+00:37:26,899 --> 00:37:29,339
+And there's two broad ways
+that you could do that.
+
+870
+00:37:29,339 --> 00:37:30,800
+One is you can have
+a data structure.
+
+871
+00:37:30,800 --> 00:37:31,980
+You check the data structure.
+
+872
+00:37:31,980 --> 00:37:33,999
+The data structure tells
+you it lives there.
+
+873
+00:37:33,999 --> 00:37:35,419
+The other ways you could
+
+874
+00:37:35,419 --> 00:37:37,259
+do some mathematical
+calculations, right?
+
+875
+00:37:37,259 --> 00:37:39,159
+I have a piece of data. I
+look at something about it.
+
+876
+00:37:39,159 --> 00:37:40,639
+The math tells me
+where it lives.
+
+877
+00:37:40,639 --> 00:37:43,510
+And so HDFS does
+that first approach.
+
+878
+00:37:43,510 --> 00:37:45,129
+They have a data structure
+kind of like this.
+
+879
+00:37:45,129 --> 00:37:46,989
+It's like a big dictionary where
+
+880
+00:37:46,989 --> 00:37:49,710
+the keys are blocks of files.
+
+881
+00:37:49,710 --> 00:37:52,269
+And if I have a
+given block name,
+
+882
+00:37:52,269 --> 00:37:53,489
+it's going to take
+me to a list of
+
+883
+00:37:53,489 --> 00:37:54,869
+data nodes in different
+places, right?
+
+884
+00:37:54,869 --> 00:37:55,849
+And so I can figure out for
+
+885
+00:37:55,849 --> 00:37:57,489
+that block of data where is it?
+
+886
+00:37:57,489 --> 00:37:59,689
+That's what HDFS does.
+
+887
+00:37:59,689 --> 00:38:02,929
+Spark does something called
+hash partitioning, right?
+
+888
+00:38:02,929 --> 00:38:04,209
+So if I'm trying to
+
+889
+00:38:04,209 --> 00:38:05,984
+do like a group buy or
+something like that,
+
+890
+00:38:05,984 --> 00:38:08,240
+I don't just want to split
+up the data arbitrarily.
+
+891
+00:38:08,240 --> 00:38:09,539
+I want to bring related data
+
+892
+00:38:09,539 --> 00:38:12,319
+together in the
+same place, right?
+
+893
+00:38:12,319 --> 00:38:13,779
+How would I do that?
+I would get a hash of
+
+894
+00:38:13,779 --> 00:38:16,559
+the key and modify the
+partition count, right?
+
+895
+00:38:16,559 --> 00:38:18,879
+So when I do the hash,
+I get some big number,
+
+896
+00:38:18,879 --> 00:38:20,339
+and then I'll get
+it down to well,
+
+897
+00:38:20,339 --> 00:38:22,980
+some partition number, which
+is some specific machine.
+
+898
+00:38:22,980 --> 00:38:24,260
+And I can use that for grouping
+
+899
+00:38:24,260 --> 00:38:25,940
+and joining and all
+kinds of stuff.
+
+900
+00:38:25,940 --> 00:38:27,339
+Okay? I'm going to
+
+901
+00:38:27,339 --> 00:38:28,779
+talk about the weaknesses
+of both of those,
+
+902
+00:38:28,779 --> 00:38:30,920
+and then I'm going to talk
+about consistent hashing,
+
+903
+00:38:30,920 --> 00:38:34,179
+which is what Dynamo
+and Cassandra use.
+
+904
+00:38:34,179 --> 00:38:34,899
+I just want to show
+
+905
+00:38:34,899 --> 00:38:37,259
+one quick picture for each
+of these again, right?
+
+906
+00:38:37,259 --> 00:38:38,979
+With HDFS, we have
+
+907
+00:38:38,979 --> 00:38:40,379
+that data structure
+we're looking at.
+
+908
+00:38:40,379 --> 00:38:41,319
+Where does that live?
+
+909
+00:38:41,319 --> 00:38:42,799
+It's actually something called
+
+910
+00:38:42,799 --> 00:38:44,899
+a block map on the
+name node, right?
+
+911
+00:38:44,899 --> 00:38:47,099
+And so when a client
+wants to read some data,
+
+912
+00:38:47,099 --> 00:38:48,819
+it asks the name node.
+Where is that data?
+
+913
+00:38:48,819 --> 00:38:50,120
+It its those locations.
+
+914
+00:38:50,120 --> 00:38:52,380
+And then it can actually
+go and find the data.
+
+915
+00:38:52,380 --> 00:38:56,899
+That's HDFS. And this is what
+Spark looks like, right?
+
+916
+00:38:56,899 --> 00:38:58,959
+In Spar, we're trying to bring
+
+917
+00:38:58,959 --> 00:39:00,900
+together all the A
+values, all the B values.
+
+918
+00:39:00,900 --> 00:39:03,120
+The way we do that is
+that each partition
+
+919
+00:39:03,120 --> 00:39:04,739
+when we're running a test on it.
+
+920
+00:39:04,739 --> 00:39:06,299
+If I'm grouping by X,
+
+921
+00:39:06,299 --> 00:39:07,519
+then I'm going to
+take the hash of
+
+922
+00:39:07,519 --> 00:39:10,220
+root x and then modit by
+the number of partitions,
+
+923
+00:39:10,220 --> 00:39:12,239
+and chase this case,
+there's three of them.
+
+924
+00:39:12,239 --> 00:39:14,660
+And that's how I bring
+related data together.
+
+925
+00:39:14,660 --> 00:39:16,539
+Okay, let's think about
+
+926
+00:39:16,539 --> 00:39:18,139
+the weaknesses and strengths of
+
+927
+00:39:18,139 --> 00:39:20,179
+these in terms of scalability.
+
+928
+00:39:20,179 --> 00:39:21,920
+Scalability kind of broadly
+
+929
+00:39:21,920 --> 00:39:23,119
+means that as I
+have bigger data,
+
+930
+00:39:23,119 --> 00:39:24,979
+I can use more machines
+to process it.
+
+931
+00:39:24,979 --> 00:39:27,024
+But there's some nuance there.
+
+932
+00:39:27,024 --> 00:39:29,769
+One is that there's different
+ways I can have big data.
+
+933
+00:39:29,769 --> 00:39:31,629
+One way I could have big
+data is I could have
+
+934
+00:39:31,629 --> 00:39:34,609
+a few objects that
+are each very large.
+
+935
+00:39:34,609 --> 00:39:38,050
+So you can imagine maybe
+I have like five files,
+
+936
+00:39:38,050 --> 00:39:39,709
+but they're each
+like a petabyte.
+
+937
+00:39:39,709 --> 00:39:41,749
+Okay? That'd be one
+way to have big data.
+
+938
+00:39:41,749 --> 00:39:43,690
+The other way is
+I could have lots
+
+939
+00:39:43,690 --> 00:39:45,369
+and lots of small
+objects, right?
+
+940
+00:39:45,369 --> 00:39:47,329
+For example, like a row could be
+
+941
+00:39:47,329 --> 00:39:48,849
+a small object or
+maybe I have lots
+
+942
+00:39:48,849 --> 00:39:50,709
+of small files, stuff like that.
+
+943
+00:39:50,709 --> 00:39:53,249
+I'm wondering for HDFS,
+
+944
+00:39:53,370 --> 00:39:56,569
+which one of these will
+HDFS have trouble with?
+
+945
+00:39:56,569 --> 00:39:58,749
+Is HDFS to have trouble with
+
+946
+00:39:58,749 --> 00:40:02,750
+a few large files or
+lots of small files?
+
+947
+00:40:02,750 --> 00:40:12,590
+Yeah. Yeah, a lot
+of small files,
+
+948
+00:40:12,590 --> 00:40:14,329
+we have extra
+overhead, particularly
+
+949
+00:40:14,329 --> 00:40:15,709
+on the name node, right?
+
+950
+00:40:15,709 --> 00:40:17,749
+In the HDFS, the
+name node is what we
+
+951
+00:40:17,749 --> 00:40:20,349
+really worry about for
+the bottleneck, right?
+
+952
+00:40:20,349 --> 00:40:23,310
+If I have, a few very
+large files in HDFS,
+
+953
+00:40:23,310 --> 00:40:24,810
+and they each have
+these big block sizes,
+
+954
+00:40:24,810 --> 00:40:26,429
+then the data nodes are
+going to between most of
+
+955
+00:40:26,429 --> 00:40:27,489
+the work which is
+great because I
+
+956
+00:40:27,489 --> 00:40:28,730
+have lots of data nodes.
+
+957
+00:40:28,730 --> 00:40:30,249
+But if I have all
+these small things,
+
+958
+00:40:30,249 --> 00:40:31,969
+and thename node
+becomes a bottleneck.
+
+959
+00:40:31,969 --> 00:40:34,229
+You know, Spark doesn't really
+have that issue, right?
+
+960
+00:40:34,229 --> 00:40:36,410
+Spark is built
+from the beginning
+
+961
+00:40:36,410 --> 00:40:38,969
+to be operating on
+these small rows,
+
+962
+00:40:38,969 --> 00:40:40,169
+and it can them around,
+
+963
+00:40:40,169 --> 00:40:41,469
+and it can just deal
+with it, right?
+
+964
+00:40:41,469 --> 00:40:43,324
+So Spark will be good
+at both of these.
+
+965
+00:40:43,324 --> 00:40:44,919
+So for the first one, right,
+
+966
+00:40:44,919 --> 00:40:50,359
+in in terms of types
+of big data, right?
+
+967
+00:40:50,359 --> 00:40:52,820
+Spark is better with
+its hash partitioning.
+
+968
+00:40:52,820 --> 00:40:55,039
+But let's talk about another
+kind of scalability,
+
+969
+00:40:55,039 --> 00:40:57,779
+and that's called
+incremental scalability.
+
+970
+00:40:57,820 --> 00:41:00,159
+Sometimes I might
+be able to build
+
+971
+00:41:00,159 --> 00:41:02,800
+a system that works well
+on 1,000 computers,
+
+972
+00:41:02,800 --> 00:41:04,759
+and everything is going well,
+
+973
+00:41:04,759 --> 00:41:07,740
+but then I'm like, Okay,
+I want 1001 computers.
+
+974
+00:41:07,740 --> 00:41:09,679
+Can I very easily transition to
+
+975
+00:41:09,679 --> 00:41:12,399
+1001 and start giving the
+new computer new work,
+
+976
+00:41:12,399 --> 00:41:14,800
+or is that, like
+a big undertaking
+
+977
+00:41:14,800 --> 00:41:17,744
+where I have to shuffle data
+around and do a lot of work.
+
+978
+00:41:17,744 --> 00:41:21,309
+And in this case, HDFS
+is the winner, right?
+
+979
+00:41:21,309 --> 00:41:23,309
+If I have a cluster
+and you know,
+
+980
+00:41:23,309 --> 00:41:25,589
+I add in one more
+data node, great.
+
+981
+00:41:25,589 --> 00:41:27,169
+For a while, it won't
+have any data on it,
+
+982
+00:41:27,169 --> 00:41:28,489
+but as new files are ready in,
+
+983
+00:41:28,489 --> 00:41:30,670
+the name node, we kind of send
+them there and eventually,
+
+984
+00:41:30,670 --> 00:41:32,109
+it'll start helping out,
+
+985
+00:41:32,109 --> 00:41:33,570
+and other data nodes,
+
+986
+00:41:33,570 --> 00:41:35,149
+you know, doesn't
+really interfere with
+
+987
+00:41:35,149 --> 00:41:37,049
+their operation much, right?
+
+988
+00:41:37,049 --> 00:41:41,470
+So HDFS is very incrementally
+scalable. What about Spark?
+
+989
+00:41:41,470 --> 00:41:43,769
+And this is kind of a
+little bit contrived
+
+990
+00:41:43,769 --> 00:41:46,410
+because it's hard to imagine
+like what I'm describing,
+
+991
+00:41:46,410 --> 00:41:47,730
+why you'd actually do a Spark.
+
+992
+00:41:47,730 --> 00:41:49,169
+But my point is
+is I want to see,
+
+993
+00:41:49,169 --> 00:41:50,809
+k, if we did do this,
+there'd be a problem,
+
+994
+00:41:50,809 --> 00:41:51,929
+and that's why we can't use
+
+995
+00:41:51,929 --> 00:41:55,090
+has partitioning for Cassandra.
+
+996
+00:41:55,090 --> 00:41:56,809
+So imagine that you're
+doing a group by,
+
+997
+00:41:56,809 --> 00:41:59,130
+and you have to
+shuffle the data,
+
+998
+00:41:59,130 --> 00:42:00,329
+and when you're
+shuffling it, you're
+
+999
+00:42:00,329 --> 00:42:01,589
+modeling it by the
+partition town.
+
+1000
+00:42:01,589 --> 00:42:03,750
+And so each row is ending up
+in a different partition.
+
+1001
+00:42:03,750 --> 00:42:05,829
+And let's say partway
+through, you say, Well,
+
+1002
+00:42:05,829 --> 00:42:07,150
+instead of five partitions,
+
+1003
+00:42:07,150 --> 00:42:09,729
+I want six partitions.
+
+1004
+00:42:09,729 --> 00:42:11,949
+Well, unfortunately,
+you're going to have
+
+1005
+00:42:11,949 --> 00:42:13,849
+to start the whole job over.
+
+1006
+00:42:13,849 --> 00:42:15,169
+The work you did was not very
+
+1007
+00:42:15,169 --> 00:42:17,089
+useful. Let me show you why.
+
+1008
+00:42:17,089 --> 00:42:20,369
+So, I'm going to
+imagine down here.
+
+1009
+00:42:20,369 --> 00:42:22,609
+Let's say I'm just create
+
+1010
+00:42:22,609 --> 00:42:26,049
+a section called
+hash partitioning.
+
+1011
+00:42:26,750 --> 00:42:29,589
+And the way I do
+this is I'm going to
+
+1012
+00:42:29,589 --> 00:42:34,859
+imagine that I have let me
+just check my notes here.
+
+1013
+00:42:34,859 --> 00:42:38,200
+I may imagine that I have 26
+letters from our Alphabet,
+
+1014
+00:42:38,200 --> 00:42:41,680
+and I'm distributing them
+across four machines.
+
+1015
+00:42:41,680 --> 00:42:43,179
+And then I may say, instead of
+
+1016
+00:42:43,179 --> 00:42:44,680
+four machines, let's
+have five machines,
+
+1017
+00:42:44,680 --> 00:42:47,239
+and I want to see how
+many letters have to get
+
+1018
+00:42:47,239 --> 00:42:48,720
+shuffled to a new machine
+
+1019
+00:42:48,720 --> 00:42:50,439
+so that all the machines
+have some work.
+
+1020
+00:42:50,439 --> 00:42:52,459
+Right? And remember that
+I can do stuff like this.
+
+1021
+00:42:52,459 --> 00:42:53,859
+I can did a hash, right?
+
+1022
+00:42:53,859 --> 00:42:55,899
+I can, you know,
+
+1023
+00:42:55,899 --> 00:42:58,079
+mod that by four, all
+of that dad stuff.
+
+1024
+00:42:58,079 --> 00:43:00,939
+So I'm may get all the
+letters from String, right?
+
+1025
+00:43:00,939 --> 00:43:03,720
+And under String, I have Ask
+
+1026
+00:43:03,720 --> 00:43:06,279
+upper case. Tres I have that.
+
+1027
+00:43:06,279 --> 00:43:09,819
+I am going to get
+a pandasta frame.
+
+1028
+00:43:09,819 --> 00:43:13,559
+Pour Pandas SPD, and
+
+1029
+00:43:13,559 --> 00:43:17,059
+I'll get a pandas
+data frame like this,
+
+1030
+00:43:17,059 --> 00:43:18,960
+where I have a letters column,
+
+1031
+00:43:18,960 --> 00:43:20,339
+where it's basically just going
+
+1032
+00:43:20,339 --> 00:43:21,960
+to be a list of
+all these letters.
+
+1033
+00:43:21,960 --> 00:43:24,220
+All right. So I may
+get that data frame,
+
+1034
+00:43:24,220 --> 00:43:25,519
+and maybe let's just look at
+
+1035
+00:43:25,519 --> 00:43:27,739
+the first bit of it.
+Okay, that's cool.
+
+1036
+00:43:27,739 --> 00:43:29,759
+So what I want to do
+now is I want to say,
+
+1037
+00:43:29,759 --> 00:43:31,320
+when I have four machines,
+
+1038
+00:43:31,320 --> 00:43:33,979
+which machine will be
+responsible for each of these?
+
+1039
+00:43:33,979 --> 00:43:35,819
+And so what I really want
+to do is I want to do
+
+1040
+00:43:35,819 --> 00:43:38,300
+this hashing on each
+of these letters.
+
+1041
+00:43:38,300 --> 00:43:40,499
+In that column. The
+way I can do that is I
+
+1042
+00:43:40,499 --> 00:43:42,879
+can say data frame letter,
+
+1043
+00:43:42,879 --> 00:43:45,819
+and I can run some
+function on it, right?
+
+1044
+00:43:45,819 --> 00:43:47,340
+And I can define
+
+1045
+00:43:47,340 --> 00:43:49,559
+the function on the fly
+where I have some argument,
+
+1046
+00:43:49,559 --> 00:43:51,060
+I have some return value.
+
+1047
+00:43:51,060 --> 00:43:52,699
+And so the argument, I guess,
+
+1048
+00:43:52,699 --> 00:43:54,600
+will just be a letter
+in that column.
+
+1049
+00:43:54,600 --> 00:43:57,339
+And the return value
+will be a hash of
+
+1050
+00:43:57,339 --> 00:44:00,299
+that letter Mod four, right?
+
+1051
+00:44:00,299 --> 00:44:02,660
+So I could do that and
+I could determine.
+
+1052
+00:44:02,660 --> 00:44:03,479
+I'll say, Okay, well,
+
+1053
+00:44:03,479 --> 00:44:04,959
+the first letter is d
+me in partition two,
+
+1054
+00:44:04,959 --> 00:44:06,739
+and next will be
+partition three.
+
+1055
+00:44:06,739 --> 00:44:08,759
+Let me just shove that back into
+
+1056
+00:44:08,759 --> 00:44:10,359
+the data frame, so it's
+a little b easier.
+
+1057
+00:44:10,359 --> 00:44:12,979
+I may say this is
+a machine be four.
+
+1058
+00:44:12,979 --> 00:44:15,740
+When I have four machines,
+
+1059
+00:44:16,090 --> 00:44:18,749
+When I have four machines,
+this will tell me,
+
+1060
+00:44:18,749 --> 00:44:23,069
+is each letter on machine
+zero, one, two, or three?
+
+1061
+00:44:23,069 --> 00:44:24,769
+All right? So that's
+all fine and well.
+
+1062
+00:44:24,769 --> 00:44:26,029
+Well, now, let me
+do the same thing,
+
+1063
+00:44:26,029 --> 00:44:28,949
+and I want to say afterwards,
+
+1064
+00:44:28,949 --> 00:44:30,889
+right, which will
+each of these be on?
+
+1065
+00:44:30,889 --> 00:44:32,769
+So if I add a fifth
+machine and I do hash
+
+1066
+00:44:32,769 --> 00:44:34,869
+partitioning again, you know,
+
+1067
+00:44:34,869 --> 00:44:37,169
+at a glance, I can
+already see that Well,
+
+1068
+00:44:37,169 --> 00:44:40,450
+sometimes A will still be on
+machine two in both fases.
+
+1069
+00:44:40,450 --> 00:44:42,949
+But the more common tase
+is that each letter
+
+1070
+00:44:42,949 --> 00:44:45,530
+has to move around for
+the hash partitioning.
+
+1071
+00:44:45,530 --> 00:44:47,389
+Let me just see how often
+that happens, right?
+
+1072
+00:44:47,389 --> 00:44:49,770
+So say machine before
+
+1073
+00:44:49,770 --> 00:44:54,349
+equals machine after,
+how often is that true?
+
+1074
+00:44:54,349 --> 00:44:55,789
+Sometimes it's true
+that it's the same,
+
+1075
+00:44:55,789 --> 00:44:57,230
+but usually it's false.
+
+1076
+00:44:57,230 --> 00:44:59,609
+I can actually just
+treat this as a mean.
+
+1077
+00:44:59,609 --> 00:45:02,369
+If I do that, this will be
+one, this will be zero,
+
+1078
+00:45:02,369 --> 00:45:08,859
+and this will tell me that It
+means that 19% of the time,
+
+1079
+00:45:08,859 --> 00:45:12,739
+the letter will end up on
+
+1080
+00:45:12,739 --> 00:45:18,360
+the same machine after
+we add a fifth machine.
+
+1081
+00:45:18,360 --> 00:45:20,299
+And so that's terrible, right?
+
+1082
+00:45:20,299 --> 00:45:21,939
+80% of my data needs to be
+
+1083
+00:45:21,939 --> 00:45:24,000
+reshuffled on the network.
+That's expensive.
+
+1084
+00:45:24,000 --> 00:45:25,159
+Right? Hash partitioning is
+
+1085
+00:45:25,159 --> 00:45:27,299
+not incrementally
+scalable, right?
+
+1086
+00:45:27,299 --> 00:45:28,739
+It kind of works
+good at one size,
+
+1087
+00:45:28,739 --> 00:45:30,500
+but don't change the size.
+
+1088
+00:45:30,500 --> 00:45:33,399
+Okay, so for this one,
+HDFS is the winner.
+
+1089
+00:45:33,399 --> 00:45:35,779
+Spark with its hash
+partitioning is bad.
+
+1090
+00:45:35,779 --> 00:45:37,579
+Any questions I should
+leave the code of.
+
+1091
+00:45:37,579 --> 00:45:39,139
+Maybe I'm doing too fast here.
+
+1092
+00:45:39,139 --> 00:45:43,600
+Any questions about
+about that example?
+
+1093
+00:45:43,600 --> 00:45:53,019
+Yeah, right here. Yeah,
+it's just a hypothetical.
+
+1094
+00:45:53,019 --> 00:45:53,639
+I'm kind of doing like
+
+1095
+00:45:53,639 --> 00:45:55,559
+a little experiment
+to say, Hey, I,
+
+1096
+00:45:55,559 --> 00:45:57,460
+and it's silly,
+right, I'd probably
+
+1097
+00:45:57,460 --> 00:45:59,060
+have real rows and I'd
+have more machines.
+
+1098
+00:45:59,060 --> 00:46:00,479
+I'm saying, Hey, if all our data
+
+1099
+00:46:00,479 --> 00:46:02,320
+is letters and I
+have poor machines,
+
+1100
+00:46:02,320 --> 00:46:04,999
+like, who would be responsible
+for each letter, right?
+
+1101
+00:46:04,999 --> 00:46:07,540
+That makes sense? A
+little bit contrived.
+
+1102
+00:46:07,540 --> 00:46:12,129
+Yeah. Other questions
+people have. All right.
+
+1103
+00:46:12,129 --> 00:46:14,409
+Cool. Send a head over here.
+
+1104
+00:46:14,409 --> 00:46:19,470
+And we're going to talk about
+the best of both worlds,
+
+1105
+00:46:19,470 --> 00:46:21,390
+which is consistent hashing.
+
+1106
+00:46:21,390 --> 00:46:25,509
+And so it's going to borrow
+some from each, right?
+
+1107
+00:46:25,509 --> 00:46:26,889
+So the first thing we're
+going to do is that
+
+1108
+00:46:26,889 --> 00:46:28,850
+if we have a row of data,
+
+1109
+00:46:28,850 --> 00:46:30,650
+we're going to
+assign it a token,
+
+1110
+00:46:30,650 --> 00:46:33,629
+and that token is just
+the hash of the key.
+
+1111
+00:46:33,629 --> 00:46:36,430
+So it's kind of like
+hash partitioning,
+
+1112
+00:46:36,430 --> 00:46:38,609
+except we're not going to
+modify anything, right?
+
+1113
+00:46:38,609 --> 00:46:39,829
+So we'll get you know,
+
+1114
+00:46:39,829 --> 00:46:41,229
+it might be a very big number or
+
+1115
+00:46:41,229 --> 00:46:42,809
+maybe it's like a
+very negative number.
+
+1116
+00:46:42,809 --> 00:46:45,809
+It's just kind of any
+number is possible, right?
+
+1117
+00:46:45,809 --> 00:46:50,590
+We have a token for each
+row, that's fixed, okay?
+
+1118
+00:46:50,590 --> 00:46:54,769
+Now, borrowing from the mapping
+data structure like HTFS,
+
+1119
+00:46:54,769 --> 00:46:57,029
+we have something where
+we can look it up again,
+
+1120
+00:46:57,029 --> 00:46:58,989
+but we have way
+
+1121
+00:46:58,989 --> 00:47:00,069
+too many rows to put
+
+1122
+00:47:00,069 --> 00:47:02,309
+every single row into
+the dictionary, right?
+
+1123
+00:47:02,309 --> 00:47:03,789
+So instead, what we'll do is
+
+1124
+00:47:03,789 --> 00:47:05,170
+we'll have ranges
+in our dictionary.
+
+1125
+00:47:05,170 --> 00:47:08,369
+We'll say that the range
+0-10 is on worker one,
+
+1126
+00:47:08,369 --> 00:47:10,769
+range 10-20 is on worker two.
+
+1127
+00:47:10,769 --> 00:47:12,169
+And then we can say, like,
+
+1128
+00:47:12,169 --> 00:47:14,009
+for this token, what
+range is it in?
+
+1129
+00:47:14,009 --> 00:47:17,309
+And I can say, well, what
+worker should it be in,
+
+1130
+00:47:17,309 --> 00:47:19,809
+right? It's straight, right?
+
+1131
+00:47:19,809 --> 00:47:24,269
+Because I do the math when
+I have millions of things.
+
+1132
+00:47:24,269 --> 00:47:25,569
+I have millions of rows, and
+
+1133
+00:47:25,569 --> 00:47:28,175
+math doesn't take up any memory.
+
+1134
+00:47:28,175 --> 00:47:30,440
+I do use some memory,
+
+1135
+00:47:30,440 --> 00:47:32,499
+but it's proportional
+number of workers.
+
+1136
+00:47:32,499 --> 00:47:34,739
+If I have 1,000 workers
+in 1 million rows,
+
+1137
+00:47:34,739 --> 00:47:37,720
+it's fine to use a little bit
+of memory for each worker.
+
+1138
+00:47:37,720 --> 00:47:39,259
+Alright, how do we
+actually do it?
+
+1139
+00:47:39,259 --> 00:47:40,699
+I'm going to draw a
+picture like this.
+
+1140
+00:47:40,699 --> 00:47:42,939
+So remember that for every
+row, we get a token,
+
+1141
+00:47:42,939 --> 00:47:45,819
+and I can imagine putting
+that token on a number line.
+
+1142
+00:47:45,819 --> 00:47:50,340
+And I can also look at every
+computer in my cluster.
+
+1143
+00:47:50,340 --> 00:47:51,560
+Am I call it a computer,
+
+1144
+00:47:51,560 --> 00:47:53,660
+I might call it a worker,
+I might call it a node.
+
+1145
+00:47:53,660 --> 00:47:56,740
+For each of these nodes,
+I'm going to pick a token.
+
+1146
+00:47:56,740 --> 00:47:58,680
+And that token is a number,
+
+1147
+00:47:58,680 --> 00:48:02,020
+and I can draw that
+node on the numberlne.
+
+1148
+00:48:02,020 --> 00:48:04,504
+Here's node one, here's
+two, here's three.
+
+1149
+00:48:04,504 --> 00:48:07,769
+I'm not using any kind
+of hash for this.
+
+1150
+00:48:07,769 --> 00:48:09,390
+I pick it. I could
+pick it randomly.
+
+1151
+00:48:09,390 --> 00:48:10,869
+And that's what
+Cassandra used to do.
+
+1152
+00:48:10,869 --> 00:48:12,890
+Now they have some
+clever strategy
+
+1153
+00:48:12,890 --> 00:48:14,910
+to try to pick good tokens.
+
+1154
+00:48:14,910 --> 00:48:16,689
+Maybe we'll talk about
+that, maybe not.
+
+1155
+00:48:16,689 --> 00:48:20,224
+Anyway, I can pick it, and
+I can draw it on here.
+
+1156
+00:48:20,224 --> 00:48:22,039
+And I have to
+remember it, right?
+
+1157
+00:48:22,039 --> 00:48:22,899
+I have to have a token math.
+
+1158
+00:48:22,899 --> 00:48:24,419
+Remember it because it's
+just something I picked.
+
+1159
+00:48:24,419 --> 00:48:25,920
+Right? There's no
+math that determines,
+
+1160
+00:48:25,920 --> 00:48:28,839
+I chose it. What about our rows?
+
+1161
+00:48:28,839 --> 00:48:30,199
+We have lots and lots of rows,
+
+1162
+00:48:30,199 --> 00:48:32,159
+and so we don't want to have
+any data structure for that.
+
+1163
+00:48:32,159 --> 00:48:32,959
+So that's where we're going
+
+1164
+00:48:32,959 --> 00:48:34,059
+to use the hash function, right?
+
+1165
+00:48:34,059 --> 00:48:38,259
+The token of a row is the hash
+of that rows partition g.
+
+1166
+00:48:38,259 --> 00:48:41,479
+And so since I can get
+a token for every row,
+
+1167
+00:48:41,479 --> 00:48:43,840
+I can say, well, where is
+the A row on the numberlne?
+
+1168
+00:48:43,840 --> 00:48:45,579
+Where is the B row
+on the number line,
+
+1169
+00:48:45,579 --> 00:48:48,179
+so on and so forth. I
+can draw them all there.
+
+1170
+00:48:48,179 --> 00:48:51,559
+And now that I've drawn
+this, I have a strategy for
+
+1171
+00:48:51,559 --> 00:48:55,840
+assigning each row
+to a computer.
+
+1172
+00:48:55,840 --> 00:48:58,619
+So The easiest case is
+
+1173
+00:48:58,619 --> 00:49:02,119
+that if a node has exactly
+the same token as a row,
+
+1174
+00:49:02,119 --> 00:49:04,939
+that node owns that row.
+
+1175
+00:49:04,939 --> 00:49:06,560
+You own your own token.
+
+1176
+00:49:06,560 --> 00:49:08,739
+Okay? Probabilistically,
+that won't
+
+1177
+00:49:08,739 --> 00:49:10,439
+happen very often, but it could.
+
+1178
+00:49:10,439 --> 00:49:13,480
+You also own the tokens
+
+1179
+00:49:13,480 --> 00:49:14,639
+to your left up until you
+
+1180
+00:49:14,639 --> 00:49:16,059
+bump into another worker, right?
+
+1181
+00:49:16,059 --> 00:49:18,899
+So we get all these
+ranges that are
+
+1182
+00:49:18,899 --> 00:49:22,319
+inclusive on the right hand side
+
+1183
+00:49:22,319 --> 00:49:24,419
+and exclusive on
+the left hand side.
+
+1184
+00:49:24,419 --> 00:49:27,499
+And I can see that, node
+three owns C and D,
+
+1185
+00:49:27,499 --> 00:49:30,259
+node two owns B. Node one
+
+1186
+00:49:30,259 --> 00:49:31,840
+owns A. I have a strategy
+
+1187
+00:49:31,840 --> 00:49:33,120
+that doesn't take
+that much memory.
+
+1188
+00:49:33,120 --> 00:49:34,399
+However much memory
+I need for this?
+
+1189
+00:49:34,399 --> 00:49:38,099
+Token map that can assign a row,
+
+1190
+00:49:38,099 --> 00:49:40,660
+I can assign every row
+to a specific worker.
+
+1191
+00:49:40,660 --> 00:49:42,159
+Okay? And I've shown
+that down here.
+
+1192
+00:49:42,159 --> 00:49:44,540
+I have my cluster,
+my three machines,
+
+1193
+00:49:44,540 --> 00:49:46,299
+and I'm putting
+these different AB,
+
+1194
+00:49:46,299 --> 00:49:48,579
+CD rows on each of these, right?
+
+1195
+00:49:48,579 --> 00:49:50,739
+Now, the one trick is that
+
+1196
+00:49:50,739 --> 00:49:52,959
+there's no node to the right
+
+1197
+00:49:52,959 --> 00:49:55,199
+of this part here at the end.
+
+1198
+00:49:55,199 --> 00:49:57,139
+And so we call that
+the wrapping range.
+
+1199
+00:49:57,139 --> 00:50:00,559
+And so who's responsible
+Node one, right?
+
+1200
+00:50:00,559 --> 00:50:02,299
+So we just imagine that
+this wraps around.
+
+1201
+00:50:02,299 --> 00:50:03,419
+So as node one is looking to
+
+1202
+00:50:03,419 --> 00:50:04,639
+the left, it'll go left of up,
+
+1203
+00:50:04,639 --> 00:50:08,599
+and I'll wrap around and
+grab these as these as well.
+
+1204
+00:50:08,599 --> 00:50:10,319
+Right, generally, you have
+
+1205
+00:50:10,319 --> 00:50:12,299
+tokens that are
+smaller than you.
+
+1206
+00:50:12,299 --> 00:50:13,719
+But except for the
+wrapping range,
+
+1207
+00:50:13,719 --> 00:50:15,279
+then you might have some that
+
+1208
+00:50:15,279 --> 00:50:17,939
+are bigger than you. So
+we'll come back next time.
+
+1209
+00:50:17,939 --> 00:50:20,479
+We'll see how this
+is much better for
+
+1210
+00:50:20,479 --> 00:50:22,519
+incremental scalability than
+
+1211
+00:50:22,519 --> 00:50:25,379
+just plain old
+hash partitioning.
+
+1212
+00:50:25,379 --> 00:50:27,720
+Have a fantastic evening.

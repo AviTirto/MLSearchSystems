@@ -1,0 +1,5865 @@
+1
+00:00:00,000 --> 00:00:01,500
+Being here today. We're going
+
+2
+00:00:01,500 --> 00:00:02,839
+to keep talking about big query.
+
+3
+00:00:02,839 --> 00:00:04,300
+We started doing some examples
+
+4
+00:00:04,300 --> 00:00:06,200
+last time in the Cloud Totsle.
+
+5
+00:00:06,200 --> 00:00:07,580
+Now, when I'm in
+the Cloud Totsle,
+
+6
+00:00:07,580 --> 00:00:09,099
+I'm sided and Google Nos F
+
+7
+00:00:09,099 --> 00:00:10,580
+and I have access to everything.
+
+8
+00:00:10,580 --> 00:00:11,919
+What I'm may be doing now is
+
+9
+00:00:11,919 --> 00:00:13,939
+some examples in
+Jupiter Noe book.
+
+10
+00:00:13,939 --> 00:00:16,039
+Jupiter Noebook
+is running by VM,
+
+11
+00:00:16,039 --> 00:00:18,299
+and I have to give my VM some
+
+12
+00:00:18,299 --> 00:00:20,620
+of my credentials,
+but not all of them.
+
+13
+00:00:20,620 --> 00:00:23,000
+And so in the lecture stip,
+there's a little command,
+
+14
+00:00:23,000 --> 00:00:24,689
+which I've already run for that,
+
+15
+00:00:24,689 --> 00:00:26,930
+where I say, Well, they
+are the specific scope.
+
+16
+00:00:26,930 --> 00:00:29,629
+It has access to
+all my Cloud stuff.
+
+17
+00:00:29,629 --> 00:00:31,929
+It has access read
+only to my drive
+
+18
+00:00:31,929 --> 00:00:33,370
+because I see how we can quarry
+
+19
+00:00:33,370 --> 00:00:35,249
+from a Google spreadsheet there.
+
+20
+00:00:35,249 --> 00:00:37,710
+So there's some Stuff
+I could access.
+
+21
+00:00:37,710 --> 00:00:39,469
+That limits the damage if
+
+22
+00:00:39,469 --> 00:00:41,029
+somebody gets access
+to my Va, right?
+
+23
+00:00:41,029 --> 00:00:42,489
+I they hijacked in
+some way, well,
+
+24
+00:00:42,489 --> 00:00:44,049
+they could actually do a
+lot of damage but they
+
+25
+00:00:44,049 --> 00:00:45,990
+couldn't access my e mail,
+
+26
+00:00:45,990 --> 00:00:47,190
+for example, or they couldn't
+
+27
+00:00:47,190 --> 00:00:49,269
+delete my Google Drive files.
+
+28
+00:00:49,269 --> 00:00:51,169
+Alright, o. Some
+a head over here.
+
+29
+00:00:51,169 --> 00:00:54,190
+I've already done
+that. You'll probably
+
+30
+00:00:54,190 --> 00:00:56,290
+use something similar
+on your project.
+
+31
+00:00:56,290 --> 00:01:00,970
+And what I want to do is I
+want to see how we can connect
+
+32
+00:01:00,970 --> 00:01:03,289
+with the client and then
+just poke around and
+
+33
+00:01:03,289 --> 00:01:05,910
+see what datasets there,
+what tables are there.
+
+34
+00:01:05,910 --> 00:01:07,990
+And so I've already
+installed everything.
+
+35
+00:01:07,990 --> 00:01:09,970
+That's in the lecture
+snippets as well.
+
+36
+00:01:09,970 --> 00:01:12,690
+I'm going to say from Doogle do
+
+37
+00:01:12,690 --> 00:01:17,309
+Cloud do Let me just
+check my notes here.
+
+38
+00:01:17,309 --> 00:01:20,099
+Oh, Import. Big query.
+
+39
+00:01:20,099 --> 00:01:22,010
+And then from that
+I'm going to create
+
+40
+00:01:22,010 --> 00:01:24,369
+a client called Big Query,
+
+41
+00:01:24,369 --> 00:01:26,690
+and it will be big
+query dot client.
+
+42
+00:01:26,690 --> 00:01:28,250
+And that's automatically
+going to pick up
+
+43
+00:01:28,250 --> 00:01:29,930
+these credentials from my VM
+
+44
+00:01:29,930 --> 00:01:31,510
+since they've already signed in.
+
+45
+00:01:31,510 --> 00:01:32,949
+And then I can do things
+
+46
+00:01:32,949 --> 00:01:36,690
+like big query dot
+list datasets.
+
+47
+00:01:36,690 --> 00:01:39,589
+And here I can put some
+kind of project name.
+
+48
+00:01:39,589 --> 00:01:41,869
+And so if I go over
+to my console,
+
+49
+00:01:41,869 --> 00:01:44,189
+maybe your project
+name is different,
+
+50
+00:01:44,189 --> 00:01:46,369
+but I can see up here
+at the top minus CS
+
+51
+00:01:46,369 --> 00:01:49,770
+544 fall 24, right?
+
+52
+00:01:49,770 --> 00:01:54,880
+So let me see what datasets
+I have. All right.
+
+53
+00:01:54,880 --> 00:01:56,000
+And it's going to give
+
+54
+00:01:56,000 --> 00:01:57,220
+me this thing that
+I can list over,
+
+55
+00:01:57,220 --> 00:02:00,159
+so I'll say for data
+set and those datasets,
+
+56
+00:02:00,159 --> 00:02:02,940
+I print the dataset
+ID of each of those.
+
+57
+00:02:02,940 --> 00:02:06,639
+And I can see I've created
+a couple of these so far.
+
+58
+00:02:06,639 --> 00:02:09,320
+Remember the hierarchy here
+
+59
+00:02:09,320 --> 00:02:10,900
+is that we have projects
+and then that contains
+
+60
+00:02:10,900 --> 00:02:12,659
+different datasets
+and each data set can
+
+61
+00:02:12,659 --> 00:02:15,039
+have a bunch of
+different tables in it.
+
+62
+00:02:15,039 --> 00:02:16,119
+And so what I'm going to
+
+63
+00:02:16,119 --> 00:02:17,299
+do now is I'm going
+to go ahead and
+
+64
+00:02:17,299 --> 00:02:19,959
+create a new dataset
+programmatically.
+
+65
+00:02:19,959 --> 00:02:24,704
+And so I will say a
+big query data set.
+
+66
+00:02:24,704 --> 00:02:27,130
+And I'll give it a name.
+
+67
+00:02:27,130 --> 00:02:29,809
+Soma have to say
+project data set,
+
+68
+00:02:29,809 --> 00:02:32,409
+and somebody have the same
+project that I own, right?
+
+69
+00:02:32,409 --> 00:02:34,669
+I'm going to do that.
+And maybe I'll just call
+
+70
+00:02:34,669 --> 00:02:37,709
+this Section two, right?
+
+71
+00:02:37,709 --> 00:02:39,249
+Because we're section
+two. That's going
+
+72
+00:02:39,249 --> 00:02:41,089
+to return a new
+dataset for me, right?
+
+73
+00:02:41,089 --> 00:02:43,889
+So I'm to get that dataset,
+take a look at it.
+
+74
+00:02:43,889 --> 00:02:45,969
+And that hasn't actually
+created anything yet.
+
+75
+00:02:45,969 --> 00:02:48,009
+So if I want to go
+ahead and create it,
+
+76
+00:02:48,009 --> 00:02:54,589
+then what I will do is say
+big query create data set,
+
+77
+00:02:54,589 --> 00:02:56,509
+I'm going to pass
+on that data set,
+
+78
+00:02:56,509 --> 00:02:59,410
+and then it will
+create it for me.
+
+79
+00:02:59,410 --> 00:03:01,110
+Now, if I wanted to, I could
+say some things up here,
+
+80
+00:03:01,110 --> 00:03:03,649
+I could say, data
+set location equals.
+
+81
+00:03:03,649 --> 00:03:05,389
+I don't know, I could
+pick a region, right?
+
+82
+00:03:05,389 --> 00:03:07,890
+Like maybe US Central
+one or something
+
+83
+00:03:07,890 --> 00:03:09,189
+like that. I'm not
+trying to do that.
+
+84
+00:03:09,189 --> 00:03:12,269
+I'm may let BigQuery actually
+decide where to do that.
+
+85
+00:03:12,269 --> 00:03:13,449
+There's actually kind of a lot
+
+86
+00:03:13,449 --> 00:03:15,049
+of smarts that go into that
+
+87
+00:03:15,049 --> 00:03:18,869
+because I can query from
+anything from anywhere, right?
+
+88
+00:03:18,869 --> 00:03:21,489
+And so if I'm running a
+query in a specific place,
+
+89
+00:03:21,489 --> 00:03:22,830
+they want to have that data
+
+90
+00:03:22,830 --> 00:03:24,190
+near where I'm
+running the query.
+
+91
+00:03:24,190 --> 00:03:26,169
+Sometimes that's hard
+because any two tables
+
+92
+00:03:26,169 --> 00:03:27,790
+that are visible to me, I
+can do a query to them.
+
+93
+00:03:27,790 --> 00:03:29,430
+And so if I'm joining two tables
+
+94
+00:03:29,430 --> 00:03:30,730
+and they're different places,
+
+95
+00:03:30,730 --> 00:03:32,989
+well, something has to go
+over the network, right?
+
+96
+00:03:32,989 --> 00:03:34,770
+And so what they're
+going to try to do is
+
+97
+00:03:34,770 --> 00:03:36,390
+they're constantly looking
+at what queries I'm doing,
+
+98
+00:03:36,390 --> 00:03:38,569
+what tables they're touching,
+and moving the data around,
+
+99
+00:03:38,569 --> 00:03:39,909
+if I give them the flexibility.
+
+100
+00:03:39,909 --> 00:03:41,229
+If for some reason,
+I really want
+
+101
+00:03:41,229 --> 00:03:42,469
+a specific location because I
+
+102
+00:03:42,469 --> 00:03:44,049
+know where my customers are
+or something like that,
+
+103
+00:03:44,049 --> 00:03:45,749
+maybe I might do that,
+but in this case,
+
+104
+00:03:45,749 --> 00:03:47,329
+I'll let it have
+the flexibility.
+
+105
+00:03:47,329 --> 00:03:49,689
+So we'll go ahead and
+create the dataset.
+
+106
+00:03:49,689 --> 00:03:51,429
+And if I were to run it again,
+
+107
+00:03:51,429 --> 00:03:53,690
+then I would end Arab
+as it already exists,
+
+108
+00:03:53,690 --> 00:03:55,649
+but I can tell it to
+
+109
+00:03:55,649 --> 00:03:57,170
+ignore that if it's already
+
+110
+00:03:57,170 --> 00:03:58,710
+there. That'd be totally fine.
+
+111
+00:03:58,710 --> 00:04:00,150
+So once that's been created,
+
+112
+00:04:00,150 --> 00:04:02,249
+I can come and see it over under
+
+113
+00:04:02,249 --> 00:04:05,830
+Big Query and under
+the Big Query Studio,
+
+114
+00:04:05,830 --> 00:04:09,469
+I will see all of
+the projects I have.
+
+115
+00:04:09,469 --> 00:04:11,270
+I just have one
+project. And then
+
+116
+00:04:11,270 --> 00:04:12,910
+under here I can
+see my data set.
+
+117
+00:04:12,910 --> 00:04:14,989
+And I just created this
+one called section two,
+
+118
+00:04:14,989 --> 00:04:18,850
+which is empty because I haven't
+put any thing there yet.
+
+119
+00:04:18,850 --> 00:04:20,970
+If I come back, I
+
+120
+00:04:20,970 --> 00:04:22,690
+can list those data sets
+
+121
+00:04:22,690 --> 00:04:24,590
+and now I see I was able
+to create that there.
+
+122
+00:04:24,590 --> 00:04:28,229
+Now, even though I don't
+own some projects,
+
+123
+00:04:28,229 --> 00:04:30,650
+there are projects out there
+that are publicly visible.
+
+124
+00:04:30,650 --> 00:04:32,769
+And so the important one
+that we're going to use for
+
+125
+00:04:32,769 --> 00:04:35,129
+a few things is the
+Big Query public data.
+
+126
+00:04:35,129 --> 00:04:36,770
+And so I just want to
+
+127
+00:04:36,770 --> 00:04:38,470
+list what is inside
+of that project.
+
+128
+00:04:38,470 --> 00:04:40,570
+I may come over here
+and I'm may to say,
+
+129
+00:04:40,570 --> 00:04:45,210
+what do we have in Big
+Query public data, right?
+
+130
+00:04:45,210 --> 00:04:49,229
+I'm maya print that
+out. And there's
+
+131
+00:04:49,229 --> 00:04:51,989
+a bunch of stuff here
+right that we can access.
+
+132
+00:04:51,989 --> 00:04:54,950
+And the one I'm going
+to be using is called
+
+133
+00:04:54,950 --> 00:04:58,650
+Jit Hub repos for some
+of our examples, right?
+
+134
+00:04:58,650 --> 00:05:02,290
+And so it turns out that
+they straighted or is
+
+135
+00:05:02,290 --> 00:05:05,989
+that J Hub repos or just it Hub?
+
+136
+00:05:05,989 --> 00:05:08,230
+Why is it not finding that?
+
+137
+00:05:09,680 --> 00:05:13,359
+There we go. So
+there's GitHub repos.
+
+138
+00:05:13,359 --> 00:05:16,200
+They sped scraped
+Kit hub for us,
+
+139
+00:05:16,200 --> 00:05:18,080
+and so we can look at that.
+
+140
+00:05:18,080 --> 00:05:19,760
+We can analyze
+different projects
+
+141
+00:05:19,760 --> 00:05:21,379
+and see what languages
+are popular,
+
+142
+00:05:21,379 --> 00:05:22,560
+what licenses people are
+
+143
+00:05:22,560 --> 00:05:25,200
+using that sort of thing,
+if we would like to.
+
+144
+00:05:25,200 --> 00:05:27,340
+So I'm going to come over
+here and I'm going to
+
+145
+00:05:27,340 --> 00:05:30,059
+say a big query
+that list tables.
+
+146
+00:05:30,059 --> 00:05:33,960
+And now I have to say
+project data set, right?
+
+147
+00:05:33,960 --> 00:05:35,359
+And so the data set,
+
+148
+00:05:35,359 --> 00:05:37,760
+in this case is
+that it Hub repos,
+
+149
+00:05:37,760 --> 00:05:43,429
+and the project is that
+big query public data.
+
+150
+00:05:43,429 --> 00:05:45,770
+I'm I do that for
+a table in that,
+
+151
+00:05:45,770 --> 00:05:49,390
+let me just print off the
+table that table ID, right?
+
+152
+00:05:49,390 --> 00:05:51,350
+I can see there's maybe a
+few different things there.
+
+153
+00:05:51,350 --> 00:05:52,729
+If I wanted to, I could actually
+
+154
+00:05:52,729 --> 00:05:54,330
+see the contents of
+all these files.
+
+155
+00:05:54,330 --> 00:05:56,170
+Otherwise, I could see some,
+
+156
+00:05:56,170 --> 00:05:58,690
+metadata about it like
+what languages are used
+
+157
+00:05:58,690 --> 00:06:01,409
+or what licenses applied
+to the repositories.
+
+158
+00:06:01,409 --> 00:06:03,610
+If I want to, I could
+tum peek over here,
+
+159
+00:06:03,610 --> 00:06:05,609
+and I could try to
+find this stuff.
+
+160
+00:06:05,609 --> 00:06:11,129
+If I come back and I'm
+looking for Jitub repos,
+
+161
+00:06:11,129 --> 00:06:13,490
+I might go ahead and
+search that here.
+
+162
+00:06:13,490 --> 00:06:14,790
+And this is a little
+bit confusing,
+
+163
+00:06:14,790 --> 00:06:16,030
+because by default, it's only
+
+164
+00:06:16,030 --> 00:06:17,190
+searching projects that I own.
+
+165
+00:06:17,190 --> 00:06:19,810
+I don't own that one. If I
+say search all projects,
+
+166
+00:06:19,810 --> 00:06:21,570
+then I'm actually
+going to find it.
+
+167
+00:06:21,570 --> 00:06:23,810
+And from there I can see,
+
+168
+00:06:23,810 --> 00:06:26,269
+for example, what
+languages are being used.
+
+169
+00:06:26,269 --> 00:06:28,170
+I'll take a look at that.
+There's two things there,
+
+170
+00:06:28,170 --> 00:06:29,449
+there are repository names,
+
+171
+00:06:29,449 --> 00:06:30,830
+and then this array or
+
+172
+00:06:30,830 --> 00:06:32,850
+repeated type called
+language, right?
+
+173
+00:06:32,850 --> 00:06:34,850
+Because a single
+repository might have
+
+174
+00:06:34,850 --> 00:06:37,190
+multiple languages
+associated with it.
+
+175
+00:06:37,190 --> 00:06:38,690
+When I preview that,
+
+176
+00:06:38,690 --> 00:06:40,430
+it's kind of spreading it out,
+
+177
+00:06:40,430 --> 00:06:41,830
+but I may have to do a little
+
+178
+00:06:41,830 --> 00:06:43,170
+extra work to get that format
+
+179
+00:06:43,170 --> 00:06:46,270
+where I have different
+lines for each language.
+
+180
+00:06:46,270 --> 00:06:49,260
+All right, well,
+tell me back here.
+
+181
+00:06:49,260 --> 00:06:52,070
+Um, let's see how
+we can query it.
+
+182
+00:06:52,070 --> 00:06:54,910
+There's a few different ways
+we can query it from here.
+
+183
+00:06:54,910 --> 00:06:58,569
+Maybe the easiest one is by
+using this get Hub extension,
+
+184
+00:06:58,569 --> 00:07:00,010
+which I will load from
+
+185
+00:07:00,010 --> 00:07:03,630
+Google Cloud dot Big Query,
+a load that thing in.
+
+186
+00:07:03,630 --> 00:07:06,190
+They say that thing is
+deprecated, deprecated,
+
+187
+00:07:06,190 --> 00:07:07,650
+means that they aren't
+
+188
+00:07:07,650 --> 00:07:09,349
+going to be supporting
+it in the future,
+
+189
+00:07:09,349 --> 00:07:11,569
+right, so they want
+you to stop using it.
+
+190
+00:07:11,569 --> 00:07:14,429
+Eventually, this might
+not work anymore.
+
+191
+00:07:14,429 --> 00:07:15,110
+So they're trying to
+
+192
+00:07:15,110 --> 00:07:16,129
+giving you a warning
+in the meantime.
+
+193
+00:07:16,129 --> 00:07:17,289
+I guess I just have to install
+
+194
+00:07:17,289 --> 00:07:18,950
+some other stuff and do it
+a little bit differently.
+
+195
+00:07:18,950 --> 00:07:20,650
+Maybe I'll worry about
+that another semester.
+
+196
+00:07:20,650 --> 00:07:22,269
+Still going to work
+fine for today.
+
+197
+00:07:22,269 --> 00:07:23,850
+Once I've done
+that, then I can do
+
+198
+00:07:23,850 --> 00:07:26,250
+big query queries like this.
+
+199
+00:07:26,250 --> 00:07:28,330
+Maybe I want to do a select star
+
+200
+00:07:28,330 --> 00:07:33,040
+from let's do one of
+these tables up here.
+
+201
+00:07:33,040 --> 00:07:36,720
+I'm going to do a select star
+from this table, I'm sorry,
+
+202
+00:07:36,720 --> 00:07:38,700
+that data set, and
+then the table
+
+203
+00:07:38,700 --> 00:07:41,299
+will be the one about languages.
+
+204
+00:07:41,299 --> 00:07:43,799
+Let's see what languages
+people are using.
+
+205
+00:07:43,799 --> 00:07:46,700
+And I'm going to limit to
+let's say, like three,
+
+206
+00:07:46,700 --> 00:07:49,280
+so I don't get too many,
+right? So I may do that.
+
+207
+00:07:49,280 --> 00:07:51,359
+If you do too many, right,
+then I'll run out of memory,
+
+208
+00:07:51,359 --> 00:07:53,539
+and I'll have to reboot my VM.
+
+209
+00:07:53,539 --> 00:07:55,220
+And so what I can see here is
+
+210
+00:07:55,220 --> 00:07:56,960
+that they're giving
+me a ras back,
+
+211
+00:07:56,960 --> 00:07:59,199
+and these arrays
+contain structures.
+
+212
+00:07:59,199 --> 00:08:01,299
+So one of the goals
+today is to understand,
+
+213
+00:08:01,299 --> 00:08:02,639
+how can we go ahead and
+
+214
+00:08:02,639 --> 00:08:04,739
+extract information
+out of both arrays
+
+215
+00:08:04,739 --> 00:08:07,540
+and structures using
+just just SQL.
+
+216
+00:08:07,540 --> 00:08:08,800
+Alright. So I have that.
+
+217
+00:08:08,800 --> 00:08:10,600
+You know, another thing
+you could do, right,
+
+218
+00:08:10,600 --> 00:08:13,260
+is that I could say,
+
+219
+00:08:13,260 --> 00:08:16,540
+I want this to land in some
+kind of Python data frame,
+
+220
+00:08:16,540 --> 00:08:17,819
+which is going to be Pandas,
+
+221
+00:08:17,819 --> 00:08:21,580
+if I look at the
+type of DF, right?
+
+222
+00:08:21,580 --> 00:08:23,060
+That's a pandasata frame,
+
+223
+00:08:23,060 --> 00:08:25,920
+and then I could look at
+the data there as well.
+
+224
+00:08:25,920 --> 00:08:27,500
+All right, that's one
+way we can do it.
+
+225
+00:08:27,500 --> 00:08:29,400
+That's probably the
+easiest way to do it.
+
+226
+00:08:29,400 --> 00:08:32,419
+There's also just a pure
+Python API that will let us
+
+227
+00:08:32,419 --> 00:08:36,020
+prog programmatically
+interact with and do queries.
+
+228
+00:08:36,020 --> 00:08:37,239
+And sometimes that's
+useful because
+
+229
+00:08:37,239 --> 00:08:38,779
+we can see additional
+information, like,
+
+230
+00:08:38,779 --> 00:08:40,959
+for example, how much
+are we going to be
+
+231
+00:08:40,959 --> 00:08:43,479
+charged for this query.
+So let's do that.
+
+232
+00:08:43,479 --> 00:08:47,160
+I'm going to say a
+big query query.
+
+233
+00:08:47,160 --> 00:08:49,600
+It return query object.
+
+234
+00:08:49,600 --> 00:08:52,480
+And then I can put my
+query inside of here.
+
+235
+00:08:52,480 --> 00:08:55,679
+Let's do that same thing
+that we did before, right?
+
+236
+00:08:55,679 --> 00:08:57,559
+And at this point in time,
+
+237
+00:08:57,559 --> 00:08:59,319
+it doesn't actually do any work.
+
+238
+00:08:59,319 --> 00:09:00,700
+It hasn't done the query yet.
+
+239
+00:09:00,700 --> 00:09:04,920
+It will only do the work
+if I say to data frame.
+
+240
+00:09:04,920 --> 00:09:06,739
+If I do that, then I
+can go ahead and I can
+
+241
+00:09:06,739 --> 00:09:09,779
+see I have a data frame
+as I normally have.
+
+242
+00:09:09,779 --> 00:09:11,879
+Now this is why, even
+though it's more work,
+
+243
+00:09:11,879 --> 00:09:14,079
+it's interesting because I
+can come along and I can
+
+244
+00:09:14,079 --> 00:09:18,779
+see how many bytes did it
+have to touch to do that.
+
+245
+00:09:18,779 --> 00:09:24,000
+So whereas the great.
+
+246
+00:09:24,000 --> 00:09:26,345
+Total bytes processed.
+
+247
+00:09:26,345 --> 00:09:30,049
+Let's get that and that would
+be kilobytes, megabytes.
+
+248
+00:09:30,049 --> 00:09:33,629
+Let's see how many
+megabytes that is, 194.
+
+249
+00:09:33,629 --> 00:09:35,290
+And then I could also come
+
+250
+00:09:35,290 --> 00:09:36,349
+down here and I could see well,
+
+251
+00:09:36,349 --> 00:09:39,269
+how many are actually
+build to me.
+
+252
+00:09:39,269 --> 00:09:40,789
+Right? So I can get
+a sense of like,
+
+253
+00:09:40,789 --> 00:09:43,029
+how much does this
+query actually cost?
+
+254
+00:09:43,029 --> 00:09:44,709
+Now that's in bytes.
+It's not in dollars.
+
+255
+00:09:44,709 --> 00:09:46,609
+So I think a
+valuable skill is to
+
+256
+00:09:46,609 --> 00:09:48,730
+be able to do some
+back low calculations.
+
+257
+00:09:48,730 --> 00:09:50,809
+Say, Well, how far
+will my free tier go?
+
+258
+00:09:50,809 --> 00:09:53,370
+How much will I pay after
+I'm out of my free tier?
+
+259
+00:09:53,370 --> 00:09:55,869
+And as I'm sure I have a
+couple examples of that.
+
+260
+00:09:55,869 --> 00:09:58,530
+I may say. For example,
+
+261
+00:09:58,530 --> 00:10:04,915
+how many times can I do a
+query like that for free.
+
+262
+00:10:04,915 --> 00:10:08,080
+And a month. And
+that's one question.
+
+263
+00:10:08,080 --> 00:10:10,719
+You know, the other question,
+sorry, it keeps jumping.
+
+264
+00:10:10,719 --> 00:10:15,240
+The other question is, how
+much does that query cost
+
+265
+00:10:15,240 --> 00:10:20,169
+after we've exhausted
+the free tier.
+
+266
+00:10:20,169 --> 00:10:21,570
+That's just kind of
+a good back envelope
+
+267
+00:10:21,570 --> 00:10:22,809
+calculation that you
+should be able to do,
+
+268
+00:10:22,809 --> 00:10:24,589
+so you don't get surprises.
+
+269
+00:10:24,589 --> 00:10:26,449
+And when we do that, we have to
+
+270
+00:10:26,449 --> 00:10:28,289
+say well a specific
+region, right?
+
+271
+00:10:28,289 --> 00:10:30,969
+And so let's do Tokyo.
+
+272
+00:10:30,969 --> 00:10:32,370
+And that's one of the more
+
+273
+00:10:32,370 --> 00:10:33,690
+expensive ones and
+see how much it
+
+274
+00:10:33,690 --> 00:10:36,269
+costs to run that
+query in Tokyo.
+
+275
+00:10:36,269 --> 00:10:37,589
+Okay, so if I want to do that,
+
+276
+00:10:37,589 --> 00:10:39,469
+I have to dig in and read
+
+277
+00:10:39,469 --> 00:10:41,529
+some documentation.
+I could google it.
+
+278
+00:10:41,529 --> 00:10:43,610
+I also put this on
+the lecture snippets.
+
+279
+00:10:43,610 --> 00:10:46,070
+We're using something
+called on demand pricing.
+
+280
+00:10:46,070 --> 00:10:47,849
+And so I could come
+over here and I
+
+281
+00:10:47,849 --> 00:10:49,589
+could read, and I
+could see, well,
+
+282
+00:10:49,589 --> 00:10:53,359
+Okay, the first terabyte
+every month, is free, right?
+
+283
+00:10:53,359 --> 00:10:55,319
+So I figure, well,
+how many queries
+
+284
+00:10:55,319 --> 00:10:57,540
+like that can I do
+with 1 terabyte.
+
+285
+00:10:57,540 --> 00:10:59,979
+Okay? So a terabyte is
+
+286
+00:10:59,979 --> 00:11:04,980
+L's kilobytes, megabytes,
+gigabytes, terabytes.
+
+287
+00:11:04,980 --> 00:11:07,339
+I want how many times I go
+to do a query like that?
+
+288
+00:11:07,339 --> 00:11:10,879
+I guess it would be
+terabytes divided by.
+
+289
+00:11:10,879 --> 00:11:12,659
+You know, they do this round up,
+
+290
+00:11:12,659 --> 00:11:14,220
+so I'm not interested
+in the process.
+
+291
+00:11:14,220 --> 00:11:17,234
+I'm care how much they're
+actually billing me for.
+
+292
+00:11:17,234 --> 00:11:19,469
+And I could do a
+query like that,
+
+293
+00:11:19,469 --> 00:11:21,089
+you know, 5,000
+sometimes, right?
+
+294
+00:11:21,089 --> 00:11:22,909
+So it's a relatively
+generous free tier, right?
+
+295
+00:11:22,909 --> 00:11:25,069
+I can do some serious
+work with that.
+
+296
+00:11:25,069 --> 00:11:26,729
+Now, eventually,
+if I exhaust it,
+
+297
+00:11:26,729 --> 00:11:28,029
+I want to know how
+much I'm actually
+
+298
+00:11:28,029 --> 00:11:30,029
+going to end up paying, right?
+
+299
+00:11:30,029 --> 00:11:33,429
+And so in that case, what
+am I going to have to do?
+
+300
+00:11:33,429 --> 00:11:36,329
+I'm going to have to figure out,
+
+301
+00:11:36,329 --> 00:11:38,550
+you know, I have
+to have some kind
+
+302
+00:11:38,550 --> 00:11:40,489
+of price that I'm paying.
+
+303
+00:11:40,489 --> 00:11:43,070
+And then I need to
+multiply that by
+
+304
+00:11:43,070 --> 00:11:46,569
+how many terabytes we're
+actually using, right?
+
+305
+00:11:46,569 --> 00:11:48,730
+So let me just check
+this here quick.
+
+306
+00:11:48,730 --> 00:11:53,319
+So I'm going to say,
+
+307
+00:11:53,319 --> 00:11:55,520
+Well, how many I
+build by, right?
+
+308
+00:11:55,520 --> 00:11:57,759
+This is how many
+bytes I'm paying for.
+
+309
+00:11:57,759 --> 00:11:59,940
+But since it's going to
+be in units of terabytes,
+
+310
+00:11:59,940 --> 00:12:01,140
+I'm going to divide
+by terabytes.
+
+311
+00:12:01,140 --> 00:12:03,640
+This is how many terabytes
+I'm using to do that query,
+
+312
+00:12:03,640 --> 00:12:05,340
+and then I should come
+over here and check well,
+
+313
+00:12:05,340 --> 00:12:08,659
+how much does it cost
+to do to one of those?
+
+314
+00:12:08,659 --> 00:12:11,619
+I can see it on the
+US, it's like 625.
+
+315
+00:12:11,619 --> 00:12:13,479
+Let me find Tokyo.
+
+316
+00:12:13,479 --> 00:12:17,834
+There's Tokyo. There it's
+7.5. Let me copy that.
+
+317
+00:12:17,834 --> 00:12:20,349
+And paste that there.
+
+318
+00:12:20,349 --> 00:12:24,029
+This query costs 0.1 $0.03.
+
+319
+00:12:24,029 --> 00:12:26,429
+So still a relatively
+cheap query
+
+320
+00:12:26,429 --> 00:12:28,329
+even after we've
+exhausted the free tier,
+
+321
+00:12:28,329 --> 00:12:30,049
+assuming I'm not doing
+it a bunch of times.
+
+322
+00:12:30,049 --> 00:12:31,629
+Now there are some
+other factors that you
+
+323
+00:12:31,629 --> 00:12:33,250
+should keep in mind.
+
+324
+00:12:33,250 --> 00:12:34,970
+There's other billing factors.
+
+325
+00:12:34,970 --> 00:12:37,229
+One is that we pay for
+
+326
+00:12:37,229 --> 00:12:41,710
+storage if the tables
+are in big query.
+
+327
+00:12:41,710 --> 00:12:43,910
+This is not data
+we own, this case,
+
+328
+00:12:43,910 --> 00:12:46,170
+we're not paying for that
+at all, which is straight.
+
+329
+00:12:46,170 --> 00:12:49,209
+Another factor is
+that we round up to
+
+330
+00:12:49,209 --> 00:12:52,199
+the nearest megabyte
+as we saw, right?
+
+331
+00:12:52,199 --> 00:12:54,700
+That's why there were two
+different numbers here.
+
+332
+00:12:54,700 --> 00:12:57,500
+Then finally, what else?
+
+333
+00:12:57,500 --> 00:13:01,620
+We have a minimum
+charge of 10 megabytes.
+
+334
+00:13:01,620 --> 00:13:02,920
+So you always want
+to identify, hey,
+
+335
+00:13:02,920 --> 00:13:04,140
+am I doing a bunch
+of small queries,
+
+336
+00:13:04,140 --> 00:13:05,359
+they're always
+getting rounded up?
+
+337
+00:13:05,359 --> 00:13:07,259
+If so is there a way I
+can group them together,
+
+338
+00:13:07,259 --> 00:13:10,040
+so I'm not paying
+that extra overhead.
+
+339
+00:13:10,040 --> 00:13:11,339
+Makes sense that it's
+there, right because
+
+340
+00:13:11,339 --> 00:13:12,779
+they have to have some start up
+
+341
+00:13:12,779 --> 00:13:14,660
+costs for their services.
+
+342
+00:13:14,660 --> 00:13:16,139
+All right, so I can do all that.
+
+343
+00:13:16,139 --> 00:13:18,619
+Now, in this case, I actually
+ran the query because I
+
+344
+00:13:18,619 --> 00:13:21,460
+wanted to find out about how
+much it's going to cost.
+
+345
+00:13:21,460 --> 00:13:26,859
+If I come back here and try
+to do it again like this,
+
+346
+00:13:26,859 --> 00:13:30,379
+let me I'm be just trying to
+come down here and run this,
+
+347
+00:13:30,379 --> 00:13:34,780
+and then I'll say my data
+frame equals Q two data frame.
+
+348
+00:13:34,780 --> 00:13:38,719
+Let me run that. And when I
+take a look at it again and
+
+349
+00:13:38,719 --> 00:13:42,900
+I look at the total by its
+build, it's actually zero.
+
+350
+00:13:42,900 --> 00:13:44,639
+And that's because
+they're doing cashing for
+
+351
+00:13:44,639 --> 00:13:46,600
+me on my behalf,
+which is fantastic.
+
+352
+00:13:46,600 --> 00:13:49,479
+Thanks school for
+some free results.
+
+353
+00:13:49,479 --> 00:13:51,620
+If I'm actually trying
+to understand pricing,
+
+354
+00:13:51,620 --> 00:13:52,899
+I don't want them
+to cash it, so I
+
+355
+00:13:52,899 --> 00:13:54,819
+can actually explore that.
+
+356
+00:13:54,819 --> 00:13:56,999
+And one of the things that
+we'll sometimes do is we'll
+
+357
+00:13:56,999 --> 00:13:59,459
+pass in a job configure,
+
+358
+00:13:59,459 --> 00:14:02,719
+which will say that we
+don't want cashing on.
+
+359
+00:14:02,719 --> 00:14:04,400
+And let me just trade
+a configure here.
+
+360
+00:14:04,400 --> 00:14:06,190
+I may call my config no cash.
+
+361
+00:14:06,190 --> 00:14:09,480
+It's going to be
+a big query job?
+
+362
+00:14:09,480 --> 00:14:13,160
+What is it called?
+It's a query job.
+
+363
+00:14:13,160 --> 00:14:15,600
+A query job can fig.
+
+364
+00:14:15,600 --> 00:14:18,639
+And up here, I can say,
+
+365
+00:14:19,120 --> 00:14:24,439
+use query cash, and I can say,
+
+366
+00:14:24,439 --> 00:14:26,219
+no, I don't want
+to do that, right?
+
+367
+00:14:26,219 --> 00:14:28,039
+And I can pass on that can fig.
+
+368
+00:14:28,039 --> 00:14:29,719
+Well, I'll take longer now
+
+369
+00:14:29,719 --> 00:14:31,279
+because it's actually
+redoing the work.
+
+370
+00:14:31,279 --> 00:14:32,679
+And then I could see well,
+
+371
+00:14:32,679 --> 00:14:35,259
+what my actual pricing is.
+
+372
+00:14:35,259 --> 00:14:37,219
+So do people have any
+questions about this, like,
+
+373
+00:14:37,219 --> 00:14:39,260
+basic strategy of just
+like how we run queries,
+
+374
+00:14:39,260 --> 00:14:40,859
+how we inspect the
+pricing of it,
+
+375
+00:14:40,859 --> 00:14:44,040
+how we do these pack of
+the envelope calculations?
+
+376
+00:14:44,990 --> 00:14:51,829
+Oh, right. Cool. So for fun,
+
+377
+00:14:51,829 --> 00:14:53,930
+they've straighted all
+the stuff on DET Hub,
+
+378
+00:14:53,930 --> 00:14:55,409
+and I have an open
+source project
+
+379
+00:14:55,409 --> 00:14:57,229
+on DETub, called Open Lambda.
+
+380
+00:14:57,229 --> 00:14:58,970
+So I'm may use Open
+Lambda for some examples.
+
+381
+00:14:58,970 --> 00:15:02,670
+We're kind of inspect what
+code Open Lambda uses,
+
+382
+00:15:02,670 --> 00:15:04,609
+what licenses are on it.
+
+383
+00:15:04,609 --> 00:15:06,650
+And I'm to do a big
+query down here.
+
+384
+00:15:06,650 --> 00:15:08,730
+And when I'm selecting it here,
+
+385
+00:15:08,730 --> 00:15:11,909
+what I will say is
+that I want to get it,
+
+386
+00:15:11,909 --> 00:15:13,370
+maybe do a bigger limit.
+
+387
+00:15:13,370 --> 00:15:19,300
+I want to get it where the
+repo name is like something.
+
+388
+00:15:19,300 --> 00:15:23,719
+The structure on Jet Hub is
+that we have organization,
+
+389
+00:15:23,719 --> 00:15:25,340
+and then it has repos.
+
+390
+00:15:25,340 --> 00:15:27,039
+And so what I want to see is,
+
+391
+00:15:27,039 --> 00:15:31,500
+what are all the repos
+under Open Lamb, right?
+
+392
+00:15:31,500 --> 00:15:33,360
+So I'm just to put
+a wild card there,
+
+393
+00:15:33,360 --> 00:15:36,199
+and I should be able to
+get a few of them, right?
+
+394
+00:15:36,199 --> 00:15:38,139
+So I'll get those out, and
+
+395
+00:15:38,139 --> 00:15:40,139
+then we're going to be
+working with these a bit.
+
+396
+00:15:40,139 --> 00:15:42,459
+And what I can see is
+
+397
+00:15:42,459 --> 00:15:44,740
+that there's different
+languages on Open Lamb.
+
+398
+00:15:44,740 --> 00:15:46,639
+I have this array of structs,
+
+399
+00:15:46,639 --> 00:15:48,139
+and we go to figure
+out how we can that.
+
+400
+00:15:48,139 --> 00:15:52,199
+For example, I want to see
+how often is C used, right?
+
+401
+00:15:52,199 --> 00:15:54,479
+I might want to do
+that, or maybe I care
+
+402
+00:15:54,479 --> 00:15:56,139
+about This is like
+
+403
+00:15:56,139 --> 00:15:58,459
+how many bytes of code are
+actually in that language.
+
+404
+00:15:58,459 --> 00:15:59,980
+Maybe I want to see
+what percentage
+
+405
+00:15:59,980 --> 00:16:01,959
+of projects are usually and see.
+
+406
+00:16:01,959 --> 00:16:03,280
+I can do that kind
+of stuff, too,
+
+407
+00:16:03,280 --> 00:16:04,480
+but we have to learn
+a little bit more
+
+408
+00:16:04,480 --> 00:16:06,060
+about how to extract
+that information.
+
+409
+00:16:06,060 --> 00:16:07,900
+So I'm going to pop
+back here to the slides
+
+410
+00:16:07,900 --> 00:16:09,800
+and look at some
+general concepts,
+
+411
+00:16:09,800 --> 00:16:12,579
+and then we'll come
+back and do more demos.
+
+412
+00:16:12,579 --> 00:16:14,279
+Alright. So first, we're
+just trying to talk
+
+413
+00:16:14,279 --> 00:16:16,120
+about this idea of
+arrays in structures.
+
+414
+00:16:16,120 --> 00:16:18,079
+And then we're
+introduced a new kind
+
+415
+00:16:18,079 --> 00:16:20,000
+of join called cross joining,
+
+416
+00:16:20,000 --> 00:16:21,479
+which are actually
+use a lot both for
+
+417
+00:16:21,479 --> 00:16:24,879
+geographic data and for
+working with these arrays.
+
+418
+00:16:24,879 --> 00:16:27,339
+There's a specific kind
+of cross join that
+
+419
+00:16:27,339 --> 00:16:28,579
+is trying to help us pull out
+
+420
+00:16:28,579 --> 00:16:29,940
+the information
+from those arrays,
+
+421
+00:16:29,940 --> 00:16:31,720
+called a correlated cross join.
+
+422
+00:16:31,720 --> 00:16:34,260
+That's used in conjunction
+with something called nesting.
+
+423
+00:16:34,260 --> 00:16:36,480
+On nesting means we're
+taking that array,
+
+424
+00:16:36,480 --> 00:16:39,039
+and we're stacking it
+vertically like a table.
+
+425
+00:16:39,039 --> 00:16:40,879
+And finally I'm just trying
+to talk very briefly about
+
+426
+00:16:40,879 --> 00:16:43,680
+geographic data and the
+support Big Grey has for it.
+
+427
+00:16:43,680 --> 00:16:45,159
+We're going to spend like,
+you know, a whole lecture
+
+428
+00:16:45,159 --> 00:16:46,749
+looking at that in more detail.
+
+429
+00:16:46,749 --> 00:16:49,159
+All right. So here I have
+an example straight off
+
+430
+00:16:49,159 --> 00:16:51,539
+the documentation
+for a big query.
+
+431
+00:16:51,539 --> 00:16:53,160
+It's a data set of books.
+
+432
+00:16:53,160 --> 00:16:55,780
+They have arrays of authors,
+
+433
+00:16:55,780 --> 00:16:57,019
+and authors have IDs,
+
+434
+00:16:57,019 --> 00:16:58,319
+names, and I don't know, date.
+
+435
+00:16:58,319 --> 00:16:59,339
+Maybe it's their birth date.
+
+436
+00:16:59,339 --> 00:17:00,919
+Who knows? Right?
+So we have that.
+
+437
+00:17:00,919 --> 00:17:03,159
+And we have feel extract
+information from that.
+
+438
+00:17:03,159 --> 00:17:05,639
+When I have an array, I
+
+439
+00:17:05,639 --> 00:17:08,000
+extract information a lot
+the way I would from a list,
+
+440
+00:17:08,000 --> 00:17:10,139
+except instead of just
+putting that index in there.
+
+441
+00:17:10,139 --> 00:17:12,419
+We put the word offset before
+we say offset and then
+
+442
+00:17:12,419 --> 00:17:15,119
+parentheses around the
+index. Little bit strange.
+
+443
+00:17:15,119 --> 00:17:16,980
+The structures, I think are more
+
+444
+00:17:16,980 --> 00:17:19,169
+kind of common sense, right?
+
+445
+00:17:19,169 --> 00:17:20,750
+We just use that dot syn text
+
+446
+00:17:20,750 --> 00:17:22,789
+to pull out a field from it.
+
+447
+00:17:22,789 --> 00:17:24,109
+So we could do that,
+we could, you know,
+
+448
+00:17:24,109 --> 00:17:26,409
+pull out specific
+structures and then
+
+449
+00:17:26,409 --> 00:17:29,709
+pull out fields from those
+structures if we wanted to.
+
+450
+00:17:29,709 --> 00:17:32,970
+All right, let's talk
+about a cross join.
+
+451
+00:17:32,970 --> 00:17:37,410
+And previously, we've seen
+a few different joins.
+
+452
+00:17:37,410 --> 00:17:39,450
+We've seen inner join,
+left join, right join.
+
+453
+00:17:39,450 --> 00:17:41,709
+One thing that all those
+joins have in common
+
+454
+00:17:41,709 --> 00:17:44,089
+is that we have a
+predicate filter.
+
+455
+00:17:44,089 --> 00:17:48,200
+We have an statement that
+has some kind of condition.
+
+456
+00:17:48,200 --> 00:17:49,599
+Our predicate filter, and
+
+457
+00:17:49,599 --> 00:17:50,939
+it'll either be
+true if we want to
+
+458
+00:17:50,939 --> 00:17:53,699
+pair up those rows or it'll
+be false if we wouldn't.
+
+459
+00:17:53,699 --> 00:17:55,599
+Maybe that condition
+says something like
+
+460
+00:17:55,599 --> 00:17:59,019
+this feign key equals
+that primary key, right?
+
+461
+00:17:59,019 --> 00:18:01,359
+With cross join, it's different.
+
+462
+00:18:01,359 --> 00:18:02,999
+It doesn't have any
+kind of on statement.
+
+463
+00:18:02,999 --> 00:18:04,439
+It doesn't have any
+kind of filter.
+
+464
+00:18:04,439 --> 00:18:06,759
+It matches every row in
+
+465
+00:18:06,759 --> 00:18:09,619
+the first table with every
+row in the second table.
+
+466
+00:18:09,619 --> 00:18:12,440
+Maybe I have like five
+rows in the first table,
+
+467
+00:18:12,440 --> 00:18:13,860
+ten rows in the second table.
+
+468
+00:18:13,860 --> 00:18:16,879
+I would get 50 rows
+of output, right?
+
+469
+00:18:16,879 --> 00:18:18,379
+And as you can imagine,
+
+470
+00:18:18,379 --> 00:18:20,059
+some cases that's going to
+be too expensive, right?
+
+471
+00:18:20,059 --> 00:18:21,659
+You don't always want
+that, but there are
+
+472
+00:18:21,659 --> 00:18:24,200
+cases where it does
+exactly what you need.
+
+473
+00:18:24,200 --> 00:18:26,299
+So there's a couple of
+different syntaxes for it.
+
+474
+00:18:26,299 --> 00:18:29,199
+One is, I say, select
+star from table one,
+
+475
+00:18:29,199 --> 00:18:32,340
+cross table two, and that
+we'll get every combination.
+
+476
+00:18:32,340 --> 00:18:33,679
+And so what does that look like?
+
+477
+00:18:33,679 --> 00:18:36,019
+In table one, I have the 12 row,
+
+478
+00:18:36,019 --> 00:18:38,219
+and the 12 row will
+get paired with x,
+
+479
+00:18:38,219 --> 00:18:40,580
+and the 12 row will
+get paired with y.
+
+480
+00:18:40,580 --> 00:18:42,559
+Okay, I have a 34 row.
+
+481
+00:18:42,559 --> 00:18:44,360
+The 34 row will
+get paired with x,
+
+482
+00:18:44,360 --> 00:18:46,619
+and the 34 row will
+get paired with.
+
+483
+00:18:46,619 --> 00:18:48,620
+I just doing every
+single combination.
+
+484
+00:18:48,620 --> 00:18:51,239
+There's a more concise
+syntax from it for it.
+
+485
+00:18:51,239 --> 00:18:52,619
+That means exactly
+the same thing,
+
+486
+00:18:52,619 --> 00:18:55,039
+and that is that you just
+put a comma in between
+
+487
+00:18:55,039 --> 00:18:57,780
+the table names instead of
+putting the word cross toy.
+
+488
+00:18:57,780 --> 00:18:59,500
+So you'll sometimes
+see both of these,
+
+489
+00:18:59,500 --> 00:19:02,319
+just know that they mean
+exactly the same thing.
+
+490
+00:19:02,660 --> 00:19:07,620
+All right. So with all
+these traditional joins,
+
+491
+00:19:07,620 --> 00:19:08,999
+it made a lot of sense
+that we'd use that
+
+492
+00:19:08,999 --> 00:19:11,120
+on statement and kind
+of filter it down.
+
+493
+00:19:11,120 --> 00:19:12,759
+Cross joins, by definition,
+
+494
+00:19:12,759 --> 00:19:15,039
+don't have any kind
+of filtering, right?
+
+495
+00:19:15,039 --> 00:19:17,239
+But people found that there
+were lots of use cases
+
+496
+00:19:17,239 --> 00:19:18,420
+where it just kind of made
+
+497
+00:19:18,420 --> 00:19:20,020
+sense to them to
+do a cross join.
+
+498
+00:19:20,020 --> 00:19:21,399
+And then after the
+fact, they would
+
+499
+00:19:21,399 --> 00:19:23,399
+filter with a were statement.
+
+500
+00:19:23,399 --> 00:19:25,979
+And so when you look at that,
+
+501
+00:19:25,979 --> 00:19:28,259
+it looks inefficient,
+and in most cases,
+
+502
+00:19:28,259 --> 00:19:29,499
+it is very inefficient, right?
+
+503
+00:19:29,499 --> 00:19:30,979
+Because you're computing
+every single possible
+
+504
+00:19:30,979 --> 00:19:33,935
+acmboation, and filtering down.
+
+505
+00:19:33,935 --> 00:19:36,430
+Later. Now, that's not
+the end of the story.
+
+506
+00:19:36,430 --> 00:19:37,929
+When a lot of people like to
+
+507
+00:19:37,929 --> 00:19:39,809
+do something that's
+very inefficient,
+
+508
+00:19:39,809 --> 00:19:41,690
+then the people
+building systems come
+
+509
+00:19:41,690 --> 00:19:43,949
+along later and they create
+optimizations, right?
+
+510
+00:19:43,949 --> 00:19:45,509
+And so this is a
+very common pattern.
+
+511
+00:19:45,509 --> 00:19:47,109
+We have a crosstoin
+followed by aware.
+
+512
+00:19:47,109 --> 00:19:48,409
+Honestly, it's just ugly, right?
+
+513
+00:19:48,409 --> 00:19:50,029
+When I see that, I
+wish that the syntax
+
+514
+00:19:50,029 --> 00:19:52,249
+supported an on statement,
+but it doesn't.
+
+515
+00:19:52,249 --> 00:19:54,450
+But when that was often show
+
+516
+00:19:54,450 --> 00:19:56,530
+up is with geographic data sets.
+
+517
+00:19:56,530 --> 00:19:57,369
+Forever reason, right?
+
+518
+00:19:57,369 --> 00:19:58,649
+What people would do
+is they maybe have
+
+519
+00:19:58,649 --> 00:20:00,929
+a bunch of latitude
+and longitude points,
+
+520
+00:20:00,929 --> 00:20:02,229
+and they maybe have a bunch of
+
+521
+00:20:02,229 --> 00:20:04,289
+polygons for different
+states or things like that,
+
+522
+00:20:04,289 --> 00:20:06,775
+and they want to say, Oh,
+this point is in this region.
+
+523
+00:20:06,775 --> 00:20:08,139
+And kind of pair them up, right?
+
+524
+00:20:08,139 --> 00:20:10,159
+And so they would just do
+let's consider everything
+
+525
+00:20:10,159 --> 00:20:12,539
+with everything and then
+have a complicated filter.
+
+526
+00:20:12,539 --> 00:20:14,960
+And so Big Query and other
+tools have come along,
+
+527
+00:20:14,960 --> 00:20:16,759
+and they will recognize
+
+528
+00:20:16,759 --> 00:20:19,339
+certain queries like that
+and make them fast, right?
+
+529
+00:20:19,339 --> 00:20:20,619
+So if you look at the BigQuery
+
+530
+00:20:20,619 --> 00:20:22,219
+documentation, you'll see that,
+
+531
+00:20:22,219 --> 00:20:24,419
+if I have a were statement
+and I have any of
+
+532
+00:20:24,419 --> 00:20:27,090
+these kinds of filters
+with my cross join,
+
+533
+00:20:27,090 --> 00:20:29,519
+It's going to be fast
+even though it looks like
+
+534
+00:20:29,519 --> 00:20:32,120
+something that is like
+naively, very slow.
+
+535
+00:20:32,120 --> 00:20:33,939
+Whenever you're seeing a
+cross drain like that,
+
+536
+00:20:33,939 --> 00:20:36,119
+read the documentation,
+see what the database has.
+
+537
+00:20:36,119 --> 00:20:37,380
+There's some filters
+that they're
+
+538
+00:20:37,380 --> 00:20:38,939
+going to do very well
+for and some are not.
+
+539
+00:20:38,939 --> 00:20:41,119
+All of these are for
+spatial types, ST,
+
+540
+00:20:41,119 --> 00:20:42,679
+and they relate to saying, Oh,
+
+541
+00:20:42,679 --> 00:20:43,839
+do these shapes
+touch each other?
+
+542
+00:20:43,839 --> 00:20:46,619
+Do they overlap? Is there one
+inside of the other, right?
+
+543
+00:20:46,619 --> 00:20:49,479
+We're looking at
+those in more detail.
+
+544
+00:20:49,479 --> 00:20:54,519
+Oh. Cool. So I
+
+545
+00:20:54,519 --> 00:20:57,640
+want to talk about un nesting
+now and correlated cross.
+
+546
+00:20:57,640 --> 00:20:58,780
+I guess first I just pause.
+
+547
+00:20:58,780 --> 00:21:00,839
+Yeah. Any questions right here?
+
+548
+00:21:03,190 --> 00:21:07,209
+Yeah. Oh, how do
+they optimize it?
+
+549
+00:21:07,209 --> 00:21:08,969
+Yeah, that's a good
+question, right?
+
+550
+00:21:08,969 --> 00:21:11,549
+So, I mean, it's not
+not my area, right?
+
+551
+00:21:11,549 --> 00:21:14,849
+But I can speculate, right?
+
+552
+00:21:14,849 --> 00:21:16,729
+You know, let's say
+I have a bunch of
+
+553
+00:21:16,729 --> 00:21:18,790
+coordinates all
+around the world.
+
+554
+00:21:18,790 --> 00:21:21,670
+And then I have a
+bunch of polygons
+
+555
+00:21:21,670 --> 00:21:23,570
+representing
+geographic boundaries.
+
+556
+00:21:23,570 --> 00:21:26,449
+I want to pair up the
+points with the polygons.
+
+557
+00:21:26,449 --> 00:21:27,869
+You can imagine kind of, like,
+
+558
+00:21:27,869 --> 00:21:30,189
+roughly bucketing the world
+into different shapes.
+
+559
+00:21:30,189 --> 00:21:32,070
+And, you know, pretty clearly,
+
+560
+00:21:32,070 --> 00:21:33,900
+if I look at a latitude, point.
+
+561
+00:21:33,900 --> 00:21:35,059
+I don't necessarily
+have to look at
+
+562
+00:21:35,059 --> 00:21:37,019
+every single shape and say,
+is it in there or not?
+
+563
+00:21:37,019 --> 00:21:39,259
+Right? I could t to break
+the world in regions, right?
+
+564
+00:21:39,259 --> 00:21:41,240
+Regions that are much
+larger than any shape,
+
+565
+00:21:41,240 --> 00:21:43,979
+and then try to pair them
+up region by region, right?
+
+566
+00:21:43,979 --> 00:21:46,020
+So, you know, I'm sure,
+
+567
+00:21:46,020 --> 00:21:47,539
+it's an area of research
+where people are
+
+568
+00:21:47,539 --> 00:21:49,519
+publishing and doing even
+more clever things than that.
+
+569
+00:21:49,519 --> 00:21:53,139
+But you could imagine
+optimizations you could do.
+
+570
+00:22:00,460 --> 00:22:02,639
+Yes, you're asking
+does it only work
+
+571
+00:22:02,639 --> 00:22:04,120
+when you use these
+functions and yes,
+
+572
+00:22:04,120 --> 00:22:05,860
+it only works when you
+use these functions.
+
+573
+00:22:05,860 --> 00:22:08,019
+And so, they've just
+documented, right?
+
+574
+00:22:08,019 --> 00:22:09,120
+If you're using
+those, then, okay,
+
+575
+00:22:09,120 --> 00:22:10,899
+it's not a reasonable
+thing to do.
+
+576
+00:22:10,899 --> 00:22:12,439
+If you're not, then you
+
+577
+00:22:12,439 --> 00:22:13,699
+should be kind of
+looking at like, Hey,
+
+578
+00:22:13,699 --> 00:22:16,079
+this is an n squared
+kind of operation where
+
+579
+00:22:16,079 --> 00:22:17,519
+I have to compare
+everything with
+
+580
+00:22:17,519 --> 00:22:18,740
+everything. Maybe it's okay.
+
+581
+00:22:18,740 --> 00:22:19,980
+Maybe it's very slow,
+
+582
+00:22:19,980 --> 00:22:21,259
+but they're going to document
+
+583
+00:22:21,259 --> 00:22:22,439
+the things that
+they're fast at and
+
+584
+00:22:22,439 --> 00:22:23,859
+things they're slow
+at so that you
+
+585
+00:22:23,859 --> 00:22:26,380
+can make informed choices.
+
+586
+00:22:32,120 --> 00:22:34,460
+Yeah, even though the query
+
+587
+00:22:34,460 --> 00:22:36,100
+looks like something that's bad,
+
+588
+00:22:36,100 --> 00:22:36,939
+it looks like you're going to
+
+589
+00:22:36,939 --> 00:22:38,420
+cross and filtering afterwards,
+
+590
+00:22:38,420 --> 00:22:39,700
+they're going to realize, hey,
+
+591
+00:22:39,700 --> 00:22:40,560
+that's the end and they're
+
+592
+00:22:40,560 --> 00:22:41,619
+going to find a
+different way to get
+
+593
+00:22:41,619 --> 00:22:43,959
+to that same end
+goal that's faster.
+
+594
+00:22:43,959 --> 00:22:44,820
+So they will never
+
+595
+00:22:44,820 --> 00:22:47,439
+actually materialize
+every combination.
+
+596
+00:22:47,439 --> 00:22:52,689
+What's that? Yeah, it is like
+a lazy evaluation, right?
+
+597
+00:22:52,689 --> 00:22:56,069
+Because when I give a
+SQL query to a system,
+
+598
+00:22:56,069 --> 00:22:58,429
+they know You know,
+
+599
+00:22:58,429 --> 00:22:59,630
+it's not like when I'm using
+
+600
+00:22:59,630 --> 00:23:00,990
+a SQL, I say, here's
+the whole query.
+
+601
+00:23:00,990 --> 00:23:02,370
+I don't say, do a cross join.
+
+602
+00:23:02,370 --> 00:23:04,249
+Now filter down,
+now do this, right?
+
+603
+00:23:04,249 --> 00:23:06,329
+I tell it like the whole
+thing. Here's the whole query.
+
+604
+00:23:06,329 --> 00:23:08,350
+And if if the database engine
+
+605
+00:23:08,350 --> 00:23:10,029
+can find a different way
+to get the same results,
+
+606
+00:23:10,029 --> 00:23:12,070
+that's faster, maybe
+a non intuitive way,
+
+607
+00:23:12,070 --> 00:23:13,629
+than they do that, right?
+
+608
+00:23:13,629 --> 00:23:15,910
+So y, in looks like something
+that's can be slow.
+
+609
+00:23:15,910 --> 00:23:17,510
+In some case, they document
+that they're doing
+
+610
+00:23:17,510 --> 00:23:19,470
+something clever to
+make it not be slow.
+
+611
+00:23:19,470 --> 00:23:22,289
+Yeah yeah, great
+questions. Other questions
+
+612
+00:23:22,289 --> 00:23:24,870
+people have about cross join.
+
+613
+00:23:25,730 --> 00:23:28,709
+Right. Cool. Let's talk about
+
+614
+00:23:28,709 --> 00:23:32,370
+this idea of un nesting and
+correlated cross strain.
+
+615
+00:23:33,720 --> 00:23:35,979
+So here I have a query, right?
+
+616
+00:23:35,979 --> 00:23:39,400
+And it's over a
+couple of things.
+
+617
+00:23:39,400 --> 00:23:41,219
+I have this x field here, right?
+
+618
+00:23:41,219 --> 00:23:42,859
+And then for coordinates,
+
+619
+00:23:42,859 --> 00:23:45,519
+I really have an
+array of structures,
+
+620
+00:23:45,519 --> 00:23:48,919
+and those things are these
+y z coordinates. Okay.
+
+621
+00:23:48,919 --> 00:23:50,600
+And so if I want to
+query over these things,
+
+622
+00:23:50,600 --> 00:23:52,319
+what I'd really like to do
+instead of having this like,
+
+623
+00:23:52,319 --> 00:23:53,859
+you know, horizontal array of
+
+624
+00:23:53,859 --> 00:23:56,279
+all these things is I'd like
+to stack it up vertically.
+
+625
+00:23:56,279 --> 00:23:59,099
+So I actually have columnames
+that I can query over.
+
+626
+00:23:59,099 --> 00:24:00,799
+And that's what on
+nesting is, right?
+
+627
+00:24:00,799 --> 00:24:03,379
+So you see there's an on
+nest statement on table.
+
+628
+00:24:03,379 --> 00:24:05,979
+And basically every row of
+
+629
+00:24:05,979 --> 00:24:08,580
+data is going to get split
+out, so it's its own table.
+
+630
+00:24:08,580 --> 00:24:09,980
+So here I had two rows.
+
+631
+00:24:09,980 --> 00:24:11,379
+I had two arrays, and
+
+632
+00:24:11,379 --> 00:24:13,919
+each of these arrays
+become a little table.
+
+633
+00:24:13,919 --> 00:24:15,700
+Like that, right?
+I have one table
+
+634
+00:24:15,700 --> 00:24:17,479
+of Y Zs for the first row.
+
+635
+00:24:17,479 --> 00:24:21,000
+I have another table of Y
+Z's for the second row.
+
+636
+00:24:21,000 --> 00:24:22,599
+Okay, that's on
+nesting. Now, what
+
+637
+00:24:22,599 --> 00:24:24,619
+about the cross join part?
+
+638
+00:24:24,619 --> 00:24:27,279
+In this case, because
+we're doing nesting,
+
+639
+00:24:27,279 --> 00:24:28,500
+what we're going
+to do is something
+
+640
+00:24:28,500 --> 00:24:30,140
+called a correlated cross join.
+
+641
+00:24:30,140 --> 00:24:32,380
+And the idea is that
+we're going to pair
+
+642
+00:24:32,380 --> 00:24:35,359
+up one with two, three.
+
+643
+00:24:35,359 --> 00:24:37,039
+We're gonna cross join
+one with two, three,
+
+644
+00:24:37,039 --> 00:24:40,179
+and we're gonna cross
+join one with four, five.
+
+645
+00:24:40,179 --> 00:24:42,139
+And I realize this
+is intuitive, right?
+
+646
+00:24:42,139 --> 00:24:46,169
+Because when we are talking
+about cross joins, right?
+
+647
+00:24:46,169 --> 00:24:48,949
+We're like, Oh, every
+combination of these two things.
+
+648
+00:24:48,949 --> 00:24:50,469
+And on this side,
+when I look at x,
+
+649
+00:24:50,469 --> 00:24:51,990
+there's only one x value there.
+
+650
+00:24:51,990 --> 00:24:53,590
+So sometimes we do correlated
+
+651
+00:24:53,590 --> 00:24:56,010
+cross joins where I only
+have one value on one side,
+
+652
+00:24:56,010 --> 00:24:56,830
+but that's still what it's
+
+653
+00:24:56,830 --> 00:24:57,929
+called and what
+it's doing, right?
+
+654
+00:24:57,929 --> 00:25:00,189
+So I pair up one with
+23 and put it out,
+
+655
+00:25:00,189 --> 00:25:02,729
+I pair up one with
+45, put it out.
+
+656
+00:25:02,729 --> 00:25:06,869
+And then I do the other
+one independently, right?
+
+657
+00:25:06,869 --> 00:25:09,570
+So I'm going cross
+join six with 78,
+
+658
+00:25:09,570 --> 00:25:12,569
+spit it out, six with
+910, and spit it out.
+
+659
+00:25:12,569 --> 00:25:15,349
+And I would have four rows
+outputted total, right?
+
+660
+00:25:15,349 --> 00:25:17,510
+So I'm doing a cross join,
+but it's more localized.
+
+661
+00:25:17,510 --> 00:25:19,869
+I'm not literally considering
+everything with everything.
+
+662
+00:25:19,869 --> 00:25:24,119
+I don't pair up one
+with 910, right?
+
+663
+00:25:24,119 --> 00:25:25,299
+That's why it's
+correlated, right?
+
+664
+00:25:25,299 --> 00:25:27,040
+Correlated, means
+that we're looking
+
+665
+00:25:27,040 --> 00:25:28,499
+narrower in scope, right?
+
+666
+00:25:28,499 --> 00:25:30,059
+So sometimes when I do
+the crush, it's like
+
+667
+00:25:30,059 --> 00:25:33,079
+one thing to many things,
+or in other cases,
+
+668
+00:25:33,079 --> 00:25:36,699
+if I have multiple
+columns that have a rays,
+
+669
+00:25:36,699 --> 00:25:38,699
+then it would be kind
+of within that one row,
+
+670
+00:25:38,699 --> 00:25:40,079
+I would do everything
+with everything.
+
+671
+00:25:40,079 --> 00:25:42,259
+I'll be showing an example
+of a query like that
+
+672
+00:25:42,259 --> 00:25:46,379
+when we go back to the NoePok.
+Yeah, crush right here.
+
+673
+00:25:50,080 --> 00:25:53,359
+Oh, how do we get the nested
+coordinates to start with?
+
+674
+00:25:53,359 --> 00:25:54,880
+So I guess when we
+inserted the data,
+
+675
+00:25:54,880 --> 00:25:55,980
+right? They have
+different da types.
+
+676
+00:25:55,980 --> 00:25:57,140
+I mean, they have
+all the simple stuff
+
+677
+00:25:57,140 --> 00:25:58,239
+like edgers and strings,
+
+678
+00:25:58,239 --> 00:26:00,620
+and then they have array
+and structure types,
+
+679
+00:26:00,620 --> 00:26:01,859
+and those are kind of complex
+
+680
+00:26:01,859 --> 00:26:03,079
+types where they can you know,
+
+681
+00:26:03,079 --> 00:26:05,179
+an array, could have another
+array or things like that.
+
+682
+00:26:05,179 --> 00:26:07,359
+So when we inserted it, there's
+a syntax for it and I can
+
+683
+00:26:07,359 --> 00:26:10,479
+insert an array
+of struts, right?
+
+684
+00:26:10,479 --> 00:26:11,940
+So that's how the data is there.
+
+685
+00:26:11,940 --> 00:26:20,249
+Was that the
+question? Yeah, well,
+
+686
+00:26:20,249 --> 00:26:22,590
+our y and z separate tables.
+
+687
+00:26:22,590 --> 00:26:24,749
+These struts, I'm not
+really showing it,
+
+688
+00:26:24,749 --> 00:26:26,189
+but when I put a struck there,
+
+689
+00:26:26,189 --> 00:26:28,289
+they actually have names
+on those fields, right?
+
+690
+00:26:28,289 --> 00:26:32,210
+So two is a y value and
+three is a z value.
+
+691
+00:26:32,210 --> 00:26:33,969
+And so what logically
+happens when I run
+
+692
+00:26:33,969 --> 00:26:36,029
+this query up here when
+I do this on nesting,
+
+693
+00:26:36,029 --> 00:26:38,430
+the way to think about
+the correlated cross
+
+694
+00:26:38,430 --> 00:26:39,969
+joint happening is
+you should imagine
+
+695
+00:26:39,969 --> 00:26:41,789
+each of those
+single cells become
+
+696
+00:26:41,789 --> 00:26:43,989
+a separate table, right?
+
+697
+00:26:43,989 --> 00:26:45,749
+I have a bunch of
+different tables, right?
+
+698
+00:26:45,749 --> 00:26:47,409
+If I have 100 rows,
+
+699
+00:26:47,409 --> 00:26:49,269
+well, then I have 100
+little tables like that.
+
+700
+00:26:49,269 --> 00:26:51,129
+That makes sense? Is that?
+
+701
+00:26:51,129 --> 00:26:53,509
+Was there or was that?
+
+702
+00:26:57,830 --> 00:27:00,189
+Yeah, they were nested, right?
+
+703
+00:27:00,189 --> 00:27:01,929
+So the nesting refers to I mean,
+
+704
+00:27:01,929 --> 00:27:03,489
+when I look at an
+array of structs,
+
+705
+00:27:03,489 --> 00:27:05,669
+that looks like a table, right?
+
+706
+00:27:05,669 --> 00:27:08,429
+But it's like I have a table
+inside of a table, right?
+
+707
+00:27:08,429 --> 00:27:10,829
+So that refers to
+the nesting, right?
+
+708
+00:27:10,829 --> 00:27:12,869
+I for all practical purpose,
+
+709
+00:27:12,869 --> 00:27:15,330
+have all these little tables
+inside of a bigger table.
+
+710
+00:27:15,330 --> 00:27:18,389
+And on nesting means that
+I want to go back to
+
+711
+00:27:18,389 --> 00:27:19,869
+just one big table
+where everything is
+
+712
+00:27:19,869 --> 00:27:21,969
+stacked on top of
+each other because,
+
+713
+00:27:21,969 --> 00:27:24,189
+you know, that's what SQL
+is good at querying, right?
+
+714
+00:27:24,189 --> 00:27:26,569
+So I can have to get the data
+in that form before I can
+
+715
+00:27:26,569 --> 00:27:27,890
+actually do any kind
+
+716
+00:27:27,890 --> 00:27:29,410
+of query on it. Does
+that make sense?
+
+717
+00:27:29,410 --> 00:27:31,909
+Yeah, great questions. Yeah.
+Do all people have questions
+
+718
+00:27:31,909 --> 00:27:35,909
+on that? All right.
+
+719
+00:27:35,909 --> 00:27:38,490
+Cool. I'm I skip the top hat.
+
+720
+00:27:38,490 --> 00:27:40,830
+So I just want to briefly
+talk about geographic data.
+
+721
+00:27:40,830 --> 00:27:43,029
+Again, I spent a bunch
+more time on that.
+
+722
+00:27:43,029 --> 00:27:45,730
+But whenever you're working
+with geographic data,
+
+723
+00:27:45,730 --> 00:27:48,289
+you have some kind of
+coordinate reference system.
+
+724
+00:27:48,289 --> 00:27:49,949
+A coordinate reference system is
+
+725
+00:27:49,949 --> 00:27:52,270
+a way to pick some
+point in space,
+
+726
+00:27:52,270 --> 00:27:53,969
+maybe on the surface
+of the earth or not
+
+727
+00:27:53,969 --> 00:27:56,449
+and assign some
+numbers to it, right?
+
+728
+00:27:56,449 --> 00:27:57,989
+And so the most famous
+
+729
+00:27:57,989 --> 00:27:59,730
+one by far is latitude
+and longitude.
+
+730
+00:27:59,730 --> 00:28:00,910
+I'm sure you all have used
+
+731
+00:28:00,910 --> 00:28:02,150
+that in some way at some point,
+
+732
+00:28:02,150 --> 00:28:04,469
+like if you use any
+kind of GPS system,
+
+733
+00:28:04,469 --> 00:28:06,469
+you can imagine an extension
+of that would be like
+
+734
+00:28:06,469 --> 00:28:09,229
+latitude longitude and altitude.
+
+735
+00:28:09,229 --> 00:28:11,299
+Latitude and longitude
+look like this.
+
+736
+00:28:11,299 --> 00:28:13,090
+At the equator, we have degree
+
+737
+00:28:13,090 --> 00:28:14,309
+zero, and then as you go up,
+
+738
+00:28:14,309 --> 00:28:17,310
+it would go to 90 degrees
+north or 90 degrees south,
+
+739
+00:28:17,310 --> 00:28:20,729
+and then the longitude would
+be a horizontal measure.
+
+740
+00:28:20,729 --> 00:28:23,569
+So more complicated systems
+
+741
+00:28:23,569 --> 00:28:24,829
+like geopands, or
+stuff like that.
+
+742
+00:28:24,829 --> 00:28:26,829
+They can work with lots of
+different coordinate systems.
+
+743
+00:28:26,829 --> 00:28:28,010
+Maybe they can have altitude.
+
+744
+00:28:28,010 --> 00:28:29,250
+Big car is a little bit simple.
+
+745
+00:28:29,250 --> 00:28:30,289
+It's just like they just work
+
+746
+00:28:30,289 --> 00:28:31,810
+with latitude and longitude.
+
+747
+00:28:31,810 --> 00:28:33,829
+That's all they
+really do, right?
+
+748
+00:28:33,829 --> 00:28:35,489
+But they support a bunch of
+
+749
+00:28:35,489 --> 00:28:37,790
+common operations with
+latitude and longitude,
+
+750
+00:28:37,790 --> 00:28:41,469
+like you can do a geographic
+join, for example.
+
+751
+00:28:41,469 --> 00:28:44,170
+They also have a bunch of
+built in types based on these.
+
+752
+00:28:44,170 --> 00:28:45,490
+You could have a single point,
+
+753
+00:28:45,490 --> 00:28:48,349
+you could have lines, you
+could have poly guns.
+
+754
+00:28:48,349 --> 00:28:51,285
+And we say we can do different
+operations with these.
+
+755
+00:28:51,285 --> 00:28:53,999
+All right. Fantastic.
+I'm me head back
+
+756
+00:28:53,999 --> 00:28:58,340
+and do some demos now with
+that correlated cross join.
+
+757
+00:28:58,340 --> 00:29:03,620
+I have a couple of questions
+I want to ask here,
+
+758
+00:29:03,620 --> 00:29:07,299
+for the first question, ops,
+
+759
+00:29:07,299 --> 00:29:09,659
+I didn't want to do
+that. That's code.
+
+760
+00:29:09,659 --> 00:29:12,699
+All right. Let me great.
+
+761
+00:29:12,699 --> 00:29:16,759
+For the first question is
+I want to know how often
+
+762
+00:29:16,759 --> 00:29:22,260
+is C used with a Docker file?
+
+763
+00:29:22,900 --> 00:29:25,999
+In the same repo.
+
+764
+00:29:25,999 --> 00:29:29,539
+This is something that would
+be expensive because I
+
+765
+00:29:29,539 --> 00:29:33,380
+have all these rows for
+etub, these Detub repos.
+
+766
+00:29:33,380 --> 00:29:34,999
+And I don't really have to
+
+767
+00:29:34,999 --> 00:29:36,839
+compare different
+repos with each other,
+
+768
+00:29:36,839 --> 00:29:39,699
+but for a single
+individual repo,
+
+769
+00:29:39,699 --> 00:29:40,919
+I have this long
+list of language,
+
+770
+00:29:40,919 --> 00:29:42,280
+and I have to
+consider every pair
+
+771
+00:29:42,280 --> 00:29:43,720
+of languages and say, Oh,
+
+772
+00:29:43,720 --> 00:29:47,100
+is this pair, Is it
+C in a Docker file?
+
+773
+00:29:47,100 --> 00:29:49,459
+I'm not trying to do the whole
+thing over all the stuff.
+
+774
+00:29:49,459 --> 00:29:52,099
+I'm just trying to go
+to the simpler example
+
+775
+00:29:52,099 --> 00:29:53,419
+that I had before
+because here we
+
+776
+00:29:53,419 --> 00:29:55,039
+only had two repositories,
+
+777
+00:29:55,039 --> 00:29:56,720
+each of which has a
+bunch of languages,
+
+778
+00:29:56,720 --> 00:29:58,739
+and I'm just going to
+answer this question
+
+779
+00:29:58,739 --> 00:30:00,959
+over these two repositories.
+
+780
+00:30:00,959 --> 00:30:03,340
+I'm going to grab this here,
+
+781
+00:30:04,020 --> 00:30:06,279
+And so what am I have to
+
+782
+00:30:06,279 --> 00:30:09,619
+do is I'm going to have
+to nest this, right?
+
+783
+00:30:09,619 --> 00:30:11,599
+And so I'm to say
+when I do that,
+
+784
+00:30:11,599 --> 00:30:13,280
+I'm may do a cross join.
+
+785
+00:30:13,280 --> 00:30:15,999
+And what am I going to
+do a cross join on?
+
+786
+00:30:15,999 --> 00:30:18,179
+I'm may do it on an nesting.
+
+787
+00:30:18,179 --> 00:30:20,680
+As soon as I have on
+nesting with cross join.
+
+788
+00:30:20,680 --> 00:30:22,700
+I know this is a
+correlated cross join.
+
+789
+00:30:22,700 --> 00:30:25,659
+I'm going to do that on
+the language field, right?
+
+790
+00:30:25,659 --> 00:30:27,239
+Maybe I'll just call that L one
+
+791
+00:30:27,239 --> 00:30:29,119
+because I eventually
+have two, right?
+
+792
+00:30:29,119 --> 00:30:30,560
+And when I'm up here now,
+
+793
+00:30:30,560 --> 00:30:33,719
+what I will do is
+I will say po name
+
+794
+00:30:33,719 --> 00:30:39,315
+and one SAR. Let's just say dot
+
+795
+00:30:39,315 --> 00:30:42,329
+Do name. Okay. Let's try that.
+
+796
+00:30:42,329 --> 00:30:44,649
+And so this we'll expand it up.
+
+797
+00:30:44,649 --> 00:30:48,210
+I see that for the well,
+
+798
+00:30:48,210 --> 00:30:49,369
+I have an open lamb.org,
+
+799
+00:30:49,369 --> 00:30:51,469
+and I have an open lamb
+de repo inside of it.
+
+800
+00:30:51,469 --> 00:30:52,869
+And so for that,
+
+801
+00:30:52,869 --> 00:30:55,349
+there were seven rows
+
+802
+00:30:55,349 --> 00:30:56,790
+because there are seven
+different languages
+
+803
+00:30:56,790 --> 00:30:58,190
+in the first repository.
+
+804
+00:30:58,190 --> 00:31:01,969
+There are three different rows
+for the second repository.
+
+805
+00:31:01,969 --> 00:31:04,310
+Already, you can see that
+this nesting was useful.
+
+806
+00:31:04,310 --> 00:31:06,329
+I could count out how often C is
+
+807
+00:31:06,329 --> 00:31:08,809
+used or something like
+that, right? All right.
+
+808
+00:31:08,809 --> 00:31:09,529
+So that was just like,
+
+809
+00:31:09,529 --> 00:31:12,370
+kind of a simple correlated
+
+810
+00:31:12,370 --> 00:31:13,890
+cross because I only
+have one field.
+
+811
+00:31:13,890 --> 00:31:15,469
+Now, what I'm going
+to do that's kind of
+
+812
+00:31:15,469 --> 00:31:17,990
+weird is I'm going to output
+
+813
+00:31:17,990 --> 00:31:20,430
+every combination
+of two languages
+
+814
+00:31:20,430 --> 00:31:22,749
+that any given repository has,
+
+815
+00:31:22,749 --> 00:31:25,969
+because that's a step that
+gets me closer to thinking
+
+816
+00:31:25,969 --> 00:31:29,689
+about C being used with
+a Docer file CC here,
+
+817
+00:31:29,689 --> 00:31:31,170
+and I see Docker file here.
+
+818
+00:31:31,170 --> 00:31:33,699
+And so If I had
+
+819
+00:31:33,699 --> 00:31:36,739
+two different columns
+that both had a arrays,
+
+820
+00:31:36,739 --> 00:31:38,540
+I could do the correlated cross
+
+821
+00:31:38,540 --> 00:31:40,300
+join between those two columns.
+
+822
+00:31:40,300 --> 00:31:41,859
+Here, since I want to
+
+823
+00:31:41,859 --> 00:31:44,340
+get different combinations
+of languages,
+
+824
+00:31:44,340 --> 00:31:48,460
+I'm going to do a cross join
+with the language again.
+
+825
+00:31:48,460 --> 00:31:50,019
+And so what that
+means is that when
+
+826
+00:31:50,019 --> 00:31:52,099
+I just had the one
+correlated cross join,
+
+827
+00:31:52,099 --> 00:31:53,839
+for this repo, I had,
+
+828
+00:31:53,839 --> 00:31:57,990
+I had something like
+seven different ones.
+
+829
+00:31:57,990 --> 00:31:59,990
+Now I'm going to have 49.
+
+830
+00:31:59,990 --> 00:32:02,529
+I'm may say, for the
+pen Lambda repository,
+
+831
+00:32:02,529 --> 00:32:06,130
+here are 49 different
+combinations of two languages.
+
+832
+00:32:06,130 --> 00:32:07,870
+For this one, rather
+
+833
+00:32:07,870 --> 00:32:09,229
+than having the three
+different languages,
+
+834
+00:32:09,229 --> 00:32:11,309
+I may say for the load
+balancer repository,
+
+835
+00:32:11,309 --> 00:32:12,690
+I may have these nine
+
+836
+00:32:12,690 --> 00:32:14,890
+different combinations
+of two languages.
+
+837
+00:32:14,890 --> 00:32:16,529
+I may do. And so up here,
+
+838
+00:32:16,529 --> 00:32:21,249
+I may say two So I'm
+going to do that.
+
+839
+00:32:21,249 --> 00:32:23,630
+Now I can see.
+Well, in open lab,
+
+840
+00:32:23,630 --> 00:32:26,009
+there is a C with C,
+there is a C with Docker.
+
+841
+00:32:26,009 --> 00:32:27,329
+This is what I'm
+really interested in
+
+842
+00:32:27,329 --> 00:32:28,790
+because I want to know how
+
+843
+00:32:28,790 --> 00:32:31,870
+often is C used in combination
+with a Docker file.
+
+844
+00:32:31,870 --> 00:32:34,669
+Now I'm in shape or I can
+actually filter like that.
+
+845
+00:32:34,669 --> 00:32:38,409
+I can say where L
+one dot name equals
+
+846
+00:32:38,409 --> 00:32:43,709
+C L two dot name
+
+847
+00:32:43,750 --> 00:32:46,009
+coloring of that
+makes me feel like
+
+848
+00:32:46,009 --> 00:32:47,689
+this is going to do
+something bad to me.
+
+849
+00:32:47,689 --> 00:32:52,589
+Let's just try Docker
+file. Let's try that.
+
+850
+00:32:52,589 --> 00:32:56,430
+It's working. I co see
+across these two repos,
+
+851
+00:32:56,430 --> 00:32:58,029
+there was one
+instance where C was
+
+852
+00:32:58,029 --> 00:33:01,109
+used in combination with
+Docker. Right here.
+
+853
+00:33:03,640 --> 00:33:07,420
+Yeah, what I'm doing is
+I'm doing a cross join
+
+854
+00:33:07,420 --> 00:33:10,660
+of one array with itself.
+
+855
+00:33:10,660 --> 00:33:14,419
+And so you know, if I had, like,
+
+856
+00:33:14,419 --> 00:33:16,059
+two different
+arrays, I could say
+
+857
+00:33:16,059 --> 00:33:18,919
+every combination of A with B.
+
+858
+00:33:18,919 --> 00:33:20,919
+Or, I mean, why can't
+I also just say
+
+859
+00:33:20,919 --> 00:33:23,539
+every combination of an A
+value with an A value, right?
+
+860
+00:33:23,539 --> 00:33:25,499
+There's nothing wrong with cross
+
+861
+00:33:25,499 --> 00:33:26,939
+joining with themselves, right?
+
+862
+00:33:26,939 --> 00:33:28,499
+So I'm doing the cross
+join with itself here,
+
+863
+00:33:28,499 --> 00:33:30,819
+so I get every combination
+of two, right?
+
+864
+00:33:30,819 --> 00:33:33,500
+And then I'm also doing
+
+865
+00:33:33,500 --> 00:33:36,339
+it with a field that was
+not unnested, right?
+
+866
+00:33:36,339 --> 00:33:39,060
+So in that case, I just
+have to individual values.
+
+867
+00:33:39,060 --> 00:33:41,679
+That po name is going
+to get paired up with
+
+868
+00:33:41,679 --> 00:33:45,439
+every possible two different
+values of language.
+
+869
+00:33:45,439 --> 00:33:47,219
+Do that make sense?
+Yeah, great question.
+
+870
+00:33:47,219 --> 00:33:50,219
+How other questions people
+have about that so far?
+
+871
+00:33:50,420 --> 00:33:53,399
+You know, I could. It might
+be kind of expensive.
+
+872
+00:33:53,399 --> 00:33:56,060
+I could draw and do this
+on the whole dataset.
+
+873
+00:33:56,060 --> 00:33:58,499
+I could remove this filter.
+
+874
+00:33:58,499 --> 00:34:00,899
+How would that scale? It would
+
+875
+00:34:00,899 --> 00:34:02,119
+honestly scale fine with
+
+876
+00:34:02,119 --> 00:34:03,459
+the number of
+repositories, right?
+
+877
+00:34:03,459 --> 00:34:04,739
+Because all of this kind of
+
+878
+00:34:04,739 --> 00:34:08,560
+crazy crossoin stuff is not
+happening in different rows.
+
+879
+00:34:08,560 --> 00:34:10,900
+It would scale poorly
+
+880
+00:34:10,900 --> 00:34:12,799
+with the number of
+languages, right?
+
+881
+00:34:12,799 --> 00:34:14,679
+If I had some repository
+that had, like,
+
+882
+00:34:14,679 --> 00:34:16,380
+a very large number of
+different languages,
+
+883
+00:34:16,380 --> 00:34:18,419
+that would take a long
+time to execute, right?
+
+884
+00:34:18,419 --> 00:34:20,239
+Because this is not optimized
+
+885
+00:34:20,239 --> 00:34:22,979
+as far as I'm aware
+from the documentation.
+
+886
+00:34:22,979 --> 00:34:27,680
+All right. Cool. Let's
+do some other examples.
+
+887
+00:34:27,680 --> 00:34:30,819
+Another question I have is,
+
+888
+00:34:30,900 --> 00:34:36,030
+what are the most
+common languages?
+
+889
+00:34:36,030 --> 00:34:38,419
+Right? So let's find that out.
+
+890
+00:34:38,419 --> 00:34:40,619
+And so maybe I'll come
+back here and copy that.
+
+891
+00:34:40,619 --> 00:34:42,119
+And in this way, this
+one might be a little
+
+892
+00:34:42,119 --> 00:34:43,899
+bit easier because
+I don't have to.
+
+893
+00:34:43,899 --> 00:34:45,959
+I just want to
+demonstrate, like, Hey,
+
+894
+00:34:45,959 --> 00:34:48,100
+like, why we call this
+a correlated crosstoin?
+
+895
+00:34:48,100 --> 00:34:49,959
+It's always strange
+to me calling it
+
+896
+00:34:49,959 --> 00:34:51,299
+a correlated cross train
+
+897
+00:34:51,299 --> 00:34:53,179
+when I only have one
+ray instead of two.
+
+898
+00:34:53,179 --> 00:34:55,199
+I just want to show
+one example like that.
+
+899
+00:34:55,199 --> 00:34:56,760
+But this one will be
+a little bit simpler
+
+900
+00:34:56,760 --> 00:34:58,479
+because I'm only on nesting it.
+
+901
+00:34:58,479 --> 00:35:00,880
+I'm only using the
+correlated crosstin
+
+902
+00:35:00,880 --> 00:35:02,700
+for nesting purposes.
+
+903
+00:35:02,700 --> 00:35:09,540
+And so what I'm going to
+do here is that actually.
+
+904
+00:35:09,540 --> 00:35:11,259
+I want to see all the
+
+905
+00:35:11,259 --> 00:35:13,120
+different repo names and
+all different languages.
+
+906
+00:35:13,120 --> 00:35:14,519
+Right? If it's a repo name
+
+907
+00:35:14,519 --> 00:35:16,240
+that corresponds to a lot
+of different languages,
+
+908
+00:35:16,240 --> 00:35:19,939
+I'll just do a bunch of
+different rows for that.
+
+909
+00:35:19,939 --> 00:35:21,619
+Right? Now, if I want to,
+
+910
+00:35:21,619 --> 00:35:23,519
+then, well, let me think
+about what I'm doing.
+
+911
+00:35:23,519 --> 00:35:25,739
+I don't really care about
+what the repo name is.
+
+912
+00:35:25,739 --> 00:35:27,299
+What I want to know now
+
+913
+00:35:27,299 --> 00:35:30,300
+is how often different
+languages appear.
+
+914
+00:35:30,300 --> 00:35:32,280
+Right? So this is the
+name of a language,
+
+915
+00:35:32,280 --> 00:35:35,960
+and I'm going to say how
+many times do that appear.
+
+916
+00:35:35,960 --> 00:35:38,099
+If I do that, I have to
+do a group by down here.
+
+917
+00:35:38,099 --> 00:35:42,069
+I group by the language name.
+
+918
+00:35:42,069 --> 00:35:43,789
+Okay. And then I want
+
+919
+00:35:43,789 --> 00:35:45,449
+to get maybe like the
+top languages, right?
+
+920
+00:35:45,449 --> 00:35:46,629
+I'm call this this count,
+
+921
+00:35:46,629 --> 00:35:49,689
+and I'm order by count
+descending, right?
+
+922
+00:35:49,689 --> 00:35:51,709
+And I don't Let's get
+something like 20,
+
+923
+00:35:51,709 --> 00:35:54,069
+and I'm may take all this
+data and I'm going to
+
+924
+00:35:54,069 --> 00:35:56,969
+throw it in a data
+frame after I fix my r.
+
+925
+00:35:56,969 --> 00:36:01,149
+So expected word by order by.
+
+926
+00:36:01,149 --> 00:36:03,729
+Okay, fantastic. I'm
+going to do that.
+
+927
+00:36:03,729 --> 00:36:08,210
+Is a helpful error message
+that's running, it finished.
+
+928
+00:36:08,450 --> 00:36:10,569
+All right, cool. And so we can
+
+929
+00:36:10,569 --> 00:36:12,589
+see Java script is at the top.
+
+930
+00:36:12,589 --> 00:36:15,450
+Python is like the
+fifth most popular.
+
+931
+00:36:15,450 --> 00:36:16,990
+Just for the sake of completes,
+
+932
+00:36:16,990 --> 00:36:18,769
+let's turn this into
+a nice little plot.
+
+933
+00:36:18,769 --> 00:36:22,049
+If I do plot bar on this,
+
+934
+00:36:22,049 --> 00:36:23,929
+the x axis will come from
+
+935
+00:36:23,929 --> 00:36:26,409
+the Pandas index, which
+is not what I want.
+
+936
+00:36:26,409 --> 00:36:29,749
+And so what I'm going
+to do is I am going to
+
+937
+00:36:29,749 --> 00:36:32,910
+say set index of name.
+
+938
+00:36:32,910 --> 00:36:34,029
+I'm going to take
+that column and
+
+939
+00:36:34,029 --> 00:36:35,590
+slip that over to the index.
+
+940
+00:36:35,590 --> 00:36:39,959
+And at that point, I could
+just very naturally plot it,
+
+941
+00:36:39,959 --> 00:36:41,699
+and that will make
+this nice plot.
+
+942
+00:36:41,699 --> 00:36:43,179
+Let's just for the sake of
+
+943
+00:36:43,179 --> 00:36:44,920
+completeness, make it
+a little bit nicer.
+
+944
+00:36:44,920 --> 00:36:46,499
+I'll say a width of
+
+945
+00:36:46,499 --> 00:36:48,879
+five and maybe a height of
+three. How does that look?
+
+946
+00:36:48,879 --> 00:36:53,680
+That looks decent,
+scientific notation,
+
+947
+00:36:53,680 --> 00:36:55,859
+even if people get it,
+they really have to slow
+
+948
+00:36:55,859 --> 00:36:58,619
+down and think carefully about
+it. I try to avoid that.
+
+949
+00:36:58,619 --> 00:37:01,479
+One of the ways you
+could do that is,
+
+950
+00:37:01,479 --> 00:37:04,079
+I could just do like an
+element y is divide.
+
+951
+00:37:04,079 --> 00:37:06,239
+I could divide it by 1 million.
+
+952
+00:37:06,239 --> 00:37:09,940
+That would get me these
+values and millions.
+
+953
+00:37:09,940 --> 00:37:12,279
+I could plot that again. Now,
+of course, if I do that,
+
+954
+00:37:12,279 --> 00:37:16,274
+I have to communicate that, I
+may say x that set y label.
+
+955
+00:37:16,274 --> 00:37:23,789
+Maybe I'll call this language
+occurrences on Jet Hub,
+
+956
+00:37:23,789 --> 00:37:26,690
+and then I should
+specify my units.
+
+957
+00:37:26,690 --> 00:37:30,709
+I turned to 1 million, so
+I should say, say as much.
+
+958
+00:37:32,070 --> 00:37:35,630
+Maybe I'll just say occurrences.
+It's already obvious.
+
+959
+00:37:35,630 --> 00:37:38,330
+It's for languages. Now that
+fits a little bit nicely.
+
+960
+00:37:38,330 --> 00:37:40,210
+There's something
+like 1 million repos
+
+961
+00:37:40,210 --> 00:37:41,590
+with Java stripped,
+
+962
+00:37:41,590 --> 00:37:46,170
+maybe something like
+550 with Python. Great.
+
+963
+00:37:46,170 --> 00:37:48,109
+We were able to
+throw the whole way.
+
+964
+00:37:48,109 --> 00:37:50,809
+We do the query, we make a plot.
+
+965
+00:37:50,809 --> 00:37:52,529
+We learn something. All right.
+
+966
+00:37:52,529 --> 00:37:54,790
+A question about that example.
+
+967
+00:37:57,710 --> 00:37:59,829
+All right. What else?
+
+968
+00:37:59,829 --> 00:38:01,289
+So the next question I have,
+
+969
+00:38:01,289 --> 00:38:04,749
+I want to just see a join
+with Big Query as well.
+
+970
+00:38:04,749 --> 00:38:07,049
+And again, right, like,
+I'm ready to join
+
+971
+00:38:07,049 --> 00:38:09,989
+two tables that happen to
+be in the same dataset,
+
+972
+00:38:09,989 --> 00:38:11,929
+but I can join any
+two tables I want.
+
+973
+00:38:11,929 --> 00:38:15,889
+I could join a table
+
+974
+00:38:15,889 --> 00:38:19,129
+and a data set a project
+that belongs to me with,
+
+975
+00:38:19,129 --> 00:38:20,569
+like this public stuff, right?
+
+976
+00:38:20,569 --> 00:38:22,109
+In a completely
+different project.
+
+977
+00:38:22,109 --> 00:38:24,189
+Alright, but in this case,
+it'll be in the same one.
+
+978
+00:38:24,189 --> 00:38:26,109
+And so my question
+I want to ask is,
+
+979
+00:38:26,109 --> 00:38:28,709
+what is the distribution?
+
+980
+00:38:28,830 --> 00:38:33,990
+Of licenses over
+Python projects.
+
+981
+00:38:33,990 --> 00:38:36,209
+There's maybe a few
+pieces to this.
+
+982
+00:38:36,209 --> 00:38:41,029
+Maybe I'll just start back
+from my old query up here.
+
+983
+00:38:42,590 --> 00:38:45,449
+So I think that one
+thing we have to do,
+
+984
+00:38:45,449 --> 00:38:47,609
+I'm just trying to delete
+all of this for now.
+
+985
+00:38:47,609 --> 00:38:49,789
+One thing we have to do,
+again, is we have to figure
+
+986
+00:38:49,789 --> 00:38:51,990
+out which ones are
+Python projects.
+
+987
+00:38:51,990 --> 00:38:55,349
+And to filter, I have to
+unnest it, and then later on,
+
+988
+00:38:55,349 --> 00:39:04,710
+I can do something like
+languages name equals Python,
+
+989
+00:39:04,710 --> 00:39:06,209
+right? I can do that, right?
+
+990
+00:39:06,209 --> 00:39:07,549
+I'll kind of figure
+out, here are
+
+991
+00:39:07,549 --> 00:39:09,849
+the repos that use Python.
+
+992
+00:39:09,849 --> 00:39:11,769
+And then I have to have
+another join, right?
+
+993
+00:39:11,769 --> 00:39:14,349
+I have to somehow join
+here so I can figure out,
+
+994
+00:39:14,349 --> 00:39:16,310
+I found a repo that uses Python.
+
+995
+00:39:16,310 --> 00:39:17,969
+What is the license
+
+996
+00:39:17,969 --> 00:39:20,309
+that is used on that?
+Yeah, question right here.
+
+997
+00:39:20,309 --> 00:39:23,490
+Do I have a small
+typo, or is my typo?
+
+998
+00:39:23,969 --> 00:39:26,049
+Languages. Okay, great.
+
+999
+00:39:26,049 --> 00:39:29,109
+Thank you. That one.
+
+1000
+00:39:29,109 --> 00:39:32,709
+Okay, great. Thanks. Good catch.
+
+1001
+00:39:32,709 --> 00:39:35,029
+Okay, so I'm going
+to peek over here.
+
+1002
+00:39:35,029 --> 00:39:37,229
+And so I have the
+languages here that has
+
+1003
+00:39:37,229 --> 00:39:41,130
+repository name and then these
+repeated language values.
+
+1004
+00:39:41,130 --> 00:39:43,809
+And then over here, I
+have actual licenses.
+
+1005
+00:39:43,809 --> 00:39:45,229
+So here I have a
+repository name,
+
+1006
+00:39:45,229 --> 00:39:46,449
+and I can pair this up with
+
+1007
+00:39:46,449 --> 00:39:48,629
+an individual license
+in this case,
+
+1008
+00:39:48,629 --> 00:39:50,649
+right? I'm going
+to pare this up.
+
+1009
+00:39:50,649 --> 00:39:53,769
+And that will be an
+inner join, right?
+
+1010
+00:39:53,769 --> 00:39:54,989
+B in this case,
+
+1011
+00:39:54,989 --> 00:39:56,569
+I'm not trying to get
+every combination of
+
+1012
+00:39:56,569 --> 00:40:00,309
+license with a repository.
+
+1013
+00:40:00,309 --> 00:40:01,429
+I just want to do it when it has
+
+1014
+00:40:01,429 --> 00:40:02,789
+the same repository name.
+
+1015
+00:40:02,789 --> 00:40:07,269
+And so in this case, I'm
+pairing it up with licenses.
+
+1016
+00:40:10,110 --> 00:40:12,589
+Because of that,
+with the cross join,
+
+1017
+00:40:12,589 --> 00:40:13,950
+I don't have any filter.
+
+1018
+00:40:13,950 --> 00:40:15,109
+Maybe I filter down later.
+
+1019
+00:40:15,109 --> 00:40:16,769
+I don't have any
+filter I do that here.
+
+1020
+00:40:16,769 --> 00:40:18,029
+But for an ener join, I
+
+1021
+00:40:18,029 --> 00:40:20,309
+definitely do need to have
+some kind of filter on it.
+
+1022
+00:40:20,309 --> 00:40:23,049
+And so in this case,
+I need to say, well,
+
+1023
+00:40:23,049 --> 00:40:27,290
+when is a language paired
+up with a license,
+
+1024
+00:40:27,290 --> 00:40:30,149
+it's when the repo
+name is the same.
+
+1025
+00:40:30,149 --> 00:40:32,089
+Then I can pair those things up,
+
+1026
+00:40:32,089 --> 00:40:34,130
+if it's very convenient.
+
+1027
+00:40:34,130 --> 00:40:36,769
+Alright, great. So I
+
+1028
+00:40:36,769 --> 00:40:38,629
+see figure out what I want
+to have my select line.
+
+1029
+00:40:38,629 --> 00:40:39,969
+But this is pretty good so far
+
+1030
+00:40:39,969 --> 00:40:41,709
+because I can kind
+of figure out, Okay,
+
+1031
+00:40:41,709 --> 00:40:44,049
+here are all the
+Python repositories,
+
+1032
+00:40:44,049 --> 00:40:47,109
+join it to figure out
+what license it has.
+
+1033
+00:40:47,109 --> 00:40:49,770
+And in the end, I want to know
+what is the distribution.
+
+1034
+00:40:49,770 --> 00:40:52,109
+That kind of suggests I'm
+counting in some way.
+
+1035
+00:40:52,109 --> 00:40:55,219
+Right? So I may
+do a group buy on
+
+1036
+00:40:55,219 --> 00:40:57,189
+The license. I'm going to say,
+
+1037
+00:40:57,189 --> 00:40:59,549
+well, what are those licenses?
+
+1038
+00:40:59,549 --> 00:41:02,349
+I guess they just
+the field and it is
+
+1039
+00:41:02,349 --> 00:41:05,349
+just called license.
+Somebody group by that.
+
+1040
+00:41:05,349 --> 00:41:08,529
+Then when I'm up here,
+I want to see, well,
+
+1041
+00:41:08,529 --> 00:41:11,849
+what license was it and how
+many times did it appear?
+
+1042
+00:41:11,849 --> 00:41:13,689
+I'm going to call that count.
+
+1043
+00:41:13,689 --> 00:41:18,549
+I want to order by
+that count descending.
+
+1044
+00:41:18,549 --> 00:41:19,949
+I'm do all that.
+
+1045
+00:41:19,949 --> 00:41:22,249
+A more complicated thing.
+We have everything.
+
+1046
+00:41:22,249 --> 00:41:26,489
+We have a cross join join
+group by order by and
+
+1047
+00:41:26,489 --> 00:41:31,929
+a bug name is not found
+inside of languages.
+
+1048
+00:41:31,929 --> 00:41:34,729
+At some point I said
+language dot name
+
+1049
+00:41:34,729 --> 00:41:37,869
+and let me peek over here.
+
+1050
+00:41:37,869 --> 00:41:41,030
+Maybe I actually
+did that earlier.
+
+1051
+00:41:41,030 --> 00:41:43,229
+I guess it was
+languages dot name.
+
+1052
+00:41:43,229 --> 00:41:46,649
+Down here, I should also say,
+what did I do wrong there?
+
+1053
+00:41:46,649 --> 00:41:54,769
+Invalid where The name is not
+found inside of languages,
+
+1054
+00:41:54,769 --> 00:41:57,269
+because language is
+that whole table,
+
+1055
+00:41:57,269 --> 00:41:59,070
+but I really want to
+do it on nesting.
+
+1056
+00:41:59,070 --> 00:42:01,469
+So my apologies, I
+nested that thing.
+
+1057
+00:42:01,469 --> 00:42:03,889
+That's where that name
+actually shows up.
+
+1058
+00:42:03,889 --> 00:42:08,409
+Let's see if that works.
+Fingers crossed, it does.
+
+1059
+00:42:09,610 --> 00:42:12,729
+All right, cool. Now I'm
+
+1060
+00:42:12,729 --> 00:42:15,369
+going to do that same
+deal as last time.
+
+1061
+00:42:15,369 --> 00:42:18,129
+I have some data down here.
+
+1062
+00:42:18,129 --> 00:42:20,929
+I'll just do the classic stuff.
+
+1063
+00:42:20,929 --> 00:42:23,389
+I'm going to group it by What I
+
+1064
+00:42:23,389 --> 00:42:26,829
+may make the license
+be the X axis.
+
+1065
+00:42:26,829 --> 00:42:30,589
+And this time, let's just
+do it by thousands, right?
+
+1066
+00:42:30,589 --> 00:42:32,569
+Because these numbers are
+
+1067
+00:42:32,569 --> 00:42:34,489
+smaller, right? I'm may do that.
+
+1068
+00:42:34,489 --> 00:42:38,609
+And I think that we're
+actually good to go, right?
+
+1069
+00:42:38,609 --> 00:42:40,169
+So we can see, you know,
+
+1070
+00:42:40,169 --> 00:42:42,729
+most Python projects
+use the MIT license.
+
+1071
+00:42:42,729 --> 00:42:44,929
+After that, we have
+the GPL and Apache.
+
+1072
+00:42:44,929 --> 00:42:47,309
+Most of the things we did
+this semester Apache,
+
+1073
+00:42:47,309 --> 00:42:48,690
+there's different
+version of the apache,
+
+1074
+00:42:48,690 --> 00:42:49,989
+then we have the BSD.
+
+1075
+00:42:49,989 --> 00:42:51,389
+And after that there's
+kind of, like,
+
+1076
+00:42:51,389 --> 00:42:53,270
+this long tail of less
+popular licenses.
+
+1077
+00:42:53,270 --> 00:42:54,649
+So it looks good.
+
+1078
+00:42:54,649 --> 00:42:56,590
+L the stuff I taught you
+about different licenses.
+
+1079
+00:42:56,590 --> 00:42:57,789
+I hit all the popular ones.
+
+1080
+00:42:57,789 --> 00:43:04,869
+Yeah, question right. Oh,
+that's a really good question.
+
+1081
+00:43:04,869 --> 00:43:07,449
+So when I do both the cross
+join and the inner join,
+
+1082
+00:43:07,449 --> 00:43:08,869
+which one happens first?
+
+1083
+00:43:08,869 --> 00:43:12,529
+The answer is, we can't
+know at the query, right?
+
+1084
+00:43:12,529 --> 00:43:14,789
+What the queries do is
+they communicate like,
+
+1085
+00:43:14,789 --> 00:43:17,609
+I want end results
+corresponding to this, right?
+
+1086
+00:43:17,609 --> 00:43:19,349
+And so that's actually a
+
+1087
+00:43:19,349 --> 00:43:20,889
+really interesting
+question, right?
+
+1088
+00:43:20,889 --> 00:43:24,249
+And there's people who
+will write papers on that.
+
+1089
+00:43:24,249 --> 00:43:25,829
+And so in general, right,
+
+1090
+00:43:25,829 --> 00:43:27,829
+we kind of have a
+simpler query here,
+
+1091
+00:43:27,829 --> 00:43:29,669
+but it's very common
+that you'll have a row,
+
+1092
+00:43:29,669 --> 00:43:31,229
+and there's a bunch of
+foreign keys into it,
+
+1093
+00:43:31,229 --> 00:43:33,269
+and there are all kinds
+of different tables.
+
+1094
+00:43:33,269 --> 00:43:34,449
+And then there's filters,
+
+1095
+00:43:34,449 --> 00:43:35,929
+and tell what you
+want to do, right?
+
+1096
+00:43:35,929 --> 00:43:37,229
+As you're joining
+different things and
+
+1097
+00:43:37,229 --> 00:43:38,929
+filtering is you want to kind of
+
+1098
+00:43:38,929 --> 00:43:40,129
+like shrink your data down
+
+1099
+00:43:40,129 --> 00:43:42,209
+quickly before you join
+across more things.
+
+1100
+00:43:42,209 --> 00:43:43,389
+And so it's like, Well, I'm
+
+1101
+00:43:43,389 --> 00:43:44,789
+joining across like
+these ten things.
+
+1102
+00:43:44,789 --> 00:43:46,889
+What do I join
+against first, right?
+
+1103
+00:43:46,889 --> 00:43:48,769
+And so the database people,
+
+1104
+00:43:48,769 --> 00:43:50,909
+they really get deep
+into the theory of that.
+
+1105
+00:43:50,909 --> 00:43:53,079
+And I don't know if
+this is stll true,
+
+1106
+00:43:53,079 --> 00:43:54,399
+but at one point what I
+heard at the State of
+
+1107
+00:43:54,399 --> 00:43:56,580
+art is that if they
+have about four tables,
+
+1108
+00:43:56,580 --> 00:43:58,939
+it's already there's not
+a general theory of like,
+
+1109
+00:43:58,939 --> 00:44:00,879
+this is the order you
+should do them, right?
+
+1110
+00:44:00,879 --> 00:44:02,179
+If it's smaller, then,
+
+1111
+00:44:02,179 --> 00:44:03,439
+maybe there's some theory like,
+
+1112
+00:44:03,439 --> 00:44:04,899
+This is definitely the
+way you should do it.
+
+1113
+00:44:04,899 --> 00:44:06,119
+So anyway, that's something
+
+1114
+00:44:06,119 --> 00:44:07,419
+that people worry about a lot.
+
+1115
+00:44:07,419 --> 00:44:08,719
+Well, I have all these joints.
+
+1116
+00:44:08,719 --> 00:44:09,859
+What is the order? I mean, get
+
+1117
+00:44:09,859 --> 00:44:11,259
+the same result in the end.
+
+1118
+00:44:11,259 --> 00:44:13,579
+But there's going to be
+faster and slower ways
+
+1119
+00:44:13,579 --> 00:44:15,759
+to do that join. Is
+excellent question.
+
+1120
+00:44:15,759 --> 00:44:18,419
+Maybe if you go take like a
+graduate database course,
+
+1121
+00:44:18,419 --> 00:44:19,659
+I mean, you'll
+probably read like
+
+1122
+00:44:19,659 --> 00:44:21,740
+many papers about that topic.
+
+1123
+00:44:21,740 --> 00:44:24,619
+But I'm not that
+deep into databases.
+
+1124
+00:44:24,619 --> 00:44:26,199
+I have a better answer for now.
+
+1125
+00:44:26,199 --> 00:44:29,619
+Yeah, fantastic question.
+Other questions people have.
+
+1126
+00:44:29,619 --> 00:44:34,759
+Yeah, language. Oh, yeah.
+
+1127
+00:44:34,759 --> 00:44:37,640
+So where is the language
+table that's being nested?
+
+1128
+00:44:37,640 --> 00:44:41,499
+Great. So I think that I'm
+doing language right here,
+
+1129
+00:44:41,499 --> 00:44:45,959
+which was actually when I
+go back to the languages.
+
+1130
+00:44:45,959 --> 00:44:51,679
+So I have a table
+called languages,
+
+1131
+00:44:51,679 --> 00:44:52,839
+and within that, I
+
+1132
+00:44:52,839 --> 00:44:56,439
+have an array field
+called language, right?
+
+1133
+00:44:56,439 --> 00:44:59,719
+So what I'm on nesting
+is language, right?
+
+1134
+00:44:59,719 --> 00:45:00,899
+So that's not the
+name of a table.
+
+1135
+00:45:00,899 --> 00:45:02,759
+That's the name of
+
+1136
+00:45:02,759 --> 00:45:05,059
+a field within a table
+called languages.
+
+1137
+00:45:05,059 --> 00:45:07,079
+And the naming, of course,
+is all confusing here.
+
+1138
+00:45:07,079 --> 00:45:09,379
+So sorry for that.
+That makes sense.
+
+1139
+00:45:12,440 --> 00:45:16,039
+Yeah, instead of instead of
+having all these arrays.
+
+1140
+00:45:16,039 --> 00:45:17,399
+I'm like, Hey, let's take out
+
+1141
+00:45:17,399 --> 00:45:19,659
+all the structs from these
+arrays and stack them up,
+
+1142
+00:45:19,659 --> 00:45:21,399
+and then we're going to
+have some nice columns.
+
+1143
+00:45:21,399 --> 00:45:23,039
+Exactly. Yeah, thank you.
+
+1144
+00:45:23,039 --> 00:45:26,519
+You all other questions
+people have. All right.
+
+1145
+00:45:26,519 --> 00:45:31,219
+Cool. I have 5 minutes left.
+
+1146
+00:45:31,219 --> 00:45:32,519
+And so what I want to do
+
+1147
+00:45:32,519 --> 00:45:34,479
+now is I want to
+pit a little bit.
+
+1148
+00:45:34,479 --> 00:45:37,779
+I want to look at I want to look
+
+1149
+00:45:37,779 --> 00:45:43,479
+at data sources for big query,
+
+1150
+00:45:43,479 --> 00:45:45,279
+because there are a lot of
+different things we can do.
+
+1151
+00:45:45,279 --> 00:45:47,759
+And remember that big query has
+
+1152
+00:45:47,759 --> 00:45:49,899
+its own storage engine
+
+1153
+00:45:49,899 --> 00:45:51,459
+that's tightly integrated
+with big query.
+
+1154
+00:45:51,459 --> 00:45:53,819
+And that's one thing we could
+do is we could copy data
+
+1155
+00:45:53,819 --> 00:45:57,139
+from somewhere else and
+dump it into big query.
+
+1156
+00:45:57,139 --> 00:45:59,899
+Big Query can also
+work a lot like Spark.
+
+1157
+00:45:59,899 --> 00:46:02,499
+Spark can work as this
+ad hoc SQL engine.
+
+1158
+00:46:02,499 --> 00:46:05,599
+You're like, Hey, look, there's
+some new park files over
+
+1159
+00:46:05,599 --> 00:46:07,239
+there in HDFS that
+you never even
+
+1160
+00:46:07,239 --> 00:46:09,099
+knew about until
+you got your query,
+
+1161
+00:46:09,099 --> 00:46:10,399
+and I'll just grow
+and I'll figure
+
+1162
+00:46:10,399 --> 00:46:11,779
+out how to query
+them the best I can.
+
+1163
+00:46:11,779 --> 00:46:13,919
+Big Query can pretty
+much do that as well.
+
+1164
+00:46:13,919 --> 00:46:15,880
+I can point it to
+some park files
+
+1165
+00:46:15,880 --> 00:46:18,104
+somewhere. I'll do its best.
+
+1166
+00:46:18,104 --> 00:46:19,869
+I do have to do a
+little bit more work in
+
+1167
+00:46:19,869 --> 00:46:21,649
+big query to register
+them and tell them,
+
+1168
+00:46:21,649 --> 00:46:24,689
+like, Hey, they're over here
+in this particular place.
+
+1169
+00:46:24,689 --> 00:46:26,909
+And so all of this stuff
+
+1170
+00:46:26,909 --> 00:46:29,349
+has a bit of setup that I
+don't like remembering.
+
+1171
+00:46:29,349 --> 00:46:32,969
+And so I put some
+starter code in
+
+1172
+00:46:32,969 --> 00:46:37,269
+the lecture snippets that I
+am going to paste down here.
+
+1173
+00:46:37,269 --> 00:46:39,089
+Let me just split this up.
+
+1174
+00:46:39,089 --> 00:46:41,230
+All right so I have
+my three examples.
+
+1175
+00:46:41,230 --> 00:46:44,189
+And so the first one is,
+I'm doing a load job.
+
+1176
+00:46:44,189 --> 00:46:46,349
+I'm copying data
+from somewhere else,
+
+1177
+00:46:46,349 --> 00:46:48,389
+sticking and big query.
+
+1178
+00:46:48,389 --> 00:46:50,609
+Then I have two cases
+that are external.
+
+1179
+00:46:50,609 --> 00:46:54,004
+One is that I may have some
+Park A file setting in GCS.
+
+1180
+00:46:54,004 --> 00:46:55,859
+And then the third
+case is that we're
+
+1181
+00:46:55,859 --> 00:46:57,739
+going to have some
+data in Google Sheets,
+
+1182
+00:46:57,739 --> 00:46:59,539
+and we're going a
+query from that data,
+
+1183
+00:46:59,539 --> 00:47:02,780
+we can just do SQL queries
+on top of Google Sheets,
+
+1184
+00:47:02,780 --> 00:47:04,559
+which is honestly kind of cool.
+
+1185
+00:47:04,559 --> 00:47:06,379
+Let's do this first one first,
+
+1186
+00:47:06,379 --> 00:47:07,599
+the load job can fig,
+
+1187
+00:47:07,599 --> 00:47:09,779
+and where I'm going to
+load the data from is
+
+1188
+00:47:09,779 --> 00:47:12,379
+a PK file that's already in GCS.
+
+1189
+00:47:12,379 --> 00:47:14,879
+If we come over here and
+
+1190
+00:47:14,879 --> 00:47:21,829
+Cons if I look at If I look
+at Google Cloud Storge.
+
+1191
+00:47:21,829 --> 00:47:24,190
+Remember, we made a bucket
+last time together.
+
+1192
+00:47:24,190 --> 00:47:26,249
+And we're Section two.
+
+1193
+00:47:26,249 --> 00:47:27,969
+I'm going to look at our bucket,
+
+1194
+00:47:27,969 --> 00:47:31,689
+there was a Park file that
+we had created, right?
+
+1195
+00:47:31,689 --> 00:47:35,149
+And so just copy the
+path to that Park file.
+
+1196
+00:47:35,149 --> 00:47:40,189
+And coming back to my
+notebook over here,
+
+1197
+00:47:40,189 --> 00:47:42,609
+there's a few things
+we have to do.
+
+1198
+00:47:42,609 --> 00:47:45,549
+One is when I load
+a table from a URI,
+
+1199
+00:47:45,549 --> 00:47:48,709
+I have to pass in what
+those URIs are, right?
+
+1200
+00:47:48,709 --> 00:47:52,644
+I'm to pass that in,
+and I will paste this.
+
+1201
+00:47:52,644 --> 00:47:56,279
+Like so. And then I have some
+more things I have to do.
+
+1202
+00:47:56,279 --> 00:47:58,579
+Now, I'm sure you all have seen
+
+1203
+00:47:58,579 --> 00:48:01,059
+this protocol many
+times, right the HTDP.
+
+1204
+00:48:01,059 --> 00:48:02,519
+It's not the only
+protocol out there.
+
+1205
+00:48:02,519 --> 00:48:05,319
+There's other ones like, S
+three for Amazon's thing,
+
+1206
+00:48:05,319 --> 00:48:08,219
+GS for Google's Google Storage.
+
+1207
+00:48:08,219 --> 00:48:12,179
+So I have to specify, Okay,
+I have this Park file,
+
+1208
+00:48:12,179 --> 00:48:14,439
+and it's inside a
+bucket with this name,
+
+1209
+00:48:14,439 --> 00:48:16,119
+and that's on Google Storage.
+
+1210
+00:48:16,119 --> 00:48:18,079
+I can tell it. That's where
+it is. That's where it lives.
+
+1211
+00:48:18,079 --> 00:48:20,639
+And it doesn't infer
+the type by the name,
+
+1212
+00:48:20,639 --> 00:48:22,579
+so I have to be very
+explicit up here.
+
+1213
+00:48:22,579 --> 00:48:25,019
+This is a Park file.
+
+1214
+00:48:25,019 --> 00:48:26,759
+And then down here,
+I have to say,
+
+1215
+00:48:26,759 --> 00:48:28,919
+well, where is it
+trying to end up?
+
+1216
+00:48:28,919 --> 00:48:31,339
+In big query, right?
+
+1217
+00:48:31,339 --> 00:48:32,879
+Down here, I have
+to do kind of like
+
+1218
+00:48:32,879 --> 00:48:37,199
+the whole project
+dot data set table.
+
+1219
+00:48:37,199 --> 00:48:40,320
+And so I may call
+my table loans.
+
+1220
+00:48:40,320 --> 00:48:43,599
+And I created a dataset
+way at the beginning,
+
+1221
+00:48:43,599 --> 00:48:45,659
+so let's throw back and
+take a peek at that.
+
+1222
+00:48:45,659 --> 00:48:50,119
+I created a dataset called
+section two in my project.
+
+1223
+00:48:50,119 --> 00:48:54,439
+Let's put it there.
+So comming along.
+
+1224
+00:48:55,790 --> 00:48:59,789
+I will paste that here.
+
+1225
+00:49:00,550 --> 00:49:03,649
+All right. Great. And then
+
+1226
+00:49:03,649 --> 00:49:05,149
+we go ahead and run that, right?
+
+1227
+00:49:05,149 --> 00:49:06,749
+So I'm going to load that in.
+
+1228
+00:49:06,749 --> 00:49:09,569
+And if that works successfully,
+
+1229
+00:49:09,569 --> 00:49:11,209
+then a couple of
+things will happen.
+
+1230
+00:49:11,209 --> 00:49:15,089
+One is that if I look at
+my project over here,
+
+1231
+00:49:15,089 --> 00:49:17,550
+and then I look at the Section
+two data that I created,
+
+1232
+00:49:17,550 --> 00:49:19,189
+there's going to be a
+loans table, right?
+
+1233
+00:49:19,189 --> 00:49:22,129
+And I can preview
+it if I want to.
+
+1234
+00:49:22,129 --> 00:49:24,550
+I can see all this data
+loans and incomes.
+
+1235
+00:49:24,550 --> 00:49:26,669
+This is real data from
+Wisconsin, by the way.
+
+1236
+00:49:26,669 --> 00:49:28,429
+I can see the schema.
+
+1237
+00:49:28,429 --> 00:49:30,190
+And then for details,
+
+1238
+00:49:30,190 --> 00:49:33,109
+I can actually see how
+large that whole thing is.
+
+1239
+00:49:33,109 --> 00:49:34,689
+And then the very last
+thing I'm going to do
+
+1240
+00:49:34,689 --> 00:49:36,609
+before I wrap up is
+that I'm going to show,
+
+1241
+00:49:36,609 --> 00:49:38,550
+I can actually go
+ahead and query,
+
+1242
+00:49:38,550 --> 00:49:40,009
+now that I've copied
+it in there, right?
+
+1243
+00:49:40,009 --> 00:49:43,570
+So I'm going to do big query,
+
+1244
+00:49:43,570 --> 00:49:46,209
+and I'm going to
+select star from
+
+1245
+00:49:46,209 --> 00:49:49,769
+that thing and I'm going
+to limit it to ten.
+
+1246
+00:49:49,769 --> 00:49:52,009
+Let's go ahead and
+do that. The job
+
+1247
+00:49:52,009 --> 00:49:53,549
+is running, and
+there we go, right?
+
+1248
+00:49:53,549 --> 00:49:55,109
+So we can get some part
+
+1249
+00:49:55,109 --> 00:49:57,189
+K files relatively
+easily into big query,
+
+1250
+00:49:57,189 --> 00:49:59,289
+and then we're in business,
+we can start doing queries.
+
+1251
+00:49:59,289 --> 00:50:01,070
+We can combine this
+with the public data
+
+1252
+00:50:01,070 --> 00:50:03,029
+set two if we want. All right.
+I'm going to end there.
+
+1253
+00:50:03,029 --> 00:50:04,949
+I hope you all have
+a fantastic break,
+
+1254
+00:50:04,949 --> 00:50:06,369
+and feel free to come
+
+1255
+00:50:06,369 --> 00:50:08,729
+up and chat if you
+have any questions.

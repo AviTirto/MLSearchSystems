@@ -1,0 +1,5788 @@
+1
+00:00:00,000 --> 00:00:03,220
+So we've been talking about
+networking for a week now.
+
+2
+00:00:03,220 --> 00:00:05,560
+You might notice that I
+split up this lecture.
+
+3
+00:00:05,560 --> 00:00:07,520
+It was going to be
+GRPC at Campos.
+
+4
+00:00:07,520 --> 00:00:09,779
+It was just too much. I put
+them on separate days now.
+
+5
+00:00:09,779 --> 00:00:11,879
+Today, we're actually be
+learning about Docker Campos,
+
+6
+00:00:11,879 --> 00:00:13,519
+where we spend up multiple
+
+7
+00:00:13,519 --> 00:00:15,860
+containers that are
+working together.
+
+8
+00:00:15,860 --> 00:00:17,879
+We're also learned
+about a little bit
+
+9
+00:00:17,879 --> 00:00:20,180
+about Docker
+networking in general.
+
+10
+00:00:20,180 --> 00:00:23,260
+Gib and I split it,
+the Anki flashcards
+
+11
+00:00:23,260 --> 00:00:24,619
+from last time are going to
+
+12
+00:00:24,619 --> 00:00:26,584
+be covering both
+of these lectures.
+
+13
+00:00:26,584 --> 00:00:29,089
+Another thing is that when
+I kind of pushed it back,
+
+14
+00:00:29,089 --> 00:00:32,029
+I accidentally moved
+the project deadline.
+
+15
+00:00:32,029 --> 00:00:33,529
+So rather than cause confusion,
+
+16
+00:00:33,529 --> 00:00:34,909
+I just left it, I think
+
+17
+00:00:34,909 --> 00:00:36,550
+it's sill reasonable
+enough schedule.
+
+18
+00:00:36,550 --> 00:00:39,889
+So, I guess P one is
+due on Monday now,
+
+19
+00:00:39,889 --> 00:00:41,930
+how many of you
+have already pushed
+
+20
+00:00:41,930 --> 00:00:44,950
+some code that's passing at
+least some tests to it Lab?
+
+21
+00:00:44,950 --> 00:00:47,630
+That's fantastic
+because if you get sick
+
+22
+00:00:47,630 --> 00:00:50,590
+over the weekend or you get
+unusually busy or whatever,
+
+23
+00:00:50,590 --> 00:00:52,790
+you might need to
+ask for somebody
+
+24
+00:00:52,790 --> 00:00:54,209
+to waive the late
+penalty for you.
+
+25
+00:00:54,209 --> 00:00:56,689
+And so the threshold
+in this case is
+
+26
+00:00:56,689 --> 00:00:59,289
+that if you've
+submitted by Friday,
+
+27
+00:00:59,289 --> 00:01:01,965
+that's three days ahead, so
+Saturday, Sunday, Monday,
+
+28
+00:01:01,965 --> 00:01:04,240
+If you've submitted
+something by Friday,
+
+29
+00:01:04,240 --> 00:01:05,460
+you've pushed it to the Git lab.
+
+30
+00:01:05,460 --> 00:01:07,700
+It's passing at
+least some tests.
+
+31
+00:01:07,700 --> 00:01:09,039
+Anything that's not zero,
+
+32
+00:01:09,039 --> 00:01:11,120
+then that sounds a
+significant start.
+
+33
+00:01:11,120 --> 00:01:12,580
+You could ask a TA to review it.
+
+34
+00:01:12,580 --> 00:01:14,580
+And then they could waive
+that penalty so that
+
+35
+00:01:14,580 --> 00:01:16,800
+you could submit on,
+let me see, what is it?
+
+36
+00:01:16,800 --> 00:01:18,559
+And sea of Monday,
+it could be Tuesday,
+
+37
+00:01:18,559 --> 00:01:20,540
+Wednesday, Thursday, right?
+
+38
+00:01:20,540 --> 00:01:23,240
+I always recommend you know,
+people get sick and suf,
+
+39
+00:01:23,240 --> 00:01:25,279
+but I want to see that there
+was a good faith effort
+
+40
+00:01:25,279 --> 00:01:28,280
+to get an early start.
+Yeah, question over here.
+
+41
+00:01:29,360 --> 00:01:33,520
+What's that? P two I think I
+
+42
+00:01:33,520 --> 00:01:37,340
+would like to still
+release it, but I guess,
+
+43
+00:01:37,340 --> 00:01:39,220
+the deadline I put for myself is
+
+44
+00:01:39,220 --> 00:01:40,780
+that I always have something
+
+45
+00:01:40,780 --> 00:01:42,500
+in front of students to
+work on, so I don't know,
+
+46
+00:01:42,500 --> 00:01:43,640
+maybe I'll do it on Monday
+
+47
+00:01:43,640 --> 00:01:46,640
+if we're doing actually a
+completely two new P two,
+
+48
+00:01:46,640 --> 00:01:48,239
+so I might use
+extra time myself,
+
+49
+00:01:48,239 --> 00:01:50,520
+but it would also be
+nice to get it out on
+
+50
+00:01:50,520 --> 00:01:53,479
+Friday and people who are
+done with P one could do it.
+
+51
+00:01:53,479 --> 00:01:55,040
+So we'll see. I'm not
+trying to promise anything,
+
+52
+00:01:55,040 --> 00:01:56,380
+but I do think I would prefer to
+
+53
+00:01:56,380 --> 00:01:58,240
+get it out sooner
+rather than later.
+
+54
+00:01:58,240 --> 00:02:00,800
+Yeah, there are
+questions people have.
+
+55
+00:02:01,130 --> 00:02:03,509
+Cool. O thing is that there's
+
+56
+00:02:03,509 --> 00:02:05,810
+a Quiz night who has
+taken the quiz already.
+
+57
+00:02:05,810 --> 00:02:08,389
+Fantastic. So just make
+sure you don't miss that.
+
+58
+00:02:08,389 --> 00:02:11,449
+Alright, so we're
+ahead over here
+
+59
+00:02:11,449 --> 00:02:13,029
+to some slides and learn about
+
+60
+00:02:13,029 --> 00:02:15,029
+Docker Networking
+and Docer Compose.
+
+61
+00:02:15,029 --> 00:02:17,199
+And I have a few
+goals for you today.
+
+62
+00:02:17,199 --> 00:02:19,129
+We want to be able to
+figure out how we can
+
+63
+00:02:19,129 --> 00:02:21,129
+connect like a browser on
+
+64
+00:02:21,129 --> 00:02:23,350
+our laptop to some server
+
+65
+00:02:23,350 --> 00:02:24,870
+that's running in a
+container somewhere.
+
+66
+00:02:24,870 --> 00:02:27,969
+We have to chain things along
+where you have to know last
+
+67
+00:02:27,969 --> 00:02:29,409
+time we talked about a
+lot about how we can
+
+68
+00:02:29,409 --> 00:02:31,249
+did a packet from
+point A to point B.
+
+69
+00:02:31,249 --> 00:02:33,149
+Sometimes you're going
+to have a point B
+
+70
+00:02:33,149 --> 00:02:35,509
+forwarding onto another
+point C, right?
+
+71
+00:02:35,509 --> 00:02:36,849
+So we're going to have a chain.
+
+72
+00:02:36,849 --> 00:02:38,489
+We have to figure out how
+to set up those chains
+
+73
+00:02:38,489 --> 00:02:40,089
+to really make that
+scenario work.
+
+74
+00:02:40,089 --> 00:02:42,089
+I have something in my
+browser that's talking to
+
+75
+00:02:42,089 --> 00:02:44,449
+a server and a container
+and a VM somewhere.
+
+76
+00:02:44,449 --> 00:02:46,130
+Second, for Door Compose,
+
+77
+00:02:46,130 --> 00:02:47,290
+we need to learn how to deploy
+
+78
+00:02:47,290 --> 00:02:49,719
+applications that consist
+of multiple containers.
+
+79
+00:02:49,719 --> 00:02:51,429
+And then finally, I may briefly
+
+80
+00:02:51,429 --> 00:02:53,669
+introduce this idea of
+partitioning and replication.
+
+81
+00:02:53,669 --> 00:02:54,969
+Those are B ideas that show
+
+82
+00:02:54,969 --> 00:02:56,430
+up many times throughout
+the semester.
+
+83
+00:02:56,430 --> 00:02:59,089
+So this is just a
+first look at it.
+
+84
+00:02:59,089 --> 00:03:00,629
+But that will really be talking
+
+85
+00:03:00,629 --> 00:03:03,149
+about how we can take a
+dataset and split it up
+
+86
+00:03:03,149 --> 00:03:05,189
+across it from
+machines or maybe have
+
+87
+00:03:05,189 --> 00:03:08,760
+multiple copies of data for
+the sake of reliability.
+
+88
+00:03:08,760 --> 00:03:11,430
+Okay, let's start with some
+Dock report forwarding.
+
+89
+00:03:11,430 --> 00:03:13,269
+And I'm going to start
+with this picture,
+
+90
+00:03:13,269 --> 00:03:14,590
+and it's already complex,
+
+91
+00:03:14,590 --> 00:03:15,950
+and it's going to get
+more and more complex.
+
+92
+00:03:15,950 --> 00:03:19,569
+I'm going to kind of go
+slowly and talk bit by bit.
+
+93
+00:03:19,569 --> 00:03:23,169
+First off, I have a laptop
+on the left hand side.
+
+94
+00:03:23,169 --> 00:03:26,270
+That laptop has two
+network interfaces.
+
+95
+00:03:26,270 --> 00:03:28,369
+I'm using IF for interface.
+
+96
+00:03:28,369 --> 00:03:33,510
+Can anybody remind me what
+this one is for the LO Nick?
+
+97
+00:03:40,720 --> 00:03:43,119
+Just pop up a hand,
+if you want to tell
+
+98
+00:03:43,119 --> 00:03:45,639
+me what the LO interface is.
+
+99
+00:03:51,080 --> 00:03:53,430
+Yeah, right over here.
+
+100
+00:03:53,430 --> 00:03:55,700
+It's basically like
+a local network.
+
+101
+00:03:55,700 --> 00:03:58,319
+It's as if that that neck
+
+102
+00:03:58,319 --> 00:04:00,559
+is the only device
+on that network,
+
+103
+00:04:00,559 --> 00:04:01,579
+and so you might use that if
+
+104
+00:04:01,579 --> 00:04:03,019
+you want to try and
+just do things,
+
+105
+00:04:03,019 --> 00:04:05,379
+you want to kind of program
+in a networking style,
+
+106
+00:04:05,379 --> 00:04:06,579
+but you still want
+to just keep it
+
+107
+00:04:06,579 --> 00:04:08,479
+local and not have it
+available to anybody else.
+
+108
+00:04:08,479 --> 00:04:11,240
+Excellent, right? So my
+laptop has a loopback device.
+
+109
+00:04:11,240 --> 00:04:13,739
+It also has a real
+physical neck that
+
+110
+00:04:13,739 --> 00:04:16,280
+can be used to communicate
+over the Internet.
+
+111
+00:04:16,280 --> 00:04:18,000
+For example, with
+this virtual machine.
+
+112
+00:04:18,000 --> 00:04:20,180
+This virtual machine
+has a similar setup,
+
+113
+00:04:20,180 --> 00:04:21,800
+has a loopback device,
+
+114
+00:04:21,800 --> 00:04:23,399
+the public facing neck
+
+115
+00:04:23,399 --> 00:04:25,639
+that is actually connected
+to the Internet,
+
+116
+00:04:25,639 --> 00:04:27,120
+might have a different
+name in this case,
+
+117
+00:04:27,120 --> 00:04:28,880
+ENS zero or NS four,
+
+118
+00:04:28,880 --> 00:04:30,680
+not an important detail.
+
+119
+00:04:30,680 --> 00:04:33,074
+On this virtual machine,
+
+120
+00:04:33,074 --> 00:04:35,950
+I ran two Docker
+commands down here.
+
+121
+00:04:35,950 --> 00:04:38,469
+I have this image
+called my Image.
+
+122
+00:04:38,469 --> 00:04:40,650
+Maybe that was built
+from a Docker file
+
+123
+00:04:40,650 --> 00:04:42,710
+that starts up Jupiter lab,
+
+124
+00:04:42,710 --> 00:04:44,490
+for example, Jupiter
+lab is a server.
+
+125
+00:04:44,490 --> 00:04:46,630
+We're going to be using
+this this semester.
+
+126
+00:04:46,630 --> 00:04:47,890
+And so I ran that twice.
+
+127
+00:04:47,890 --> 00:04:49,069
+I'm creating two containers,
+
+128
+00:04:49,069 --> 00:04:50,369
+and I can see my two containers,
+
+129
+00:04:50,369 --> 00:04:52,290
+container A, and container B.
+
+130
+00:04:52,290 --> 00:04:54,190
+And when Docker creates those,
+
+131
+00:04:54,190 --> 00:04:57,129
+it gives them virtual
+
+132
+00:04:57,129 --> 00:04:59,250
+network interface
+cards as well, right?
+
+133
+00:04:59,250 --> 00:05:00,469
+So these in this case,
+
+134
+00:05:00,469 --> 00:05:01,890
+it is called ETH zero,
+
+135
+00:05:01,890 --> 00:05:04,720
+and they both have
+one of those. And
+
+136
+00:05:04,720 --> 00:05:08,730
+And these are virtual, and
+we can use ports on them.
+
+137
+00:05:08,730 --> 00:05:11,389
+Now, normally, I would
+not have the same port
+
+138
+00:05:11,389 --> 00:05:14,770
+on the same Nick used by
+multiple different applications.
+
+139
+00:05:14,770 --> 00:05:16,029
+But since I have two different
+
+140
+00:05:16,029 --> 00:05:17,629
+nicks here, and they're virtual,
+
+141
+00:05:17,629 --> 00:05:19,670
+it's fine for
+Jupiter lab up here
+
+142
+00:05:19,670 --> 00:05:21,769
+to use port 80 and Jupiter lab
+
+143
+00:05:21,769 --> 00:05:23,810
+down here to use Port
+80 because those are
+
+144
+00:05:23,810 --> 00:05:25,949
+separate virtual network
+interface cards.
+
+145
+00:05:25,949 --> 00:05:33,360
+Yeah, question right here.
+They're not associated Right.
+
+146
+00:05:33,360 --> 00:05:34,600
+Yeah, they're not
+associated with
+
+147
+00:05:34,600 --> 00:05:36,180
+any hardware neck, usually.
+
+148
+00:05:36,180 --> 00:05:37,700
+They're just there and
+
+149
+00:05:37,700 --> 00:05:39,660
+ultimately right if I'm
+sending something over them.
+
+150
+00:05:39,660 --> 00:05:41,500
+They can have address assigned
+them and stuff like that.
+
+151
+00:05:41,500 --> 00:05:43,180
+But if I'm sending
+traffic over them,
+
+152
+00:05:43,180 --> 00:05:44,860
+ultimately that they're
+going to have to go
+
+153
+00:05:44,860 --> 00:05:46,860
+off of a real neck
+somewhere, right?
+
+154
+00:05:46,860 --> 00:05:48,540
+It's going to have to
+get forwarded off.
+
+155
+00:05:48,540 --> 00:05:50,520
+Yep. Yeah, thank you
+for clarifying that.
+
+156
+00:05:50,520 --> 00:05:58,309
+Yeah, right here. Yeah, exactly.
+
+157
+00:05:58,309 --> 00:05:59,869
+So anything on this machine
+is going to have to
+
+158
+00:05:59,869 --> 00:06:01,450
+go through ENS four, right?
+
+159
+00:06:01,450 --> 00:06:03,549
+And so Doctor are going to
+take care of forwarding
+
+160
+00:06:03,549 --> 00:06:06,950
+outgrowing traffic
+over ENS for us,
+
+161
+00:06:06,950 --> 00:06:09,189
+and that could be a whole
+thing we could look into.
+
+162
+00:06:09,189 --> 00:06:10,710
+We're going to look at
+the other case this
+
+163
+00:06:10,710 --> 00:06:12,210
+time where we're
+trying to communicate.
+
+164
+00:06:12,210 --> 00:06:13,530
+I guess, and we want to
+
+165
+00:06:13,530 --> 00:06:14,909
+kind of have like
+in D dress traffic.
+
+166
+00:06:14,909 --> 00:06:16,610
+How can we talk from
+
+167
+00:06:16,610 --> 00:06:19,050
+this browser over here
+to Jupiter lab, right?
+
+168
+00:06:19,050 --> 00:06:20,389
+But everything is going
+to have to go through
+
+169
+00:06:20,389 --> 00:06:21,710
+NS four, definitely.
+
+170
+00:06:21,710 --> 00:06:24,909
+Yeah, thank you for
+making that point. Mm hm.
+
+171
+00:06:24,909 --> 00:06:26,649
+Alright, so this is a setup.
+
+172
+00:06:26,649 --> 00:06:27,809
+I these two containers,
+
+173
+00:06:27,809 --> 00:06:29,789
+they each have a virtual neck.
+
+174
+00:06:29,789 --> 00:06:31,790
+And because of that
+they can both have
+
+175
+00:06:31,790 --> 00:06:34,050
+a port 80. All right.
+
+176
+00:06:34,050 --> 00:06:37,049
+So What I might want
+to do is I might
+
+177
+00:06:37,049 --> 00:06:38,809
+want to be able
+to have a program
+
+178
+00:06:38,809 --> 00:06:40,370
+running on my virtual machine,
+
+179
+00:06:40,370 --> 00:06:43,950
+not in any container, just on
+my virtual machine itself.
+
+180
+00:06:43,950 --> 00:06:46,330
+And I might want that
+program to be able to talk
+
+181
+00:06:46,330 --> 00:06:49,709
+to these Jupiter labs
+inside of the containers.
+
+182
+00:06:49,709 --> 00:06:51,490
+Okay? So I have to have some way
+
+183
+00:06:51,490 --> 00:06:54,550
+of sending traffic to these.
+
+184
+00:06:54,550 --> 00:06:55,989
+And the way we do that,
+it is with something
+
+185
+00:06:55,989 --> 00:06:58,329
+called Docker port forwarding.
+
+186
+00:06:58,329 --> 00:07:01,210
+Okay. And so when
+I do Docker run,
+
+187
+00:07:01,210 --> 00:07:03,729
+I can add this DP option.
+
+188
+00:07:03,729 --> 00:07:05,850
+I don't have to, but I
+could optionally do it.
+
+189
+00:07:05,850 --> 00:07:07,449
+I could have multiple
+dashP options.
+
+190
+00:07:07,449 --> 00:07:10,919
+And each of these represents
+a docker port forwarding.
+
+191
+00:07:10,919 --> 00:07:12,730
+Okay, when I do that, I can
+
+192
+00:07:12,730 --> 00:07:14,390
+have three things after there.
+
+193
+00:07:14,390 --> 00:07:15,650
+I either have two
+or three things.
+
+194
+00:07:15,650 --> 00:07:16,950
+In this case, I have three.
+
+195
+00:07:16,950 --> 00:07:19,550
+When I have three,
+then the first two
+
+196
+00:07:19,550 --> 00:07:23,630
+are an IP address
+and a port number.
+
+197
+00:07:23,630 --> 00:07:25,009
+And that IP address, of course,
+
+198
+00:07:25,009 --> 00:07:28,515
+corresponds to a
+network interface card.
+
+199
+00:07:28,515 --> 00:07:31,299
+In this case, 127001,
+
+200
+00:07:31,299 --> 00:07:32,539
+that's one of those IP addresses
+
+201
+00:07:32,539 --> 00:07:34,019
+you just need to memorize.
+
+202
+00:07:34,019 --> 00:07:36,519
+That corresponds to
+loopback device.
+
+203
+00:07:36,519 --> 00:07:38,139
+And so what this whole statement
+
+204
+00:07:38,139 --> 00:07:39,740
+here is saying is that I want
+
+205
+00:07:39,740 --> 00:07:43,340
+port 300 on that looppc device.
+
+206
+00:07:43,340 --> 00:07:45,040
+If I get any packets there,
+
+207
+00:07:45,040 --> 00:07:47,579
+I want Docker to
+forward those along
+
+208
+00:07:47,579 --> 00:07:51,959
+to port 80 inside of
+my container, right?
+
+209
+00:07:51,959 --> 00:07:53,460
+And so if I have one
+of each of these,
+
+210
+00:07:53,460 --> 00:07:56,920
+they would have ports 300400
+on that looppa device,
+
+211
+00:07:56,920 --> 00:07:58,819
+and depending on
+which where packets
+
+212
+00:07:58,819 --> 00:08:01,119
+are coming to on that loop
+act device on the BM,
+
+213
+00:08:01,119 --> 00:08:02,820
+the traffic might get forward to
+
+214
+00:08:02,820 --> 00:08:06,720
+one Jupiter lab or the
+other Jupiter lab.
+
+215
+00:08:06,720 --> 00:08:11,179
+Okay? Some caveats,
+
+216
+00:08:11,179 --> 00:08:12,619
+sometimes people say,
+like, local hosts.
+
+217
+00:08:12,619 --> 00:08:14,539
+A lot of tools will allow
+you to use local host.
+
+218
+00:08:14,539 --> 00:08:16,859
+Doctor, for whatever reason
+makes you use an IP address,
+
+219
+00:08:16,859 --> 00:08:17,819
+which is one of the
+reasons that you
+
+220
+00:08:17,819 --> 00:08:19,560
+shouldn't remember this one.
+
+221
+00:08:19,560 --> 00:08:22,080
+And it's okay that
+
+222
+00:08:22,080 --> 00:08:24,440
+80 shows up in both of these
+because they're different,
+
+223
+00:08:24,440 --> 00:08:26,500
+but I could not forward from
+
+224
+00:08:26,500 --> 00:08:28,240
+the same source on
+
+225
+00:08:28,240 --> 00:08:31,080
+the virtual machines loop back
+to different ones, right?
+
+226
+00:08:31,080 --> 00:08:33,480
+So if I had said, 300300,
+
+227
+00:08:33,480 --> 00:08:34,660
+then that would have
+been a port collision.
+
+228
+00:08:34,660 --> 00:08:36,900
+But this is totally fine.
+Yeah, question right here.
+
+229
+00:08:36,900 --> 00:08:39,280
+Dash D. Yeah, excellent.
+
+230
+00:08:39,280 --> 00:08:41,600
+So Dash D just means I want
+to run in detach modes.
+
+231
+00:08:41,600 --> 00:08:43,040
+So normally when I
+run a container,
+
+232
+00:08:43,040 --> 00:08:44,739
+like I see the output,
+
+233
+00:08:44,739 --> 00:08:46,239
+and then kind of I don't get
+
+234
+00:08:46,239 --> 00:08:48,699
+a shell prompt until I
+kill it or it's done.
+
+235
+00:08:48,699 --> 00:08:50,260
+Dash D means, like,
+basically run
+
+236
+00:08:50,260 --> 00:08:51,900
+it in a detached
+in the background,
+
+237
+00:08:51,900 --> 00:08:53,879
+and then I can do
+other things, right?
+
+238
+00:08:53,879 --> 00:08:57,069
+Yeah, thank you for
+reminding everybody of that.
+
+239
+00:08:57,069 --> 00:08:59,080
+All right. So at this point,
+
+240
+00:08:59,080 --> 00:09:00,719
+right, if I was on
+this virtual machine,
+
+241
+00:09:00,719 --> 00:09:03,019
+I could use a curl command
+or something like that,
+
+242
+00:09:03,019 --> 00:09:05,500
+and I could send traffic
+to these two web servers,
+
+243
+00:09:05,500 --> 00:09:08,019
+and I could get
+responses from them.
+
+244
+00:09:08,019 --> 00:09:10,000
+If I did like a docker exec,
+
+245
+00:09:10,000 --> 00:09:13,080
+I could also jump inside of
+one of these containers,
+
+246
+00:09:13,080 --> 00:09:14,580
+and I could use a curl command
+
+247
+00:09:14,580 --> 00:09:17,080
+to visit these these servers.
+
+248
+00:09:17,080 --> 00:09:17,979
+So one of the things
+you have to get
+
+249
+00:09:17,979 --> 00:09:19,339
+comfortable with is
+you have to know,
+
+250
+00:09:19,339 --> 00:09:22,259
+like, what the docker port
+forwarding configuration is.
+
+251
+00:09:22,259 --> 00:09:23,680
+You have to know
+where you're running
+
+252
+00:09:23,680 --> 00:09:26,280
+a curl or other kind of command
+and then know which port
+
+253
+00:09:26,280 --> 00:09:28,079
+to use based on where you are to
+
+254
+00:09:28,079 --> 00:09:31,404
+communicate with the server
+you want to communicate with.
+
+255
+00:09:31,404 --> 00:09:35,770
+Alright, let's add some more
+complexity to the picture.
+
+256
+00:09:35,810 --> 00:09:38,050
+We might if I want to run
+
+257
+00:09:38,050 --> 00:09:39,389
+a kernel command on
+the virtual machine,
+
+258
+00:09:39,389 --> 00:09:41,489
+I have to SSH to
+it first, right?
+
+259
+00:09:41,489 --> 00:09:43,869
+And so how does
+SSH actually work?
+
+260
+00:09:43,869 --> 00:09:46,550
+Well, there's two programs
+
+261
+00:09:46,550 --> 00:09:49,070
+or processes
+associated with SSH.
+
+262
+00:09:49,070 --> 00:09:50,510
+The SSH client.
+
+263
+00:09:50,510 --> 00:09:53,430
+And then SSHD is the SSH demon.
+
+264
+00:09:53,430 --> 00:09:55,590
+It's running in the
+background, that's a server.
+
+265
+00:09:55,590 --> 00:09:59,089
+And the SSH demon
+is a server that's
+
+266
+00:09:59,089 --> 00:10:03,415
+listening on port 22 of
+that public facing neck.
+
+267
+00:10:03,415 --> 00:10:05,759
+And so what happens
+when somebody runs
+
+268
+00:10:05,759 --> 00:10:09,359
+an SSH command in their
+terminal on their laptop?
+
+269
+00:10:09,359 --> 00:10:11,699
+Well, it's going to
+communicate out over
+
+270
+00:10:11,699 --> 00:10:15,420
+that public facing ENS or
+that public facing neck,
+
+271
+00:10:15,420 --> 00:10:16,780
+and it will send traffic there.
+
+272
+00:10:16,780 --> 00:10:18,419
+And basically, any
+command you type
+
+273
+00:10:18,419 --> 00:10:20,320
+here is going to get
+forwarded over there,
+
+274
+00:10:20,320 --> 00:10:22,240
+and SSHD will run
+
+275
+00:10:22,240 --> 00:10:25,499
+that command on the VM
+instead of my laptop, right?
+
+276
+00:10:25,499 --> 00:10:29,340
+So I can do that. Alright.
+
+277
+00:10:29,380 --> 00:10:31,939
+My goal that I'm working
+
+278
+00:10:31,939 --> 00:10:34,100
+towards is that I eventually
+want this browser
+
+279
+00:10:34,100 --> 00:10:36,139
+to open up Jupiter lab
+
+280
+00:10:36,139 --> 00:10:38,899
+for one of these over here
+on the right hand side.
+
+281
+00:10:38,899 --> 00:10:41,979
+Okay. So there's an idea
+
+282
+00:10:41,979 --> 00:10:43,779
+very similar to Docker
+port forwarding,
+
+283
+00:10:43,779 --> 00:10:45,500
+which is called an SSH tunnel.
+
+284
+00:10:45,500 --> 00:10:48,679
+Basically accomplishes the
+same thing. Different name.
+
+285
+00:10:48,679 --> 00:10:50,159
+You use it slightly differently,
+
+286
+00:10:50,159 --> 00:10:52,720
+but if it's very
+related concept.
+
+287
+00:10:52,720 --> 00:10:55,960
+So with an SSH tunnel,
+
+288
+00:10:55,960 --> 00:10:58,829
+what we can do is we can say L,
+
+289
+00:10:58,829 --> 00:11:01,680
+after SSH command, I
+could do like one dash
+
+290
+00:11:01,680 --> 00:11:03,180
+or I could have multiple tunnels
+
+291
+00:11:03,180 --> 00:11:04,939
+if I had multiple
+things like that.
+
+292
+00:11:04,939 --> 00:11:06,600
+And in this case,
+
+293
+00:11:06,600 --> 00:11:08,580
+we're always going
+to have four parts.
+
+294
+00:11:08,580 --> 00:11:11,819
+The first two parts are
+corresponding to a neck,
+
+295
+00:11:11,819 --> 00:11:13,260
+local host corresponds to
+
+296
+00:11:13,260 --> 00:11:16,420
+my loopback device
+neck and a port.
+
+297
+00:11:16,420 --> 00:11:18,179
+And so the first two are for
+
+298
+00:11:18,179 --> 00:11:20,820
+the machine where I'm
+running that command.
+
+299
+00:11:20,820 --> 00:11:23,280
+And then the other
+two are the same,
+
+300
+00:11:23,280 --> 00:11:27,679
+but those are for the machine
+that I'm connecting to.
+
+301
+00:11:27,679 --> 00:11:30,960
+And what this tunnel means is
+that if there's any traffic
+
+302
+00:11:30,960 --> 00:11:34,620
+coming to the loopback device
+on port 5,000 on my laptop,
+
+303
+00:11:34,620 --> 00:11:36,640
+SSH is normally a client,
+
+304
+00:11:36,640 --> 00:11:37,820
+it's going to be
+a server and it's
+
+305
+00:11:37,820 --> 00:11:39,480
+going to capture those packets,
+
+306
+00:11:39,480 --> 00:11:43,500
+and it will forward
+them along to SSD,
+
+307
+00:11:43,500 --> 00:11:46,279
+the server or on the
+virtual machine,
+
+308
+00:11:46,279 --> 00:11:48,680
+and SSHD is responsible
+for sending them
+
+309
+00:11:48,680 --> 00:11:51,249
+to Local Host 300, right?
+
+310
+00:11:51,249 --> 00:11:52,369
+So whenever I send something to
+
+311
+00:11:52,369 --> 00:11:54,629
+Local Host 5,000 on my laptop,
+
+312
+00:11:54,629 --> 00:11:56,910
+it pops out on the other
+side at Local Host
+
+313
+00:11:56,910 --> 00:12:00,289
+300 on the virtual
+machine, right?
+
+314
+00:12:00,289 --> 00:12:02,089
+So SSH tunnel gets us
+
+315
+00:12:02,089 --> 00:12:04,390
+from the laptop to
+the virtual machine.
+
+316
+00:12:04,390 --> 00:12:06,129
+The Docker report
+forward and gets us from
+
+317
+00:12:06,129 --> 00:12:08,450
+the virtual machine
+inside of a container.
+
+318
+00:12:08,450 --> 00:12:09,929
+And so maybe you can
+see how we could
+
+319
+00:12:09,929 --> 00:12:12,030
+start to combine these things,
+
+320
+00:12:12,030 --> 00:12:15,349
+actually set up a
+communication channel, right?
+
+321
+00:12:15,349 --> 00:12:18,769
+So if I open Chrome
+
+322
+00:12:18,769 --> 00:12:23,729
+and I type in Local
+Host 5,000 slash lab,
+
+323
+00:12:23,729 --> 00:12:26,169
+that will get here, it'll
+get forwarded along.
+
+324
+00:12:26,169 --> 00:12:29,150
+It'll then get forwarded
+through Docker port forwarding,
+
+325
+00:12:29,150 --> 00:12:31,570
+and then ultimately, it
+will end up at Jupiter lab,
+
+326
+00:12:31,570 --> 00:12:34,889
+and I can interact with
+Jupiter lab from my browser.
+
+327
+00:12:34,889 --> 00:12:38,109
+Okay? All right.
+
+328
+00:12:38,109 --> 00:12:39,589
+Any questions people have about
+
+329
+00:12:39,589 --> 00:12:41,390
+that? Yeah, right over here.
+
+330
+00:12:41,390 --> 00:12:45,610
+So the two Docker commands
+right now they're both image.
+
+331
+00:12:45,610 --> 00:12:48,089
+Does it have to be two different
+images, right? Oh, yeah.
+
+332
+00:12:48,089 --> 00:12:52,610
+You're saying both docker
+commands are going to my image.
+
+333
+00:12:52,610 --> 00:12:56,030
+So does it have to be different?
+
+334
+00:12:56,030 --> 00:12:58,295
+It doesn't have to be.
+It could be the same.
+
+335
+00:12:58,295 --> 00:13:00,420
+Always one container.
+
+336
+00:13:00,420 --> 00:13:03,620
+So whenever I do Docker
+on and I say an image,
+
+337
+00:13:03,620 --> 00:13:06,179
+then it creates a container
+from that, right?
+
+338
+00:13:06,179 --> 00:13:07,019
+I can have a bunch of
+
+339
+00:13:07,019 --> 00:13:08,319
+containers that are
+from different images,
+
+340
+00:13:08,319 --> 00:13:09,619
+or I can have a bunch
+of containers that are
+
+341
+00:13:09,619 --> 00:13:11,359
+from the same image.
+
+342
+00:13:11,359 --> 00:13:12,520
+Either would be fine.
+
+343
+00:13:12,520 --> 00:13:14,559
+Yeah, thank you for
+clarifying that.
+
+344
+00:13:14,559 --> 00:13:16,439
+What else do people want
+to know about this?
+
+345
+00:13:16,439 --> 00:13:18,840
+What other things are
+confusing right here?
+
+346
+00:13:18,840 --> 00:13:21,159
+Slide point of device.
+
+347
+00:13:21,159 --> 00:13:23,320
+Yeah, what is the point
+of the loopback device?
+
+348
+00:13:23,320 --> 00:13:25,339
+Sometimes I want to have
+some kind of server that
+
+349
+00:13:25,339 --> 00:13:28,159
+I'm maybe doing development
+with or interacting with,
+
+350
+00:13:28,159 --> 00:13:32,339
+but I don't want other people
+to have visibility to it.
+
+351
+00:13:32,339 --> 00:13:33,540
+I don't want them
+to be able to visit
+
+352
+00:13:33,540 --> 00:13:35,520
+my server, for example.
+
+353
+00:13:35,520 --> 00:13:37,340
+And so, one of the things I
+
+354
+00:13:37,340 --> 00:13:39,619
+could have done is when I did
+the doc report forwarding,
+
+355
+00:13:39,619 --> 00:13:42,060
+I could have instead of being
+on the loopback device,
+
+356
+00:13:42,060 --> 00:13:45,719
+I could have forwarded
+from ENS directly, right?
+
+357
+00:13:45,719 --> 00:13:47,040
+That would have some
+different security.
+
+358
+00:13:47,040 --> 00:13:49,760
+I have a slides I'll show
+how that would be different,
+
+359
+00:13:49,760 --> 00:13:51,640
+but it would be less secure.
+
+360
+00:13:51,640 --> 00:13:52,860
+Is a short answer, right?
+
+361
+00:13:52,860 --> 00:13:55,399
+It's more secure to listen
+on something local than to
+
+362
+00:13:55,399 --> 00:13:56,719
+listen on something
+where you might get
+
+363
+00:13:56,719 --> 00:13:59,539
+traffic from malicious
+parties, right?
+
+364
+00:13:59,660 --> 00:14:02,120
+And so this is something
+that, everybody's
+
+365
+00:14:02,120 --> 00:14:03,580
+going to do a bunch of
+times this semester
+
+366
+00:14:03,580 --> 00:14:04,559
+because we have whole projects
+
+367
+00:14:04,559 --> 00:14:05,339
+where it's like you're doing
+
+368
+00:14:05,339 --> 00:14:07,459
+stuff in Jupiter lab
+inside of a container.
+
+369
+00:14:07,459 --> 00:14:08,760
+And one of the things I
+
+370
+00:14:08,760 --> 00:14:10,119
+want you to get
+really good at is,
+
+371
+00:14:10,119 --> 00:14:13,130
+um is you'll set all this up,
+
+372
+00:14:13,130 --> 00:14:14,609
+and you can see there's
+lots of parts to it,
+
+373
+00:14:14,609 --> 00:14:16,089
+and it just won't work.
+
+374
+00:14:16,089 --> 00:14:18,070
+You open up your web
+browser and it's not there.
+
+375
+00:14:18,070 --> 00:14:19,650
+And so one of the
+reasons that we spent
+
+376
+00:14:19,650 --> 00:14:20,510
+a lot of time looking at
+
+377
+00:14:20,510 --> 00:14:21,789
+this picture is that
+when it doesn't work,
+
+378
+00:14:21,789 --> 00:14:23,569
+you have to think
+about, well, like,
+
+379
+00:14:23,569 --> 00:14:25,530
+am I starting Jupiter lab wrong?
+
+380
+00:14:25,530 --> 00:14:27,550
+Did I do Doc report
+forwarding wrong?
+
+381
+00:14:27,550 --> 00:14:29,469
+Did I do my SSH tunnel wrong?
+
+382
+00:14:29,469 --> 00:14:31,210
+And one of the things we're
+going to practice with is,
+
+383
+00:14:31,210 --> 00:14:33,449
+how can we run coral commands
+in different places to
+
+384
+00:14:33,449 --> 00:14:36,109
+try to diagnose where
+this chain broke down.
+
+385
+00:14:36,109 --> 00:14:37,229
+But I want everybody
+to kind of, like
+
+386
+00:14:37,229 --> 00:14:39,209
+internalize what this
+chain looks like.
+
+387
+00:14:39,209 --> 00:14:41,909
+Any other questions
+about this picture?
+
+388
+00:14:42,990 --> 00:14:48,749
+Right. Cool. So let's try
+changing this a little bit.
+
+389
+00:14:48,749 --> 00:14:56,500
+So I said that we could opt
+have with doctor Por Horner,
+
+390
+00:14:56,500 --> 00:14:57,660
+we could octually
+have two things,
+
+391
+00:14:57,660 --> 00:14:58,539
+or we could have three.
+
+392
+00:14:58,539 --> 00:15:00,419
+I did three, but now
+let's say I do two.
+
+393
+00:15:00,419 --> 00:15:02,099
+If I do two, then it
+actually gives me
+
+394
+00:15:02,099 --> 00:15:05,839
+a default IP address,
+which is 0000.
+
+395
+00:15:05,839 --> 00:15:08,659
+That means actually listen
+to everything, right?
+
+396
+00:15:08,659 --> 00:15:11,840
+So in this case,
+you can see before,
+
+397
+00:15:12,440 --> 00:15:16,079
+we were Oh, did I
+go the wrong way?
+
+398
+00:15:16,079 --> 00:15:18,540
+Before we were forwarding
+through that loopback device,
+
+399
+00:15:18,540 --> 00:15:20,399
+when I do that,
+now somebody could
+
+400
+00:15:20,399 --> 00:15:22,399
+directly connect to
+that port there.
+
+401
+00:15:22,399 --> 00:15:23,600
+Is that good or bad?
+
+402
+00:15:23,600 --> 00:15:26,499
+Well? It means that
+somebody could try to
+
+403
+00:15:26,499 --> 00:15:27,679
+guess my password on
+
+404
+00:15:27,679 --> 00:15:29,780
+Jupiter or if you're running
+Jupiter without a password,
+
+405
+00:15:29,780 --> 00:15:31,319
+which is what we'll
+usually do this semester,
+
+406
+00:15:31,319 --> 00:15:32,560
+then they just have access.
+
+407
+00:15:32,560 --> 00:15:34,040
+Once you have access to Jupiter,
+
+408
+00:15:34,040 --> 00:15:35,929
+you can run arbitrary code.
+
+409
+00:15:35,929 --> 00:15:37,920
+Maybe one of the more
+benign things you could do.
+
+410
+00:15:37,920 --> 00:15:39,040
+So somebody could
+start crypto mining
+
+411
+00:15:39,040 --> 00:15:40,279
+and then Google
+will just span you.
+
+412
+00:15:40,279 --> 00:15:41,819
+They could start
+actually like mounting
+
+413
+00:15:41,819 --> 00:15:43,279
+attacks against other
+other machines.
+
+414
+00:15:43,279 --> 00:15:46,060
+You don't want people to get
+access to your Jupiter lab.
+
+415
+00:15:46,060 --> 00:15:47,279
+That happens
+occasionally, right?
+
+416
+00:15:47,279 --> 00:15:48,540
+It's not the end of the world,
+
+417
+00:15:48,540 --> 00:15:51,199
+but we want to avoid
+that situation, right?
+
+418
+00:15:51,199 --> 00:15:52,860
+So there's some other
+security measures.
+
+419
+00:15:52,860 --> 00:15:54,159
+Like, one of the things
+you could do is you can
+
+420
+00:15:54,159 --> 00:15:56,020
+imagine a firewall
+that blocks 300,
+
+421
+00:15:56,020 --> 00:15:58,179
+maybe from certain
+sources or all sources.
+
+422
+00:15:58,179 --> 00:16:01,340
+You could imagine having a
+password in Jupiter lab.
+
+423
+00:16:01,340 --> 00:16:02,860
+You know what I usually do is
+
+424
+00:16:02,860 --> 00:16:04,819
+that I will have the
+other security measure.
+
+425
+00:16:04,819 --> 00:16:08,499
+We're back here, and we're
+going through 127001.
+
+426
+00:16:08,499 --> 00:16:10,999
+And I also leave the
+default firewall
+
+427
+00:16:10,999 --> 00:16:13,719
+intact that the Google
+Cloud gives me,
+
+428
+00:16:13,719 --> 00:16:15,579
+so if I can mess one
+of those things up,
+
+429
+00:16:15,579 --> 00:16:18,260
+people still cannot own
+my Jupiter notebook
+
+430
+00:16:18,260 --> 00:16:21,560
+and start running
+malicious code code there.
+
+431
+00:16:23,410 --> 00:16:25,509
+Another thing that's kind of a
+
+432
+00:16:25,509 --> 00:16:27,829
+functionality related thing.
+
+433
+00:16:27,829 --> 00:16:31,049
+You might have noticed
+that with the SSH tunnel,
+
+434
+00:16:31,049 --> 00:16:32,529
+there's like the
+four parts, because
+
+435
+00:16:32,529 --> 00:16:34,050
+I have the ports on both sides,
+
+436
+00:16:34,050 --> 00:16:35,910
+but I also have the
+necks on both sides.
+
+437
+00:16:35,910 --> 00:16:38,890
+Was the Docker report forwarding
+is the most three parts.
+
+438
+00:16:38,890 --> 00:16:40,230
+And it's just
+because they haven't
+
+439
+00:16:40,230 --> 00:16:41,630
+implemented as many features,
+
+440
+00:16:41,630 --> 00:16:43,189
+for whatever reason, I
+don't know why and not.
+
+441
+00:16:43,189 --> 00:16:43,910
+They could.
+
+442
+00:16:43,910 --> 00:16:45,950
+But with the Docker
+report forwarding,
+
+443
+00:16:45,950 --> 00:16:49,689
+it always forwards to the
+public facing Nick, right?
+
+444
+00:16:49,689 --> 00:16:52,590
+It will never for forward
+to the loopback device.
+
+445
+00:16:52,590 --> 00:16:53,929
+I don't know why they
+haven't done that
+
+446
+00:16:53,929 --> 00:16:55,629
+maybe they will
+someday But one of
+
+447
+00:16:55,629 --> 00:16:57,129
+the implications of
+that is that if I start
+
+448
+00:16:57,129 --> 00:16:59,909
+a server here and I listen
+on the loopback device,
+
+449
+00:16:59,909 --> 00:17:02,609
+then there's no way to get
+port forwarding to get
+
+450
+00:17:02,609 --> 00:17:05,429
+the traffic to me, right?
+
+451
+00:17:05,429 --> 00:17:07,709
+So, my advice when
+
+452
+00:17:07,709 --> 00:17:10,510
+you're starting Jupiter
+lab inside is always zero,
+
+453
+00:17:10,510 --> 00:17:12,949
+zero, zero, zero or
+any other server
+
+454
+00:17:12,949 --> 00:17:14,069
+inside of a container for that
+
+455
+00:17:14,069 --> 00:17:16,169
+matter that we can forward in.
+
+456
+00:17:16,169 --> 00:17:18,049
+But outside of it, we want to
+
+457
+00:17:18,049 --> 00:17:19,529
+forward from the
+loopback device so
+
+458
+00:17:19,529 --> 00:17:24,009
+that people cannot send this
+traffic from just anywhere.
+
+459
+00:17:24,009 --> 00:17:27,290
+Alright, do people have
+questions about the in
+
+460
+00:17:27,290 --> 00:17:33,710
+security aspects of that or
+how to set it up in this way?
+
+461
+00:17:34,990 --> 00:17:40,369
+All right. Cool. So we'll
+do the demo first, right?
+
+462
+00:17:40,369 --> 00:17:42,190
+And then people can ask
+questions during the demo.
+
+463
+00:17:42,190 --> 00:17:44,570
+Then right after that, I'm
+going to do a top hat.
+
+464
+00:17:44,570 --> 00:17:48,329
+Send going head over here
+to my virtual machine.
+
+465
+00:17:48,329 --> 00:17:53,489
+And I'm going to go under
+this forward directory.
+
+466
+00:17:53,489 --> 00:17:56,190
+And let's take a look
+at this Docker file.
+
+467
+00:17:56,190 --> 00:18:01,229
+Okay? So I'm starting from
+a Ubuntu Docker image.
+
+468
+00:18:01,229 --> 00:18:04,469
+I'm doing my apt update
+and install stuff.
+
+469
+00:18:04,469 --> 00:18:06,190
+Before I was showing this tool,
+
+470
+00:18:06,190 --> 00:18:07,830
+I was like, IP address.
+
+471
+00:18:07,830 --> 00:18:10,170
+That's usually installed by
+default and not entertainers,
+
+472
+00:18:10,170 --> 00:18:12,789
+so I have to install this
+IP route two thing to get
+
+473
+00:18:12,789 --> 00:18:16,630
+that I'm topping in this
+requirements dot TXT file.
+
+474
+00:18:16,630 --> 00:18:19,309
+Down here, I'm doing a
+PEP install R and that
+
+475
+00:18:19,309 --> 00:18:20,429
+means it wants to read from this
+
+476
+00:18:20,429 --> 00:18:22,050
+requirement, dot TXT file.
+
+477
+00:18:22,050 --> 00:18:23,449
+I'm go to show it
+soon, but basically
+
+478
+00:18:23,449 --> 00:18:25,109
+what that has is a list of
+
+479
+00:18:25,109 --> 00:18:28,469
+all the packages one per line
+that I want PEP to install.
+
+480
+00:18:28,469 --> 00:18:30,029
+So if I have a bunch of
+them, that's often more
+
+481
+00:18:30,029 --> 00:18:32,225
+efficient than putting
+them on one big line.
+
+482
+00:18:32,225 --> 00:18:35,260
+And then finally, down here,
+we're starting Python.
+
+483
+00:18:35,260 --> 00:18:37,860
+So run Python module
+is a program.
+
+484
+00:18:37,860 --> 00:18:39,160
+The Python module
+that we're talking
+
+485
+00:18:39,160 --> 00:18:41,219
+about is called Jupiter lab.
+
+486
+00:18:41,219 --> 00:18:44,820
+When I'm in a container,
+everything is root.
+
+487
+00:18:44,820 --> 00:18:47,100
+Jupiter lab doesn't normally
+like to run his root,
+
+488
+00:18:47,100 --> 00:18:49,079
+but we'll do it anyway.
+
+489
+00:18:49,079 --> 00:18:51,379
+If I set the token to
+be empty like this,
+
+490
+00:18:51,379 --> 00:18:53,579
+that means that my Jupiter lab
+
+491
+00:18:53,579 --> 00:18:54,979
+has no password
+associated with it.
+
+492
+00:18:54,979 --> 00:18:56,119
+So I need to make sure
+I have those other
+
+493
+00:18:56,119 --> 00:18:58,360
+security measure
+measures in place.
+
+494
+00:18:58,360 --> 00:19:01,280
+All right. So then down here,
+
+495
+00:19:01,280 --> 00:19:04,099
+I have to put an IP address.
+
+496
+00:19:04,099 --> 00:19:06,879
+D remind me what
+I must put here.
+
+497
+00:19:06,879 --> 00:19:08,979
+What is the only
+reasonable option.
+
+498
+00:19:08,979 --> 00:19:13,099
+The right here. Excellent.
+Excellent, right?
+
+499
+00:19:13,099 --> 00:19:16,880
+0000. Because we're running
+inside of a container
+
+500
+00:19:16,880 --> 00:19:18,900
+and any docker port forwarding
+
+501
+00:19:18,900 --> 00:19:21,140
+only goes to the
+public facing neck,
+
+502
+00:19:21,140 --> 00:19:22,880
+it won't troll to
+the loopback device.
+
+503
+00:19:22,880 --> 00:19:24,479
+I don't know what IP address
+
+504
+00:19:24,479 --> 00:19:26,220
+the public facing Neck has yet.
+
+505
+00:19:26,220 --> 00:19:28,499
+And so this will make
+sure I cover it.
+
+506
+00:19:28,499 --> 00:19:29,800
+The port number
+could be anything.
+
+507
+00:19:29,800 --> 00:19:31,279
+Does anybody wanted to shout out
+
+508
+00:19:31,279 --> 00:19:35,319
+their favorite
+number? What's that?
+
+509
+00:19:35,319 --> 00:19:37,480
+300. Okay, let's do 300.
+
+510
+00:19:37,480 --> 00:19:40,520
+So I will do 300 over here.
+
+511
+00:19:40,520 --> 00:19:43,819
+All right. Fantastic. And
+then I'm going to build it.
+
+512
+00:19:43,819 --> 00:19:45,799
+So let's build this thing.
+
+513
+00:19:45,799 --> 00:19:49,059
+Actually, I'm may to say build
+the docker file that's in
+
+514
+00:19:49,059 --> 00:19:50,480
+the current directory
+and then tag
+
+515
+00:19:50,480 --> 00:19:52,119
+it as something called demo.
+
+516
+00:19:52,119 --> 00:19:53,980
+I did that before. I would
+have been kind of slow,
+
+517
+00:19:53,980 --> 00:19:55,940
+but I've done it
+before, so it's fast.
+
+518
+00:19:55,940 --> 00:19:57,640
+Let me show you
+this requirement,
+
+519
+00:19:57,640 --> 00:19:59,439
+dot TXT file that
+was used, right?
+
+520
+00:19:59,439 --> 00:20:01,059
+There's actually quite a lot of
+
+521
+00:20:01,059 --> 00:20:03,160
+packages in here, you know, 90.
+
+522
+00:20:03,160 --> 00:20:05,960
+And let me take a
+look at Jupiter Lab.
+
+523
+00:20:05,960 --> 00:20:09,830
+You can see I'm installing
+version 4.25. Of Jupiter Lab.
+
+524
+00:20:09,830 --> 00:20:11,570
+That was really the
+only thing I wanted,
+
+525
+00:20:11,570 --> 00:20:13,309
+but Jupiter Lab
+had dependencies,
+
+526
+00:20:13,309 --> 00:20:14,949
+and those dependencies
+had other dependencies,
+
+527
+00:20:14,949 --> 00:20:16,969
+and ultimately had
+like all this stuff.
+
+528
+00:20:16,969 --> 00:20:18,829
+And one of the implications
+
+529
+00:20:18,829 --> 00:20:20,329
+of that is if I'm
+trying to get somebody
+
+530
+00:20:20,329 --> 00:20:21,909
+else to reproduce my environment
+
+531
+00:20:21,909 --> 00:20:24,490
+exactly to be exactly
+the same as mine,
+
+532
+00:20:24,490 --> 00:20:28,950
+it's not enough for me to tell
+them use Jupiter Lab 425.
+
+533
+00:20:28,950 --> 00:20:30,849
+Because when I did that,
+
+534
+00:20:30,849 --> 00:20:33,249
+maybe Jupiter Lab grabbed
+
+535
+00:20:33,249 --> 00:20:36,289
+the latest version
+of markup safe,
+
+536
+00:20:36,289 --> 00:20:38,650
+which was 2.1 0.5.
+
+537
+00:20:38,650 --> 00:20:40,470
+Maybe when somebody else uses
+
+538
+00:20:40,470 --> 00:20:41,709
+that same version
+of Jupiter lab,
+
+539
+00:20:41,709 --> 00:20:43,650
+it might grab the
+latest markup safe,
+
+540
+00:20:43,650 --> 00:20:47,049
+it might be like
+2.1 0.6, right? So
+
+541
+00:20:47,049 --> 00:20:48,789
+When you want to tell somebody,
+
+542
+00:20:48,789 --> 00:20:50,349
+run your environment exactly the
+
+543
+00:20:50,349 --> 00:20:52,230
+same way like I ran mine,
+
+544
+00:20:52,230 --> 00:20:54,189
+you have to tell them
+the exact versions
+
+545
+00:20:54,189 --> 00:20:56,149
+for all these
+different packages.
+
+546
+00:20:56,149 --> 00:20:58,989
+That sounds like a pain, but
+it's actually easier than
+
+547
+00:20:58,989 --> 00:21:01,850
+you might expect because
+there's with PIP,
+
+548
+00:21:01,850 --> 00:21:03,290
+you have this freeze tool,
+
+549
+00:21:03,290 --> 00:21:06,149
+and that will basically
+tell you the versions
+
+550
+00:21:06,149 --> 00:21:08,990
+of all the packages you
+currently have installed.
+
+551
+00:21:08,990 --> 00:21:11,529
+And so, for example, the
+way I built this file is
+
+552
+00:21:11,529 --> 00:21:14,609
+I just redirected
+that to request ITXT.
+
+553
+00:21:14,609 --> 00:21:16,409
+So people often do that.
+They have the environment.
+
+554
+00:21:16,409 --> 00:21:19,330
+They do a PIP freeze, dumpit
+to requirement, I TST file,
+
+555
+00:21:19,330 --> 00:21:20,889
+and they tell
+everybody else like
+
+556
+00:21:20,889 --> 00:21:23,379
+PIP install that same
+thing that we have.
+
+557
+00:21:23,379 --> 00:21:25,010
+Alright, so that's
+all fine and well.
+
+558
+00:21:25,010 --> 00:21:28,109
+So I think what we can do now
+is we can do a doc or run,
+
+559
+00:21:28,109 --> 00:21:30,789
+and I want to run
+that demo image.
+
+560
+00:21:30,789 --> 00:21:32,689
+And you know, I could
+put a command here,
+
+561
+00:21:32,689 --> 00:21:33,469
+but that would override
+
+562
+00:21:33,469 --> 00:21:34,869
+the default that I
+already showed you,
+
+563
+00:21:34,869 --> 00:21:37,829
+and the default was
+
+564
+00:21:37,829 --> 00:21:40,249
+basically Jupiter lab.
+So I can do that.
+
+565
+00:21:40,249 --> 00:21:41,750
+That will take a moment,
+
+566
+00:21:41,750 --> 00:21:43,330
+but it's going to
+start up Jupiter.
+
+567
+00:21:43,330 --> 00:21:46,470
+I can see their Jupiter is
+running. That's pretty cool.
+
+568
+00:21:46,470 --> 00:21:48,550
+I can see it's
+listening on port 300
+
+569
+00:21:48,550 --> 00:21:52,469
+inside as suggested, so
+I'm going to kill this.
+
+570
+00:21:52,469 --> 00:21:55,309
+And what I want to do now is I
+
+571
+00:21:55,309 --> 00:21:58,654
+want to run it with a
+specific port, right?
+
+572
+00:21:58,654 --> 00:22:01,879
+So I can say P,
+
+573
+00:22:01,879 --> 00:22:05,740
+and then I'm going to have a
+port forwarding to a port.
+
+574
+00:22:05,740 --> 00:22:08,660
+And before this, for
+this first port,
+
+575
+00:22:08,660 --> 00:22:11,020
+I have to say which neck
+
+576
+00:22:11,020 --> 00:22:12,759
+on my virtual machine
+is it forwarding from.
+
+577
+00:22:12,759 --> 00:22:16,000
+And I'm going to
+say one, 27, 001.
+
+578
+00:22:16,240 --> 00:22:18,579
+And then there's these
+two numbers here.
+
+579
+00:22:18,579 --> 00:22:20,300
+One of them, there's
+only one choice
+
+580
+00:22:20,300 --> 00:22:22,340
+that I can use andother
+one that could be free.
+
+581
+00:22:22,340 --> 00:22:25,759
+So I want to survey
+people one or two.
+
+582
+00:22:25,759 --> 00:22:28,820
+If I only have one choice here,
+
+583
+00:22:28,820 --> 00:22:31,619
+hold up one finger, if
+the second one is the
+
+584
+00:22:31,619 --> 00:22:32,739
+one where I have to get it
+
+585
+00:22:32,739 --> 00:22:35,519
+exactly right, hold
+up two fingers.
+
+586
+00:22:36,520 --> 00:22:40,199
+I see people saying
+two, which is correct.
+
+587
+00:22:40,199 --> 00:22:43,720
+To shout out, what do I
+have to put on this side?
+
+588
+00:22:43,720 --> 00:22:46,379
+300, because that is what is
+
+589
+00:22:46,379 --> 00:22:48,939
+inside my notebook.
+Then I don't know.
+
+590
+00:22:48,939 --> 00:22:51,224
+Somebody else have
+some favorite number.
+
+591
+00:22:51,224 --> 00:22:53,629
+Three oh one. Three
+oh one. Okay.
+
+592
+00:22:53,629 --> 00:22:58,130
+Fantastic. So we're going to
+forward three oh one to 300,
+
+593
+00:22:58,130 --> 00:23:00,029
+and I may run this in
+
+594
+00:23:00,029 --> 00:23:03,149
+Demon mode or detached
+mode. So I'm may run that.
+
+595
+00:23:03,149 --> 00:23:04,510
+It's running in the background.
+
+596
+00:23:04,510 --> 00:23:06,269
+I'm going to do Docker PS.
+
+597
+00:23:06,269 --> 00:23:08,149
+I guess I have quite
+a few things up,
+
+598
+00:23:08,149 --> 00:23:10,869
+but this is the one that
+started in the last 2 seconds.
+
+599
+00:23:10,869 --> 00:23:14,170
+And I can see that it's
+forwarding three oh
+
+600
+00:23:14,170 --> 00:23:18,189
+one on my loop back
+device to 300, right?
+
+601
+00:23:18,189 --> 00:23:19,749
+And so maybe what I might do
+
+602
+00:23:19,749 --> 00:23:21,649
+is I might try to
+communicate with it.
+
+603
+00:23:21,649 --> 00:23:24,150
+And I May 1 do that from
+inside of the container.
+
+604
+00:23:24,150 --> 00:23:27,969
+So I'm going to
+do a docker exec.
+
+605
+00:23:28,440 --> 00:23:33,839
+IT. And this one is
+called Wizard Agnesi,
+
+606
+00:23:33,839 --> 00:23:36,360
+and I'm going to get a bash
+session inside of there.
+
+607
+00:23:36,360 --> 00:23:38,379
+And then I can do
+a curl if I want,
+
+608
+00:23:38,379 --> 00:23:40,679
+I can do a curl to Local host,
+
+609
+00:23:40,679 --> 00:23:48,059
+and then let's do 300 was
+the number that was chosen.
+
+610
+00:23:48,059 --> 00:23:52,059
+And I have a typo there,
+so let's try that.
+
+611
+00:23:52,059 --> 00:23:54,400
+And there's no output.
+
+612
+00:23:54,400 --> 00:23:56,120
+You know, if I tried
+something else,
+
+613
+00:23:56,120 --> 00:23:57,800
+right, like, it'll
+actually give me an error.
+
+614
+00:23:57,800 --> 00:23:59,979
+So it's not a complete
+failure, right?
+
+615
+00:23:59,979 --> 00:24:03,079
+Because I'm not getting an
+error. Why is it empty?
+
+616
+00:24:03,079 --> 00:24:05,840
+Well, it was a successful
+request and response,
+
+617
+00:24:05,840 --> 00:24:07,299
+but that response is sending me
+
+618
+00:24:07,299 --> 00:24:10,100
+back success and an empty body.
+
+619
+00:24:10,100 --> 00:24:12,519
+So it's showing me the
+empty body right here.
+
+620
+00:24:12,519 --> 00:24:13,960
+So sometimes instead
+of just seeing
+
+621
+00:24:13,960 --> 00:24:16,499
+the request or response
+body coming back to you,
+
+622
+00:24:16,499 --> 00:24:19,800
+you might want to say,
+V, V means verbos.
+
+623
+00:24:19,800 --> 00:24:21,739
+Verbos means, like,
+tell me everything.
+
+624
+00:24:21,739 --> 00:24:23,559
+I could do a verbose on that.
+
+625
+00:24:23,559 --> 00:24:26,399
+And now I see, sure,
+what I told you, right?
+
+626
+00:24:26,399 --> 00:24:27,800
+There was a zero content length.
+
+627
+00:24:27,800 --> 00:24:29,080
+There's some other debug stuff.
+
+628
+00:24:29,080 --> 00:24:32,039
+But more interesting is
+I can see in plaintext,
+
+629
+00:24:32,039 --> 00:24:34,014
+what the HTP request look like.
+
+630
+00:24:34,014 --> 00:24:35,609
+And then down here,
+I can see what
+
+631
+00:24:35,609 --> 00:24:37,789
+the HGP response looks like.
+
+632
+00:24:37,789 --> 00:24:39,150
+So I got a three oh two status,
+
+633
+00:24:39,150 --> 00:24:42,090
+which was found like four
+oh four would be not found.
+
+634
+00:24:42,090 --> 00:24:44,114
+Here it is finding something
+
+635
+00:24:44,114 --> 00:24:45,519
+But what it's telling me is
+
+636
+00:24:45,519 --> 00:24:46,939
+that instead of having a body,
+
+637
+00:24:46,939 --> 00:24:48,579
+it's giving me a location.
+
+638
+00:24:48,579 --> 00:24:51,200
+And what this is basically
+is an HTP redirect.
+
+639
+00:24:51,200 --> 00:24:52,479
+I'm sure you all have seen that.
+
+640
+00:24:52,479 --> 00:24:54,959
+You type in a URL and
+redirects you elsewhere,
+
+641
+00:24:54,959 --> 00:24:57,700
+and a web browser would
+fall out automatically,
+
+642
+00:24:57,700 --> 00:24:59,779
+Carl is not doing that.
+
+643
+00:24:59,779 --> 00:25:01,859
+But it gives me a good
+hint about what to do,
+
+644
+00:25:01,859 --> 00:25:04,499
+and that I can type
+in lab afterwards.
+
+645
+00:25:04,499 --> 00:25:06,299
+Now, what is all this?
+This is like a bunch of
+
+646
+00:25:06,299 --> 00:25:08,440
+HTML and Java strip
+for that page.
+
+647
+00:25:08,440 --> 00:25:10,000
+It would be nice to
+see in a browser,
+
+648
+00:25:10,000 --> 00:25:11,259
+but at least what
+I verified is that
+
+649
+00:25:11,259 --> 00:25:13,920
+the networking aspect
+of this works.
+
+650
+00:25:13,920 --> 00:25:15,340
+So when you're
+troubleshooting these things,
+
+651
+00:25:15,340 --> 00:25:17,600
+like if you're trying to
+get Jupiter lab working,
+
+652
+00:25:17,600 --> 00:25:19,740
+the first thing I asked a
+student is can you go into
+
+653
+00:25:19,740 --> 00:25:23,269
+your container and can you
+talk to the server? We can.
+
+654
+00:25:23,269 --> 00:25:24,749
+Great. That's fantastic.
+
+655
+00:25:24,749 --> 00:25:27,229
+So I'm gonna jump out of there.
+
+656
+00:25:27,229 --> 00:25:31,289
+Let me just grab that command
+
+657
+00:25:31,289 --> 00:25:32,969
+again that I just used, right?
+
+658
+00:25:32,969 --> 00:25:36,590
+I think it was somewhere.
+
+659
+00:25:36,590 --> 00:25:39,769
+It was right here, actually.
+
+660
+00:25:39,769 --> 00:25:41,910
+So I'm gonna grab
+this command again.
+
+661
+00:25:41,910 --> 00:25:43,609
+I'm also going to just like to
+
+662
+00:25:43,609 --> 00:25:45,869
+refresh our memory
+to a doctor PS.
+
+663
+00:25:45,869 --> 00:25:48,070
+And then if I run
+that thing, now
+
+664
+00:25:48,070 --> 00:25:50,509
+I'm getting an error, right?
+
+665
+00:25:50,509 --> 00:25:58,929
+So I wonder what do I need
+to change about this?
+
+666
+00:26:02,680 --> 00:26:04,314
+He.
+
+667
+00:26:04,314 --> 00:26:06,649
+One. It should be
+three oh one, right?
+
+668
+00:26:06,649 --> 00:26:08,810
+So when I'm inside, I use 300.
+
+669
+00:26:08,810 --> 00:26:10,449
+When I'm outside, I
+
+670
+00:26:10,449 --> 00:26:12,209
+use three oh one, right
+now, I'm outside.
+
+671
+00:26:12,209 --> 00:26:14,449
+And so you have to think
+about where you are to
+
+672
+00:26:14,449 --> 00:26:17,889
+properly formulate your
+request. Fantastic, right?
+
+673
+00:26:17,889 --> 00:26:19,369
+So now I verified that Docker
+
+674
+00:26:19,369 --> 00:26:21,210
+report forwarding is working.
+
+675
+00:26:21,210 --> 00:26:22,290
+If I was trying to troubleshoot,
+
+676
+00:26:22,290 --> 00:26:26,269
+I would try to rule that
+out as an issue. Alright.
+
+677
+00:26:26,269 --> 00:26:29,089
+Cool. So that's all
+fine and well so far.
+
+678
+00:26:29,089 --> 00:26:31,309
+What I want to do
+now is I want to see
+
+679
+00:26:31,309 --> 00:26:33,629
+if I can actually do this in
+
+680
+00:26:33,629 --> 00:26:38,229
+my web browser on
+my laptop, right?
+
+681
+00:26:38,229 --> 00:26:40,870
+Let me just Let me just
+do this by the way,
+
+682
+00:26:40,870 --> 00:26:42,670
+to make it a little bit
+shorter, by the way.
+
+683
+00:26:42,670 --> 00:26:44,869
+Alright. So what I'm going to do
+
+684
+00:26:44,869 --> 00:26:47,569
+is I'm going to come over here,
+
+685
+00:26:47,569 --> 00:26:51,889
+and I may get a new
+SSH session drawing.
+
+686
+00:26:51,889 --> 00:26:54,129
+And then I can say L,
+
+687
+00:26:54,129 --> 00:26:57,449
+and then I have to have
+the four parts, right?
+
+688
+00:26:57,449 --> 00:27:00,389
+I have on my laptop
+
+689
+00:27:00,389 --> 00:27:01,630
+where I want to
+forward from session,
+
+690
+00:27:01,630 --> 00:27:03,589
+going be local host.
+
+691
+00:27:03,700 --> 00:27:07,599
+Some number. And
+then I need to go
+
+692
+00:27:07,599 --> 00:27:11,079
+to my virtual machine, right?
+
+693
+00:27:11,079 --> 00:27:12,439
+I may have to have
+something over there.
+
+694
+00:27:12,439 --> 00:27:13,619
+Maybe be helpful to look back.
+
+695
+00:27:13,619 --> 00:27:15,479
+What did I do over here? I did
+
+696
+00:27:15,479 --> 00:27:18,399
+local host three oh one, right?
+
+697
+00:27:18,399 --> 00:27:20,239
+I know that if I can
+forward somebody to
+
+698
+00:27:20,239 --> 00:27:23,019
+local host three oh
+one, I'm good, right?
+
+699
+00:27:23,019 --> 00:27:25,739
+So I have local host here
+and a local host here.
+
+700
+00:27:25,739 --> 00:27:28,019
+Does somebody else have some
+favorite number they would
+
+701
+00:27:28,019 --> 00:27:32,490
+like to use 302.
+
+702
+00:27:32,490 --> 00:27:36,769
+Okay, right? The earlier
+crowd was like, malicious.
+
+703
+00:27:36,769 --> 00:27:38,889
+They were like trying to
+choose, like, Port 22 or like,
+
+704
+00:27:38,889 --> 00:27:40,629
+ports that were going
+to cause problems for,
+
+705
+00:27:40,629 --> 00:27:42,270
+maybe SSH choses Port 22.
+
+706
+00:27:42,270 --> 00:27:43,369
+So thank you all for choosing
+
+707
+00:27:43,369 --> 00:27:46,069
+nice friendly ports. So
+I'm going to do that.
+
+708
+00:27:46,069 --> 00:27:48,309
+It actually says
+permission denied,
+
+709
+00:27:48,309 --> 00:27:49,909
+so I didn't actually
+establish that.
+
+710
+00:27:49,909 --> 00:27:51,850
+Maybe it was a malicious port.
+
+711
+00:27:51,850 --> 00:27:54,490
+Why is that? Well, there's
+certain well known ports
+
+712
+00:27:54,490 --> 00:27:57,250
+like 22 or 80 or 43.
+
+713
+00:27:57,250 --> 00:27:59,589
+And to use those,
+
+714
+00:27:59,589 --> 00:28:01,669
+you have to be the root
+user, right Because they
+
+715
+00:28:01,669 --> 00:28:03,769
+kind of normally have this
+other well defined purpose.
+
+716
+00:28:03,769 --> 00:28:06,574
+So I could do like a pseudo.
+
+717
+00:28:06,574 --> 00:28:09,939
+That should work, or
+probably better is that I
+
+718
+00:28:09,939 --> 00:28:13,479
+choose a port number that's
+bigger than three oh two.
+
+719
+00:28:13,479 --> 00:28:15,199
+Notice that, like it end
+be an obvious error.
+
+720
+00:28:15,199 --> 00:28:16,620
+You have to kind of read
+carefully and notice,
+
+721
+00:28:16,620 --> 00:28:18,339
+though it was a problem
+because it kind of
+
+722
+00:28:18,339 --> 00:28:20,959
+just carries on. So
+I'm going to do that.
+
+723
+00:28:20,959 --> 00:28:27,400
+And so now, If I
+come back to here,
+
+724
+00:28:27,400 --> 00:28:30,079
+it's forwarding everything
+on my laptop that's coming
+
+725
+00:28:30,079 --> 00:28:33,039
+here to this place on
+the virtual machine.
+
+726
+00:28:33,039 --> 00:28:34,920
+And so since I'm on my laptop,
+
+727
+00:28:34,920 --> 00:28:38,800
+this is the local host
+that I need to put here.
+
+728
+00:28:38,800 --> 00:28:41,280
+My browser on L url is
+smart enough to forward.
+
+729
+00:28:41,280 --> 00:28:43,280
+You see I put a lab in there
+
+730
+00:28:43,280 --> 00:28:45,420
+for me automatically.
+That's cool.
+
+731
+00:28:45,420 --> 00:28:47,240
+I can open a Juper notebook,
+
+732
+00:28:47,240 --> 00:28:49,719
+I can run whatever
+computation I want to run.
+
+733
+00:28:49,719 --> 00:28:51,279
+This is what your
+development environment
+
+734
+00:28:51,279 --> 00:28:53,219
+is going to look like for,
+
+735
+00:28:53,219 --> 00:28:56,890
+like, a fair number of the
+projects this semester. Oh.
+
+736
+00:28:56,890 --> 00:28:58,409
+All right. Cool.
+So maybe I'll just
+
+737
+00:28:58,409 --> 00:29:00,369
+be over here showing this.
+
+738
+00:29:00,369 --> 00:29:01,709
+And I'll just pause and see.
+
+739
+00:29:01,709 --> 00:29:03,409
+Do people have any
+questions about either like
+
+740
+00:29:03,409 --> 00:29:06,730
+the port forwarding stuff
+or the SSH tunnels?
+
+741
+00:29:07,210 --> 00:29:09,889
+Oh, right. Yeah, right here.
+
+742
+00:29:09,889 --> 00:29:11,589
+Explain to me why we
+don't have to use
+
+743
+00:29:11,589 --> 00:29:15,209
+the 300 part why we don't
+have to use the 300 part?
+
+744
+00:29:15,209 --> 00:29:16,890
+Well, we're trying to
+chain things along.
+
+745
+00:29:16,890 --> 00:29:19,849
+So the first live link of the
+chain is from laptop to VM.
+
+746
+00:29:19,849 --> 00:29:23,050
+The second link of the
+chain is VM to container.
+
+747
+00:29:23,050 --> 00:29:25,090
+And so you said,
+
+748
+00:29:25,090 --> 00:29:26,630
+why don't we have to use
+
+749
+00:29:26,630 --> 00:29:29,384
+You said why don't we have
+to use 300 or three oh one?
+
+750
+00:29:29,384 --> 00:29:32,739
+300 Yeah.
+
+751
+00:29:32,739 --> 00:29:34,760
+So 300 was what Jupiter
+
+752
+00:29:34,760 --> 00:29:36,900
+was running inside
+of the containers?
+
+753
+00:29:36,900 --> 00:29:38,260
+That's the second
+link of the chain.
+
+754
+00:29:38,260 --> 00:29:40,880
+The second link of the chain
+was three oh one to 300.
+
+755
+00:29:40,880 --> 00:29:42,259
+And so I set that up when I
+
+756
+00:29:42,259 --> 00:29:43,739
+did the docker port forwarding.
+
+757
+00:29:43,739 --> 00:29:45,279
+And so once I have set that up,
+
+758
+00:29:45,279 --> 00:29:47,199
+to connect that chain all
+I have to do is I have
+
+759
+00:29:47,199 --> 00:29:49,559
+to get to 301, right?
+
+760
+00:29:49,559 --> 00:29:51,779
+That 301 to 300 is
+already set up.
+
+761
+00:29:51,779 --> 00:29:53,360
+Now I just have to get to 301.
+
+762
+00:29:53,360 --> 00:29:55,759
+And that's what this
+is doing right here.
+
+763
+00:29:55,759 --> 00:29:58,059
+So I do SSH tunnel
+to get to the VM.
+
+764
+00:29:58,059 --> 00:30:00,039
+Then I use Docker port
+forwarding to get
+
+765
+00:30:00,039 --> 00:30:03,640
+inside of a container on the
+VM. Does that make sense?
+
+766
+00:30:03,640 --> 00:30:06,759
+Fantastic. Yeah, what else
+do people want to know?
+
+767
+00:30:06,759 --> 00:30:14,469
+Yeah. Yeah. Yeah.
+So the question is,
+
+768
+00:30:14,469 --> 00:30:17,509
+if I exit out of
+this SSH session,
+
+769
+00:30:17,509 --> 00:30:19,670
+that would break the chain.
+
+770
+00:30:19,670 --> 00:30:22,409
+And then I would refresh this,
+
+771
+00:30:22,409 --> 00:30:24,749
+and it's. The chain is broken.
+
+772
+00:30:24,749 --> 00:30:26,890
+And so maybe if you're like
+working on something stop,
+
+773
+00:30:26,890 --> 00:30:28,709
+you have to like figure
+out, did you close
+
+774
+00:30:28,709 --> 00:30:31,049
+a terminal or figure out
+where it broke, right?
+
+775
+00:30:31,049 --> 00:30:32,490
+Yeah. Yeah. Excellent point.
+
+776
+00:30:32,490 --> 00:30:35,489
+Yeah, what else do people
+have points or questions?
+
+777
+00:30:36,810 --> 00:30:44,409
+Yeah, right here. Yeah.
+
+778
+00:30:47,530 --> 00:30:50,590
+Sent So you're saying,
+
+779
+00:30:50,590 --> 00:30:52,629
+what is the risk of somebody
+
+780
+00:30:52,629 --> 00:30:53,790
+running something malicious
+
+781
+00:30:53,790 --> 00:30:55,809
+inside of our docker container?
+
+782
+00:30:55,809 --> 00:31:00,109
+Well, if they could
+run on my laptop,
+
+783
+00:31:00,109 --> 00:31:01,729
+then they could do
+something malicious, right?
+
+784
+00:31:01,729 --> 00:31:03,949
+Because they could take
+advantage of that SSH tunnel.
+
+785
+00:31:03,949 --> 00:31:06,710
+If they had my private SSH key,
+
+786
+00:31:06,710 --> 00:31:08,249
+they could establish
+a tunnel from
+
+787
+00:31:08,249 --> 00:31:10,890
+a different machine and they
+could do something bad.
+
+788
+00:31:10,890 --> 00:31:14,309
+But if they don't have anything
+related to SSH, right?
+
+789
+00:31:14,309 --> 00:31:16,349
+If they can't have
+access to that tunnel,
+
+790
+00:31:16,349 --> 00:31:18,849
+then it's relatively
+secure, right?
+
+791
+00:31:18,849 --> 00:31:20,269
+Because they don't
+have a way to talk to
+
+792
+00:31:20,269 --> 00:31:22,089
+local host on that machine.
+
+793
+00:31:22,089 --> 00:31:23,869
+And local host is the
+only thing that is
+
+794
+00:31:23,869 --> 00:31:26,809
+forwarding to the
+docker container.
+
+795
+00:31:26,809 --> 00:31:30,470
+So this is a safe set
+up. That makes sense?
+
+796
+00:31:33,530 --> 00:31:35,649
+Yeah. Mm hm. They couldn't
+
+797
+00:31:35,649 --> 00:31:37,409
+even establish a
+connection, right?
+
+798
+00:31:37,409 --> 00:31:39,210
+Like the default, if you create
+
+799
+00:31:39,210 --> 00:31:40,529
+a new virtual machine on GCP
+
+800
+00:31:40,529 --> 00:31:42,209
+and you don't mess with
+the firewall settings.
+
+801
+00:31:42,209 --> 00:31:43,749
+By default, the only
+thing they have
+
+802
+00:31:43,749 --> 00:31:45,510
+open is Port 22 for SSH,
+
+803
+00:31:45,510 --> 00:31:46,769
+because, well, that's
+like the first thing
+
+804
+00:31:46,769 --> 00:31:48,149
+you do with a new
+virtual machine.
+
+805
+00:31:48,149 --> 00:31:49,609
+So if you don't go in and
+
+806
+00:31:49,609 --> 00:31:51,209
+mess around with your
+firewall settings,
+
+807
+00:31:51,209 --> 00:31:55,190
+then all the security kind
+of falls on SSH alone,
+
+808
+00:31:55,190 --> 00:31:58,109
+and then of course, SSH
+is very secure, right?
+
+809
+00:31:58,109 --> 00:32:01,769
+Yeah, doing questions. Yeah
+other questions people have.
+
+810
+00:32:01,890 --> 00:32:04,490
+All right. Fantastic.
+
+811
+00:32:04,490 --> 00:32:06,669
+So now let's go ahead
+and we're going to go to
+
+812
+00:32:06,669 --> 00:32:10,809
+top at and make sure that
+all kind of sunk in.
+
+813
+00:32:56,420 --> 00:32:59,380
+30 seconds left.
+
+814
+00:33:30,710 --> 00:33:32,489
+Alright. So most people
+
+815
+00:33:32,489 --> 00:33:35,829
+are saying 7,000,
+which is correct.
+
+816
+00:33:35,829 --> 00:33:38,310
+We're running in a
+browser on our laptop.
+
+817
+00:33:38,310 --> 00:33:40,269
+And our laptop is
+forwarding from
+
+818
+00:33:40,269 --> 00:33:42,829
+Local Host 7,000 to
+the virtual machines.
+
+819
+00:33:42,829 --> 00:33:45,929
+So Local Host 7,000 is
+the correct answer.
+
+820
+00:33:45,929 --> 00:33:48,109
+You can imagine trickier
+variance I could have of this.
+
+821
+00:33:48,109 --> 00:33:49,969
+I could say, like if I
+
+822
+00:33:49,969 --> 00:33:51,909
+was running a curl command
+on the virtual machine,
+
+823
+00:33:51,909 --> 00:33:53,189
+then it would be
+kind of irrelevant,
+
+824
+00:33:53,189 --> 00:33:54,949
+what I did with the SSH tunnel.
+
+825
+00:33:54,949 --> 00:33:56,969
+I mean, I could say,
+
+826
+00:33:56,969 --> 00:33:59,369
+if I was running a curl command
+inside of the container,
+
+827
+00:33:59,369 --> 00:34:00,430
+then there's a lot of kind
+
+828
+00:34:00,430 --> 00:34:02,069
+of misleading information here.
+
+829
+00:34:02,069 --> 00:34:03,729
+That's not relevant. So,
+
+830
+00:34:03,729 --> 00:34:05,069
+you have to think
+about the chain,
+
+831
+00:34:05,069 --> 00:34:06,029
+and then I might ask you
+
+832
+00:34:06,029 --> 00:34:07,450
+about at various
+points in the chain,
+
+833
+00:34:07,450 --> 00:34:12,089
+how would I connect to
+that server? All right.
+
+834
+00:34:12,089 --> 00:34:14,209
+Cool. So I think that's good.
+
+835
+00:34:14,209 --> 00:34:18,450
+So that is networking
+port forwarding stuff.
+
+836
+00:34:18,450 --> 00:34:20,449
+Let's learn about
+doctor Compose.
+
+837
+00:34:20,449 --> 00:34:22,789
+And doctor Compose is
+
+838
+00:34:22,789 --> 00:34:25,069
+an example of an
+orchestration tool.
+
+839
+00:34:25,069 --> 00:34:26,829
+Orchestration is
+something that will let
+
+840
+00:34:26,829 --> 00:34:28,789
+you deploy a bunch
+of containers at
+
+841
+00:34:28,789 --> 00:34:30,490
+the same time that are working
+
+842
+00:34:30,490 --> 00:34:33,279
+together in some way. Right?
+
+843
+00:34:33,279 --> 00:34:35,559
+And so the most by far,
+
+844
+00:34:35,559 --> 00:34:37,239
+the most famous
+container orchestrator
+
+845
+00:34:37,239 --> 00:34:38,379
+is called Kubernetes.
+
+846
+00:34:38,379 --> 00:34:40,319
+It's often abbreviated k8s
+
+847
+00:34:40,319 --> 00:34:41,580
+because there's
+like eight letters
+
+848
+00:34:41,580 --> 00:34:44,819
+between the K and S.
+It's quite complicated.
+
+849
+00:34:44,819 --> 00:34:46,720
+We're not going to spend
+time learning this semester,
+
+850
+00:34:46,720 --> 00:34:48,459
+but it's something that
+I bet a lot of you will
+
+851
+00:34:48,459 --> 00:34:50,580
+end up using in your careers.
+
+852
+00:34:50,580 --> 00:34:52,300
+And so we're going to
+use doctor Compose.
+
+853
+00:34:52,300 --> 00:34:53,399
+Some people don't even really
+
+854
+00:34:53,399 --> 00:34:54,559
+consider doctor Compose like
+
+855
+00:34:54,559 --> 00:34:56,920
+a real orchestrator
+because it cannot
+
+856
+00:34:56,920 --> 00:34:59,600
+spin up containers on different
+machines in a cluster.
+
+857
+00:34:59,600 --> 00:35:01,219
+It's spinning up
+all the containers
+
+858
+00:35:01,219 --> 00:35:02,760
+on the same virtual machine.
+
+859
+00:35:02,760 --> 00:35:03,979
+But as advantage of that,
+
+860
+00:35:03,979 --> 00:35:05,379
+it's kind of a
+simple, easy to use.
+
+861
+00:35:05,379 --> 00:35:07,440
+It's great for
+pedagogical purposes
+
+862
+00:35:07,440 --> 00:35:09,419
+to get exposed to what we need.
+
+863
+00:35:09,419 --> 00:35:11,540
+And so like often you're going
+to be doing the semesters,
+
+864
+00:35:11,540 --> 00:35:12,579
+you're going to be
+writing something called
+
+865
+00:35:12,579 --> 00:35:13,819
+a Doctor composed file,
+
+866
+00:35:13,819 --> 00:35:15,899
+and then I can run
+some command on it,
+
+867
+00:35:15,899 --> 00:35:17,580
+and then I can bring
+up your cluster,
+
+868
+00:35:17,580 --> 00:35:20,450
+similar to what you were
+running on your machine.
+
+869
+00:35:20,450 --> 00:35:22,359
+So, we've seen that
+with the Docer
+
+870
+00:35:22,359 --> 00:35:23,459
+There's a bunch of subcommands.
+
+871
+00:35:23,459 --> 00:35:26,459
+Like I can say, like
+Docker PS or Docker run
+
+872
+00:35:26,459 --> 00:35:28,139
+or Docker build or Docker pull.
+
+873
+00:35:28,139 --> 00:35:29,660
+And the same way, it's
+going to be like Docer
+
+874
+00:35:29,660 --> 00:35:31,419
+compose and a lot of
+different things.
+
+875
+00:35:31,419 --> 00:35:33,479
+Docer compose up,
+Docker compose down,
+
+876
+00:35:33,479 --> 00:35:35,999
+Docker compose PS, right?
+
+877
+00:35:35,999 --> 00:35:39,819
+And so what we'll do is we
+can run Der compose off,
+
+878
+00:35:39,819 --> 00:35:40,979
+and then we'll spin up a bunch
+
+879
+00:35:40,979 --> 00:35:42,179
+of containers that
+work together.
+
+880
+00:35:42,179 --> 00:35:44,179
+Maybe there's like
+a web server that
+
+881
+00:35:44,179 --> 00:35:47,119
+is kind of displaying
+information from a database.
+
+882
+00:35:47,119 --> 00:35:49,599
+Maybe there's a separate
+thing that's doing
+
+883
+00:35:49,599 --> 00:35:50,899
+some machine
+learning on the data
+
+884
+00:35:50,899 --> 00:35:52,479
+in that database.
+Who knows, right?
+
+885
+00:35:52,479 --> 00:35:53,659
+You could have some
+application with a
+
+886
+00:35:53,659 --> 00:35:55,140
+few parts that are
+working together,
+
+887
+00:35:55,140 --> 00:35:57,365
+and they can all
+come up together.
+
+888
+00:35:57,365 --> 00:36:00,649
+Let's add over and do
+some examples with this.
+
+889
+00:36:00,649 --> 00:36:05,369
+And so let me just
+close this over here.
+
+890
+00:36:05,369 --> 00:36:08,949
+And so Here I am.
+
+891
+00:36:08,949 --> 00:36:11,429
+I guess I have an SSH
+teller right now.
+
+892
+00:36:11,429 --> 00:36:13,949
+I don't think so. All
+right, that's fine.
+
+893
+00:36:13,949 --> 00:36:15,789
+So I'm going to go out
+here and I am going
+
+894
+00:36:15,789 --> 00:36:18,169
+to start with an
+existing application,
+
+895
+00:36:18,169 --> 00:36:19,610
+and it's in the
+starter directory,
+
+896
+00:36:19,610 --> 00:36:20,429
+which is already pushed.
+
+897
+00:36:20,429 --> 00:36:21,609
+I'm just going to recursively
+
+898
+00:36:21,609 --> 00:36:24,389
+copy starter to lecture two.
+
+899
+00:36:24,389 --> 00:36:27,949
+And then I'm going to
+go on side Lecture two.
+
+900
+00:36:27,949 --> 00:36:30,049
+And there's already
+some stuff here.
+
+901
+00:36:30,049 --> 00:36:31,950
+And I have an application.
+
+902
+00:36:31,950 --> 00:36:33,249
+What we're going to do
+is we're going to have
+
+903
+00:36:33,249 --> 00:36:35,190
+three instances of
+this application
+
+904
+00:36:35,190 --> 00:36:36,689
+running alongside each other.
+
+905
+00:36:36,689 --> 00:36:38,824
+So the application
+
+906
+00:36:38,824 --> 00:36:40,980
+Is a GRPC application.
+
+907
+00:36:40,980 --> 00:36:43,339
+And so we have a
+protocol buffer file,
+
+908
+00:36:43,339 --> 00:36:46,679
+and the service that we're
+going to be building, right?
+
+909
+00:36:46,679 --> 00:36:48,359
+When I build this,
+that service is
+
+910
+00:36:48,359 --> 00:36:50,180
+going to get traverted
+into a class,
+
+911
+00:36:50,180 --> 00:36:52,940
+and the class will have one
+method I have to override.
+
+912
+00:36:52,940 --> 00:36:54,319
+That method is called count.
+
+913
+00:36:54,319 --> 00:36:56,660
+It takes a request and
+returns a response.
+
+914
+00:36:56,660 --> 00:36:58,120
+The request is empty,
+
+915
+00:36:58,120 --> 00:37:00,780
+and the response is just
+giving me some number.
+
+916
+00:37:00,780 --> 00:37:02,560
+And the idea of the applications
+
+917
+00:37:02,560 --> 00:37:04,559
+is like the first time I call
+it is going to return one,
+
+918
+00:37:04,559 --> 00:37:07,159
+the next time it's
+going to return two,
+
+919
+00:37:07,159 --> 00:37:09,219
+and it's going to keep
+ticking off, right?
+
+920
+00:37:09,219 --> 00:37:11,574
+So this is an server Pi.
+
+921
+00:37:11,574 --> 00:37:14,170
+You can see that there's
+that counter servicer,
+
+922
+00:37:14,170 --> 00:37:16,610
+and if I want to basically
+build an application,
+
+923
+00:37:16,610 --> 00:37:18,449
+use that interface,
+I have to create
+
+924
+00:37:18,449 --> 00:37:21,070
+a subclass from it and I
+can override that method.
+
+925
+00:37:21,070 --> 00:37:23,730
+So here I have a
+global total variable,
+
+926
+00:37:23,730 --> 00:37:25,949
+counting up, returning it,
+
+927
+00:37:25,949 --> 00:37:27,429
+and all this other
+stuff is trying to like
+
+928
+00:37:27,429 --> 00:37:31,510
+generic GRPC stuff that we
+talked about on Monday.
+
+929
+00:37:31,510 --> 00:37:33,570
+All right, so that's
+my application,
+
+930
+00:37:33,570 --> 00:37:38,430
+and I would like to deploy
+it in a docker container.
+
+931
+00:37:38,430 --> 00:37:41,669
+So I may take a look at this
+docker file right here.
+
+932
+00:37:41,669 --> 00:37:46,269
+I can see that I'm installing
+some stuff that we need,
+
+933
+00:37:46,269 --> 00:37:49,329
+and then ultimately down here,
+
+934
+00:37:49,329 --> 00:37:51,909
+I am going to run it. And
+I thought I did this.
+
+935
+00:37:51,909 --> 00:37:53,549
+Maybe I updated somewhere else.
+
+936
+00:37:53,549 --> 00:37:55,209
+When I run that
+server, I want to run
+
+937
+00:37:55,209 --> 00:37:57,089
+it in an on buffered mode.
+
+938
+00:37:57,089 --> 00:37:59,489
+Let me just take a look at
+that server quick again.
+
+939
+00:37:59,489 --> 00:38:01,629
+Alright. This is all good print
+
+940
+00:38:01,629 --> 00:38:03,189
+started when it starts running,
+
+941
+00:38:03,189 --> 00:38:04,610
+and it's on buffered,
+
+942
+00:38:04,610 --> 00:38:06,630
+so we should actually
+see that. Alright.
+
+943
+00:38:06,630 --> 00:38:07,849
+Let me build this thing. So I'm
+
+944
+00:38:07,849 --> 00:38:09,550
+going to do a docker build,
+
+945
+00:38:09,550 --> 00:38:11,329
+and I want to build
+the Docker file on
+
+946
+00:38:11,329 --> 00:38:13,470
+the current directory and I'm
+going to call it counter,
+
+947
+00:38:13,470 --> 00:38:16,170
+and so I'm going to
+get a docker image.
+
+948
+00:38:16,290 --> 00:38:19,630
+Cralld docker images,
+
+949
+00:38:19,630 --> 00:38:22,470
+I'm going to get
+one called counter,
+
+950
+00:38:22,470 --> 00:38:24,349
+which is right here, fantastic.
+
+951
+00:38:24,349 --> 00:38:26,509
+All right. So that's
+so far so good.
+
+952
+00:38:26,509 --> 00:38:28,289
+So what I'm going to
+do now is I want to
+
+953
+00:38:28,289 --> 00:38:30,829
+run do a docker run on it,
+
+954
+00:38:30,829 --> 00:38:32,209
+and I'm just going to
+start with one before
+
+955
+00:38:32,209 --> 00:38:33,910
+we do the Docker composed stuff.
+
+956
+00:38:33,910 --> 00:38:36,490
+And I'm going to run
+it in the background,
+
+957
+00:38:36,490 --> 00:38:38,569
+and I'm going to have some port
+
+958
+00:38:38,569 --> 00:38:40,990
+here and it's staring to
+forward to some port inside.
+
+959
+00:38:40,990 --> 00:38:44,329
+Let me just take a moment
+and look at my server dot
+
+960
+00:38:44,329 --> 00:38:48,790
+P. My server dot P is
+listed on port 5440.
+
+961
+00:38:48,790 --> 00:38:51,249
+And what that means is
+that when I run this,
+
+962
+00:38:51,249 --> 00:38:55,269
+I have to put 545440 here,
+it's not going to work.
+
+963
+00:38:55,269 --> 00:38:56,909
+Over here, I could
+put whatever I want.
+
+964
+00:38:56,909 --> 00:38:59,270
+So I'm going to put 54321.
+
+965
+00:38:59,270 --> 00:39:01,829
+And then anything
+going to 54321 on,
+
+966
+00:39:01,829 --> 00:39:04,730
+my virtual machine is going
+to forward to the 5440.
+
+967
+00:39:04,730 --> 00:39:06,409
+So I'm going to do that.
+I think it already
+
+968
+00:39:06,409 --> 00:39:08,450
+has a reasonable
+start up command.
+
+969
+00:39:08,450 --> 00:39:11,549
+And so hopefully, well,
+what is the name of it?
+
+970
+00:39:11,549 --> 00:39:14,569
+It's called counter, right?
+So I can run that thing.
+
+971
+00:39:14,569 --> 00:39:17,170
+I could look at like
+the docker logs
+
+972
+00:39:17,170 --> 00:39:19,329
+for this container
+idea, if I wanted to.
+
+973
+00:39:19,329 --> 00:39:21,549
+It says it started fantastic.
+
+974
+00:39:21,549 --> 00:39:24,249
+And then I could try
+communicating with it, right?
+
+975
+00:39:24,249 --> 00:39:27,239
+So there's a client over here.
+
+976
+00:39:27,239 --> 00:39:29,629
+And the client creates
+a counter stub.
+
+977
+00:39:29,629 --> 00:39:30,870
+Remember that with GRPC,
+
+978
+00:39:30,870 --> 00:39:32,669
+the stub lets you call
+
+979
+00:39:32,669 --> 00:39:34,930
+methods on it like you're
+calling a regular method,
+
+980
+00:39:34,930 --> 00:39:36,529
+but it doesn't execute like
+
+981
+00:39:36,529 --> 00:39:38,549
+a regular method. It
+doesn't execute here.
+
+982
+00:39:38,549 --> 00:39:40,049
+It executes somewhere else.
+
+983
+00:39:40,049 --> 00:39:41,709
+So when I create this stub,
+
+984
+00:39:41,709 --> 00:39:44,269
+I can call that
+count method on it,
+
+985
+00:39:44,269 --> 00:39:46,489
+and then, you know, I'll
+
+986
+00:39:46,489 --> 00:39:48,250
+get the count back
+from the server.
+
+987
+00:39:48,250 --> 00:39:50,429
+Up here, what I'm
+going to do. I thought
+
+988
+00:39:50,429 --> 00:39:51,630
+I made all these changes,
+
+989
+00:39:51,630 --> 00:39:54,800
+and then I think I made them
+in the wrong directory.
+
+990
+00:39:54,800 --> 00:39:56,419
+What we're going to
+do is we're say up
+
+991
+00:39:56,419 --> 00:39:58,500
+here for that stub,
+
+992
+00:39:58,500 --> 00:40:00,220
+that sub needs a channel,
+
+993
+00:40:00,220 --> 00:40:01,879
+and I say in the command line,
+
+994
+00:40:01,879 --> 00:40:03,640
+like, where is the server
+
+995
+00:40:03,640 --> 00:40:05,559
+that we're talking
+to here, right?
+
+996
+00:40:05,559 --> 00:40:08,219
+That's the goal. And so
+I can say over here,
+
+997
+00:40:08,219 --> 00:40:09,759
+I can say Python three,
+
+998
+00:40:09,759 --> 00:40:13,260
+client dot Pi, and I
+can say local host.
+
+999
+00:40:13,590 --> 00:40:15,689
+In this case, I need to say
+
+1000
+00:40:15,689 --> 00:40:17,369
+the port on the outside
+because even though
+
+1001
+00:40:17,369 --> 00:40:20,750
+the server is inside of
+that virtual machine,
+
+1002
+00:40:20,750 --> 00:40:22,710
+I'm running the client outside.
+
+1003
+00:40:22,710 --> 00:40:24,829
+It needs to forward the GRPC.
+
+1004
+00:40:24,829 --> 00:40:26,690
+There's some modules
+I have to install.
+
+1005
+00:40:26,690 --> 00:40:27,649
+I've actually done that.
+
+1006
+00:40:27,649 --> 00:40:29,090
+It's in this virtual
+environment.
+
+1007
+00:40:29,090 --> 00:40:30,609
+Again, like last time, I could
+
+1008
+00:40:30,609 --> 00:40:33,110
+say, source virtual environment,
+
+1009
+00:40:33,110 --> 00:40:35,729
+been activate, and then I should
+
+1010
+00:40:35,729 --> 00:40:38,349
+be able to run that client
+and I can talk to it,
+
+1011
+00:40:38,349 --> 00:40:40,909
+and that count keeps going up.
+
+1012
+00:40:41,160 --> 00:40:43,239
+L et me just take a look at
+
+1013
+00:40:43,239 --> 00:40:44,559
+that container I have running.
+
+1014
+00:40:44,559 --> 00:40:47,699
+So I think it is
+this one up here.
+
+1015
+00:40:47,699 --> 00:40:50,039
+And so I am going to
+jump inside of it.
+
+1016
+00:40:50,039 --> 00:40:51,900
+I'm going to say Docker Each
+
+1017
+00:40:51,900 --> 00:40:54,699
+IT and I'm going to get
+a bash session here.
+
+1018
+00:40:54,699 --> 00:40:58,159
+If I'm inside and
+I try to run this,
+
+1019
+00:40:58,900 --> 00:41:02,219
+It's not going to work in
+that in that case, right?
+
+1020
+00:41:02,219 --> 00:41:03,719
+I have to figure out
+what is it inside?
+
+1021
+00:41:03,719 --> 00:41:05,419
+I could look back
+at my code or I
+
+1022
+00:41:05,419 --> 00:41:08,439
+could run an SS
+command like before.
+
+1023
+00:41:08,439 --> 00:41:10,179
+I guess maybe I forgot
+to install something.
+
+1024
+00:41:10,179 --> 00:41:11,279
+I think there's a
+bunch of suff I
+
+1025
+00:41:11,279 --> 00:41:12,979
+fixed on an older version.
+
+1026
+00:41:12,979 --> 00:41:17,599
+Anyway, inside it was 5440 440.
+
+1027
+00:41:17,599 --> 00:41:18,999
+And if I want to fix
+that, I would have
+
+1028
+00:41:18,999 --> 00:41:20,439
+to install that IP route.
+
+1029
+00:41:20,439 --> 00:41:24,019
+So why is that not working now?
+
+1030
+00:41:30,350 --> 00:41:33,349
+Well, I'm going to try
+installing that thing after all,
+
+1031
+00:41:33,349 --> 00:41:35,109
+I'm going to do an app
+to install IP route
+
+1032
+00:41:35,109 --> 00:41:37,369
+because now I want to
+actually troubleshoot this.
+
+1033
+00:41:37,369 --> 00:41:39,769
+So I guess it's nice to
+teach troubleshooting,
+
+1034
+00:41:39,769 --> 00:41:42,009
+even if that wasn't my
+intention at the moment.
+
+1035
+00:41:42,009 --> 00:41:43,669
+So I'm going to
+install this thing,
+
+1036
+00:41:43,669 --> 00:41:45,610
+and then I can see IP address.
+
+1037
+00:41:45,610 --> 00:41:48,950
+And I can also do S STLPN.
+
+1038
+00:41:48,950 --> 00:41:54,330
+And so I can see sure
+enough it's on Port 5440.
+
+1039
+00:41:54,330 --> 00:41:57,549
+And so you know what
+
+1040
+00:41:57,549 --> 00:41:58,729
+my problem is is that when
+
+1041
+00:41:58,729 --> 00:42:01,229
+I'm doing this client over here,
+
+1042
+00:42:03,640 --> 00:42:06,599
+It's the old version. I just
+literally changed that,
+
+1043
+00:42:06,599 --> 00:42:08,639
+but I have to rebuild it, right?
+
+1044
+00:42:08,639 --> 00:42:11,139
+So I'm going to
+rebuild that thing.
+
+1045
+00:42:11,139 --> 00:42:13,399
+I'm going to run it again.
+
+1046
+00:42:13,399 --> 00:42:16,520
+Actually, I'm just going to
+kill everything honestly.
+
+1047
+00:42:16,520 --> 00:42:19,310
+Let's kill all the containers.
+
+1048
+00:42:19,310 --> 00:42:23,460
+Run it again. My apologies
+for all the confusion.
+
+1049
+00:42:23,460 --> 00:42:25,359
+I just have one thing now,
+
+1050
+00:42:25,359 --> 00:42:27,619
+and I'm going to
+jump inside of it.
+
+1051
+00:42:27,619 --> 00:42:31,419
+Docker Exact IT, I'm going
+to jump inside of it,
+
+1052
+00:42:31,419 --> 00:42:35,919
+and now I g to be able to
+say Python three client Pi,
+
+1053
+00:42:35,919 --> 00:42:40,879
+and now I should be able
+to say local host, 5440.
+
+1054
+00:42:40,879 --> 00:42:44,259
+It's counting inside.
+Let me go outside again.
+
+1055
+00:42:44,259 --> 00:42:46,439
+When I'm outside, then I have to
+
+1056
+00:42:46,439 --> 00:42:48,989
+use the outside p, right?
+
+1057
+00:42:48,989 --> 00:42:50,410
+When I do like Docker PS,
+
+1058
+00:42:50,410 --> 00:42:52,669
+I can see there's the outside
+port and the inside port.
+
+1059
+00:42:52,669 --> 00:42:54,150
+In this case, I'm outside,
+
+1060
+00:42:54,150 --> 00:42:56,109
+so I would use the outside port,
+
+1061
+00:42:56,109 --> 00:42:58,309
+and it's the same same count.
+
+1062
+00:42:58,309 --> 00:42:59,889
+Okay. My apologies.
+
+1063
+00:42:59,889 --> 00:43:01,229
+That was a big
+diversion. I want to get
+
+1064
+00:43:01,229 --> 00:43:02,990
+back to Docker Compose.
+
+1065
+00:43:02,990 --> 00:43:05,149
+What may do is I may spin up
+three counters like this,
+
+1066
+00:43:05,149 --> 00:43:07,879
+and I can communicate
+with different ones.
+
+1067
+00:43:07,879 --> 00:43:09,789
+The way I do that is
+I create something
+
+1068
+00:43:09,789 --> 00:43:11,790
+called a Docer Compose file,
+
+1069
+00:43:11,790 --> 00:43:13,550
+and it's a dot YML,
+
+1070
+00:43:13,550 --> 00:43:16,070
+and that stands for yet
+another markup language.
+
+1071
+00:43:16,070 --> 00:43:18,209
+So I guess it's a
+joke that people keep
+
+1072
+00:43:18,209 --> 00:43:19,410
+coming up with markup languages,
+
+1073
+00:43:19,410 --> 00:43:20,689
+and they have yet another one.
+
+1074
+00:43:20,689 --> 00:43:23,250
+This one is often used
+for configuration stuff,
+
+1075
+00:43:23,250 --> 00:43:25,290
+and it's equivalent to JSN.
+
+1076
+00:43:25,290 --> 00:43:26,989
+So in JSN, you have,
+like lists and
+
+1077
+00:43:26,989 --> 00:43:29,290
+dictionaries, all that stuff.
+
+1078
+00:43:29,290 --> 00:43:31,189
+But it's going to
+be a format that's
+
+1079
+00:43:31,189 --> 00:43:33,569
+actually nicer to look
+at for a human, right?
+
+1080
+00:43:33,569 --> 00:43:34,969
+So it's kind of
+equivalent to JN,
+
+1081
+00:43:34,969 --> 00:43:37,025
+but they have a different
+syntax for all this stuff.
+
+1082
+00:43:37,025 --> 00:43:39,299
+And so what I will do
+down here is I have to
+
+1083
+00:43:39,299 --> 00:43:41,779
+define some services
+that I want to start up,
+
+1084
+00:43:41,779 --> 00:43:43,200
+and I can give them some names.
+
+1085
+00:43:43,200 --> 00:43:46,019
+I'm going to have a counter
+service that I want to do.
+
+1086
+00:43:46,019 --> 00:43:47,879
+And then inside of
+that, I have to
+
+1087
+00:43:47,879 --> 00:43:49,899
+say what docker image do
+I want to start from?
+
+1088
+00:43:49,899 --> 00:43:53,659
+And I had created a Docker
+image called Counter, right?
+
+1089
+00:43:53,659 --> 00:43:57,299
+So I could grow and I could
+run this if I wanted to,
+
+1090
+00:43:57,299 --> 00:43:58,659
+and that would start
+
+1091
+00:43:58,659 --> 00:44:01,379
+up that container for
+me automatically.
+
+1092
+00:44:01,379 --> 00:44:05,019
+The other thing I can
+do, is I can say,
+
+1093
+00:44:05,019 --> 00:44:07,340
+I want to have some
+deploy options.
+
+1094
+00:44:07,340 --> 00:44:09,359
+And I can say, how many
+of these do I want?
+
+1095
+00:44:09,359 --> 00:44:10,939
+And in this case, I want to say,
+
+1096
+00:44:10,939 --> 00:44:13,719
+I want to spin up three
+of these things, right?
+
+1097
+00:44:13,719 --> 00:44:16,419
+Let me come out here. I have
+one thing running right now.
+
+1098
+00:44:16,419 --> 00:44:19,440
+What I may do is I'm may
+say, Docker compose,
+
+1099
+00:44:19,440 --> 00:44:22,179
+up, is starting to
+find that Yamel file.
+
+1100
+00:44:22,179 --> 00:44:24,039
+It's starting to create
+a virtual network for
+
+1101
+00:44:24,039 --> 00:44:27,940
+me for this little
+cluster of containers.
+
+1102
+00:44:27,940 --> 00:44:29,859
+Is starting to start
+those three containers.
+
+1103
+00:44:29,859 --> 00:44:31,380
+I can see by
+default, is actually
+
+1104
+00:44:31,380 --> 00:44:32,919
+showing me the log
+output of each of them.
+
+1105
+00:44:32,919 --> 00:44:35,380
+Like one I guess each of
+them printed started,
+
+1106
+00:44:35,380 --> 00:44:38,699
+and it's showing me that
+altogether, so I could use that.
+
+1107
+00:44:38,699 --> 00:44:41,479
+The other thing I could do
+
+1108
+00:44:42,340 --> 00:44:44,779
+is I could start them all on
+
+1109
+00:44:44,779 --> 00:44:47,079
+a detached mode, right?
+So I could do that.
+
+1110
+00:44:47,079 --> 00:44:49,680
+And then if I do Docker PS,
+
+1111
+00:44:49,680 --> 00:44:51,739
+I can see there's
+four containers here.
+
+1112
+00:44:51,739 --> 00:44:53,999
+There's the three for my
+Compose and one other one.
+
+1113
+00:44:53,999 --> 00:44:55,399
+Another thing I
+could do is I could
+
+1114
+00:44:55,399 --> 00:44:56,860
+say Docker Compose PS,
+
+1115
+00:44:56,860 --> 00:44:59,199
+and would just show me
+the ones related to
+
+1116
+00:44:59,199 --> 00:45:02,239
+this specific cluster that
+I have up and running.
+
+1117
+00:45:02,239 --> 00:45:03,739
+So I was able to
+start these three.
+
+1118
+00:45:03,739 --> 00:45:05,380
+None of them have
+port forwarding,
+
+1119
+00:45:05,380 --> 00:45:08,320
+so I cannot communicate with
+any of them from outside.
+
+1120
+00:45:08,320 --> 00:45:09,679
+I'd like to
+communicate with them
+
+1121
+00:45:09,679 --> 00:45:11,864
+all from the outside world.
+
+1122
+00:45:11,864 --> 00:45:16,370
+So I may come back here to
+my Docer composed dot aml.
+
+1123
+00:45:16,370 --> 00:45:19,149
+And what I'm going to do is I am
+
+1124
+00:45:19,149 --> 00:45:21,810
+going to say that I want to
+have some port forwarding.
+
+1125
+00:45:21,810 --> 00:45:24,049
+I want to make sure I get
+the syntax right on this.
+
+1126
+00:45:24,049 --> 00:45:26,430
+So you can see this is
+kind of like a dictionary.
+
+1127
+00:45:26,430 --> 00:45:28,049
+This was a dictionary, and then
+
+1128
+00:45:28,049 --> 00:45:30,109
+counter service was a
+key inside of that,
+
+1129
+00:45:30,109 --> 00:45:31,890
+which brings us to
+another dictionary.
+
+1130
+00:45:31,890 --> 00:45:34,030
+We have these keys.
+
+1131
+00:45:34,030 --> 00:45:36,830
+That's all equivalent to
+like a JSN dictionary.
+
+1132
+00:45:36,830 --> 00:45:39,909
+This is going to be
+equivalent to a JSN list.
+
+1133
+00:45:39,909 --> 00:45:43,480
+I can kind of mark things
+off like bullet points.
+
+1134
+00:45:43,480 --> 00:45:45,519
+And so the port
+configuration is going
+
+1135
+00:45:45,519 --> 00:45:47,639
+to be a string, and I
+could say something like,
+
+1136
+00:45:47,639 --> 00:45:53,539
+I want port 5,000 to go
+to 5440. I could do that.
+
+1137
+00:45:53,539 --> 00:45:57,019
+By default, that's
+going to be the 0000.
+
+1138
+00:45:57,019 --> 00:45:58,739
+By default. I don't
+really want that.
+
+1139
+00:45:58,739 --> 00:46:01,660
+I want to keep everything
+private for security reasons.
+
+1140
+00:46:01,660 --> 00:46:03,780
+So I'm going to say, Okay,
+I only want to forward
+
+1141
+00:46:03,780 --> 00:46:08,559
+from that local
+host to the 5440.
+
+1142
+00:46:08,559 --> 00:46:11,469
+I could do that. When I do this,
+
+1143
+00:46:11,469 --> 00:46:12,749
+I actually have a
+little problem.
+
+1144
+00:46:12,749 --> 00:46:14,189
+Let's try a Docker compose up.
+
+1145
+00:46:14,189 --> 00:46:16,729
+I'm going to say,
+Docker compose up.
+
+1146
+00:46:16,729 --> 00:46:18,809
+Ist recreating these things.
+
+1147
+00:46:18,809 --> 00:46:20,929
+And it seems like that's
+going to take a moment.
+
+1148
+00:46:20,929 --> 00:46:22,469
+And sometimes Docer
+composes just
+
+1149
+00:46:22,469 --> 00:46:24,230
+randomly slow, and frankly,
+
+1150
+00:46:24,230 --> 00:46:28,969
+I'm not sure why that
+is. There we go.
+
+1151
+00:46:28,969 --> 00:46:30,629
+And right now when I did this,
+
+1152
+00:46:30,629 --> 00:46:33,929
+it turns out that only
+one of the three is
+
+1153
+00:46:33,929 --> 00:46:35,009
+running the other two died
+
+1154
+00:46:35,009 --> 00:46:37,829
+because when I
+look back at this,
+
+1155
+00:46:37,829 --> 00:46:39,589
+I'm starting three of them.
+
+1156
+00:46:39,589 --> 00:46:42,090
+And so one of them
+will grab port 5001st,
+
+1157
+00:46:42,090 --> 00:46:43,629
+and the other ones cannot do it.
+
+1158
+00:46:43,629 --> 00:46:44,969
+And the way we solve
+
+1159
+00:46:44,969 --> 00:46:47,450
+this problem is we can have
+a range of port numbers.
+
+1160
+00:46:47,450 --> 00:46:49,089
+So I'm going to say 5,002,
+
+1161
+00:46:49,089 --> 00:46:52,470
+and I'll have 5,000,
+5,001, 5,002.
+
+1162
+00:46:52,470 --> 00:46:56,150
+Those three will be ports
+on my virtual machine,
+
+1163
+00:46:56,150 --> 00:46:58,590
+and each of them will forward
+to a different container.
+
+1164
+00:46:58,590 --> 00:47:00,289
+Inside of each container,
+I have this port,
+
+1165
+00:47:00,289 --> 00:47:03,070
+but these are the three
+containers outside.
+
+1166
+00:47:03,070 --> 00:47:04,569
+Let's try bringing
+that up again and
+
+1167
+00:47:04,569 --> 00:47:07,269
+see if that works a
+little bit better for us.
+
+1168
+00:47:15,490 --> 00:47:21,089
+And I want to do it
+with detached mode.
+
+1169
+00:47:21,089 --> 00:47:25,950
+So I'm going to say
+Docker Compose PS,
+
+1170
+00:47:25,950 --> 00:47:27,989
+and I can see they
+each have it, right?
+
+1171
+00:47:27,989 --> 00:47:29,749
+So this one has 5,000
+forward to this.
+
+1172
+00:47:29,749 --> 00:47:31,109
+This one has 5,001.
+
+1173
+00:47:31,109 --> 00:47:32,750
+This one has 5,002.
+
+1174
+00:47:32,750 --> 00:47:35,189
+And so when I'm
+running my client now,
+
+1175
+00:47:35,189 --> 00:47:36,610
+I can say local hosts,
+
+1176
+00:47:36,610 --> 00:47:38,749
+and I can say any
+of these, right?
+
+1177
+00:47:38,749 --> 00:47:41,229
+So the first one, I'm going
+to get a count there.
+
+1178
+00:47:41,229 --> 00:47:44,909
+And then I'm ready
+to go to this.
+
+1179
+00:47:44,909 --> 00:47:47,070
+And can people hold up
+some number of fingers?
+
+1180
+00:47:47,070 --> 00:47:49,930
+What would I see when
+I run this command?
+
+1181
+00:47:50,250 --> 00:47:53,850
+I'm seeing some ones,
+which is correct.
+
+1182
+00:47:53,850 --> 00:47:55,870
+I'm going to do that, and
+that's a different server,
+
+1183
+00:47:55,870 --> 00:47:58,129
+so it has its own account
+associated with it.
+
+1184
+00:47:58,129 --> 00:47:59,249
+If I go to the next one that has
+
+1185
+00:47:59,249 --> 00:48:01,149
+a fresh count as well, right?
+
+1186
+00:48:01,149 --> 00:48:02,329
+So I have different
+servers that are
+
+1187
+00:48:02,329 --> 00:48:03,690
+each kind of doing
+something similar.
+
+1188
+00:48:03,690 --> 00:48:05,450
+Of course, you do something
+a lot more complicated.
+
+1189
+00:48:05,450 --> 00:48:07,289
+Maybe they're each responsible
+for different data.
+
+1190
+00:48:07,289 --> 00:48:08,509
+That's where you're
+going to do on one of
+
+1191
+00:48:08,509 --> 00:48:10,170
+these upcoming projects.
+
+1192
+00:48:10,170 --> 00:48:11,730
+That's communicating
+from outside.
+
+1193
+00:48:11,730 --> 00:48:14,289
+I can also communicate
+from inside if I want.
+
+1194
+00:48:14,289 --> 00:48:16,209
+And so let me jump
+inside one of these.
+
+1195
+00:48:16,209 --> 00:48:17,989
+I'm going to do a doc exac
+
+1196
+00:48:17,989 --> 00:48:22,410
+and they were each given a name.
+
+1197
+00:48:22,850 --> 00:48:26,770
+And so this is the name
+that it was given.
+
+1198
+00:48:26,770 --> 00:48:28,829
+Start based on what
+directory I'm in,
+
+1199
+00:48:28,829 --> 00:48:31,689
+and I want to get a bash
+session inside of there.
+
+1200
+00:48:31,689 --> 00:48:33,530
+And so when I'm inside,
+
+1201
+00:48:33,530 --> 00:48:36,630
+I could say Python three client,
+
+1202
+00:48:36,630 --> 00:48:39,130
+and I could say local host.
+
+1203
+00:48:39,180 --> 00:48:42,379
+5440, so I could do that,
+
+1204
+00:48:42,379 --> 00:48:44,279
+and I can keep going
+with this count,
+
+1205
+00:48:44,279 --> 00:48:45,699
+or I could try to
+
+1206
+00:48:45,699 --> 00:48:47,699
+communicate with some of
+these other ones, right?
+
+1207
+00:48:47,699 --> 00:48:49,099
+So what I could do is,
+
+1208
+00:48:49,099 --> 00:48:50,300
+I could try to communicate
+
+1209
+00:48:50,300 --> 00:48:53,319
+with let me see. I
+jumped into this one.
+
+1210
+00:48:53,319 --> 00:48:57,979
+Let me communicate with
+the other one, right?
+
+1211
+00:48:57,979 --> 00:48:59,839
+And that one has a
+different count, right?
+
+1212
+00:48:59,839 --> 00:49:01,259
+So when you're inside of that,
+
+1213
+00:49:01,259 --> 00:49:03,219
+they can communicate
+each other using
+
+1214
+00:49:03,219 --> 00:49:06,899
+these names that were
+automatically generated for them.
+
+1215
+00:49:06,899 --> 00:49:09,039
+So on the next project that
+we're going to release soon,
+
+1216
+00:49:09,039 --> 00:49:11,140
+you're going to have a little
+doctor composed cluster,
+
+1217
+00:49:11,140 --> 00:49:12,659
+and they're going
+to figure out based
+
+1218
+00:49:12,659 --> 00:49:14,219
+on their name what their job is.
+
+1219
+00:49:14,219 --> 00:49:15,719
+They're each going
+to be responsible.
+
+1220
+00:49:15,719 --> 00:49:17,079
+We're going to have
+a giant data set and
+
+1221
+00:49:17,079 --> 00:49:18,539
+there's going to be two parts,
+
+1222
+00:49:18,539 --> 00:49:19,599
+and then they're
+each going to be
+
+1223
+00:49:19,599 --> 00:49:22,719
+responsible for half
+of the data set.
+
+1224
+00:49:22,719 --> 00:49:25,300
+What questions people have
+about doctor Compose?
+
+1225
+00:49:25,300 --> 00:49:33,329
+Yeah, I right here. Yeah, so
+
+1226
+00:49:33,329 --> 00:49:35,129
+why can't you have one port that
+
+1227
+00:49:35,129 --> 00:49:37,330
+forwards to multiple
+docker containers.
+
+1228
+00:49:37,330 --> 00:49:38,930
+You know, it really
+depends on the operating
+
+1229
+00:49:38,930 --> 00:49:40,089
+system in the old days,
+
+1230
+00:49:40,089 --> 00:49:42,029
+like Linux could never
+
+1231
+00:49:42,029 --> 00:49:44,289
+have multiple applications
+on the same port.
+
+1232
+00:49:44,289 --> 00:49:45,650
+They actually lifted
+that constraint,
+
+1233
+00:49:45,650 --> 00:49:47,729
+but a lot of applications
+still don't allow it.
+
+1234
+00:49:47,729 --> 00:49:48,969
+So, I mean, you
+could imagine that
+
+1235
+00:49:48,969 --> 00:49:50,250
+like somebody could
+have built Docker
+
+1236
+00:49:50,250 --> 00:49:51,949
+differently so that
+stuff coming in on
+
+1237
+00:49:51,949 --> 00:49:54,450
+one port randomly goes to
+a different container.
+
+1238
+00:49:54,450 --> 00:49:56,449
+They don't support
+it that I know of.
+
+1239
+00:49:56,449 --> 00:49:58,730
+Maybe there's some
+weird flag somewhere.
+
+1240
+00:49:58,730 --> 00:50:01,869
+And I think I'm out of time,
+but I will be happy to
+
+1241
+00:50:01,869 --> 00:50:03,029
+take questions if
+people just want
+
+1242
+00:50:03,029 --> 00:50:04,329
+to come up and happy to chat.
+
+1243
+00:50:04,329 --> 00:50:07,709
+So I hope you'll have
+a great evening. I

@@ -1,0 +1,5864 @@
+1
+00:00:00,000 --> 00:00:02,860
+Spark. I have some more
+performance things
+
+2
+00:00:02,860 --> 00:00:04,720
+from last time that I
+want to sill cover.
+
+3
+00:00:04,720 --> 00:00:06,360
+That's probably
+actually most of today.
+
+4
+00:00:06,360 --> 00:00:07,600
+Maybe we'll have
+a little time to
+
+5
+00:00:07,600 --> 00:00:08,719
+actually start today's topic,
+
+6
+00:00:08,719 --> 00:00:10,119
+which is machine learning.
+
+7
+00:00:10,119 --> 00:00:12,439
+Some other things that should
+be on your radar is that
+
+8
+00:00:12,439 --> 00:00:14,999
+we have a mid term
+again in two weeks.
+
+9
+00:00:14,999 --> 00:00:16,979
+You could start thinking
+
+10
+00:00:16,979 --> 00:00:18,600
+about maybe starting
+to prep a little bit,
+
+11
+00:00:18,600 --> 00:00:21,200
+maybe review some stuff, maybe
+start making a note sheet,
+
+12
+00:00:21,200 --> 00:00:24,110
+and I'll send more reminders
+as that gets closer.
+
+13
+00:00:24,110 --> 00:00:27,379
+Some other things is that I
+sent some canvas in those,
+
+14
+00:00:27,379 --> 00:00:29,779
+but I just want to draw
+people's attention to.
+
+15
+00:00:29,779 --> 00:00:33,699
+What is about at GPT and
+large language models?
+
+16
+00:00:33,699 --> 00:00:35,799
+Different courses have
+different policies.
+
+17
+00:00:35,799 --> 00:00:38,139
+I actually allow the
+use of these tools,
+
+18
+00:00:38,139 --> 00:00:40,679
+but it's very important
+that you actually cite it.
+
+19
+00:00:40,679 --> 00:00:42,379
+And the way you can cite it
+
+20
+00:00:42,379 --> 00:00:44,559
+is that I need to see the
+specific chats you had.
+
+21
+00:00:44,559 --> 00:00:47,200
+So lots of screen shots as
+you're using these tools.
+
+22
+00:00:47,200 --> 00:00:49,279
+There's a director
+you dump them all in.
+
+23
+00:00:49,279 --> 00:00:51,479
+That's really to protect
+yourself because
+
+24
+00:00:51,479 --> 00:00:54,840
+u We run plagiarism
+detection tools.
+
+25
+00:00:54,840 --> 00:00:57,299
+I used to be that I'd run these
+things and be like, well,
+
+26
+00:00:57,299 --> 00:00:58,419
+somebody shared code with
+
+27
+00:00:58,419 --> 00:01:00,160
+somebody else, and
+that's why it's similar.
+
+28
+00:01:00,160 --> 00:01:01,719
+Moreover, we're seeing now is
+
+29
+00:01:01,719 --> 00:01:03,799
+that you have different
+people who are both using,
+
+30
+00:01:03,799 --> 00:01:05,100
+Chat GPT or whatever,
+
+31
+00:01:05,100 --> 00:01:08,399
+it produces similar code,
+and they get a match.
+
+32
+00:01:08,399 --> 00:01:10,260
+And if you were both citing it,
+
+33
+00:01:10,260 --> 00:01:11,740
+I see, they have similar code
+
+34
+00:01:11,740 --> 00:01:12,940
+because they both
+use the same tool.
+
+35
+00:01:12,940 --> 00:01:13,740
+I'm like, Okay, there's
+
+36
+00:01:13,740 --> 00:01:15,240
+a legitimate reason
+why it's similar.
+
+37
+00:01:15,240 --> 00:01:16,479
+Even though it flags you when I
+
+38
+00:01:16,479 --> 00:01:18,419
+manually review it,
+you'll be fine.
+
+39
+00:01:18,419 --> 00:01:20,100
+If I'm like, Oh,
+they're very similar
+
+40
+00:01:20,100 --> 00:01:21,280
+and they didn't cite anything.
+
+41
+00:01:21,280 --> 00:01:24,040
+Well, that's not
+going to end well.
+
+42
+00:01:24,040 --> 00:01:26,479
+Send up with the You know, well,
+
+43
+00:01:26,479 --> 00:01:28,080
+I'll meet and hear
+your side of it,
+
+44
+00:01:28,080 --> 00:01:29,639
+but that'll end up in a report
+
+45
+00:01:29,639 --> 00:01:31,580
+to the university. So
+anyway, just do that.
+
+46
+00:01:31,580 --> 00:01:33,320
+It takes a little extra time,
+
+47
+00:01:33,320 --> 00:01:35,979
+but, you know, that will
+help protect yourself.
+
+48
+00:01:35,979 --> 00:01:37,639
+I'd encourage you to
+use these things.
+
+49
+00:01:37,639 --> 00:01:38,760
+I also highlighted down here
+
+50
+00:01:38,760 --> 00:01:41,039
+that the university
+provides coal pilot,
+
+51
+00:01:41,039 --> 00:01:42,659
+which is going to be better than
+
+52
+00:01:42,659 --> 00:01:44,479
+the free version of C chat EPT.
+
+53
+00:01:44,479 --> 00:01:45,920
+So if you are using that,
+
+54
+00:01:45,920 --> 00:01:48,540
+consider checking out
+that version of it.
+
+55
+00:01:48,540 --> 00:01:50,720
+Any questions about
+those policies,
+
+56
+00:01:50,720 --> 00:01:55,489
+while we're all here?
+Oh, right. Cool.
+
+57
+00:01:55,489 --> 00:01:57,050
+Other thing that's
+happening is that
+
+58
+00:01:57,050 --> 00:01:59,069
+the university is
+while the department
+
+59
+00:01:59,069 --> 00:02:00,250
+is buying a couple of
+
+60
+00:02:00,250 --> 00:02:03,190
+big servers that we're going
+to start having our VMs on.
+
+61
+00:02:03,190 --> 00:02:05,050
+The idea was that actually will
+
+62
+00:02:05,050 --> 00:02:06,569
+have more memory than we've
+
+63
+00:02:06,569 --> 00:02:08,149
+had in past semesters
+Everybody's
+
+64
+00:02:08,149 --> 00:02:10,129
+going to have a VM with
+8 gigabytes of RAM.
+
+65
+00:02:10,129 --> 00:02:12,810
+One of the machines is having
+some weird hardware issues,
+
+66
+00:02:12,810 --> 00:02:15,209
+so I still want to
+get some practice and
+
+67
+00:02:15,209 --> 00:02:16,570
+experience trying to run
+
+68
+00:02:16,570 --> 00:02:18,390
+the class on these
+machines going forward.
+
+69
+00:02:18,390 --> 00:02:19,669
+So right now what
+they've done is
+
+70
+00:02:19,669 --> 00:02:21,189
+they've created a
+virtual machine for
+
+71
+00:02:21,189 --> 00:02:24,150
+literally everybody on
+one of those servers.
+
+72
+00:02:24,150 --> 00:02:27,169
+I only has 4 gigabytes
+of RAM per VM.
+
+73
+00:02:27,169 --> 00:02:30,159
+I think it's of tricky
+to get that set up.
+
+74
+00:02:30,159 --> 00:02:32,729
+You know, you can't just
+SSH shot from anywhere.
+
+75
+00:02:32,729 --> 00:02:35,030
+You have to be on
+the campus network.
+
+76
+00:02:35,030 --> 00:02:37,430
+That might mean that if
+you're working from home,
+
+77
+00:02:37,430 --> 00:02:40,549
+you're connecting
+to the VPN, right?
+
+78
+00:02:40,549 --> 00:02:42,309
+So I have some details there.
+
+79
+00:02:42,309 --> 00:02:44,769
+Anyway, like, you could do P
+
+80
+00:02:44,769 --> 00:02:47,489
+five on Google Cloud
+again if you want.
+
+81
+00:02:47,489 --> 00:02:48,670
+But I want to incentivize
+
+82
+00:02:48,670 --> 00:02:50,190
+people kind of jumping
+through these hoops to
+
+83
+00:02:50,190 --> 00:02:51,329
+figure it out and
+just kind of get
+
+84
+00:02:51,329 --> 00:02:52,929
+experience in the environment.
+
+85
+00:02:52,929 --> 00:02:54,409
+So if you do do it
+on the new machine
+
+86
+00:02:54,409 --> 00:02:56,129
+and you provide a
+screenshot showing that,
+
+87
+00:02:56,129 --> 00:02:58,265
+there'll be a little
+bit of extra credit.
+
+88
+00:02:58,265 --> 00:03:02,559
+For that. So I'd encourage
+you to go ahead and try that.
+
+89
+00:03:02,559 --> 00:03:03,879
+Try to see if you end up working
+
+90
+00:03:03,879 --> 00:03:05,160
+there sooner rather than later,
+
+91
+00:03:05,160 --> 00:03:06,460
+especially like the VPN stuff.
+
+92
+00:03:06,460 --> 00:03:08,319
+I even like my TAs trying it and
+
+93
+00:03:08,319 --> 00:03:10,840
+the TAs are having trouble
+getting their VPN working.
+
+94
+00:03:10,840 --> 00:03:12,299
+So you start early
+
+95
+00:03:12,299 --> 00:03:14,159
+and if you don't get the
+extra cred, that's fine.
+
+96
+00:03:14,159 --> 00:03:15,200
+Are you just do
+it the way you've
+
+97
+00:03:15,200 --> 00:03:17,279
+been doing other projects?
+
+98
+00:03:17,279 --> 00:03:21,134
+Cruel, all that logistical
+stuff behind us.
+
+99
+00:03:21,134 --> 00:03:23,749
+I want to talk about some
+performance things now.
+
+100
+00:03:23,749 --> 00:03:27,349
+And let me just remind everybody
+where we were last time.
+
+101
+00:03:27,349 --> 00:03:29,930
+We were learning
+about group buys,
+
+102
+00:03:29,930 --> 00:03:33,109
+and there's the logical level
+
+103
+00:03:33,109 --> 00:03:35,189
+where we're bringing all
+the same keys together,
+
+104
+00:03:35,189 --> 00:03:36,869
+and there could be millions
+of different keys,
+
+105
+00:03:36,869 --> 00:03:38,430
+millions of different groups.
+
+106
+00:03:38,430 --> 00:03:40,329
+At the partition level,
+we don't want to have
+
+107
+00:03:40,329 --> 00:03:42,309
+millions of different partitions,
+though at that level,
+
+108
+00:03:42,309 --> 00:03:43,669
+what we need to be sure is that
+
+109
+00:03:43,669 --> 00:03:46,110
+all the related rows
+go the same partition,
+
+110
+00:03:46,110 --> 00:03:47,529
+but it would be
+totally fine to have
+
+111
+00:03:47,529 --> 00:03:49,985
+say all the Cs and Ds together.
+
+112
+00:03:49,985 --> 00:03:52,040
+The same partition.
+I just can't take
+
+113
+00:03:52,040 --> 00:03:54,599
+one letter and split
+it across, right?
+
+114
+00:03:54,599 --> 00:03:56,119
+That was a basic idea.
+
+115
+00:03:56,119 --> 00:03:58,619
+And we learned the
+AP's called hash
+
+116
+00:03:58,619 --> 00:04:00,399
+partitioning tal y very briefly.
+
+117
+00:04:00,399 --> 00:04:02,179
+That's in contrast to
+regular partitioning,
+
+118
+00:04:02,179 --> 00:04:05,319
+where things are try to be
+split up any which way.
+
+119
+00:04:05,319 --> 00:04:08,019
+We talked about different
+optimizations on that.
+
+120
+00:04:08,019 --> 00:04:09,599
+What is it? If I'm
+multiply just trying
+
+121
+00:04:09,599 --> 00:04:11,340
+to sum up all the
+numbers in a column,
+
+122
+00:04:11,340 --> 00:04:14,220
+maybe I can do partial
+sums on the input data
+
+123
+00:04:14,220 --> 00:04:15,720
+before I have to
+shuffle all this data
+
+124
+00:04:15,720 --> 00:04:17,620
+around over the network.
+
+125
+00:04:17,620 --> 00:04:21,240
+We also talked about how when
+you are shuffling, right?
+
+126
+00:04:21,240 --> 00:04:23,259
+Well, I do the
+hash partitioning,
+
+127
+00:04:23,259 --> 00:04:25,180
+how many partitions is
+all the data land in?
+
+128
+00:04:25,180 --> 00:04:27,080
+There's not one
+obvious right answer.
+
+129
+00:04:27,080 --> 00:04:28,619
+The default is 200,
+
+130
+00:04:28,619 --> 00:04:30,260
+which is often too many.
+
+131
+00:04:30,260 --> 00:04:32,079
+But Smart has this newer feature
+
+132
+00:04:32,079 --> 00:04:33,860
+called partition co less,
+
+133
+00:04:33,860 --> 00:04:35,040
+where they'll actually combine a
+
+134
+00:04:35,040 --> 00:04:36,260
+bunch of small partitions,
+
+135
+00:04:36,260 --> 00:04:39,259
+and the bigger ones to get
+in nice size partitions.
+
+136
+00:04:39,259 --> 00:04:40,540
+We've talked before
+about why you don't want
+
+137
+00:04:40,540 --> 00:04:42,480
+your partitions to be
+too big or too small,
+
+138
+00:04:42,480 --> 00:04:45,039
+that tries to get them
+to be a decent size.
+
+139
+00:04:45,039 --> 00:04:46,700
+And then finally,
+we talked about
+
+140
+00:04:46,700 --> 00:04:49,860
+how if the data was
+already pre partitioned,
+
+141
+00:04:49,860 --> 00:04:51,880
+and the word for
+that is bucketed,
+
+142
+00:04:51,880 --> 00:04:54,000
+then things would
+be great because we
+
+143
+00:04:54,000 --> 00:04:55,860
+could maybe do a
+group by and get
+
+144
+00:04:55,860 --> 00:04:58,039
+some aggregates without
+having to shuffle
+
+145
+00:04:58,039 --> 00:05:00,369
+the data over the
+network. Great.
+
+146
+00:05:00,369 --> 00:05:02,590
+That's what we ended last time.
+Just try to a very brief,
+
+147
+00:05:02,590 --> 00:05:05,409
+get that back in everybody's
+mind after the weekend.
+
+148
+00:05:05,409 --> 00:05:06,949
+I want to do some examples
+
+149
+00:05:06,949 --> 00:05:08,889
+to understand that in
+a bit more detail.
+
+150
+00:05:08,889 --> 00:05:10,590
+I'm over here in the
+same notebook that
+
+151
+00:05:10,590 --> 00:05:13,770
+I've done a bunch
+of things in. And
+
+152
+00:05:13,950 --> 00:05:16,010
+I'm going to show an example
+
+153
+00:05:16,010 --> 00:05:17,490
+of how we do hash partitioning.
+
+154
+00:05:17,490 --> 00:05:19,989
+Hash partitioning is
+based on a hash function.
+
+155
+00:05:19,989 --> 00:05:21,890
+First I do is I'm
+just trying to call
+
+156
+00:05:21,890 --> 00:05:24,509
+the hash function that's
+built into Python.
+
+157
+00:05:24,509 --> 00:05:27,830
+I'll just make a note here.
+This is hash partitioning.
+
+158
+00:05:27,910 --> 00:05:31,969
+I can get hashes of
+different values.
+
+159
+00:05:31,969 --> 00:05:34,949
+If I put the same value
+and I get the same number,
+
+160
+00:05:34,949 --> 00:05:37,369
+I I put in a slightly
+different value,
+
+161
+00:05:37,369 --> 00:05:39,849
+then I might get a
+completely different number.
+
+162
+00:05:39,849 --> 00:05:42,190
+A good hash function. It
+takes any kind of value,
+
+163
+00:05:42,190 --> 00:05:45,864
+maybe it's bytes, maybe it's
+string, gives us a number.
+
+164
+00:05:45,864 --> 00:05:47,539
+Same input, same output.
+
+165
+00:05:47,539 --> 00:05:49,479
+But other than that, if I have
+slightly different output,
+
+166
+00:05:49,479 --> 00:05:52,680
+I can get a dramatically a
+different number, right?
+
+167
+00:05:52,680 --> 00:05:55,500
+And so we can build on
+that to have a strategy to
+
+168
+00:05:55,500 --> 00:05:58,919
+group similar things together
+in a roughly even way.
+
+169
+00:05:58,919 --> 00:06:00,680
+And so what I may do is I
+
+170
+00:06:00,680 --> 00:06:02,980
+may imagine that I
+have some partitions.
+
+171
+00:06:02,980 --> 00:06:04,379
+And in this case,
+
+172
+00:06:04,379 --> 00:06:05,920
+I want to have four
+partitions, right?
+
+173
+00:06:05,920 --> 00:06:08,445
+I'm just to have four
+empty partitions here.
+
+174
+00:06:08,445 --> 00:06:12,309
+And the idea is that I have
+a bunch of different rows,
+
+175
+00:06:12,309 --> 00:06:14,489
+each with a letter,
+and I want to put
+
+176
+00:06:14,489 --> 00:06:17,109
+the rows with the same letter
+into the same partition.
+
+177
+00:06:17,109 --> 00:06:19,769
+And what I'm really imagining
+is that each of these lists
+
+178
+00:06:19,769 --> 00:06:22,530
+of rows is a piece of work.
+
+179
+00:06:22,530 --> 00:06:24,070
+It's a partition of the data.
+
+180
+00:06:24,070 --> 00:06:25,430
+I want to show how could I do
+
+181
+00:06:25,430 --> 00:06:27,449
+a partitioning on
+a bunch of values.
+
+182
+00:06:27,449 --> 00:06:29,209
+And so first, let
+me get some data.
+
+183
+00:06:29,209 --> 00:06:31,709
+Right? So I'll say my data.
+Is going to be the string.
+
+184
+00:06:31,709 --> 00:06:35,049
+So I'm going to
+say ABC, AAA, BB,
+
+185
+00:06:35,049 --> 00:06:41,049
+DEF G, H, maybe some more Hs.
+
+186
+00:06:41,049 --> 00:06:42,750
+I'm show I have a
+bunch of data there,
+
+187
+00:06:42,750 --> 00:06:43,970
+and I'm going to try to create
+
+188
+00:06:43,970 --> 00:06:45,910
+some rows by enumerating it.
+
+189
+00:06:45,910 --> 00:06:48,170
+I'm going to enumerate that,
+and maybe you get a list.
+
+190
+00:06:48,170 --> 00:06:50,670
+All right, so I'm get
+these values like so.
+
+191
+00:06:50,670 --> 00:06:52,630
+I have all these rows
+and I want to group
+
+192
+00:06:52,630 --> 00:06:54,710
+them by the letter over here.
+
+193
+00:06:54,710 --> 00:06:58,489
+This will be my data.
+Each of these rows,
+
+194
+00:06:58,489 --> 00:07:01,370
+I want to put in one of
+these partitions down here.
+
+195
+00:07:01,370 --> 00:07:03,029
+I need to make sure
+that the same letter
+
+196
+00:07:03,029 --> 00:07:04,609
+goes to the same partition.
+
+197
+00:07:04,609 --> 00:07:08,289
+Maybe I'll just look at
+the first five of these.
+
+198
+00:07:08,289 --> 00:07:13,070
+Fantastic. My strategy
+is that I can
+
+199
+00:07:13,070 --> 00:07:18,809
+hash over let's say I have the
+first row and that letter.
+
+200
+00:07:18,809 --> 00:07:21,830
+Let me just print off
+what this was again.
+
+201
+00:07:23,030 --> 00:07:26,850
+So I'm may print off this,
+
+202
+00:07:26,850 --> 00:07:30,050
+and I may print off
+the hash of it.
+
+203
+00:07:30,050 --> 00:07:32,369
+And what I'd really
+
+204
+00:07:32,369 --> 00:07:34,270
+like is instead of h just
+a big number like that,
+
+205
+00:07:34,270 --> 00:07:36,069
+I'd like to have zero,
+one, two or three.
+
+206
+00:07:36,069 --> 00:07:37,350
+If I have 012 or three,
+
+207
+00:07:37,350 --> 00:07:39,549
+I can assign it to one
+of these partitions.
+
+208
+00:07:39,549 --> 00:07:41,970
+And I'm going to do is I'm
+going to actually just
+
+209
+00:07:41,970 --> 00:07:44,610
+take this modulo four. Right?
+
+210
+00:07:44,610 --> 00:07:45,990
+If I do that, then
+
+211
+00:07:45,990 --> 00:07:48,230
+this number will be zero,
+one, two or three, right?
+
+212
+00:07:48,230 --> 00:07:50,969
+And so I I hit
+hashing with modulo,
+
+213
+00:07:50,969 --> 00:07:52,050
+then I can put it in one of
+
+214
+00:07:52,050 --> 00:07:53,650
+these different buckets, right?
+
+215
+00:07:53,650 --> 00:07:55,130
+And so I'm going to do
+that right down here.
+
+216
+00:07:55,130 --> 00:07:56,470
+I'm going to loop
+over all these rows.
+
+217
+00:07:56,470 --> 00:08:00,289
+I'm going to say
+for row and data.
+
+218
+00:08:00,289 --> 00:08:01,850
+And then I'm just trying
+to pull out the values.
+
+219
+00:08:01,850 --> 00:08:05,099
+I'm going to say
+index and letter.
+
+220
+00:08:05,099 --> 00:08:07,970
+Is going to be pulling those
+things out of the row.
+
+221
+00:08:07,970 --> 00:08:10,630
+What I'm say is, what
+partition index do I want?
+
+222
+00:08:10,630 --> 00:08:12,589
+It's going to be a
+hash of the letter.
+
+223
+00:08:12,589 --> 00:08:14,830
+And I'm going to mod it by well,
+
+224
+00:08:14,830 --> 00:08:18,470
+how many partitions do
+I have, I'm to do that.
+
+225
+00:08:18,470 --> 00:08:20,470
+And then what I can
+do is I can say,
+
+226
+00:08:20,470 --> 00:08:22,430
+my partition is
+going to be one of
+
+227
+00:08:22,430 --> 00:08:25,590
+these partitions at that
+partition index, right?
+
+228
+00:08:25,590 --> 00:08:27,250
+And then I can append to it.
+
+229
+00:08:27,250 --> 00:08:29,289
+I can append that row of data.
+
+230
+00:08:29,289 --> 00:08:30,570
+And so I come out
+here and I'm going to
+
+231
+00:08:30,570 --> 00:08:32,849
+take a look at these
+partitions again.
+
+232
+00:08:33,740 --> 00:08:36,560
+Maybe what I should do is I
+should just loop over them.
+
+233
+00:08:36,560 --> 00:08:40,960
+I could say for a
+partition in partitions.
+
+234
+00:08:40,960 --> 00:08:43,579
+Maybe I'll print
+off that partition,
+
+235
+00:08:43,579 --> 00:08:45,460
+maybe I'll just print
+a little header here.
+
+236
+00:08:45,460 --> 00:08:48,460
+Partition to make it very clear.
+
+237
+00:08:48,460 --> 00:08:50,079
+I can see it's totally fine for
+
+238
+00:08:50,079 --> 00:08:51,659
+a partition to have some
+different letters in it.
+
+239
+00:08:51,659 --> 00:08:53,220
+But if I did it right, then
+
+240
+00:08:53,220 --> 00:08:55,380
+any specific letter
+should not be split.
+
+241
+00:08:55,380 --> 00:08:56,859
+All the Hs, for example,
+
+242
+00:08:56,859 --> 00:08:58,440
+are in last partition.
+
+243
+00:08:58,440 --> 00:09:00,540
+There's no Hs anywhere else.
+
+244
+00:09:00,540 --> 00:09:02,460
+All the As are in
+this partition.
+
+245
+00:09:02,460 --> 00:09:06,220
+I can group things
+together in that fashion.
+
+246
+00:09:06,220 --> 00:09:07,919
+All right. So just
+pause there and
+
+247
+00:09:07,919 --> 00:09:10,300
+see if people have
+any questions.
+
+248
+00:09:16,770 --> 00:09:19,489
+This is the foundation for
+
+249
+00:09:19,489 --> 00:09:23,789
+this shuffling that's
+happening up here.
+
+250
+00:09:23,789 --> 00:09:27,050
+If both machines have
+the same hash function,
+
+251
+00:09:27,050 --> 00:09:28,790
+they can both be hashing
+
+252
+00:09:28,790 --> 00:09:30,189
+these rows and they
+can figure out,
+
+253
+00:09:30,189 --> 00:09:31,509
+well, which of these partitions
+
+254
+00:09:31,509 --> 00:09:33,249
+over here should be going.
+
+255
+00:09:33,249 --> 00:09:36,609
+Here there's three,
+they'll each has, three,
+
+256
+00:09:36,609 --> 00:09:40,789
+and we can pull all the
+related data together in p.
+
+257
+00:09:40,789 --> 00:09:42,129
+Now, out of curiosity,
+
+258
+00:09:42,129 --> 00:09:43,429
+I know, based on
+the pre records,
+
+259
+00:09:43,429 --> 00:09:45,129
+not everybody has seen this,
+but how many of you have
+
+260
+00:09:45,129 --> 00:09:48,050
+seen hash tables somewhere?
+
+261
+00:09:48,080 --> 00:09:51,239
+This should remind you
+of hash tables, right?
+
+262
+00:09:51,239 --> 00:09:52,699
+When you have hash tables, you
+
+263
+00:09:52,699 --> 00:09:54,260
+have keys and values
+
+264
+00:09:54,260 --> 00:09:55,600
+that you're putting
+in the hash table,
+
+265
+00:09:55,600 --> 00:09:57,300
+and you have some kind of array
+
+266
+00:09:57,300 --> 00:09:59,159
+of buckets, very
+similar to this here.
+
+267
+00:09:59,159 --> 00:10:00,820
+And you're taking
+each key in value
+
+268
+00:10:00,820 --> 00:10:02,700
+and you're putting into
+one of these buckets.
+
+269
+00:10:02,700 --> 00:10:04,979
+And when you have hash tables,
+
+270
+00:10:04,979 --> 00:10:06,879
+you do not want
+collisions, right?
+
+271
+00:10:06,879 --> 00:10:08,159
+You don't want different keys
+
+272
+00:10:08,159 --> 00:10:09,819
+going in the same bucket, right?
+
+273
+00:10:09,819 --> 00:10:11,879
+Is that kind of ringing
+a bell for people?
+
+274
+00:10:11,879 --> 00:10:13,299
+And that's because when you
+
+275
+00:10:13,299 --> 00:10:14,420
+want to look up
+something quickly,
+
+276
+00:10:14,420 --> 00:10:16,579
+you don't have to
+loop over a bunch of
+
+277
+00:10:16,579 --> 00:10:17,779
+different keys and values in
+
+278
+00:10:17,779 --> 00:10:19,410
+the same bucket
+to find something
+
+279
+00:10:19,410 --> 00:10:22,720
+Here, collisions are fine
+and then they're necessary.
+
+280
+00:10:22,720 --> 00:10:26,640
+I have many more rows than
+I have partitions here.
+
+281
+00:10:26,640 --> 00:10:28,479
+So I just want to say, Hey,
+
+282
+00:10:28,479 --> 00:10:30,279
+it's similar to that, but
+also a little b different.
+
+283
+00:10:30,279 --> 00:10:31,539
+There, we want to
+avoid collisions.
+
+284
+00:10:31,539 --> 00:10:32,920
+Here, we actually
+want collisions.
+
+285
+00:10:32,920 --> 00:10:34,900
+We want a good sized
+partition with lots
+
+286
+00:10:34,900 --> 00:10:37,579
+of data because we
+can process it,
+
+287
+00:10:37,579 --> 00:10:39,500
+and we're not doing
+a calculation
+
+288
+00:10:39,500 --> 00:10:40,840
+where that would be slow.
+
+289
+00:10:40,840 --> 00:10:42,899
+Any question about the
+strategy in general or
+
+290
+00:10:42,899 --> 00:10:46,059
+about the comparison
+to hash tables?
+
+291
+00:10:49,470 --> 00:10:54,250
+Cool. This strategy is
+what we do for group by.
+
+292
+00:10:54,250 --> 00:10:57,049
+We're going to do
+similar things for join.
+
+293
+00:10:57,049 --> 00:10:58,709
+With the doin, we're
+often have to bring
+
+294
+00:10:58,709 --> 00:11:01,970
+related data together
+in the same place.
+
+295
+00:11:01,970 --> 00:11:04,489
+First, what I want to
+do is I want to show if
+
+296
+00:11:04,489 --> 00:11:06,830
+I have all this related
+data in the same place,
+
+297
+00:11:06,830 --> 00:11:08,789
+what are some different
+strategies for joining?
+
+298
+00:11:08,789 --> 00:11:10,189
+Then we go back to
+the slides and I can
+
+299
+00:11:10,189 --> 00:11:11,650
+show how I can use
+these as building
+
+300
+00:11:11,650 --> 00:11:14,689
+blocks to build distributed hash
+
+301
+00:11:14,689 --> 00:11:16,769
+or distributed join algorithms.
+
+302
+00:11:16,769 --> 00:11:18,809
+First, I'm going
+to do some local
+
+303
+00:11:18,809 --> 00:11:20,745
+and by that I mean, one machine.
+
+304
+00:11:20,745 --> 00:11:25,339
+One machine join algorithms.
+
+305
+00:11:25,339 --> 00:11:27,920
+In for this, I have some
+example data over here.
+
+306
+00:11:27,920 --> 00:11:29,699
+I'm going to go to the resources
+
+307
+00:11:29,699 --> 00:11:33,520
+and under lecture snippets,
+
+308
+00:11:33,520 --> 00:11:35,419
+where is lecture snippets.
+
+309
+00:11:35,419 --> 00:11:39,080
+There it is. I am
+
+310
+00:11:39,080 --> 00:11:43,060
+going to copy some
+data down here. Great.
+
+311
+00:11:51,220 --> 00:11:53,620
+All right, let's just take
+
+312
+00:11:53,620 --> 00:11:54,479
+a look at this and try to
+
+313
+00:11:54,479 --> 00:11:55,879
+figure out what
+we're trying to do.
+
+314
+00:11:55,879 --> 00:11:57,700
+I have a bunch of
+different fruits,
+
+315
+00:11:57,700 --> 00:11:59,780
+and each fruit has a color,
+
+316
+00:11:59,780 --> 00:12:03,280
+and the fruits are
+either apples, bananas,
+
+317
+00:12:03,280 --> 00:12:09,020
+or carrots, rather than
+having that all in one place,
+
+318
+00:12:09,260 --> 00:12:11,699
+these codes up here,
+it's almost like
+
+319
+00:12:11,699 --> 00:12:13,300
+a four and refer down to here.
+
+320
+00:12:13,300 --> 00:12:17,059
+This first fruit is a
+yellow, which is banana.
+
+321
+00:12:17,059 --> 00:12:18,780
+This is a yellow banana.
+
+322
+00:12:18,780 --> 00:12:22,820
+This one is a green
+a green apple.
+
+323
+00:12:22,820 --> 00:12:25,600
+Okay. And that's my goal.
+I want to do a droit.
+
+324
+00:12:25,600 --> 00:12:27,040
+I want to loop over
+all these things,
+
+325
+00:12:27,040 --> 00:12:29,280
+and I want to print
+off my yellow banana,
+
+326
+00:12:29,280 --> 00:12:30,920
+green apple, so on and so forth.
+
+327
+00:12:30,920 --> 00:12:34,359
+And I'm show two different
+strategies for doing that.
+
+328
+00:12:34,359 --> 00:12:37,220
+Okay. In this case,
+
+329
+00:12:37,220 --> 00:12:39,899
+each of the fruits up here
+
+330
+00:12:39,899 --> 00:12:43,659
+has exactly one corresponding
+kind down below.
+
+331
+00:12:43,659 --> 00:12:46,560
+I'm going to write code that
+works for that scenario.
+
+332
+00:12:46,560 --> 00:12:49,440
+If I had duplicates, if
+there are two As down here,
+
+333
+00:12:49,440 --> 00:12:51,219
+there are cases where you
+might have a joint like that,
+
+334
+00:12:51,219 --> 00:12:52,719
+it's a little less common, and
+
+335
+00:12:52,719 --> 00:12:54,500
+my code would be a little
+bit more complicated.
+
+336
+00:12:54,500 --> 00:12:55,900
+But I'm not trying to
+handle that case here.
+
+337
+00:12:55,900 --> 00:12:59,980
+I assume that each of
+these has one match below.
+
+338
+00:12:59,980 --> 00:13:02,160
+Each one down here could
+
+339
+00:13:02,160 --> 00:13:04,099
+have any number of
+matches up above.
+
+340
+00:13:04,099 --> 00:13:08,099
+But how can I join it together
+for this particular data?
+
+341
+00:13:08,350 --> 00:13:11,389
+The way I'm going to do this is,
+
+342
+00:13:11,389 --> 00:13:14,430
+I am going to take
+
+343
+00:13:14,430 --> 00:13:18,350
+these kinds and I'm going to
+convert it to a dictionary.
+
+344
+00:13:18,350 --> 00:13:20,430
+I'm going to convert
+that to a dictionary.
+
+345
+00:13:20,430 --> 00:13:23,209
+And this is great because
+if I loop over that,
+
+346
+00:13:23,209 --> 00:13:26,189
+I can match each of these up.
+
+347
+00:13:26,189 --> 00:13:29,989
+I am going to loop
+over the fruits.
+
+348
+00:13:29,989 --> 00:13:33,490
+I'm going to say for
+fruit and fruits.
+
+349
+00:13:33,490 --> 00:13:35,109
+Really there's the two parts.
+
+350
+00:13:35,109 --> 00:13:36,870
+There's the kind ID,
+
+351
+00:13:36,870 --> 00:13:39,669
+and then there's the color.
+
+352
+00:13:39,669 --> 00:13:41,810
+Maybe first, actually,
+
+353
+00:13:41,810 --> 00:13:43,229
+I'm just going to
+print those things.
+
+354
+00:13:43,229 --> 00:13:45,690
+I'm going to say kind
+ID and the color.
+
+355
+00:13:45,690 --> 00:13:47,649
+Maybe I'll just actually
+switch these because
+
+356
+00:13:47,649 --> 00:13:50,269
+it'll just be more natural
+and when I do that.
+
+357
+00:13:50,269 --> 00:13:52,010
+I'm printing all
+those things off.
+
+358
+00:13:52,010 --> 00:13:53,890
+I'm going to put this
+dictionary back up here.
+
+359
+00:13:53,890 --> 00:13:57,650
+I'm going to put it
+in a kind table.
+
+360
+00:13:57,650 --> 00:13:59,885
+I have kind look up here.
+
+361
+00:13:59,885 --> 00:14:02,779
+What I come down here so I'm
+just putting off the kind
+
+362
+00:14:02,779 --> 00:14:05,439
+directly like B. I can do
+a look up on the table.
+
+363
+00:14:05,439 --> 00:14:09,099
+I can say kind look
+up, like that.
+
+364
+00:14:09,099 --> 00:14:11,680
+I can say yellow banana, green
+apple, so on and so forth.
+
+365
+00:14:11,680 --> 00:14:14,199
+What this is doing right now is,
+
+366
+00:14:14,199 --> 00:14:18,419
+it's called Approach one
+
+367
+00:14:18,419 --> 00:14:21,780
+is called a hash rain,
+right? That makes sense.
+
+368
+00:14:21,780 --> 00:14:23,120
+You take whatever
+table is smaller,
+
+369
+00:14:23,120 --> 00:14:24,399
+you make a hash table out of it,
+
+370
+00:14:24,399 --> 00:14:26,399
+you can loop over and match up.
+
+371
+00:14:26,399 --> 00:14:30,020
+And when I talk about
+distributed drains soon,
+
+372
+00:14:30,020 --> 00:14:33,599
+that will be one of the
+strategies we have there.
+
+373
+00:14:33,599 --> 00:14:36,119
+Okay? All right.
+What else can we do?
+
+374
+00:14:36,119 --> 00:14:40,239
+Approach two approach two
+
+375
+00:14:40,239 --> 00:14:44,619
+is going to be called
+a sort merge join.
+
+376
+00:14:45,420 --> 00:14:51,759
+Maybe I'll just make these
+similar. A sort merge join.
+
+377
+00:14:51,759 --> 00:14:53,859
+What is going to require
+actually is that both of
+
+378
+00:14:53,859 --> 00:14:57,060
+our input datasets are sorted.
+
+379
+00:14:57,060 --> 00:14:59,760
+Maybe it'll do is I'll
+say fruit St sort,
+
+380
+00:14:59,760 --> 00:15:02,140
+and then I'll take a
+look at the fruits.
+
+381
+00:15:02,140 --> 00:15:05,979
+Then I will say, what
+else do I want to have?
+
+382
+00:15:05,979 --> 00:15:08,780
+I want to have the kind sort.
+
+383
+00:15:09,190 --> 00:15:12,710
+And then I'll take a
+look at the kinds.
+
+384
+00:15:12,710 --> 00:15:15,849
+They're both when you start,
+
+385
+00:15:15,849 --> 00:15:17,810
+you start on the first
+value in the tuple.
+
+386
+00:15:17,810 --> 00:15:19,749
+Both of these are ordered now.
+
+387
+00:15:19,749 --> 00:15:22,030
+What I want to do
+is I want to write
+
+388
+00:15:22,030 --> 00:15:24,230
+this weird double loop
+
+389
+00:15:24,230 --> 00:15:26,870
+where I'm walking over
+both of these together.
+
+390
+00:15:26,870 --> 00:15:28,450
+I want to match up all the As
+
+391
+00:15:28,450 --> 00:15:30,190
+here with all the As down here,
+
+392
+00:15:30,190 --> 00:15:32,269
+I want to match up
+all the Bs with
+
+393
+00:15:32,269 --> 00:15:34,689
+all the Bs on and so
+forth. I can do that.
+
+394
+00:15:34,689 --> 00:15:35,989
+Once it's all sorted, I can just
+
+395
+00:15:35,989 --> 00:15:38,190
+make one pass over
+each of these.
+
+396
+00:15:38,190 --> 00:15:39,589
+First one I do is I'm just
+
+397
+00:15:39,589 --> 00:15:40,890
+write a pretty slow
+loop actually,
+
+398
+00:15:40,890 --> 00:15:48,325
+I'm going to say for fruit
+and fruits and for ks,
+
+399
+00:15:48,325 --> 00:15:50,880
+Maybe I'll just put
+off every combination
+
+400
+00:15:50,880 --> 00:15:53,060
+of them fruit and kind.
+
+401
+00:15:53,060 --> 00:15:54,479
+I can do that. I can see in
+
+402
+00:15:54,479 --> 00:15:55,939
+some cases, this
+is a match, right?
+
+403
+00:15:55,939 --> 00:15:57,320
+I want to output something.
+
+404
+00:15:57,320 --> 00:15:58,879
+This is not a match, so I
+
+405
+00:15:58,879 --> 00:16:00,799
+would not want to
+output something.
+
+406
+00:16:00,799 --> 00:16:03,879
+Maybe what I can say is
+I can say if the fruit
+
+407
+00:16:03,879 --> 00:16:09,240
+of position zero equals
+the kind of position zero,
+
+408
+00:16:09,240 --> 00:16:11,340
+that would be a match and
+then I'm just going to
+
+409
+00:16:11,340 --> 00:16:13,399
+only put it off in that case.
+
+410
+00:16:13,399 --> 00:16:20,250
+I I'm only going to
+print off in that case.
+
+411
+00:16:20,250 --> 00:16:22,789
+I is what I'm looking for.
+
+412
+00:16:22,789 --> 00:16:24,469
+And then you know what I think I
+
+413
+00:16:24,469 --> 00:16:26,010
+can do is from the fruit,
+
+414
+00:16:26,010 --> 00:16:29,909
+I can grab the color,
+
+415
+00:16:29,909 --> 00:16:33,190
+right from here, I can
+grab the type of fruit.
+
+416
+00:16:33,190 --> 00:16:36,009
+I can say green apple, red
+apple, so on and so forth.
+
+417
+00:16:36,009 --> 00:16:38,009
+Now, this is very slow,
+
+418
+00:16:38,009 --> 00:16:39,389
+because I'm comparing
+
+419
+00:16:39,389 --> 00:16:41,110
+every combination to
+every combination.
+
+420
+00:16:41,110 --> 00:16:43,270
+I'm not really taking
+advantage of the fact
+
+421
+00:16:43,270 --> 00:16:47,739
+that that both of these
+are sorted, right?
+
+422
+00:16:47,739 --> 00:16:49,579
+And so what I want
+to do is I'm just
+
+423
+00:16:49,579 --> 00:16:51,680
+trying to make one forward
+pass through all the fruits.
+
+424
+00:16:51,680 --> 00:16:53,019
+What I want to make sure is that
+
+425
+00:16:53,019 --> 00:16:54,540
+when I'm looping over the ks,
+
+426
+00:16:54,540 --> 00:16:57,439
+I shouldn't always go back
+to the beginning, right?
+
+427
+00:16:57,439 --> 00:16:58,740
+And so I have to kind of write
+
+428
+00:16:58,740 --> 00:17:00,579
+a stranger loop here, right?
+
+429
+00:17:00,579 --> 00:17:06,080
+I have to say something like
+fruit index equals zero.
+
+430
+00:17:06,080 --> 00:17:08,519
+And then what could I say?
+
+431
+00:17:08,519 --> 00:17:10,099
+I could say while
+
+432
+00:17:10,099 --> 00:17:12,899
+fruit index is less than
+
+433
+00:17:12,899 --> 00:17:15,640
+the length of I'm
+sorry, what am I doing?
+
+434
+00:17:15,640 --> 00:17:17,619
+I wanted to loop over the
+kins. Let me go back.
+
+435
+00:17:17,619 --> 00:17:21,909
+So I could say, what is the
+I'm going to switch this.
+
+436
+00:17:21,909 --> 00:17:23,589
+I should check my
+notes more instead of
+
+437
+00:17:23,589 --> 00:17:26,309
+just draining ad hoc.
+I'm going to do this.
+
+438
+00:17:26,309 --> 00:17:28,410
+I'm going to have each
+kind pair up with a fruit.
+
+439
+00:17:28,410 --> 00:17:30,009
+What we do is I may
+change the student.
+
+440
+00:17:30,009 --> 00:17:32,050
+I'm going to say fruit
+index equals zero,
+
+441
+00:17:32,050 --> 00:17:34,670
+and I'm going to say y,
+
+442
+00:17:34,670 --> 00:17:39,450
+fruit index is less than
+the length of the fruits.
+
+443
+00:17:39,450 --> 00:17:41,729
+Then down here, I'm going to say
+
+444
+00:17:41,729 --> 00:17:45,049
+fruit index plus equals one.
+
+445
+00:17:45,049 --> 00:17:48,054
+I think at that
+point, the code shod
+
+446
+00:17:48,054 --> 00:17:50,379
+the code is doing
+something horrible.
+
+447
+00:17:50,379 --> 00:17:51,939
+I think what I messed up
+
+448
+00:17:51,939 --> 00:17:53,720
+on is I just had my old
+variable from before.
+
+449
+00:17:53,720 --> 00:17:55,700
+So I can say the
+fruit, in this case,
+
+450
+00:17:55,700 --> 00:17:58,959
+is the fruits of
+fruit index, right?
+
+451
+00:17:58,959 --> 00:18:01,439
+Okay, great. So I have
+the same quota as before.
+
+452
+00:18:01,439 --> 00:18:04,259
+This is equivalent to
+my four loop so far,
+
+453
+00:18:04,259 --> 00:18:05,400
+I haven't made anything faster,
+
+454
+00:18:05,400 --> 00:18:06,540
+I just refactored, I've run
+
+455
+00:18:06,540 --> 00:18:07,960
+the loop a little
+bit differently.
+
+456
+00:18:07,960 --> 00:18:09,139
+And that's why I set me up for
+
+457
+00:18:09,139 --> 00:18:10,459
+my next step because
+since I have
+
+458
+00:18:10,459 --> 00:18:13,319
+this wild loop and I'm manually
+increasing this index,
+
+459
+00:18:13,319 --> 00:18:16,280
+I can rewrite it in a
+more efficient way.
+
+460
+00:18:16,280 --> 00:18:17,999
+And I think one of the
+things that I don't want
+
+461
+00:18:17,999 --> 00:18:20,080
+to do is that as I'm
+passing over the fruit,
+
+462
+00:18:20,080 --> 00:18:22,919
+I don't want to always go
+back to the first fruit index
+
+463
+00:18:22,919 --> 00:18:24,339
+because the earlier fruits have
+
+464
+00:18:24,339 --> 00:18:25,840
+already been paired
+up with something.
+
+465
+00:18:25,840 --> 00:18:27,839
+I'm to bring this
+up here, right?
+
+466
+00:18:27,839 --> 00:18:30,259
+I'm to have that at
+the very beginning.
+
+467
+00:18:30,259 --> 00:18:32,899
+And then I have another
+case here, right?
+
+468
+00:18:32,899 --> 00:18:37,260
+It's possible that
+the fruit that I'm
+
+469
+00:18:37,260 --> 00:18:42,459
+on has already gone past the
+current kind I'm on, right?
+
+470
+00:18:42,459 --> 00:18:45,740
+Maybe I'm currently on banana,
+
+471
+00:18:45,740 --> 00:18:49,224
+and I saw a s value.
+
+472
+00:18:49,224 --> 00:18:54,129
+That means I need to go
+past the banana to carrot.
+
+473
+00:18:54,129 --> 00:18:57,069
+What I'm going to do is in
+this case, I'm going to say,
+
+474
+00:18:57,069 --> 00:19:00,150
+if fruit of zero,
+
+475
+00:19:00,150 --> 00:19:01,969
+if I've gone past it,
+
+476
+00:19:01,969 --> 00:19:04,870
+then what I want to
+actually do is break.
+
+477
+00:19:04,870 --> 00:19:09,730
+Somehow if I'm on see orange
+and I'm still in banana,
+
+478
+00:19:09,730 --> 00:19:13,969
+then I don't want to pass
+the fruit index forward,
+
+479
+00:19:13,969 --> 00:19:15,269
+because I want to remember
+
+480
+00:19:15,269 --> 00:19:17,149
+this one for when
+they're the carrot.
+
+481
+00:19:17,149 --> 00:19:19,190
+I'm just trying to break
+out of this inter loop,
+
+482
+00:19:19,190 --> 00:19:20,170
+and then I'll go onto
+
+483
+00:19:20,170 --> 00:19:21,949
+the carrot and then
+I can match it up.
+
+484
+00:19:21,949 --> 00:19:25,829
+I can do that where is
+that I'm having an issue.
+
+485
+00:19:25,829 --> 00:19:27,930
+I always title
+these line numbers
+
+486
+00:19:27,930 --> 00:19:31,649
+to in troubles a little
+bit more quickly.
+
+487
+00:19:31,649 --> 00:19:33,770
+I just started writing
+the same thing twice.
+
+488
+00:19:33,770 --> 00:19:36,209
+Silly me. All right.
+Let's do that.
+
+489
+00:19:36,209 --> 00:19:37,629
+Now I can do the same thing.
+
+490
+00:19:37,629 --> 00:19:39,329
+Then what's great
+is that I make one
+
+491
+00:19:39,329 --> 00:19:42,789
+pass over all the kinds
+with this funky loop.
+
+492
+00:19:42,789 --> 00:19:44,950
+Given that, I go to
+the sloop many times,
+
+493
+00:19:44,950 --> 00:19:47,189
+but each time it starts
+where ended last time,
+
+494
+00:19:47,189 --> 00:19:49,230
+I'm only making one pass
+over each of these,
+
+495
+00:19:49,230 --> 00:19:50,409
+and I can merge these two
+
+496
+00:19:50,409 --> 00:19:52,309
+different data sources together.
+
+497
+00:19:52,309 --> 00:19:54,330
+That's called a
+sort merge joint.
+
+498
+00:19:54,330 --> 00:19:55,809
+I started it and I'm merging
+
+499
+00:19:55,809 --> 00:19:58,429
+these two sorted
+resources together.
+
+500
+00:19:58,429 --> 00:20:00,989
+Any questions about
+that approach?
+
+501
+00:20:02,230 --> 00:20:06,509
+All right. The theme here is
+going to be in both cases,
+
+502
+00:20:06,509 --> 00:20:09,249
+I can do run this code that
+I showed on one machine.
+
+503
+00:20:09,249 --> 00:20:11,789
+I mean, I literally just did
+with regular Python rode.
+
+504
+00:20:11,789 --> 00:20:14,870
+If I have some strategy
+in Spark to bring
+
+505
+00:20:14,870 --> 00:20:19,370
+the same kind IDs together
+on the same machine,
+
+506
+00:20:19,370 --> 00:20:21,809
+if I have a shuffle
+strategy like that,
+
+507
+00:20:21,809 --> 00:20:24,470
+then I'd be able to
+do those drawings.
+
+508
+00:20:24,470 --> 00:20:26,610
+Okay. So I had those things.
+
+509
+00:20:26,610 --> 00:20:28,610
+I want to show some
+spark things as well
+
+510
+00:20:28,610 --> 00:20:31,369
+before I go back to the
+slides and the concepts.
+
+511
+00:20:31,369 --> 00:20:37,289
+And so what I'm going to
+show now is, for group by,
+
+512
+00:20:37,289 --> 00:20:41,710
+how we can both see what
+kind of group by it's
+
+513
+00:20:41,710 --> 00:20:47,469
+doing and also see some
+ways we can optimize it.
+
+514
+00:20:47,469 --> 00:20:49,029
+I may have an
+example query here.
+
+515
+00:20:49,029 --> 00:20:50,689
+I may have Spark dot SQL,
+
+516
+00:20:50,689 --> 00:20:53,749
+and any kind of group by
+query would work here.
+
+517
+00:20:53,749 --> 00:20:55,789
+But may select call type from
+
+518
+00:20:55,789 --> 00:20:57,330
+the Fire Department
+data like we've done
+
+519
+00:20:57,330 --> 00:20:59,530
+before and do
+account star Count,
+
+520
+00:20:59,530 --> 00:21:01,949
+and select that from Calls
+and then down here I
+
+521
+00:21:01,949 --> 00:21:05,029
+may group by type.
+
+522
+00:21:05,029 --> 00:21:09,069
+A general query. We've seen
+a bunch of times before.
+
+523
+00:21:09,069 --> 00:21:11,049
+Maybe I'll just limit it.
+
+524
+00:21:11,049 --> 00:21:14,700
+I can see a few of these
+
+525
+00:21:14,700 --> 00:21:16,510
+All right, so that's T to Run.
+
+526
+00:21:16,510 --> 00:21:18,749
+And I see a few of these counts.
+
+527
+00:21:18,749 --> 00:21:20,650
+Great. That's all fine and well.
+
+528
+00:21:20,650 --> 00:21:23,599
+And And so what I can do
+
+529
+00:21:23,599 --> 00:21:25,160
+is I'm curious about what kind
+
+530
+00:21:25,160 --> 00:21:26,979
+of operation was
+being done here,
+
+531
+00:21:26,979 --> 00:21:29,100
+I can actually say explain.
+
+532
+00:21:29,100 --> 00:21:30,619
+And when I explain,
+
+533
+00:21:30,619 --> 00:21:32,699
+it's telling me all these
+different steps that actually
+
+534
+00:21:32,699 --> 00:21:34,740
+got done. Re road we started.
+
+535
+00:21:34,740 --> 00:21:36,759
+We talked about RDDs, and
+there's all the things you do
+
+536
+00:21:36,759 --> 00:21:38,960
+with RDs like mapping and
+filtering and whatever,
+
+537
+00:21:38,960 --> 00:21:40,999
+even though we're
+writing Sparks SQL,
+
+538
+00:21:40,999 --> 00:21:42,279
+those things are
+still happening.
+
+539
+00:21:42,279 --> 00:21:44,039
+And if I say explain the query,
+
+540
+00:21:44,039 --> 00:21:46,319
+it tells me what
+those things are.
+
+541
+00:21:46,319 --> 00:21:48,059
+And so this explain, I think,
+
+542
+00:21:48,059 --> 00:21:50,500
+has a pretty dense
+red representation.
+
+543
+00:21:50,500 --> 00:21:52,959
+And so what I
+generally prefer is to
+
+544
+00:21:52,959 --> 00:21:56,019
+say give me a formatted
+version of it,
+
+545
+00:21:56,019 --> 00:21:59,520
+right? So formatted version.
+
+546
+00:21:59,520 --> 00:22:00,939
+What that will show me is what
+
+547
+00:22:00,939 --> 00:22:03,820
+the transformations
+are at each step,
+
+548
+00:22:03,820 --> 00:22:05,679
+and there's these numbers.
+
+549
+00:22:05,679 --> 00:22:07,260
+I can see one down here
+
+550
+00:22:07,260 --> 00:22:09,180
+that corresponds to
+more info down here.
+
+551
+00:22:09,180 --> 00:22:12,799
+I can see the general shape
+of what the query plan is,
+
+552
+00:22:12,799 --> 00:22:14,900
+and I can also
+read more details.
+
+553
+00:22:14,900 --> 00:22:16,460
+The very first thing
+is going to be doing
+
+554
+00:22:16,460 --> 00:22:18,320
+is scanning some Park data,
+
+555
+00:22:18,320 --> 00:22:20,559
+is showing me what
+that Park data is.
+
+556
+00:22:20,559 --> 00:22:24,114
+That's my San Francisco
+Park file and HDFS.
+
+557
+00:22:24,114 --> 00:22:27,969
+And then what I see here is
+
+558
+00:22:27,969 --> 00:22:29,309
+that I have to have
+
+559
+00:22:29,309 --> 00:22:31,309
+some kind of exchange
+when I exchange,
+
+560
+00:22:31,309 --> 00:22:33,069
+I have to bring
+related data together.
+
+561
+00:22:33,069 --> 00:22:34,670
+So that's three
+down here. I take
+
+562
+00:22:34,670 --> 00:22:36,309
+a look at the
+exchange down here.
+
+563
+00:22:36,309 --> 00:22:37,950
+I see that they're ding
+hash partitioning,
+
+564
+00:22:37,950 --> 00:22:40,089
+like we talked about
+and like I just showed.
+
+565
+00:22:40,089 --> 00:22:41,490
+I can see that they're hash
+
+566
+00:22:41,490 --> 00:22:43,254
+partitioning on the
+call type column.
+
+567
+00:22:43,254 --> 00:22:44,800
+That makes a lot
+of sense. You hash
+
+568
+00:22:44,800 --> 00:22:46,619
+partition or whatever
+you want to group by.
+
+569
+00:22:46,619 --> 00:22:48,799
+You can also see, like
+I mentioned before,
+
+570
+00:22:48,799 --> 00:22:50,700
+by default, when they do
+the hash partitioning,
+
+571
+00:22:50,700 --> 00:22:52,320
+they take module of 200,
+
+572
+00:22:52,320 --> 00:22:54,300
+which gets you 200 partitions
+
+573
+00:22:54,300 --> 00:22:56,460
+that used to be a big problem,
+but now they will co lass.
+
+574
+00:22:56,460 --> 00:22:57,760
+Though it says 200 there,
+
+575
+00:22:57,760 --> 00:22:59,399
+it's going to be
+less than the end.
+
+576
+00:22:59,399 --> 00:23:00,779
+Why will it be
+less than the end?
+
+577
+00:23:00,779 --> 00:23:02,180
+Well, up here, I see if there's
+
+578
+00:23:02,180 --> 00:23:04,099
+an adaptive spark plan and
+
+579
+00:23:04,099 --> 00:23:06,519
+some that's like the top
+level of these query plans,
+
+580
+00:23:06,519 --> 00:23:07,799
+then it will make some of
+
+581
+00:23:07,799 --> 00:23:09,879
+these optimizations
+as we're going.
+
+582
+00:23:09,879 --> 00:23:11,660
+We're shuffling around the data.
+
+583
+00:23:11,660 --> 00:23:13,880
+Then we can also see that both
+
+584
+00:23:13,880 --> 00:23:17,220
+before and after we
+shuffle around the data.
+
+585
+00:23:17,220 --> 00:23:18,959
+We're doing some
+hash aggregation.
+
+586
+00:23:18,959 --> 00:23:20,579
+So let's take a
+look at this one.
+
+587
+00:23:20,579 --> 00:23:22,379
+After we shuffle the data,
+
+588
+00:23:22,379 --> 00:23:25,120
+then we're doing a count.
+
+589
+00:23:25,120 --> 00:23:28,080
+So we're just kind of
+counting unique values.
+
+590
+00:23:28,080 --> 00:23:30,840
+What are we doing before
+we shuffle the data?
+
+591
+00:23:30,840 --> 00:23:32,699
+Well, we're actually
+doing a partial account.
+
+592
+00:23:32,699 --> 00:23:34,379
+If I have like a
+bunch of A rows,
+
+593
+00:23:34,379 --> 00:23:36,300
+maybe I can collapse into
+
+594
+00:23:36,300 --> 00:23:39,039
+a single row and see
+how many that we.
+
+595
+00:23:39,039 --> 00:23:41,179
+I mean, there might be a
+rows on a different machine,
+
+596
+00:23:41,179 --> 00:23:42,520
+I can't get a final count,
+
+597
+00:23:42,520 --> 00:23:44,479
+but I can least do a
+partial account and then
+
+598
+00:23:44,479 --> 00:23:47,139
+s less data over the network.
+
+599
+00:23:47,139 --> 00:23:48,379
+This is the kind of
+thing I want you to be
+
+600
+00:23:48,379 --> 00:23:49,539
+able to do on the project,
+
+601
+00:23:49,539 --> 00:23:51,154
+right to go in and kind of,
+
+602
+00:23:51,154 --> 00:23:52,870
+You know, this project
+is a little bit unique.
+
+603
+00:23:52,870 --> 00:23:53,710
+Because there's a
+couple of cases
+
+604
+00:23:53,710 --> 00:23:54,909
+where you have to explain
+
+605
+00:23:54,909 --> 00:23:56,329
+a little bit about
+what's happening
+
+606
+00:23:56,329 --> 00:23:58,169
+instead of just
+answering the question.
+
+607
+00:23:58,169 --> 00:24:00,129
+I'll be grad you on some
+comments that you have,
+
+608
+00:24:00,129 --> 00:24:01,929
+and I'll be very clear
+where those comments
+
+609
+00:24:01,929 --> 00:24:03,749
+have to be. All right.
+
+610
+00:24:03,749 --> 00:24:05,609
+Any questions about this
+
+611
+00:24:05,609 --> 00:24:09,450
+explained or what we're seeing
+here for the query plan?
+
+612
+00:24:12,970 --> 00:24:18,330
+A right. Cool. I also
+
+613
+00:24:18,330 --> 00:24:20,849
+want to show the
+bucketing optimization.
+
+614
+00:24:20,849 --> 00:24:22,150
+We have to shuffle the data
+
+615
+00:24:22,150 --> 00:24:25,109
+because These call types
+
+616
+00:24:25,109 --> 00:24:26,930
+could be spread across
+different machines.
+
+617
+00:24:26,930 --> 00:24:29,690
+If call types happen to
+be all in the same place,
+
+618
+00:24:29,690 --> 00:24:32,629
+then I wouldn't really
+have to worry about that.
+
+619
+00:24:32,629 --> 00:24:34,490
+I'm going to come down
+here. I'm to show
+
+620
+00:24:34,490 --> 00:24:36,050
+how we can get that
+data bucketed.
+
+621
+00:24:36,050 --> 00:24:39,809
+I'm say Spark dot table, calls.
+
+622
+00:24:40,530 --> 00:24:43,209
+What I could do like
+before is I could say
+
+623
+00:24:43,209 --> 00:24:45,490
+dot dot save as table.
+
+624
+00:24:45,490 --> 00:24:47,009
+This will save it
+as a Hive table,
+
+625
+00:24:47,009 --> 00:24:49,870
+which is remember some
+Park K files in the H CFS.
+
+626
+00:24:49,870 --> 00:24:52,270
+I'm going to call this table.
+
+627
+00:24:52,270 --> 00:24:54,989
+Just check in my notes
+here, what will I call it?
+
+628
+00:24:54,989 --> 00:24:59,259
+I will call it calls by type.
+
+629
+00:24:59,259 --> 00:25:00,879
+All right, so I can do that.
+
+630
+00:25:00,879 --> 00:25:02,659
+I don't want this to
+be a super long demo.
+
+631
+00:25:02,659 --> 00:25:04,119
+I'm going to say I'm
+just ting a sample
+
+632
+00:25:04,119 --> 00:25:06,120
+that's not super interesting,
+
+633
+00:25:06,120 --> 00:25:07,859
+but I'll just make
+this all run faster.
+
+634
+00:25:07,859 --> 00:25:11,279
+I want to say do
+10% of the rows.
+
+635
+00:25:11,279 --> 00:25:13,279
+The other thing I can do now is
+
+636
+00:25:13,279 --> 00:25:15,659
+after I have this write thing,
+
+637
+00:25:15,659 --> 00:25:17,339
+then I see I have
+
+638
+00:25:17,339 --> 00:25:18,539
+this data frame writer and I
+
+639
+00:25:18,539 --> 00:25:20,139
+can put different options on it.
+
+640
+00:25:20,139 --> 00:25:25,670
+One of the options is I can
+say bucket by then in here,
+
+641
+00:25:25,670 --> 00:25:27,550
+I can say, Well,
+
+642
+00:25:27,550 --> 00:25:29,049
+how many buckets do I want?
+
+643
+00:25:29,049 --> 00:25:32,749
+Also what do I
+want to bucket on?
+
+644
+00:25:32,749 --> 00:25:34,429
+This bucketing by,
+it's the same thing
+
+645
+00:25:34,429 --> 00:25:35,850
+as that hash partitioning,
+
+646
+00:25:35,850 --> 00:25:39,529
+but it's going to do that
+before writes out the file.
+
+647
+00:25:39,529 --> 00:25:42,429
+All right. Let's take a
+moment and let's do that.
+
+648
+00:25:42,429 --> 00:25:45,169
+Again, I could
+totally what is it?
+
+649
+00:25:45,169 --> 00:25:47,609
+Call type has an underscore
+in it, doesn't it?
+
+650
+00:25:47,609 --> 00:25:50,770
+So let's give that
+another attempt.
+
+651
+00:25:50,770 --> 00:25:52,969
+I think there was six
+partitions over here,
+
+652
+00:25:52,969 --> 00:25:55,690
+so it's doing sampling
+of those six partitions
+
+653
+00:25:55,690 --> 00:25:58,989
+then they're going to have
+to write out some data.
+
+654
+00:25:58,989 --> 00:26:02,130
+Any questions while we're
+doing that bucketing?
+
+655
+00:26:06,020 --> 00:26:08,800
+To are in progress
+out of the six.
+
+656
+00:26:08,800 --> 00:26:11,480
+One is done, two are
+done, two in progress.
+
+657
+00:26:11,480 --> 00:26:13,939
+Six, right here.
+
+658
+00:26:14,860 --> 00:26:18,440
+Is bucket pi equal
+to a group pi?
+
+659
+00:26:18,440 --> 00:26:20,080
+Not quite. I think they're often
+
+660
+00:26:20,080 --> 00:26:22,459
+used in conjunction, right? So
+
+661
+00:26:22,730 --> 00:26:25,770
+Group by is like a SQL query.
+
+662
+00:26:25,770 --> 00:26:28,229
+We're actually trying
+to get some analysis.
+
+663
+00:26:28,229 --> 00:26:30,389
+When we do a group
+by, we have to bring
+
+664
+00:26:30,389 --> 00:26:32,870
+together related data,
+which is expensive.
+
+665
+00:26:32,870 --> 00:26:34,110
+Bring de related data,
+
+666
+00:26:34,110 --> 00:26:36,030
+usually requires some
+network transfers.
+
+667
+00:26:36,030 --> 00:26:38,289
+What Bucket bi is
+doing is saying, well,
+
+668
+00:26:38,289 --> 00:26:39,609
+let's put the related
+data together
+
+669
+00:26:39,609 --> 00:26:41,110
+when we initially
+write the file.
+
+670
+00:26:41,110 --> 00:26:42,870
+Then when we do
+queries on that file,
+
+671
+00:26:42,870 --> 00:26:44,370
+we won't have to do it later.
+
+672
+00:26:44,370 --> 00:26:45,429
+Really what I'm doing is
+
+673
+00:26:45,429 --> 00:26:46,509
+I'm just trying to
+write the data in
+
+674
+00:26:46,509 --> 00:26:49,249
+different form so my
+group bi will be faster.
+
+675
+00:26:49,249 --> 00:26:52,269
+Does that make sense?
+Yeah, great question.
+
+676
+00:26:52,269 --> 00:26:55,749
+Let's come up here and
+try the same query again.
+
+677
+00:26:55,749 --> 00:26:59,729
+But instead of doing
+it on the calls table,
+
+678
+00:26:59,729 --> 00:27:02,370
+I'm going to do it on this
+new table that I created.
+
+679
+00:27:02,370 --> 00:27:05,070
+All right. I'm going
+to run this up here.
+
+680
+00:27:05,070 --> 00:27:06,929
+So now what I
+actually see is very
+
+681
+00:27:06,929 --> 00:27:09,209
+interesting is
+that I didn't have
+
+682
+00:27:09,209 --> 00:27:10,850
+to do an exchange
+
+683
+00:27:10,850 --> 00:27:13,069
+between my partial account
+and my total account.
+
+684
+00:27:13,069 --> 00:27:15,009
+The data was already bucketed
+
+685
+00:27:15,009 --> 00:27:17,789
+as it was supposed to
+be bucketed, right?
+
+686
+00:27:17,789 --> 00:27:20,309
+So that's going to be faster.
+
+687
+00:27:20,790 --> 00:27:25,170
+If I did this query
+on a different field,
+
+688
+00:27:25,170 --> 00:27:27,909
+right like if I did it by area,
+
+689
+00:27:35,320 --> 00:27:37,940
+I'm trying to think
+what other I ought
+
+690
+00:27:37,940 --> 00:27:40,739
+maybe I forgot to save
+it with that field.
+
+691
+00:27:40,739 --> 00:27:42,679
+What are some other
+fields we have here?
+
+692
+00:27:42,679 --> 00:27:45,740
+Sparked out table, calls.
+
+693
+00:27:45,740 --> 00:27:48,759
+What if I do it by I don't know,
+
+694
+00:27:48,759 --> 00:27:50,620
+let's say a call date.
+
+695
+00:27:50,620 --> 00:27:52,299
+I want to know how many events
+
+696
+00:27:52,299 --> 00:27:54,400
+there are on each call date.
+
+697
+00:28:00,330 --> 00:28:03,750
+Then why am I having stri.
+
+698
+00:28:03,750 --> 00:28:06,510
+No table, I change it up here?
+
+699
+00:28:06,510 --> 00:28:14,229
+I want to S. I had calls
+by type. Great. Do that.
+
+700
+00:28:14,229 --> 00:28:16,609
+I see in that case, I
+would still have to do
+
+701
+00:28:16,609 --> 00:28:20,310
+the exchange because
+this call by type data.
+
+702
+00:28:20,310 --> 00:28:21,710
+It's bucketed by type.
+
+703
+00:28:21,710 --> 00:28:24,149
+But if I'm doing a group by
+that's on a different field,
+
+704
+00:28:24,149 --> 00:28:25,570
+it's still going to be slow.
+
+705
+00:28:25,570 --> 00:28:32,569
+Then the takeaway
+here is that how
+
+706
+00:28:32,569 --> 00:28:40,889
+do I didn't want to do Silly
+I'm to go forwards redo.
+
+707
+00:28:45,530 --> 00:28:48,730
+Yeah, it's not for
+whatever reason.
+
+708
+00:28:48,730 --> 00:28:52,770
+My apologies, I'll just
+type it again. Spark SQL.
+
+709
+00:28:52,770 --> 00:28:57,729
+Then I'll say, select call type,
+
+710
+00:28:57,729 --> 00:29:05,309
+and then count of star
+from calls by type,
+
+711
+00:29:05,309 --> 00:29:08,970
+and then group by type.
+
+712
+00:29:09,060 --> 00:29:12,379
+I think that's actually good.
+And I wanted to explain it.
+
+713
+00:29:12,379 --> 00:29:16,539
+My apologies again for
+deleting my example.
+
+714
+00:29:16,539 --> 00:29:19,419
+We can only be fast avoid
+the exchange for one thing.
+
+715
+00:29:19,419 --> 00:29:20,619
+You could have different copies
+
+716
+00:29:20,619 --> 00:29:21,859
+of their data if you
+know there's a couple of
+
+717
+00:29:21,859 --> 00:29:23,500
+different queries you have
+and you're willing to spend
+
+718
+00:29:23,500 --> 00:29:25,440
+extra space to make
+different things fast,
+
+719
+00:29:25,440 --> 00:29:27,120
+or if you want one
+copy of your data,
+
+720
+00:29:27,120 --> 00:29:28,660
+you can make one thing fast.
+
+721
+00:29:28,660 --> 00:29:33,100
+Cool. Any questions about
+that bucketing by technique?
+
+722
+00:29:36,180 --> 00:29:40,740
+And that would help also
+with the join of course,
+
+723
+00:29:40,740 --> 00:29:41,779
+because the doin,
+we also have to
+
+724
+00:29:41,779 --> 00:29:43,339
+bring the related data together.
+
+725
+00:29:43,339 --> 00:29:45,359
+Okay, so coming back here.
+
+726
+00:29:45,359 --> 00:29:46,820
+We've talked about these
+
+727
+00:29:46,820 --> 00:29:49,000
+different optimizations
+for group by.
+
+728
+00:29:49,000 --> 00:29:52,240
+We've shown how if we
+pull all the related data
+
+729
+00:29:52,240 --> 00:29:55,399
+together on the same
+machine for a drain, right?
+
+730
+00:29:55,399 --> 00:29:57,139
+So the related data from
+two different tables,
+
+731
+00:29:57,139 --> 00:29:58,600
+we can join it locally.
+
+732
+00:29:58,600 --> 00:30:01,039
+Let's talk about how we can do
+
+733
+00:30:01,039 --> 00:30:04,239
+joining across data that's
+distributed, right?
+
+734
+00:30:04,239 --> 00:30:05,980
+And so there's two strategies,
+
+735
+00:30:05,980 --> 00:30:08,219
+which correspond to the
+two local strategy I have.
+
+736
+00:30:08,219 --> 00:30:11,079
+The first one is
+called a broadcast in.
+
+737
+00:30:11,079 --> 00:30:13,319
+And I have the same data example
+
+738
+00:30:13,319 --> 00:30:16,099
+here that I had in my notebook.
+
+739
+00:30:16,099 --> 00:30:18,739
+So In this case, I
+have two tables.
+
+740
+00:30:18,739 --> 00:30:21,059
+One has a fruit ID and a cost,
+
+741
+00:30:21,059 --> 00:30:22,739
+and that's partitioned, right?
+
+742
+00:30:22,739 --> 00:30:25,520
+The bold boundary is a
+partition of the first table.
+
+743
+00:30:25,520 --> 00:30:28,239
+I see there's some three rows
+
+744
+00:30:28,239 --> 00:30:30,899
+of data on each of my two
+machines in that case.
+
+745
+00:30:30,899 --> 00:30:35,059
+Then also my table of look
+ups is partitioned as well.
+
+746
+00:30:35,059 --> 00:30:37,260
+I have a thener border on
+that, that's a smaller table,
+
+747
+00:30:37,260 --> 00:30:39,760
+so I have A and B up here
+and the C down here.
+
+748
+00:30:39,760 --> 00:30:41,380
+And when I want to join these,
+
+749
+00:30:41,380 --> 00:30:44,815
+I have to bring the related
+data together in some way.
+
+750
+00:30:44,815 --> 00:30:46,610
+And so the first strategy,
+
+751
+00:30:46,610 --> 00:30:49,130
+remember that what I did is
+that for this look up table,
+
+752
+00:30:49,130 --> 00:30:51,649
+I just created a
+dictionary from it.
+
+753
+00:30:51,649 --> 00:30:54,209
+And so the first strategy is
+that we will actually have
+
+754
+00:30:54,209 --> 00:30:55,809
+an identical dictionary on
+
+755
+00:30:55,809 --> 00:30:57,189
+every machine in
+the cluster here,
+
+756
+00:30:57,189 --> 00:30:58,549
+it's two, but if I
+had 100 machines,
+
+757
+00:30:58,549 --> 00:31:00,209
+we'd have 100
+dictionaries like that.
+
+758
+00:31:00,209 --> 00:31:02,549
+Right? I'm really shuffling
+everywhere everywhere on
+
+759
+00:31:02,549 --> 00:31:06,290
+the small table and building
+building this dictionary.
+
+760
+00:31:06,290 --> 00:31:07,630
+It's a small table, it's fine,
+
+761
+00:31:07,630 --> 00:31:09,049
+right if it's like a
+couple kilobytes who
+
+762
+00:31:09,049 --> 00:31:11,434
+cares of every single machine.
+
+763
+00:31:11,434 --> 00:31:13,899
+Once I do that, the
+rest is going to be
+
+764
+00:31:13,899 --> 00:31:15,199
+relatively fast
+because it doesn't
+
+765
+00:31:15,199 --> 00:31:16,839
+matter how many fruits I have.
+
+766
+00:31:16,839 --> 00:31:19,899
+I can each machine independently
+
+767
+00:31:19,899 --> 00:31:24,199
+loop over its fruits and
+join it against that look.
+
+768
+00:31:24,199 --> 00:31:26,859
+There's good things and
+bad things about this.
+
+769
+00:31:26,859 --> 00:31:29,459
+The bad thing is
+that the small table
+
+770
+00:31:29,459 --> 00:31:31,319
+gets sent over the
+network everywhere.
+
+771
+00:31:31,319 --> 00:31:32,619
+It's in memory everywhere.
+
+772
+00:31:32,619 --> 00:31:34,655
+The good thing is
+that the big table
+
+773
+00:31:34,655 --> 00:31:36,709
+Never has to go
+over the network.
+
+774
+00:31:36,709 --> 00:31:39,010
+If there's an extreme
+difference in size,
+
+775
+00:31:39,010 --> 00:31:41,169
+if I have a very large table
+and a very tiny table,
+
+776
+00:31:41,169 --> 00:31:43,710
+this is a good strategy.
+
+777
+00:31:43,710 --> 00:31:46,389
+Caveat being that even if
+there's a big difference,
+
+778
+00:31:46,389 --> 00:31:48,269
+if the small table
+doesn't fit in memory,
+
+779
+00:31:48,269 --> 00:31:50,489
+this simply is not an option.
+
+780
+00:31:50,489 --> 00:31:52,990
+Sometimes this is great,
+sometimes it's really fast.
+
+781
+00:31:52,990 --> 00:31:55,920
+Other times I can't do it,
+other times it's slow.
+
+782
+00:31:55,920 --> 00:32:00,670
+All right. So before I showed
+a sort Merge join, SMJ.
+
+783
+00:32:00,670 --> 00:32:02,329
+The distributed version is
+
+784
+00:32:02,329 --> 00:32:03,870
+called Shuffle sort Merge Join.
+
+785
+00:32:03,870 --> 00:32:05,349
+I forever reason, they also have
+
+786
+00:32:05,349 --> 00:32:08,710
+the S is covering both
+shuffle and sort.
+
+787
+00:32:08,710 --> 00:32:10,449
+So we also call that SM j.
+
+788
+00:32:10,449 --> 00:32:12,850
+I start with the data
+in the same place.
+
+789
+00:32:12,850 --> 00:32:16,410
+This one more closely resembles
+what happens with group.
+
+790
+00:32:16,410 --> 00:32:18,829
+We will both of the tables,
+
+791
+00:32:18,829 --> 00:32:20,269
+and we will bring together
+
+792
+00:32:20,269 --> 00:32:23,929
+all the pieces that are
+As from both the tables.
+
+793
+00:32:23,929 --> 00:32:27,010
+Well maybe I might B and C. L's
+
+794
+00:32:27,010 --> 00:32:29,709
+say at function module
+
+795
+00:32:29,709 --> 00:32:32,249
+two is one that I bring both
+those pieces down here.
+
+796
+00:32:32,249 --> 00:32:33,809
+Once I bring both
+those pieces there,
+
+797
+00:32:33,809 --> 00:32:36,890
+that I can just do the
+regular sort merge join
+
+798
+00:32:36,890 --> 00:32:38,449
+that I did in the
+notebook earlier,
+
+799
+00:32:38,449 --> 00:32:42,329
+and I can match all of
+that up just as before.
+
+800
+00:32:42,730 --> 00:32:45,069
+Any questions about either of
+
+801
+00:32:45,069 --> 00:32:50,459
+those approaches? All right.
+
+802
+00:32:50,459 --> 00:32:54,240
+What are the trade offs?
+Again, with Sort Merge Join,
+
+803
+00:32:54,240 --> 00:32:56,100
+it's expensive in some sense,
+
+804
+00:32:56,100 --> 00:32:59,060
+because every table goes
+over the network once,
+
+805
+00:32:59,060 --> 00:33:01,140
+even if one of the
+tables is huge.
+
+806
+00:33:01,140 --> 00:33:03,600
+The BH, advantages that only,
+
+807
+00:33:03,600 --> 00:33:04,939
+the small table goes
+over the network,
+
+808
+00:33:04,939 --> 00:33:05,999
+but it goes over the network.
+
+809
+00:33:05,999 --> 00:33:08,519
+Many times, the more workers
+involved in the cluster,
+
+810
+00:33:08,519 --> 00:33:10,720
+the more times it does well.
+
+811
+00:33:10,720 --> 00:33:13,879
+Sorbo default because it
+
+812
+00:33:13,879 --> 00:33:15,580
+just always works
+even if it's slow.
+
+813
+00:33:15,580 --> 00:33:17,219
+But sometimes, if you
+
+814
+00:33:17,219 --> 00:33:19,460
+have very big skew
+between the tables,
+
+815
+00:33:19,460 --> 00:33:20,900
+one is very large,
+one is very small,
+
+816
+00:33:20,900 --> 00:33:22,339
+and the small and
+fits in memory.
+
+817
+00:33:22,339 --> 00:33:24,059
+There's not too many
+workers involved.
+
+818
+00:33:24,059 --> 00:33:28,100
+Sometimes BHA has
+fantastic performance.
+
+819
+00:33:28,100 --> 00:33:31,199
+All right. So one of
+the things you can do,
+
+820
+00:33:31,199 --> 00:33:32,619
+right is if I have
+some query up here.
+
+821
+00:33:32,619 --> 00:33:34,259
+I mean, this could
+be Spark SQL or it
+
+822
+00:33:34,259 --> 00:33:36,700
+could be the data frame API.
+
+823
+00:33:36,700 --> 00:33:38,960
+When I do that, I can
+say that explain,
+
+824
+00:33:38,960 --> 00:33:40,619
+just like I did with a group I,
+
+825
+00:33:40,619 --> 00:33:43,240
+and here I get some more
+complicated output here.
+
+826
+00:33:43,240 --> 00:33:44,560
+And I can see in this case,
+
+827
+00:33:44,560 --> 00:33:47,679
+it's automatically doing a
+broadcast has doin, right?
+
+828
+00:33:47,679 --> 00:33:49,999
+Another reason I say the
+shuffle sort merge join.
+
+829
+00:33:49,999 --> 00:33:51,059
+That's one of the
+things I want to do.
+
+830
+00:33:51,059 --> 00:33:53,259
+If you have some kind
+of drain, I want to b
+
+831
+00:33:53,259 --> 00:33:54,960
+just run explain and tell
+
+832
+00:33:54,960 --> 00:33:57,330
+me what kind of
+drain is it doing?
+
+833
+00:33:57,330 --> 00:34:00,739
+That's one of the things that
+we should walk away with.
+
+834
+00:34:00,739 --> 00:34:04,499
+The other thing is that
+you can do a head up here.
+
+835
+00:34:04,499 --> 00:34:06,940
+I could say holidays
+
+836
+00:34:06,940 --> 00:34:09,739
+dot h. I could say there
+merge or broadcast.
+
+837
+00:34:09,739 --> 00:34:14,179
+If I could do that, I can
+force it to do bother type.
+
+838
+00:34:14,179 --> 00:34:15,539
+For some reason, Spark makes
+
+839
+00:34:15,539 --> 00:34:17,339
+a wrong decision
+about what is best,
+
+840
+00:34:17,339 --> 00:34:20,460
+I can make it do
+something different.
+
+841
+00:34:21,020 --> 00:34:29,339
+All right. Cool. Any questions
+about joints? All right.
+
+842
+00:34:29,339 --> 00:34:32,540
+We're going to move on
+and I start a new topic,
+
+843
+00:34:32,540 --> 00:34:34,959
+which is machine learning
+
+844
+00:34:34,959 --> 00:34:37,280
+and specifically machine
+learning in Spark.
+
+845
+00:34:37,280 --> 00:34:39,280
+And so in Spark,
+
+846
+00:34:39,280 --> 00:34:41,079
+they have a library
+called ML Lb,
+
+847
+00:34:41,079 --> 00:34:42,859
+and that's where we learning.
+
+848
+00:34:42,859 --> 00:34:44,359
+So I have a few goals for you.
+
+849
+00:34:44,359 --> 00:34:45,899
+I want you to be able
+to understand what
+
+850
+00:34:45,899 --> 00:34:47,600
+these different common
+machine learning tests
+
+851
+00:34:47,600 --> 00:34:48,840
+are, how to do them in Spark.
+
+852
+00:34:48,840 --> 00:34:50,299
+What is like a train test split?
+
+853
+00:34:50,299 --> 00:34:51,879
+How can I pre process my data?
+
+854
+00:34:51,879 --> 00:34:54,679
+How can I take create a
+pipeline where I do a bunch of
+
+855
+00:34:54,679 --> 00:34:55,899
+transformations to the data
+
+856
+00:34:55,899 --> 00:34:57,999
+before I actually train
+or predict with it?
+
+857
+00:34:57,999 --> 00:34:59,399
+How can I evaluate how well
+
+858
+00:34:59,399 --> 00:35:01,974
+my models work? Lots
+of things there.
+
+859
+00:35:01,974 --> 00:35:04,369
+I think this is not a
+machine learning course,
+
+860
+00:35:04,369 --> 00:35:05,529
+but it's just like,
+Well, how do we do
+
+861
+00:35:05,529 --> 00:35:06,969
+machine learning with big data?
+
+862
+00:35:06,969 --> 00:35:08,349
+And so I'll have a bit of
+
+863
+00:35:08,349 --> 00:35:10,030
+a brief background
+of machine learning,
+
+864
+00:35:10,030 --> 00:35:13,290
+and we'll just look at one
+algorithm in closer detail,
+
+865
+00:35:13,290 --> 00:35:14,810
+which is a decision tree.
+
+866
+00:35:14,810 --> 00:35:16,369
+So I want you to understand how
+
+867
+00:35:16,369 --> 00:35:18,429
+decision trees make predictions.
+
+868
+00:35:18,429 --> 00:35:20,389
+And then third, there's
+
+869
+00:35:20,389 --> 00:35:24,000
+this research paper called
+Planet that Google published,
+
+870
+00:35:24,000 --> 00:35:26,790
+and we're going to
+learn how planet works
+
+871
+00:35:26,790 --> 00:35:30,849
+because planet is what has
+been implemented in Spark.
+
+872
+00:35:30,849 --> 00:35:32,790
+Spark uses something similar
+
+873
+00:35:32,790 --> 00:35:34,629
+to the planet algorithm
+to train decision trees,
+
+874
+00:35:34,629 --> 00:35:36,809
+and we'll try tag that
+in detail and see how
+
+875
+00:35:36,809 --> 00:35:38,210
+if we have these giant datasets,
+
+876
+00:35:38,210 --> 00:35:39,190
+we have to train a model.
+
+877
+00:35:39,190 --> 00:35:40,709
+How can we do that
+without having to
+
+878
+00:35:40,709 --> 00:35:42,750
+send too much data
+over the network?
+
+879
+00:35:42,750 --> 00:35:44,229
+How can we keep the
+data in place and
+
+880
+00:35:44,229 --> 00:35:47,099
+still train one big decision
+tree and then the end?
+
+881
+00:35:47,099 --> 00:35:50,069
+All right. So I may do
+I should re label this.
+
+882
+00:35:50,069 --> 00:35:51,369
+I used to have some
+machine learning
+
+883
+00:35:51,369 --> 00:35:52,969
+stuff earlier in the
+semester that I pulled out.
+
+884
+00:35:52,969 --> 00:35:53,889
+So this is not review.
+
+885
+00:35:53,889 --> 00:35:55,529
+You're seeing this
+for the first time.
+
+886
+00:35:55,529 --> 00:35:57,489
+So it's okay if you don't know
+
+887
+00:35:57,489 --> 00:35:59,409
+much about machine
+learning at this point.
+
+888
+00:35:59,409 --> 00:36:02,789
+So there's different categories
+of machine learning.
+
+889
+00:36:02,789 --> 00:36:04,689
+What is called
+reinforcement learning.
+
+890
+00:36:04,689 --> 00:36:06,049
+That's where you have
+some kind of agent
+
+891
+00:36:06,049 --> 00:36:07,170
+that's like making decisions
+
+892
+00:36:07,170 --> 00:36:09,570
+and it's getting rewards or
+the opposite of rewards,
+
+893
+00:36:09,570 --> 00:36:11,609
+and it's kind of
+adapting over time.
+
+894
+00:36:11,609 --> 00:36:14,189
+Another strategy, category of
+
+895
+00:36:14,189 --> 00:36:15,570
+machine learning is on
+supervised learning,
+
+896
+00:36:15,570 --> 00:36:17,409
+where you might be looking
+for general categories.
+
+897
+00:36:17,409 --> 00:36:18,349
+We're not trying to look at
+
+898
+00:36:18,349 --> 00:36:19,590
+either of those this semester.
+
+899
+00:36:19,590 --> 00:36:22,209
+We're going to look at
+supervised machine learning.
+
+900
+00:36:22,209 --> 00:36:23,909
+We're trying to train
+models that can
+
+901
+00:36:23,909 --> 00:36:26,179
+predict on known values, right?
+
+902
+00:36:26,179 --> 00:36:27,970
+And what is a model?
+
+903
+00:36:27,970 --> 00:36:29,330
+A model is actually
+
+904
+00:36:29,330 --> 00:36:30,949
+just a function that
+
+905
+00:36:30,949 --> 00:36:32,649
+takes some information
+about the world,
+
+906
+00:36:32,649 --> 00:36:33,809
+and then the return value of
+
+907
+00:36:33,809 --> 00:36:35,630
+the function is a prediction.
+
+908
+00:36:35,630 --> 00:36:37,109
+Right? And so you
+as a human just
+
+909
+00:36:37,109 --> 00:36:38,269
+like who write some
+function, say,
+
+910
+00:36:38,269 --> 00:36:39,929
+Hey, this is my model,
+you could evaluate it,
+
+911
+00:36:39,929 --> 00:36:41,629
+you could do a lot
+of things with it.
+
+912
+00:36:41,629 --> 00:36:43,829
+The idea of machine
+learning is that rather
+
+913
+00:36:43,829 --> 00:36:45,790
+than having a human just
+write down a model,
+
+914
+00:36:45,790 --> 00:36:47,950
+we want the computer to
+automatically figure
+
+915
+00:36:47,950 --> 00:36:51,009
+out what this function
+should look like.
+
+916
+00:36:51,009 --> 00:36:52,709
+What that often
+involves is there's
+
+917
+00:36:52,709 --> 00:36:54,330
+some math inside
+of this function,
+
+918
+00:36:54,330 --> 00:36:55,969
+and different numbers might be
+
+919
+00:36:55,969 --> 00:36:57,889
+almost like hard
+coded into that math.
+
+920
+00:36:57,889 --> 00:37:00,389
+And so creating a
+good model often
+
+921
+00:37:00,389 --> 00:37:03,010
+means finding good values
+for those numbers.
+
+922
+00:37:03,010 --> 00:37:03,974
+So I have that
+
+923
+00:37:03,974 --> 00:37:06,339
+And then we return
+some prediction here.
+
+924
+00:37:06,339 --> 00:37:09,560
+I might re each turn either
+a number or a category.
+
+925
+00:37:09,560 --> 00:37:11,540
+Like a number would be like
+one, two, three, category,
+
+926
+00:37:11,540 --> 00:37:12,979
+it might be like yes,
+
+927
+00:37:12,979 --> 00:37:14,560
+no, or apple banana.
+
+928
+00:37:14,560 --> 00:37:16,479
+And so there's names for these.
+
+929
+00:37:16,479 --> 00:37:17,879
+The first one is a
+regression model.
+
+930
+00:37:17,879 --> 00:37:20,219
+The second one is a
+classification model.
+
+931
+00:37:20,219 --> 00:37:22,019
+I have an example down here
+
+932
+00:37:22,019 --> 00:37:23,700
+where I have a weather forecast.
+
+933
+00:37:23,700 --> 00:37:25,820
+The weather forecast is
+taking in some values.
+
+934
+00:37:25,820 --> 00:37:27,980
+The temperature today, the
+temperature yesterday.
+
+935
+00:37:27,980 --> 00:37:30,039
+Maybe I can predict what
+the temperature is.
+
+936
+00:37:30,039 --> 00:37:31,819
+Tomorrow, is it a
+regression model because
+
+937
+00:37:31,819 --> 00:37:34,040
+I'm returning a number.
+
+938
+00:37:34,040 --> 00:37:35,639
+This is kind of a broad idea of
+
+939
+00:37:35,639 --> 00:37:37,439
+what machine learning is and
+
+940
+00:37:37,439 --> 00:37:40,164
+specifically supervises
+machine learning.
+
+941
+00:37:40,164 --> 00:37:42,870
+All right. So let's walk
+through an example.
+
+942
+00:37:42,870 --> 00:37:44,569
+How can we actually
+figure out how to make
+
+943
+00:37:44,569 --> 00:37:47,949
+a good function or model
+based on some data?
+
+944
+00:37:47,949 --> 00:37:49,929
+A common situation that
+you're going to find
+
+945
+00:37:49,929 --> 00:37:52,609
+yourself in is that you
+have a bunch of data.
+
+946
+00:37:52,609 --> 00:37:54,930
+Let's imagine that
+it's a table of data,
+
+947
+00:37:54,930 --> 00:37:58,749
+and there are some unknown
+values in some of the rows.
+
+948
+00:37:58,749 --> 00:38:00,110
+Down here, there's a few values.
+
+949
+00:38:00,110 --> 00:38:03,069
+I don't know. And what I want
+to do is I want to try to
+
+950
+00:38:03,069 --> 00:38:06,530
+figure out when I do know
+both the x and the y values,
+
+951
+00:38:06,530 --> 00:38:08,069
+Can I figure out what
+the relationship is?
+
+952
+00:38:08,069 --> 00:38:11,149
+Can I find some pattern, and
+then use that to infer what
+
+953
+00:38:11,149 --> 00:38:14,649
+the y values probably are
+where they're missing, right?
+
+954
+00:38:14,649 --> 00:38:17,769
+So there are special names for
+these columns I have here.
+
+955
+00:38:17,769 --> 00:38:19,409
+The column that I'm trying to
+
+956
+00:38:19,409 --> 00:38:20,790
+predict where I have
+some missing values,
+
+957
+00:38:20,790 --> 00:38:21,969
+where you call that
+a label, right?
+
+958
+00:38:21,969 --> 00:38:24,329
+So in this case, y is my label.
+
+959
+00:38:24,329 --> 00:38:26,190
+There might be
+other column names
+
+960
+00:38:26,190 --> 00:38:27,730
+for a label, but y is common.
+
+961
+00:38:27,730 --> 00:38:30,609
+So I want to predict
+this label column y.
+
+962
+00:38:30,609 --> 00:38:31,989
+And the things I'm using to make
+
+963
+00:38:31,989 --> 00:38:34,169
+the prediction are
+called features, right?
+
+964
+00:38:34,169 --> 00:38:37,269
+And so this case, my features
+are X one and X two, right?
+
+965
+00:38:37,269 --> 00:38:38,929
+I want to figure
+Can I predict what
+
+966
+00:38:38,929 --> 00:38:41,850
+those unknowns are
+from my other data.
+
+967
+00:38:41,850 --> 00:38:44,589
+Lots of different methodologies
+or strategies people
+
+968
+00:38:44,589 --> 00:38:47,829
+have for doing this and it
+should show one methodology.
+
+969
+00:38:47,829 --> 00:38:49,489
+What is that? We're going to use
+
+970
+00:38:49,489 --> 00:38:50,849
+different subsets of our known
+
+971
+00:38:50,849 --> 00:38:52,409
+values in different ways, right?
+
+972
+00:38:52,409 --> 00:38:54,829
+So one of the things somebody
+might do is they might
+
+973
+00:38:54,829 --> 00:38:57,430
+randomly split our known cases
+
+974
+00:38:57,430 --> 00:38:59,289
+into two or three parts, right?
+
+975
+00:38:59,289 --> 00:39:00,689
+And we're going to have
+
+976
+00:39:00,689 --> 00:39:03,029
+one part that we
+train our data on,
+
+977
+00:39:03,029 --> 00:39:04,630
+where we actually
+look for patterns,
+
+978
+00:39:04,630 --> 00:39:06,849
+and other parts that
+we might use to try to
+
+979
+00:39:06,849 --> 00:39:09,569
+identify the best model or
+say how good our model is.
+
+980
+00:39:09,569 --> 00:39:10,989
+And so we'll
+randomly split that.
+
+981
+00:39:10,989 --> 00:39:12,189
+That randomly split here in
+
+982
+00:39:12,189 --> 00:39:13,869
+the picture, I just
+have chunked it.
+
+983
+00:39:13,869 --> 00:39:17,110
+But normally it would
+be randomly split.
+
+984
+00:39:17,110 --> 00:39:19,029
+All right, what would you do?
+
+985
+00:39:19,029 --> 00:39:20,669
+You would feed
+your training data
+
+986
+00:39:20,669 --> 00:39:21,710
+into different algorithms.
+
+987
+00:39:21,710 --> 00:39:22,849
+And what those algorithms are
+
+988
+00:39:22,849 --> 00:39:24,910
+returning is a model
+
+989
+00:39:24,910 --> 00:39:26,529
+or a function that can
+make predictions, right?
+
+990
+00:39:26,529 --> 00:39:28,090
+I can feed this into
+different algorithms,
+
+991
+00:39:28,090 --> 00:39:30,329
+and I could get different
+models out of that.
+
+992
+00:39:30,329 --> 00:39:33,029
+Okay. It's very common,
+you have some data.
+
+993
+00:39:33,029 --> 00:39:34,129
+You're going to try a bunch of
+
+994
+00:39:34,129 --> 00:39:35,430
+different machine
+learning algorithms,
+
+995
+00:39:35,430 --> 00:39:37,549
+and then the end, you have
+to recommend one, right?
+
+996
+00:39:37,549 --> 00:39:39,389
+In the end, you want to just
+start using one of them,
+
+997
+00:39:39,389 --> 00:39:42,029
+and she'll say, I recommend
+model A or model B.
+
+998
+00:39:42,029 --> 00:39:43,649
+How do we choose one?
+
+999
+00:39:43,649 --> 00:39:45,109
+Well, we have to give it
+
+1000
+00:39:45,109 --> 00:39:46,949
+a test to see which one
+is the best, right?
+
+1001
+00:39:46,949 --> 00:39:48,509
+So what we'll do is we'll take
+
+1002
+00:39:48,509 --> 00:39:49,649
+this validation data where
+
+1003
+00:39:49,649 --> 00:39:51,205
+we actually know
+the true answer.
+
+1004
+00:39:51,205 --> 00:39:55,220
+And we feed these values
+
+1005
+00:39:55,220 --> 00:39:57,140
+as arguments into
+both these models,
+
+1006
+00:39:57,140 --> 00:39:59,160
+and we'll get some
+return values.
+
+1007
+00:39:59,160 --> 00:40:00,479
+We're doing that, even though we
+
+1008
+00:40:00,479 --> 00:40:02,259
+already know what the
+real Y values are,
+
+1009
+00:40:02,259 --> 00:40:04,079
+because what we want to see is,
+
+1010
+00:40:04,079 --> 00:40:06,379
+can these models get values that
+
+1011
+00:40:06,379 --> 00:40:08,640
+are close to the real y values?
+
+1012
+00:40:08,640 --> 00:40:10,239
+And just kind like
+eyeballing it here,
+
+1013
+00:40:10,239 --> 00:40:12,279
+I can see that Model A is making
+
+1014
+00:40:12,279 --> 00:40:14,999
+more realistic predictions
+than Model B, right?
+
+1015
+00:40:14,999 --> 00:40:15,959
+So this point in the project,
+
+1016
+00:40:15,959 --> 00:40:17,239
+I might come along
+and I might say
+
+1017
+00:40:17,239 --> 00:40:19,740
+that Model A is the winner.
+
+1018
+00:40:19,740 --> 00:40:22,259
+There's deferent ways to
+categorize or not categorize,
+
+1019
+00:40:22,259 --> 00:40:25,019
+but to quantify how good
+your predictions are.
+
+1020
+00:40:25,019 --> 00:40:26,819
+We be look at that a
+little bit more detail.
+
+1021
+00:40:26,819 --> 00:40:28,739
+Anyway, so this point
+might say Model A,
+
+1022
+00:40:28,739 --> 00:40:31,519
+U, in addition to
+recommending Model A,
+
+1023
+00:40:31,519 --> 00:40:33,439
+people might be interested in
+
+1024
+00:40:33,439 --> 00:40:38,539
+knowing how good is model A.
+
+1025
+00:40:38,539 --> 00:40:41,039
+It would be a little
+tempting to just say, well,
+
+1026
+00:40:41,039 --> 00:40:43,079
+what was the score
+that Model A got,
+
+1027
+00:40:43,079 --> 00:40:45,139
+when I use of the
+validation dataset.
+
+1028
+00:40:45,139 --> 00:40:47,379
+But that's not quite right
+
+1029
+00:40:47,379 --> 00:40:50,500
+because imagine like I was
+trying to test students.
+
+1030
+00:40:50,500 --> 00:40:52,219
+Maybe first I want to say pick
+
+1031
+00:40:52,219 --> 00:40:54,919
+a student that knows
+the material past,
+
+1032
+00:40:54,919 --> 00:40:56,439
+and I want to say,
+how well do they do?
+
+1033
+00:40:56,439 --> 00:40:58,359
+Let's say hypothetically that
+
+1034
+00:40:58,359 --> 00:41:01,420
+the group of students all
+just randomly pick answers.
+
+1035
+00:41:01,420 --> 00:41:03,859
+If I do the methodology
+I've had so far,
+
+1036
+00:41:03,859 --> 00:41:05,379
+there's going to be
+some students that get
+
+1037
+00:41:05,379 --> 00:41:08,039
+higher scores than
+others just by chance.
+
+1038
+00:41:08,039 --> 00:41:10,019
+It's a little bit biased. If I
+
+1039
+00:41:10,019 --> 00:41:11,959
+pick the one that's
+a winner and I say,
+
+1040
+00:41:11,959 --> 00:41:13,694
+this is how well it does.
+
+1041
+00:41:13,694 --> 00:41:16,789
+Well, maybe what that score is
+
+1042
+00:41:16,789 --> 00:41:18,429
+reflecting is the fact
+that it's the best
+
+1043
+00:41:18,429 --> 00:41:20,549
+one out of a large
+number of them.
+
+1044
+00:41:20,549 --> 00:41:21,949
+And so what we'll do is after
+
+1045
+00:41:21,949 --> 00:41:23,389
+we finally pick a winner, right?
+
+1046
+00:41:23,389 --> 00:41:25,369
+This is the best one, we'll
+give it another test,
+
+1047
+00:41:25,369 --> 00:41:26,749
+and this will be its
+final score like.
+
+1048
+00:41:26,749 --> 00:41:28,749
+Well, how well does
+this model that we're
+
+1049
+00:41:28,749 --> 00:41:30,949
+recommending do on
+the data, right?
+
+1050
+00:41:30,949 --> 00:41:32,690
+So at this point,
+we have a model
+
+1051
+00:41:32,690 --> 00:41:34,609
+that can return predictions.
+
+1052
+00:41:34,609 --> 00:41:37,729
+We have some sense
+of how good it is,
+
+1053
+00:41:37,729 --> 00:41:39,230
+and then I might actually
+
+1054
+00:41:39,230 --> 00:41:40,750
+use it to make some predictions,
+
+1055
+00:41:40,750 --> 00:41:43,549
+where I really, truly don't
+know what the result is.
+
+1056
+00:41:43,549 --> 00:41:49,289
+Yeah, for sure. What's that?
+
+1057
+00:41:53,050 --> 00:41:55,410
+Could it do better
+on the validation
+
+1058
+00:41:55,410 --> 00:41:56,749
+data than the test data?
+
+1059
+00:41:56,749 --> 00:41:58,309
+Yeah. Yeah, absolutely, right.
+
+1060
+00:41:58,309 --> 00:42:00,169
+So try to come back here.
+
+1061
+00:42:00,169 --> 00:42:04,970
+Imagine that I have,
+100 different models.
+
+1062
+00:42:04,970 --> 00:42:07,329
+I actually is pretty
+common because when
+
+1063
+00:42:07,329 --> 00:42:08,569
+we're trading these
+models there's
+
+1064
+00:42:08,569 --> 00:42:09,989
+different parameters
+you can tune, right?
+
+1065
+00:42:09,989 --> 00:42:12,809
+So even let's say both A
+and B are decision trees,
+
+1066
+00:42:12,809 --> 00:42:13,950
+they might be decision
+
+1067
+00:42:13,950 --> 00:42:15,370
+tree models with
+different parameters.
+
+1068
+00:42:15,370 --> 00:42:16,629
+So it might be totally common
+
+1069
+00:42:16,629 --> 00:42:17,829
+that it might have
+hundreds of these.
+
+1070
+00:42:17,829 --> 00:42:21,200
+Let's say hypothetically that
+all the models are equally.
+
+1071
+00:42:21,200 --> 00:42:23,649
+But when I feed the
+validation to them,
+
+1072
+00:42:23,649 --> 00:42:25,410
+some will kind of do better,
+
+1073
+00:42:25,410 --> 00:42:27,929
+and some will do a
+bit worse by chance.
+
+1074
+00:42:27,929 --> 00:42:31,570
+And so if I have
+a lot of bottles,
+
+1075
+00:42:31,570 --> 00:42:32,790
+odds are that whatever
+
+1076
+00:42:32,790 --> 00:42:34,689
+the winner, however
+well the winner did,
+
+1077
+00:42:34,689 --> 00:42:38,150
+the validation score is probably
+
+1078
+00:42:38,150 --> 00:42:42,570
+not how well it will
+do on a second test.
+
+1079
+00:42:42,570 --> 00:42:44,969
+That makes sense.
+Yeah. There are
+
+1080
+00:42:44,969 --> 00:42:47,349
+other questions.
+Yeah, right here.
+
+1081
+00:42:56,650 --> 00:42:58,949
+Yeah. I use both of them.
+
+1082
+00:42:58,949 --> 00:43:00,330
+I use them for
+different purposes.
+
+1083
+00:43:00,330 --> 00:43:01,610
+I'm using the validation
+
+1084
+00:43:01,610 --> 00:43:03,629
+to select this is
+the model I want,
+
+1085
+00:43:03,629 --> 00:43:05,089
+and then I use the test to
+
+1086
+00:43:05,089 --> 00:43:08,109
+communicate how
+good that model is.
+
+1087
+00:43:08,109 --> 00:43:11,879
+That make sense. Do what
+
+1088
+00:43:11,879 --> 00:43:15,419
+I need to run the test
+model B? I could, right?
+
+1089
+00:43:15,419 --> 00:43:18,419
+But if I then switched to
+model B based on the test,
+
+1090
+00:43:18,419 --> 00:43:20,879
+then I kind of defeated
+the purpose of having
+
+1091
+00:43:20,879 --> 00:43:23,619
+a separate test from
+validation data set.
+
+1092
+00:43:23,619 --> 00:43:26,060
+There's different methodologies
+people use for machinery.
+
+1093
+00:43:26,060 --> 00:43:27,239
+I'm just like
+showing one, right?
+
+1094
+00:43:27,239 --> 00:43:28,799
+Like a simpler methodology,
+
+1095
+00:43:28,799 --> 00:43:30,819
+like the one we'll use
+on the project is like,
+
+1096
+00:43:30,819 --> 00:43:33,339
+you know, there's strain
+data and there's test data.
+
+1097
+00:43:33,339 --> 00:43:35,099
+That's no separate
+validation, right?
+
+1098
+00:43:35,099 --> 00:43:36,699
+So there's other
+things people do
+
+1099
+00:43:36,699 --> 00:43:38,420
+where they'll split
+up the data multiple
+
+1100
+00:43:38,420 --> 00:43:39,939
+times and different
+times they'll have
+
+1101
+00:43:39,939 --> 00:43:42,979
+different validation and test.
+
+1102
+00:43:42,979 --> 00:43:44,299
+Lots of different methodologies.
+
+1103
+00:43:44,299 --> 00:43:46,539
+I'm just actually showing
+you one example methodology.
+
+1104
+00:43:46,539 --> 00:43:48,039
+That makes sense? Yeah, good
+
+1105
+00:43:48,039 --> 00:43:50,379
+question. Other
+questions people have.
+
+1106
+00:43:50,580 --> 00:43:54,119
+Right. Cool. So we
+have that thing,
+
+1107
+00:43:54,119 --> 00:43:56,700
+we can deploy it and then
+use it for real things.
+
+1108
+00:43:56,700 --> 00:43:58,649
+And so There's
+
+1109
+00:43:58,649 --> 00:44:00,469
+different frameworks out
+there that people have used.
+
+1110
+00:44:00,469 --> 00:44:02,029
+For example, people coming from
+
+1111
+00:44:02,029 --> 00:44:04,109
+320 have probably
+seen Psych learn.
+
+1112
+00:44:04,109 --> 00:44:05,890
+PyTorch is extremely popular.
+
+1113
+00:44:05,890 --> 00:44:08,329
+They teach Pi torch now in 540.
+
+1114
+00:44:08,329 --> 00:44:11,049
+I just want to compare and
+contrast these a little bit.
+
+1115
+00:44:11,049 --> 00:44:12,930
+I know some of you
+are seeing machine
+
+1116
+00:44:12,930 --> 00:44:15,069
+learning for the first
+time ever. That's fine.
+
+1117
+00:44:15,069 --> 00:44:16,990
+But for those of you who
+have points of comparison,
+
+1118
+00:44:16,990 --> 00:44:18,909
+I think I do want to spend
+a little time doing that.
+
+1119
+00:44:18,909 --> 00:44:21,329
+So I have some
+example code for all
+
+1120
+00:44:21,329 --> 00:44:24,030
+three of these and how
+we might train a model.
+
+1121
+00:44:24,030 --> 00:44:26,710
+And for both psych
+learn and PyTorch,
+
+1122
+00:44:26,710 --> 00:44:28,710
+the models are what
+we call mutable.
+
+1123
+00:44:28,710 --> 00:44:31,129
+I have this model object
+to make predictions,
+
+1124
+00:44:31,129 --> 00:44:34,269
+and I can make modifications
+to it to make it better.
+
+1125
+00:44:34,269 --> 00:44:35,689
+So for example, in Psych learn,
+
+1126
+00:44:35,689 --> 00:44:37,489
+I have a model
+object. I say dot f.
+
+1127
+00:44:37,489 --> 00:44:39,169
+When I say dot fit, I'm giving
+
+1128
+00:44:39,169 --> 00:44:40,990
+an example features and labels,
+
+1129
+00:44:40,990 --> 00:44:42,129
+and it's trying to
+figure out what
+
+1130
+00:44:42,129 --> 00:44:43,269
+those internal parameters
+
+1131
+00:44:43,269 --> 00:44:46,049
+should be to make good
+predictions, right? I fit it.
+
+1132
+00:44:46,049 --> 00:44:48,690
+I'm making changes to
+that model object.
+
+1133
+00:44:48,690 --> 00:44:50,869
+In PyTorch, which is often
+
+1134
+00:44:50,869 --> 00:44:53,449
+used for deep learning where
+I have some model as well.
+
+1135
+00:44:53,449 --> 00:44:56,170
+And typically, the models
+
+1136
+00:44:56,170 --> 00:44:57,189
+we're using with PyTorch have
+
+1137
+00:44:57,189 --> 00:44:58,509
+lots of internal parameters,
+
+1138
+00:44:58,509 --> 00:45:00,809
+and we keep showing it
+more and more data.
+
+1139
+00:45:00,809 --> 00:45:02,430
+Progressively refines
+
+1140
+00:45:02,430 --> 00:45:04,349
+those parameters, making
+it a little bit better.
+
+1141
+00:45:04,349 --> 00:45:05,549
+But in both cases, right, we're
+
+1142
+00:45:05,549 --> 00:45:07,200
+making changes to the objects.
+
+1143
+00:45:07,200 --> 00:45:09,869
+Spark, as you see
+more about Spark,
+
+1144
+00:45:09,869 --> 00:45:11,089
+so if you kind of
+get a sense of like
+
+1145
+00:45:11,089 --> 00:45:13,109
+the style of the people
+who built Spark,
+
+1146
+00:45:13,109 --> 00:45:14,929
+how they like to program, they
+
+1147
+00:45:14,929 --> 00:45:16,270
+don't like things
+that are immutable.
+
+1148
+00:45:16,270 --> 00:45:19,270
+And so in Spark, all
+models are immutable.
+
+1149
+00:45:19,270 --> 00:45:20,789
+And what that means
+is that I will have
+
+1150
+00:45:20,789 --> 00:45:23,290
+an unfit model, whatever type.
+
+1151
+00:45:23,290 --> 00:45:27,230
+And if I call FI on it
+and pass in some data,
+
+1152
+00:45:27,230 --> 00:45:28,469
+what it will actually do is it
+
+1153
+00:45:28,469 --> 00:45:29,829
+can't change the unfit model.
+
+1154
+00:45:29,829 --> 00:45:31,169
+So when I call FI on
+
+1155
+00:45:31,169 --> 00:45:32,990
+Ofit model it returns
+a different object,
+
+1156
+00:45:32,990 --> 00:45:34,190
+which is my FIT model,
+
+1157
+00:45:34,190 --> 00:45:35,489
+and then my FIT model I can
+
+1158
+00:45:35,489 --> 00:45:37,169
+actually use to make
+predictions, right?
+
+1159
+00:45:37,169 --> 00:45:41,130
+So models and Spark
+are immutable.
+
+1160
+00:45:41,130 --> 00:45:44,570
+Predicting has also done
+a little bit differently.
+
+1161
+00:45:44,570 --> 00:45:47,129
+In Psych learn, a model is
+
+1162
+00:45:47,129 --> 00:45:49,449
+an object that you
+can predict on.
+
+1163
+00:45:49,449 --> 00:45:50,530
+You give it some x values.
+
+1164
+00:45:50,530 --> 00:45:52,749
+It returns back y values to you.
+
+1165
+00:45:52,749 --> 00:45:56,050
+In Pytorch, they made that
+a little bit more elegant.
+
+1166
+00:45:56,050 --> 00:46:00,110
+The model object itself can
+also act like a function.
+
+1167
+00:46:00,110 --> 00:46:03,429
+I can say model, gibits
+x values, and' return Y.
+
+1168
+00:46:03,429 --> 00:46:04,770
+It's both an object
+and a function
+
+1169
+00:46:04,770 --> 00:46:06,629
+at the same time. Is kind cool.
+
+1170
+00:46:06,629 --> 00:46:09,239
+Then in Spark, You know,
+
+1171
+00:46:09,239 --> 00:46:10,779
+Spark people are always
+thinking about like
+
+1172
+00:46:10,779 --> 00:46:13,040
+everything is like a
+transformer and an RDD.
+
+1173
+00:46:13,040 --> 00:46:15,079
+That's the mindset to be in.
+
+1174
+00:46:15,079 --> 00:46:17,079
+For them, what they'll
+do is they will
+
+1175
+00:46:17,079 --> 00:46:19,580
+transform a data
+frame that doesn't
+
+1176
+00:46:19,580 --> 00:46:20,639
+have any predictions into
+
+1177
+00:46:20,639 --> 00:46:22,359
+it into another
+data frame that has
+
+1178
+00:46:22,359 --> 00:46:25,560
+all the original stuff plus
+a column of prediction.
+
+1179
+00:46:25,560 --> 00:46:27,759
+Transforming in Spark is
+
+1180
+00:46:27,759 --> 00:46:29,460
+something that we will actually
+do to make predictions.
+
+1181
+00:46:29,460 --> 00:46:31,500
+Let me just show you what that
+looks like in both cases.
+
+1182
+00:46:31,500 --> 00:46:33,040
+For psych learn and Pytorch,
+
+1183
+00:46:33,040 --> 00:46:34,959
+we have this big x,
+
+1184
+00:46:34,959 --> 00:46:36,840
+which contains all
+these features,
+
+1185
+00:46:36,840 --> 00:46:39,279
+and then we will
+predict in some way,
+
+1186
+00:46:39,279 --> 00:46:41,855
+we'll get back a
+column of y values.
+
+1187
+00:46:41,855 --> 00:46:43,830
+I Spark, it's very different.
+
+1188
+00:46:43,830 --> 00:46:45,949
+What I'm doing is I'm be
+feeding in this data frame.
+
+1189
+00:46:45,949 --> 00:46:48,949
+And what's strange is that it
+
+1190
+00:46:48,949 --> 00:46:52,390
+will only look at one
+column for the features.
+
+1191
+00:46:52,390 --> 00:46:55,969
+I have this x features over
+here, and based on that,
+
+1192
+00:46:55,969 --> 00:46:57,849
+I'll return the same
+data frame with
+
+1193
+00:46:57,849 --> 00:47:01,709
+a new column with the
+labels on it, right?
+
+1194
+00:47:01,709 --> 00:47:04,869
+Given that Spark reason,
+they said, Okay,
+
+1195
+00:47:04,869 --> 00:47:06,309
+we're always just going
+to base things on
+
+1196
+00:47:06,309 --> 00:47:08,390
+one column of features,
+
+1197
+00:47:08,390 --> 00:47:09,709
+what that column
+of features will
+
+1198
+00:47:09,709 --> 00:47:11,329
+usually be is vectors that
+
+1199
+00:47:11,329 --> 00:47:13,250
+contain all the different values
+
+1200
+00:47:13,250 --> 00:47:14,969
+that we're interested in.
+
+1201
+00:47:14,969 --> 00:47:17,089
+I other values are
+two and three,
+
+1202
+00:47:17,089 --> 00:47:18,769
+they'll combine that into
+
+1203
+00:47:18,769 --> 00:47:21,444
+a tuple that says
+23 or a vector.
+
+1204
+00:47:21,444 --> 00:47:24,140
+And they'll use
+that as a features.
+
+1205
+00:47:24,140 --> 00:47:27,219
+Some terminology is also
+a bit different here.
+
+1206
+00:47:27,219 --> 00:47:28,940
+They use the words transformer
+
+1207
+00:47:28,940 --> 00:47:30,860
+and estimator in different ways.
+
+1208
+00:47:30,860 --> 00:47:34,739
+In sich learn, a transformer
+is something that will pre
+
+1209
+00:47:34,739 --> 00:47:36,559
+process the data in
+some way before you
+
+1210
+00:47:36,559 --> 00:47:39,260
+either do training
+or prediction.
+
+1211
+00:47:39,260 --> 00:47:41,119
+In Spark a transformer is
+
+1212
+00:47:41,119 --> 00:47:43,380
+any object that has
+a transform method.
+
+1213
+00:47:43,380 --> 00:47:47,074
+Somebody that's making predictions
+is also a transformer.
+
+1214
+00:47:47,074 --> 00:47:50,709
+What about estimator?
+In Psych learn
+
+1215
+00:47:50,709 --> 00:47:54,290
+an estimator is something
+that has a method,
+
+1216
+00:47:54,290 --> 00:47:56,289
+and when you call FI on it,
+
+1217
+00:47:56,289 --> 00:47:59,710
+it will modify the objects
+that you can later predict.
+
+1218
+00:47:59,710 --> 00:48:01,749
+A estimator can make predictions
+
+1219
+00:48:01,749 --> 00:48:03,849
+and after it learns
+some parameters.
+
+1220
+00:48:03,849 --> 00:48:07,849
+In Spark, an estimator is
+an object that has a fit,
+
+1221
+00:48:07,849 --> 00:48:09,349
+but an estimator will never
+
+1222
+00:48:09,349 --> 00:48:11,550
+actually make
+predictions itself.
+
+1223
+00:48:11,550 --> 00:48:12,830
+An estimator will return
+
+1224
+00:48:12,830 --> 00:48:15,029
+a new object that can
+
+1225
+00:48:15,029 --> 00:48:18,389
+do transformations
+that add predictions.
+
+1226
+00:48:18,389 --> 00:48:21,789
+All right. Any question on
+the terminology so far?
+
+1227
+00:48:21,789 --> 00:48:22,830
+There's lots of differences.
+
+1228
+00:48:22,830 --> 00:48:23,929
+I want to make
+sure I'm not going
+
+1229
+00:48:23,929 --> 00:48:27,110
+too fast over this.
+Any questions?
+
+1230
+00:48:29,090 --> 00:48:31,309
+All right. The last thing we
+
+1231
+00:48:31,309 --> 00:48:32,909
+talk about today is pipelines.
+
+1232
+00:48:32,909 --> 00:48:34,329
+It's very common
+to do a bunch of
+
+1233
+00:48:34,329 --> 00:48:35,769
+transformations to the data and
+
+1234
+00:48:35,769 --> 00:48:36,909
+then train or a bunch of
+
+1235
+00:48:36,909 --> 00:48:39,310
+transformations
+and then predict.
+
+1236
+00:48:39,310 --> 00:48:42,029
+All these tools have that.
+Here I have an example of
+
+1237
+00:48:42,029 --> 00:48:43,190
+a pipeline that has multiple
+
+1238
+00:48:43,190 --> 00:48:45,290
+transformers and it
+does an estimator.
+
+1239
+00:48:45,290 --> 00:48:48,029
+If I'm doing Spark, what will
+happen is that we'll feed
+
+1240
+00:48:48,029 --> 00:48:49,329
+the data through here
+and we will make a bunch
+
+1241
+00:48:49,329 --> 00:48:50,530
+of transformations of data,
+
+1242
+00:48:50,530 --> 00:48:53,069
+and when it gets this
+estimator object,
+
+1243
+00:48:53,069 --> 00:48:54,429
+we call FI on it, that
+
+1244
+00:48:54,429 --> 00:48:56,289
+will return a
+transformer over here.
+
+1245
+00:48:56,289 --> 00:48:57,989
+If I say pipeline not fit,
+
+1246
+00:48:57,989 --> 00:48:59,609
+the first thing it
+does is it gets
+
+1247
+00:48:59,609 --> 00:49:00,929
+a transformer that can
+
+1248
+00:49:00,929 --> 00:49:03,059
+make predictions with
+the same put data.
+
+1249
+00:49:03,059 --> 00:49:04,670
+If I'm using that to
+make predictions,
+
+1250
+00:49:04,670 --> 00:49:05,129
+that has to have
+
+1251
+00:49:05,129 --> 00:49:07,009
+the same pre processing
+that we had before.
+
+1252
+00:49:07,009 --> 00:49:08,389
+These other transformers
+
+1253
+00:49:08,389 --> 00:49:09,729
+are just going to
+get copied over
+
+1254
+00:49:09,729 --> 00:49:13,390
+and exactly the same as
+they were originally.
+
+1255
+00:49:13,390 --> 00:49:15,909
+Once I have that, then I
+
+1256
+00:49:15,909 --> 00:49:18,489
+can feed new data into
+the pipeline model.
+
+1257
+00:49:18,489 --> 00:49:20,309
+I'm going to do a bunch
+of transformations and
+
+1258
+00:49:20,309 --> 00:49:23,389
+the end will out pop
+some predictions.
+
+1259
+00:49:23,389 --> 00:49:26,549
+I use that transform
+to do predictions.
+
+1260
+00:49:26,549 --> 00:49:28,949
+A little bit different
+than maybe what you might
+
+1261
+00:49:28,949 --> 00:49:31,110
+expect with other
+pipeline tools.
+
+1262
+00:49:31,110 --> 00:49:32,709
+I end there and we'll
+maybe just start
+
+1263
+00:49:32,709 --> 00:49:35,150
+next time with tophat.
+
+1264
+00:49:35,150 --> 00:49:37,629
+Have a fantastic day.

@@ -1,0 +1,5947 @@
+1
+00:00:00,000 --> 00:00:02,100
+So we have a lot
+of fun stuff ahead
+
+2
+00:00:02,100 --> 00:00:04,060
+of us in the semester.
+
+3
+00:00:04,060 --> 00:00:07,380
+We've been learning about
+Docker Containers so far,
+
+4
+00:00:07,380 --> 00:00:09,440
+and now we're going to be
+learning about networking,
+
+5
+00:00:09,440 --> 00:00:10,840
+which will set us
+up for next week.
+
+6
+00:00:10,840 --> 00:00:13,820
+Next week, I want to learn
+about Docker Compose.
+
+7
+00:00:13,820 --> 00:00:16,239
+Docker Compose is to have
+a way that we can de fide
+
+8
+00:00:16,239 --> 00:00:18,019
+a few containers that we want to
+
+9
+00:00:18,019 --> 00:00:20,159
+start all together that
+interact with each other.
+
+10
+00:00:20,159 --> 00:00:21,799
+So compose de fight how we have
+
+11
+00:00:21,799 --> 00:00:24,080
+these little clusters
+of conttors.
+
+12
+00:00:24,080 --> 00:00:25,619
+And then when we
+
+13
+00:00:25,619 --> 00:00:27,259
+have programs running in
+different containors,
+
+14
+00:00:27,259 --> 00:00:28,939
+we want them to be able to
+talk with each other, right?
+
+15
+00:00:28,939 --> 00:00:30,739
+That's why we're learning
+about networking today.
+
+16
+00:00:30,739 --> 00:00:33,095
+How can we communicate
+over this Docker network?
+
+17
+00:00:33,095 --> 00:00:34,890
+And in particular
+where be learning
+
+18
+00:00:34,890 --> 00:00:37,489
+something called RPC on Monday.
+
+19
+00:00:37,489 --> 00:00:39,650
+That stands for remote
+procedure call.
+
+20
+00:00:39,650 --> 00:00:41,509
+A procedure call is
+just a function call.
+
+21
+00:00:41,509 --> 00:00:43,629
+And you all have called lots
+of functions in your life.
+
+22
+00:00:43,629 --> 00:00:45,429
+You should be very
+familiar with that.
+
+23
+00:00:45,429 --> 00:00:47,049
+But there's may be a difference.
+
+24
+00:00:47,049 --> 00:00:48,709
+Normally, when you're
+calling a function,
+
+25
+00:00:48,709 --> 00:00:50,429
+that function runs in
+
+26
+00:00:50,429 --> 00:00:54,029
+the same process or program
+where you called it.
+
+27
+00:00:54,029 --> 00:00:56,690
+What we're re do now
+is that when we learn
+
+28
+00:00:56,690 --> 00:00:58,429
+RPC is that we can trall
+
+29
+00:00:58,429 --> 00:01:01,009
+a function in one
+process and one conttor,
+
+30
+00:01:01,009 --> 00:01:02,929
+and that function can run in
+
+31
+00:01:02,929 --> 00:01:05,050
+a separate process
+and a separate tator,
+
+32
+00:01:05,050 --> 00:01:07,410
+and RPC is what is
+really unable to do it.
+
+33
+00:01:07,410 --> 00:01:10,070
+And if we can trall flexions
+acros different tators,
+
+34
+00:01:10,070 --> 00:01:13,089
+well, then we can unlock
+a lot of capabilities.
+
+35
+00:01:13,089 --> 00:01:14,310
+But first, we just need to get
+
+36
+00:01:14,310 --> 00:01:15,769
+some networking basics down
+
+37
+00:01:15,769 --> 00:01:17,594
+before any of that
+will make sense.
+
+38
+00:01:17,594 --> 00:01:19,200
+And that's the goal today.
+
+39
+00:01:19,200 --> 00:01:21,099
+I also just want to
+wrap up the example
+
+40
+00:01:21,099 --> 00:01:23,539
+from last side that we were
+doing with Docker files.
+
+41
+00:01:23,539 --> 00:01:25,079
+So I may come over here.
+
+42
+00:01:25,079 --> 00:01:26,840
+And this was the Docker file
+
+43
+00:01:26,840 --> 00:01:28,580
+that we were working
+on last time.
+
+44
+00:01:28,580 --> 00:01:30,380
+When you build a Docker file,
+
+45
+00:01:30,380 --> 00:01:32,060
+you get a new image, and
+
+46
+00:01:32,060 --> 00:01:34,339
+you usually don't build a
+new image from stretch.
+
+47
+00:01:34,339 --> 00:01:36,399
+You usually start with
+an existing image.
+
+48
+00:01:36,399 --> 00:01:40,060
+And in this case, the existing
+image was but 224.10.
+
+49
+00:01:40,060 --> 00:01:41,600
+So we start with a
+directive called
+
+50
+00:01:41,600 --> 00:01:44,440
+F Then usually there's a bunch
+of run statements in here,
+
+51
+00:01:44,440 --> 00:01:45,679
+and when we build the image,
+
+52
+00:01:45,679 --> 00:01:47,180
+each of those run what?
+
+53
+00:01:47,180 --> 00:01:48,579
+That stuff is installed.
+
+54
+00:01:48,579 --> 00:01:50,919
+And then if we create a
+container later for that image,
+
+55
+00:01:50,919 --> 00:01:52,279
+we don't have to do
+it again, and we'll
+
+56
+00:01:52,279 --> 00:01:53,979
+already have all these
+things installed.
+
+57
+00:01:53,979 --> 00:01:56,200
+So I just want to review
+a few things here.
+
+58
+00:01:56,200 --> 00:01:59,500
+One is that when I did
+app to get install,
+
+59
+00:01:59,500 --> 00:02:00,820
+I had to say Y.
+
+60
+00:02:00,820 --> 00:02:02,480
+Can anybody rebind
+me why I had to
+
+61
+00:02:02,480 --> 00:02:04,960
+do dash Y? Yeah, right here.
+
+62
+00:02:09,500 --> 00:02:11,740
+Excellent. It's
+start to prompt me
+
+63
+00:02:11,740 --> 00:02:13,159
+to say, do you really
+want to install it?
+
+64
+00:02:13,159 --> 00:02:14,539
+And if we're interactive,
+
+65
+00:02:14,539 --> 00:02:16,019
+that'd be fine, but
+it's not interactive.
+
+66
+00:02:16,019 --> 00:02:18,339
+So I need to tell it to
+say, Hey, if you ask B 80,
+
+67
+00:02:18,339 --> 00:02:22,020
+the as ser is, yes, get it
+installed one way or another.
+
+68
+00:02:22,020 --> 00:02:24,259
+Another thing that was
+a little bit strange is
+
+69
+00:02:24,259 --> 00:02:28,159
+that I used and here,
+
+70
+00:02:28,159 --> 00:02:29,340
+which is kind of different
+
+71
+00:02:29,340 --> 00:02:30,879
+than the previous a
+percent we've seen?
+
+72
+00:02:30,879 --> 00:02:33,120
+This lets us run one
+command after another.
+
+73
+00:02:33,120 --> 00:02:35,779
+First, we do Atget update,
+and then we do this one.
+
+74
+00:02:35,779 --> 00:02:37,739
+I got a little bit
+long, so I split it
+
+75
+00:02:37,739 --> 00:02:40,219
+across lines with
+this back slash.
+
+76
+00:02:40,219 --> 00:02:41,499
+But ultimately, I tried to shove
+
+77
+00:02:41,499 --> 00:02:43,539
+two different commands
+on the same run line.
+
+78
+00:02:43,539 --> 00:02:44,900
+Can anybody remember why
+
+79
+00:02:44,900 --> 00:02:46,340
+I'd want to do that
+instead of having
+
+80
+00:02:46,340 --> 00:02:54,619
+two separate run lines?
+Yeah, right here.
+
+81
+00:03:03,380 --> 00:03:05,639
+Yeah, so because of cashing,
+
+82
+00:03:05,639 --> 00:03:06,879
+that's the correct
+answer, right?
+
+83
+00:03:06,879 --> 00:03:09,139
+So, Doctor, when it
+builds something,
+
+84
+00:03:09,139 --> 00:03:11,339
+is trying to try to avoid any
+
+85
+00:03:11,339 --> 00:03:12,919
+run steps that it's done before.
+
+86
+00:03:12,919 --> 00:03:15,539
+It'll kind of cash or remember
+the output from them.
+
+87
+00:03:15,539 --> 00:03:17,360
+And that cashing
+happens on a run
+
+88
+00:03:17,360 --> 00:03:19,319
+by run line basis, right?
+
+89
+00:03:19,319 --> 00:03:20,959
+So it might have done
+like three run lines,
+
+90
+00:03:20,959 --> 00:03:22,600
+and then it might have
+to build the rest.
+
+91
+00:03:22,600 --> 00:03:24,650
+And What I never
+
+92
+00:03:24,650 --> 00:03:26,950
+wanted to happen is I never
+wanted to do an install,
+
+93
+00:03:26,950 --> 00:03:30,169
+unless it's also doing
+an update, right?
+
+94
+00:03:30,169 --> 00:03:32,129
+Because update helps it find
+
+95
+00:03:32,129 --> 00:03:34,229
+all the software that's
+available for me to install,
+
+96
+00:03:34,229 --> 00:03:35,649
+and install actually does it.
+
+97
+00:03:35,649 --> 00:03:39,089
+So unless I'm doing those
+pretty close to each other,
+
+98
+00:03:39,089 --> 00:03:41,069
+then it might have
+
+99
+00:03:41,069 --> 00:03:42,690
+an incorrect view
+of what software
+
+100
+00:03:42,690 --> 00:03:43,850
+is available for you to install,
+
+101
+00:03:43,850 --> 00:03:45,270
+and then the install will fail.
+
+102
+00:03:45,270 --> 00:03:47,809
+So since that thing happens
+on a run by run basis,
+
+103
+00:03:47,809 --> 00:03:50,729
+if this was a separate
+run line than this,
+
+104
+00:03:50,729 --> 00:03:52,589
+then it might just do
+an install without
+
+105
+00:03:52,589 --> 00:03:54,530
+doing a recent update.
+Yeah. Question here.
+
+106
+00:03:54,530 --> 00:03:57,719
+Is there a way to go run that
+because line every time.
+
+107
+00:03:57,719 --> 00:04:00,739
+Yeah, I mean, is there
+a way around it?
+
+108
+00:04:00,739 --> 00:04:01,719
+And the way is you'll
+
+109
+00:04:01,719 --> 00:04:03,339
+see trolled like this all
+the time where people
+
+110
+00:04:03,339 --> 00:04:05,119
+have kind of a big
+long line with
+
+111
+00:04:05,119 --> 00:04:07,059
+a bunch of commands
+on the same line.
+
+112
+00:04:07,059 --> 00:04:10,100
+That is the way around it.
+Yep. Yeah, thanks for asking.
+
+113
+00:04:10,100 --> 00:04:11,819
+If somebody has a better
+shortcut they see,
+
+114
+00:04:11,819 --> 00:04:12,619
+I mean, that'd be cool,
+
+115
+00:04:12,619 --> 00:04:13,780
+but I've seen this in a lot of
+
+116
+00:04:13,780 --> 00:04:15,899
+different docker file, so
+I'm guessing there's not.
+
+117
+00:04:15,899 --> 00:04:19,060
+Yeah, other questions
+people have so far.
+
+118
+00:04:19,060 --> 00:04:21,420
+All right, so I do all of that.
+
+119
+00:04:21,420 --> 00:04:23,840
+And then the other
+weird thing I had to
+
+120
+00:04:23,840 --> 00:04:26,139
+do is I had to say this
+brake system packages.
+
+121
+00:04:26,139 --> 00:04:28,660
+Canby remind me what that does?
+
+122
+00:04:34,500 --> 00:04:37,260
+Yeah, right over here.
+
+123
+00:04:44,260 --> 00:04:45,660
+Yeah, so
+
+124
+00:04:45,660 --> 00:04:47,079
+PIP doesn't complain to me if I
+
+125
+00:04:47,079 --> 00:04:48,800
+try to install it system wide.
+
+126
+00:04:48,800 --> 00:04:50,940
+And kind of the rationale
+for that is Python has
+
+127
+00:04:50,940 --> 00:04:52,380
+these virtual environments
+where you can have
+
+128
+00:04:52,380 --> 00:04:54,880
+different versions of packages
+in different environments.
+
+129
+00:04:54,880 --> 00:04:57,220
+And these different programs
+need different versions,
+
+130
+00:04:57,220 --> 00:04:59,699
+and their kind of idea is
+that every program should
+
+131
+00:04:59,699 --> 00:05:00,820
+be its own virtual environment
+
+132
+00:05:00,820 --> 00:05:02,379
+that has exactly what its needs.
+
+133
+00:05:02,379 --> 00:05:03,739
+And you should never install
+
+134
+00:05:03,739 --> 00:05:05,984
+kind of something
+system wide anymore.
+
+135
+00:05:05,984 --> 00:05:07,649
+In some sense, like a Docker
+
+136
+00:05:07,649 --> 00:05:09,050
+container is a
+virtual environment.
+
+137
+00:05:09,050 --> 00:05:10,790
+I know I'm only going to
+have one program in it.
+
+138
+00:05:10,790 --> 00:05:12,570
+So in this case, I know that
+
+139
+00:05:12,570 --> 00:05:14,709
+PIP is being a little
+bit too paranoid.
+
+140
+00:05:14,709 --> 00:05:16,570
+It's okay to install
+a system wide,
+
+141
+00:05:16,570 --> 00:05:18,450
+so I just say that to say,
+Hey, I know what I'm doing.
+
+142
+00:05:18,450 --> 00:05:20,170
+I actually do it. Okay, so
+
+143
+00:05:20,170 --> 00:05:21,730
+we have the fro,
+we have the run.
+
+144
+00:05:21,730 --> 00:05:23,670
+These will happen when I build.
+
+145
+00:05:23,670 --> 00:05:26,530
+What I can also do is I
+can set a command that
+
+146
+00:05:26,530 --> 00:05:29,570
+will run by default when I
+create a new container, right?
+
+147
+00:05:29,570 --> 00:05:31,489
+So this is for every
+time I build an image.
+
+148
+00:05:31,489 --> 00:05:34,069
+This is every time I create
+a container from that image.
+
+149
+00:05:34,069 --> 00:05:36,529
+So I'm just going to
+say for now echo hello.
+
+150
+00:05:36,529 --> 00:05:39,264
+And then I'm going
+to build this again.
+
+151
+00:05:39,264 --> 00:05:41,400
+And that was pretty fast,
+
+152
+00:05:41,400 --> 00:05:44,020
+actually, because it was
+caching it from last time,
+
+153
+00:05:44,020 --> 00:05:46,259
+and I can do a Docker run demo,
+
+154
+00:05:46,259 --> 00:05:49,039
+and it's going to
+say echo hello.
+
+155
+00:05:49,039 --> 00:05:50,920
+And I see that right there.
+
+156
+00:05:50,920 --> 00:05:53,660
+If I want to, I can override
+that default behavior,
+
+157
+00:05:53,660 --> 00:05:56,015
+and I can say something
+like echo by.
+
+158
+00:05:56,015 --> 00:05:58,050
+You notice that it's
+suggesting that
+
+159
+00:05:58,050 --> 00:05:59,710
+I have a slightly
+different format for it.
+
+160
+00:05:59,710 --> 00:06:01,009
+So I think that format is fine,
+
+161
+00:06:01,009 --> 00:06:03,770
+but another common thing that
+
+162
+00:06:03,770 --> 00:06:06,890
+you can do that will also
+make that warning go away,
+
+163
+00:06:06,890 --> 00:06:10,629
+is I can put in a JSO list
+of all the arguments.
+
+164
+00:06:10,629 --> 00:06:13,749
+And so the first one is
+the actual program name,
+
+165
+00:06:13,749 --> 00:06:15,890
+and then I could have any
+other arguments after that.
+
+166
+00:06:15,890 --> 00:06:17,970
+If I do that, it'll
+do the same thing,
+
+167
+00:06:17,970 --> 00:06:19,249
+but it just doesn't tm play out.
+
+168
+00:06:19,249 --> 00:06:21,290
+Maybe there's some part
+scenario where it's ambiguous,
+
+169
+00:06:21,290 --> 00:06:23,870
+who knows, but that's what
+they kind of recommend doing.
+
+170
+00:06:23,870 --> 00:06:25,289
+So you might see that sometimes.
+
+171
+00:06:25,289 --> 00:06:26,890
+What I'd like to do
+now is I'd like to get
+
+172
+00:06:26,890 --> 00:06:28,649
+a Python program actually
+running in here,
+
+173
+00:06:28,649 --> 00:06:29,769
+and that's going to
+be kind of similar
+
+174
+00:06:29,769 --> 00:06:31,789
+to what you're doing
+for your project.
+
+175
+00:06:31,789 --> 00:06:35,910
+We installed We installed
+Pandas in here.
+
+176
+00:06:35,910 --> 00:06:37,069
+So let's try having
+
+177
+00:06:37,069 --> 00:06:39,289
+a little Python program
+that uses Pandas.
+
+178
+00:06:39,289 --> 00:06:42,330
+So I'm going to call that
+Python program test so Pi.
+
+179
+00:06:42,330 --> 00:06:45,229
+I'm going to import
+Pandas as PD.
+
+180
+00:06:45,229 --> 00:06:47,310
+I'm going to create
+a Pandas series
+
+181
+00:06:47,310 --> 00:06:49,030
+with some numbers in it, one,
+
+182
+00:06:49,030 --> 00:06:51,229
+two, three, and I'm
+just trying to print
+
+183
+00:06:51,229 --> 00:06:53,590
+off the sum of those
+three numbers, right?
+
+184
+00:06:53,590 --> 00:06:55,790
+So it should be six, right?
+
+185
+00:06:55,790 --> 00:06:58,870
+Have a simple Python program.
+Let me try running it.
+
+186
+00:06:58,870 --> 00:07:00,850
+And it's not try to work
+here because I do not
+
+187
+00:07:00,850 --> 00:07:02,950
+have Pandas installed
+on my virtual machine.
+
+188
+00:07:02,950 --> 00:07:07,689
+It is, however, installed
+inside of inside of my image.
+
+189
+00:07:07,689 --> 00:07:10,225
+So I'm going to do is I'm
+going to come back here.
+
+190
+00:07:10,225 --> 00:07:14,259
+And I am going to
+edit my Docker file.
+
+191
+00:07:14,259 --> 00:07:16,660
+And I'm going to
+say up here, copy,
+
+192
+00:07:16,660 --> 00:07:17,940
+and I can copy something from
+
+193
+00:07:17,940 --> 00:07:21,339
+my virtual machine
+into the container.
+
+194
+00:07:21,339 --> 00:07:24,079
+I'm going to copy testo Pi
+from the current tratory,
+
+195
+00:07:24,079 --> 00:07:26,260
+and I'm going to put
+it to test doop Pi,
+
+196
+00:07:26,260 --> 00:07:27,740
+kind of the root of
+
+197
+00:07:27,740 --> 00:07:29,560
+my Docker image. I'm
+going to do that.
+
+198
+00:07:29,560 --> 00:07:31,259
+This would be fine,
+but it would actually
+
+199
+00:07:31,259 --> 00:07:33,100
+be kind of slow to rebuild it.
+
+200
+00:07:33,100 --> 00:07:35,040
+Does anybody have any
+idea as to how I can make
+
+201
+00:07:35,040 --> 00:07:39,039
+this docker image rebuild
+
+202
+00:07:39,039 --> 00:07:46,149
+faster? Yeah, go ahead.
+
+203
+00:07:46,149 --> 00:07:51,209
+C he copy would change a
+copy to run make it faster,
+
+204
+00:07:51,209 --> 00:07:57,489
+interest idea, but no, it
+would not. Other thoughts.
+
+205
+00:07:57,489 --> 00:08:00,310
+So yeah, right over here.
+
+206
+00:08:01,230 --> 00:08:04,309
+I could try to combine
+the two run statements.
+
+207
+00:08:04,309 --> 00:08:05,510
+No, I don't think
+that would really
+
+208
+00:08:05,510 --> 00:08:07,370
+make it faster either.
+
+209
+00:08:07,370 --> 00:08:08,909
+The reason, normally,
+
+210
+00:08:08,909 --> 00:08:11,550
+installing Pandas takes
+a long time, right?
+
+211
+00:08:11,550 --> 00:08:13,689
+And the reason I've
+been able to build
+
+212
+00:08:13,689 --> 00:08:16,469
+so quickly is that it
+remembered that build.
+
+213
+00:08:16,469 --> 00:08:22,850
+Now, Docker is not
+super smart, right?
+
+214
+00:08:22,850 --> 00:08:25,790
+It's kind of hard to tell
+if I have this file here,
+
+215
+00:08:25,790 --> 00:08:28,090
+will that change the behavior
+of App to get installed?
+
+216
+00:08:28,090 --> 00:08:30,530
+Probably not, but how can
+you really prove that?
+
+217
+00:08:30,530 --> 00:08:33,410
+Right? So just the fact that
+I added this copy before,
+
+218
+00:08:33,410 --> 00:08:35,470
+it's like, Well, I better
+do an app install,
+
+219
+00:08:35,470 --> 00:08:36,389
+again, just to be safe.
+
+220
+00:08:36,389 --> 00:08:38,250
+I better do a pip
+install just to be safe.
+
+221
+00:08:38,250 --> 00:08:39,710
+And so the order of
+these really matters.
+
+222
+00:08:39,710 --> 00:08:41,790
+I'm going to put this
+down here at the end.
+
+223
+00:08:41,790 --> 00:08:44,130
+And in that way, it still cash.
+
+224
+00:08:44,130 --> 00:08:46,270
+It already has a version where
+it's app installed these,
+
+225
+00:08:46,270 --> 00:08:48,329
+and then on top of that,
+it can do something else.
+
+226
+00:08:48,329 --> 00:08:49,890
+So this will be relatively fast.
+
+227
+00:08:49,890 --> 00:08:53,029
+I'm going to build that.
+And then I have this there.
+
+228
+00:08:53,029 --> 00:08:54,490
+Maybe the other thing
+I should do is I
+
+229
+00:08:54,490 --> 00:08:56,050
+should go back to
+my Docker file.
+
+230
+00:08:56,050 --> 00:08:59,329
+And now I would like
+to say Python three.
+
+231
+00:08:59,770 --> 00:09:03,249
+Slash test so Pi. All right?
+
+232
+00:09:03,249 --> 00:09:06,250
+And then I can do
+a Python run demo.
+
+233
+00:09:06,250 --> 00:09:08,429
+Actually, I need to
+build it again, don't I?
+
+234
+00:09:08,429 --> 00:09:11,990
+And then a Docker run demo.
+
+235
+00:09:11,990 --> 00:09:14,370
+And then it should start
+
+236
+00:09:14,370 --> 00:09:16,730
+the Python Interpreter
+in Port Pandas.
+
+237
+00:09:16,730 --> 00:09:18,009
+Add those numbers, print it
+
+238
+00:09:18,009 --> 00:09:20,410
+out. Yeah, question right here.
+
+239
+00:09:28,600 --> 00:09:38,340
+Will it cache what? Yeah, well,
+
+240
+00:09:38,340 --> 00:09:40,379
+do any kind of caching here.
+
+241
+00:09:40,379 --> 00:09:44,479
+So, not in the sense that it
+does like the other caching.
+
+242
+00:09:44,479 --> 00:09:45,920
+So every time I run
+a new container,
+
+243
+00:09:45,920 --> 00:09:48,019
+it will run that
+line again, right?
+
+244
+00:09:48,019 --> 00:09:50,200
+So if I run this again,
+
+245
+00:09:50,200 --> 00:09:52,299
+then it will re execute Python.
+
+246
+00:09:52,299 --> 00:09:53,739
+So if, for example,
+
+247
+00:09:53,739 --> 00:09:56,320
+testo Pi takes a
+long time to run,
+
+248
+00:09:56,320 --> 00:09:59,400
+then every container I run
+will take a long time to run,
+
+249
+00:09:59,400 --> 00:10:01,780
+because the CMD, that's
+what it's running every
+
+250
+00:10:01,780 --> 00:10:04,339
+time I create a new
+container, right?
+
+251
+00:10:04,339 --> 00:10:07,380
+That makes sense? Yeah,
+Yeah, right here.
+
+252
+00:10:07,380 --> 00:10:10,580
+Line test PY shows
+up twice in a copy.
+
+253
+00:10:10,580 --> 00:10:14,879
+Does test PY show
+up twice on my Oh,
+
+254
+00:10:14,879 --> 00:10:16,460
+yeah, normally, when we copy,
+
+255
+00:10:16,460 --> 00:10:19,179
+we do like copy from
+source to destination.
+
+256
+00:10:19,179 --> 00:10:21,700
+And in this case,
+just the format
+
+257
+00:10:21,700 --> 00:10:23,700
+here is the source is
+on my virtual machine.
+
+258
+00:10:23,700 --> 00:10:26,180
+So it's copying from test
+on my virtual machine
+
+259
+00:10:26,180 --> 00:10:29,199
+to this test inside
+of the container.
+
+260
+00:10:29,199 --> 00:10:31,639
+In some sense, it's more
+like an SCP, right?
+
+261
+00:10:31,639 --> 00:10:33,480
+SCP is kind of across machines.
+
+262
+00:10:33,480 --> 00:10:36,759
+This is from my virtual
+machine to my docker image.
+
+263
+00:10:37,580 --> 00:10:45,600
+Following. In this case,
+it really depends.
+
+264
+00:10:45,600 --> 00:10:48,159
+So here I have an absolute
+path to that file.
+
+265
+00:10:48,159 --> 00:10:49,599
+And so it depends on what
+
+266
+00:10:49,599 --> 00:10:51,539
+the current working
+directory is.
+
+267
+00:10:51,539 --> 00:10:53,080
+If the current working directory
+
+268
+00:10:53,080 --> 00:10:54,519
+is the root directory,
+then we don't need this.
+
+269
+00:10:54,519 --> 00:10:56,199
+I actually think
+it is by default.
+
+270
+00:10:56,199 --> 00:10:59,420
+There's other directives
+where you could change it.
+
+271
+00:10:59,420 --> 00:11:00,659
+So I didn't remember what the
+
+272
+00:11:00,659 --> 00:11:01,779
+default working directory is,
+
+273
+00:11:01,779 --> 00:11:03,079
+so I just did an absolute path,
+
+274
+00:11:03,079 --> 00:11:05,160
+but it would probably
+work without.
+
+275
+00:11:05,160 --> 00:11:10,039
+Yeah, other questions
+people have. All right.
+
+276
+00:11:10,039 --> 00:11:12,279
+Fantastic. So you're going
+to do something like that.
+
+277
+00:11:12,279 --> 00:11:14,099
+I mean, for you, you
+
+278
+00:11:14,099 --> 00:11:16,280
+all are writing a
+little shell strip.
+
+279
+00:11:16,280 --> 00:11:18,000
+I'll be like a dot SH file.
+
+280
+00:11:18,000 --> 00:11:19,999
+I think there's going
+to be like a WG,
+
+281
+00:11:19,999 --> 00:11:22,560
+like an Zip, maybe some catting,
+
+282
+00:11:22,560 --> 00:11:24,599
+grabbing, word count,
+all that stuff.
+
+283
+00:11:24,599 --> 00:11:26,240
+To answer a little question,
+
+284
+00:11:26,240 --> 00:11:28,700
+but you will have a little
+shell strip that's bundled
+
+285
+00:11:28,700 --> 00:11:31,640
+up inside of your docker image
+for your P one homework.
+
+286
+00:11:31,640 --> 00:11:34,319
+Alright. Fantastic.
+So let's head over
+
+287
+00:11:34,319 --> 00:11:38,229
+here and learn a little
+bit about networking.
+
+288
+00:11:38,229 --> 00:11:41,079
+So I have a few goals for you.
+
+289
+00:11:41,079 --> 00:11:43,059
+You know, we have to be able to
+
+290
+00:11:43,059 --> 00:11:44,819
+send packets or messages kind of
+
+291
+00:11:44,819 --> 00:11:46,699
+across different machines or
+
+292
+00:11:46,699 --> 00:11:48,579
+maybe different processes
+on different machines.
+
+293
+00:11:48,579 --> 00:11:50,480
+And just like if I send
+a letter in the mail,
+
+294
+00:11:50,480 --> 00:11:51,699
+I have to put like
+an address on it to
+
+295
+00:11:51,699 --> 00:11:53,100
+make sure it ends up
+in the right place.
+
+296
+00:11:53,100 --> 00:11:55,039
+And so we have to think
+about what the equivalent is
+
+297
+00:11:55,039 --> 00:11:57,119
+when we're kind of sending
+messages on the Internet.
+
+298
+00:11:57,119 --> 00:11:58,320
+And so there's a bunch of kind
+
+299
+00:11:58,320 --> 00:11:59,559
+of addresses that we're
+going to talk about.
+
+300
+00:11:59,559 --> 00:12:01,180
+We're going to talk
+about M addresses,
+
+301
+00:12:01,180 --> 00:12:03,539
+IP addresses, port
+numbers, all those things,
+
+302
+00:12:03,539 --> 00:12:05,520
+if we understand them, will
+help us figure out how
+
+303
+00:12:05,520 --> 00:12:08,739
+to get a message from
+point A to point B.
+
+304
+00:12:09,060 --> 00:12:11,960
+You know, your virtual
+machine or most machines,
+
+305
+00:12:11,960 --> 00:12:15,260
+there's going to be multiple
+IP addresses you could use.
+
+306
+00:12:15,260 --> 00:12:17,300
+And when you are
+starting a server,
+
+307
+00:12:17,300 --> 00:12:18,519
+you have to bind to one of them.
+
+308
+00:12:18,519 --> 00:12:21,699
+And so I want you to figure
+out how to bind that and
+
+309
+00:12:21,699 --> 00:12:23,899
+also think about
+what that means in
+
+310
+00:12:23,899 --> 00:12:26,179
+the context of something
+called a NAT, right?
+
+311
+00:12:26,179 --> 00:12:27,720
+So a NAT might be forwarding
+
+312
+00:12:27,720 --> 00:12:29,299
+from one IP address to another.
+
+313
+00:12:29,299 --> 00:12:31,160
+And so kind of the
+big goal here,
+
+314
+00:12:31,160 --> 00:12:33,090
+right is that if I have
+a server somewhere,
+
+315
+00:12:33,090 --> 00:12:35,159
+And then I want to
+talk to that server.
+
+316
+00:12:35,159 --> 00:12:38,180
+Oftentimes that just doesn't
+work on your first try,
+
+317
+00:12:38,180 --> 00:12:39,620
+and you have to troubleshoot
+it a little bit.
+
+318
+00:12:39,620 --> 00:12:41,379
+You have to figure
+out why can I not get
+
+319
+00:12:41,379 --> 00:12:43,420
+established communication
+from this client
+
+320
+00:12:43,420 --> 00:12:45,400
+over here with that
+server over there.
+
+321
+00:12:45,400 --> 00:12:46,680
+And so you really have
+to kind of understand
+
+322
+00:12:46,680 --> 00:12:47,780
+how this binding works and how
+
+323
+00:12:47,780 --> 00:12:51,200
+NATs work to get all
+of that working.
+
+324
+00:12:51,390 --> 00:12:53,630
+Another thing that
+happens when you're
+
+325
+00:12:53,630 --> 00:12:55,469
+troubleshooting is you like
+try to start a server,
+
+326
+00:12:55,469 --> 00:12:57,169
+and it's trying to use a
+port number, and it's like,
+
+327
+00:12:57,169 --> 00:12:59,310
+Well, there's already a process
+using that port number.
+
+328
+00:12:59,310 --> 00:13:00,810
+So you have to be able to figure
+
+329
+00:13:00,810 --> 00:13:02,570
+out which process is
+using a port number,
+
+330
+00:13:02,570 --> 00:13:03,910
+and then you probably will kill
+
+331
+00:13:03,910 --> 00:13:05,810
+all the process so
+you can run yours.
+
+332
+00:13:05,810 --> 00:13:07,350
+And then finally, we learned
+
+333
+00:13:07,350 --> 00:13:08,690
+about different
+transport methods.
+
+334
+00:13:08,690 --> 00:13:10,550
+TCP is the main one
+we'll use this semester,
+
+335
+00:13:10,550 --> 00:13:12,069
+and then there's
+another one UTP.
+
+336
+00:13:12,069 --> 00:13:14,229
+And they kind of have
+
+337
+00:13:14,229 --> 00:13:15,269
+different trade offs in terms
+
+338
+00:13:15,269 --> 00:13:16,690
+of reliability and performance.
+
+339
+00:13:16,690 --> 00:13:17,949
+And so you need to think, like,
+
+340
+00:13:17,949 --> 00:13:19,470
+what is the best use case
+
+341
+00:13:19,470 --> 00:13:21,765
+for your particular application.
+
+342
+00:13:21,765 --> 00:13:23,680
+Alright, so those are the goals.
+
+343
+00:13:23,680 --> 00:13:25,540
+Let's learn about networks,
+
+344
+00:13:25,540 --> 00:13:26,960
+and we'll start
+with the most basic
+
+345
+00:13:26,960 --> 00:13:28,800
+networking hardware
+which is a NIC,
+
+346
+00:13:28,800 --> 00:13:30,120
+a network interface controller,
+
+347
+00:13:30,120 --> 00:13:31,600
+maybe network interface card.
+
+348
+00:13:31,600 --> 00:13:33,860
+Here's one right
+here. I could imagine
+
+349
+00:13:33,860 --> 00:13:36,240
+plugging this into a
+card on my motherboard.
+
+350
+00:13:36,240 --> 00:13:37,460
+Maybe I might have a NIC
+
+351
+00:13:37,460 --> 00:13:39,920
+actually built into the
+motherboard itself.
+
+352
+00:13:39,920 --> 00:13:42,059
+And different NICs will
+
+353
+00:13:42,059 --> 00:13:44,439
+support different
+communication mediums.
+
+354
+00:13:44,439 --> 00:13:45,819
+Maybe I guess this one right.
+
+355
+00:13:45,819 --> 00:13:47,359
+I can say I can plug
+an either net table
+
+356
+00:13:47,359 --> 00:13:49,040
+in there if I wanted
+a wired network.
+
+357
+00:13:49,040 --> 00:13:51,859
+Maybe other ones might have
+an antenna built into it,
+
+358
+00:13:51,859 --> 00:13:53,739
+and that would be
+useful if I want
+
+359
+00:13:53,739 --> 00:13:55,700
+to be like a wireless
+Wi Fi network.
+
+360
+00:13:55,700 --> 00:13:57,679
+And anyway, so we have
+to have these necks if
+
+361
+00:13:57,679 --> 00:14:00,400
+we want to connect our
+computer to other computers.
+
+362
+00:14:00,400 --> 00:14:02,659
+And each of these necks has
+
+363
+00:14:02,659 --> 00:14:06,739
+a unique address called a
+MAC address, MAC address.
+
+364
+00:14:06,739 --> 00:14:10,539
+And a MAC address
+is 48 bits long.
+
+365
+00:14:10,539 --> 00:14:12,279
+So some combination of zeros and
+
+366
+00:14:12,279 --> 00:14:14,840
+ones identifies the neck.
+
+367
+00:14:14,840 --> 00:14:17,140
+That turns out to be 28 trillion
+
+368
+00:14:17,140 --> 00:14:19,939
+possible addresses
+that it could have.
+
+369
+00:14:19,939 --> 00:14:23,360
+And the guarantee we
+have is that every neck
+
+370
+00:14:23,360 --> 00:14:26,789
+in the world should have a
+unique mac address, right?
+
+371
+00:14:26,789 --> 00:14:28,470
+We shouldn't have the same
+mac address showing up
+
+372
+00:14:28,470 --> 00:14:30,430
+multiple times in
+different places,
+
+373
+00:14:30,430 --> 00:14:32,449
+right? How do we guarantee that?
+
+374
+00:14:32,449 --> 00:14:34,890
+Well, they break it up into
+a prefix and a suffix,
+
+375
+00:14:34,890 --> 00:14:36,650
+and so then maybe
+like this prefix
+
+376
+00:14:36,650 --> 00:14:37,969
+is for a particular
+manufacturer.
+
+377
+00:14:37,969 --> 00:14:38,730
+I don't know, maybe it's like
+
+378
+00:14:38,730 --> 00:14:40,370
+Apple or some other
+organization.
+
+379
+00:14:40,370 --> 00:14:41,730
+And so they have that prefix.
+
+380
+00:14:41,730 --> 00:14:43,509
+All of their devices
+will have that prefix.
+
+381
+00:14:43,509 --> 00:14:45,230
+And then it's their
+duty, every one they
+
+382
+00:14:45,230 --> 00:14:48,679
+make should have a
+dif suffix there.
+
+383
+00:14:48,679 --> 00:14:52,289
+More recently, there
+are some devices,
+
+384
+00:14:52,289 --> 00:14:54,130
+and some NICs that can actually
+
+385
+00:14:54,130 --> 00:14:57,129
+change their mac
+address dynamically,
+
+386
+00:14:57,129 --> 00:14:58,910
+right, especially
+like in your phone.
+
+387
+00:14:58,910 --> 00:15:02,070
+If I have my phone and I walk
+into like a grocery store,
+
+388
+00:15:02,070 --> 00:15:04,130
+there's like a
+wireless connection
+
+389
+00:15:04,130 --> 00:15:05,270
+there and they can read,
+
+390
+00:15:05,270 --> 00:15:07,670
+like, what is the mac
+address on my phone.
+
+391
+00:15:07,670 --> 00:15:08,949
+And so they could
+maybe tell if I
+
+392
+00:15:08,949 --> 00:15:10,990
+come to the grocery store
+and I come again later,
+
+393
+00:15:10,990 --> 00:15:13,309
+maybe I know who I am, but
+they could certainly identify,
+
+394
+00:15:13,309 --> 00:15:16,009
+like the same person was
+there before. Who knows?
+
+395
+00:15:16,009 --> 00:15:18,650
+Maybe by the time of the
+checkout and Temmy and leaving,
+
+396
+00:15:18,650 --> 00:15:20,169
+they can maybe figure out, what
+
+397
+00:15:20,169 --> 00:15:22,149
+the person with that mac address
+bought and I don't know.
+
+398
+00:15:22,149 --> 00:15:23,450
+Maybe I don't want to be tracked
+
+399
+00:15:23,450 --> 00:15:25,990
+in that way. Yeah,
+question right here.
+
+400
+00:15:29,170 --> 00:15:32,789
+So do all the manufacturers
+agree to make them distinct?
+
+401
+00:15:32,789 --> 00:15:34,929
+Basically, I don't know
+that's like I don't know,
+
+402
+00:15:34,929 --> 00:15:36,449
+like the governance,
+how that works,
+
+403
+00:15:36,449 --> 00:15:39,029
+or if you're like a drolroge,
+
+404
+00:15:39,029 --> 00:15:40,730
+and just like, choose one
+to start making stuff,
+
+405
+00:15:40,730 --> 00:15:42,269
+if anything bad happens to you.
+
+406
+00:15:42,269 --> 00:15:44,170
+But, yeah, that's the
+intention that they
+
+407
+00:15:44,170 --> 00:15:46,069
+all have a unique
+prefix and yeah,
+
+408
+00:15:46,069 --> 00:15:47,709
+I don't know the
+governance behind it.
+
+409
+00:15:47,709 --> 00:15:49,789
+Yeah, but that's the
+goal. Yep. And so
+
+410
+00:15:49,789 --> 00:15:51,070
+sometimes they'll be randomized,
+
+411
+00:15:51,070 --> 00:15:52,210
+so still a lot.
+
+412
+00:15:52,210 --> 00:15:55,049
+So hopefully we you
+know, have enough.
+
+413
+00:15:55,290 --> 00:16:00,670
+Cool. If you're on Linux,
+
+414
+00:16:00,670 --> 00:16:02,490
+there's a tool called IP.
+
+415
+00:16:02,490 --> 00:16:04,810
+And just like the Docker command
+
+416
+00:16:04,810 --> 00:16:06,349
+has a bunch of subcommands.
+
+417
+00:16:06,349 --> 00:16:08,649
+The IP command has a
+bunch of subcommands,
+
+418
+00:16:08,649 --> 00:16:10,529
+one of which is address.
+
+419
+00:16:10,529 --> 00:16:13,790
+And so if I draw you could
+draw your virtual machine,
+
+420
+00:16:13,790 --> 00:16:15,129
+you can say IP address,
+
+421
+00:16:15,129 --> 00:16:17,789
+and it would list all the
+NICs that you have, right?
+
+422
+00:16:17,789 --> 00:16:19,309
+And in this case, I have two
+
+423
+00:16:19,309 --> 00:16:21,230
+attached to that
+virtual machine.
+
+424
+00:16:21,230 --> 00:16:23,349
+And I'll look at the
+second one for now.
+
+425
+00:16:23,349 --> 00:16:25,175
+It has a name ENS four.
+
+426
+00:16:25,175 --> 00:16:27,379
+That's probably for
+either net network,
+
+427
+00:16:27,379 --> 00:16:28,779
+and then I don't know.
+
+428
+00:16:28,779 --> 00:16:30,199
+Maybe you can imagine
+there's different
+
+429
+00:16:30,199 --> 00:16:31,440
+virtual slots that might plug
+
+430
+00:16:31,440 --> 00:16:33,039
+in to They have
+some naming scheme
+
+431
+00:16:33,039 --> 00:16:34,799
+that will automatically
+generate that for you.
+
+432
+00:16:34,799 --> 00:16:36,740
+And then I can actually
+see down here,
+
+433
+00:16:36,740 --> 00:16:40,839
+this is the MAC address
+for that particular Nick.
+
+434
+00:16:40,839 --> 00:16:42,660
+And if I had a few attached,
+
+435
+00:16:42,660 --> 00:16:45,019
+right, then they would
+probably all have, you know,
+
+436
+00:16:45,019 --> 00:16:46,360
+start with 42 something
+
+437
+00:16:46,360 --> 00:16:48,059
+because they're
+all something that
+
+438
+00:16:48,059 --> 00:16:52,189
+Google is allocating for
+me. So, I assume they had.
+
+439
+00:16:52,189 --> 00:16:55,709
+This is a 42 or how many
+bits did I say it was?
+
+440
+00:16:55,709 --> 00:16:58,370
+It was a Yeah, 48 bit number.
+
+441
+00:16:58,370 --> 00:16:59,610
+This is a 48 bit number,
+
+442
+00:16:59,610 --> 00:17:01,330
+but it's actually
+represented as hexadecimal.
+
+443
+00:17:01,330 --> 00:17:03,990
+That's why we aren't seeing
+those zeros and ones.
+
+444
+00:17:03,990 --> 00:17:06,389
+This one up here
+is what we would
+
+445
+00:17:06,389 --> 00:17:09,150
+call a virtual network
+interface card.
+
+446
+00:17:09,150 --> 00:17:10,629
+It's called the loopback device.
+
+447
+00:17:10,629 --> 00:17:13,599
+There's no physical hardware
+corresponding to it.
+
+448
+00:17:13,599 --> 00:17:15,449
+But it still looks
+like that, and it
+
+449
+00:17:15,449 --> 00:17:17,150
+might look like it
+has a MAC address.
+
+450
+00:17:17,150 --> 00:17:19,250
+And this loopback device,
+
+451
+00:17:19,250 --> 00:17:22,489
+what you can imagine is
+that there's a network with
+
+452
+00:17:22,489 --> 00:17:23,889
+one computer on it and
+
+453
+00:17:23,889 --> 00:17:26,409
+that computer is your
+computer, right?
+
+454
+00:17:26,409 --> 00:17:28,029
+And so some people
+might use that
+
+455
+00:17:28,029 --> 00:17:30,190
+if you're trying to
+develop like a web server,
+
+456
+00:17:30,190 --> 00:17:31,590
+you don't want people visit
+
+457
+00:17:31,590 --> 00:17:32,670
+your web server from wherever,
+
+458
+00:17:32,670 --> 00:17:34,209
+you just want to do
+development on it.
+
+459
+00:17:34,209 --> 00:17:36,670
+You might start up a
+web server and using
+
+460
+00:17:36,670 --> 00:17:40,350
+this loopback device
+for that development.
+
+461
+00:17:40,350 --> 00:17:42,889
+There's no reason
+a machine can have
+
+462
+00:17:42,889 --> 00:17:44,749
+a bunch of NICs
+associated with it.
+
+463
+00:17:44,749 --> 00:17:46,689
+So when you're creating
+your virtual machine,
+
+464
+00:17:46,689 --> 00:17:49,570
+you could actually go in
+and network interfaces,
+
+465
+00:17:49,570 --> 00:17:51,530
+you could add more than
+one, and then in this case,
+
+466
+00:17:51,530 --> 00:17:53,909
+I'd have one machine
+with different NICs.
+
+467
+00:17:53,909 --> 00:17:55,109
+I could do interesting
+things like
+
+468
+00:17:55,109 --> 00:17:56,390
+maybe there's
+different networks,
+
+469
+00:17:56,390 --> 00:17:57,870
+and my one machine could maybe
+
+470
+00:17:57,870 --> 00:17:59,550
+be like on different networks
+
+471
+00:17:59,550 --> 00:18:00,750
+with maybe different resources
+
+472
+00:18:00,750 --> 00:18:03,849
+available on those networks.
+
+473
+00:18:04,410 --> 00:18:06,509
+Here's what it
+looks like after I
+
+474
+00:18:06,509 --> 00:18:08,030
+configure that in
+the Google Cloud,
+
+475
+00:18:08,030 --> 00:18:09,649
+and I came in and
+I ran IP address.
+
+476
+00:18:09,649 --> 00:18:11,349
+I can see that I have
+these two different,
+
+477
+00:18:11,349 --> 00:18:12,749
+ENS four NS five,
+
+478
+00:18:12,749 --> 00:18:14,089
+I have these two different NICs.
+
+479
+00:18:14,089 --> 00:18:15,789
+They have two different
+MAC addresses.
+
+480
+00:18:15,789 --> 00:18:17,310
+Like I said, they
+start with the same
+
+481
+00:18:17,310 --> 00:18:19,549
+prefix as you can see.
+
+482
+00:18:19,549 --> 00:18:23,649
+S. All right.
+
+483
+00:18:23,649 --> 00:18:25,410
+So a lot about NIC.
+
+484
+00:18:25,410 --> 00:18:26,709
+How do we actually use that to
+
+485
+00:18:26,709 --> 00:18:28,669
+get computers talking
+to each other?
+
+486
+00:18:28,669 --> 00:18:30,449
+We have to connect them somehow.
+
+487
+00:18:30,449 --> 00:18:33,110
+And so one option
+is that I could
+
+488
+00:18:33,110 --> 00:18:36,209
+directly connect a NIC on
+one computer to another.
+
+489
+00:18:36,209 --> 00:18:37,910
+That's not a super
+common scenario,
+
+490
+00:18:37,910 --> 00:18:39,190
+but it's definitely possible.
+
+491
+00:18:39,190 --> 00:18:40,549
+And then when they're sending
+
+492
+00:18:40,549 --> 00:18:41,829
+communications to each other,
+
+493
+00:18:41,829 --> 00:18:44,509
+they would use that
+MAC address as kind
+
+494
+00:18:44,509 --> 00:18:45,750
+of an address when they're
+
+495
+00:18:45,750 --> 00:18:47,769
+sending data over that one wire.
+
+496
+00:18:47,769 --> 00:18:49,409
+More often is that we
+
+497
+00:18:49,409 --> 00:18:51,589
+would have something
+called a switch,
+
+498
+00:18:51,589 --> 00:18:53,169
+and a switch might have
+
+499
+00:18:53,169 --> 00:18:55,549
+a bunch of different places
+I could plug cables into it?
+
+500
+00:18:55,549 --> 00:18:57,769
+I could connect a lot of
+different computers to it.
+
+501
+00:18:57,769 --> 00:18:59,229
+And the idea of the
+switch is that if
+
+502
+00:18:59,229 --> 00:19:01,029
+Node A is trying
+to talk to Node C,
+
+503
+00:19:01,029 --> 00:19:02,910
+Node A would send a message,
+
+504
+00:19:02,910 --> 00:19:04,829
+or we might call it a frame with
+
+505
+00:19:04,829 --> 00:19:06,950
+the mac address of
+C to that switch,
+
+506
+00:19:06,950 --> 00:19:08,090
+and then the switch knows
+
+507
+00:19:08,090 --> 00:19:10,049
+where the machine with
+that mac address is,
+
+508
+00:19:10,049 --> 00:19:10,869
+and then it would send it to
+
+509
+00:19:10,869 --> 00:19:13,970
+the appropriate
+machine over there.
+
+510
+00:19:13,970 --> 00:19:16,149
+And so I'll generally
+
+511
+00:19:16,149 --> 00:19:18,789
+draw networks in kind
+of a picture like this,
+
+512
+00:19:18,789 --> 00:19:20,009
+and I'll often refer to
+
+513
+00:19:20,009 --> 00:19:22,709
+either computers or
+switches as nodes, right?
+
+514
+00:19:22,709 --> 00:19:23,909
+Because it's really like a graph
+
+515
+00:19:23,909 --> 00:19:25,029
+with a bunch of nodes on it.
+
+516
+00:19:25,029 --> 00:19:26,390
+There's nodes, there's edges,
+
+517
+00:19:26,390 --> 00:19:27,769
+sometimes a node as a computer,
+
+518
+00:19:27,769 --> 00:19:29,840
+sometimes a note as a switch.
+
+519
+00:19:29,840 --> 00:19:32,549
+All right. So I
+have this network.
+
+520
+00:19:32,549 --> 00:19:35,009
+What really defines
+a single network?
+
+521
+00:19:35,009 --> 00:19:36,989
+One thing that defines
+it is that it's going to
+
+522
+00:19:36,989 --> 00:19:38,809
+be all the same
+communication medium.
+
+523
+00:19:38,809 --> 00:19:40,850
+It's all going to be wireless,
+
+524
+00:19:40,850 --> 00:19:42,869
+it's all going to be either
+net. It's all the same thing.
+
+525
+00:19:42,869 --> 00:19:44,570
+And all these different devices
+
+526
+00:19:44,570 --> 00:19:46,390
+can communicate
+with each other by
+
+527
+00:19:46,390 --> 00:19:50,329
+sending frames to a specific
+MAC address, right?
+
+528
+00:19:50,329 --> 00:19:52,089
+So I have a single
+network there where
+
+529
+00:19:52,089 --> 00:19:54,590
+all these computers
+can communicate.
+
+530
+00:19:54,590 --> 00:19:56,369
+Any questions about that so far?
+
+531
+00:19:56,369 --> 00:20:02,850
+Yeah, right over here.
+Yeah, absolutely.
+
+532
+00:20:02,850 --> 00:20:05,050
+So nodes have multiple
+network interface cards.
+
+533
+00:20:05,050 --> 00:20:06,629
+They absolutely can.
+
+534
+00:20:06,629 --> 00:20:08,190
+And so they could maybe
+
+535
+00:20:08,190 --> 00:20:09,850
+have those multiple
+network interface cards.
+
+536
+00:20:09,850 --> 00:20:12,369
+They might be connected
+to the same network.
+
+537
+00:20:12,369 --> 00:20:14,329
+I could have one that
+is maybe connected to
+
+538
+00:20:14,329 --> 00:20:15,889
+an either network network and
+
+539
+00:20:15,889 --> 00:20:18,409
+a Wi Fi network
+at the same time.
+
+540
+00:20:18,409 --> 00:20:19,670
+I could have a
+computer that maybe
+
+541
+00:20:19,670 --> 00:20:21,170
+acts as a kind of forwarding.
+
+542
+00:20:21,170 --> 00:20:23,610
+They could try to take on a
+role of forwarding things.
+
+543
+00:20:23,610 --> 00:20:25,710
+I mean, really, the switch,
+
+544
+00:20:25,710 --> 00:20:27,370
+has a bunch of places I
+could plug in tables.
+
+545
+00:20:27,370 --> 00:20:29,890
+So a switch also you won't
+really call it neck,
+
+546
+00:20:29,890 --> 00:20:31,629
+but would have a bunch
+of physical ports where
+
+547
+00:20:31,629 --> 00:20:33,529
+I could plug in
+different tables.
+
+548
+00:20:33,529 --> 00:20:36,609
+Absolutely. You could be
+on a bunch of them. Yeah.
+
+549
+00:20:39,510 --> 00:20:47,530
+Yep. Yeah. So the MAC addresses,
+
+550
+00:20:47,530 --> 00:20:49,090
+associate with the
+network interface card.
+
+551
+00:20:49,090 --> 00:20:51,009
+So actually, kind of
+going back, right?
+
+552
+00:20:51,009 --> 00:20:52,729
+Here I have two necks,
+
+553
+00:20:52,729 --> 00:20:54,290
+and they each have their own.
+
+554
+00:20:54,290 --> 00:20:56,109
+This is just one
+computer, right?
+
+555
+00:20:56,109 --> 00:20:59,589
+But those two necks have
+different MAC addresses.
+
+556
+00:21:00,110 --> 00:21:06,370
+Yeah, great question.
+All right. Cool.
+
+557
+00:21:06,370 --> 00:21:10,350
+So I have that
+network. Of course,
+
+558
+00:21:10,350 --> 00:21:11,709
+I can have multiple
+networks, right?
+
+559
+00:21:11,709 --> 00:21:12,989
+I have another
+network over here.
+
+560
+00:21:12,989 --> 00:21:14,429
+Maybe this computer
+has two NICs,
+
+561
+00:21:14,429 --> 00:21:16,069
+and maybe each one
+is attached to
+
+562
+00:21:16,069 --> 00:21:18,769
+a to a different network.
+
+563
+00:21:18,769 --> 00:21:20,489
+I mean, you can
+imagine different
+
+564
+00:21:20,489 --> 00:21:21,589
+interesting scenarios for that.
+
+565
+00:21:21,589 --> 00:21:23,049
+Maybe there's on this network,
+
+566
+00:21:23,049 --> 00:21:24,950
+it's more private, maybe
+I have a database server.
+
+567
+00:21:24,950 --> 00:21:26,609
+Maybe I don't want random people
+
+568
+00:21:26,609 --> 00:21:28,970
+trying to communicate
+with my database server,
+
+569
+00:21:28,970 --> 00:21:31,189
+but maybe I have a
+web server on Node A,
+
+570
+00:21:31,189 --> 00:21:32,789
+and I want that a lot of
+
+571
+00:21:32,789 --> 00:21:34,990
+computers people communicate
+with my web server,
+
+572
+00:21:34,990 --> 00:21:36,369
+and then it will decide
+
+573
+00:21:36,369 --> 00:21:39,050
+what data to pass on
+from that database.
+
+574
+00:21:39,050 --> 00:21:40,869
+Often have more and less secure
+
+575
+00:21:40,869 --> 00:21:42,690
+networks or more locked down.
+
+576
+00:21:42,690 --> 00:21:43,989
+So Node A, I guess,
+
+577
+00:21:43,989 --> 00:21:45,890
+can send messages to computers
+
+578
+00:21:45,890 --> 00:21:48,049
+and either network based
+on the MAC address,
+
+579
+00:21:48,049 --> 00:21:50,350
+Even if Node C somehow knew
+
+580
+00:21:50,350 --> 00:21:53,189
+the MAC address of
+node D over there,
+
+581
+00:21:53,189 --> 00:21:54,350
+it would not be able to send
+
+582
+00:21:54,350 --> 00:21:56,049
+a message it's on a
+different network.
+
+583
+00:21:56,049 --> 00:21:59,554
+I cannot use that MAC
+address to communicate.
+
+584
+00:21:59,554 --> 00:22:02,919
+Okay. So we're already
+talking about two networks.
+
+585
+00:22:02,919 --> 00:22:05,119
+It's time we talk about what
+
+586
+00:22:05,119 --> 00:22:07,459
+happens when we have a
+bunch of networks together.
+
+587
+00:22:07,459 --> 00:22:10,520
+We might have a
+corporate Internet.
+
+588
+00:22:10,520 --> 00:22:12,619
+You know, if you have
+lots of networks,
+
+589
+00:22:12,619 --> 00:22:14,000
+trying to across
+different organizations,
+
+590
+00:22:14,000 --> 00:22:17,100
+maybe we would call it on
+Internet or the Internet.
+
+591
+00:22:17,100 --> 00:22:19,480
+And so we're going to talk
+about that situation.
+
+592
+00:22:19,480 --> 00:22:21,659
+And so here I've drawn a
+bunch of different networks,
+
+593
+00:22:21,659 --> 00:22:24,279
+maybe they have different media.
+
+594
+00:22:24,279 --> 00:22:25,779
+And I have a new kind of
+
+595
+00:22:25,779 --> 00:22:28,099
+node in here called
+a router, right?
+
+596
+00:22:28,099 --> 00:22:31,679
+So the switch was sitting
+within individual network.
+
+597
+00:22:31,679 --> 00:22:34,360
+The router is sitting
+in between networks,
+
+598
+00:22:34,360 --> 00:22:36,459
+and it's able to
+get communication
+
+599
+00:22:36,459 --> 00:22:40,790
+across across these
+different networks.
+
+600
+00:22:40,790 --> 00:22:45,300
+So for example, let's
+say that node A up here
+
+601
+00:22:45,300 --> 00:22:49,539
+wants to send a message
+to node B way over there.
+
+602
+00:22:49,539 --> 00:22:50,779
+Right? Obviously, it
+cannot do it with
+
+603
+00:22:50,779 --> 00:22:51,960
+a mac address because it doesn't
+
+604
+00:22:51,960 --> 00:22:53,199
+even know the mac address of B,
+
+605
+00:22:53,199 --> 00:22:56,479
+and MC addresses only
+work on a single network.
+
+606
+00:22:56,479 --> 00:22:58,380
+But what we could
+do is we could send
+
+607
+00:22:58,380 --> 00:23:00,880
+a message that could go
+to this node over here,
+
+608
+00:23:00,880 --> 00:23:02,299
+and then maybe it passes
+through a network,
+
+609
+00:23:02,299 --> 00:23:04,239
+maybe some switches, maybe
+another router over here.
+
+610
+00:23:04,239 --> 00:23:05,619
+And eventually, we could get
+
+611
+00:23:05,619 --> 00:23:09,819
+the communication to where
+we want it to go, right?
+
+612
+00:23:09,819 --> 00:23:11,760
+And so the challenge
+
+613
+00:23:11,760 --> 00:23:13,939
+here is that if I'm trying
+to send out this message,
+
+614
+00:23:13,939 --> 00:23:15,299
+and let's say the
+message gets from
+
+615
+00:23:15,299 --> 00:23:17,839
+no to A to the router,
+
+616
+00:23:17,839 --> 00:23:20,659
+the router needs to know
+where to send it next, right?
+
+617
+00:23:20,659 --> 00:23:21,840
+And the router is
+actually sitting
+
+618
+00:23:21,840 --> 00:23:23,040
+on a few different networks.
+
+619
+00:23:23,040 --> 00:23:26,339
+How does it know
+which way to send it?
+
+620
+00:23:26,339 --> 00:23:26,559
+Right?
+
+621
+00:23:26,559 --> 00:23:28,359
+We have to have some kind of
+routing table where you can
+
+622
+00:23:28,359 --> 00:23:30,620
+look at a message and kind
+of look it up and say, Oh,
+
+623
+00:23:30,620 --> 00:23:32,819
+it should go this way, or
+it should go that way and
+
+624
+00:23:32,819 --> 00:23:35,779
+somehow get it to its
+final destination.
+
+625
+00:23:35,779 --> 00:23:37,879
+Now, you can imagine
+in theory that
+
+626
+00:23:37,879 --> 00:23:39,199
+that routing table
+could know about
+
+627
+00:23:39,199 --> 00:23:40,720
+every single mac
+address in the world,
+
+628
+00:23:40,720 --> 00:23:42,720
+and it could know
+where basically
+
+629
+00:23:42,720 --> 00:23:43,959
+everybody is located any time
+
+630
+00:23:43,959 --> 00:23:45,449
+and it could forward in
+the right direction.
+
+631
+00:23:45,449 --> 00:23:47,200
+That'd be really hard
+to keep up to date.
+
+632
+00:23:47,200 --> 00:23:49,300
+And the table the routing
+table would be too big.
+
+633
+00:23:49,300 --> 00:23:51,419
+It's not practical
+for every router to
+
+634
+00:23:51,419 --> 00:23:53,699
+know everything about
+everybody, right?
+
+635
+00:23:53,699 --> 00:23:56,400
+And so when we're
+sending these packets,
+
+636
+00:23:56,400 --> 00:23:59,039
+and I should have
+introduced this term.
+
+637
+00:23:59,039 --> 00:24:00,619
+A packet is some sequence
+
+638
+00:24:00,619 --> 00:24:02,340
+of bytes we're sending
+with some metadata,
+
+639
+00:24:02,340 --> 00:24:03,919
+maybe, like, where we're
+trying to send it to.
+
+640
+00:24:03,919 --> 00:24:05,940
+We're trying to
+send these packets.
+
+641
+00:24:05,940 --> 00:24:08,179
+We're going to need
+a better way to
+
+642
+00:24:08,179 --> 00:24:11,959
+address nodes instead
+of just MAC addresses.
+
+643
+00:24:11,959 --> 00:24:14,260
+And that leads us
+to IP addresses.
+
+644
+00:24:14,260 --> 00:24:16,919
+So IP addresses are part
+of the Internet protocol.
+
+645
+00:24:16,919 --> 00:24:19,200
+And that's where we
+get the acronym IP.
+
+646
+00:24:19,200 --> 00:24:21,720
+You have all used IP
+addresses to some extent.
+
+647
+00:24:21,720 --> 00:24:23,459
+Here's an example
+of an IP address
+
+648
+00:24:23,459 --> 00:24:26,340
+IP with these four
+parts right here.
+
+649
+00:24:26,340 --> 00:24:28,319
+There's four bytes
+in an IP address,
+
+650
+00:24:28,319 --> 00:24:31,425
+and they kind of spelled
+out with those four parts.
+
+651
+00:24:31,425 --> 00:24:33,630
+The four bytes or 32 beds.
+
+652
+00:24:33,630 --> 00:24:34,730
+That kind of works out to having
+
+653
+00:24:34,730 --> 00:24:39,270
+about 4 billion different
+possible IP addresses.
+
+654
+00:24:39,270 --> 00:24:41,709
+I really not quite
+enough, is it?
+
+655
+00:24:41,709 --> 00:24:43,950
+Right? There's more than 4
+billion people in the world.
+
+656
+00:24:43,950 --> 00:24:45,490
+And me as an individual.
+
+657
+00:24:45,490 --> 00:24:47,469
+I mean, I guess I
+have my laptop here,
+
+658
+00:24:47,469 --> 00:24:48,649
+I have my tablet here,
+
+659
+00:24:48,649 --> 00:24:49,790
+I have my phone,
+
+660
+00:24:49,790 --> 00:24:51,369
+maybe I have a smart thermostat,
+
+661
+00:24:51,369 --> 00:24:53,410
+smart toaster, maybe
+I have a smart watch.
+
+662
+00:24:53,410 --> 00:24:55,170
+I could imagine lots
+of different devices
+
+663
+00:24:55,170 --> 00:24:56,830
+that need to be online.
+
+664
+00:24:56,830 --> 00:24:59,670
+And that might be
+using up IP addresses.
+
+665
+00:24:59,670 --> 00:25:02,589
+So 4 billion clearly
+is not enough.
+
+666
+00:25:02,589 --> 00:25:05,589
+There is a newer addressing
+scheme called IPV six,
+
+667
+00:25:05,589 --> 00:25:07,049
+that's replacing
+what I'm describing.
+
+668
+00:25:07,049 --> 00:25:09,230
+I've been describing IPV four,
+
+669
+00:25:09,230 --> 00:25:11,469
+and that one has, you know,
+
+670
+00:25:11,469 --> 00:25:13,110
+the AddresR four times longer,
+
+671
+00:25:13,110 --> 00:25:15,789
+and basically, it's like
+impossible that humanity,
+
+672
+00:25:15,789 --> 00:25:19,790
+whatever, have enough devices
+to exceed the IPV six.
+
+673
+00:25:19,790 --> 00:25:21,849
+It's just not possible, right?
+
+674
+00:25:21,849 --> 00:25:23,849
+But if I'm using that,
+
+675
+00:25:23,849 --> 00:25:25,630
+then really kind
+of all the routers
+
+676
+00:25:25,630 --> 00:25:27,349
+in the system need
+to support it,
+
+677
+00:25:27,349 --> 00:25:29,529
+and we don't really have
+universal support for it.
+
+678
+00:25:29,529 --> 00:25:32,350
+And so it really, you know,
+it's not what we're using.
+
+679
+00:25:32,350 --> 00:25:33,909
+Usually, we're still
+using IPV four,
+
+680
+00:25:33,909 --> 00:25:35,809
+even though it's this
+limited resource.
+
+681
+00:25:35,809 --> 00:25:37,329
+We're a talk a little
+bit about how we kind of
+
+682
+00:25:37,329 --> 00:25:40,199
+deal with that scarcity problem.
+
+683
+00:25:40,199 --> 00:25:43,050
+Okay, so we have
+these IP addresses,
+
+684
+00:25:43,050 --> 00:25:45,290
+and y are these better
+than MAC addresses?
+
+685
+00:25:45,290 --> 00:25:47,530
+Well, we split it
+up like before,
+
+686
+00:25:47,530 --> 00:25:48,789
+where there's a prefix and
+
+687
+00:25:48,789 --> 00:25:50,930
+a suffix with the MAC addresses,
+
+688
+00:25:50,930 --> 00:25:52,550
+the prefix was a manufacturer.
+
+689
+00:25:52,550 --> 00:25:53,929
+But now for an IP address,
+
+690
+00:25:53,929 --> 00:25:55,709
+the prefix is going to
+be a network number.
+
+691
+00:25:55,709 --> 00:25:58,849
+Each of these networks has a
+number associated with it.
+
+692
+00:25:58,849 --> 00:26:02,189
+And so then all of
+the computers on
+
+693
+00:26:02,189 --> 00:26:03,569
+the same network should have
+
+694
+00:26:03,569 --> 00:26:06,050
+an IP address starting
+with that prefix.
+
+695
+00:26:06,050 --> 00:26:08,470
+And so when this
+router over here gets
+
+696
+00:26:08,470 --> 00:26:11,249
+a message coming from A
+that's supposed to go to B,
+
+697
+00:26:11,249 --> 00:26:13,509
+it's going to look at the
+prefix of that IP address,
+
+698
+00:26:13,509 --> 00:26:14,869
+and it's going to be I
+
+699
+00:26:14,869 --> 00:26:16,509
+don't know exactly
+where this computer is,
+
+700
+00:26:16,509 --> 00:26:19,869
+but I know it's somewhere
+over in network three,
+
+701
+00:26:19,869 --> 00:26:22,829
+and to know that to
+get to network three,
+
+702
+00:26:22,829 --> 00:26:26,609
+forwarding through network
+six is the way to go, right?
+
+703
+00:26:26,609 --> 00:26:28,569
+So now, instead of our
+forwarding tables,
+
+704
+00:26:28,569 --> 00:26:31,710
+having entries for like
+every device in the world,
+
+705
+00:26:31,710 --> 00:26:34,530
+they can have an entry for
+every network in the world,
+
+706
+00:26:34,530 --> 00:26:36,449
+and that's kind of a little
+bit more manageable and
+
+707
+00:26:36,449 --> 00:26:38,709
+we can figure out
+which way to send it.
+
+708
+00:26:38,709 --> 00:26:40,289
+So do people have any questions
+
+709
+00:26:40,289 --> 00:26:42,169
+about this routing
+problem? Yeah, right here.
+
+710
+00:26:42,169 --> 00:26:46,330
+So different IP address
+
+711
+00:26:46,330 --> 00:26:50,389
+complication my laptop
+one IP address here.
+
+712
+00:26:50,389 --> 00:26:52,849
+Yeah, absolutely.
+Could the device have
+
+713
+00:26:52,849 --> 00:26:54,829
+a different IP address
+in different places?
+
+714
+00:26:54,829 --> 00:26:56,210
+Yeah, it could even
+
+715
+00:26:56,210 --> 00:26:58,289
+have different IP addresses
+at the same time.
+
+716
+00:26:58,289 --> 00:26:59,750
+If you have multiple
+necks, so each neck
+
+717
+00:26:59,750 --> 00:27:00,909
+can have its own IP address.
+
+718
+00:27:00,909 --> 00:27:02,709
+And then yea, as you move
+to different networks,
+
+719
+00:27:02,709 --> 00:27:05,750
+then you end up with
+different IP addresses.
+
+720
+00:27:05,750 --> 00:27:09,529
+Some networks are kind of
+like very statically defined.
+
+721
+00:27:09,529 --> 00:27:11,589
+Stting it side like this is
+
+722
+00:27:11,589 --> 00:27:15,169
+the IP address on this
+network. Other networks.
+
+723
+00:27:15,169 --> 00:27:16,870
+Obviously, all of us, nobody,
+
+724
+00:27:16,870 --> 00:27:18,249
+like manually sat down and
+
+725
+00:27:18,249 --> 00:27:20,309
+chose it for us to get
+on the campus network.
+
+726
+00:27:20,309 --> 00:27:22,009
+So there's protocols, DHCP,
+
+727
+00:27:22,009 --> 00:27:23,309
+if you want to go read about it.
+
+728
+00:27:23,309 --> 00:27:24,489
+There's ways like
+you jump on the
+
+729
+00:27:24,489 --> 00:27:25,630
+network and then it says,
+
+730
+00:27:25,630 --> 00:27:27,069
+Oh, here's the new MAC address.
+
+731
+00:27:27,069 --> 00:27:28,789
+Here's an IP address for you.
+
+732
+00:27:28,789 --> 00:27:30,649
+And then I go to a
+different network,
+
+733
+00:27:30,649 --> 00:27:33,209
+and he'll give me a different
+one on that network.
+
+734
+00:27:33,209 --> 00:27:36,709
+Yeah, absolutely, can change
+if you're mobile, right?
+
+735
+00:27:36,709 --> 00:27:38,749
+Yeah, good question.
+Other questions
+
+736
+00:27:38,749 --> 00:27:40,789
+people have? Yeah, right here.
+
+737
+00:27:50,250 --> 00:27:52,409
+Oh, you're saying, Okay, so
+
+738
+00:27:52,409 --> 00:27:53,649
+if I want to send a
+message from, like,
+
+739
+00:27:53,649 --> 00:27:56,190
+here to California,
+like how many,
+
+740
+00:27:56,190 --> 00:27:57,930
+like, routers might
+it hop through?
+
+741
+00:27:57,930 --> 00:27:59,110
+Yeah, it's a really
+good question,
+
+742
+00:27:59,110 --> 00:28:00,769
+and it'd be like on
+the order of, like,
+
+743
+00:28:00,769 --> 00:28:02,749
+tens, not on the
+order of thousands.
+
+744
+00:28:02,749 --> 00:28:05,009
+And there's a little
+tool you can use.
+
+745
+00:28:05,009 --> 00:28:06,309
+It's called trace route.
+
+746
+00:28:06,309 --> 00:28:09,329
+And you can run a trace route
+to a different destination,
+
+747
+00:28:09,329 --> 00:28:10,869
+and it will try to
+figure out what
+
+748
+00:28:10,869 --> 00:28:12,509
+each hop is, and it'll show you.
+
+749
+00:28:12,509 --> 00:28:13,690
+I mean, some of them
+don't want to share
+
+750
+00:28:13,690 --> 00:28:15,569
+information with you so because
+it had some holes in it,
+
+751
+00:28:15,569 --> 00:28:17,229
+but you can run trace
+route and say, like, Oh,
+
+752
+00:28:17,229 --> 00:28:19,569
+from here to there, how
+is it getting there?
+
+753
+00:28:19,569 --> 00:28:20,789
+And sometimes that's, like, very
+
+754
+00:28:20,789 --> 00:28:22,809
+interesting, for example,
+
+755
+00:28:22,809 --> 00:28:25,169
+I think once, like I was like,
+
+756
+00:28:25,169 --> 00:28:27,409
+doing something like on
+the West Coast, right?
+
+757
+00:28:27,409 --> 00:28:29,870
+And then it was like,
+super high latency,
+
+758
+00:28:29,870 --> 00:28:31,729
+and then I'm like, I did a
+trace route and it's like,
+
+759
+00:28:31,729 --> 00:28:33,450
+Oh, it's forever stupid reason.
+
+760
+00:28:33,450 --> 00:28:35,109
+It was like sending
+my traffic to, like,
+
+761
+00:28:35,109 --> 00:28:36,809
+Virginia first, and then it
+
+762
+00:28:36,809 --> 00:28:38,349
+was like sending it East, right.
+
+763
+00:28:38,349 --> 00:28:39,749
+So you can actually
+kind of troubleshoot
+
+764
+00:28:39,749 --> 00:28:40,889
+these things and do it.
+
+765
+00:28:40,889 --> 00:28:42,170
+So take a look at Traceroute.
+
+766
+00:28:42,170 --> 00:28:45,849
+I sent another hand up over
+here. Yeah, right over here.
+
+767
+00:28:50,950 --> 00:28:56,670
+Would two computers on the
+same network have the same IP?
+
+768
+00:28:56,670 --> 00:28:58,209
+They're not supposed to, right?
+
+769
+00:28:58,209 --> 00:28:59,629
+I mean, you can, and then
+
+770
+00:28:59,629 --> 00:29:01,190
+I don't know I think
+things get weird.
+
+771
+00:29:01,190 --> 00:29:03,249
+It's not clear like who
+the traffic should go to.
+
+772
+00:29:03,249 --> 00:29:06,189
+I mean, it would be
+considered misconfigured.
+
+773
+00:29:06,189 --> 00:29:07,909
+And I know I mean,
+
+774
+00:29:07,909 --> 00:29:09,650
+I guess nothing
+blows up, but yeah,
+
+775
+00:29:09,650 --> 00:29:12,189
+just kind of I've actually
+misconfigured things that way,
+
+776
+00:29:12,189 --> 00:29:14,009
+and then it's just
+it's weird, right?
+
+777
+00:29:14,009 --> 00:29:15,749
+Yeah. Yeah other
+
+778
+00:29:15,749 --> 00:29:18,149
+questions people have
+Yeah, right over here.
+
+779
+00:29:20,480 --> 00:29:23,239
+Some networks will
+automatically do it for you.
+
+780
+00:29:23,239 --> 00:29:25,379
+I was at the HCP thing
+I was talking about and
+
+781
+00:29:25,379 --> 00:29:27,840
+I will go in depth on
+that or in other cases,
+
+782
+00:29:27,840 --> 00:29:30,100
+a system administrator
+will say, Oh,
+
+783
+00:29:30,100 --> 00:29:31,400
+I'm plugging you into
+the network, and they'll
+
+784
+00:29:31,400 --> 00:29:33,539
+manually can figure what
+it's supposed to be.
+
+785
+00:29:33,539 --> 00:29:36,519
+So they're both it could
+be manual or automatic.
+
+786
+00:29:36,519 --> 00:29:39,679
+I see another hand up somewhere.
+Yeah, right over here.
+
+787
+00:29:45,880 --> 00:29:48,820
+Our IP addresses
+and MAC addresses.
+
+788
+00:29:48,820 --> 00:29:50,439
+MAC addresses are used
+when we're trying to
+
+789
+00:29:50,439 --> 00:29:52,959
+communicate on a single network,
+
+790
+00:29:52,959 --> 00:29:55,579
+and then the IP addresses are
+used when we're trying to
+
+791
+00:29:55,579 --> 00:30:00,240
+communicate across across
+different networks.
+
+792
+00:30:07,480 --> 00:30:11,479
+Yeah. Uh huh. Oh, it's
+trying to send it
+
+793
+00:30:11,479 --> 00:30:14,119
+to It's trying to
+
+794
+00:30:14,119 --> 00:30:17,439
+send it through six and three
+to get to B. Yeah. Okay.
+
+795
+00:30:26,840 --> 00:30:29,640
+Oh, sure. So once it's onto
+
+796
+00:30:29,640 --> 00:30:31,680
+a specific network
+and it could use
+
+797
+00:30:31,680 --> 00:30:35,860
+a MAC address to get it
+to that specific machine.
+
+798
+00:30:35,860 --> 00:30:38,260
+But as it's traveling, across.
+
+799
+00:30:38,260 --> 00:30:39,419
+We have to use the IP address
+
+800
+00:30:39,419 --> 00:30:40,899
+to figure out where
+to send it to.
+
+801
+00:30:40,899 --> 00:30:42,259
+So once we're in a network
+
+802
+00:30:42,259 --> 00:30:43,519
+and we can use the MAC address,
+
+803
+00:30:43,519 --> 00:30:44,919
+when we're across
+networks, then we
+
+804
+00:30:44,919 --> 00:30:48,739
+would use the IP address.
+
+805
+00:30:48,739 --> 00:30:51,459
+I mean, a little bit of
+this is hidden from you
+
+806
+00:30:51,459 --> 00:30:54,039
+because if you are on a
+single network, right,
+
+807
+00:30:54,039 --> 00:30:55,819
+you probably are
+using IP addresses to
+
+808
+00:30:55,819 --> 00:30:58,059
+refer to other machines
+on that same network,
+
+809
+00:30:58,059 --> 00:31:00,699
+but it's still looking up
+the MAC address for it.
+
+810
+00:31:00,699 --> 00:31:02,979
+There's a protocol
+called RP where you
+
+811
+00:31:02,979 --> 00:31:05,319
+can I guess I'm getting
+off on a tangent here.
+
+812
+00:31:05,319 --> 00:31:08,219
+But you can actually
+for a given IP address,
+
+813
+00:31:08,219 --> 00:31:09,399
+you figure out, Oh,
+on this network,
+
+814
+00:31:09,399 --> 00:31:10,519
+what is the MC address for it?
+
+815
+00:31:10,519 --> 00:31:13,374
+So I can communicate
+with it. Yeah, we here.
+
+816
+00:31:13,374 --> 00:31:23,130
+Networks, if you have a
+there's a new network here.
+
+817
+00:31:23,130 --> 00:31:26,049
+So I guess and
+
+818
+00:31:26,049 --> 00:31:28,010
+then I guess what it
+would be plugging into
+
+819
+00:31:28,010 --> 00:31:30,369
+an existing router
+and then how would
+
+820
+00:31:30,369 --> 00:31:33,109
+it kind of like report
+like, Hey, I'm here?
+
+821
+00:31:33,109 --> 00:31:35,329
+Yeah, I'm not sure kind of
+like the bootstrapping of it,
+
+822
+00:31:35,329 --> 00:31:38,189
+how it happens if there's
+new networks added.
+
+823
+00:31:38,189 --> 00:31:41,050
+I'm not sure. Yeah, that's
+
+824
+00:31:41,050 --> 00:31:43,350
+of great questions today.
+Thank you, everybody.
+
+825
+00:31:43,350 --> 00:31:45,789
+Cool. So we have
+
+826
+00:31:45,789 --> 00:31:48,140
+the sense that we have
+these IP addresses now.
+
+827
+00:31:48,140 --> 00:31:51,009
+If I run back to that
+IP address command,
+
+828
+00:31:51,009 --> 00:31:53,849
+it is going to list off
+all these Nicks I have,
+
+829
+00:31:53,849 --> 00:31:55,410
+and it is going
+to show me the IP
+
+830
+00:31:55,410 --> 00:31:57,650
+address for each of them.
+
+831
+00:31:57,650 --> 00:32:00,089
+And so then what I can do is
+
+832
+00:32:00,089 --> 00:32:01,289
+depending on who I want to
+
+833
+00:32:01,289 --> 00:32:02,829
+be able to reach my web server,
+
+834
+00:32:02,829 --> 00:32:04,449
+I could choose one
+of these, right?
+
+835
+00:32:04,449 --> 00:32:07,310
+I could let's say I'm
+starting a Python web server.
+
+836
+00:32:07,310 --> 00:32:10,190
+I can say Python
+three, HTP server,
+
+837
+00:32:10,190 --> 00:32:11,589
+and I can say Bin.
+
+838
+00:32:11,589 --> 00:32:13,729
+Bin means that this
+program is going to
+
+839
+00:32:13,729 --> 00:32:16,110
+be listening to that
+particular neck.
+
+840
+00:32:16,110 --> 00:32:17,989
+And so I could use IP address
+
+841
+00:32:17,989 --> 00:32:21,185
+for that neck or this
+one for this neck.
+
+842
+00:32:21,185 --> 00:32:23,800
+Or there's a couple
+of other ones.
+
+843
+00:32:23,800 --> 00:32:25,500
+The loopback device I talked
+
+844
+00:32:25,500 --> 00:32:27,799
+about that always has 127001.
+
+845
+00:32:27,799 --> 00:32:29,859
+That's an IP address you
+should memorize, right?
+
+846
+00:32:29,859 --> 00:32:31,259
+You're probably going to
+use that whenever you want
+
+847
+00:32:31,259 --> 00:32:33,139
+somebody to just be
+listening locally.
+
+848
+00:32:33,139 --> 00:32:35,880
+The other one you should
+memorize is 0000.
+
+849
+00:32:35,880 --> 00:32:37,419
+That's not a real IP address.
+
+850
+00:32:37,419 --> 00:32:39,279
+What that one is is it
+means that I want to
+
+851
+00:32:39,279 --> 00:32:41,799
+listen on everything I
+can at the same time.
+
+852
+00:32:41,799 --> 00:32:43,160
+People often do
+that because it's
+
+853
+00:32:43,160 --> 00:32:44,359
+more convenient
+than having to go
+
+854
+00:32:44,359 --> 00:32:48,039
+look up the one that's public
+facing. Yeah, question.
+
+855
+00:32:51,670 --> 00:32:54,309
+Yeah, that's just
+a Python module
+
+856
+00:32:54,309 --> 00:32:55,970
+that acts as a web server.
+
+857
+00:32:55,970 --> 00:32:57,970
+Maybe if I have time, I
+might even show it later,
+
+858
+00:32:57,970 --> 00:32:59,189
+but it's just like a
+
+859
+00:32:59,189 --> 00:33:01,969
+simple web server that
+comes with Python.
+
+860
+00:33:01,969 --> 00:33:04,810
+If I just have some static
+HTML pages or something,
+
+861
+00:33:04,810 --> 00:33:06,410
+and I want to spin up a website.
+
+862
+00:33:06,410 --> 00:33:08,069
+Yeah, follow up.
+
+863
+00:33:15,150 --> 00:33:16,949
+Yeah. Maybe I'm
+
+864
+00:33:16,949 --> 00:33:23,649
+in a bash shell and then
+I run Python three. Yeah.
+
+865
+00:33:23,649 --> 00:33:25,569
+I mean, sometimes when
+you say Python three,
+
+866
+00:33:25,569 --> 00:33:27,169
+you'll say the name of
+
+867
+00:33:27,169 --> 00:33:29,590
+a program like maybe
+myprogram dot pi.
+
+868
+00:33:29,590 --> 00:33:32,049
+Other times you say
+the name of a module,
+
+869
+00:33:32,049 --> 00:33:34,449
+and a lot of modules come
+preinstalled with Python.
+
+870
+00:33:34,449 --> 00:33:36,409
+Some modules are
+unable as programs.
+
+871
+00:33:36,409 --> 00:33:38,449
+So I could say and then
+I could say the name of
+
+872
+00:33:38,449 --> 00:33:41,790
+a module that can be
+run as a program.
+
+873
+00:33:41,790 --> 00:33:44,209
+You might also see
+sometimes that people say,
+
+874
+00:33:44,209 --> 00:33:47,169
+Python three PEP PP is
+
+875
+00:33:47,169 --> 00:33:50,510
+a module that can run as
+a program. Good question.
+
+876
+00:33:50,510 --> 00:33:54,649
+Other questions people
+have. All right, fantastic.
+
+877
+00:33:54,649 --> 00:33:59,850
+So let's talk about this
+idea of private networks.
+
+878
+00:33:59,850 --> 00:34:02,630
+Private networks are really
+trying to solve two problems.
+
+879
+00:34:02,630 --> 00:34:04,090
+One is that we don't have enough
+
+880
+00:34:04,090 --> 00:34:06,410
+IPV four addresses in the world.
+
+881
+00:34:06,410 --> 00:34:07,670
+The other one is that sometimes
+
+882
+00:34:07,670 --> 00:34:09,029
+I might want to
+have a machine that
+
+883
+00:34:09,029 --> 00:34:11,770
+is not really visible to
+everybody on the Internet,
+
+884
+00:34:11,770 --> 00:34:13,470
+maybe for security purposes.
+
+885
+00:34:13,470 --> 00:34:15,589
+And so what they've
+done is you could have
+
+886
+00:34:15,589 --> 00:34:16,849
+kind of a public network where
+
+887
+00:34:16,849 --> 00:34:19,610
+these IP addresses could
+be visited from anywhere,
+
+888
+00:34:19,610 --> 00:34:21,110
+or I can have a private network
+
+889
+00:34:21,110 --> 00:34:24,689
+where I can control,
+who can send to it.
+
+890
+00:34:24,689 --> 00:34:27,130
+And so for the private networks,
+
+891
+00:34:27,130 --> 00:34:28,230
+what they do is they've defined
+
+892
+00:34:28,230 --> 00:34:30,185
+three ranges of IP addresses.
+
+893
+00:34:30,185 --> 00:34:33,480
+And anybody can use those to
+create a private network.
+
+894
+00:34:33,480 --> 00:34:35,199
+So you can see this last range,
+
+895
+00:34:35,199 --> 00:34:38,340
+anything that begins with
+ten is a private network.
+
+896
+00:34:38,340 --> 00:34:40,160
+You could use an IP address
+
+897
+00:34:40,160 --> 00:34:41,340
+starting with ten
+on your network,
+
+898
+00:34:41,340 --> 00:34:43,440
+and I could use the
+same one on my network,
+
+899
+00:34:43,440 --> 00:34:45,179
+and that would be
+totally finest private,
+
+900
+00:34:45,179 --> 00:34:47,299
+so we wouldn't collide. You
+can see that here, right?
+
+901
+00:34:47,299 --> 00:34:50,799
+There's this 10012 is
+
+902
+00:34:50,799 --> 00:34:54,484
+the same on network
+A and in network B.
+
+903
+00:34:54,484 --> 00:34:56,669
+You know, a big
+organization like
+
+904
+00:34:56,669 --> 00:34:59,489
+UW, our university, right?
+
+905
+00:34:59,489 --> 00:35:01,870
+We might want to have
+more than one network,
+
+906
+00:35:01,870 --> 00:35:03,330
+but there's only
+these three ranges.
+
+907
+00:35:03,330 --> 00:35:05,690
+And so there's a way to create
+something called subnets.
+
+908
+00:35:05,690 --> 00:35:09,570
+So subnet is basically it's
+basically like a network,
+
+909
+00:35:09,570 --> 00:35:15,149
+but it would use sub range
+of this space. All right.
+
+910
+00:35:15,149 --> 00:35:17,369
+So let's think about what
+happens here, right?
+
+911
+00:35:17,369 --> 00:35:19,150
+So when I do my IP address,
+
+912
+00:35:19,150 --> 00:35:20,770
+I see that there's this
+network interface,
+
+913
+00:35:20,770 --> 00:35:22,170
+I see it has this IP address.
+
+914
+00:35:22,170 --> 00:35:24,429
+So I would naturally probably
+want to bind to that.
+
+915
+00:35:24,429 --> 00:35:26,450
+And I would tell people,
+check on my website.
+
+916
+00:35:26,450 --> 00:35:28,469
+This is the address you use,
+
+917
+00:35:28,469 --> 00:35:29,849
+and they'll go there,
+and it won't work,
+
+918
+00:35:29,849 --> 00:35:31,170
+because it's a
+private IP address.
+
+919
+00:35:31,170 --> 00:35:32,889
+It's not visible to them.
+
+920
+00:35:32,889 --> 00:35:34,789
+Yeah, come right here.
+
+921
+00:35:40,150 --> 00:35:44,649
+Yeah. That's a
+
+922
+00:35:44,649 --> 00:35:45,910
+private That's a private.
+
+923
+00:35:45,910 --> 00:35:48,050
+So it'll be always
+considered private.
+
+924
+00:35:48,050 --> 00:35:49,369
+So there are certain ranges that
+
+925
+00:35:49,369 --> 00:35:51,909
+are set aside to
+be private, what?
+
+926
+00:35:52,510 --> 00:35:54,789
+Oh, that nobody tries to
+
+927
+00:35:54,789 --> 00:35:57,749
+create it like a public
+thing with that.
+
+928
+00:36:02,910 --> 00:36:06,869
+Yeah, I'm not sure how the
+governance of that works,
+
+929
+00:36:06,869 --> 00:36:08,289
+right if you I mean,
+
+930
+00:36:08,289 --> 00:36:09,629
+even they divide it up,
+
+931
+00:36:09,629 --> 00:36:11,029
+different countries
+are supposed to
+
+932
+00:36:11,029 --> 00:36:13,170
+own specific IP ranges,
+
+933
+00:36:13,170 --> 00:36:15,530
+and then they can sell
+those different companies
+
+934
+00:36:15,530 --> 00:36:16,870
+will own differ IP ranges.
+
+935
+00:36:16,870 --> 00:36:18,509
+So I don't know how
+they deal with,
+
+936
+00:36:18,509 --> 00:36:20,229
+like if somebody
+is like vogue and
+
+937
+00:36:20,229 --> 00:36:22,889
+they try to hook into a
+route or somewhere and say,
+
+938
+00:36:22,889 --> 00:36:26,169
+h, I'm network with
+this IP range.
+
+939
+00:36:26,169 --> 00:36:28,489
+Soo else doesn't know. I don't
+really how they police it.
+
+940
+00:36:28,489 --> 00:36:30,989
+I'm not sure. But these
+
+941
+00:36:30,989 --> 00:36:32,109
+are well understood
+to be private,
+
+942
+00:36:32,109 --> 00:36:35,149
+so you could even imagine it
+would be easy to say, like,
+
+943
+00:36:35,149 --> 00:36:36,789
+Hey, like, we know that
+
+944
+00:36:36,789 --> 00:36:38,889
+it's not a public
+one. Yeah, question.
+
+945
+00:36:38,889 --> 00:36:43,629
+Series I don't know.
+
+946
+00:36:43,629 --> 00:36:45,050
+I mean, it's semi arbitrary.
+
+947
+00:36:45,050 --> 00:36:47,570
+I guess you can see there's
+different numbers of zeros,
+
+948
+00:36:47,570 --> 00:36:49,409
+and so they kind of
+
+949
+00:36:49,409 --> 00:36:51,830
+correspond to networks
+of different sizes,
+
+950
+00:36:51,830 --> 00:36:53,909
+kind of a small, medium
+and large. I don't know.
+
+951
+00:36:53,909 --> 00:36:55,289
+I think they call
+
+952
+00:36:55,289 --> 00:36:56,949
+them like class ABC or
+something like that.
+
+953
+00:36:56,949 --> 00:36:59,789
+So they wanted to have
+like one of each, right?
+
+954
+00:37:00,730 --> 00:37:03,469
+All right, so how do
+we actually I ran
+
+955
+00:37:03,469 --> 00:37:06,110
+this web server and it's bound
+to my private IP address?
+
+956
+00:37:06,110 --> 00:37:07,969
+That's really all I can
+bind to because when
+
+957
+00:37:07,969 --> 00:37:10,190
+I'm on the virtual machine,
+
+958
+00:37:10,190 --> 00:37:11,549
+that's all I can see, right?
+
+959
+00:37:11,549 --> 00:37:13,389
+But what if I want
+somebody else to be able
+
+960
+00:37:13,389 --> 00:37:15,649
+to communicate with me? Okay.
+
+961
+00:37:15,649 --> 00:37:17,889
+So I have my virtual
+private network over here.
+
+962
+00:37:17,889 --> 00:37:19,889
+I'm bound to this
+one. And there's
+
+963
+00:37:19,889 --> 00:37:22,129
+something called a network
+address translation layer.
+
+964
+00:37:22,129 --> 00:37:23,189
+And one of the things you can do
+
+965
+00:37:23,189 --> 00:37:24,469
+is it can forward traffic from
+
+966
+00:37:24,469 --> 00:37:28,049
+a public IP address to one of
+these private IP addresses.
+
+967
+00:37:28,049 --> 00:37:30,009
+And so when you create
+
+968
+00:37:30,009 --> 00:37:30,889
+a virtual machine and
+
+969
+00:37:30,889 --> 00:37:32,089
+you're looking at
+these things here,
+
+970
+00:37:32,089 --> 00:37:33,390
+you'll see it has
+both the internal
+
+971
+00:37:33,390 --> 00:37:34,649
+IP and the external IP.
+
+972
+00:37:34,649 --> 00:37:35,989
+When you see that
+there's the two there,
+
+973
+00:37:35,989 --> 00:37:38,859
+that means there's a
+NAT being used, right?
+
+974
+00:37:38,859 --> 00:37:41,040
+And that NAT is sitting
+between different networks.
+
+975
+00:37:41,040 --> 00:37:42,379
+On this network, it has a public
+
+976
+00:37:42,379 --> 00:37:43,919
+IP address associated with it,
+
+977
+00:37:43,919 --> 00:37:46,679
+and then it could forward
+traffic to one of
+
+978
+00:37:46,679 --> 00:37:49,839
+these private IP addresses.
+
+979
+00:37:49,839 --> 00:37:52,919
+So that can influence whether
+traffic can reach me.
+
+980
+00:37:52,919 --> 00:37:55,039
+The other thing is that
+alongside that NAT,
+
+981
+00:37:55,039 --> 00:37:57,919
+there might be a firewall that
+lets some messages through
+
+982
+00:37:57,919 --> 00:38:01,299
+or maybe not others for
+security reasons, right?
+
+983
+00:38:01,299 --> 00:38:03,959
+So we're going to be
+looking at at that as well.
+
+984
+00:38:03,959 --> 00:38:07,099
+All right, so I did this
+bind thing down here.
+
+985
+00:38:07,099 --> 00:38:08,739
+I'm starting my web server.
+
+986
+00:38:08,739 --> 00:38:11,119
+That's a private IP address.
+That's all I can bind to.
+
+987
+00:38:11,119 --> 00:38:12,659
+This machine doesn't even know.
+
+988
+00:38:12,659 --> 00:38:14,719
+Like, it has traffic
+being forwarded to it,
+
+989
+00:38:14,719 --> 00:38:17,879
+but doesn't even know what
+its own public IP address is.
+
+990
+00:38:17,879 --> 00:38:20,040
+If I want to tell somebody
+to visit this website,
+
+991
+00:38:20,040 --> 00:38:21,319
+I would tell them to visit
+
+992
+00:38:21,319 --> 00:38:24,219
+the public IP address
+that corresponds to it.
+
+993
+00:38:24,219 --> 00:38:25,019
+And when they visit that,
+
+994
+00:38:25,019 --> 00:38:26,639
+it will forward
+to my web server,
+
+995
+00:38:26,639 --> 00:38:29,300
+and I can see what's going
+on. Same thing with SSH.
+
+996
+00:38:29,300 --> 00:38:32,349
+SSH is a server that is
+
+997
+00:38:32,349 --> 00:38:36,720
+bound to the private IP address
+of your virtual machine.
+
+998
+00:38:36,720 --> 00:38:38,660
+But when you do an SSH command,
+
+999
+00:38:38,660 --> 00:38:40,480
+we're putting in the
+public IP address
+
+1000
+00:38:40,480 --> 00:38:42,079
+to actually get access to it.
+
+1001
+00:38:42,079 --> 00:38:43,759
+Now, these public IP
+
+1002
+00:38:43,759 --> 00:38:45,200
+address are kind of
+a scarce resource.
+
+1003
+00:38:45,200 --> 00:38:46,679
+So if you like shut down
+your V, they'll like
+
+1004
+00:38:46,679 --> 00:38:48,559
+take it away from you,
+give it to somebody else.
+
+1005
+00:38:48,559 --> 00:38:49,759
+When you reboot again, they'll
+
+1006
+00:38:49,759 --> 00:38:51,219
+give you a different
+one temporarily.
+
+1007
+00:38:51,219 --> 00:38:53,419
+If you want to
+have it long term,
+
+1008
+00:38:53,419 --> 00:38:56,319
+then they're happy to do
+that for you for a fee.
+
+1009
+00:38:56,319 --> 00:38:57,679
+Probably not an exorbitant fee,
+
+1010
+00:38:57,679 --> 00:38:59,179
+but you can pay to keep one of
+
+1011
+00:38:59,179 --> 00:39:00,440
+these public IP addresses
+
+1012
+00:39:00,440 --> 00:39:04,060
+long term associated with
+your virtual machine.
+
+1013
+00:39:04,740 --> 00:39:08,019
+All right. Any
+questions about that,
+
+1014
+00:39:08,019 --> 00:39:12,999
+NAD or that idea of
+forwarding? All right.
+
+1015
+00:39:12,999 --> 00:39:18,159
+Cool. So let's talk about
+transport protocols.
+
+1016
+00:39:18,159 --> 00:39:20,520
+And in networking,
+
+1017
+00:39:20,520 --> 00:39:21,839
+everything is trying
+to build in layers.
+
+1018
+00:39:21,839 --> 00:39:23,079
+We kind of s at bottom, like,
+
+1019
+00:39:23,079 --> 00:39:24,300
+how do we build like one network
+
+1020
+00:39:24,300 --> 00:39:25,600
+around these MAC addresses?
+
+1021
+00:39:25,600 --> 00:39:28,559
+How can we build an Internet
+with these IP addresses?
+
+1022
+00:39:28,559 --> 00:39:30,939
+And then on top of that,
+we have different what
+
+1023
+00:39:30,939 --> 00:39:33,839
+we call transport protocols.
+
+1024
+00:39:33,839 --> 00:39:37,099
+And I might be talking about
+two transport protocols,
+
+1025
+00:39:37,099 --> 00:39:39,560
+and they both add
+the same feature,
+
+1026
+00:39:39,560 --> 00:39:42,200
+which they differ, but they
+have one thing in common,
+
+1027
+00:39:42,200 --> 00:39:44,979
+that they both give you
+port numbers, right?
+
+1028
+00:39:44,979 --> 00:39:46,885
+So I might have different
+
+1029
+00:39:46,885 --> 00:39:48,670
+processes running on a computer.
+
+1030
+00:39:48,670 --> 00:39:51,510
+And when I'm sending
+packets to that computer,
+
+1031
+00:39:51,510 --> 00:39:54,369
+I want to specify which
+process am I talking to?
+
+1032
+00:39:54,369 --> 00:39:56,189
+And the way I do that is
+with port numbers, right?
+
+1033
+00:39:56,189 --> 00:39:57,749
+So IP address will get
+
+1034
+00:39:57,749 --> 00:39:59,570
+me to a neck on a
+specific computer,
+
+1035
+00:39:59,570 --> 00:40:01,489
+and then a port
+number will get me to
+
+1036
+00:40:01,489 --> 00:40:03,089
+a specific process that's
+
+1037
+00:40:03,089 --> 00:40:05,449
+listening on that neck. I
+have a little example here.
+
+1038
+00:40:05,449 --> 00:40:08,750
+I'm starting actually
+two Python web servers.
+
+1039
+00:40:08,750 --> 00:40:11,609
+They're hosting HTML files
+in different directories.
+
+1040
+00:40:11,609 --> 00:40:14,250
+They're binding on
+the same IP address,
+
+1041
+00:40:14,250 --> 00:40:15,629
+and therefore the same neck, but
+
+1042
+00:40:15,629 --> 00:40:16,930
+they're using different
+port numbers.
+
+1043
+00:40:16,930 --> 00:40:18,370
+Port 8,000, port 9,000.
+
+1044
+00:40:18,370 --> 00:40:20,550
+You can see both of these are
+running in the background.
+
+1045
+00:40:20,550 --> 00:40:22,679
+And In both cases, right,
+
+1046
+00:40:22,679 --> 00:40:24,680
+if I want people to visit
+these two web servers,
+
+1047
+00:40:24,680 --> 00:40:26,220
+they would use a
+public IP address,
+
+1048
+00:40:26,220 --> 00:40:27,779
+not the one that's
+bound up there,
+
+1049
+00:40:27,779 --> 00:40:30,439
+and they would use different
+port numbers to get to
+
+1050
+00:40:30,439 --> 00:40:33,980
+one process or the
+other process.
+
+1051
+00:40:33,980 --> 00:40:36,099
+All right. Let's head over here.
+
+1052
+00:40:36,099 --> 00:40:38,019
+We're going to do
+a quick top hat.
+
+1053
+00:40:38,019 --> 00:40:42,679
+And my question today,
+
+1054
+00:40:42,679 --> 00:40:44,520
+right, we kind of talked
+about MAC addresses,
+
+1055
+00:40:44,520 --> 00:40:45,920
+IP addresses, port numbers.
+
+1056
+00:40:45,920 --> 00:40:48,859
+I'm just wondering what
+this is an example of.
+
+1057
+00:41:18,770 --> 00:41:21,810
+20 seconds left.
+
+1058
+00:41:46,020 --> 00:41:48,059
+Alright, most people are saying
+
+1059
+00:41:48,059 --> 00:41:49,559
+an IP address, which is track.
+
+1060
+00:41:49,559 --> 00:41:50,680
+That's a special IP address.
+
+1061
+00:41:50,680 --> 00:41:52,059
+That's the one for
+the loopback device.
+
+1062
+00:41:52,059 --> 00:41:53,939
+That's the one I'll buy
+into if I want to listen to
+
+1063
+00:41:53,939 --> 00:41:55,940
+local traffic.
+Alright. Fantastic.
+
+1064
+00:41:55,940 --> 00:42:00,019
+A, head back here. And
+
+1065
+00:42:00,270 --> 00:42:03,090
+All right. So we're talking
+about port numbers.
+
+1066
+00:42:03,090 --> 00:42:05,270
+Okay, so there's these
+two transport protocols.
+
+1067
+00:42:05,270 --> 00:42:06,709
+One is called UDP
+that stands for
+
+1068
+00:42:06,709 --> 00:42:09,030
+user datagram protocol and TCP,
+
+1069
+00:42:09,030 --> 00:42:10,450
+the transmission
+control protocol.
+
+1070
+00:42:10,450 --> 00:42:12,010
+We're also going
+to be using TCP.
+
+1071
+00:42:12,010 --> 00:42:14,830
+And both of those provide
+this idea of port numbers.
+
+1072
+00:42:14,830 --> 00:42:16,169
+We talked briefly about this to
+
+1073
+00:42:16,169 --> 00:42:18,409
+be four, socket statistics.
+
+1074
+00:42:18,409 --> 00:42:21,049
+Like if I have a
+file and I open it,
+
+1075
+00:42:21,049 --> 00:42:24,249
+then I have like a file
+handle referring to it.
+
+1076
+00:42:24,249 --> 00:42:26,629
+If I have some port
+number and I open it,
+
+1077
+00:42:26,629 --> 00:42:28,049
+then what I'd have
+is a socket, right?
+
+1078
+00:42:28,049 --> 00:42:29,369
+So it's a little
+analogous there.
+
+1079
+00:42:29,369 --> 00:42:31,429
+That's why they call
+it socket statistics.
+
+1080
+00:42:31,429 --> 00:42:33,330
+And so if I'm running
+socket statistics,
+
+1081
+00:42:33,330 --> 00:42:34,909
+I can say, I either want to look
+
+1082
+00:42:34,909 --> 00:42:36,630
+at all the TCP or all the UTPs.
+
+1083
+00:42:36,630 --> 00:42:38,069
+I either put a U or T there.
+
+1084
+00:42:38,069 --> 00:42:41,290
+I'd say I see process or
+listing like a server.
+
+1085
+00:42:41,290 --> 00:42:44,369
+I might want to see process
+information with the P,
+
+1086
+00:42:44,369 --> 00:42:46,609
+and the end might want show me
+
+1087
+00:42:46,609 --> 00:42:48,769
+the port number, of
+some abbreviation.
+
+1088
+00:42:48,769 --> 00:42:51,170
+So here I can see those two
+web servers I just launched
+
+1089
+00:42:51,170 --> 00:42:55,749
+before running on port 80009000.
+
+1090
+00:42:55,830 --> 00:42:58,489
+Alright, so that's something
+they have in common.
+
+1091
+00:42:58,489 --> 00:42:59,729
+What is different between these?
+
+1092
+00:42:59,729 --> 00:43:01,489
+The different in
+terms of reliability.
+
+1093
+00:43:01,489 --> 00:43:03,890
+So if I'm sending a
+packet somewhere,
+
+1094
+00:43:03,890 --> 00:43:06,229
+there's a lot of things
+that can go wrong.
+
+1095
+00:43:06,229 --> 00:43:07,869
+O is congestion?
+Congestion means
+
+1096
+00:43:07,869 --> 00:43:09,450
+that there's a router that's
+a little bit overloaded.
+
+1097
+00:43:09,450 --> 00:43:11,209
+If too many packets are
+coming to the router,
+
+1098
+00:43:11,209 --> 00:43:12,410
+the router's just like, oops,
+
+1099
+00:43:12,410 --> 00:43:13,589
+and it drops some of them if it
+
+1100
+00:43:13,589 --> 00:43:15,970
+can't keep up. So that happens.
+
+1101
+00:43:15,970 --> 00:43:18,170
+There might be
+different ways through
+
+1102
+00:43:18,170 --> 00:43:20,709
+the Internet to get
+0.8 to point B,
+
+1103
+00:43:20,709 --> 00:43:22,989
+and maybe some packets go one
+way and some dos the other.
+
+1104
+00:43:22,989 --> 00:43:25,450
+So it's totally possible
+that a packet that started
+
+1105
+00:43:25,450 --> 00:43:28,750
+later might kind of catch
+up and arrive sooner.
+
+1106
+00:43:28,750 --> 00:43:30,650
+These routers might
+take a big packet
+
+1107
+00:43:30,650 --> 00:43:32,390
+and split into smaller packets.
+
+1108
+00:43:32,390 --> 00:43:34,469
+And so the gist of all
+this is that if I'm
+
+1109
+00:43:34,469 --> 00:43:35,749
+sending this nice clean stream
+
+1110
+00:43:35,749 --> 00:43:36,969
+of information on one side,
+
+1111
+00:43:36,969 --> 00:43:39,169
+on the other side, it's
+a jumbled mess, right?
+
+1112
+00:43:39,169 --> 00:43:41,369
+There might be holes in it.
+Things are out of order.
+
+1113
+00:43:41,369 --> 00:43:43,069
+And so TCP and
+
+1114
+00:43:43,069 --> 00:43:45,429
+UDP differ in terms of how
+they help us with that.
+
+1115
+00:43:45,429 --> 00:43:48,429
+What TCP will do is it
+will buffer those up in
+
+1116
+00:43:48,429 --> 00:43:50,429
+memory and kind of present
+
+1117
+00:43:50,429 --> 00:43:51,549
+them on the receiving side in
+
+1118
+00:43:51,549 --> 00:43:52,869
+the same order they were sent.
+
+1119
+00:43:52,869 --> 00:43:55,089
+It has sequence numbers
+that help it do that.
+
+1120
+00:43:55,089 --> 00:43:57,249
+It can maybe see like, Oh,
+I have a packet like one,
+
+1121
+00:43:57,249 --> 00:44:00,190
+two, four or five,
+03 is missing.
+
+1122
+00:44:00,190 --> 00:44:02,649
+There's a protocol where
+it can try resending it,
+
+1123
+00:44:02,649 --> 00:44:04,310
+eventually get all
+the information.
+
+1124
+00:44:04,310 --> 00:44:06,110
+So that's straight,
+we mostly use TCP.
+
+1125
+00:44:06,110 --> 00:44:07,749
+We usually want reliability.
+
+1126
+00:44:07,749 --> 00:44:09,169
+UDP doesn't do any of that.
+
+1127
+00:44:09,169 --> 00:44:12,530
+So UDP is generally faster,
+but not as reliable.
+
+1128
+00:44:12,530 --> 00:44:13,849
+There's cases where
+you don't want to
+
+1129
+00:44:13,849 --> 00:44:15,109
+retry when data is lost
+
+1130
+00:44:15,109 --> 00:44:16,369
+because maybe kind
+of the moment is
+
+1131
+00:44:16,369 --> 00:44:17,810
+lost and it's not
+worth repeating.
+
+1132
+00:44:17,810 --> 00:44:19,149
+Like if I'm on a Zoom call,
+
+1133
+00:44:19,149 --> 00:44:20,529
+for example, and like
+
+1134
+00:44:20,529 --> 00:44:21,949
+the Internet cut out
+for a little bit,
+
+1135
+00:44:21,949 --> 00:44:24,109
+it'd be kind of weird if
+it came back on and like
+
+1136
+00:44:24,109 --> 00:44:25,449
+a replay of me
+
+1137
+00:44:25,449 --> 00:44:27,149
+like sitting there for the
+Internet to come back.
+
+1138
+00:44:27,149 --> 00:44:29,009
+I just humans will solve that.
+
+1139
+00:44:29,009 --> 00:44:30,669
+I'll say, h, what
+were you saying?
+
+1140
+00:44:30,669 --> 00:44:32,769
+And humans will figure it out.
+
+1141
+00:44:32,769 --> 00:44:34,809
+Alright, so this is
+kind of where we
+
+1142
+00:44:34,809 --> 00:44:36,149
+are and what we're
+doing next time, right?
+
+1143
+00:44:36,149 --> 00:44:37,930
+So we learn about TCP and UDP.
+
+1144
+00:44:37,930 --> 00:44:40,069
+Next, we're learning
+about applications,
+
+1145
+00:44:40,069 --> 00:44:42,690
+we can build on top of
+that. And I have 5 minutes.
+
+1146
+00:44:42,690 --> 00:44:45,529
+So I'm going to do in
+just like a demo on
+
+1147
+00:44:45,529 --> 00:44:46,889
+the shell and try to
+get some more hands
+
+1148
+00:44:46,889 --> 00:44:48,710
+on experience with
+some of this stuff.
+
+1149
+00:44:48,710 --> 00:44:49,989
+And so what I'm going to
+
+1150
+00:44:49,989 --> 00:44:51,309
+do is I'm going
+to come over here
+
+1151
+00:44:51,309 --> 00:44:53,719
+and I am going
+
+1152
+00:44:53,719 --> 00:44:56,959
+to create a directory
+here called Lecture two,
+
+1153
+00:44:56,959 --> 00:44:59,300
+and I'm may try to start
+two different web servers.
+
+1154
+00:44:59,300 --> 00:45:01,220
+I may have different
+directories for their contents.
+
+1155
+00:45:01,220 --> 00:45:03,039
+I may have a directory A and B,
+
+1156
+00:45:03,039 --> 00:45:06,759
+and I may echo like Server one
+
+1157
+00:45:06,759 --> 00:45:10,360
+to index that HTL
+
+1158
+00:45:10,360 --> 00:45:12,219
+is what you typically
+use for a home page.
+
+1159
+00:45:12,219 --> 00:45:14,620
+And I'm not writing
+like real HTML.
+
+1160
+00:45:14,620 --> 00:45:16,399
+That's not my point
+in this class,
+
+1161
+00:45:16,399 --> 00:45:17,539
+but I may create,
+
+1162
+00:45:17,539 --> 00:45:19,579
+different home pages for
+each of them, right?
+
+1163
+00:45:19,579 --> 00:45:24,019
+If I look at the index
+HTML for server A,
+
+1164
+00:45:24,019 --> 00:45:25,379
+Is going to say server one.
+
+1165
+00:45:25,379 --> 00:45:27,719
+Okay. What I want to do now is
+
+1166
+00:45:27,719 --> 00:45:30,729
+I want to start a server
+on each of these.
+
+1167
+00:45:30,729 --> 00:45:34,419
+And so if I say Python three M,
+
+1168
+00:45:34,419 --> 00:45:36,919
+I can put a module here
+and run it like a program.
+
+1169
+00:45:36,919 --> 00:45:39,799
+HTDp dot server is a
+module that comes with
+
+1170
+00:45:39,799 --> 00:45:42,859
+Python that I can use
+to start this thing up.
+
+1171
+00:45:42,859 --> 00:45:44,060
+And it has a few options.
+
+1172
+00:45:44,060 --> 00:45:46,539
+I can say, like, what
+directory I want to look at.
+
+1173
+00:45:46,539 --> 00:45:49,159
+What address should I bind to?
+
+1174
+00:45:49,159 --> 00:45:51,199
+And then finally,
+at the very end,
+
+1175
+00:45:51,199 --> 00:45:53,319
+what port number are we using?
+
+1176
+00:45:53,319 --> 00:45:55,719
+So, I am going to be doing
+something like this.
+
+1177
+00:45:55,719 --> 00:45:57,959
+I'm going to say
+the directory is
+
+1178
+00:45:57,959 --> 00:46:00,920
+A. I'm going to say
+bind to something,
+
+1179
+00:46:00,920 --> 00:46:03,519
+and maybe I'll say like
+port 8001st, right?
+
+1180
+00:46:03,519 --> 00:46:05,500
+So I'm just going to
+leave that as a comment.
+
+1181
+00:46:05,500 --> 00:46:08,279
+What address do I want to do?
+
+1182
+00:46:08,279 --> 00:46:10,849
+I am going to do this.
+
+1183
+00:46:10,849 --> 00:46:13,770
+I can see that this
+is my IP address.
+
+1184
+00:46:13,770 --> 00:46:15,949
+There's like the loop back.
+There's some Docker thing.
+
+1185
+00:46:15,949 --> 00:46:18,049
+This is the one I want to have.
+
+1186
+00:46:18,049 --> 00:46:19,589
+And I just have a
+few minuts left.
+
+1187
+00:46:19,589 --> 00:46:21,529
+Maybe I'll try to make sure
+I get through the demo,
+
+1188
+00:46:21,529 --> 00:46:23,110
+and then I'll take
+some questions
+
+1189
+00:46:23,110 --> 00:46:24,949
+at the end. I'm
+going to do that.
+
+1190
+00:46:24,949 --> 00:46:25,889
+I'm going to go ahead.
+
+1191
+00:46:25,889 --> 00:46:27,389
+I'm going to start
+that web server.
+
+1192
+00:46:27,389 --> 00:46:29,790
+If I copy this, this is
+a private IP address.
+
+1193
+00:46:29,790 --> 00:46:32,330
+It starts in ten, so
+it's obviously private.
+
+1194
+00:46:32,330 --> 00:46:34,909
+If I do that, I'm not going
+to get anywhere, right?
+
+1195
+00:46:34,909 --> 00:46:38,310
+Where I have to go instead
+is look at my Cloud console.
+
+1196
+00:46:38,310 --> 00:46:40,630
+And under my Cloud console,
+
+1197
+00:46:40,630 --> 00:46:43,470
+I can copy this
+public IP address.
+
+1198
+00:46:43,470 --> 00:46:46,229
+And if I go there on port 8,000,
+
+1199
+00:46:46,229 --> 00:46:47,949
+the NAD is going
+to send me over,
+
+1200
+00:46:47,949 --> 00:46:49,889
+and it'll just be fine, right?
+
+1201
+00:46:49,889 --> 00:46:51,709
+And if people are visiting this,
+
+1202
+00:46:51,709 --> 00:46:53,269
+you could visit it too, right?
+
+1203
+00:46:53,269 --> 00:46:56,790
+And then if you visit
+that IP address,
+
+1204
+00:46:56,790 --> 00:46:59,209
+then you would be seeing
+my server as well.
+
+1205
+00:46:59,209 --> 00:47:00,729
+And if people do that,
+then I'll probably start
+
+1206
+00:47:00,729 --> 00:47:02,569
+getting a bunch
+of web logs here.
+
+1207
+00:47:02,569 --> 00:47:05,369
+Maybe what I might do is I
+
+1208
+00:47:05,369 --> 00:47:09,015
+might send all this output
+to some log one dot TXT.
+
+1209
+00:47:09,015 --> 00:47:11,519
+And I might run it in
+the background, right?
+
+1210
+00:47:11,519 --> 00:47:13,359
+So if people are visiting
+that, then I could tail
+
+1211
+00:47:13,359 --> 00:47:16,019
+that log and kind of
+see what's going on,
+
+1212
+00:47:16,019 --> 00:47:17,779
+like if I refresh
+this over here,
+
+1213
+00:47:17,779 --> 00:47:20,019
+then I can see that
+showing up, I refresh it.
+
+1214
+00:47:20,019 --> 00:47:21,979
+I see more output there.
+
+1215
+00:47:21,979 --> 00:47:23,900
+So that's cool. That's
+running in the background.
+
+1216
+00:47:23,900 --> 00:47:25,479
+If I try to start it again,
+
+1217
+00:47:25,479 --> 00:47:26,919
+let's say I try to start it
+
+1218
+00:47:26,919 --> 00:47:30,859
+on I'm going to
+
+1219
+00:47:30,859 --> 00:47:33,999
+try to just run the same thing
+by my do Directory B now.
+
+1220
+00:47:33,999 --> 00:47:35,879
+If I try to do that,
+I'm going to get
+
+1221
+00:47:35,879 --> 00:47:37,839
+that error about
+Address already in use.
+
+1222
+00:47:37,839 --> 00:47:40,240
+I know that I was one who
+kind of created that process,
+
+1223
+00:47:40,240 --> 00:47:41,339
+but I might want to figure out,
+
+1224
+00:47:41,339 --> 00:47:42,799
+like, who is using that poor.
+
+1225
+00:47:42,799 --> 00:47:45,599
+So then I would use the
+Stocke statistic tool.
+
+1226
+00:47:45,599 --> 00:47:48,040
+I would say, tell me about TCP,
+
+1227
+00:47:48,040 --> 00:47:50,679
+who's listening on TCP.
+
+1228
+00:47:50,679 --> 00:47:53,939
+And then I might want to say,
+
+1229
+00:47:53,939 --> 00:47:56,739
+I can see right here,
+8,000 is the troublemaker.
+
+1230
+00:47:56,739 --> 00:47:59,379
+I want to see what
+process is doing that.
+
+1231
+00:47:59,379 --> 00:48:02,580
+And then I could do pudo to
+get that full information.
+
+1232
+00:48:02,580 --> 00:48:08,269
+Then I could see, well,
+Here is the process, right?
+
+1233
+00:48:08,269 --> 00:48:10,950
+If I want to, I could kill
+that, kill that process.
+
+1234
+00:48:10,950 --> 00:48:12,730
+All right, so I could
+kill that process.
+
+1235
+00:48:12,730 --> 00:48:14,769
+I think instead,
+what I will do is I
+
+1236
+00:48:14,769 --> 00:48:17,710
+will start on port 8,001.
+
+1237
+00:48:17,710 --> 00:48:20,129
+All right, so I'm on 8,001 now.
+
+1238
+00:48:20,129 --> 00:48:23,669
+Let me come over here and
+I'm going to try 8,001,
+
+1239
+00:48:23,669 --> 00:48:26,209
+and it should say server
+two, but it's not.
+
+1240
+00:48:26,209 --> 00:48:29,729
+Maybe I'll actually even just
+do this in a separate one.
+
+1241
+00:48:29,729 --> 00:48:32,670
+So why can I not
+hit that server?
+
+1242
+00:48:32,670 --> 00:48:34,470
+And the answer is the firewall
+
+1243
+00:48:34,470 --> 00:48:35,889
+is not configured
+to let me do that.
+
+1244
+00:48:35,889 --> 00:48:38,209
+I'm going to come back
+here in the C Consil and
+
+1245
+00:48:38,209 --> 00:48:40,710
+I'm going to go under VPC.
+
+1246
+00:48:40,710 --> 00:48:42,130
+That's virtual Private Cloud,
+
+1247
+00:48:42,130 --> 00:48:44,650
+and there's networking
+firewall settings.
+
+1248
+00:48:44,650 --> 00:48:46,890
+And under the firewall settings,
+
+1249
+00:48:46,890 --> 00:48:49,130
+you can see, Oh, there's
+my rule for port 8,000.
+
+1250
+00:48:49,130 --> 00:48:50,949
+That's why that one
+worked. Let me create
+
+1251
+00:48:50,949 --> 00:48:53,649
+a new firewall rule
+to open up 8,001.
+
+1252
+00:48:53,649 --> 00:48:58,839
+So I'm just going to call
+this rule port 8,001.
+
+1253
+00:48:58,839 --> 00:49:02,700
+And dress means that the
+traffic is incoming.
+
+1254
+00:49:02,700 --> 00:49:04,880
+I want to allow the traffic.
+
+1255
+00:49:04,880 --> 00:49:09,399
+I can say, do I just want to
+be some BMs or all of them?
+
+1256
+00:49:09,399 --> 00:49:12,580
+I want to be all of them,
+which IP addresses.
+
+1257
+00:49:12,580 --> 00:49:14,539
+I'm not trying to talk about
+this too much right now,
+
+1258
+00:49:14,539 --> 00:49:16,939
+but this basically means
+anybody can talk with me.
+
+1259
+00:49:16,939 --> 00:49:19,319
+And then I have to choose.
+Do I want all ports or
+
+1260
+00:49:19,319 --> 00:49:21,780
+specific ones and
+specific protocol?
+
+1261
+00:49:21,780 --> 00:49:23,600
+So I could choose UDP, TCP.
+
+1262
+00:49:23,600 --> 00:49:26,725
+I just want to open up 8,001.
+
+1263
+00:49:26,725 --> 00:49:29,289
+And I'm going to create
+this firewall rule.
+
+1264
+00:49:29,289 --> 00:49:31,709
+And if this works successfully,
+
+1265
+00:49:31,709 --> 00:49:35,730
+then this server should
+be up and running.
+
+1266
+00:49:35,730 --> 00:49:37,869
+Fingers trust, and
+why is it not?
+
+1267
+00:49:37,869 --> 00:49:39,489
+That would be such a
+great. There we go.
+
+1268
+00:49:39,489 --> 00:49:42,350
+That's a nice way
+to end the lecture.
+
+1269
+00:49:42,350 --> 00:49:44,569
+And so I apologize
+that every thing was
+
+1270
+00:49:44,569 --> 00:49:46,909
+trying to rush through
+there at the end,
+
+1271
+00:49:46,909 --> 00:49:48,989
+but you can see you can tend to
+
+1272
+00:49:48,989 --> 00:49:51,289
+navigate this firewall settings,
+figure out the Nt stuff.
+
+1273
+00:49:51,289 --> 00:49:52,890
+You can figure out
+how to get a server
+
+1274
+00:49:52,890 --> 00:49:55,369
+that's reachable from the
+people you want to reach it.
+
+1275
+00:49:55,369 --> 00:49:56,809
+All right. So I'll stop
+there. Feel free to
+
+1276
+00:49:56,809 --> 00:49:58,230
+come up and chat if you
+have any questions.
+
+1277
+00:49:58,230 --> 00:50:00,929
+I sorry, I got a little
+rush there at the end.

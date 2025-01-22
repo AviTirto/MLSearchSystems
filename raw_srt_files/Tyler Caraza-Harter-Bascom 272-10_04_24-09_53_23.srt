@@ -1,0 +1,5747 @@
+1
+00:00:00,000 --> 00:00:01,500
+Here today. I hope everybody's
+
+2
+00:00:01,500 --> 00:00:03,460
+having a good Friday so far.
+
+3
+00:00:03,460 --> 00:00:06,780
+So we're learning about
+storage right now,
+
+4
+00:00:06,780 --> 00:00:09,760
+and a lot of things in
+systems are built in layers,
+
+5
+00:00:09,760 --> 00:00:11,239
+and so we are really
+
+6
+00:00:11,239 --> 00:00:13,299
+starting with the lowest
+layer and working our way up.
+
+7
+00:00:13,299 --> 00:00:14,979
+So what was the lowest layer?
+
+8
+00:00:14,979 --> 00:00:18,360
+Well, we learned about
+SSDs and hard drives.
+
+9
+00:00:18,360 --> 00:00:19,959
+Then maybe on top of
+that, we learned how that
+
+10
+00:00:19,959 --> 00:00:21,719
+might be partitioned or maybe
+
+11
+00:00:21,719 --> 00:00:25,859
+a a raid a combined
+together multiple disks.
+
+12
+00:00:25,859 --> 00:00:29,019
+On top of that, we are
+learning about file systems.
+
+13
+00:00:29,019 --> 00:00:31,399
+Have a file file
+system. What do you do?
+
+14
+00:00:31,399 --> 00:00:33,060
+You store files at
+it, and those files
+
+15
+00:00:33,060 --> 00:00:34,159
+could have different formats.
+
+16
+00:00:34,159 --> 00:00:36,620
+We'll be talking about
+file formats today.
+
+17
+00:00:36,620 --> 00:00:38,340
+You might be using those file
+
+18
+00:00:38,340 --> 00:00:39,759
+formats directly
+or maybe you have
+
+19
+00:00:39,759 --> 00:00:40,999
+some kind of database that
+
+20
+00:00:40,999 --> 00:00:43,080
+stores files in a
+particular format.
+
+21
+00:00:43,080 --> 00:00:44,419
+We're just going to
+be working our way
+
+22
+00:00:44,419 --> 00:00:46,059
+up up and up and up.
+
+23
+00:00:46,059 --> 00:00:49,239
+So let me go back to
+where we were last time.
+
+24
+00:00:50,010 --> 00:00:52,710
+We had learned that
+there were actually
+
+25
+00:00:52,710 --> 00:00:55,049
+a bunch of different
+kinds of file systems,
+
+26
+00:00:55,049 --> 00:00:57,449
+and in particular, we were to
+
+27
+00:00:57,449 --> 00:01:00,090
+look closely at the
+local file system first.
+
+28
+00:01:00,090 --> 00:01:04,030
+The local file system
+lets us write files,
+
+29
+00:01:04,030 --> 00:01:05,890
+read or write files,
+and then, in turn,
+
+30
+00:01:05,890 --> 00:01:09,030
+it will read and write
+blocks from a block device.
+
+31
+00:01:09,030 --> 00:01:11,570
+And so we had this
+picture from last time.
+
+32
+00:01:11,570 --> 00:01:14,109
+This is, there's lots of
+different ways people
+
+33
+00:01:14,109 --> 00:01:16,689
+build local files so this
+is like one example.
+
+34
+00:01:16,689 --> 00:01:18,450
+What we learned
+about last night was
+
+35
+00:01:18,450 --> 00:01:20,130
+this idea of an IO IO is
+
+36
+00:01:20,130 --> 00:01:22,170
+a data structure that
+
+37
+00:01:22,170 --> 00:01:23,490
+doesn't really have any file
+
+38
+00:01:23,490 --> 00:01:24,870
+they have associated with it,
+
+39
+00:01:24,870 --> 00:01:27,010
+but it points to all the blocks
+
+40
+00:01:27,010 --> 00:01:29,250
+containing data at a file.
+
+41
+00:01:29,250 --> 00:01:30,870
+We also learned
+about directories.
+
+42
+00:01:30,870 --> 00:01:33,059
+Directories were
+these special files.
+
+43
+00:01:33,059 --> 00:01:36,209
+That basically refer to
+
+44
+00:01:36,209 --> 00:01:38,289
+a bunch of other files
+and give them names.
+
+45
+00:01:38,289 --> 00:01:40,729
+And so just look at
+this picture up here,
+
+46
+00:01:40,729 --> 00:01:42,729
+we saw that there's this 01
+
+47
+00:01:42,729 --> 00:01:45,510
+that has block three
+associated with it.
+
+48
+00:01:45,510 --> 00:01:46,769
+And block three, the data,
+
+49
+00:01:46,769 --> 00:01:49,109
+and there was some file Names
+associated with IDO number.
+
+50
+00:01:49,109 --> 00:01:52,370
+So File Dot text is
+associated with IO zero.
+
+51
+00:01:52,370 --> 00:01:55,109
+If I go to IO zero, that takes
+me to blocks two and four,
+
+52
+00:01:55,109 --> 00:01:57,850
+and then I could find the
+data in file dot text.
+
+53
+00:01:57,850 --> 00:02:00,010
+And because of that, it would
+be totally possible to have
+
+54
+00:02:00,010 --> 00:02:01,270
+the same IDO number in different
+
+55
+00:02:01,270 --> 00:02:02,849
+directories with
+different names.
+
+56
+00:02:02,849 --> 00:02:04,589
+Right? The IO is a
+thing that really
+
+57
+00:02:04,589 --> 00:02:06,329
+is uniquely associated
+with the data.
+
+58
+00:02:06,329 --> 00:02:07,709
+A file able, I can have
+
+59
+00:02:07,709 --> 00:02:10,469
+one or Betty, or it
+doesn't really matter.
+
+60
+00:02:10,740 --> 00:02:13,079
+So, based on that, right?
+
+61
+00:02:13,079 --> 00:02:14,419
+We can have directories that
+
+62
+00:02:14,419 --> 00:02:16,039
+contain files and
+other directories,
+
+63
+00:02:16,039 --> 00:02:18,240
+those other directores
+can contain other things.
+
+64
+00:02:18,240 --> 00:02:20,999
+That really gives us what
+we call file system tree.
+
+65
+00:02:20,999 --> 00:02:23,259
+It's like a tree. In some sets,
+
+66
+00:02:23,259 --> 00:02:24,860
+you might actually think
+it's more generally
+
+67
+00:02:24,860 --> 00:02:26,719
+directed Asic like F because we
+
+68
+00:02:26,719 --> 00:02:28,379
+could have a file that
+
+69
+00:02:28,379 --> 00:02:30,679
+exists in multiple
+directories, right?
+
+70
+00:02:30,679 --> 00:02:32,040
+So anyway, we have these dags,
+
+71
+00:02:32,040 --> 00:02:33,180
+I'll just call it a
+tree because that's
+
+72
+00:02:33,180 --> 00:02:34,759
+kind of what people
+normally refer to.
+
+73
+00:02:34,759 --> 00:02:36,699
+And the leaves in
+it, I guess would be
+
+74
+00:02:36,699 --> 00:02:40,779
+either et directories or maybe
+maybe just files, right?
+
+75
+00:02:40,779 --> 00:02:42,239
+And at any given time,
+
+76
+00:02:42,239 --> 00:02:44,800
+if you're a shell or
+a running program,
+
+77
+00:02:44,800 --> 00:02:46,580
+you have sub current
+working directory.
+
+78
+00:02:46,580 --> 00:02:48,479
+So maybe I have in current
+working directory B.
+
+79
+00:02:48,479 --> 00:02:51,340
+And from there, I can
+refer to other things.
+
+80
+00:02:51,340 --> 00:02:52,859
+In this graph structure.
+
+81
+00:02:52,859 --> 00:02:54,119
+That's why we call
+it a path, right?
+
+82
+00:02:54,119 --> 00:02:55,740
+Because you can have
+a path at a graph
+
+83
+00:02:55,740 --> 00:02:57,639
+where I'm hopping from
+one node to the next,
+
+84
+00:02:57,639 --> 00:02:59,260
+say, Hey, if I'm at
+a file system tree,
+
+85
+00:02:59,260 --> 00:03:01,740
+I have a path from
+one place to another.
+
+86
+00:03:01,740 --> 00:03:03,580
+So sometimes we
+have relative paths
+
+87
+00:03:03,580 --> 00:03:06,119
+relative to where
+we currently are.
+
+88
+00:03:06,119 --> 00:03:08,260
+And other times we
+have absolute paths,
+
+89
+00:03:08,260 --> 00:03:11,960
+which is basically relative
+to the top of the tree.
+
+90
+00:03:11,960 --> 00:03:14,020
+And so, for example,
+
+91
+00:03:14,020 --> 00:03:17,439
+If I want to have
+a relative path to
+
+92
+00:03:17,439 --> 00:03:19,179
+e dot text and I want to
+
+93
+00:03:19,179 --> 00:03:21,159
+get there from my
+current directory,
+
+94
+00:03:21,159 --> 00:03:24,420
+I have to specify the path
+as nodes along that draft.
+
+95
+00:03:24,420 --> 00:03:28,779
+I would say C s
+TXT to get there.
+
+96
+00:03:28,779 --> 00:03:32,579
+I could get that exact same
+file with an absolute path.
+
+97
+00:03:32,579 --> 00:03:34,360
+If I do that, then
+I would say slash,
+
+98
+00:03:34,360 --> 00:03:36,494
+that would start
+me up at the top.
+
+99
+00:03:36,494 --> 00:03:40,469
+And then my path would
+be B dot tax, right?
+
+100
+00:03:40,469 --> 00:03:44,630
+So two different ways to
+refer to the same file.
+
+101
+00:03:44,630 --> 00:03:46,449
+Let's do one more complicated.
+
+102
+00:03:46,449 --> 00:03:48,749
+Let's say I want to have
+a relative path from
+
+103
+00:03:48,749 --> 00:03:52,790
+B over to d dot CSV.
+
+104
+00:03:52,790 --> 00:03:54,169
+If I want to do that,
+then I actually have
+
+105
+00:03:54,169 --> 00:03:55,789
+to go up and back do.
+
+106
+00:03:55,789 --> 00:03:57,289
+The way we say that
+we go up is we
+
+107
+00:03:57,289 --> 00:03:58,989
+say dot, dot, dot means up.
+
+108
+00:03:58,989 --> 00:04:01,289
+So if I go here, I'm dot dot,
+
+109
+00:04:01,289 --> 00:04:04,229
+and then A, then
+d dot CSV, right?
+
+110
+00:04:04,229 --> 00:04:05,609
+We should be able to be from
+
+111
+00:04:05,609 --> 00:04:08,829
+any place and have a
+path to any other place.
+
+112
+00:04:08,829 --> 00:04:10,529
+People have any
+questions about that
+
+113
+00:04:10,529 --> 00:04:13,049
+first before I do
+a top hat on it.
+
+114
+00:04:15,380 --> 00:04:18,859
+All right, F. So the
+question will basically be,
+
+115
+00:04:18,859 --> 00:04:23,160
+what is the absolute
+path to CSV?
+
+116
+00:04:23,160 --> 00:04:27,259
+So I'll come over here and
+bring up that top hat.
+
+117
+00:04:32,180 --> 00:04:34,739
+Maybe I can have
+the slides open at
+
+118
+00:04:34,739 --> 00:04:35,800
+the same time because it'll be a
+
+119
+00:04:35,800 --> 00:04:38,140
+little bit easier to see there.
+
+120
+00:05:01,570 --> 00:05:03,650
+I had a little more times
+
+121
+00:05:03,650 --> 00:05:06,449
+since you actually have
+to types up again?
+
+122
+00:05:37,850 --> 00:05:41,209
+A 20 seconds left.
+
+123
+00:06:05,250 --> 00:06:09,190
+So most people are
+saying slash A slash dS,
+
+124
+00:06:09,190 --> 00:06:11,090
+which is correct, right?
+
+125
+00:06:11,090 --> 00:06:14,870
+And we have to start
+with a slash, right?
+
+126
+00:06:14,870 --> 00:06:15,970
+Because it's an absolute path,
+
+127
+00:06:15,970 --> 00:06:17,510
+so we're starting from the top.
+
+128
+00:06:17,510 --> 00:06:19,910
+This one right here
+would be an example
+
+129
+00:06:19,910 --> 00:06:22,630
+of a relative path. So
+that was not quite right.
+
+130
+00:06:22,630 --> 00:06:25,190
+Could this work, I guess
+we could row down,
+
+131
+00:06:25,190 --> 00:06:29,010
+and then what would that do?
+
+132
+00:06:29,010 --> 00:06:30,870
+I guess that would be saying
+
+133
+00:06:30,870 --> 00:06:32,710
+not quite sure what
+that means, right?
+
+134
+00:06:32,710 --> 00:06:34,510
+I guess if you're at
+the top and you go of,
+
+135
+00:06:34,510 --> 00:06:35,989
+I think that you can
+d row up anymore.
+
+136
+00:06:35,989 --> 00:06:37,490
+I think that would
+actually stay the same.
+
+137
+00:06:37,490 --> 00:06:39,089
+Maybe that would work, but it's
+
+138
+00:06:39,089 --> 00:06:40,829
+not the shortest
+possible answer.
+
+139
+00:06:40,829 --> 00:06:42,710
+This first answer is
+the one I'm really
+
+140
+00:06:42,710 --> 00:06:45,270
+looking for. Alright, cool.
+
+141
+00:06:45,270 --> 00:06:46,749
+And so one of the reasons I
+
+142
+00:06:46,749 --> 00:06:48,390
+want to get you to get
+really comfortable with
+
+143
+00:06:48,390 --> 00:06:51,230
+that is we're going
+
+144
+00:06:51,230 --> 00:06:52,490
+to be starting to
+think about storage in
+
+145
+00:06:52,490 --> 00:06:54,670
+the context of containers
+and thinking about
+
+146
+00:06:54,670 --> 00:06:57,170
+file paths gets a lot more
+complicated in that t text.
+
+147
+00:06:57,170 --> 00:06:58,589
+So do people have any questions
+
+148
+00:06:58,589 --> 00:06:59,710
+about file paths before we
+
+149
+00:06:59,710 --> 00:07:05,590
+move on? Alright, cool.
+
+150
+00:07:05,590 --> 00:07:08,910
+So let's talk about
+multiple partitions,
+
+151
+00:07:08,910 --> 00:07:10,430
+because we learned last
+time that you could
+
+152
+00:07:10,430 --> 00:07:12,769
+take your disk drives,
+
+153
+00:07:12,769 --> 00:07:14,750
+and you could have different
+partitions on them.
+
+154
+00:07:14,750 --> 00:07:16,569
+And each partition can
+have its own file,
+
+155
+00:07:16,569 --> 00:07:18,150
+local file system on it.
+
+156
+00:07:18,150 --> 00:07:20,510
+And so maybe I have
+these three here.
+
+157
+00:07:20,510 --> 00:07:22,149
+This works a little
+differently at
+
+158
+00:07:22,149 --> 00:07:24,190
+different types of machines.
+On a windows machine.
+
+159
+00:07:24,190 --> 00:07:25,450
+The way it'll work is that each
+
+160
+00:07:25,450 --> 00:07:26,609
+file system on a partition.
+
+161
+00:07:26,609 --> 00:07:29,250
+I is to show up as its
+own file system tree.
+
+162
+00:07:29,250 --> 00:07:31,250
+It'll give it like
+a d letter, right?
+
+163
+00:07:31,250 --> 00:07:33,370
+I might have a C drive,
+I have a tree for that,
+
+164
+00:07:33,370 --> 00:07:35,050
+a D drive, E drive.
+
+165
+00:07:35,050 --> 00:07:36,530
+Right if you've used windows,
+
+166
+00:07:36,530 --> 00:07:39,149
+you've certainly seen
+this at some point.
+
+167
+00:07:39,149 --> 00:07:41,749
+The Udix approach is a
+little bit different.
+
+168
+00:07:41,749 --> 00:07:43,409
+Ux. Well, what is Udix?
+
+169
+00:07:43,409 --> 00:07:45,190
+Like Lytix is an
+example of Udix.
+
+170
+00:07:45,190 --> 00:07:47,209
+MAC is also an example of Udix.
+
+171
+00:07:47,209 --> 00:07:48,610
+So this will be very similar,
+
+172
+00:07:48,610 --> 00:07:52,375
+whether you're on a back
+or on a Lytix machine.
+
+173
+00:07:52,375 --> 00:07:55,540
+And the way the different
+file system trees
+
+174
+00:07:55,540 --> 00:07:58,019
+work is that it appears
+as one big tree,
+
+175
+00:07:58,019 --> 00:07:59,200
+and it kind of reminds me of
+
+176
+00:07:59,200 --> 00:08:01,840
+this fruit tree here where
+they did some drafting, right?
+
+177
+00:08:01,840 --> 00:08:03,080
+They had one tree, and maybe
+
+178
+00:08:03,080 --> 00:08:04,560
+maybe it was like
+an orange tree and
+
+179
+00:08:04,560 --> 00:08:05,720
+they grafted on some
+
+180
+00:08:05,720 --> 00:08:07,619
+limon branches and
+some line branches.
+
+181
+00:08:07,619 --> 00:08:08,619
+They grafted a bunch of
+
+182
+00:08:08,619 --> 00:08:09,720
+things together and
+then they ended
+
+183
+00:08:09,720 --> 00:08:12,219
+up with one big tree in the end.
+
+184
+00:08:12,219 --> 00:08:14,840
+And that's actually what they
+do on unix systems, right?
+
+185
+00:08:14,840 --> 00:08:16,180
+So what I imagine
+
+186
+00:08:16,180 --> 00:08:17,560
+here is that when I
+partition these things,
+
+187
+00:08:17,560 --> 00:08:20,040
+that might be the partition
+might be called like SDA one,
+
+188
+00:08:20,040 --> 00:08:21,919
+SDA two, and SDB,
+
+189
+00:08:21,919 --> 00:08:23,060
+and I have these
+different things,
+
+190
+00:08:23,060 --> 00:08:25,539
+but I would never see
+them dependently.
+
+191
+00:08:25,539 --> 00:08:28,520
+What we would do is we
+would somehow identify one,
+
+192
+00:08:28,520 --> 00:08:30,279
+which is called our
+root file system.
+
+193
+00:08:30,279 --> 00:08:32,759
+So say the one of the middle
+of the root file system.
+
+194
+00:08:32,759 --> 00:08:33,779
+And then what we would do is
+
+195
+00:08:33,779 --> 00:08:35,159
+we'd have these mount commands.
+
+196
+00:08:35,159 --> 00:08:37,280
+Usually there's a bunch of
+mount commands that happen
+
+197
+00:08:37,280 --> 00:08:40,299
+automatically for you with
+the system first boots up.
+
+198
+00:08:40,299 --> 00:08:42,260
+And then you can do
+additional mount commands,
+
+199
+00:08:42,260 --> 00:08:43,459
+or if you create
+docker containers,
+
+200
+00:08:43,459 --> 00:08:44,579
+there's other mount
+commands that are going
+
+201
+00:08:44,579 --> 00:08:45,839
+to be done on your behalf.
+
+202
+00:08:45,839 --> 00:08:47,840
+And so I could say
+I want to mount
+
+203
+00:08:47,840 --> 00:08:50,139
+the file system on D SDA
+
+204
+00:08:50,139 --> 00:08:54,979
+one on top of
+directory A, right?
+
+205
+00:08:54,979 --> 00:08:56,220
+So I could take a different file
+
+206
+00:08:56,220 --> 00:08:57,539
+system by say I
+want to mount it on
+
+207
+00:08:57,539 --> 00:09:00,899
+top of directory and
+another file system.
+
+208
+00:09:00,899 --> 00:09:02,519
+And I would do that. I basically
+
+209
+00:09:02,519 --> 00:09:03,899
+would look like it's
+on top of that.
+
+210
+00:09:03,899 --> 00:09:05,480
+You see kind of
+there was before.
+
+211
+00:09:05,480 --> 00:09:09,119
+Now all of a sudden, A is
+not the original directory,
+
+212
+00:09:09,119 --> 00:09:10,659
+but it's really the root of
+
+213
+00:09:10,659 --> 00:09:12,559
+this other file system
+we mount it on, right?
+
+214
+00:09:12,559 --> 00:09:14,040
+So we have individual
+file systems,
+
+215
+00:09:14,040 --> 00:09:15,859
+and then we also have
+this unified view
+
+216
+00:09:15,859 --> 00:09:17,959
+of a bigger file system.
+
+217
+00:09:17,959 --> 00:09:20,380
+This one's going to be a
+little bit more interesting.
+
+218
+00:09:20,380 --> 00:09:27,079
+I say, I'm write about SDB
+one on top of A B, right?
+
+219
+00:09:27,079 --> 00:09:28,319
+I can really mount it on top
+
+220
+00:09:28,319 --> 00:09:29,440
+of any directory I wanted to.
+
+221
+00:09:29,440 --> 00:09:30,919
+That's a little
+interesting because
+
+222
+00:09:30,919 --> 00:09:33,079
+B has some stuff in it, right?
+
+223
+00:09:33,079 --> 00:09:34,659
+And what happens there is
+
+224
+00:09:34,659 --> 00:09:36,419
+that that stuff just
+gets headed, right?
+
+225
+00:09:36,419 --> 00:09:37,740
+So take this tree,
+
+226
+00:09:37,740 --> 00:09:39,019
+and now all of a sudden that's
+
+227
+00:09:39,019 --> 00:09:40,339
+there and other stuff is headed.
+
+228
+00:09:40,339 --> 00:09:41,400
+If I mounted later, then
+
+229
+00:09:41,400 --> 00:09:42,980
+maybe I might see
+that stuff again.
+
+230
+00:09:42,980 --> 00:09:44,799
+But basically, I'm saying, like,
+
+231
+00:09:44,799 --> 00:09:46,720
+now this directory
+is a mount point,
+
+232
+00:09:46,720 --> 00:09:48,199
+and I'm going to see
+a different tree
+
+233
+00:09:48,199 --> 00:09:50,065
+there instead of
+whatever that directory.
+
+234
+00:09:50,065 --> 00:09:52,949
+Or originally had repurposing
+that directory to be
+
+235
+00:09:52,949 --> 00:09:56,050
+the root of one of these
+sub trees. Alright?
+
+236
+00:09:56,050 --> 00:09:58,490
+And so we'll get this
+big unified approach.
+
+237
+00:09:58,490 --> 00:09:59,809
+Do people have any
+questions about
+
+238
+00:09:59,809 --> 00:10:02,429
+that unified file system tree?
+
+239
+00:10:08,350 --> 00:10:12,929
+Right. Cool. Now, if
+
+240
+00:10:12,929 --> 00:10:14,389
+I don't think about tators
+
+241
+00:10:14,389 --> 00:10:15,910
+at all, I just
+have one of these.
+
+242
+00:10:15,910 --> 00:10:18,050
+But if you're creating
+Docer tators,
+
+243
+00:10:18,050 --> 00:10:22,490
+every time you have a
+new docu tator created,
+
+244
+00:10:22,490 --> 00:10:26,550
+that door tator also
+has some unified view
+
+245
+00:10:26,550 --> 00:10:28,929
+of some number of file systems
+
+246
+00:10:28,929 --> 00:10:31,309
+that are stitched
+together in this way.
+
+247
+00:10:31,309 --> 00:10:32,670
+And so what I'll really refer to
+
+248
+00:10:32,670 --> 00:10:34,469
+this whole thing as as a
+mount name space, right?
+
+249
+00:10:34,469 --> 00:10:36,490
+Because I created by
+mounting a bunch of things.
+
+250
+00:10:36,490 --> 00:10:37,830
+And then that he determines
+
+251
+00:10:37,830 --> 00:10:39,569
+a name space. What
+can I see in that?
+
+252
+00:10:39,569 --> 00:10:42,089
+And so each new containor
+I have is going
+
+253
+00:10:42,089 --> 00:10:43,270
+to have its own mount name space
+
+254
+00:10:43,270 --> 00:10:44,649
+that might have a different
+number of mounts,
+
+255
+00:10:44,649 --> 00:10:47,709
+or it might be combining them
+in different ways, right?
+
+256
+00:10:47,709 --> 00:10:51,149
+This is kind of a simplified
+view of what's happening.
+
+257
+00:10:51,149 --> 00:10:53,270
+Usually on my Litux machine,
+
+258
+00:10:53,270 --> 00:10:54,890
+right, maybe on my
+virtual machine.
+
+259
+00:10:54,890 --> 00:10:56,789
+I have a big file system, tree,
+
+260
+00:10:56,789 --> 00:10:59,110
+lots of different things
+mount in different places.
+
+261
+00:10:59,110 --> 00:11:01,309
+And what I might do
+is I might try to get
+
+262
+00:11:01,309 --> 00:11:03,249
+a specific directory that has
+
+263
+00:11:03,249 --> 00:11:05,449
+everything I need to
+run a contor, right?
+
+264
+00:11:05,449 --> 00:11:09,369
+So the might have like a
+bunch of ubutu files there.
+
+265
+00:11:09,369 --> 00:11:11,649
+I might have like a tiporary
+file system, right?
+
+266
+00:11:11,649 --> 00:11:13,149
+So different directories on
+
+267
+00:11:13,149 --> 00:11:15,749
+my Made system are
+basically going to look
+
+268
+00:11:15,749 --> 00:11:20,480
+like they could be the top of
+an install for a container.
+
+269
+00:11:20,480 --> 00:11:22,840
+And what happen is when
+I run these containers.
+
+270
+00:11:22,840 --> 00:11:24,639
+They have about name spaces.
+
+271
+00:11:24,639 --> 00:11:26,220
+And basically what they're to
+
+272
+00:11:26,220 --> 00:11:27,979
+see is that kind of
+sub directory from
+
+273
+00:11:27,979 --> 00:11:29,600
+the Maine system is going to be
+
+274
+00:11:29,600 --> 00:11:31,359
+their whole file system, right?
+
+275
+00:11:31,359 --> 00:11:32,499
+So we can basically
+
+276
+00:11:32,499 --> 00:11:33,939
+let these different
+containers that are
+
+277
+00:11:33,939 --> 00:11:35,200
+already feel like
+they have their
+
+278
+00:11:35,200 --> 00:11:36,839
+own file system and
+all this stuff,
+
+279
+00:11:36,839 --> 00:11:38,240
+even though it's just a subset
+
+280
+00:11:38,240 --> 00:11:39,699
+of what is actually on
+the virtual machine.
+
+281
+00:11:39,699 --> 00:11:41,000
+And if you do a lot
+of pokey around,
+
+282
+00:11:41,000 --> 00:11:42,399
+you can actually
+see that, right?
+
+283
+00:11:42,399 --> 00:11:43,300
+You could see, like, a,
+
+284
+00:11:43,300 --> 00:11:44,400
+here's the stuff
+for the container,
+
+285
+00:11:44,400 --> 00:11:45,660
+but my virtual machine,
+
+286
+00:11:45,660 --> 00:11:49,620
+you could find that if you go
+pokey around a little bit.
+
+287
+00:11:49,710 --> 00:11:52,070
+Alright, let's head
+over it and do
+
+288
+00:11:52,070 --> 00:11:54,590
+some demos to make that a
+little bit more concrete.
+
+289
+00:11:54,590 --> 00:11:57,549
+So I want to show some
+different file systems as well.
+
+290
+00:11:57,549 --> 00:12:02,329
+So I'm going to come over
+here to my L lynx VM.
+
+291
+00:12:02,329 --> 00:12:05,150
+And one of the first things I
+want to do is I want to run
+
+292
+00:12:05,150 --> 00:12:06,689
+this Mount command because
+
+293
+00:12:06,689 --> 00:12:08,850
+the Mount command can be
+used to make new mounts,
+
+294
+00:12:08,850 --> 00:12:09,969
+but if I just run like that,
+
+295
+00:12:09,969 --> 00:12:11,769
+it lists all the mounts
+I currently have.
+
+296
+00:12:11,769 --> 00:12:14,349
+And, you know, I've been
+using lynx for a long time,
+
+297
+00:12:14,349 --> 00:12:15,629
+and over time, they just
+
+298
+00:12:15,629 --> 00:12:17,510
+find more reasons to mount
+more and more things.
+
+299
+00:12:17,510 --> 00:12:20,029
+So at this point, I have this
+unified file system tree,
+
+300
+00:12:20,029 --> 00:12:21,389
+which is actually, you know,
+
+301
+00:12:21,389 --> 00:12:23,529
+close to different
+things, right?
+
+302
+00:12:23,529 --> 00:12:24,549
+Some of them, I
+know what they are.
+
+303
+00:12:24,549 --> 00:12:25,690
+Some of them, I don't.
+
+304
+00:12:25,690 --> 00:12:28,310
+I'm be talk about some
+of the highlights.
+
+305
+00:12:28,370 --> 00:12:30,749
+The most interesting one was
+
+306
+00:12:30,749 --> 00:12:34,249
+this SDA was mounted at Slash.
+
+307
+00:12:34,249 --> 00:12:36,870
+What that means is that
+whatever file system
+
+308
+00:12:36,870 --> 00:12:39,970
+is at SDA Wd is maybe
+by root file system,
+
+309
+00:12:39,970 --> 00:12:41,649
+and everything else is
+mounted on top of that.
+
+310
+00:12:41,649 --> 00:12:43,110
+That's my starting point,
+
+311
+00:12:43,110 --> 00:12:45,709
+I could graft other file
+systems on top of that.
+
+312
+00:12:45,709 --> 00:12:47,469
+And I see what kind of
+file system that is.
+
+313
+00:12:47,469 --> 00:12:49,089
+It's a EXT four file system.
+
+314
+00:12:49,089 --> 00:12:51,570
+That's a very popular
+local file system,
+
+315
+00:12:51,570 --> 00:12:55,050
+you'll see a a lot of
+different Lits machines.
+
+316
+00:12:55,050 --> 00:12:56,209
+What else do we have?
+
+317
+00:12:56,209 --> 00:12:57,670
+We learned about the
+POC file system,
+
+318
+00:12:57,670 --> 00:12:58,730
+which we'll be
+looking at shortly.
+
+319
+00:12:58,730 --> 00:13:01,629
+So I can see that
+the Proc file system
+
+320
+00:13:01,629 --> 00:13:04,130
+is mounted at Slash Proc.
+
+321
+00:13:04,130 --> 00:13:06,709
+We talked about the TEP
+file system, right?
+
+322
+00:13:06,709 --> 00:13:09,129
+So I see that
+
+323
+00:13:09,129 --> 00:13:11,189
+there's there's actually a
+bunch of tip file system,
+
+324
+00:13:11,189 --> 00:13:13,530
+but there's one about it at
+Rudd. So what does that mean?
+
+325
+00:13:13,530 --> 00:13:16,530
+That means that if I am
+create files underneath d,
+
+326
+00:13:16,530 --> 00:13:18,749
+it's not on a hard
+drive or SSDT,
+
+327
+00:13:18,749 --> 00:13:20,050
+where it's just a memory.
+
+328
+00:13:20,050 --> 00:13:21,330
+So that'll actually
+be pretty fast.
+
+329
+00:13:21,330 --> 00:13:22,430
+If I want something to be fast,
+
+330
+00:13:22,430 --> 00:13:23,970
+I might create files under
+
+331
+00:13:23,970 --> 00:13:26,809
+slash rud with under
+setting that I reboot,
+
+332
+00:13:26,809 --> 00:13:28,049
+all my files will
+be lost, right?
+
+333
+00:13:28,049 --> 00:13:30,949
+Sometimes that's Okay,
+depending on what I'm doing.
+
+334
+00:13:30,949 --> 00:13:34,969
+Right? So I have all these
+different file systems
+
+335
+00:13:34,969 --> 00:13:38,369
+that we can see. What else?
+
+336
+00:13:38,369 --> 00:13:39,870
+So the other thing
+that we learned
+
+337
+00:13:39,870 --> 00:13:41,550
+about before is this DF Cad,
+
+338
+00:13:41,550 --> 00:13:43,469
+which tells me how much space
+
+339
+00:13:43,469 --> 00:13:45,669
+is used on a different
+file system.
+
+340
+00:13:45,669 --> 00:13:48,309
+So if I say DF, I can see that.
+
+341
+00:13:48,309 --> 00:13:50,009
+One of the things I might do is
+
+342
+00:13:50,009 --> 00:13:51,469
+I might say what
+directory I'm in.
+
+343
+00:13:51,469 --> 00:13:53,390
+I might say, for this location,
+
+344
+00:13:53,390 --> 00:13:56,649
+that part of that
+route mount, right?
+
+345
+00:13:56,649 --> 00:13:58,469
+I don't have anything else
+drafted on top of it.
+
+346
+00:13:58,469 --> 00:14:00,469
+I can see how much
+space I have here.
+
+347
+00:14:00,469 --> 00:14:03,410
+But if I go to a slash
+run, for example,
+
+348
+00:14:03,410 --> 00:14:04,990
+and then I say, Well,
+
+349
+00:14:04,990 --> 00:14:06,369
+how much space do I have here,
+
+350
+00:14:06,369 --> 00:14:08,290
+you see it's a completely
+different file system.
+
+351
+00:14:08,290 --> 00:14:10,550
+It's a tip FS instead
+of the binwod,
+
+352
+00:14:10,550 --> 00:14:13,309
+and I can see it's
+smaller, right?
+
+353
+00:14:13,309 --> 00:14:14,669
+It's like 400 gigabytes.
+
+354
+00:14:14,669 --> 00:14:16,429
+I'm to use 1% of it, right?
+
+355
+00:14:16,429 --> 00:14:19,069
+Was the other one was like
+something like 24 gigabytes,
+
+356
+00:14:19,069 --> 00:14:22,569
+and I was using 16 gigabytes.
+
+357
+00:14:22,569 --> 00:14:23,989
+I can do a different
+place. I can see
+
+358
+00:14:23,989 --> 00:14:25,449
+how much space there are these.
+
+359
+00:14:25,449 --> 00:14:27,370
+And of course, the
+tip FS is not to have
+
+360
+00:14:27,370 --> 00:14:28,849
+much space because I don't have
+
+361
+00:14:28,849 --> 00:14:30,769
+that much memory
+to have a big one.
+
+362
+00:14:30,769 --> 00:14:35,729
+If I go to slash
+PC, and I check.
+
+363
+00:14:35,729 --> 00:14:37,189
+Well, doesn't really
+make sense because
+
+364
+00:14:37,189 --> 00:14:39,329
+the PC FS is a
+pseudo file system.
+
+365
+00:14:39,329 --> 00:14:41,910
+It doesn't actually
+store data anywhere.
+
+366
+00:14:41,910 --> 00:14:44,029
+The purpose of this
+file system is to
+
+367
+00:14:44,029 --> 00:14:46,529
+give me information
+about processes, right?
+
+368
+00:14:46,529 --> 00:14:48,770
+So if I do LS, there's
+a bunch of stuff here.
+
+369
+00:14:48,770 --> 00:14:50,429
+But if I try to
+say something like
+
+370
+00:14:50,429 --> 00:14:53,594
+Echo High to file a TXT,
+
+371
+00:14:53,594 --> 00:14:55,819
+It's not going to let me
+do it because this is
+
+372
+00:14:55,819 --> 00:14:57,999
+not a file system where
+files are actually stored.
+
+373
+00:14:57,999 --> 00:14:59,500
+They're all pedo files.
+
+374
+00:14:59,500 --> 00:15:01,039
+There's no hard
+drive behind this.
+
+375
+00:15:01,039 --> 00:15:02,339
+Whereas if I go back to like
+
+376
+00:15:02,339 --> 00:15:03,899
+my main directory or
+something like that,
+
+377
+00:15:03,899 --> 00:15:08,180
+of course, I can create files
+wherever I please, right?
+
+378
+00:15:08,180 --> 00:15:10,279
+So let's see how we can actually
+
+379
+00:15:10,279 --> 00:15:11,879
+use the pseudo file system.
+
+380
+00:15:11,879 --> 00:15:15,340
+When I look at the things
+that are under that POC FS,
+
+381
+00:15:15,340 --> 00:15:16,999
+I see there's a bunch
+of directories with
+
+382
+00:15:16,999 --> 00:15:18,759
+different names and numbers,
+
+383
+00:15:18,759 --> 00:15:21,440
+and those numbers
+correspond to process IDs.
+
+384
+00:15:21,440 --> 00:15:24,080
+So, for example, I
+may run a sleep.
+
+385
+00:15:24,080 --> 00:15:26,175
+Come out, I may
+sleep for 5 minutes.
+
+386
+00:15:26,175 --> 00:15:28,189
+And I'm may run that
+in the background,
+
+387
+00:15:28,189 --> 00:15:31,369
+and I'm going to figure
+out what process ID it is.
+
+388
+00:15:31,369 --> 00:15:34,289
+I guess it's process
+ID, this right here.
+
+389
+00:15:34,289 --> 00:15:37,450
+And so if I go to S
+Proc and do it LS,
+
+390
+00:15:37,450 --> 00:15:39,649
+one of these should
+be that number,
+
+391
+00:15:39,649 --> 00:15:42,049
+and rather than look it,
+I'll just CD into it.
+
+392
+00:15:42,049 --> 00:15:43,549
+And so I can look here, and
+
+393
+00:15:43,549 --> 00:15:44,989
+all this stuff here is giving me
+
+394
+00:15:44,989 --> 00:15:47,790
+different information
+about that process.
+
+395
+00:15:47,790 --> 00:15:50,349
+So, for example, I
+
+396
+00:15:50,349 --> 00:15:53,470
+could look at the
+command light arguments.
+
+397
+00:15:53,470 --> 00:15:55,369
+I did a sleep 300 before.
+
+398
+00:15:55,369 --> 00:15:56,669
+I could look at how
+much memory its used.
+
+399
+00:15:56,669 --> 00:15:58,509
+I can find out a lot of different
+information about that.
+
+400
+00:15:58,509 --> 00:15:59,690
+You see that for a process,
+
+401
+00:15:59,690 --> 00:16:01,990
+there's quite a bit of
+information Li keeps track of.
+
+402
+00:16:01,990 --> 00:16:03,229
+Most of us, I don't
+know what it is,
+
+403
+00:16:03,229 --> 00:16:03,929
+but you can kind of go
+
+404
+00:16:03,929 --> 00:16:06,029
+ahead and figure out
+what's going on.
+
+405
+00:16:06,029 --> 00:16:07,849
+So do people have
+any questions about
+
+406
+00:16:07,849 --> 00:16:09,269
+these different file systems so
+
+407
+00:16:09,269 --> 00:16:12,050
+far about the Proc file system?
+
+408
+00:16:19,900 --> 00:16:25,279
+Right. Cool. So the
+next thing I want to
+
+409
+00:16:25,279 --> 00:16:27,380
+do is I want to see
+how this all plays
+
+410
+00:16:27,380 --> 00:16:30,199
+out for containers, right?
+
+411
+00:16:30,199 --> 00:16:32,399
+So I'm going to go to F 24
+
+412
+00:16:32,399 --> 00:16:36,760
+and this directory where
+I have some stuff.
+
+413
+00:16:36,760 --> 00:16:42,359
+And what I will do is
+I will Try to share
+
+414
+00:16:42,359 --> 00:16:47,919
+some stuff between my host
+VM into the Cttor, right?
+
+415
+00:16:47,919 --> 00:16:50,679
+Because I have options, right?
+
+416
+00:16:50,679 --> 00:16:51,939
+There's maybe like
+a default about
+
+417
+00:16:51,939 --> 00:16:53,740
+name space that's straight
+for the new contator,
+
+418
+00:16:53,740 --> 00:16:55,600
+but I can choose to have
+some extra stuff out there.
+
+419
+00:16:55,600 --> 00:16:58,239
+I can say that there are
+certain directories on
+
+420
+00:16:58,239 --> 00:17:00,080
+my host virtual machine
+
+421
+00:17:00,080 --> 00:17:02,279
+that I want a appear
+inside of my contator.
+
+422
+00:17:02,279 --> 00:17:05,300
+It's I make a directory
+called Lecture Wood.
+
+423
+00:17:05,300 --> 00:17:09,220
+And what I do is rod
+Ub Tu container,
+
+424
+00:17:09,220 --> 00:17:12,740
+right, and maybe 24.04.
+
+425
+00:17:12,740 --> 00:17:16,579
+I want it to be interactive
+and I want to have bash.
+
+426
+00:17:16,800 --> 00:17:21,500
+And then we've seen before how
+we can have port mappings.
+
+427
+00:17:21,500 --> 00:17:22,959
+And very similar to that,
+
+428
+00:17:22,959 --> 00:17:25,020
+we can have volume mappings.
+
+429
+00:17:25,020 --> 00:17:26,700
+When I have volume mappings,
+
+430
+00:17:26,700 --> 00:17:30,860
+I can say something like
+Lecture one should show
+
+431
+00:17:30,860 --> 00:17:33,340
+up inside of maybe
+
+432
+00:17:33,340 --> 00:17:35,479
+I'll call it like slash
+share inside, right?
+
+433
+00:17:35,479 --> 00:17:37,999
+So this is outside,
+and this is inside.
+
+434
+00:17:37,999 --> 00:17:39,840
+Let me just set that
+aside for a moment.
+
+435
+00:17:39,840 --> 00:17:42,300
+I say something like
+that echo high again.
+
+436
+00:17:42,300 --> 00:17:46,239
+And I put that inside
+of e one. All right.
+
+437
+00:17:46,239 --> 00:17:48,204
+So let me run this command.
+
+438
+00:17:48,204 --> 00:17:50,469
+And when I do this,
+
+439
+00:17:50,469 --> 00:17:52,590
+I I go under slash share.
+
+440
+00:17:52,590 --> 00:17:53,969
+And I made a mistake that people
+
+441
+00:17:53,969 --> 00:17:55,690
+often make. I want to
+talk about it now.
+
+442
+00:17:55,690 --> 00:17:57,209
+For some reason, I see it empty.
+
+443
+00:17:57,209 --> 00:17:59,250
+I'm not seeing
+that filed at TXT.
+
+444
+00:17:59,250 --> 00:18:03,299
+And the reason why is
+that I put this here,
+
+445
+00:18:03,299 --> 00:18:06,060
+dockers trying to figure out,
+is this like a directory,
+
+446
+00:18:06,060 --> 00:18:07,819
+or is it the name
+of a new volume
+
+447
+00:18:07,819 --> 00:18:09,559
+that Docker should
+create for us?
+
+448
+00:18:09,559 --> 00:18:10,979
+And so unless it looks very
+
+449
+00:18:10,979 --> 00:18:13,120
+clearly like a
+path of some sort,
+
+450
+00:18:13,120 --> 00:18:15,619
+I assumes that it's something
+new that should be created.
+
+451
+00:18:15,619 --> 00:18:16,979
+And so I have to make this look
+
+452
+00:18:16,979 --> 00:18:18,819
+more like a path. So
+Docker doesn't do that.
+
+453
+00:18:18,819 --> 00:18:20,159
+So I should say something
+like that, like,
+
+454
+00:18:20,159 --> 00:18:21,339
+look at this
+directory or maybe I
+
+455
+00:18:21,339 --> 00:18:22,840
+can have an absolute path.
+
+456
+00:18:22,840 --> 00:18:24,199
+Now I'd bet to run that, and I
+
+457
+00:18:24,199 --> 00:18:25,840
+can draw under slash share,
+
+458
+00:18:25,840 --> 00:18:29,839
+and I can see that I have
+that file TXT, right?
+
+459
+00:18:29,839 --> 00:18:31,739
+So if I'm outside
+of my container,
+
+460
+00:18:31,739 --> 00:18:33,440
+it's in the Lecture
+one directory.
+
+461
+00:18:33,440 --> 00:18:34,819
+If I'm inside my container,
+
+462
+00:18:34,819 --> 00:18:37,179
+it's the share directory, right?
+
+463
+00:18:37,179 --> 00:18:38,560
+I can see what is there.
+
+464
+00:18:38,560 --> 00:18:40,079
+I could do other things, right?
+
+465
+00:18:40,079 --> 00:18:46,759
+I could echo like by
+to file two t XT.
+
+466
+00:18:46,880 --> 00:18:50,439
+Then if I exit this, I would
+be able to see that outside.
+
+467
+00:18:50,439 --> 00:18:52,379
+So I can run that command
+
+468
+00:18:52,379 --> 00:18:54,299
+inside a container just
+like I did outside,
+
+469
+00:18:54,299 --> 00:18:56,440
+and let me run that word outut.
+
+470
+00:18:56,440 --> 00:18:58,619
+I guess there's not
+quite the same number
+
+471
+00:18:58,619 --> 00:19:00,119
+of them as before.
+
+472
+00:19:00,119 --> 00:19:01,520
+But I can go through
+
+473
+00:19:01,520 --> 00:19:03,000
+here and see some
+interesting things.
+
+474
+00:19:03,000 --> 00:19:05,699
+One of the interesting
+things I see is that
+
+475
+00:19:05,699 --> 00:19:09,539
+the root file system
+is not associated
+
+476
+00:19:09,539 --> 00:19:12,719
+with a partitions SDA one
+or something like that.
+
+477
+00:19:12,719 --> 00:19:14,699
+It's actually this
+overlay file system.
+
+478
+00:19:14,699 --> 00:19:16,840
+And what this is actually
+doing is it's taking
+
+479
+00:19:16,840 --> 00:19:19,349
+some directories d by
+
+480
+00:19:19,349 --> 00:19:20,589
+Host virtual machine and
+
+481
+00:19:20,589 --> 00:19:21,809
+kind of stitching
+them together and
+
+482
+00:19:21,809 --> 00:19:25,349
+giving me a file system
+inside of here, right?
+
+483
+00:19:25,349 --> 00:19:27,790
+I have a Pc file
+system like before.
+
+484
+00:19:27,790 --> 00:19:29,970
+I have a tip file
+system like before.
+
+485
+00:19:29,970 --> 00:19:32,769
+Lots of stuff in here.
+Maybe what I might
+
+486
+00:19:32,769 --> 00:19:35,730
+do is I might wrap for share.
+
+487
+00:19:35,730 --> 00:19:37,549
+And what I could see
+is that there was
+
+488
+00:19:37,549 --> 00:19:39,749
+an EXT four file system in
+
+489
+00:19:39,749 --> 00:19:41,989
+a directory there the host
+
+490
+00:19:41,989 --> 00:19:44,849
+that was mapped to slash
+share here, right?
+
+491
+00:19:44,849 --> 00:19:46,349
+So I have a different view of
+
+492
+00:19:46,349 --> 00:19:47,809
+all these different
+file systems from
+
+493
+00:19:47,809 --> 00:19:50,209
+inside the container
+from outside, right?
+
+494
+00:19:50,209 --> 00:19:51,689
+You could stitch
+together a bunch of
+
+495
+00:19:51,689 --> 00:19:54,180
+file systems in different
+ways to make a unified tree.
+
+496
+00:19:54,180 --> 00:19:56,530
+That started one way
+on my virtual machine.
+
+497
+00:19:56,530 --> 00:19:57,729
+It started a different way on
+
+498
+00:19:57,729 --> 00:19:59,849
+my container because the
+container shouldn't see
+
+499
+00:19:59,849 --> 00:20:01,969
+the same things or
+as many things as I
+
+500
+00:20:01,969 --> 00:20:04,969
+see on my virtual
+machine in general.
+
+501
+00:20:04,969 --> 00:20:07,669
+Oh, right, cool.
+Any questions about
+
+502
+00:20:07,669 --> 00:20:11,750
+that volume share that I
+did? Yeah, right here.
+
+503
+00:20:27,100 --> 00:20:30,080
+Yeah, yeah. Why is it EXT four?
+
+504
+00:20:30,080 --> 00:20:31,500
+Well, when I read this, I said
+
+505
+00:20:31,500 --> 00:20:34,620
+that this directory
+should show up as share.
+
+506
+00:20:34,620 --> 00:20:36,999
+And this directory of
+my virtual machine was
+
+507
+00:20:36,999 --> 00:20:39,439
+part of an EXT four
+file system, right?
+
+508
+00:20:39,439 --> 00:20:42,160
+That's why it's showing
+up as EXT four bedside.
+
+509
+00:20:42,160 --> 00:20:43,340
+So if I kind of do work inside,
+
+510
+00:20:43,340 --> 00:20:44,619
+it'll show up show up there.
+
+511
+00:20:44,619 --> 00:20:45,840
+Does that make sense?
+
+512
+00:20:45,840 --> 00:20:48,239
+Yeah. Yeah. Thank you
+for clarifying that.
+
+513
+00:20:48,239 --> 00:20:50,739
+Yeah, there are
+questions people have.
+
+514
+00:20:51,050 --> 00:20:53,989
+All right. Cool.
+So, the other thing
+
+515
+00:20:53,989 --> 00:20:55,309
+I want to show you
+is just how we
+
+516
+00:20:55,309 --> 00:20:59,269
+would do our work later, right?
+
+517
+00:20:59,269 --> 00:21:01,269
+Be we have some upcoming
+projects where we have
+
+518
+00:21:01,269 --> 00:21:03,229
+Jupiter lab running inside
+
+519
+00:21:03,229 --> 00:21:03,849
+of a notebook and
+
+520
+00:21:03,849 --> 00:21:05,029
+that's where you're
+going to do your work.
+
+521
+00:21:05,029 --> 00:21:08,309
+And I actually have
+something that builds that.
+
+522
+00:21:08,309 --> 00:21:10,910
+I guess I'm running
+it on Port 300.
+
+523
+00:21:10,910 --> 00:21:12,970
+Let me just build this again.
+
+524
+00:21:12,970 --> 00:21:17,329
+And R that demo.
+
+525
+00:21:17,329 --> 00:21:19,829
+T, that'll start
+up Jupiter inside.
+
+526
+00:21:19,829 --> 00:21:23,955
+And then there's some more
+things I have to do here.
+
+527
+00:21:23,955 --> 00:21:26,739
+Well, the detached mode.
+
+528
+00:21:26,739 --> 00:21:28,179
+One of the things I
+have to do is I have to
+
+529
+00:21:28,179 --> 00:21:29,760
+do the port mapping like before.
+
+530
+00:21:29,760 --> 00:21:33,860
+And so maybe for the port
+mapping, I'll do 127001.
+
+531
+00:21:33,860 --> 00:21:35,779
+And just to keep things simple,
+
+532
+00:21:35,779 --> 00:21:39,479
+I'll keep it the same,
+300 inside, 300 outside.
+
+533
+00:21:39,479 --> 00:21:41,840
+And what you'll do
+is that we'll try
+
+534
+00:21:41,840 --> 00:21:44,060
+to set up the SSH
+tunnel like before,
+
+535
+00:21:44,060 --> 00:21:45,779
+so I can be working
+at this Jupiter lab.
+
+536
+00:21:45,779 --> 00:21:47,860
+But I'm also going to
+have one directory
+
+537
+00:21:47,860 --> 00:21:50,599
+where I have all of my work,
+
+538
+00:21:50,599 --> 00:21:52,559
+because even though you're
+working at a container,
+
+539
+00:21:52,559 --> 00:21:54,039
+you probably want some
+things outside of
+
+540
+00:21:54,039 --> 00:21:55,969
+the container so
+you can you know,
+
+541
+00:21:55,969 --> 00:21:59,249
+push that toe for your project
+submission later, right?
+
+542
+00:21:59,249 --> 00:22:01,090
+And so I have to
+do a volume map,
+
+543
+00:22:01,090 --> 00:22:04,089
+to say for Lecture
+one. And inside.
+
+544
+00:22:04,089 --> 00:22:06,769
+I'd maybe say that's
+under like B for
+
+545
+00:22:06,769 --> 00:22:10,469
+notebooks. I'm going
+to run that thing.
+
+546
+00:22:10,510 --> 00:22:14,049
+And then I have to
+set up my SSH tunnel.
+
+547
+00:22:14,049 --> 00:22:17,169
+And I'm to do that.
+
+548
+00:22:17,169 --> 00:22:22,929
+It's 300 on my virtual machine.
+
+549
+00:22:22,929 --> 00:22:25,530
+I'd have to do psdo to
+use port 300 for my MAC.
+
+550
+00:22:25,530 --> 00:22:27,070
+I'm to use 3,000 there.
+
+551
+00:22:27,070 --> 00:22:30,510
+But I'll set up that SSH
+tunnel like we've done before.
+
+552
+00:22:30,570 --> 00:22:32,729
+And then what I should
+be able to do is I
+
+553
+00:22:32,729 --> 00:22:34,270
+should be able to come
+over here and row
+
+554
+00:22:34,270 --> 00:22:36,569
+a local host 3,000 on
+
+555
+00:22:36,569 --> 00:22:39,569
+my laptop that I'll
+forward to 300 on the Va,
+
+556
+00:22:39,569 --> 00:22:40,889
+which will further forward to
+
+557
+00:22:40,889 --> 00:22:42,669
+300 inside the virtual machine.
+
+558
+00:22:42,669 --> 00:22:45,189
+And what I can see here now is
+
+559
+00:22:45,189 --> 00:22:48,250
+that I have this
+notebook directory here,
+
+560
+00:22:48,250 --> 00:22:51,069
+same files actually
+that we had before.
+
+561
+00:22:51,069 --> 00:22:53,449
+And this is where I
+would do my work, right?
+
+562
+00:22:53,449 --> 00:22:55,249
+I might call this
+like I don't know,
+
+563
+00:22:55,249 --> 00:22:57,249
+I might call this like project.
+
+564
+00:22:57,249 --> 00:22:59,249
+Maybe I'll just call it like a
+
+565
+00:22:59,249 --> 00:23:00,609
+demo or something like that,
+
+566
+00:23:00,609 --> 00:23:03,949
+and whatever. I'll to save that.
+
+567
+00:23:03,949 --> 00:23:05,789
+And then, you know,
+
+568
+00:23:05,789 --> 00:23:07,169
+there's a bunch of
+other files here,
+
+569
+00:23:07,169 --> 00:23:08,469
+and you have to be a
+little bit careful.
+
+570
+00:23:08,469 --> 00:23:09,989
+I know what to
+share, what's not,
+
+571
+00:23:09,989 --> 00:23:11,350
+because if I created my file
+
+572
+00:23:11,350 --> 00:23:13,310
+somewhere else so that I
+killed this container,
+
+573
+00:23:13,310 --> 00:23:16,410
+I would lose my work,
+but whatever I save
+
+574
+00:23:16,410 --> 00:23:18,489
+inside of this will
+
+575
+00:23:18,489 --> 00:23:20,729
+be saved outside because
+I mapped it, right?
+
+576
+00:23:20,729 --> 00:23:23,869
+Somebody come over here. And one
+
+577
+00:23:23,869 --> 00:23:26,289
+of the things I could see
+is that under Lecture one,
+
+578
+00:23:26,289 --> 00:23:29,609
+that file is there, I'm
+on my virtual machine,
+
+579
+00:23:29,609 --> 00:23:31,229
+but I could see a
+file that was created
+
+580
+00:23:31,229 --> 00:23:34,029
+by Jupiter inside the
+container, right?
+
+581
+00:23:34,029 --> 00:23:37,150
+And so even if I
+kill that container,
+
+582
+00:23:37,150 --> 00:23:41,699
+somebody kill it, that
+if I come back here,
+
+583
+00:23:41,699 --> 00:23:43,459
+it should be dead, right?
+
+584
+00:23:43,459 --> 00:23:45,379
+I still have my file, right?
+
+585
+00:23:45,379 --> 00:23:48,060
+Anything inside of notebook?
+
+586
+00:23:48,060 --> 00:23:49,760
+Let me just show you
+how I ran it again.
+
+587
+00:23:49,760 --> 00:23:51,340
+Anything inside of notebook
+
+588
+00:23:51,340 --> 00:23:53,439
+is still visible
+inside of Lecture one.
+
+589
+00:23:53,439 --> 00:23:54,939
+It would save anything I created
+
+590
+00:23:54,939 --> 00:23:56,979
+elsewhere inside of
+that container is gone.
+
+591
+00:23:56,979 --> 00:23:58,139
+So I just want you to understand
+
+592
+00:23:58,139 --> 00:23:59,279
+it a bit so that you don't have
+
+593
+00:23:59,279 --> 00:24:03,159
+a unfortunate accident where
+you lose some work, right?
+
+594
+00:24:03,159 --> 00:24:05,139
+It double check this, right?
+
+595
+00:24:05,139 --> 00:24:06,579
+Don't do like a ton of like
+
+596
+00:24:06,579 --> 00:24:08,359
+a ton of work on the
+project at the end,
+
+597
+00:24:08,359 --> 00:24:09,960
+like realize that
+you lost something.
+
+598
+00:24:09,960 --> 00:24:11,539
+Alright. So what
+questions people have
+
+599
+00:24:11,539 --> 00:24:14,860
+about volume mois
+or port mappings?
+
+600
+00:24:18,610 --> 00:24:24,049
+All right. Cool. So I
+am to actually just
+
+601
+00:24:24,049 --> 00:24:25,209
+have that I'm going to
+
+602
+00:24:25,209 --> 00:24:26,349
+have it up and
+running again because
+
+603
+00:24:26,349 --> 00:24:28,929
+I'll need it for
+some upcoming demos.
+
+604
+00:24:28,929 --> 00:24:31,210
+Let me just make sure
+this is still running.
+
+605
+00:24:31,210 --> 00:24:32,970
+There we go. Okay, great.
+
+606
+00:24:32,970 --> 00:24:35,390
+I'll just leave that
+there for later.
+
+607
+00:24:35,390 --> 00:24:38,269
+All right. So that was
+file system stuff.
+
+608
+00:24:38,269 --> 00:24:40,869
+Let's learn now about
+
+609
+00:24:40,869 --> 00:24:42,909
+the format of files that we
+
+610
+00:24:42,909 --> 00:24:45,569
+might put inside
+of a file system.
+
+611
+00:24:46,350 --> 00:24:49,610
+Alright, so I have a few
+different goals here.
+
+612
+00:24:49,610 --> 00:24:51,669
+What I'm talking
+about a file format,
+
+613
+00:24:51,669 --> 00:24:52,809
+there's a lot of words or kind
+
+614
+00:24:52,809 --> 00:24:54,469
+of aspects of what
+I could talk about,
+
+615
+00:24:54,469 --> 00:24:56,670
+I could talk about the
+orientation of the file,
+
+616
+00:24:56,670 --> 00:24:57,989
+how we encode data,
+
+617
+00:24:57,989 --> 00:25:00,610
+whether or not it's compressed,
+how it's compressed.
+
+618
+00:25:00,610 --> 00:25:02,049
+Does the file give us
+
+619
+00:25:02,049 --> 00:25:04,950
+a schema that describes
+the types of her columns.
+
+620
+00:25:04,950 --> 00:25:07,610
+So when we learn that,
+we learn a new type,
+
+621
+00:25:07,610 --> 00:25:10,229
+which is Park, and we
+want to learn how to
+
+622
+00:25:10,229 --> 00:25:13,170
+use write code that
+works with Park.
+
+623
+00:25:13,170 --> 00:25:15,090
+You know, for kind
+of trivial t things,
+
+624
+00:25:15,090 --> 00:25:16,489
+I use CSV files.
+
+625
+00:25:16,489 --> 00:25:17,729
+But if I'm doing
+anything kind of,
+
+626
+00:25:17,729 --> 00:25:20,129
+like serious with bigger data
+
+627
+00:25:20,129 --> 00:25:23,069
+I like very organized because
+I have lots of files,
+
+628
+00:25:23,069 --> 00:25:26,129
+like Park would be the go to
+thing I would use, right?
+
+629
+00:25:26,129 --> 00:25:28,449
+In that case, maybe
+somebody gave BCSVs.
+
+630
+00:25:28,449 --> 00:25:29,529
+Number one thing I'll do is
+
+631
+00:25:29,529 --> 00:25:30,789
+I'll just travert it to Parke.
+
+632
+00:25:30,789 --> 00:25:32,209
+I'll use Parke for everything,
+
+633
+00:25:32,209 --> 00:25:34,089
+and that will save
+a lot of problems.
+
+634
+00:25:34,089 --> 00:25:36,350
+So I want you to
+do that as well.
+
+635
+00:25:36,350 --> 00:25:38,129
+We're going to talk
+about different kinds of
+
+636
+00:25:38,129 --> 00:25:40,350
+workloads that are
+accessing these files.
+
+637
+00:25:40,350 --> 00:25:43,309
+There's transaction processing
+and analytics processing.
+
+638
+00:25:43,309 --> 00:25:44,849
+We want to be able to
+distinguish those and
+
+639
+00:25:44,849 --> 00:25:47,030
+choose the right tools
+for the right job.
+
+640
+00:25:47,030 --> 00:25:48,449
+And then finally,
+
+641
+00:25:48,449 --> 00:25:50,450
+a lot of you are going
+to go off some day
+
+642
+00:25:50,450 --> 00:25:51,910
+and have jobs where you're
+
+643
+00:25:51,910 --> 00:25:53,970
+writing what we
+call ETL pipelines,
+
+644
+00:25:53,970 --> 00:25:55,810
+extract, transform and load.
+
+645
+00:25:55,810 --> 00:25:58,630
+Different kinds of systems are
+good for different things.
+
+646
+00:25:58,630 --> 00:26:00,270
+And so often we're
+moving our data
+
+647
+00:26:00,270 --> 00:26:02,309
+from one system to another.
+
+648
+00:26:02,309 --> 00:26:03,869
+For a particular purpose, right?
+
+649
+00:26:03,869 --> 00:26:05,750
+And so a lot of data
+engineering types
+
+650
+00:26:05,750 --> 00:26:07,429
+are going to be doing
+work like that,
+
+651
+00:26:07,429 --> 00:26:11,469
+we're going to motivate
+that today. All right.
+
+652
+00:26:11,469 --> 00:26:13,850
+So I may take a look here.
+
+653
+00:26:13,850 --> 00:26:15,789
+There's a couple of
+different approaches to
+
+654
+00:26:15,789 --> 00:26:17,369
+how we can use a
+file system, right?
+
+655
+00:26:17,369 --> 00:26:18,849
+So here's a local file system.
+
+656
+00:26:18,849 --> 00:26:20,709
+It's story it's stated
+some kind of block device,
+
+657
+00:26:20,709 --> 00:26:23,449
+or maybe it's like a
+docker file system,
+
+658
+00:26:23,449 --> 00:26:25,270
+maybe stored a different
+file system, whatever.
+
+659
+00:26:25,270 --> 00:26:26,909
+There's a bunch of
+file systems there.
+
+660
+00:26:26,909 --> 00:26:29,609
+One approach is that we
+could directly write files
+
+661
+00:26:29,609 --> 00:26:32,870
+ourself and put them in uh put
+our data directly to file.
+
+662
+00:26:32,870 --> 00:26:33,889
+The other thing that you might
+
+663
+00:26:33,889 --> 00:26:34,989
+do that we're going
+to be talking about
+
+664
+00:26:34,989 --> 00:26:37,310
+more pretty soon is you might
+have some kind of database.
+
+665
+00:26:37,310 --> 00:26:38,890
+We go to put our data
+in the database,
+
+666
+00:26:38,890 --> 00:26:42,190
+that database might write
+its data into a file,
+
+667
+00:26:42,190 --> 00:26:44,030
+and then the file
+system might write
+
+668
+00:26:44,030 --> 00:26:47,669
+that file file data into
+a block device, right?
+
+669
+00:26:47,669 --> 00:26:49,449
+So there's going to be trade
+offs between these and we
+
+670
+00:26:49,449 --> 00:26:51,329
+want to understand, what
+should we do one approach,
+
+671
+00:26:51,329 --> 00:26:53,449
+or what should we do
+the other approach?
+
+672
+00:26:53,449 --> 00:26:55,169
+In both cases, right?
+
+673
+00:26:55,169 --> 00:26:56,230
+Whether we're using a file
+
+674
+00:26:56,230 --> 00:26:57,650
+directly or there's a database,
+
+675
+00:26:57,650 --> 00:26:59,450
+there are decisions
+that are made
+
+676
+00:26:59,450 --> 00:27:01,290
+about the format of that file.
+
+677
+00:27:01,290 --> 00:27:02,969
+Okay. So the way I've
+talked about this,
+
+678
+00:27:02,969 --> 00:27:04,969
+I've to introduce Park files,
+
+679
+00:27:04,969 --> 00:27:07,669
+and I'm go to contrast
+them with CSV files.
+
+680
+00:27:07,669 --> 00:27:09,349
+And I've talked about four ways
+
+681
+00:27:09,349 --> 00:27:11,690
+that they do things differently.
+
+682
+00:27:11,690 --> 00:27:14,410
+And so the first thing I'm to
+talk about is orientation.
+
+683
+00:27:14,410 --> 00:27:16,709
+CSV files are oriented,
+
+684
+00:27:16,709 --> 00:27:20,979
+and Park files are
+column oriented. Okay.
+
+685
+00:27:20,979 --> 00:27:23,340
+So what we learned
+about block device
+
+686
+00:27:23,340 --> 00:27:25,100
+is we learned that we
+have to transfer data,
+
+687
+00:27:25,100 --> 00:27:26,759
+the unit of blocks,
+
+688
+00:27:26,759 --> 00:27:30,179
+which is probably
+at least 512 bytes,
+
+689
+00:27:30,179 --> 00:27:32,279
+maybe bigger, maybe a
+couple of kilobytes.
+
+690
+00:27:32,279 --> 00:27:33,699
+And so we talked last time about
+
+691
+00:27:33,699 --> 00:27:35,840
+this text based dataset
+
+692
+00:27:35,840 --> 00:27:37,580
+here that has all these
+weather stations,
+
+693
+00:27:37,580 --> 00:27:38,940
+and I highlighted
+
+694
+00:27:38,940 --> 00:27:40,320
+different trollers
+the different blocks.
+
+695
+00:27:40,320 --> 00:27:42,999
+Those are 512 bytes of data.
+
+696
+00:27:42,999 --> 00:27:45,199
+And what we ought to do is
+we ought to figure out,
+
+697
+00:27:45,199 --> 00:27:47,739
+well, how can we
+efficiently access it?
+
+698
+00:27:47,739 --> 00:27:50,140
+Sometimes we want to access
+all the data in a row.
+
+699
+00:27:50,140 --> 00:27:52,959
+Sometimes we want to access
+all the data in a column.
+
+700
+00:27:52,959 --> 00:27:55,639
+So if I have this text
+file like this right here,
+
+701
+00:27:55,639 --> 00:27:58,520
+It's good if I just
+want to access one row,
+
+702
+00:27:58,520 --> 00:27:59,979
+because then I would only have
+
+703
+00:27:59,979 --> 00:28:01,719
+to access one block of data.
+
+704
+00:28:01,719 --> 00:28:03,740
+If I wanted to
+access one column,
+
+705
+00:28:03,740 --> 00:28:05,819
+that's actually very
+unfortunate because
+
+706
+00:28:05,819 --> 00:28:09,539
+that column is spread across
+a bunch of different blocks.
+
+707
+00:28:09,539 --> 00:28:12,079
+I have to read all
+three blocks of data,
+
+708
+00:28:12,079 --> 00:28:13,640
+even though I don't
+
+709
+00:28:13,640 --> 00:28:15,819
+care what is in most of
+those three blocks. Right?
+
+710
+00:28:15,819 --> 00:28:17,580
+I'm ignoring all the columns,
+
+711
+00:28:17,580 --> 00:28:19,939
+but I still have to read
+it all from disc, right?
+
+712
+00:28:19,939 --> 00:28:21,879
+So depending on my
+access pattern,
+
+713
+00:28:21,879 --> 00:28:26,170
+this format might be
+good or it might be bad.
+
+714
+00:28:26,170 --> 00:28:30,160
+I tip some naves to
+these access patterns,
+
+715
+00:28:30,160 --> 00:28:33,080
+and the naves I may give them
+
+716
+00:28:33,080 --> 00:28:37,169
+are transactions processing
+and Adalytics processing.
+
+717
+00:28:37,169 --> 00:28:39,459
+In this same space,
+transactions has
+
+718
+00:28:39,459 --> 00:28:40,979
+another meeting that
+we we'll be learning
+
+719
+00:28:40,979 --> 00:28:42,639
+about soon, so we
+hold off on that.
+
+720
+00:28:42,639 --> 00:28:44,839
+But for the context of that,
+transaction processing
+
+721
+00:28:44,839 --> 00:28:47,439
+means that I'm really kind
+of working with rows, right?
+
+722
+00:28:47,439 --> 00:28:48,739
+Maybe I'm adding rows or
+
+723
+00:28:48,739 --> 00:28:50,219
+reading rows or
+things like that.
+
+724
+00:28:50,219 --> 00:28:53,799
+A few rows at a time, doing
+lots of operations like that.
+
+725
+00:28:53,799 --> 00:28:57,039
+Analytics is
+analytics processing
+
+726
+00:28:57,039 --> 00:28:58,840
+is where I may be
+on this big table,
+
+727
+00:28:58,840 --> 00:29:00,779
+and I choose specific columns
+
+728
+00:29:00,779 --> 00:29:02,680
+that I do some
+analysis over them.
+
+729
+00:29:02,680 --> 00:29:04,339
+Maybe I want to get like
+
+730
+00:29:04,339 --> 00:29:06,179
+the average in a
+column, for example.
+
+731
+00:29:06,179 --> 00:29:07,580
+What we're doing
+analytics, we're often
+
+732
+00:29:07,580 --> 00:29:09,379
+look at whole columns of data.
+
+733
+00:29:09,379 --> 00:29:10,879
+So these are different
+access patterns
+
+734
+00:29:10,879 --> 00:29:12,374
+you're going to see.
+
+735
+00:29:12,374 --> 00:29:15,610
+And so depending on how
+we lay out our data,
+
+736
+00:29:15,610 --> 00:29:17,910
+it might be faster for
+either transactions
+
+737
+00:29:17,910 --> 00:29:19,990
+processing or
+analytics processing.
+
+738
+00:29:19,990 --> 00:29:22,150
+So for example, here,
+I have a seple table.
+
+739
+00:29:22,150 --> 00:29:23,469
+Columns one, two, three,
+
+740
+00:29:23,469 --> 00:29:24,929
+Columns one and
+two have numbers,
+
+741
+00:29:24,929 --> 00:29:27,989
+and Column three has
+some letters in it.
+
+742
+00:29:27,989 --> 00:29:29,870
+Even though it looks
+too dimensional,
+
+743
+00:29:29,870 --> 00:29:31,410
+when it throws in a file,
+
+744
+00:29:31,410 --> 00:29:33,049
+it's one dimensional, right?
+
+745
+00:29:33,049 --> 00:29:35,249
+I just have different
+offsets for different bytes.
+
+746
+00:29:35,249 --> 00:29:36,670
+And sometimes show
+how I can write
+
+747
+00:29:36,670 --> 00:29:39,110
+a row oriented file or
+a column Oriented file.
+
+748
+00:29:39,110 --> 00:29:41,489
+In the row oriented file,
+I have rows together.
+
+749
+00:29:41,489 --> 00:29:44,649
+So 15 A, 15 A goes together.
+
+750
+00:29:44,649 --> 00:29:46,030
+And the column Oriented file,
+
+751
+00:29:46,030 --> 00:29:48,109
+I took a whole column 1234,
+
+752
+00:29:48,109 --> 00:29:52,810
+and I put that consecutive
+within that file.
+
+753
+00:29:52,810 --> 00:29:54,989
+Alright, so let's say I have
+
+754
+00:29:54,989 --> 00:29:57,009
+a transactional access pattern.
+
+755
+00:29:57,009 --> 00:29:59,569
+That means I'm accessing
+whole rows at a time.
+
+756
+00:29:59,569 --> 00:30:02,089
+If I have a transactional
+access pattern,
+
+757
+00:30:02,089 --> 00:30:06,569
+it will be fast to use
+the row oriented file
+
+758
+00:30:06,569 --> 00:30:08,729
+because all the data in
+the row is going to be
+
+759
+00:30:08,729 --> 00:30:11,629
+right next to each other
+in the same block, right?
+
+760
+00:30:11,629 --> 00:30:14,529
+But if I have a transactional
+access pattern and I have
+
+761
+00:30:14,529 --> 00:30:17,070
+a column oriented file,
+that's actually terrible.
+
+762
+00:30:17,070 --> 00:30:18,670
+If I want to read the first row,
+
+763
+00:30:18,670 --> 00:30:20,329
+I have to pull a little bit
+
+764
+00:30:20,329 --> 00:30:21,850
+of data from different places.
+
+765
+00:30:21,850 --> 00:30:23,029
+I'm going to have
+to touch a lot of
+
+766
+00:30:23,029 --> 00:30:24,629
+different blocks to be
+
+767
+00:30:24,629 --> 00:30:28,325
+able to access that one row.
+
+768
+00:30:28,325 --> 00:30:31,000
+So to pause if people
+have any questions,
+
+769
+00:30:31,000 --> 00:30:34,279
+Is it making sense like
+why we care about,
+
+770
+00:30:34,279 --> 00:30:37,439
+what is the access pattern
+what file format we have?
+
+771
+00:30:37,439 --> 00:30:47,249
+Here. Related to something
+like that cache x. Yeah,
+
+772
+00:30:47,249 --> 00:30:49,490
+it could be you're say, well,
+
+773
+00:30:49,490 --> 00:30:53,510
+you're making a reference
+to C or maybe C plus plus.
+
+774
+00:30:53,510 --> 00:30:54,850
+And those language, we often
+
+775
+00:30:54,850 --> 00:30:56,729
+care more about memory layout.
+
+776
+00:30:56,729 --> 00:30:58,149
+But another language we
+
+777
+00:30:58,149 --> 00:30:59,569
+might care about
+memory layout too,
+
+778
+00:30:59,569 --> 00:31:01,909
+by Python to, I might
+care about memory layout.
+
+779
+00:31:01,909 --> 00:31:04,309
+And so absolutely, when
+we have cache lines,
+
+780
+00:31:04,309 --> 00:31:06,669
+that's a very similar problem.
+
+781
+00:31:06,669 --> 00:31:09,949
+We saw that, we would create
+these numpy matrices,
+
+782
+00:31:09,949 --> 00:31:12,229
+and we saw that there
+was one way to get
+
+783
+00:31:12,229 --> 00:31:14,089
+basically a row oriented matrix
+
+784
+00:31:14,089 --> 00:31:15,469
+or column oriented matrix.
+
+785
+00:31:15,469 --> 00:31:16,830
+And then depending on if I'm
+
+786
+00:31:16,830 --> 00:31:18,429
+adding all the
+numbers in a column,
+
+787
+00:31:18,429 --> 00:31:19,849
+it might be faster or slower.
+
+788
+00:31:19,849 --> 00:31:21,229
+So absolutely, it's
+just like that.
+
+789
+00:31:21,229 --> 00:31:22,850
+It's even more
+important now though,
+
+790
+00:31:22,850 --> 00:31:24,889
+because when I'm talking
+about cah lines,
+
+791
+00:31:24,889 --> 00:31:27,369
+We're talking about
+like 64 bytes.
+
+792
+00:31:27,369 --> 00:31:30,349
+You know, I I read 64 bytes
+
+793
+00:31:30,349 --> 00:31:34,069
+extra from something that
+fast like Rb, who cares?
+
+794
+00:31:34,069 --> 00:31:36,870
+Here, if I want to access
+a small piece of data,
+
+795
+00:31:36,870 --> 00:31:39,189
+I have to access like 512 bytes
+
+796
+00:31:39,189 --> 00:31:41,269
+for something that's slow.
+That's a big deal, right?
+
+797
+00:31:41,269 --> 00:31:43,630
+So it is like being cash aware.
+
+798
+00:31:43,630 --> 00:31:46,389
+Same principles, but now
+it's much higher stakes.
+
+799
+00:31:46,389 --> 00:31:47,830
+Absolutely. Great analogy.
+
+800
+00:31:47,830 --> 00:31:49,369
+Yeah, O questions people have we
+
+801
+00:31:49,369 --> 00:31:52,590
+comparisons or points.
+Yeah, right here.
+
+802
+00:31:56,230 --> 00:32:05,970
+Buts. X, that's a
+really best point.
+
+803
+00:32:05,970 --> 00:32:08,559
+I guess you're saying,
+like, you know,
+
+804
+00:32:08,559 --> 00:32:10,359
+I'm giving an example of, like,
+
+805
+00:32:10,359 --> 00:32:11,920
+small pieces of data,
+but you're saying,
+
+806
+00:32:11,920 --> 00:32:13,400
+well, I mean, who knows?
+
+807
+00:32:13,400 --> 00:32:15,560
+Maybe I could even like an
+image or something in a cell.
+
+808
+00:32:15,560 --> 00:32:16,980
+I can have a table of images.
+
+809
+00:32:16,980 --> 00:32:18,639
+And in that case, like
+a single cell would
+
+810
+00:32:18,639 --> 00:32:20,779
+spat across many
+different blocks, right?
+
+811
+00:32:20,779 --> 00:32:22,919
+And in that case,
+kind of I have to do
+
+812
+00:32:22,919 --> 00:32:25,500
+the same axises in either case.
+
+813
+00:32:25,500 --> 00:32:27,179
+And I agree with that, right?
+
+814
+00:32:27,179 --> 00:32:28,879
+I think that if you
+
+815
+00:32:28,879 --> 00:32:30,859
+have single values that
+
+816
+00:32:30,859 --> 00:32:32,559
+are very large and there
+are a bunch of blocks,
+
+817
+00:32:32,559 --> 00:32:35,060
+then then it starts to
+become less important,
+
+818
+00:32:35,060 --> 00:32:36,859
+which format you have, right?
+
+819
+00:32:36,859 --> 00:32:38,459
+But we often have a mix, right?
+
+820
+00:32:38,459 --> 00:32:40,159
+We might have some
+very small values like
+
+821
+00:32:40,159 --> 00:32:42,379
+editors or big
+values like images.
+
+822
+00:32:42,379 --> 00:32:44,120
+I agree though, right,
+if it's very large,
+
+823
+00:32:44,120 --> 00:32:47,820
+that this becomes not very
+important. Excellent point.
+
+824
+00:32:47,820 --> 00:32:50,299
+Yeah, there are other
+points or ideas
+
+825
+00:32:50,299 --> 00:32:53,959
+people have. All right.
+
+826
+00:32:53,959 --> 00:32:57,079
+Cool. Let's do the opposite,
+right? So this right?
+
+827
+00:32:57,079 --> 00:32:58,980
+I have the two file formats,
+
+828
+00:32:58,980 --> 00:33:00,259
+the two files aren't changing.
+
+829
+00:33:00,259 --> 00:33:01,740
+All I'm changing
+now is I'm doing
+
+830
+00:33:01,740 --> 00:33:03,259
+a different type
+of access to it.
+
+831
+00:33:03,259 --> 00:33:05,359
+So now I have an
+analytics access pattern.
+
+832
+00:33:05,359 --> 00:33:07,980
+I'm trying to add up all
+the numbers at a column.
+
+833
+00:33:07,980 --> 00:33:09,780
+In that case, if I'm
+doing analytics,
+
+834
+00:33:09,780 --> 00:33:11,539
+I would like to have a
+column oriented file because
+
+835
+00:33:11,539 --> 00:33:13,839
+all those numbers
+are consecutive and,
+
+836
+00:33:13,839 --> 00:33:16,259
+you know, one block or
+maybe a few blocks.
+
+837
+00:33:16,259 --> 00:33:19,420
+If I'm trying to do analytics
+at a row oriented file,
+
+838
+00:33:19,420 --> 00:33:20,979
+that's actually pretty
+terrible, right?
+
+839
+00:33:20,979 --> 00:33:24,479
+B I basically to
+touch all the blocks.
+
+840
+00:33:24,479 --> 00:33:27,020
+CSVs are oriented?
+
+841
+00:33:27,020 --> 00:33:30,379
+Park files are column
+oriented, right?
+
+842
+00:33:30,379 --> 00:33:32,519
+So people use CSVs all the
+
+843
+00:33:32,519 --> 00:33:35,099
+time for analytics, and
+that's terrible, right?
+
+844
+00:33:35,099 --> 00:33:36,959
+It's a terrible
+format for analytics.
+
+845
+00:33:36,959 --> 00:33:39,899
+We want column oriented
+data for analytics.
+
+846
+00:33:39,899 --> 00:33:41,739
+Park files give you that.
+
+847
+00:33:41,739 --> 00:33:43,119
+That's already a
+good reason to use
+
+848
+00:33:43,119 --> 00:33:44,819
+Park instead of CSV files
+
+849
+00:33:44,819 --> 00:33:49,179
+if you're analyzing a data
+set of any significant size.
+
+850
+00:33:50,140 --> 00:33:52,820
+Okay. What are some
+other differences?
+
+851
+00:33:52,820 --> 00:33:55,040
+The differences? How
+do we encode suf?
+
+852
+00:33:55,040 --> 00:33:56,320
+Is it just plain text?
+
+853
+00:33:56,320 --> 00:33:58,699
+Are we using kind of bits
+and bytes a little bit
+
+854
+00:33:58,699 --> 00:34:01,500
+more intelligently in some
+kind of binary formats?
+
+855
+00:34:01,500 --> 00:34:05,039
+So let's have an example
+of a number up here here.
+
+856
+00:34:05,039 --> 00:34:07,139
+I have a pretty large number.
+
+857
+00:34:07,139 --> 00:34:10,119
+I could store it as a string.
+
+858
+00:34:10,119 --> 00:34:13,739
+In CSV files, everything is
+represented as a string,
+
+859
+00:34:13,739 --> 00:34:15,439
+or I could store
+it as a park type.
+
+860
+00:34:15,439 --> 00:34:16,999
+But if it's a park type,
+I'd have to choose
+
+861
+00:34:16,999 --> 00:34:19,360
+something like a 64 at 32.
+
+862
+00:34:19,360 --> 00:34:22,119
+In this case, how long is
+
+863
+00:34:22,119 --> 00:34:24,580
+a string or how many digits
+is it it's ten characters?
+
+864
+00:34:24,580 --> 00:34:27,460
+It would take ten
+bytes to represent
+
+865
+00:34:27,460 --> 00:34:30,559
+that number at a CSV
+file at a park file,
+
+866
+00:34:30,559 --> 00:34:32,679
+it would be eight
+bytes if it was at
+
+867
+00:34:32,679 --> 00:34:35,500
+64 and four bytes
+if it was at 32.
+
+868
+00:34:35,500 --> 00:34:37,740
+Now, you could make the case
+
+869
+00:34:37,740 --> 00:34:39,519
+that some numbers might
+
+870
+00:34:39,519 --> 00:34:41,319
+be more efficient
+as strings, right?
+
+871
+00:34:41,319 --> 00:34:43,869
+So if I had a number
+like 12, you know,
+
+872
+00:34:43,869 --> 00:34:45,729
+the parte types would
+be the same size,
+
+873
+00:34:45,729 --> 00:34:47,470
+the string would
+only be two bytes.
+
+874
+00:34:47,470 --> 00:34:49,029
+But in that case,
+
+875
+00:34:49,029 --> 00:34:50,690
+we still want to have
+a binary format.
+
+876
+00:34:50,690 --> 00:34:52,309
+There's a binary
+format that's better,
+
+877
+00:34:52,309 --> 00:34:54,870
+and that would be something
+like protocol buffers.
+
+878
+00:34:54,870 --> 00:34:57,070
+Protocol buffers have this
+variable length in toting.
+
+879
+00:34:57,070 --> 00:34:58,910
+It's I can take a number
+like 12 and actually
+
+880
+00:34:58,910 --> 00:35:01,089
+get it down to just one byte.
+
+881
+00:35:01,089 --> 00:35:02,649
+Right? So what I want
+to show here is that
+
+882
+00:35:02,649 --> 00:35:04,730
+when we have things
+that are not text,
+
+883
+00:35:04,730 --> 00:35:07,999
+text based formats are
+actually terrible, right?
+
+884
+00:35:07,999 --> 00:35:12,000
+Binary formats are much better
+for representing numbers.
+
+885
+00:35:12,000 --> 00:35:14,979
+That'll be much faster
+and more compact, right?
+
+886
+00:35:14,979 --> 00:35:17,500
+Maybe, maybe we use Park
+as our binary format.
+
+887
+00:35:17,500 --> 00:35:20,120
+Maybe we use protocol buffers
+as our binary format.
+
+888
+00:35:20,120 --> 00:35:22,100
+But Bideary is generally
+more efficient.
+
+889
+00:35:22,100 --> 00:35:23,279
+It's a little harder
+to use, right?
+
+890
+00:35:23,279 --> 00:35:24,479
+Because if I have a CSV file,
+
+891
+00:35:24,479 --> 00:35:27,079
+I can just open a text
+editor understand it.
+
+892
+00:35:27,079 --> 00:35:29,319
+If I have a binary file,
+it's like, maybe, like,
+
+893
+00:35:29,319 --> 00:35:32,739
+protocol buffers or it's
+Park files, you know,
+
+894
+00:35:32,739 --> 00:35:35,199
+I have to have some extra
+tool to help me read it.
+
+895
+00:35:35,199 --> 00:35:37,820
+But it's faster.
+
+896
+00:35:38,160 --> 00:35:41,839
+Alright, let's talk
+about compression.
+
+897
+00:35:41,839 --> 00:35:44,560
+CSV files have no compression.
+
+898
+00:35:44,560 --> 00:35:46,060
+Part files do have compression.
+
+899
+00:35:46,060 --> 00:35:47,680
+They different compression
+options the default.
+
+900
+00:35:47,680 --> 00:35:49,380
+One is something called Snappy.
+
+901
+00:35:49,380 --> 00:35:53,559
+Let me just explain the
+idea of compression, right?
+
+902
+00:35:53,559 --> 00:35:56,119
+A lot of things people
+do or say or or
+
+903
+00:35:56,119 --> 00:35:59,499
+put in files has
+repetition to it.
+
+904
+00:35:59,499 --> 00:36:01,800
+And if you want to
+be more concise,
+
+905
+00:36:01,800 --> 00:36:04,850
+you should avoid
+repeating yourself.
+
+906
+00:36:04,850 --> 00:36:08,799
+Okay. And so if I
+have a dataset that's
+
+907
+00:36:08,799 --> 00:36:13,279
+very repetitive and find a
+way to avoid that repetition,
+
+908
+00:36:13,279 --> 00:36:14,839
+then I can compress it a lot.
+
+909
+00:36:14,839 --> 00:36:16,959
+I could shrink it down a lot.
+
+910
+00:36:16,959 --> 00:36:18,880
+So let me give you an
+example of a dataset.
+
+911
+00:36:18,880 --> 00:36:20,479
+So let's have a dataset
+
+912
+00:36:20,479 --> 00:36:21,819
+where let's say it's
+
+913
+00:36:21,819 --> 00:36:23,399
+like all the buildings
+on campus, right?
+
+914
+00:36:23,399 --> 00:36:25,140
+And at every building,
+
+915
+00:36:25,140 --> 00:36:26,989
+there's a street address for it.
+
+916
+00:36:26,989 --> 00:36:29,320
+Of course, that'll be a
+very repetitive dataset
+
+917
+00:36:29,320 --> 00:36:31,679
+because I mean, for one,
+
+918
+00:36:31,679 --> 00:36:34,220
+there's going to be
+this substring often,
+
+919
+00:36:34,220 --> 00:36:36,380
+like Street in Madison Wiscos,
+
+920
+00:36:36,380 --> 00:36:37,659
+that'll appear very often.
+
+921
+00:36:37,659 --> 00:36:40,179
+Maybe I have 12 Ted
+West Add Street,
+
+922
+00:36:40,179 --> 00:36:43,039
+Madison Wisconsin, 12 oh
+
+923
+00:36:43,039 --> 00:36:46,420
+two West Johnson Street,
+Madison, Wisconsin.
+
+924
+00:36:46,420 --> 00:36:48,939
+I might have a lot
+of repetition there.
+
+925
+00:36:48,939 --> 00:36:50,719
+So the idea of
+compression is that,
+
+926
+00:36:50,719 --> 00:36:53,459
+as we're going through here,
+rather than repeating it,
+
+927
+00:36:53,459 --> 00:36:54,739
+if we kind of notice like, Oh,
+
+928
+00:36:54,739 --> 00:36:57,050
+there's some texts
+that appeared earlier,
+
+929
+00:36:57,050 --> 00:36:58,959
+We could have a
+pointer back to it.
+
+930
+00:36:58,959 --> 00:37:02,659
+We could say, it's
+that text, refer back.
+
+931
+00:37:02,659 --> 00:37:06,379
+It's the same thing that
+I saw earlier, right?
+
+932
+00:37:06,379 --> 00:37:09,799
+And so To compress
+a file like this,
+
+933
+00:37:09,799 --> 00:37:11,139
+you have to have algorithms that
+
+934
+00:37:11,139 --> 00:37:12,400
+could search for repetition,
+
+935
+00:37:12,400 --> 00:37:15,420
+find it, and how hard they
+search for repetition.
+
+936
+00:37:15,420 --> 00:37:17,719
+If I have, like a gigabyte file,
+
+937
+00:37:17,719 --> 00:37:20,079
+how far back to
+earlier of the file?
+
+938
+00:37:20,079 --> 00:37:23,819
+Do I look to find repetition?
+That's a challenging thing.
+
+939
+00:37:23,819 --> 00:37:24,820
+Algorithms,
+
+940
+00:37:24,820 --> 00:37:26,719
+compression algorithms have
+different approaches, right?
+
+941
+00:37:26,719 --> 00:37:29,039
+So Snappy is not
+
+942
+00:37:29,039 --> 00:37:31,620
+trying to have the best
+possible compression.
+
+943
+00:37:31,620 --> 00:37:33,480
+I try to strike it down
+the most possible.
+
+944
+00:37:33,480 --> 00:37:35,840
+It is trying to process
+the data very quickly.
+
+945
+00:37:35,840 --> 00:37:37,459
+You'll have to decide
+in different cases
+
+946
+00:37:37,459 --> 00:37:38,909
+what typ of
+compression you want.
+
+947
+00:37:38,909 --> 00:37:42,180
+If you're trying to write a
+bunch of data frequently,
+
+948
+00:37:42,180 --> 00:37:43,679
+then you might be
+able to do that fast.
+
+949
+00:37:43,679 --> 00:37:45,219
+If you kind of just
+write your data what,
+
+950
+00:37:45,219 --> 00:37:47,779
+and then you have it as a
+backup for a year later,
+
+951
+00:37:47,779 --> 00:37:49,239
+you probably are
+willing to spend
+
+952
+00:37:49,239 --> 00:37:52,919
+a little more time to
+get a smaller file.
+
+953
+00:37:53,060 --> 00:37:56,800
+Snappy is optimized
+for that first case.
+
+954
+00:37:56,800 --> 00:37:59,760
+There are some disadvantages
+of compression.
+
+955
+00:37:59,760 --> 00:38:01,239
+Compression is if I just
+
+956
+00:38:01,239 --> 00:38:02,939
+have like one big
+file, I write it what?
+
+957
+00:38:02,939 --> 00:38:04,599
+If I have a file, I'm making
+
+958
+00:38:04,599 --> 00:38:07,040
+changes to a fit it
+often is a problem.
+
+959
+00:38:07,040 --> 00:38:09,219
+So, for example, if I
+wanted to come through here
+
+960
+00:38:09,219 --> 00:38:11,720
+and I wanted to
+edit this address,
+
+961
+00:38:11,720 --> 00:38:14,879
+I can't just edit the first
+address in isolation,
+
+962
+00:38:14,879 --> 00:38:16,619
+because if I change
+it here, that I would
+
+963
+00:38:16,619 --> 00:38:18,199
+accidentally change
+something that's
+
+964
+00:38:18,199 --> 00:38:19,699
+not supposed to be changed.
+
+965
+00:38:19,699 --> 00:38:21,420
+When we have compression,
+one of the downsides
+
+966
+00:38:21,420 --> 00:38:23,279
+is is that if I want to
+make a small change,
+
+967
+00:38:23,279 --> 00:38:26,299
+I actually have to end up
+rewriting a lot of data, right?
+
+968
+00:38:26,299 --> 00:38:27,919
+So compression is
+t kind great for
+
+969
+00:38:27,919 --> 00:38:29,119
+big files that you write
+
+970
+00:38:29,119 --> 00:38:31,664
+what so that they
+don't change again.
+
+971
+00:38:31,664 --> 00:38:35,150
+Do people have any questions
+about compression?
+
+972
+00:38:39,770 --> 00:38:44,009
+Alright. Cool. I want to
+
+973
+00:38:44,009 --> 00:38:47,189
+combine compression
+with the idea
+
+974
+00:38:47,189 --> 00:38:49,510
+of column versus
+row oriented data.
+
+975
+00:38:49,510 --> 00:38:53,110
+So compression
+algorithms like Snappy,
+
+976
+00:38:53,110 --> 00:38:54,210
+they often work in blocks.
+
+977
+00:38:54,210 --> 00:38:57,890
+So by default, Snappy looks
+at 32 kilobyte blocks.
+
+978
+00:38:57,890 --> 00:38:59,610
+That means if there
+was some repetition
+
+979
+00:38:59,610 --> 00:39:01,029
+that was, like, you know,
+
+980
+00:39:01,029 --> 00:39:02,969
+the same string
+appeared, let's say,
+
+981
+00:39:02,969 --> 00:39:05,449
+like 100 kilobytes ago,
+I won't realize it.
+
+982
+00:39:05,449 --> 00:39:09,689
+I'll only look for repetition
+of the last 32 kilobytes.
+
+983
+00:39:09,689 --> 00:39:13,110
+And so I may imagine here
+that I have my data.
+
+984
+00:39:13,110 --> 00:39:15,929
+I could have a row oriented
+file or column oriented file,
+
+985
+00:39:15,929 --> 00:39:18,369
+and then I want to
+compress them both.
+
+986
+00:39:18,369 --> 00:39:22,190
+I wonder which one is dt
+to be more compressible.
+
+987
+00:39:22,190 --> 00:39:23,869
+Which one can we
+strike down more?
+
+988
+00:39:23,869 --> 00:39:25,949
+Does anybody want to make
+an argument that one or
+
+989
+00:39:25,949 --> 00:39:29,110
+the other is better
+for compression?
+
+990
+00:39:29,110 --> 00:39:32,449
+Yeah, right here. Of ent
+
+991
+00:39:32,449 --> 00:39:36,670
+you'll see similar
+values. Excellent.
+
+992
+00:39:36,670 --> 00:39:38,449
+Cool oriented is probably
+better because we have
+
+993
+00:39:38,449 --> 00:39:40,470
+similar values and
+close proximity.
+
+994
+00:39:40,470 --> 00:39:42,230
+If I look at all the
+values in the column,
+
+995
+00:39:42,230 --> 00:39:44,429
+those values probably
+more similar to each
+
+996
+00:39:44,429 --> 00:39:46,930
+other than values and
+separate columns.
+
+997
+00:39:46,930 --> 00:39:48,529
+Like you can imagine some
+kind of weird taste,
+
+998
+00:39:48,529 --> 00:39:50,070
+but that's generally
+what we would expect.
+
+999
+00:39:50,070 --> 00:39:51,410
+So for here example,
+
+1000
+00:39:51,410 --> 00:39:52,649
+when we have all the data in
+
+1001
+00:39:52,649 --> 00:39:55,009
+that last column of
+strays, we have AB AV.
+
+1002
+00:39:55,009 --> 00:39:56,989
+I can find some
+repetition there.
+
+1003
+00:39:56,989 --> 00:40:00,230
+But if I have that spread out
+in a row oriented format,
+
+1004
+00:40:00,230 --> 00:40:02,349
+then those repeated
+values are too far apart,
+
+1005
+00:40:02,349 --> 00:40:04,289
+and we might not actually see it
+
+1006
+00:40:04,289 --> 00:40:07,550
+because we have this
+block wise compression.
+
+1007
+00:40:08,910 --> 00:40:13,370
+All right. The last thing
+that might distinguish
+
+1008
+00:40:13,370 --> 00:40:17,050
+different file types is whether
+or not we have a schema.
+
+1009
+00:40:17,050 --> 00:40:20,369
+Askema tells you explicitly,
+
+1010
+00:40:20,369 --> 00:40:21,590
+these are my columns,
+
+1011
+00:40:21,590 --> 00:40:23,730
+and this is the type
+of data in my column.
+
+1012
+00:40:23,730 --> 00:40:27,169
+So aschema a fatsy word
+for a simple idea.
+
+1013
+00:40:27,169 --> 00:40:29,185
+What are the types
+of my columns?
+
+1014
+00:40:29,185 --> 00:40:33,859
+Okay. And so in
+some files, right?
+
+1015
+00:40:33,859 --> 00:40:36,299
+Like CSV files, that's
+inferred, right?
+
+1016
+00:40:36,299 --> 00:40:38,739
+In a CSV, everything
+is a string.
+
+1017
+00:40:38,739 --> 00:40:41,059
+So you kind of have to
+guess what the types are.
+
+1018
+00:40:41,059 --> 00:40:42,799
+And so there's a
+couple of ways, right?
+
+1019
+00:40:42,799 --> 00:40:44,600
+What is that when
+I read the CSV,
+
+1020
+00:40:44,600 --> 00:40:46,999
+I can actually
+manually say, right?
+
+1021
+00:40:46,999 --> 00:40:49,419
+I could write this big
+dictionary by head and say,
+
+1022
+00:40:49,419 --> 00:40:52,640
+like, column, what is a
+string, column to is a ze?
+
+1023
+00:40:52,640 --> 00:40:54,159
+That's a little bit
+annoying, right?
+
+1024
+00:40:54,159 --> 00:40:55,399
+I could do that.
+That would make it
+
+1025
+00:40:55,399 --> 00:40:57,124
+faster for sure to read it.
+
+1026
+00:40:57,124 --> 00:40:59,929
+Or I could just say
+data type equals no,
+
+1027
+00:40:59,929 --> 00:41:02,009
+then it will automatically
+infer. That's kind of slow.
+
+1028
+00:41:02,009 --> 00:41:03,349
+Sometimes that ess rug,
+
+1029
+00:41:03,349 --> 00:41:04,749
+actually, so that's not great.
+
+1030
+00:41:04,749 --> 00:41:07,849
+Park files explicitly
+say what the Schema is,
+
+1031
+00:41:07,849 --> 00:41:10,009
+and that makes it very
+fast to load, right?
+
+1032
+00:41:10,009 --> 00:41:11,909
+When I kind of first
+open a Park file,
+
+1033
+00:41:11,909 --> 00:41:13,810
+it doesn't have to
+read all the values
+
+1034
+00:41:13,810 --> 00:41:15,349
+of the Jets, what they are.
+
+1035
+00:41:15,349 --> 00:41:16,949
+It knows immediately
+what they are.
+
+1036
+00:41:16,949 --> 00:41:19,829
+So' will be much faster
+to read a Park file.
+
+1037
+00:41:19,829 --> 00:41:22,829
+Alright, so hopefully I've
+sold you on park files.
+
+1038
+00:41:22,829 --> 00:41:26,090
+Do you have any questions
+about different file formats,
+
+1039
+00:41:26,090 --> 00:41:27,609
+or these different
+characteristics
+
+1040
+00:41:27,609 --> 00:41:29,589
+that differ between them.
+
+1041
+00:41:34,390 --> 00:41:37,470
+All right, so let's head over
+here. Let's do some demos.
+
+1042
+00:41:37,470 --> 00:41:40,130
+Let's get our hands dirty
+with some park files.
+
+1043
+00:41:40,130 --> 00:41:41,809
+And fortunately, I still have
+
+1044
+00:41:41,809 --> 00:41:44,090
+this notebook up and
+running from before.
+
+1045
+00:41:44,090 --> 00:41:51,169
+And I'll just use that as
+a place to do my work.
+
+1046
+00:41:51,169 --> 00:41:53,830
+Okay. And so for
+my lecture sips,
+
+1047
+00:41:53,830 --> 00:41:55,149
+I actually have a
+data set over here,
+
+1048
+00:41:55,149 --> 00:41:57,329
+which is a Zip CSV file.
+
+1049
+00:41:57,329 --> 00:41:59,650
+I'll just copy both
+of these lines.
+
+1050
+00:41:59,650 --> 00:42:03,909
+And I will just download
+that as a first step.
+
+1051
+00:42:04,850 --> 00:42:08,189
+Remember, if I put
+an exclamation mark
+
+1052
+00:42:08,189 --> 00:42:10,029
+in front of a light,
+
+1053
+00:42:10,029 --> 00:42:12,870
+it does a shell command
+instead of a Python command.
+
+1054
+00:42:12,870 --> 00:42:15,129
+I'll zip it.
+
+1055
+00:42:15,129 --> 00:42:17,250
+Maybe I'll just
+try it this cause
+
+1056
+00:42:17,250 --> 00:42:18,430
+I if I rerun my notebook,
+
+1057
+00:42:18,430 --> 00:42:20,369
+I don't want it to
+redo that each time.
+
+1058
+00:42:20,369 --> 00:42:22,189
+I already have the data,
+and then I could say
+
+1059
+00:42:22,189 --> 00:42:25,329
+L LAH start zip.
+
+1060
+00:42:25,650 --> 00:42:30,849
+Actually, maybe I'll
+just do this star.
+
+1061
+00:42:32,430 --> 00:42:36,249
+All right. So I downloaded
+this compressed file,
+
+1062
+00:42:36,249 --> 00:42:37,629
+which was 21 gigabytes.
+
+1063
+00:42:37,629 --> 00:42:38,890
+I extracted it to a CSV,
+
+1064
+00:42:38,890 --> 00:42:41,089
+and now it's 167 gigabytes.
+
+1065
+00:42:41,089 --> 00:42:44,089
+This is clearly highly
+compressible data, right?
+
+1066
+00:42:44,089 --> 00:42:45,869
+Because it struck down so much.
+
+1067
+00:42:45,869 --> 00:42:47,429
+And then I want to find
+
+1068
+00:42:47,429 --> 00:42:49,529
+different ways to use
+this data, right?
+
+1069
+00:42:49,529 --> 00:42:51,709
+And I may use Pi
+arrow like before.
+
+1070
+00:42:51,709 --> 00:42:56,019
+I may import Pi arrow
+as PA. Have you
+
+1071
+00:42:56,019 --> 00:42:57,959
+ever we saw Pyro before
+
+1072
+00:42:57,959 --> 00:43:00,679
+and with CSPs, in
+particular, right?
+
+1073
+00:43:00,679 --> 00:43:04,599
+Before what we saw is that
+Padns is really slow at
+
+1074
+00:43:04,599 --> 00:43:06,859
+read CSV files because
+it doesn't have
+
+1075
+00:43:06,859 --> 00:43:10,459
+this kind of column
+formatted analysis.
+
+1076
+00:43:10,459 --> 00:43:13,740
+We saw that read CSV and
+Pierro is much faster,
+
+1077
+00:43:13,740 --> 00:43:15,219
+but I I use that as
+a baseline, right?
+
+1078
+00:43:15,219 --> 00:43:17,119
+So kind of the fast
+case we saw before
+
+1079
+00:43:17,119 --> 00:43:19,480
+Pro with CSV is the baseline,
+
+1080
+00:43:19,480 --> 00:43:21,340
+Obviously we can get even faster
+
+1081
+00:43:21,340 --> 00:43:23,700
+than that by using P K files.
+
+1082
+00:43:23,700 --> 00:43:26,559
+Okay, so what I do is I report
+some other stuff as well.
+
+1083
+00:43:26,559 --> 00:43:29,200
+I have to port Pierrot CSV,
+
+1084
+00:43:29,200 --> 00:43:32,760
+and I port Pierrot pK.
+
+1085
+00:43:33,040 --> 00:43:35,639
+Alright, cool. And so
+
+1086
+00:43:35,639 --> 00:43:37,679
+what I'll do first
+is they'll say table
+
+1087
+00:43:37,679 --> 00:43:45,400
+equals table equals
+Pi arrows read CSV,
+
+1088
+00:43:45,400 --> 00:43:48,019
+then I'll just read
+this thing, right?
+
+1089
+00:43:48,019 --> 00:43:52,179
+Alright. So I will do that.
+That's going to take a while.
+
+1090
+00:43:52,179 --> 00:43:53,499
+I just want to type it. One of
+
+1091
+00:43:53,499 --> 00:43:54,659
+the ways I could type it is with
+
+1092
+00:43:54,659 --> 00:43:57,879
+these basically magic
+adaptations up here.
+
+1093
+00:43:57,879 --> 00:44:00,819
+And so I will say I want
+to type that thing.
+
+1094
+00:44:00,819 --> 00:44:03,399
+I'm to type it.
+
+1095
+00:44:03,680 --> 00:44:06,159
+Alright, that took a
+couple seconds, right?
+
+1096
+00:44:06,159 --> 00:44:08,419
+It would have taken a lot
+longer if I had used pad this.
+
+1097
+00:44:08,419 --> 00:44:10,479
+But still, this is
+like a worst case.
+
+1098
+00:44:10,479 --> 00:44:12,899
+We're going to try
+to beat this, right?
+
+1099
+00:44:12,899 --> 00:44:14,999
+So what I want to do now is I
+
+1100
+00:44:14,999 --> 00:44:16,539
+want to see what happens if I
+
+1101
+00:44:16,539 --> 00:44:19,839
+be it into a Park file, right?
+
+1102
+00:44:19,839 --> 00:44:21,799
+So what I may do
+now is I may say
+
+1103
+00:44:21,799 --> 00:44:26,999
+Pi arrow park right table.
+
+1104
+00:44:27,460 --> 00:44:29,959
+And I want to write it out
+
+1105
+00:44:29,959 --> 00:44:32,539
+to maybe I'll just frill,
+like the same thing,
+
+1106
+00:44:32,539 --> 00:44:38,079
+but dot park dot
+park K. All right.
+
+1107
+00:44:38,079 --> 00:44:39,059
+And then I want to write out
+
+1108
+00:44:39,059 --> 00:44:40,759
+this table specifically, right?
+
+1109
+00:44:40,759 --> 00:44:42,619
+So literally, it's like, one
+of the first things I'll do.
+
+1110
+00:44:42,619 --> 00:44:45,099
+If somebody gives me
+a big nasty CSV file.
+
+1111
+00:44:45,099 --> 00:44:46,419
+I'll write a couple
+of lines like this,
+
+1112
+00:44:46,419 --> 00:44:48,079
+and I have park files, and I'll
+
+1113
+00:44:48,079 --> 00:44:49,619
+never touch the CSV again.
+
+1114
+00:44:49,619 --> 00:44:51,719
+I'll only use that Park file.
+
+1115
+00:44:51,719 --> 00:44:54,159
+And so what I may do is I
+may try to read that it,
+
+1116
+00:44:54,159 --> 00:44:57,599
+I may say Piero dot
+p dot red table.
+
+1117
+00:44:57,599 --> 00:44:59,699
+And I pass that sad.
+
+1118
+00:44:59,699 --> 00:45:03,240
+And, I might run out
+of memory actually.
+
+1119
+00:45:03,240 --> 00:45:04,579
+I don't think I
+have space to have
+
+1120
+00:45:04,579 --> 00:45:06,259
+two tables of memory
+at the same time.
+
+1121
+00:45:06,259 --> 00:45:08,619
+And so I'm just going
+to say t equals nod.
+
+1122
+00:45:08,619 --> 00:45:10,559
+That will free up
+some memory for me.
+
+1123
+00:45:10,559 --> 00:45:12,179
+This will only
+reference the table,
+
+1124
+00:45:12,179 --> 00:45:16,340
+and this should have enough
+memory to actually rod oops,
+
+1125
+00:45:16,340 --> 00:45:18,559
+and I will run it like that.
+
+1126
+00:45:18,559 --> 00:45:20,430
+And that should be faster.
+
+1127
+00:45:20,430 --> 00:45:22,159
+And indeed it is, right?
+
+1128
+00:45:22,159 --> 00:45:24,379
+Atally normally, I see kind
+of a bigger difference there.
+
+1129
+00:45:24,379 --> 00:45:25,880
+But anyway, it's still faster.
+
+1130
+00:45:25,880 --> 00:45:27,420
+So it's 2.7 seconds.
+
+1131
+00:45:27,420 --> 00:45:28,740
+This is 2 seconds.
+
+1132
+00:45:28,740 --> 00:45:30,999
+The other interesting thing
+here is by doing the timing.
+
+1133
+00:45:30,999 --> 00:45:32,879
+The wall clock time is like
+the time we're used to.
+
+1134
+00:45:32,879 --> 00:45:35,160
+I look a to watch and
+see what's happening.
+
+1135
+00:45:35,160 --> 00:45:37,099
+But I see they have
+some other statistics
+
+1136
+00:45:37,099 --> 00:45:39,099
+up here as well.
+
+1137
+00:45:39,099 --> 00:45:41,179
+And so one of the things is
+
+1138
+00:45:41,179 --> 00:45:43,649
+total time versus wall
+clock time, right.
+
+1139
+00:45:43,649 --> 00:45:46,129
+So wall clock time is how
+much time I saw passing by.
+
+1140
+00:45:46,129 --> 00:45:48,709
+Total time is actually CPU time.
+
+1141
+00:45:48,709 --> 00:45:50,689
+And so I see that not
+
+1142
+00:45:50,689 --> 00:45:54,470
+only was it taking this
+amount of time to do the CSV,
+
+1143
+00:45:54,470 --> 00:45:56,069
+but it was basically using
+
+1144
+00:45:56,069 --> 00:45:58,909
+two CPU cores during
+that whole time, right?
+
+1145
+00:45:58,909 --> 00:46:00,529
+So it was using a
+lot of resources.
+
+1146
+00:46:00,529 --> 00:46:03,190
+It will break this down into
+
+1147
+00:46:03,190 --> 00:46:05,049
+user user time means like
+
+1148
+00:46:05,049 --> 00:46:07,089
+the time running
+directly in my program.
+
+1149
+00:46:07,089 --> 00:46:08,409
+And system time means that
+
+1150
+00:46:08,409 --> 00:46:10,669
+the operating system is
+working on my behalf, right?
+
+1151
+00:46:10,669 --> 00:46:12,529
+But the point here is
+that it had to use
+
+1152
+00:46:12,529 --> 00:46:15,929
+two CPUs basically constantly
+for this whole time.
+
+1153
+00:46:15,929 --> 00:46:16,749
+This one down here,
+
+1154
+00:46:16,749 --> 00:46:18,589
+I guess it was able
+to do it with, like,
+
+1155
+00:46:18,589 --> 00:46:21,039
+you know, Mostly one
+
+1156
+00:46:21,039 --> 00:46:23,779
+CPU utilized for a
+shorter time, right?
+
+1157
+00:46:23,779 --> 00:46:25,499
+So it was less time and less
+
+1158
+00:46:25,499 --> 00:46:29,639
+re compute resources
+used during that time.
+
+1159
+00:46:29,639 --> 00:46:35,799
+Alright. Cool. So that's
+already one benefit there.
+
+1160
+00:46:35,799 --> 00:46:38,619
+I try to show
+different as, right?
+
+1161
+00:46:38,619 --> 00:46:41,879
+I want to show I want to
+
+1162
+00:46:41,879 --> 00:46:45,699
+show the coding for
+both of these, right?
+
+1163
+00:46:45,699 --> 00:46:47,299
+It's the way I'll do
+that, I'll just open them
+
+1164
+00:46:47,299 --> 00:46:49,319
+up directly as a file, right?
+
+1165
+00:46:49,319 --> 00:46:53,579
+I'm open up this one right
+here. I'll open that
+
+1166
+00:46:54,090 --> 00:46:57,789
+As F and I may actually
+read it as a binary file,
+
+1167
+00:46:57,789 --> 00:47:00,350
+even though it contains texts,
+
+1168
+00:47:00,350 --> 00:47:03,330
+and I may print off f read 100.
+
+1169
+00:47:03,330 --> 00:47:04,709
+I want to see the
+first hundred bytes.
+
+1170
+00:47:04,709 --> 00:47:07,049
+This is text. It's something
+I could understand and read.
+
+1171
+00:47:07,049 --> 00:47:09,649
+If I do that to the Park file,
+
+1172
+00:47:09,649 --> 00:47:13,470
+Well, now I actually
+see that it's binary.
+
+1173
+00:47:13,470 --> 00:47:14,849
+I can just peek inside and see.
+
+1174
+00:47:14,849 --> 00:47:17,990
+I have to use a tool
+to access the data.
+
+1175
+00:47:17,990 --> 00:47:19,649
+But other thing I can do
+
+1176
+00:47:19,649 --> 00:47:21,909
+is when I'm reading
+the CSV file,
+
+1177
+00:47:21,909 --> 00:47:23,329
+I can really just like
+read the whole thing.
+
+1178
+00:47:23,329 --> 00:47:26,909
+That's my only option. When
+I'm reading a Parque table,
+
+1179
+00:47:26,909 --> 00:47:30,229
+I can actually read a subset
+of the columns, right?
+
+1180
+00:47:30,229 --> 00:47:31,350
+So I can say columns,
+
+1181
+00:47:31,350 --> 00:47:34,209
+equals, and maybe I'll just
+read a couple of these.
+
+1182
+00:47:34,209 --> 00:47:36,890
+I'll get this kind of
+identifier column,
+
+1183
+00:47:36,890 --> 00:47:39,650
+and maybe I'll get
+like the county code,
+
+1184
+00:47:39,650 --> 00:47:44,609
+county code like that.
+Let's t this as well.
+
+1185
+00:47:44,609 --> 00:47:46,969
+All right, sob time that.
+
+1186
+00:47:46,969 --> 00:47:49,229
+And I may call this table too
+
+1187
+00:47:49,229 --> 00:47:51,350
+because it only has like
+a subset of the stuff.
+
+1188
+00:47:51,350 --> 00:47:53,430
+And we see that
+this is way faster,
+
+1189
+00:47:53,430 --> 00:47:55,009
+right? So often, right?
+
+1190
+00:47:55,009 --> 00:47:56,769
+What is even in
+that table, right?
+
+1191
+00:47:56,769 --> 00:47:59,389
+If I kind of look at look
+
+1192
+00:47:59,389 --> 00:48:01,969
+at that full table, it's
+like a bunch of stuff.
+
+1193
+00:48:01,969 --> 00:48:03,729
+And if I do analysis
+at any given time,
+
+1194
+00:48:03,729 --> 00:48:06,049
+I probably don't care
+about a majority
+
+1195
+00:48:06,049 --> 00:48:07,709
+of that stuff, right?
+
+1196
+00:48:07,709 --> 00:48:10,070
+So ibn it's a
+calibraratd format,
+
+1197
+00:48:10,070 --> 00:48:12,629
+I can very quickly read
+just the things I want.
+
+1198
+00:48:12,629 --> 00:48:15,469
+With the CSP, there's no way
+to do that because while,
+
+1199
+00:48:15,469 --> 00:48:18,904
+it still has to read
+all the data, right?
+
+1200
+00:48:18,904 --> 00:48:21,660
+Alright, so we see the
+difference in toting.
+
+1201
+00:48:21,660 --> 00:48:24,200
+We've seen that the
+Skiba dance is faster
+
+1202
+00:48:24,200 --> 00:48:25,959
+because we don't have to ad
+
+1203
+00:48:25,959 --> 00:48:28,339
+first Skiba when I
+read the Part A.
+
+1204
+00:48:28,339 --> 00:48:32,200
+We've seen that the
+calibrated format is helping.
+
+1205
+00:48:32,200 --> 00:48:34,400
+Let's look briefly
+at the pressure.
+
+1206
+00:48:34,400 --> 00:48:35,959
+That will be the
+last thing I do.
+
+1207
+00:48:35,959 --> 00:48:39,539
+And so I say Ti good.
+
+1208
+00:48:39,539 --> 00:48:46,359
+At IA say Pi arrow p dot.
+How did I do it before?
+
+1209
+00:48:46,359 --> 00:48:48,699
+I did like a writ table.
+
+1210
+00:48:48,699 --> 00:48:55,119
+IB write this T. ABA
+call this. Snappy par.
+
+1211
+00:48:55,119 --> 00:48:58,480
+I say that the compress
+should equal snappy.
+
+1212
+00:48:58,480 --> 00:49:01,460
+All right, let's do that.
+I will take a moment,
+
+1213
+00:49:01,460 --> 00:49:03,019
+and then I do another one,
+
+1214
+00:49:03,019 --> 00:49:05,179
+which will be G ZIP.
+
+1215
+00:49:05,179 --> 00:49:07,460
+GSP is willing to go a little
+
+1216
+00:49:07,460 --> 00:49:10,959
+slower in order to get
+a smaller file, right?
+
+1217
+00:49:10,959 --> 00:49:14,339
+So the first one took 1.5
+seconds, wall clock time.
+
+1218
+00:49:14,339 --> 00:49:16,419
+This one took over double that.
+
+1219
+00:49:16,419 --> 00:49:24,120
+But if I do my L L AH and
+look at different Park files,
+
+1220
+00:49:24,120 --> 00:49:26,039
+Then what do I see, right?
+
+1221
+00:49:26,039 --> 00:49:29,119
+The snappy one is 16 megabytes.
+
+1222
+00:49:29,119 --> 00:49:31,000
+The G ZP one is 13 gigabytes.
+
+1223
+00:49:31,000 --> 00:49:32,119
+Am I willing to spend twice as
+
+1224
+00:49:32,119 --> 00:49:33,779
+long to get a slightly
+smaller file?
+
+1225
+00:49:33,779 --> 00:49:35,079
+Maybe, it really depends on
+
+1226
+00:49:35,079 --> 00:49:37,179
+how often I have
+to do this, right?
+
+1227
+00:49:37,179 --> 00:49:43,779
+And of course, let's
+compare this to LAH.
+
+1228
+00:49:43,779 --> 00:49:47,139
+I want to look at
+my CSV file, right?
+
+1229
+00:49:47,139 --> 00:49:49,619
+All of these are
+
+1230
+00:49:49,619 --> 00:49:52,259
+way better than 167
+megabytes there, right?
+
+1231
+00:49:52,259 --> 00:49:53,839
+So Park is the way to go.
+
+1232
+00:49:53,839 --> 00:49:55,859
+If you're doing any kind
+of data analytic stuff,
+
+1233
+00:49:55,859 --> 00:49:57,199
+take your CSVs, get it there,
+
+1234
+00:49:57,199 --> 00:49:59,340
+then forget the CSVs even exist.
+
+1235
+00:49:59,340 --> 00:50:00,619
+I'll leave out that thought.
+
+1236
+00:50:00,619 --> 00:50:03,680
+Feel free to come up and chat
+if you have any questions.

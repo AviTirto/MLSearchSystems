@@ -1,0 +1,6071 @@
+1
+00:00:00,000 --> 00:00:01,800
+Technically, on the schedule,
+we're supposed to be
+
+2
+00:00:01,800 --> 00:00:03,920
+starting H based and
+Cassandra, realistically,
+
+3
+00:00:03,920 --> 00:00:05,780
+we're going to spend all
+of today just touching
+
+4
+00:00:05,780 --> 00:00:07,880
+up on Spark machine
+machine learning.
+
+5
+00:00:07,880 --> 00:00:10,099
+So I'm back to the slides
+where we were last time.
+
+6
+00:00:10,099 --> 00:00:12,959
+I just wanted to clarify
+some terminology that's a
+
+7
+00:00:12,959 --> 00:00:15,980
+little bit different in
+Spark than some other tools.
+
+8
+00:00:15,980 --> 00:00:17,999
+A lot of machine learning
+tools have this notion
+
+9
+00:00:17,999 --> 00:00:20,319
+of a transformer
+where you're pre
+
+10
+00:00:20,319 --> 00:00:22,500
+processing the data
+in some way before
+
+11
+00:00:22,500 --> 00:00:25,860
+your actual model trades
+or makes predictions.
+
+12
+00:00:25,860 --> 00:00:27,600
+In Spark, they use transformer
+
+13
+00:00:27,600 --> 00:00:28,799
+a little bit more generally.
+
+14
+00:00:28,799 --> 00:00:31,079
+They use transformation to
+
+15
+00:00:31,079 --> 00:00:33,299
+also refer to the act
+of making predictions.
+
+16
+00:00:33,299 --> 00:00:35,119
+So if I have a data frame with
+
+17
+00:00:35,119 --> 00:00:37,779
+no predictions and then I
+added a column of prediction,
+
+18
+00:00:37,779 --> 00:00:39,619
+that would be transformation.
+
+19
+00:00:39,619 --> 00:00:40,799
+That's what they call it.
+
+20
+00:00:40,799 --> 00:00:42,260
+So that's a little
+bit different.
+
+21
+00:00:42,260 --> 00:00:43,499
+The idea of an estimator is a
+
+22
+00:00:43,499 --> 00:00:44,979
+little bit different as well.
+
+23
+00:00:44,979 --> 00:00:47,979
+So in a lot of machine
+learning frameworks,
+
+24
+00:00:47,979 --> 00:00:50,519
+models or estimators
+are mutable, right?
+
+25
+00:00:50,519 --> 00:00:52,500
+So maybe you show
+them some data,
+
+26
+00:00:52,500 --> 00:00:53,640
+and then they know
+how to predict
+
+27
+00:00:53,640 --> 00:00:55,619
+or maybe they get
+better at predicting.
+
+28
+00:00:55,619 --> 00:00:57,880
+Given they're
+ammutable, if I show
+
+29
+00:00:57,880 --> 00:01:00,480
+an estimator some data in Spark,
+
+30
+00:01:00,480 --> 00:01:01,700
+it doesn't actually change.
+
+31
+00:01:01,700 --> 00:01:04,120
+What an estimator will
+do is it will return
+
+32
+00:01:04,120 --> 00:01:06,799
+a different object that
+can do predictions.
+
+33
+00:01:06,799 --> 00:01:09,239
+That different object is
+called a transformer.
+
+34
+00:01:09,239 --> 00:01:12,250
+Yeah, question right
+here. Just a clarify.
+
+35
+00:01:14,450 --> 00:01:17,390
+Yeah, so this is just, in
+
+36
+00:01:17,390 --> 00:01:19,510
+terms of neuro
+network transformers,
+
+37
+00:01:19,510 --> 00:01:21,629
+they're using it in a
+very specific way here.
+
+38
+00:01:21,629 --> 00:01:23,170
+The idea of a
+transformer here is
+
+39
+00:01:23,170 --> 00:01:24,770
+something that's
+adding su columns to
+
+40
+00:01:24,770 --> 00:01:27,090
+existing data frame that may be
+
+41
+00:01:27,090 --> 00:01:28,390
+adding a prediction or it may be
+
+42
+00:01:28,390 --> 00:01:29,850
+adding other types
+of info. Yeah.
+
+43
+00:01:29,850 --> 00:01:31,590
+So they're using the terms
+
+44
+00:01:31,590 --> 00:01:33,510
+in a very narrow way
+related to Spark.
+
+45
+00:01:33,510 --> 00:01:36,959
+Yeah, thank you for
+clarifying. All right, cool.
+
+46
+00:01:36,959 --> 00:01:41,020
+So, oftentimes, before
+you do any kind of model,
+
+47
+00:01:41,020 --> 00:01:43,459
+you work, you have to transform
+your data in some way.
+
+48
+00:01:43,459 --> 00:01:46,479
+And so a common scenario is
+you're going to do a bunch of
+
+49
+00:01:46,479 --> 00:01:48,080
+transformations
+before you get to
+
+50
+00:01:48,080 --> 00:01:50,400
+your actual estimator
+at the Ed, right?
+
+51
+00:01:50,400 --> 00:01:52,120
+So this might be kind
+of a similar picture
+
+52
+00:01:52,120 --> 00:01:54,039
+of different kinds of tools.
+
+53
+00:01:54,039 --> 00:01:57,180
+Let's say that we're
+using Spark specifically.
+
+54
+00:01:57,180 --> 00:01:58,960
+What we'll do if we want
+to trade a model is,
+
+55
+00:01:58,960 --> 00:01:59,880
+we'll pass some data through
+
+56
+00:01:59,880 --> 00:02:01,419
+multiple levels of
+transformation.
+
+57
+00:02:01,419 --> 00:02:03,660
+And then we'll finally
+fit into that estimator.
+
+58
+00:02:03,660 --> 00:02:05,919
+We'll call F on the estimator.
+
+59
+00:02:05,919 --> 00:02:07,420
+That does not actually change
+
+60
+00:02:07,420 --> 00:02:08,740
+the estimator because
+it's abutable,
+
+61
+00:02:08,740 --> 00:02:11,199
+but it will return.
+A fitted model.
+
+62
+00:02:11,199 --> 00:02:12,879
+And remember that fitted models
+
+63
+00:02:12,879 --> 00:02:14,120
+are transformers in Spark,
+
+64
+00:02:14,120 --> 00:02:15,940
+so I will get this T over here,
+
+65
+00:02:15,940 --> 00:02:17,120
+which is the fitted model.
+
+66
+00:02:17,120 --> 00:02:19,039
+Now, before I could send data to
+
+67
+00:02:19,039 --> 00:02:21,919
+this model that can
+make predictions,
+
+68
+00:02:21,919 --> 00:02:23,239
+I need to make sure
+that it has had
+
+69
+00:02:23,239 --> 00:02:25,739
+the same transformations
+I had during trading.
+
+70
+00:02:25,739 --> 00:02:27,479
+And so in addition to creating
+
+71
+00:02:27,479 --> 00:02:29,240
+that transformer
+from the estimator,
+
+72
+00:02:29,240 --> 00:02:32,019
+it will copy any other
+proceeding transformers
+
+73
+00:02:32,019 --> 00:02:34,039
+over just directly as is so
+
+74
+00:02:34,039 --> 00:02:36,679
+that this model here on
+the bottom right is dr to
+
+75
+00:02:36,679 --> 00:02:39,460
+see the same form of the
+data that we saw originally.
+
+76
+00:02:39,460 --> 00:02:40,799
+So that's called a pipeline.
+
+77
+00:02:40,799 --> 00:02:43,139
+And they actually have two
+types in Spark just like
+
+78
+00:02:43,139 --> 00:02:45,719
+the pipeline on the
+left is fit version,
+
+79
+00:02:45,719 --> 00:02:47,319
+and then what has the
+word model in it,
+
+80
+00:02:47,319 --> 00:02:49,140
+that usually means it
+has already been fitted.
+
+81
+00:02:49,140 --> 00:02:52,119
+We'll call it pipeline model
+on the right hand side.
+
+82
+00:02:52,119 --> 00:02:54,359
+We want to make predictions that
+
+83
+00:02:54,359 --> 00:02:56,719
+were to feed some data through
+all these transformers.
+
+84
+00:02:56,719 --> 00:02:58,040
+The early ones that
+might be adding
+
+85
+00:02:58,040 --> 00:02:59,640
+extra information for the model.
+
+86
+00:02:59,640 --> 00:03:02,119
+And then the transformer
+the very last one is
+
+87
+00:03:02,119 --> 00:03:04,639
+going to be adding an actual
+column of predictions.
+
+88
+00:03:04,639 --> 00:03:07,639
+So kind of unusual API.
+Kind of interesting.
+
+89
+00:03:07,639 --> 00:03:09,399
+Actually, I think there's
+some nice things about it,
+
+90
+00:03:09,399 --> 00:03:11,099
+but probably very different
+than what you've seen
+
+91
+00:03:11,099 --> 00:03:13,200
+if you've done machine
+learning in other contexts.
+
+92
+00:03:13,200 --> 00:03:16,599
+Alright, well, let's head
+over here and do a top hat.
+
+93
+00:03:19,870 --> 00:03:22,329
+What is a method you will not be
+
+94
+00:03:22,329 --> 00:03:25,470
+using when working
+with spark bottles?
+
+95
+00:04:01,050 --> 00:04:04,449
+About 30 seconds left.
+
+96
+00:04:38,000 --> 00:04:40,319
+Alright, so people say predict,
+
+97
+00:04:40,319 --> 00:04:41,400
+which is absolutely right,
+
+98
+00:04:41,400 --> 00:04:43,420
+rather than having
+an explicit predict,
+
+99
+00:04:43,420 --> 00:04:46,679
+we do predictions by cab spark.
+
+100
+00:04:46,679 --> 00:04:48,900
+Alright, a head back here.
+
+101
+00:04:48,900 --> 00:04:52,360
+And and I want to
+do some demos now.
+
+102
+00:04:52,360 --> 00:04:54,800
+And all the machine learning
+
+103
+00:04:54,800 --> 00:04:58,080
+stuff in Spark is
+called ML Lb, right?
+
+104
+00:04:58,080 --> 00:05:01,059
+That handles a couple of
+different frameworks they made.
+
+105
+00:05:01,059 --> 00:05:03,640
+But under that
+general title ML Lb,
+
+106
+00:05:03,640 --> 00:05:05,060
+there's two different
+things you might import.
+
+107
+00:05:05,060 --> 00:05:06,679
+If you actually import ML Lb,
+
+108
+00:05:06,679 --> 00:05:09,899
+that stuff that's actually
+specifically for RDDs.
+
+109
+00:05:09,899 --> 00:05:12,160
+We usually are not
+programming at that level.
+
+110
+00:05:12,160 --> 00:05:14,459
+We will be importing
+PI sparked on ML,
+
+111
+00:05:14,459 --> 00:05:15,699
+which is for data frames.
+
+112
+00:05:15,699 --> 00:05:17,479
+But again, right, the stuff
+we're doing under there,
+
+113
+00:05:17,479 --> 00:05:20,139
+people might refer to
+that as ML Lb stuff.
+
+114
+00:05:20,139 --> 00:05:23,200
+Alright, Sub head over
+here to a notebook.
+
+115
+00:05:23,200 --> 00:05:26,199
+And this is actually on
+the new virtual machines
+
+116
+00:05:26,199 --> 00:05:27,899
+that we're running from CSL.
+
+117
+00:05:27,899 --> 00:05:30,400
+You can see I've
+signed in here with
+
+118
+00:05:30,400 --> 00:05:34,340
+my net ID and the
+machine name to SSHN,
+
+119
+00:05:34,340 --> 00:05:36,919
+that I actually had to
+join the VPN first.
+
+120
+00:05:36,919 --> 00:05:38,600
+There's some
+directions about that.
+
+121
+00:05:38,600 --> 00:05:40,320
+They've been very responsive.
+
+122
+00:05:40,320 --> 00:05:42,020
+You know, Suits have
+been telling me issues.
+
+123
+00:05:42,020 --> 00:05:44,500
+I've been talking to them.
+They've been resolving them.
+
+124
+00:05:44,500 --> 00:05:46,519
+I think some people
+are having VPN issues.
+
+125
+00:05:46,519 --> 00:05:47,880
+That's the most
+common thing, but
+
+126
+00:05:47,880 --> 00:05:49,380
+the Duet health test apparently
+
+127
+00:05:49,380 --> 00:05:50,820
+helps with that. I don't
+know if I can fix it.
+
+128
+00:05:50,820 --> 00:05:52,660
+I'm kind of curious to
+see what people are
+
+129
+00:05:52,660 --> 00:05:53,679
+running into because I haven't
+
+130
+00:05:53,679 --> 00:05:54,740
+seen anything first hand yet,
+
+131
+00:05:54,740 --> 00:05:57,040
+but you know, I cat solve it,
+
+132
+00:05:57,040 --> 00:05:59,600
+the Dot help SS actually
+supports the VPD.
+
+133
+00:05:59,600 --> 00:06:00,980
+So anyway, eventually, like,
+
+134
+00:06:00,980 --> 00:06:01,719
+we're going to just do
+
+135
+00:06:01,719 --> 00:06:03,280
+all our projects
+on these machines.
+
+136
+00:06:03,280 --> 00:06:05,160
+That's where we're
+headed for P five.
+
+137
+00:06:05,160 --> 00:06:06,380
+It's optionally
+you just get some
+
+138
+00:06:06,380 --> 00:06:07,860
+extra credit if you do it there.
+
+139
+00:06:07,860 --> 00:06:12,119
+Alright. So I've
+connected to the VPD.
+
+140
+00:06:12,119 --> 00:06:14,400
+I did an SSH tunnel
+to this machine,
+
+141
+00:06:14,400 --> 00:06:16,940
+and here I am by buddy
+with the notebook.
+
+142
+00:06:16,940 --> 00:06:18,859
+I have a Spark
+session as normal.
+
+143
+00:06:18,859 --> 00:06:20,040
+And then I have some code here,
+
+144
+00:06:20,040 --> 00:06:21,840
+which I actually copied
+from the lecture snippet,
+
+145
+00:06:21,840 --> 00:06:23,940
+so you could do that
+as well if you ought.
+
+146
+00:06:23,940 --> 00:06:26,649
+I'm learning something new
+related to machine learning.
+
+147
+00:06:26,649 --> 00:06:30,540
+I like to generate random data
+with some patterns in it,
+
+148
+00:06:30,540 --> 00:06:32,580
+because if I know exactly
+what the patterns are,
+
+149
+00:06:32,580 --> 00:06:34,359
+then I can see is the model
+
+150
+00:06:34,359 --> 00:06:36,100
+inferring what
+those patterns are.
+
+151
+00:06:36,100 --> 00:06:37,939
+And here I have a
+very simple pattern.
+
+152
+00:06:37,939 --> 00:06:39,179
+So what I've done first,
+
+153
+00:06:39,179 --> 00:06:42,340
+I have random X one values
+and random X two values.
+
+154
+00:06:42,340 --> 00:06:43,680
+I have a column
+of each of those.
+
+155
+00:06:43,680 --> 00:06:45,999
+And the y is just the sum
+
+156
+00:06:45,999 --> 00:06:48,240
+of those plus a bit
+of noise, right?
+
+157
+00:06:48,240 --> 00:06:51,539
+So the pattern is that
+y is an addition.
+
+158
+00:06:51,539 --> 00:06:53,500
+And so any decent
+machine learning model
+
+159
+00:06:53,500 --> 00:06:56,340
+should be able to recognize
+this pattern, right?
+
+160
+00:06:56,340 --> 00:06:59,040
+And so let's see how
+we can work with this.
+
+161
+00:06:59,040 --> 00:07:00,780
+Ib come out here.
+And I'm going to
+
+162
+00:07:00,780 --> 00:07:03,254
+say data framed at random split.
+
+163
+00:07:03,254 --> 00:07:05,090
+And remember last time how we
+
+164
+00:07:05,090 --> 00:07:07,109
+talked about how you
+might have trade,
+
+165
+00:07:07,109 --> 00:07:08,530
+validation and test data,
+
+166
+00:07:08,530 --> 00:07:10,370
+and we talked about my
+methodology for that.
+
+167
+00:07:10,370 --> 00:07:12,149
+I think for now I'm
+strange something simpler,
+
+168
+00:07:12,149 --> 00:07:13,930
+where 75% of my data is for
+
+169
+00:07:13,930 --> 00:07:17,769
+trading and 25% is for testing.
+
+170
+00:07:18,140 --> 00:07:20,380
+That is a spark transformation.
+
+171
+00:07:20,380 --> 00:07:23,040
+And I'm actually get back
+two data frames from that.
+
+172
+00:07:23,040 --> 00:07:24,940
+No work has really
+been done yet.
+
+173
+00:07:24,940 --> 00:07:27,300
+If I wanted to, I could
+look what's in these,
+
+174
+00:07:27,300 --> 00:07:30,139
+so I could say something
+like test dot show.
+
+175
+00:07:30,139 --> 00:07:32,859
+Let me take a look
+at that. Now I
+
+176
+00:07:32,859 --> 00:07:34,719
+can see actual work
+is being done.
+
+177
+00:07:34,719 --> 00:07:37,060
+And I can see some of
+the values here, right?
+
+178
+00:07:37,060 --> 00:07:39,340
+That first one ends at 873.
+
+179
+00:07:39,340 --> 00:07:41,059
+Let me try running this again.
+
+180
+00:07:41,059 --> 00:07:43,119
+You'll actually notice
+that these values
+
+181
+00:07:43,119 --> 00:07:45,460
+are sorted, right?
+
+182
+00:07:45,460 --> 00:07:47,079
+And so that's why there's
+
+183
+00:07:47,079 --> 00:07:49,119
+time a lot of small
+values at the top.
+
+184
+00:07:49,119 --> 00:07:51,380
+Let me just run this again.
+
+185
+00:07:55,840 --> 00:07:58,859
+Alright. And we can
+see that my values
+
+186
+00:07:58,859 --> 00:07:59,980
+came out a little
+bit differently.
+
+187
+00:07:59,980 --> 00:08:01,060
+It's not deterministic.
+
+188
+00:08:01,060 --> 00:08:03,340
+And so one of the things
+that people often do is
+
+189
+00:08:03,340 --> 00:08:06,179
+they'll try to specify a seed
+for that type of situation.
+
+190
+00:08:06,179 --> 00:08:08,180
+Now, this is actually
+a problem in
+
+191
+00:08:08,180 --> 00:08:12,495
+Spark because seed
+gives determinism.
+
+192
+00:08:12,495 --> 00:08:16,350
+Per partition, but
+not overall, right?
+
+193
+00:08:16,350 --> 00:08:19,070
+I think they're trying
+to make it fast, right?
+
+194
+00:08:19,070 --> 00:08:21,050
+They don't want to have to
+shuffle around the data when
+
+195
+00:08:21,050 --> 00:08:23,289
+they do this random splitting.
+
+196
+00:08:23,289 --> 00:08:24,810
+And so they do a random split
+
+197
+00:08:24,810 --> 00:08:26,010
+on each partition of the data.
+
+198
+00:08:26,010 --> 00:08:28,589
+And you can imagine why
+that might be a problem.
+
+199
+00:08:28,589 --> 00:08:30,150
+If somehow I'm running in later
+
+200
+00:08:30,150 --> 00:08:31,910
+and I have different
+partition sizes,
+
+201
+00:08:31,910 --> 00:08:33,390
+then even though I have a seed,
+
+202
+00:08:33,390 --> 00:08:35,249
+I might get different
+results, right?
+
+203
+00:08:35,249 --> 00:08:36,849
+And so what people will often do
+
+204
+00:08:36,849 --> 00:08:38,849
+is after they do the
+train test split,
+
+205
+00:08:38,849 --> 00:08:40,170
+they'll write the
+data somewhere,
+
+206
+00:08:40,170 --> 00:08:42,069
+and then that's just
+something that you do once,
+
+207
+00:08:42,069 --> 00:08:44,689
+and then you always read
+it from that location.
+
+208
+00:08:44,689 --> 00:08:47,270
+So that we could
+reproduce results.
+
+209
+00:08:47,270 --> 00:08:48,729
+I'm just going to say
+both of these I may
+
+210
+00:08:48,729 --> 00:08:51,050
+say trade dot four bat.
+
+211
+00:08:51,050 --> 00:08:54,590
+I want to put it in a Park file.
+
+212
+00:08:54,590 --> 00:08:57,710
+We see we get the data
+for a writer as usual.
+
+213
+00:08:57,710 --> 00:08:59,030
+If the data is already there,
+
+214
+00:08:59,030 --> 00:09:00,069
+I'm just going to ignore it.
+
+215
+00:09:00,069 --> 00:09:06,189
+Yeah, right here.
+Data every time.
+
+216
+00:09:06,780 --> 00:09:09,679
+Could you achieve the
+same thing by cashing it?
+
+217
+00:09:09,679 --> 00:09:12,179
+Maybe, but credibly
+short term, right?
+
+218
+00:09:12,179 --> 00:09:13,499
+If I restart later,
+
+219
+00:09:13,499 --> 00:09:15,979
+then maybe my cash will
+have been eptied, right?
+
+220
+00:09:15,979 --> 00:09:19,200
+So yeah, the best approach is
+to keep it there long term.
+
+221
+00:09:19,200 --> 00:09:20,620
+And that's actually,
+I don't know why,
+
+222
+00:09:20,620 --> 00:09:22,639
+a lot of these tools like,
+
+223
+00:09:22,639 --> 00:09:24,239
+have the similar problem,
+like big query that
+
+224
+00:09:24,239 --> 00:09:25,939
+we'll look at later
+does the same thing,
+
+225
+00:09:25,939 --> 00:09:27,359
+and they cash
+automatically for you.
+
+226
+00:09:27,359 --> 00:09:28,560
+And so it's actually
+really irritating
+
+227
+00:09:28,560 --> 00:09:30,219
+because it looks like
+it's deterministic,
+
+228
+00:09:30,219 --> 00:09:31,780
+and it will be for
+a couple of days.
+
+229
+00:09:31,780 --> 00:09:32,980
+And then after a couple of days,
+
+230
+00:09:32,980 --> 00:09:34,040
+your data changes, and then
+
+231
+00:09:34,040 --> 00:09:35,819
+you'll kind of lose
+your mind, right?
+
+232
+00:09:35,819 --> 00:09:37,999
+So what we will
+do in both cases,
+
+233
+00:09:37,999 --> 00:09:39,759
+we'll just write
+it somewhere else.
+
+234
+00:09:39,759 --> 00:09:43,279
+Co. So I'm going to do ignore,
+and I'm going to save it.
+
+235
+00:09:43,279 --> 00:09:47,460
+And I'm just to look at
+my HDFS path up here?
+
+236
+00:09:47,460 --> 00:09:51,940
+I will save it to
+trade dot part.
+
+237
+00:09:51,940 --> 00:09:58,819
+And how did I get that?
+
+238
+00:09:58,819 --> 00:10:01,140
+Then I'll do the same
+thing with the test data.
+
+239
+00:10:01,140 --> 00:10:02,979
+I'll just try to
+save those things
+
+240
+00:10:02,979 --> 00:10:05,459
+to make it dearbdistic.
+
+241
+00:10:05,860 --> 00:10:09,279
+Then what? Then I will
+want to read them back.
+
+242
+00:10:09,279 --> 00:10:10,539
+I'll just start
+writing a code for
+
+243
+00:10:10,539 --> 00:10:12,780
+that. Let's throw it out here?
+
+244
+00:10:21,080 --> 00:10:24,959
+It seems like I'm having
+trouble with my HDFS.
+
+245
+00:10:24,959 --> 00:10:26,440
+Said something about
+there not being
+
+246
+00:10:26,440 --> 00:10:30,239
+enough data nodes. Let
+me just peek on that.
+
+247
+00:10:38,280 --> 00:10:40,700
+I have a name node of, but I
+
+248
+00:10:40,700 --> 00:10:42,240
+gs I don't have any data nodes.
+
+249
+00:10:42,240 --> 00:10:46,799
+I thought I had that all
+good and ready to go. Let me
+
+250
+00:11:07,180 --> 00:11:09,240
+So my data Node died
+
+251
+00:11:09,240 --> 00:11:10,500
+here. I'm just trying
+to delete that.
+
+252
+00:11:10,500 --> 00:11:14,659
+I'm I say doctor remove force,
+
+253
+00:11:14,659 --> 00:11:16,980
+and I'm gonna do a
+doctor compose up again.
+
+254
+00:11:16,980 --> 00:11:19,000
+You know, one thing that
+might have happened is if
+
+255
+00:11:19,000 --> 00:11:21,300
+I try to brought it down and
+brought it back up again,
+
+256
+00:11:21,300 --> 00:11:23,700
+maybe the name note and
+data note out of sync.
+
+257
+00:11:23,700 --> 00:11:26,499
+And so I'm I see if this
+works any better for me.
+
+258
+00:11:26,499 --> 00:11:30,179
+Let me come back
+here. My apologies.
+
+259
+00:11:33,260 --> 00:11:37,379
+Let's see if I can
+talk to it now.
+
+260
+00:11:44,020 --> 00:11:46,879
+Well, that seems like
+a good sign, right?
+
+261
+00:11:46,879 --> 00:11:49,799
+So let me I'm just trying to do
+
+262
+00:11:49,799 --> 00:11:51,380
+an overwrite in both cases
+
+263
+00:11:51,380 --> 00:11:53,780
+because maybe it wrote
+some garbage file before,
+
+264
+00:11:53,780 --> 00:11:55,440
+because it didn't
+have any data nodes.
+
+265
+00:11:55,440 --> 00:11:57,200
+I'm just going to
+run this again,
+
+266
+00:11:57,200 --> 00:11:58,779
+and then I'm going to
+change it to ignore.
+
+267
+00:11:58,779 --> 00:12:00,300
+So if I come here again,
+
+268
+00:12:00,300 --> 00:12:01,859
+it won't actually do anything.
+
+269
+00:12:01,859 --> 00:12:03,499
+All right. So my apologies.
+
+270
+00:12:03,499 --> 00:12:05,620
+So I'm gonna load this
+data back in now.
+
+271
+00:12:05,620 --> 00:12:15,100
+I'm say spark of P. And then
+I can load in those files.
+
+272
+00:12:15,100 --> 00:12:18,569
+Excuse me. Alright, so
+
+273
+00:12:18,569 --> 00:12:20,869
+I'm going to get my
+train data like that.
+
+274
+00:12:20,869 --> 00:12:24,650
+And then if I ever restart
+this from the top again,
+
+275
+00:12:24,650 --> 00:12:27,669
+then this will not
+be done, right?
+
+276
+00:12:27,669 --> 00:12:29,789
+Because it's already
+there. And I'm
+
+277
+00:12:29,789 --> 00:12:31,629
+going to get in that same
+data I had last time.
+
+278
+00:12:31,629 --> 00:12:33,329
+So this will may be
+more deterministic.
+
+279
+00:12:33,329 --> 00:12:35,150
+Let me just check on
+the sizes of these.
+
+280
+00:12:35,150 --> 00:12:42,049
+This will not be exactly
+75 25 because it's random.
+
+281
+00:12:42,049 --> 00:12:44,210
+Right. There's some
+noise in the sampling,
+
+282
+00:12:44,210 --> 00:12:45,889
+but it should be kind
+of approximately that.
+
+283
+00:12:45,889 --> 00:12:49,150
+So, 68 training
+rows, two test rows.
+
+284
+00:12:49,150 --> 00:12:50,630
+Great, up and running so far.
+
+285
+00:12:50,630 --> 00:12:54,354
+Now I can start using this
+data to do some training.
+
+286
+00:12:54,354 --> 00:12:58,900
+All right, so when I
+look at my data here,
+
+287
+00:12:58,900 --> 00:13:00,960
+I see that my label is numeric,
+
+288
+00:13:00,960 --> 00:13:02,919
+and so that means I
+need to do regression.
+
+289
+00:13:02,919 --> 00:13:04,459
+If it was categorical,
+
+290
+00:13:04,459 --> 00:13:05,859
+I'd be doing classification.
+
+291
+00:13:05,859 --> 00:13:11,659
+So I'm going to say from
+Pi Spark ML regression,
+
+292
+00:13:11,659 --> 00:13:15,620
+I'm going to import a
+decision tree regressor.
+
+293
+00:13:15,620 --> 00:13:19,420
+And this is an unfitted model.
+
+294
+00:13:19,690 --> 00:13:23,829
+And the other thing I might
+import is a regression model.
+
+295
+00:13:23,829 --> 00:13:25,589
+So the ones that
+have the word model
+
+296
+00:13:25,589 --> 00:13:26,969
+on them are the ones that
+
+297
+00:13:26,969 --> 00:13:30,110
+are actually fitted.
+That's a fitted model.
+
+298
+00:13:30,110 --> 00:13:32,889
+So I will get both of those, and
+
+299
+00:13:32,889 --> 00:13:34,490
+then may create a decision tree.
+
+300
+00:13:34,490 --> 00:13:38,949
+I may create from the
+unfitted one first, like so.
+
+301
+00:13:38,949 --> 00:13:40,709
+And then when I do that,
+
+302
+00:13:40,709 --> 00:13:42,769
+I have to say what my features
+
+303
+00:13:42,769 --> 00:13:44,349
+column and label column is.
+
+304
+00:13:44,349 --> 00:13:46,150
+We're going to deal
+very soon with the fact
+
+305
+00:13:46,150 --> 00:13:48,229
+that I can only specify
+one column here.
+
+306
+00:13:48,229 --> 00:13:50,249
+But for now, let's just
+see what happens if I say
+
+307
+00:13:50,249 --> 00:13:53,049
+features column equals x one and
+
+308
+00:13:53,049 --> 00:13:58,874
+my label column equals
+y. I'm going to do that.
+
+309
+00:13:58,874 --> 00:14:03,540
+And then I could try to fit
+it to my training data.
+
+310
+00:14:03,540 --> 00:14:05,080
+And so the issue I'm running
+
+311
+00:14:05,080 --> 00:14:07,759
+into is that that
+plum I'm fitting in,
+
+312
+00:14:07,759 --> 00:14:11,039
+it has to be a vector
+of some type, right?
+
+313
+00:14:11,039 --> 00:14:13,259
+And it wasn't. It was just
+a single value, right?
+
+314
+00:14:13,259 --> 00:14:15,819
+So since I can only
+have one column, right?
+
+315
+00:14:15,819 --> 00:14:17,559
+The expectation is
+that Tolm will have
+
+316
+00:14:17,559 --> 00:14:19,399
+vectors with many
+different values,
+
+317
+00:14:19,399 --> 00:14:21,419
+and it is it's common to
+have multiple features.
+
+318
+00:14:21,419 --> 00:14:26,579
+And so how can I get that
+column of of features?
+
+319
+00:14:26,579 --> 00:14:28,380
+Well, I'm going to have
+to transform my data.
+
+320
+00:14:28,380 --> 00:14:29,680
+So I'm going to back
+up a little bit,
+
+321
+00:14:29,680 --> 00:14:35,320
+and I'm going to say from
+Pi spark dot L feature.
+
+322
+00:14:35,320 --> 00:14:39,679
+I'm going to import
+a vector as sembler.
+
+323
+00:14:39,679 --> 00:14:43,579
+All right. And so I can
+create an object from that.
+
+324
+00:14:43,579 --> 00:14:47,299
+I can say a vector
+assembler, if I want to.
+
+325
+00:14:47,299 --> 00:14:49,800
+And I can say my input columns,
+
+326
+00:14:49,800 --> 00:14:52,259
+like individual columns
+that are coming in and
+
+327
+00:14:52,259 --> 00:14:53,539
+then an output
+column which will be
+
+328
+00:14:53,539 --> 00:14:55,280
+a single column of vectors.
+
+329
+00:14:55,280 --> 00:14:56,699
+I'm going to say that.
+I'm going to say
+
+330
+00:14:56,699 --> 00:15:00,219
+input columns is going to be X.
+
+331
+00:15:00,219 --> 00:15:02,599
+One is actually a nice
+time to do X two as well.
+
+332
+00:15:02,599 --> 00:15:07,479
+And my output column is just
+going to be features, right?
+
+333
+00:15:07,479 --> 00:15:09,499
+And so I can create that object,
+
+334
+00:15:09,499 --> 00:15:10,800
+and let's just see what happens
+
+335
+00:15:10,800 --> 00:15:12,159
+if I try to use it to transform.
+
+336
+00:15:12,159 --> 00:15:15,885
+I'm going to say, let's
+transform my training data.
+
+337
+00:15:15,885 --> 00:15:19,410
+Excuse me. And I can
+see that before,
+
+338
+00:15:19,410 --> 00:15:22,009
+I just had X one, X two, and y.
+
+339
+00:15:22,009 --> 00:15:24,049
+When I transform it, I
+get all that same stuff,
+
+340
+00:15:24,049 --> 00:15:25,769
+plus I additionally
+have features.
+
+341
+00:15:25,769 --> 00:15:28,270
+And if I want to, I could show
+
+342
+00:15:28,270 --> 00:15:31,290
+that data with that
+vector of features.
+
+343
+00:15:31,290 --> 00:15:34,689
+Right I can see, for
+example, here's 12.
+
+344
+00:15:34,689 --> 00:15:36,689
+That shows up as 12 here.
+
+345
+00:15:36,689 --> 00:15:40,239
+The only one that looks kind
+of funny is this first one.
+
+346
+00:15:40,239 --> 00:15:42,470
+Okay. So when you have vectors,
+
+347
+00:15:42,470 --> 00:15:43,629
+there's multiple ways
+to express that.
+
+348
+00:15:43,629 --> 00:15:45,970
+We could have what is called
+a dense vector where we list
+
+349
+00:15:45,970 --> 00:15:48,910
+each number in it, and
+that's most of these.
+
+350
+00:15:48,910 --> 00:15:50,969
+This is an example
+of a sparse vector.
+
+351
+00:15:50,969 --> 00:15:53,350
+A sparse vector
+means that most of
+
+352
+00:15:53,350 --> 00:15:55,789
+the numbers in the
+vector are zeros.
+
+353
+00:15:55,789 --> 00:15:57,769
+And since they're mostly zeros,
+
+354
+00:15:57,769 --> 00:15:58,950
+it's a little bit
+wasteful to keep
+
+355
+00:15:58,950 --> 00:16:00,410
+saying zero, zero, zero, zero.
+
+356
+00:16:00,410 --> 00:16:01,729
+And so what we'll do is we'll
+
+357
+00:16:01,729 --> 00:16:03,869
+say that I have a
+vector of length two,
+
+358
+00:16:03,869 --> 00:16:05,629
+and at these indexes,
+
+359
+00:16:05,629 --> 00:16:08,050
+I have these values,
+which are not zero.
+
+360
+00:16:08,050 --> 00:16:09,530
+There's no indexes here,
+
+361
+00:16:09,530 --> 00:16:11,849
+so there are no no values
+that are not zero, right?
+
+362
+00:16:11,849 --> 00:16:13,030
+So maybe you'll see that it's
+
+363
+00:16:13,030 --> 00:16:14,550
+going to all work
+the same afterwards.
+
+364
+00:16:14,550 --> 00:16:16,319
+Don't get mixed up by it.
+
+365
+00:16:16,319 --> 00:16:18,889
+Alright, so I have that. And so
+
+366
+00:16:18,889 --> 00:16:20,489
+what I want to do when
+I want to fit down
+
+367
+00:16:20,489 --> 00:16:23,650
+here is I have to first use
+
+368
+00:16:23,650 --> 00:16:27,649
+my vector assembler to
+transform that training data.
+
+369
+00:16:27,649 --> 00:16:30,329
+And then I should actually
+be in better shape.
+
+370
+00:16:30,329 --> 00:16:33,149
+But my problem is
+
+371
+00:16:33,149 --> 00:16:35,050
+that the vector assembler
+
+372
+00:16:35,050 --> 00:16:36,549
+is giving me a features
+column, right?
+
+373
+00:16:36,549 --> 00:16:37,929
+So I still have to fix that.
+
+374
+00:16:37,929 --> 00:16:40,070
+Great, so I can do that.
+And I'm just trying to
+
+375
+00:16:40,070 --> 00:16:43,269
+capture this in a model
+variable, like so.
+
+376
+00:16:44,870 --> 00:16:47,709
+All right. And this will
+actually have to do
+
+377
+00:16:47,709 --> 00:16:50,289
+a bunch of different spark
+jobs to train that model.
+
+378
+00:16:50,289 --> 00:16:51,709
+For now, we aren't getting into
+
+379
+00:16:51,709 --> 00:16:53,449
+details about what the
+decision tree is doing, right?
+
+380
+00:16:53,449 --> 00:16:55,670
+This could be any number
+of different models.
+
+381
+00:16:55,670 --> 00:16:57,509
+After we learn more
+about the API,
+
+382
+00:16:57,509 --> 00:16:58,530
+I'll go back and
+talk about, well,
+
+383
+00:16:58,530 --> 00:16:59,710
+how do we actually train
+
+384
+00:16:59,710 --> 00:17:03,210
+a decision tree model in a
+distributed environment?
+
+385
+00:17:03,210 --> 00:17:05,089
+Alright, C, I have that.
+
+386
+00:17:05,089 --> 00:17:07,009
+And then what might I do? Let me
+
+387
+00:17:07,009 --> 00:17:08,989
+just take a look at the
+things here, right?
+
+388
+00:17:08,989 --> 00:17:12,469
+So I'll look also look
+at the type of model.
+
+389
+00:17:12,469 --> 00:17:13,969
+Again, we have this
+pattern, right?
+
+390
+00:17:13,969 --> 00:17:16,149
+If it has the word model in
+it, it's the fitted one.
+
+391
+00:17:16,149 --> 00:17:20,510
+Otherwise, it is
+not. Alright, cool.
+
+392
+00:17:21,350 --> 00:17:24,149
+L et me try
+predicting with this.
+
+393
+00:17:24,149 --> 00:17:27,189
+So I'm going to say
+model transform,
+
+394
+00:17:27,189 --> 00:17:28,750
+and I'm going to
+try to transform
+
+395
+00:17:28,750 --> 00:17:30,949
+my test data to get
+some predictions.
+
+396
+00:17:30,949 --> 00:17:33,310
+And I'm running into
+trouble here again,
+
+397
+00:17:33,310 --> 00:17:35,289
+and my trouble is
+that I don't have
+
+398
+00:17:35,289 --> 00:17:37,730
+any features column.
+I forgot something.
+
+399
+00:17:37,730 --> 00:17:41,049
+I forgot that I have
+to transform this data
+
+400
+00:17:41,049 --> 00:17:45,349
+in the same way that I
+transformed for training.
+
+401
+00:17:45,349 --> 00:17:46,630
+And so I actually got a little
+
+402
+00:17:46,630 --> 00:17:48,630
+bit lucky here because
+I got an error.
+
+403
+00:17:48,630 --> 00:17:50,009
+You can imagine that if I
+
+404
+00:17:50,009 --> 00:17:51,789
+don't do the same
+transformations,
+
+405
+00:17:51,789 --> 00:17:53,350
+and there's not an
+error because maybe
+
+406
+00:17:53,350 --> 00:17:54,920
+I have a different problem
+with the same name,
+
+407
+00:17:54,920 --> 00:17:56,149
+Then I could actually have
+
+408
+00:17:56,149 --> 00:17:57,810
+predictions that
+are just garbage.
+
+409
+00:17:57,810 --> 00:17:59,330
+So it's very important,
+we have to make sure
+
+410
+00:17:59,330 --> 00:18:01,089
+that however we train the data,
+
+411
+00:18:01,089 --> 00:18:03,109
+we set up our model with
+
+412
+00:18:03,109 --> 00:18:05,209
+transformations that are feeding
+
+413
+00:18:05,209 --> 00:18:07,190
+into our predictor
+in the same way.
+
+414
+00:18:07,190 --> 00:18:09,309
+So I could just say,
+Oh, let's be careful.
+
+415
+00:18:09,309 --> 00:18:11,910
+That's not great if I have
+a bunch of transformations.
+
+416
+00:18:11,910 --> 00:18:14,329
+Instead, we have a pipeline
+that make sure we always do
+
+417
+00:18:14,329 --> 00:18:15,969
+the same things
+for training that
+
+418
+00:18:15,969 --> 00:18:17,989
+we do for testing. And
+I'm may to import those.
+
+419
+00:18:17,989 --> 00:18:26,469
+I may say from Pie
+Spark ML pipeline.
+
+420
+00:18:26,469 --> 00:18:28,849
+I will import pipeline.
+
+421
+00:18:28,849 --> 00:18:31,850
+This is an unfitted pipeline.
+
+422
+00:18:32,990 --> 00:18:36,569
+And then I'll also
+import pipeline model,
+
+423
+00:18:36,569 --> 00:18:39,729
+which is the fitted
+version. All right?
+
+424
+00:18:39,729 --> 00:18:41,570
+And then I can use these
+
+425
+00:18:41,570 --> 00:18:44,589
+to actually make sure I
+combine all these steps.
+
+426
+00:18:44,589 --> 00:18:46,789
+Right so I may say
+pipe up here will
+
+427
+00:18:46,789 --> 00:18:49,490
+be the pipeline, which
+is not fitted yet.
+
+428
+00:18:49,490 --> 00:18:51,949
+And here I can say
+which stages I want.
+
+429
+00:18:51,949 --> 00:18:55,630
+So may say stages equals,
+and I have a list.
+
+430
+00:18:55,630 --> 00:18:57,169
+And so what I want to
+do first is I want
+
+431
+00:18:57,169 --> 00:18:59,049
+to do the vector as semblar.
+
+432
+00:18:59,049 --> 00:19:01,890
+And then after that, I want
+to have a incision tree.
+
+433
+00:19:01,890 --> 00:19:03,929
+Once again, nesting inside of
+
+434
+00:19:03,929 --> 00:19:06,270
+this is the same thing
+as having a pipeline.
+
+435
+00:19:06,270 --> 00:19:08,189
+Just a different way of
+expressing the same thing.
+
+436
+00:19:08,189 --> 00:19:13,110
+Great, so I have that, and
+then I can say pipe dot fit,
+
+437
+00:19:13,110 --> 00:19:14,750
+and I can fit on
+that training data.
+
+438
+00:19:14,750 --> 00:19:17,029
+And from that, I'm going
+to get a model back.
+
+439
+00:19:17,029 --> 00:19:18,650
+Going to do all that
+same stuff again.
+
+440
+00:19:18,650 --> 00:19:19,869
+It's a little bit
+more elegant, right?
+
+441
+00:19:19,869 --> 00:19:22,050
+It's a better way to express
+
+442
+00:19:22,050 --> 00:19:25,429
+express your series
+of transformations.
+
+443
+00:19:25,429 --> 00:19:26,930
+Let me take a look
+at each of these,
+
+444
+00:19:26,930 --> 00:19:29,869
+so the pipe and the model.
+
+445
+00:19:29,869 --> 00:19:33,469
+Again, this is the unfitted
+one, this is the fitted one.
+
+446
+00:19:33,469 --> 00:19:35,569
+And then if I wanted
+to, I don't have to
+
+447
+00:19:35,569 --> 00:19:37,430
+worry when I take my model,
+
+448
+00:19:37,430 --> 00:19:43,059
+I can just say
+transform my test data.
+
+449
+00:19:43,059 --> 00:19:45,139
+I can see that a few
+things happened.
+
+450
+00:19:45,139 --> 00:19:46,799
+It's going to run the VA for me.
+
+451
+00:19:46,799 --> 00:19:48,560
+In addition to my
+original columns,
+
+452
+00:19:48,560 --> 00:19:49,979
+I'm going to get a
+features column.
+
+453
+00:19:49,979 --> 00:19:51,639
+It's sta to run the
+decision tree for me.
+
+454
+00:19:51,639 --> 00:19:52,999
+In addition to
+that, I'm going to
+
+455
+00:19:52,999 --> 00:19:54,379
+get a prediction column,
+
+456
+00:19:54,379 --> 00:19:56,179
+and I just keep adding stuff on.
+
+457
+00:19:56,179 --> 00:19:58,119
+This is the style in which we do
+
+458
+00:19:58,119 --> 00:20:00,839
+machine learning in
+Spark. All right.
+
+459
+00:20:00,839 --> 00:20:02,879
+Any questions so far?
+
+460
+00:20:08,240 --> 00:20:14,060
+Right. Cool. Let's stig
+
+461
+00:20:14,060 --> 00:20:15,579
+into this pipeline
+a little bit more.
+
+462
+00:20:15,579 --> 00:20:17,980
+If I come down here,
+I can say stages,
+
+463
+00:20:17,980 --> 00:20:20,280
+and I can see both
+of these steps.
+
+464
+00:20:20,280 --> 00:20:22,679
+And so I might want to
+look at the second step.
+
+465
+00:20:22,679 --> 00:20:25,900
+And this one has something
+called two debug string.
+
+466
+00:20:25,900 --> 00:20:27,180
+Strangely, it's not a method.
+
+467
+00:20:27,180 --> 00:20:28,900
+It's just an
+attribute. That gives
+
+468
+00:20:28,900 --> 00:20:30,814
+me the string, which
+I could print off.
+
+469
+00:20:30,814 --> 00:20:33,929
+And what we see is
+actually that internally
+
+470
+00:20:33,929 --> 00:20:37,469
+a decision tree is a big
+nested FL statement, right?
+
+471
+00:20:37,469 --> 00:20:38,809
+And so it has a bunch of
+
+472
+00:20:38,809 --> 00:20:41,650
+FL things and based on which
+of those are true or false,
+
+473
+00:20:41,650 --> 00:20:43,909
+I have different
+predictions, right?
+
+474
+00:20:43,909 --> 00:20:46,469
+So I think anybody who's
+done nested FLS will
+
+475
+00:20:46,469 --> 00:20:49,590
+understand how a decision
+tree makes predictions.
+
+476
+00:20:49,590 --> 00:20:51,769
+It's the exact same. What
+will be more interesting is,
+
+477
+00:20:51,769 --> 00:20:54,130
+how do we actually come up
+with this decision tree?
+
+478
+00:20:54,130 --> 00:20:55,629
+How do we have an
+algorithm for that?
+
+479
+00:20:55,629 --> 00:20:56,730
+That's what we're going
+to be doing after
+
+480
+00:20:56,730 --> 00:20:57,989
+we're done with
+these demos here.
+
+481
+00:20:57,989 --> 00:21:00,100
+So I still keep that on hold.
+
+482
+00:21:00,100 --> 00:21:03,329
+Now, after you've trained
+a model like that,
+
+483
+00:21:03,329 --> 00:21:05,129
+you might want to deploy it.
+
+484
+00:21:05,129 --> 00:21:06,529
+You maybe train it once,
+
+485
+00:21:06,529 --> 00:21:07,749
+and then it gets
+used in a lot of
+
+486
+00:21:07,749 --> 00:21:09,509
+different circumstances.
+
+487
+00:21:09,509 --> 00:21:13,129
+And so what's actually nice
+is that we can save models in
+
+488
+00:21:13,129 --> 00:21:15,089
+HDFS in much the
+
+489
+00:21:15,089 --> 00:21:17,129
+same way that we would
+save a file to HDFS.
+
+490
+00:21:17,129 --> 00:21:19,069
+My HDFS cluster is visible to,
+
+491
+00:21:19,069 --> 00:21:20,350
+you know, lots of machines.
+
+492
+00:21:20,350 --> 00:21:22,470
+So if I do that, then any
+of these different machines
+
+493
+00:21:22,470 --> 00:21:23,589
+could read in the model and
+
+494
+00:21:23,589 --> 00:21:24,989
+start using it to make
+predictions, right?
+
+495
+00:21:24,989 --> 00:21:26,649
+So I'm going to me well,
+
+496
+00:21:26,649 --> 00:21:28,389
+actually, first, I'm
+going to save it, right?
+
+497
+00:21:28,389 --> 00:21:31,490
+So I'm going to save it to HDFS.
+
+498
+00:21:31,490 --> 00:21:35,569
+And I'm going to imagine where
+
+499
+00:21:36,420 --> 00:21:42,239
+On a different machine and
+want to use the model.
+
+500
+00:21:42,239 --> 00:21:44,840
+All right, so I
+have my model here.
+
+501
+00:21:44,840 --> 00:21:47,759
+And what I can do is I can say,
+
+502
+00:21:47,759 --> 00:21:50,879
+dot, let me check
+here. Dot writ.
+
+503
+00:21:50,879 --> 00:21:53,359
+It's kind of strange like
+in the data frame API.
+
+504
+00:21:53,359 --> 00:21:55,679
+They say dot write and then
+they do stuff. I don't know.
+
+505
+00:21:55,679 --> 00:21:57,019
+They just weren't
+very consistent about
+
+506
+00:21:57,019 --> 00:21:58,720
+what's the method and
+what's the attribute.
+
+507
+00:21:58,720 --> 00:22:01,139
+Fine, I'll do it. It's just
+a little bit different.
+
+508
+00:22:01,139 --> 00:22:02,759
+That will give me
+this writer object,
+
+509
+00:22:02,759 --> 00:22:04,359
+and I can do other
+things with that.
+
+510
+00:22:04,359 --> 00:22:05,859
+Another thing that
+was different is that
+
+511
+00:22:05,859 --> 00:22:07,739
+we would have a mode before.
+
+512
+00:22:07,739 --> 00:22:11,979
+Here, we will actually
+just say, overwrite.
+
+513
+00:22:11,979 --> 00:22:13,519
+Some may say Orte.
+
+514
+00:22:13,519 --> 00:22:16,499
+And then finally, the end
+is pretty similar, right.
+
+515
+00:22:16,499 --> 00:22:20,180
+So I'll say HDFS,
+name node, 9,000.
+
+516
+00:22:20,180 --> 00:22:22,659
+I'll save that as a
+model. All right.
+
+517
+00:22:22,659 --> 00:22:25,559
+So may save that model
+for other people to use.
+
+518
+00:22:25,559 --> 00:22:28,199
+And then down here, I
+could read it back, right?
+
+519
+00:22:28,199 --> 00:22:32,140
+So I know that model
+was a pipeline model.
+
+520
+00:22:32,140 --> 00:22:33,940
+Right? Let me just
+double check that again.
+
+521
+00:22:33,940 --> 00:22:36,239
+Was it a pipeline
+model? Sure was.
+
+522
+00:22:36,239 --> 00:22:38,099
+And so I can take
+pipeline model,
+
+523
+00:22:38,099 --> 00:22:40,400
+and I can load in and populate
+
+524
+00:22:40,400 --> 00:22:43,459
+a pipeline model by
+those HDFS files, right?
+
+525
+00:22:43,459 --> 00:22:45,800
+So I could come down here
+and I could say dot load,
+
+526
+00:22:45,800 --> 00:22:49,019
+and I could pass in
+the same path, right?
+
+527
+00:22:49,019 --> 00:22:50,959
+So I could do this,
+and then I get
+
+528
+00:22:50,959 --> 00:22:53,760
+a model down here,
+which is great.
+
+529
+00:22:53,760 --> 00:22:56,199
+And then after that,
+
+530
+00:22:56,199 --> 00:22:57,399
+then I could actually use it to
+
+531
+00:22:57,399 --> 00:22:58,539
+start making predictions, right?
+
+532
+00:22:58,539 --> 00:23:02,099
+So I could say
+transform my test data,
+
+533
+00:23:02,099 --> 00:23:04,439
+and let's just show
+what it looks like.
+
+534
+00:23:04,439 --> 00:23:06,679
+Alright, so this is doing
+pretty great, right?
+
+535
+00:23:06,679 --> 00:23:08,239
+I have my original data,
+
+536
+00:23:08,239 --> 00:23:10,979
+my features, my label.
+
+537
+00:23:10,979 --> 00:23:15,620
+These features here are just
+vectors over my features,
+
+538
+00:23:15,620 --> 00:23:17,219
+and I can see the prediction.
+
+539
+00:23:17,219 --> 00:23:19,179
+And I can manually
+go through it and I
+
+540
+00:23:19,179 --> 00:23:21,219
+can compare the prediction
+to the y values,
+
+541
+00:23:21,219 --> 00:23:22,639
+and I can see the
+model is not actually
+
+542
+00:23:22,639 --> 00:23:24,219
+doing that badly, right?
+
+543
+00:23:24,219 --> 00:23:26,999
+It's of doing reasonable
+things, right?
+
+544
+00:23:26,999 --> 00:23:29,160
+And so that's good.
+
+545
+00:23:29,160 --> 00:23:30,159
+We're going to do very soon as
+
+546
+00:23:30,159 --> 00:23:31,479
+we're going to see
+how we can actually
+
+547
+00:23:31,479 --> 00:23:34,519
+quantify how good
+those predictions are.
+
+548
+00:23:34,519 --> 00:23:35,979
+But this is powerful, right?
+
+549
+00:23:35,979 --> 00:23:37,419
+That anybody with access to
+
+550
+00:23:37,419 --> 00:23:39,480
+CFS clusters can start
+using the model,
+
+551
+00:23:39,480 --> 00:23:42,605
+we've effectively
+deployed it for use.
+
+552
+00:23:42,605 --> 00:23:45,529
+One other thing I want
+to show is if I go under
+
+553
+00:23:45,529 --> 00:23:50,749
+HDFS and I list the
+files in this directory,
+
+554
+00:23:51,310 --> 00:23:54,829
+then I won't get too
+deep into the format,
+
+555
+00:23:54,829 --> 00:23:55,989
+but then I can see
+that all they have
+
+556
+00:23:55,989 --> 00:23:58,129
+these different stages,
+and I can look under that.
+
+557
+00:23:58,129 --> 00:24:00,049
+And I can see that
+this pipeline model
+
+558
+00:24:00,049 --> 00:24:01,830
+has the vector assembler,
+
+559
+00:24:01,830 --> 00:24:03,350
+the decision treat regressor,
+
+560
+00:24:03,350 --> 00:24:05,689
+and it has details
+describing those things.
+
+561
+00:24:05,689 --> 00:24:07,529
+A common recommendation is
+
+562
+00:24:07,529 --> 00:24:10,760
+that Even if you only have
+one stage in your pipeline,
+
+563
+00:24:10,760 --> 00:24:12,459
+it's still better to
+have a pipeline than
+
+564
+00:24:12,459 --> 00:24:15,000
+using the decision
+tree directly.
+
+565
+00:24:15,000 --> 00:24:16,519
+The reason why is that
+when I loaded it,
+
+566
+00:24:16,519 --> 00:24:17,679
+I had to say what the type was.
+
+567
+00:24:17,679 --> 00:24:20,739
+And if I say everything is
+always a pipeline model,
+
+568
+00:24:20,739 --> 00:24:22,119
+then it gives whosever
+
+569
+00:24:22,119 --> 00:24:23,559
+is training the models
+the flexibility
+
+570
+00:24:23,559 --> 00:24:26,479
+to switch models within
+a pipeline model,
+
+571
+00:24:26,479 --> 00:24:28,439
+and my load will always work.
+
+572
+00:24:28,439 --> 00:24:30,379
+If they were directly saving,
+
+573
+00:24:30,379 --> 00:24:32,219
+say a decision tree, then I
+
+574
+00:24:32,219 --> 00:24:33,340
+would have to know
+when I'm loading.
+
+575
+00:24:33,340 --> 00:24:34,440
+It's a decision tree.
+
+576
+00:24:34,440 --> 00:24:37,440
+Here, I can use this model
+that somebody else trained,
+
+577
+00:24:37,440 --> 00:24:38,519
+and I don't have to worry about
+
+578
+00:24:38,519 --> 00:24:39,660
+what kind of model
+they were using.
+
+579
+00:24:39,660 --> 00:24:41,980
+If they find a different model
+that works better, great.
+
+580
+00:24:41,980 --> 00:24:45,100
+They'll just deploy that.
+It'll still work the same.
+
+581
+00:24:45,150 --> 00:24:48,209
+All right. Any questions
+about this idea of
+
+582
+00:24:48,209 --> 00:24:52,129
+model deployment? Oh, right.
+
+583
+00:24:52,129 --> 00:24:54,369
+So what I'm to do now is I am
+
+584
+00:24:54,369 --> 00:24:56,989
+going to try to evaluate
+how good this is,
+
+585
+00:24:56,989 --> 00:24:58,870
+and that will come
+down to comparing
+
+586
+00:24:58,870 --> 00:25:01,190
+the y to the prediction.
+
+587
+00:25:01,190 --> 00:25:02,869
+And so from that,
+
+588
+00:25:02,869 --> 00:25:07,289
+I can import from Pi spark
+dot L dot evaluation.
+
+589
+00:25:07,289 --> 00:25:11,174
+They have this function
+called the regression.
+
+590
+00:25:11,174 --> 00:25:14,839
+Evaluator. So evaluator.
+
+591
+00:25:14,839 --> 00:25:16,300
+So for classifications,
+
+592
+00:25:16,300 --> 00:25:17,379
+we have some set of metrics
+
+593
+00:25:17,379 --> 00:25:18,860
+for regression, we
+have another set.
+
+594
+00:25:18,860 --> 00:25:20,359
+This is actually
+an umbrella that
+
+595
+00:25:20,359 --> 00:25:22,659
+covers a lot of different
+metrics, right?
+
+596
+00:25:22,659 --> 00:25:25,240
+So evaluation. And so down here,
+
+597
+00:25:25,240 --> 00:25:26,860
+I can create one
+of these things,
+
+598
+00:25:26,860 --> 00:25:29,419
+and I can say what metric
+name I want, right?
+
+599
+00:25:29,419 --> 00:25:32,740
+And I'm going to say metric
+name equals R squared score.
+
+600
+00:25:32,740 --> 00:25:34,060
+I'm not going to worry too much
+
+601
+00:25:34,060 --> 00:25:35,239
+about what the R
+squared score is
+
+602
+00:25:35,239 --> 00:25:36,399
+because it's not like a status
+
+603
+00:25:36,399 --> 00:25:38,360
+class or machine learning class.
+
+604
+00:25:38,360 --> 00:25:41,560
+Basically, though, if I
+have perfect predictions,
+
+605
+00:25:41,560 --> 00:25:43,019
+it's going to give
+me a score of one.
+
+606
+00:25:43,019 --> 00:25:45,060
+So one is great. Zero means
+
+607
+00:25:45,060 --> 00:25:46,939
+like I'm not providing
+anything useful.
+
+608
+00:25:46,939 --> 00:25:48,960
+If it was negative, I
+would almost be doing
+
+609
+00:25:48,960 --> 00:25:51,859
+worse than just testing
+the average, right?
+
+610
+00:25:51,859 --> 00:25:54,319
+So I'm going to pass
+this, and I'm to say
+
+611
+00:25:54,319 --> 00:25:56,280
+my label column equals
+
+612
+00:25:56,280 --> 00:25:59,159
+y. I'm referring to
+column names up here.
+
+613
+00:25:59,159 --> 00:26:03,679
+And then I can say my
+prediction column.
+
+614
+00:26:04,370 --> 00:26:07,410
+Equals prediction.
+
+615
+00:26:07,410 --> 00:26:11,409
+And I may save that down
+here. I have this object.
+
+616
+00:26:11,409 --> 00:26:14,950
+And just like everything, it's
+
+617
+00:26:14,950 --> 00:26:16,210
+going to act like a transformer,
+
+618
+00:26:16,210 --> 00:26:17,250
+it's going to have
+a different name.
+
+619
+00:26:17,250 --> 00:26:21,149
+So I'm may say R two
+score to evaluate.
+
+620
+00:26:21,149 --> 00:26:23,489
+And what I can do is
+I can just pass in
+
+621
+00:26:23,489 --> 00:26:26,550
+data from my predictions.
+
+622
+00:26:26,550 --> 00:26:28,829
+I can pass in that
+whole table like so.
+
+623
+00:26:28,829 --> 00:26:33,309
+And what happened there.
+
+624
+00:26:33,309 --> 00:26:39,249
+So It doesn't have,
+it's just R two.
+
+625
+00:26:39,249 --> 00:26:41,889
+Okay. So I'm just going
+to call it R two.
+
+626
+00:26:41,889 --> 00:26:43,689
+Great. So I do that.
+
+627
+00:26:43,689 --> 00:26:45,169
+And I may get a score, which
+
+628
+00:26:45,169 --> 00:26:47,009
+is quite read. Not
+surprising, right?
+
+629
+00:26:47,009 --> 00:26:50,329
+It was a super simple pattern
+just adding two numbers,
+
+630
+00:26:50,329 --> 00:26:53,189
+and so the decision
+tree did what it did,
+
+631
+00:26:53,189 --> 00:26:54,870
+and it can pretty accurately
+
+632
+00:26:54,870 --> 00:26:57,430
+predict how the summation works.
+
+633
+00:26:57,430 --> 00:26:58,970
+And there was some
+noise. So of course,
+
+634
+00:26:58,970 --> 00:27:01,750
+it's not going to be
+perfect, either. Oh, right.
+
+635
+00:27:01,750 --> 00:27:03,549
+Those are my hands on demos with
+
+636
+00:27:03,549 --> 00:27:05,709
+the Spark API for
+Machine Learning.
+
+637
+00:27:05,709 --> 00:27:10,149
+Any questions about the
+API? Yeah, right here.
+
+638
+00:27:11,940 --> 00:27:15,339
+So this is an R squared score.
+
+639
+00:27:15,339 --> 00:27:19,239
+And so I know I'm not trying
+to get into the math of it.
+
+640
+00:27:19,239 --> 00:27:20,779
+We could talk about it
+offline if you want.
+
+641
+00:27:20,779 --> 00:27:24,640
+But you know, if I
+like a scatter plot,
+
+642
+00:27:24,640 --> 00:27:26,359
+there's some variance
+in the values,
+
+643
+00:27:26,359 --> 00:27:28,699
+and if I fit a line to it
+or do something like that,
+
+644
+00:27:28,699 --> 00:27:31,259
+then in some ways, I'm
+explaining some of the variance.
+
+645
+00:27:31,259 --> 00:27:32,699
+This is a really measure
+of like, how much of
+
+646
+00:27:32,699 --> 00:27:34,699
+the variance my
+model can explain.
+
+647
+00:27:34,699 --> 00:27:38,879
+And I can explain
+almost 98% of it.
+
+648
+00:27:38,879 --> 00:27:41,119
+So that's in depth,
+I'll go here,
+
+649
+00:27:41,119 --> 00:27:42,839
+but I'm happy to look
+at actual numbers
+
+650
+00:27:42,839 --> 00:27:44,820
+like if you come up later.
+
+651
+00:27:44,820 --> 00:27:50,030
+Yeah, there are questions
+people have. Right.
+
+652
+00:27:50,030 --> 00:27:50,869
+Fantastic.
+
+653
+00:27:50,869 --> 00:27:53,670
+So let's head back here.
+
+654
+00:27:53,670 --> 00:27:56,510
+And we've seen how
+the API works.
+
+655
+00:27:56,510 --> 00:27:58,950
+A lot of different
+models fit that API.
+
+656
+00:27:58,950 --> 00:28:02,369
+I want to look at
+a specific model
+
+657
+00:28:02,369 --> 00:28:05,270
+and how we could train it
+in histri environment.
+
+658
+00:28:05,270 --> 00:28:07,910
+And so the model I'm going to
+look at is a decision tree.
+
+659
+00:28:07,910 --> 00:28:10,210
+And I'm going to look at it
+in a few different ways.
+
+660
+00:28:10,210 --> 00:28:12,190
+First of'll see, if you
+have a decision tree,
+
+661
+00:28:12,190 --> 00:28:14,869
+how do you use it?
+That's the easiest part.
+
+662
+00:28:14,869 --> 00:28:18,010
+And then I'll see if I have
+a small amount of data,
+
+663
+00:28:18,010 --> 00:28:21,629
+how can I train a decision
+tree on a single computer?
+
+664
+00:28:21,629 --> 00:28:22,970
+That's not the focus
+of our course,
+
+665
+00:28:22,970 --> 00:28:24,209
+but I think we need to all have
+
+666
+00:28:24,209 --> 00:28:25,710
+that same background before
+
+667
+00:28:25,710 --> 00:28:27,449
+we understand anything
+on top of that.
+
+668
+00:28:27,449 --> 00:28:29,629
+And then what I'll spend
+the most time on is
+
+669
+00:28:29,629 --> 00:28:30,830
+if we have data that spread
+
+670
+00:28:30,830 --> 00:28:32,330
+across many different computers,
+
+671
+00:28:32,330 --> 00:28:34,430
+how can we train
+
+672
+00:28:34,430 --> 00:28:35,930
+the decision tree
+without having to move
+
+673
+00:28:35,930 --> 00:28:37,769
+data too often over the network?
+
+674
+00:28:37,769 --> 00:28:39,989
+So decision tree, you could
+use them to make decisions.
+
+675
+00:28:39,989 --> 00:28:42,149
+You could also use them
+to make predictions.
+
+676
+00:28:42,149 --> 00:28:44,869
+And so here I'm imagining
+that I don't know,
+
+677
+00:28:44,869 --> 00:28:45,969
+let's say we have
+a candidate for
+
+678
+00:28:45,969 --> 00:28:47,410
+a job and we make them an offer,
+
+679
+00:28:47,410 --> 00:28:48,710
+and we want to predict whether
+
+680
+00:28:48,710 --> 00:28:49,829
+or not they're going to accept
+
+681
+00:28:49,829 --> 00:28:53,499
+the job we could ask a series
+of yes or no questions,
+
+682
+00:28:53,499 --> 00:28:55,039
+and based on the
+answers, we could say,
+
+683
+00:28:55,039 --> 00:28:57,119
+well, we think they're
+going to accept or not.
+
+684
+00:28:57,119 --> 00:28:59,439
+And so if the salary
+is less than 50 k,
+
+685
+00:28:59,439 --> 00:29:00,960
+they're probably
+going to decline.
+
+686
+00:29:00,960 --> 00:29:03,420
+I yes, then it might come
+down to other factors.
+
+687
+00:29:03,420 --> 00:29:05,100
+If they have to drive
+more than an hour,
+
+688
+00:29:05,100 --> 00:29:06,959
+they'll probably to decline.
+
+689
+00:29:06,959 --> 00:29:09,280
+If they're closer,
+then maybe it comes
+
+690
+00:29:09,280 --> 00:29:10,899
+down to whether or not they
+have free coffee, right?
+
+691
+00:29:10,899 --> 00:29:13,359
+I could ask all these
+things and at the leafs,
+
+692
+00:29:13,359 --> 00:29:15,800
+I could have a bunch of
+predictions or decisions,
+
+693
+00:29:15,800 --> 00:29:17,679
+depending on how you
+want to look at it.
+
+694
+00:29:17,679 --> 00:29:19,840
+Those leafs could be numbers,
+
+695
+00:29:19,840 --> 00:29:21,480
+in which case, it's
+a regression model,
+
+696
+00:29:21,480 --> 00:29:23,080
+like we were doing
+in the notebook,
+
+697
+00:29:23,080 --> 00:29:24,939
+or they could be categories,
+
+698
+00:29:24,939 --> 00:29:27,210
+in which case it's a
+classification model.
+
+699
+00:29:27,210 --> 00:29:29,099
+I could have a little
+picture like this
+
+700
+00:29:29,099 --> 00:29:30,999
+or I could write
+it as Python code,
+
+701
+00:29:30,999 --> 00:29:34,139
+which would be a big
+nested Fels, right?
+
+702
+00:29:34,139 --> 00:29:35,919
+So I think that you know,
+even people who are not
+
+703
+00:29:35,919 --> 00:29:37,100
+programmers can
+look at that tree
+
+704
+00:29:37,100 --> 00:29:38,619
+and try to figure out
+how to read through it.
+
+705
+00:29:38,619 --> 00:29:40,459
+Python programmers
+could, you know,
+
+706
+00:29:40,459 --> 00:29:42,699
+write hard code it with Fs.
+
+707
+00:29:42,699 --> 00:29:44,139
+What's really
+interesting is how do
+
+708
+00:29:44,139 --> 00:29:45,659
+we actually figure out how to
+
+709
+00:29:45,659 --> 00:29:47,739
+automatically figure out how
+
+710
+00:29:47,739 --> 00:29:49,669
+to create a good tree, right?
+
+711
+00:29:49,669 --> 00:29:51,899
+Alright, so I want to
+motivate a little bit
+
+712
+00:29:51,899 --> 00:29:53,899
+more why we care about
+decision trees because,
+
+713
+00:29:53,899 --> 00:29:55,439
+you know, there's
+a lot of energy
+
+714
+00:29:55,439 --> 00:29:57,979
+around deep learning these days.
+
+715
+00:29:57,979 --> 00:30:00,219
+And so decision trees,
+
+716
+00:30:00,219 --> 00:30:02,580
+even though this is a
+very old algorithm,
+
+717
+00:30:02,580 --> 00:30:04,799
+there are newer approaches
+that are built on top of
+
+718
+00:30:04,799 --> 00:30:07,099
+it in particular on
+ensemble methods.
+
+719
+00:30:07,099 --> 00:30:08,639
+And an ensemble method,
+
+720
+00:30:08,639 --> 00:30:10,619
+you actually have a
+lot of smaller models,
+
+721
+00:30:10,619 --> 00:30:12,640
+and then you have some kind
+of aggregation over them.
+
+722
+00:30:12,640 --> 00:30:14,419
+Maybe each of these
+smaller models
+
+723
+00:30:14,419 --> 00:30:15,599
+are trying to make
+their prediction,
+
+724
+00:30:15,599 --> 00:30:17,279
+and they vote in
+some way, right?
+
+725
+00:30:17,279 --> 00:30:18,759
+So a random forest
+would be a bunch of
+
+726
+00:30:18,759 --> 00:30:21,039
+different decision
+trees altogether.
+
+727
+00:30:21,039 --> 00:30:22,739
+There's other
+variants on it like
+
+728
+00:30:22,739 --> 00:30:24,080
+a gradient boosted trees,
+
+729
+00:30:24,080 --> 00:30:25,959
+with gradient boosted trees,
+
+730
+00:30:25,959 --> 00:30:29,700
+Each time we add a new
+decision tree to the set,
+
+731
+00:30:29,700 --> 00:30:31,019
+we're trying to specifically
+
+732
+00:30:31,019 --> 00:30:33,019
+compensate for the mistakes
+that the other ones make.
+
+733
+00:30:33,019 --> 00:30:35,159
+So we're trying to add
+a voter that somehow
+
+734
+00:30:35,159 --> 00:30:36,919
+counterbalances mistakes
+
+735
+00:30:36,919 --> 00:30:38,959
+that other voters
+have made, right?
+
+736
+00:30:38,959 --> 00:30:42,280
+So, you know, to do
+any of these things,
+
+737
+00:30:42,280 --> 00:30:43,100
+we have to be able to train
+
+738
+00:30:43,100 --> 00:30:44,379
+a single decision
+tree well, right?
+
+739
+00:30:44,379 --> 00:30:45,999
+So we need to have an
+algorithm for that.
+
+740
+00:30:45,999 --> 00:30:48,100
+But this unlocks a
+lot of other things.
+
+741
+00:30:48,100 --> 00:30:49,979
+And we won't talk about
+more. I just want you to be
+
+742
+00:30:49,979 --> 00:30:52,990
+aware that this is a building
+block for a lot of things.
+
+743
+00:30:52,990 --> 00:30:55,259
+So, why use trees at all?
+
+744
+00:30:55,259 --> 00:30:57,239
+Why use, you know, kind of
+broadly what you might call
+
+745
+00:30:57,239 --> 00:31:00,120
+tree based methods in
+instead of deep learning.
+
+746
+00:31:00,120 --> 00:31:01,760
+And I think that Sebastian Raska
+
+747
+00:31:01,760 --> 00:31:03,140
+has a really nice blog post.
+
+748
+00:31:03,140 --> 00:31:04,959
+Maybe some of you might
+like to go read it.
+
+749
+00:31:04,959 --> 00:31:07,179
+Sebastian Achal used
+to be a professor here
+
+750
+00:31:07,179 --> 00:31:09,860
+before he went off and is
+doing things in industry now.
+
+751
+00:31:09,860 --> 00:31:12,299
+And so there's a comparison
+in that blog between
+
+752
+00:31:12,299 --> 00:31:15,800
+deep learning and
+tree Bates methods.
+
+753
+00:31:15,800 --> 00:31:19,159
+And one of the things
+that it comes down to is,
+
+754
+00:31:19,159 --> 00:31:21,839
+what does our data look like
+that we're working with.
+
+755
+00:31:21,839 --> 00:31:25,140
+Let's imagine that
+we have irises.
+
+756
+00:31:25,140 --> 00:31:26,619
+Iris are kind of flower,
+
+757
+00:31:26,619 --> 00:31:27,859
+and we want to classify them.
+
+758
+00:31:27,859 --> 00:31:29,625
+There's a few different
+kinds of irises.
+
+759
+00:31:29,625 --> 00:31:30,849
+One way you could do that is
+
+760
+00:31:30,849 --> 00:31:31,950
+you could have
+unstructured data.
+
+761
+00:31:31,950 --> 00:31:33,650
+Maybe you just have
+images of them.
+
+762
+00:31:33,650 --> 00:31:36,069
+And what you might try to
+
+763
+00:31:36,069 --> 00:31:37,309
+do to classify it is
+
+764
+00:31:37,309 --> 00:31:38,970
+you might come down to
+different measurements,
+
+765
+00:31:38,970 --> 00:31:40,109
+like how large are the petals,
+
+766
+00:31:40,109 --> 00:31:42,589
+how large are the sepals,
+things like that.
+
+767
+00:31:42,589 --> 00:31:44,789
+And one of the cool things
+about deep learning is
+
+768
+00:31:44,789 --> 00:31:47,330
+that we can just feed in an
+enormous amount of data,
+
+769
+00:31:47,330 --> 00:31:49,109
+raw pixels of those images.
+
+770
+00:31:49,109 --> 00:31:51,790
+And at the end, there's a
+prediction, and internally,
+
+771
+00:31:51,790 --> 00:31:54,029
+even though it's it's
+kind of opaque to us,
+
+772
+00:31:54,029 --> 00:31:56,349
+what's ultimately happening
+is that it's figuring out
+
+773
+00:31:56,349 --> 00:31:58,789
+important features for making
+the prediction, right?
+
+774
+00:31:58,789 --> 00:32:00,989
+So maybe internally, it
+might be figuring out
+
+775
+00:32:00,989 --> 00:32:04,109
+the sizes of those petals
+and sepals, right?
+
+776
+00:32:04,109 --> 00:32:07,129
+That's the strength of
+deep learning, right?
+
+777
+00:32:07,129 --> 00:32:08,929
+We can throw on
+structured data at it.
+
+778
+00:32:08,929 --> 00:32:11,030
+Of course, there's lots of
+structured data in the world.
+
+779
+00:32:11,030 --> 00:32:12,409
+Maybe a human actually went
+
+780
+00:32:12,409 --> 00:32:14,689
+and measured these
+things and has a table.
+
+781
+00:32:14,689 --> 00:32:16,370
+If you already have
+structured data,
+
+782
+00:32:16,370 --> 00:32:18,789
+then tree based
+methods do quite well.
+
+783
+00:32:18,789 --> 00:32:20,490
+They're competitive with deep
+learning, and of course,
+
+784
+00:32:20,490 --> 00:32:22,150
+there's a lot of
+important tabular
+
+785
+00:32:22,150 --> 00:32:23,569
+data in the world, right?
+
+786
+00:32:23,569 --> 00:32:25,390
+So, we're looking
+at decision trees,
+
+787
+00:32:25,390 --> 00:32:27,330
+it's an old approach,
+
+788
+00:32:27,330 --> 00:32:29,509
+but there are a lot of new
+things built on top of it,
+
+789
+00:32:29,509 --> 00:32:31,649
+and it's still competitive for
+
+790
+00:32:31,649 --> 00:32:34,664
+some important use
+cases. Alright, cool.
+
+791
+00:32:34,664 --> 00:32:38,099
+So, the decision trees,
+they're still useful.
+
+792
+00:32:38,099 --> 00:32:40,420
+If we want to build a
+good decision tree,
+
+793
+00:32:40,420 --> 00:32:41,820
+we have to have some intuition
+
+794
+00:32:41,820 --> 00:32:43,360
+about what makes a tree good.
+
+795
+00:32:43,360 --> 00:32:45,299
+And so what I may
+imagine here is that
+
+796
+00:32:45,299 --> 00:32:47,719
+I have a bunch of data,
+
+797
+00:32:47,719 --> 00:32:50,219
+and If I have
+
+798
+00:32:50,219 --> 00:32:51,939
+a tree where I asked all
+these questions, right?
+
+799
+00:32:51,939 --> 00:32:53,179
+I could take any given row and I
+
+800
+00:32:53,179 --> 00:32:54,319
+could feed it through
+those questions,
+
+801
+00:32:54,319 --> 00:32:57,440
+and I could see where does
+this row land within the tree?
+
+802
+00:32:57,440 --> 00:32:59,120
+So I actually have two
+different decision trees
+
+803
+00:32:59,120 --> 00:33:00,859
+over here asking
+different questions.
+
+804
+00:33:00,859 --> 00:33:04,260
+The first one says, is
+X one bigger than 2.5?
+
+805
+00:33:04,260 --> 00:33:05,639
+And if I do half of
+
+806
+00:33:05,639 --> 00:33:06,599
+the rows will go to the right
+
+807
+00:33:06,599 --> 00:33:07,820
+and half will go to the left,
+
+808
+00:33:07,820 --> 00:33:10,620
+or I could ask is X
+two greater than zero.
+
+809
+00:33:10,620 --> 00:33:12,060
+And then in this case,
+
+810
+00:33:12,060 --> 00:33:13,160
+half the rows go each way,
+
+811
+00:33:13,160 --> 00:33:14,799
+but it's a different
+half of them.
+
+812
+00:33:14,799 --> 00:33:17,079
+So just of looking
+at this informally,
+
+813
+00:33:17,079 --> 00:33:18,399
+I'm wondering if anybody has
+
+814
+00:33:18,399 --> 00:33:20,919
+an opinion about which
+decision tree is
+
+815
+00:33:20,919 --> 00:33:28,059
+better. Yeah, right here.
+
+816
+00:33:28,059 --> 00:33:31,019
+You like the one on the right.
+Why the one on the right?
+
+817
+00:33:31,019 --> 00:33:32,219
+Yes.
+
+818
+00:33:39,940 --> 00:33:42,459
+Yeah. Excellent. The one
+
+819
+00:33:42,459 --> 00:33:43,240
+on the right is better
+
+820
+00:33:43,240 --> 00:33:44,740
+because after we
+asked that question,
+
+821
+00:33:44,740 --> 00:33:46,179
+we kind of pulled together
+
+822
+00:33:46,179 --> 00:33:47,919
+related rows where we have
+
+823
+00:33:47,919 --> 00:33:50,119
+similar not a lot
+of variances there.
+
+824
+00:33:50,119 --> 00:33:51,679
+And that's really kind
+of what we want to do.
+
+825
+00:33:51,679 --> 00:33:54,259
+If we asked a question that
+divides things in a way that
+
+826
+00:33:54,259 --> 00:33:56,879
+doesn't reveal any patterns,
+so that's not that helpful.
+
+827
+00:33:56,879 --> 00:33:58,839
+We want to divide things
+in a way where we
+
+828
+00:33:58,839 --> 00:34:01,059
+have similar rows
+together, right?
+
+829
+00:34:01,059 --> 00:34:03,060
+And so You also,
+
+830
+00:34:03,060 --> 00:34:04,859
+I think you use the word
+variance, which is correct.
+
+831
+00:34:04,859 --> 00:34:06,679
+And in the left case,
+we have high variance
+
+832
+00:34:06,679 --> 00:34:08,460
+in our label in both cases,
+
+833
+00:34:08,460 --> 00:34:10,020
+on the right, we
+have low variance.
+
+834
+00:34:10,020 --> 00:34:12,040
+And variance is an
+example of a broader,
+
+835
+00:34:12,040 --> 00:34:13,979
+what we might call an
+impurity measure, right?
+
+836
+00:34:13,979 --> 00:34:16,359
+So we want everything kind
+of homogeneous, the same.
+
+837
+00:34:16,359 --> 00:34:19,159
+The opposite of that is
+an impure set of rows.
+
+838
+00:34:19,159 --> 00:34:20,960
+And so variance in
+impurity measure,
+
+839
+00:34:20,960 --> 00:34:23,559
+if I'm be like a classification
+where it's categorical,
+
+840
+00:34:23,559 --> 00:34:24,479
+maybe I have something like
+
+841
+00:34:24,479 --> 00:34:26,179
+an accuracy score,
+something like that.
+
+842
+00:34:26,179 --> 00:34:28,120
+You can imagine lots
+of different scores
+
+843
+00:34:28,120 --> 00:34:29,580
+to measure impurity.
+
+844
+00:34:29,580 --> 00:34:31,659
+But in general, right,
+however we define it,
+
+845
+00:34:31,659 --> 00:34:33,459
+we want to group
+together rows that are
+
+846
+00:34:33,459 --> 00:34:36,139
+very similar to
+each other, right?
+
+847
+00:34:36,139 --> 00:34:39,669
+Within the leaves.
+Alright. So how
+
+848
+00:34:39,669 --> 00:34:41,769
+would we actually use
+this tree that we like?
+
+849
+00:34:41,769 --> 00:34:43,649
+Well, let's say
+we have a new row
+
+850
+00:34:43,649 --> 00:34:45,570
+of data where the y
+value is unknown.
+
+851
+00:34:45,570 --> 00:34:47,309
+So we'll feed it
+through. We'll say is X
+
+852
+00:34:47,309 --> 00:34:49,230
+two greater than zero.
+
+853
+00:34:49,230 --> 00:34:51,289
+It sure is. And that one
+will go to the right.
+
+854
+00:34:51,289 --> 00:34:52,949
+And then based on this tree,
+
+855
+00:34:52,949 --> 00:34:54,449
+what we can say is
+that this new row
+
+856
+00:34:54,449 --> 00:34:55,769
+that we've never seen before,
+
+857
+00:34:55,769 --> 00:34:57,429
+it's most similar to
+
+858
+00:34:57,429 --> 00:34:59,989
+these two rows over here
+on the right hand side.
+
+859
+00:34:59,989 --> 00:35:01,730
+And so we can use that
+to make a prediction.
+
+860
+00:35:01,730 --> 00:35:03,409
+Maybe we'll just say, well, it's
+
+861
+00:35:03,409 --> 00:35:04,529
+similar to these other rows,
+
+862
+00:35:04,529 --> 00:35:07,904
+and these other rows had
+an average y value of 8.7.
+
+863
+00:35:07,904 --> 00:35:11,399
+Let's predict 8.7 for
+the new row, right?
+
+864
+00:35:11,399 --> 00:35:13,819
+So if we bring together
+kind of similar rows and
+
+865
+00:35:13,819 --> 00:35:16,419
+we can place new rows
+relative to the old ones,
+
+866
+00:35:16,419 --> 00:35:19,439
+then we have a way of
+making predictions, right?
+
+867
+00:35:19,439 --> 00:35:21,080
+We're like, Oh, this
+looks familiar.
+
+868
+00:35:21,080 --> 00:35:23,160
+I've seen this before.
+
+869
+00:35:23,160 --> 00:35:25,700
+Do we have any questions
+about that general
+
+870
+00:35:25,700 --> 00:35:27,679
+general approach kind of, like,
+
+871
+00:35:27,679 --> 00:35:31,259
+how we would predict what a
+decision tree or why we want,
+
+872
+00:35:31,259 --> 00:35:34,679
+you know, a tree to
+look a specific way.
+
+873
+00:35:35,800 --> 00:35:39,959
+Right. Cool. So let's
+talk about how we
+
+874
+00:35:39,959 --> 00:35:43,899
+can train a decision tree if
+we have a small data set.
+
+875
+00:35:43,899 --> 00:35:45,849
+It all fits in memory, okay?
+
+876
+00:35:45,849 --> 00:35:48,259
+So the way it works is
+
+877
+00:35:48,259 --> 00:35:51,679
+that we will start with the
+simplest possible tree,
+
+878
+00:35:51,679 --> 00:35:53,480
+which is just one node
+
+879
+00:35:53,480 --> 00:35:55,379
+with all of the rows of
+data assigned to it.
+
+880
+00:35:55,379 --> 00:35:56,659
+If it's just one
+node, it doesn't
+
+881
+00:35:56,659 --> 00:35:58,139
+even have a question
+associated with it.
+
+882
+00:35:58,139 --> 00:36:00,079
+If I tried to predict
+with that tree,
+
+883
+00:36:00,079 --> 00:36:01,279
+I guess what I
+would do is I would
+
+884
+00:36:01,279 --> 00:36:03,500
+just take the average
+of all the y values,
+
+885
+00:36:03,500 --> 00:36:05,339
+and it would always be
+my prediction, right?
+
+886
+00:36:05,339 --> 00:36:07,039
+And so we're going to start
+with that. But what we do
+
+887
+00:36:07,039 --> 00:36:08,939
+is where I keep asking
+questions that will
+
+888
+00:36:08,939 --> 00:36:13,199
+split a leaf node into two
+more new leaf nodes, right?
+
+889
+00:36:13,199 --> 00:36:15,119
+We I recursively keep
+
+890
+00:36:15,119 --> 00:36:17,819
+splitting until we
+have a decent tree.
+
+891
+00:36:17,819 --> 00:36:20,159
+So what I might do on
+the left hand side,
+
+892
+00:36:20,159 --> 00:36:22,360
+I have that node A.
+There's no questions.
+
+893
+00:36:22,360 --> 00:36:24,459
+In this case, I'm trying to
+predict whether it'll rain.
+
+894
+00:36:24,459 --> 00:36:26,399
+And I have a temperature,
+humidity and rain.
+
+895
+00:36:26,399 --> 00:36:28,219
+I could just, you
+know, stop there,
+
+896
+00:36:28,219 --> 00:36:29,519
+and I could say, I
+always say there's
+
+897
+00:36:29,519 --> 00:36:31,079
+a 25% chance of rain.
+
+898
+00:36:31,079 --> 00:36:32,580
+Okay? No super interesting.
+
+899
+00:36:32,580 --> 00:36:33,919
+Or I could spit
+and, I could say,
+
+900
+00:36:33,919 --> 00:36:36,359
+is the humidity greater
+than or equal to 40?
+
+901
+00:36:36,359 --> 00:36:37,939
+And if it is, then I can say,
+
+902
+00:36:37,939 --> 00:36:39,779
+well, there's a 50%
+chance of rain.
+
+903
+00:36:39,779 --> 00:36:42,689
+Otherwise, there's no
+chance of rain, right?
+
+904
+00:36:42,689 --> 00:36:45,599
+So I could do that. And I
+could recursively go further.
+
+905
+00:36:45,599 --> 00:36:46,940
+After I asked about humidity,
+
+906
+00:36:46,940 --> 00:36:48,979
+maybe SA is the temperature
+greater than 80.
+
+907
+00:36:48,979 --> 00:36:50,779
+And I've really had it
+broken down, right?
+
+908
+00:36:50,779 --> 00:36:52,499
+So depending on what I asked,
+I'll either say, well,
+
+909
+00:36:52,499 --> 00:36:56,519
+there's a 100% chance of
+rain if I end up in OD or a
+
+910
+00:36:56,519 --> 00:36:58,499
+0% chance of rain if I
+
+911
+00:36:58,499 --> 00:37:00,919
+end up anywhere
+anywhere else, right?
+
+912
+00:37:00,919 --> 00:37:02,559
+So we're gonna keep
+splitting to try
+
+913
+00:37:02,559 --> 00:37:05,639
+to separate out the data.
+Yeah, question right here.
+
+914
+00:37:10,520 --> 00:37:13,220
+Yeah, we want to
+find split points
+
+915
+00:37:13,220 --> 00:37:14,799
+that reduce the variance, right?
+
+916
+00:37:14,799 --> 00:37:18,899
+Because whenever
+I have a new row,
+
+917
+00:37:18,899 --> 00:37:20,879
+I'm going to feed it
+through the decision tree
+
+918
+00:37:20,879 --> 00:37:22,479
+and I'm going to find
+a bunch of other rows,
+
+919
+00:37:22,479 --> 00:37:24,579
+where I as as are
+the same about it.
+
+920
+00:37:24,579 --> 00:37:26,739
+And so based on
+those other rows,
+
+921
+00:37:26,739 --> 00:37:27,940
+I'm going to kind of assume
+
+922
+00:37:27,940 --> 00:37:29,939
+my new row is similar to them.
+
+923
+00:37:29,939 --> 00:37:32,119
+And so my hope is that
+
+924
+00:37:32,119 --> 00:37:35,360
+this previous group of
+rows were very similar.
+
+925
+00:37:35,360 --> 00:37:36,819
+They're all yes,
+or they're all no,
+
+926
+00:37:36,819 --> 00:37:39,089
+or they're all the same
+number. Yeah, cut on.
+
+927
+00:37:39,089 --> 00:37:44,419
+How do you Oh, sure.
+
+928
+00:37:44,419 --> 00:37:47,159
+We'll talk about how we find
+a specific split point.
+
+929
+00:37:47,159 --> 00:37:49,199
+Yeah. Yeah. Yeah you're thinking
+about it the right way,
+
+930
+00:37:49,199 --> 00:37:50,379
+but just a little
+bit ahead of me.
+
+931
+00:37:50,379 --> 00:37:52,259
+Yeah, Ts over here?
+
+932
+00:37:52,259 --> 00:37:53,939
+How do you know you're making
+
+933
+00:37:53,939 --> 00:37:57,185
+the right split split something
+completely arbitrary.
+
+934
+00:37:57,185 --> 00:37:59,429
+God. Yeah. So you could
+
+935
+00:37:59,429 --> 00:38:01,749
+split something arbitrary and
+you might have a bad split,
+
+936
+00:38:01,749 --> 00:38:03,829
+or you could split on other
+things that have good split.
+
+937
+00:38:03,829 --> 00:38:05,649
+So we have a notion of whether
+
+938
+00:38:05,649 --> 00:38:07,789
+or not a tree is good, right?
+
+939
+00:38:07,789 --> 00:38:09,969
+And we can define that.
+
+940
+00:38:09,969 --> 00:38:11,629
+And so then based on
+that, we can try to say,
+
+941
+00:38:11,629 --> 00:38:14,109
+well, does the split make
+the tree better, right?
+
+942
+00:38:14,109 --> 00:38:15,249
+So first, you know, you just try
+
+943
+00:38:15,249 --> 00:38:16,509
+to say, is the tree good?
+
+944
+00:38:16,509 --> 00:38:17,969
+Then you can use that to
+
+945
+00:38:17,969 --> 00:38:19,670
+kind of back up and
+make decisions.
+
+946
+00:38:19,670 --> 00:38:22,329
+So everybody's kind of
+talking about good things,
+
+947
+00:38:22,329 --> 00:38:24,089
+and we're going to get there.
+
+948
+00:38:24,089 --> 00:38:25,869
+So one question is, like,
+
+949
+00:38:25,869 --> 00:38:27,770
+when do we actually
+stop splitting?
+
+950
+00:38:27,770 --> 00:38:28,850
+There's different approaches.
+
+951
+00:38:28,850 --> 00:38:30,689
+Maybe people set the
+maximum tree height,
+
+952
+00:38:30,689 --> 00:38:33,604
+like you'll do on P five.
+
+953
+00:38:33,604 --> 00:38:36,540
+You might say that
+if I'm splitting,
+
+954
+00:38:36,540 --> 00:38:37,719
+I only want to do
+it if there's like
+
+955
+00:38:37,719 --> 00:38:39,099
+a large number of rows.
+
+956
+00:38:39,099 --> 00:38:40,839
+In some sense,
+right, if I get down
+
+957
+00:38:40,839 --> 00:38:42,839
+here to no D, and I'm like, Yes,
+
+958
+00:38:42,839 --> 00:38:44,840
+there's 100% chance
+of rain based
+
+959
+00:38:44,840 --> 00:38:47,279
+on this one time it
+rained before, right?
+
+960
+00:38:47,279 --> 00:38:48,679
+Like, that's not great, right?
+
+961
+00:38:48,679 --> 00:38:51,059
+You want to have a kind of
+more rows in each case, right?
+
+962
+00:38:51,059 --> 00:38:52,300
+So you might set a minimum.
+
+963
+00:38:52,300 --> 00:38:54,799
+Other times what people
+do is, build a big tree,
+
+964
+00:38:54,799 --> 00:38:56,179
+and then after the fact,
+
+965
+00:38:56,179 --> 00:38:58,099
+they might prune it to
+make the tree better.
+
+966
+00:38:58,099 --> 00:38:59,459
+Lots of different
+appaches. We won't
+
+967
+00:38:59,459 --> 00:39:00,999
+worry about too much about that.
+
+968
+00:39:00,999 --> 00:39:02,879
+Some people were using the word
+
+969
+00:39:02,879 --> 00:39:05,619
+overfitting when we were
+talking about that.
+
+970
+00:39:05,619 --> 00:39:07,599
+And let me explain
+
+971
+00:39:07,599 --> 00:39:10,174
+overfitting in this context.
+I have two different trees.
+
+972
+00:39:10,174 --> 00:39:11,509
+I mean, they're
+both pretty simple,
+
+973
+00:39:11,509 --> 00:39:12,869
+right? There's not
+a lot of data here.
+
+974
+00:39:12,869 --> 00:39:14,770
+But the one on top is simpler
+
+975
+00:39:14,770 --> 00:39:16,949
+than the one on
+the bottom, right?
+
+976
+00:39:16,949 --> 00:39:19,549
+And so I want to imagine if
+I'm feeding this row in.
+
+977
+00:39:19,549 --> 00:39:23,450
+I say, temperature is
+65 and humidity is 42.
+
+978
+00:39:23,450 --> 00:39:24,729
+If I fed that through the top,
+
+979
+00:39:24,729 --> 00:39:26,469
+then I'd end up over
+here and I'll say, well,
+
+980
+00:39:26,469 --> 00:39:27,969
+there's a 50% chance of
+
+981
+00:39:27,969 --> 00:39:29,969
+rain based on these
+two previous rows.
+
+982
+00:39:29,969 --> 00:39:31,189
+If I feeding the bottom one,
+
+983
+00:39:31,189 --> 00:39:32,509
+I'll end up over here
+and I'll say, well,
+
+984
+00:39:32,509 --> 00:39:34,659
+there's 100% chance of rain.
+
+985
+00:39:34,659 --> 00:39:38,749
+That second prediction is not
+necessarily better, right?
+
+986
+00:39:38,749 --> 00:39:41,489
+Because what that second
+tree really did is
+
+987
+00:39:41,489 --> 00:39:45,230
+that it learned the exact
+patterns of the past,
+
+988
+00:39:45,230 --> 00:39:47,969
+but it's overfitting,
+perhaps, right?
+
+989
+00:39:47,969 --> 00:39:49,649
+It's trying to say, Well,
+
+990
+00:39:49,649 --> 00:39:52,590
+it can't see that maybe I
+should be less confident
+
+991
+00:39:52,590 --> 00:39:54,349
+because there's a whole group
+
+992
+00:39:54,349 --> 00:39:55,910
+of scenarios that
+are kind of similar,
+
+993
+00:39:55,910 --> 00:39:57,829
+but it might have
+different outcomes, right?
+
+994
+00:39:57,829 --> 00:40:00,270
+So the second tree is
+probably overfitted.
+
+995
+00:40:00,270 --> 00:40:01,750
+Honestly, they're both
+probably overfitted,
+
+996
+00:40:01,750 --> 00:40:02,429
+but I don't want to have
+
+997
+00:40:02,429 --> 00:40:04,809
+too much information
+on one slide, right?
+
+998
+00:40:04,809 --> 00:40:07,615
+Do we want any questions
+about overfitting?
+
+999
+00:40:07,615 --> 00:40:10,199
+And overfitting is when you you
+
+1000
+00:40:10,199 --> 00:40:12,460
+memorize exactly what
+happened before.
+
+1001
+00:40:12,460 --> 00:40:15,099
+But because you're just
+so focused on memorizing,
+
+1002
+00:40:15,099 --> 00:40:17,680
+you don't actually
+see the patterns.
+
+1003
+00:40:17,680 --> 00:40:21,469
+Alright. So let's talk
+
+1004
+00:40:21,469 --> 00:40:23,110
+about how we actually
+choose splits.
+
+1005
+00:40:23,110 --> 00:40:24,689
+And I May 1 just
+think about, well,
+
+1006
+00:40:24,689 --> 00:40:27,749
+how many different
+splits could be done.
+
+1007
+00:40:27,749 --> 00:40:31,470
+A split is going
+to be a question.
+
+1008
+00:40:31,470 --> 00:40:34,169
+And the question is going
+to be in the form of
+
+1009
+00:40:34,169 --> 00:40:36,069
+this column relative to
+
+1010
+00:40:36,069 --> 00:40:38,969
+this threshold is X
+greater than five, right?
+
+1011
+00:40:38,969 --> 00:40:42,089
+And when we have
+new data coming in,
+
+1012
+00:40:42,089 --> 00:40:43,610
+we don't have y values.
+
+1013
+00:40:43,610 --> 00:40:45,129
+We don't have labels, right?
+
+1014
+00:40:45,129 --> 00:40:47,869
+And so we can never ask a
+question about the label.
+
+1015
+00:40:47,869 --> 00:40:49,570
+We can only ask questions
+about features.
+
+1016
+00:40:49,570 --> 00:40:51,050
+So when I'm looking at this data
+
+1017
+00:40:51,050 --> 00:40:52,410
+here, there are two features.
+
+1018
+00:40:52,410 --> 00:40:53,910
+There's temperature
+and humidity,
+
+1019
+00:40:53,910 --> 00:40:57,364
+and I could ask a question
+about either of those.
+
+1020
+00:40:57,364 --> 00:41:00,499
+Now, there's four rows. And
+any question I should ask
+
+1021
+00:41:00,499 --> 00:41:03,259
+can somehow separate the
+rows into subgroups, right?
+
+1022
+00:41:03,259 --> 00:41:04,819
+And so it wouldn't
+
+1023
+00:41:04,819 --> 00:41:06,359
+make sense to have a
+question where it's like,
+
+1024
+00:41:06,359 --> 00:41:07,219
+Well, there's four rows,
+
+1025
+00:41:07,219 --> 00:41:08,759
+and answer is always
+yes or always, no.
+
+1026
+00:41:08,759 --> 00:41:10,879
+I'm trying to have
+ways to split them up.
+
+1027
+00:41:10,879 --> 00:41:12,079
+And so if there's four rows,
+
+1028
+00:41:12,079 --> 00:41:13,520
+there's three ways to split.
+
+1029
+00:41:13,520 --> 00:41:15,100
+And so if two features,
+
+1030
+00:41:15,100 --> 00:41:16,439
+three ways to split
+for each of them,
+
+1031
+00:41:16,439 --> 00:41:19,439
+there's six different ways
+I could split this data.
+
+1032
+00:41:19,439 --> 00:41:20,479
+And what we're
+going to do is were
+
+1033
+00:41:20,479 --> 00:41:21,779
+act to try all of them.
+
+1034
+00:41:21,779 --> 00:41:24,200
+And we talked about this
+notion of impurity,
+
+1035
+00:41:24,200 --> 00:41:25,919
+which we can measure,
+whatever that is.
+
+1036
+00:41:25,919 --> 00:41:27,599
+We're going to measure
+it for all sex,
+
+1037
+00:41:27,599 --> 00:41:28,959
+and we're going
+to choose the one
+
+1038
+00:41:28,959 --> 00:41:30,839
+that reduces impurity the most.
+
+1039
+00:41:30,839 --> 00:41:33,220
+In other words, we're going
+to choose a split that brings
+
+1040
+00:41:33,220 --> 00:41:36,279
+related data together in
+the same place in the tree.
+
+1041
+00:41:36,279 --> 00:41:38,719
+All right? And so
+how do we do this?
+
+1042
+00:41:38,719 --> 00:41:41,419
+You can imagine like a brute
+force thing where it does
+
+1043
+00:41:41,419 --> 00:41:42,619
+every possibility and does
+
+1044
+00:41:42,619 --> 00:41:44,659
+a lot of expensive
+calculation for each one,
+
+1045
+00:41:44,659 --> 00:41:46,759
+but there's a faster
+way to do it,
+
+1046
+00:41:46,759 --> 00:41:49,179
+and that way will involve
+sorting the data.
+
+1047
+00:41:49,179 --> 00:41:53,900
+So what we'll do is we will
+sort the data by temperature,
+
+1048
+00:41:53,900 --> 00:41:55,359
+and then we're going
+
+1049
+00:41:55,359 --> 00:41:57,339
+a loop over every
+possible split point.
+
+1050
+00:41:57,339 --> 00:41:59,399
+So you know, I could split
+after the first row or
+
+1051
+00:41:59,399 --> 00:42:01,999
+I could split after the second
+row, so on and so forth.
+
+1052
+00:42:01,999 --> 00:42:06,220
+And notice, actually that
+I've switched my example.
+
+1053
+00:42:06,220 --> 00:42:08,000
+Before I was doing
+regression examples,
+
+1054
+00:42:08,000 --> 00:42:09,739
+now I'm trying to predict
+a category, right?
+
+1055
+00:42:09,739 --> 00:42:11,299
+Is trying to rain or. It won't.
+
+1056
+00:42:11,299 --> 00:42:13,280
+And so instead of variance,
+
+1057
+00:42:13,280 --> 00:42:15,679
+we are going to have some
+more complicated statistics,
+
+1058
+00:42:15,679 --> 00:42:17,019
+which I won't worry
+too much about,
+
+1059
+00:42:17,019 --> 00:42:18,019
+but I want to think about
+
+1060
+00:42:18,019 --> 00:42:19,279
+what kind of things
+do we have to
+
+1061
+00:42:19,279 --> 00:42:22,540
+measure to have some
+kind of impurity metric.
+
+1062
+00:42:22,540 --> 00:42:24,099
+Okay? And so what we're going to
+
+1063
+00:42:24,099 --> 00:42:26,394
+do is for any given split,
+
+1064
+00:42:26,394 --> 00:42:28,269
+I can say, Well, how many rows
+
+1065
+00:42:28,269 --> 00:42:29,909
+go left and how many go right?
+
+1066
+00:42:29,909 --> 00:42:32,789
+And the ones that left,
+how many are yes and no?
+
+1067
+00:42:32,789 --> 00:42:35,169
+And for the ones that right,
+how many are yes and no.
+
+1068
+00:42:35,169 --> 00:42:37,070
+I I have those four numbers,
+
+1069
+00:42:37,070 --> 00:42:38,569
+I could imagine coming up with
+
+1070
+00:42:38,569 --> 00:42:40,149
+some kind of metric
+that will tell me
+
+1071
+00:42:40,149 --> 00:42:42,050
+whether I'm doing a
+good job separating
+
+1072
+00:42:42,050 --> 00:42:44,149
+the yeses from the nose, right?
+
+1073
+00:42:44,149 --> 00:42:45,610
+I won't worry about the metrics,
+
+1074
+00:42:45,610 --> 00:42:46,889
+I just want to
+imagine that would be
+
+1075
+00:42:46,889 --> 00:42:48,844
+something that you could
+readily do, right? So,
+
+1076
+00:42:48,844 --> 00:42:51,520
+Each split, I'm going to
+compute those four numbers.
+
+1077
+00:42:51,520 --> 00:42:52,879
+And then on that, there
+will be some kind of
+
+1078
+00:42:52,879 --> 00:42:54,959
+impurity metric that we
+won't worry too much about.
+
+1079
+00:42:54,959 --> 00:42:57,339
+And what's cool about this is
+
+1080
+00:42:57,339 --> 00:43:00,000
+that as I'm doing over these
+different split points,
+
+1081
+00:43:00,000 --> 00:43:02,180
+as I keep going down, I'm moving
+
+1082
+00:43:02,180 --> 00:43:05,499
+one row from the left hand
+side to the right hand side.
+
+1083
+00:43:05,499 --> 00:43:07,179
+And I know whether
+that was a yes or no.
+
+1084
+00:43:07,179 --> 00:43:09,879
+And so as I do this row here,
+
+1085
+00:43:09,879 --> 00:43:11,719
+I can calculate that as
+
+1086
+00:43:11,719 --> 00:43:14,079
+a change relative to
+the previous row.
+
+1087
+00:43:14,079 --> 00:43:16,219
+So even though I'm doing
+every possible thing,
+
+1088
+00:43:16,219 --> 00:43:18,859
+I just make one pass
+over the data, right?
+
+1089
+00:43:18,859 --> 00:43:20,859
+So the real expense
+here is that I
+
+1090
+00:43:20,859 --> 00:43:22,929
+have to sort a bunch of times,
+
+1091
+00:43:22,929 --> 00:43:24,109
+however many features I have.
+
+1092
+00:43:24,109 --> 00:43:24,969
+But once I've done that,
+
+1093
+00:43:24,969 --> 00:43:26,510
+I just make one
+pass over the data,
+
+1094
+00:43:26,510 --> 00:43:29,090
+and I can tell you what
+the exact best split
+
+1095
+00:43:29,090 --> 00:43:32,369
+is over that column, right?
+
+1096
+00:43:32,369 --> 00:43:34,649
+So I'll get the
+three best split,
+
+1097
+00:43:34,649 --> 00:43:38,150
+or I'll get the three split
+scores for the first column.
+
+1098
+00:43:38,150 --> 00:43:39,449
+I'll get the three
+for the second one.
+
+1099
+00:43:39,449 --> 00:43:40,810
+Now I have six scores.
+
+1100
+00:43:40,810 --> 00:43:42,809
+I choose the best
+one, and I say,
+
+1101
+00:43:42,809 --> 00:43:45,609
+Okay, I will split
+my tree on that.
+
+1102
+00:43:45,609 --> 00:43:47,169
+All right. Any questions about
+
+1103
+00:43:47,169 --> 00:43:50,289
+that notion of splitting and
+how we find the best one?
+
+1104
+00:43:52,210 --> 00:43:57,809
+Right. Cool. Okay, so
+the challenge now,
+
+1105
+00:43:57,809 --> 00:43:59,050
+that's the basic algorithm.
+
+1106
+00:43:59,050 --> 00:44:00,209
+And again, I just
+want to make sure,
+
+1107
+00:44:00,209 --> 00:44:02,510
+does anybody have any questions
+about the basic algorithm
+
+1108
+00:44:02,510 --> 00:44:06,370
+before we talk about the
+distributed algorithm?
+
+1109
+00:44:07,560 --> 00:44:10,399
+All right. So our
+challenge, right,
+
+1110
+00:44:10,399 --> 00:44:12,140
+is that this data
+that we're training
+
+1111
+00:44:12,140 --> 00:44:14,840
+on might not fit in
+RAM on one machine.
+
+1112
+00:44:14,840 --> 00:44:16,299
+It might not even fit in RAM on
+
+1113
+00:44:16,299 --> 00:44:18,199
+all the machines
+together, right?
+
+1114
+00:44:18,199 --> 00:44:19,379
+It's partitional across all
+
+1115
+00:44:19,379 --> 00:44:21,520
+these different spark workers.
+
+1116
+00:44:21,560 --> 00:44:24,659
+Sorting, it would be
+expensive, right?
+
+1117
+00:44:24,659 --> 00:44:26,539
+Because if I sort,
+then I'd have to
+
+1118
+00:44:26,539 --> 00:44:28,940
+shuffle the entire data
+set over the network.
+
+1119
+00:44:28,940 --> 00:44:30,599
+And in fact, I'd have
+to do that many times.
+
+1120
+00:44:30,599 --> 00:44:33,280
+I'd have to do it for
+every single feature.
+
+1121
+00:44:33,280 --> 00:44:35,079
+And what does that get me?
+
+1122
+00:44:35,079 --> 00:44:37,359
+I get to split one node, right?
+
+1123
+00:44:37,359 --> 00:44:39,720
+So if I have a decision
+tree with lots of nodes,
+
+1124
+00:44:39,720 --> 00:44:41,019
+like even the one we saw in
+
+1125
+00:44:41,019 --> 00:44:43,659
+the lecture demo,
+that's terrible, right?
+
+1126
+00:44:43,659 --> 00:44:45,239
+Because I have to repeatedly
+
+1127
+00:44:45,239 --> 00:44:47,139
+shuffle this giant dataset over
+
+1128
+00:44:47,139 --> 00:44:50,979
+the network to just add
+two more nodes, right?
+
+1129
+00:44:50,979 --> 00:44:54,109
+So that's not good.
+The other thing is is
+
+1130
+00:44:54,109 --> 00:44:55,750
+that if I'm trying
+
+1131
+00:44:55,750 --> 00:44:58,409
+to consider every
+possible split point,
+
+1132
+00:44:58,409 --> 00:45:00,289
+that split point
+is going to be on
+
+1133
+00:45:00,289 --> 00:45:02,450
+one out of many
+partitions of the data.
+
+1134
+00:45:02,450 --> 00:45:04,490
+And so I'm not going to be
+able to do this in parallel.
+
+1135
+00:45:04,490 --> 00:45:06,170
+I'm going to have to be looping
+
+1136
+00:45:06,170 --> 00:45:08,329
+with respect to
+this split point,
+
+1137
+00:45:08,329 --> 00:45:10,129
+and it should be on
+one note at a time.
+
+1138
+00:45:10,129 --> 00:45:11,989
+Right? So lots of things
+are challenging here.
+
+1139
+00:45:11,989 --> 00:45:13,630
+I cannot just directly
+take that algorithm
+
+1140
+00:45:13,630 --> 00:45:16,250
+we saw and apply it
+in this situation.
+
+1141
+00:45:16,250 --> 00:45:18,830
+And that leads us to
+the planet algorithm,
+
+1142
+00:45:18,830 --> 00:45:20,190
+which was published by Google.
+
+1143
+00:45:20,190 --> 00:45:21,649
+And so they had
+the same problem.
+
+1144
+00:45:21,649 --> 00:45:23,930
+They wanted to trade
+these bid decision trees,
+
+1145
+00:45:23,930 --> 00:45:25,810
+and they were doing
+it on map reduce,
+
+1146
+00:45:25,810 --> 00:45:27,129
+but the algorithm has also been
+
+1147
+00:45:27,129 --> 00:45:28,529
+implemented in SPA, right?
+
+1148
+00:45:28,529 --> 00:45:30,184
+And that's why
+we're learning it.
+
+1149
+00:45:30,184 --> 00:45:32,019
+Okay. And so they use it for
+
+1150
+00:45:32,019 --> 00:45:33,659
+both the decision
+tree regressor and
+
+1151
+00:45:33,659 --> 00:45:36,419
+the decision tree classifier.
+
+1152
+00:45:36,419 --> 00:45:39,379
+And there's lots of details
+here that we're going into.
+
+1153
+00:45:39,379 --> 00:45:41,480
+But one of the really
+important details
+
+1154
+00:45:41,480 --> 00:45:43,360
+is that it's a hybrid algorithm.
+
+1155
+00:45:43,360 --> 00:45:46,899
+They handle big data and small
+data in a different way.
+
+1156
+00:45:46,899 --> 00:45:48,019
+And so they're going to
+
+1157
+00:45:48,019 --> 00:45:49,339
+have one approach
+where the data is big,
+
+1158
+00:45:49,339 --> 00:45:50,679
+and they're going to
+really focus there on
+
+1159
+00:45:50,679 --> 00:45:52,460
+not sending data
+over the network.
+
+1160
+00:45:52,460 --> 00:45:54,459
+But eventually, as you
+have this big tree,
+
+1161
+00:45:54,459 --> 00:45:55,239
+even if it's large,
+
+1162
+00:45:55,239 --> 00:45:56,799
+you're going to keep
+splitting nodes down,
+
+1163
+00:45:56,799 --> 00:45:58,199
+and the leaf nodes of
+
+1164
+00:45:58,199 --> 00:46:00,720
+a big tree might not
+actually have a lot of data.
+
+1165
+00:46:00,720 --> 00:46:02,339
+And so eventually
+once we get down
+
+1166
+00:46:02,339 --> 00:46:04,119
+to a leaf node that doesn't
+have a lot of data,
+
+1167
+00:46:04,119 --> 00:46:06,560
+we will collect all
+the data in memory,
+
+1168
+00:46:06,560 --> 00:46:09,389
+and we will run the algorithm we
+
+1169
+00:46:09,389 --> 00:46:12,669
+already learned in
+memory. All right.
+
+1170
+00:46:12,669 --> 00:46:15,529
+So I mentioned that
+it's going to be a
+
+1171
+00:46:15,529 --> 00:46:17,869
+lot harder now to consider
+every possible split point.
+
+1172
+00:46:17,869 --> 00:46:20,310
+And so we're going to
+consider fewer split points.
+
+1173
+00:46:20,310 --> 00:46:21,449
+And the way we're
+going to do that is
+
+1174
+00:46:21,449 --> 00:46:22,729
+a pre processing step.
+
+1175
+00:46:22,729 --> 00:46:25,029
+We are going to compute
+some histograms
+
+1176
+00:46:25,029 --> 00:46:27,889
+over every feature, right?
+
+1177
+00:46:27,889 --> 00:46:30,049
+And so when you do this, right?
+
+1178
+00:46:30,049 --> 00:46:31,509
+For a histogram, you have to
+
+1179
+00:46:31,509 --> 00:46:33,289
+say how many bends
+or buckets you have.
+
+1180
+00:46:33,289 --> 00:46:34,690
+And so when you
+create a decision
+
+1181
+00:46:34,690 --> 00:46:36,329
+tree classifier regress
+or you can do that,
+
+1182
+00:46:36,329 --> 00:46:38,750
+you can say set the
+maximum number of bends.
+
+1183
+00:46:38,750 --> 00:46:40,809
+And then it will using that,
+
+1184
+00:46:40,809 --> 00:46:44,269
+get that histogram
+for each of them.
+
+1185
+00:46:44,269 --> 00:46:46,909
+Okay? Now, there's
+
+1186
+00:46:46,909 --> 00:46:48,389
+a couple of interesting
+things about it.
+
+1187
+00:46:48,389 --> 00:46:50,009
+One is that the histogram it's
+
+1188
+00:46:50,009 --> 00:46:52,130
+doing is what we call an
+equi depth histogram,
+
+1189
+00:46:52,130 --> 00:46:54,489
+and that means that each
+of these buckets has
+
+1190
+00:46:54,489 --> 00:46:55,989
+the same number of values in
+
+1191
+00:46:55,989 --> 00:46:58,409
+it approximately,
+right? That's the goal.
+
+1192
+00:46:58,409 --> 00:47:01,169
+Kind of a normal
+histogram, right?
+
+1193
+00:47:01,169 --> 00:47:02,729
+Each of the buckets would be
+
+1194
+00:47:02,729 --> 00:47:04,410
+the same width on the x axis.
+
+1195
+00:47:04,410 --> 00:47:05,009
+That's what what we're
+
+1196
+00:47:05,009 --> 00:47:05,949
+trying to do here,
+because that will
+
+1197
+00:47:05,949 --> 00:47:07,789
+not help us find split points.
+
+1198
+00:47:07,789 --> 00:47:09,609
+We kind of want nice
+even split points that
+
+1199
+00:47:09,609 --> 00:47:11,769
+break up our data.
+So we'll do that.
+
+1200
+00:47:11,769 --> 00:47:13,469
+One of the things we
+have to be aware of is
+
+1201
+00:47:13,469 --> 00:47:15,950
+that when you set
+that Mac spins,
+
+1202
+00:47:15,950 --> 00:47:17,669
+that applies for the histogram,
+
+1203
+00:47:17,669 --> 00:47:19,610
+but there might also
+be some columns
+
+1204
+00:47:19,610 --> 00:47:20,789
+that are categorical, right?
+
+1205
+00:47:20,789 --> 00:47:22,585
+If it's like apple,
+banana carrot,
+
+1206
+00:47:22,585 --> 00:47:24,179
+Then instead of having
+
+1207
+00:47:24,179 --> 00:47:26,059
+threshold questions like
+x greater than five,
+
+1208
+00:47:26,059 --> 00:47:29,480
+you'll say x equal to apple
+or x equal to banana.
+
+1209
+00:47:29,480 --> 00:47:30,959
+And however many
+categories there are.
+
+1210
+00:47:30,959 --> 00:47:31,979
+Those are the number of bends.
+
+1211
+00:47:31,979 --> 00:47:33,419
+And so this sets a cap on that.
+
+1212
+00:47:33,419 --> 00:47:34,759
+So a common issue people
+
+1213
+00:47:34,759 --> 00:47:36,439
+run into is they
+set it too small.
+
+1214
+00:47:36,439 --> 00:47:37,779
+They have more categories.
+
+1215
+00:47:37,779 --> 00:47:40,799
+The algorithm can't run
+it. Now you know why.
+
+1216
+00:47:40,799 --> 00:47:43,519
+Okay, so we get these
+histograms. How do we use it?
+
+1217
+00:47:43,519 --> 00:47:45,619
+Well, for the simple
+in memory thing,
+
+1218
+00:47:45,619 --> 00:47:49,080
+we could do a split point
+on every possible position.
+
+1219
+00:47:49,080 --> 00:47:50,680
+For the histogram approach,
+
+1220
+00:47:50,680 --> 00:47:52,759
+we're just going to
+consider between each of
+
+1221
+00:47:52,759 --> 00:47:55,659
+these buckets as
+possible split point.
+
+1222
+00:47:55,659 --> 00:47:57,499
+So we're going to cite
+all this up front,
+
+1223
+00:47:57,499 --> 00:47:59,440
+every worker involved
+in the algorithm.
+
+1224
+00:47:59,440 --> 00:48:00,899
+We from the beginning know what
+
+1225
+00:48:00,899 --> 00:48:02,180
+all the possible split points
+
+1226
+00:48:02,180 --> 00:48:03,919
+are so that they can
+work independently.
+
+1227
+00:48:03,919 --> 00:48:05,579
+Yeah, s right here.
+
+1228
+00:48:05,579 --> 00:48:10,099
+Each bucket has explicitly one
+
+1229
+00:48:10,099 --> 00:48:16,459
+each coach let me put it
+for the other way, right?
+
+1230
+00:48:16,459 --> 00:48:18,180
+So for each column,
+
+1231
+00:48:18,180 --> 00:48:20,679
+we compute a histogram that has,
+
+1232
+00:48:20,679 --> 00:48:23,499
+I guess, in this case,
+four buckets for it.
+
+1233
+00:48:23,499 --> 00:48:25,099
+Was that the same as
+what you're saying,
+
+1234
+00:48:25,099 --> 00:48:26,499
+or Okay, a, great.
+
+1235
+00:48:26,499 --> 00:48:27,860
+Yeah, thank you for clarifying.
+
+1236
+00:48:27,860 --> 00:48:32,800
+The other other questions
+people have. Right. Cool.
+
+1237
+00:48:32,800 --> 00:48:35,519
+So, let's take a look
+at our decision tree,
+
+1238
+00:48:35,519 --> 00:48:36,939
+right? So here I have it.
+
+1239
+00:48:36,939 --> 00:48:38,479
+And I'm going to start
+
+1240
+00:48:38,479 --> 00:48:40,719
+with decision tree that's
+half trained and then see,
+
+1241
+00:48:40,719 --> 00:48:42,579
+how we can finish training it.
+
+1242
+00:48:42,579 --> 00:48:44,219
+And so at this point in time,
+
+1243
+00:48:44,219 --> 00:48:45,839
+some of these nodes will have
+
+1244
+00:48:45,839 --> 00:48:47,699
+many rows associated with them,
+
+1245
+00:48:47,699 --> 00:48:49,619
+and some will actually
+have relatively few.
+
+1246
+00:48:49,619 --> 00:48:50,799
+What I'm saying few, what I'm
+
+1247
+00:48:50,799 --> 00:48:52,179
+implying there is that
+they could all fit
+
+1248
+00:48:52,179 --> 00:48:54,879
+in memory at the
+same time, right?
+
+1249
+00:48:54,879 --> 00:48:56,179
+Now, what I'm showing here is
+
+1250
+00:48:56,179 --> 00:48:57,919
+a logical view of
+the data, right?
+
+1251
+00:48:57,919 --> 00:48:59,679
+If you tell me, like, Hey,
+
+1252
+00:48:59,679 --> 00:49:02,019
+this is a decision tree,
+which is partially done,
+
+1253
+00:49:02,019 --> 00:49:03,854
+and you say, Hey, here's a row.
+
+1254
+00:49:03,854 --> 00:49:05,489
+I can tell you, a, well,
+
+1255
+00:49:05,489 --> 00:49:07,809
+this is the node of the tree
+that the row belongs to.
+
+1256
+00:49:07,809 --> 00:49:10,769
+That does not mean that
+all the rows belonging to
+
+1257
+00:49:10,769 --> 00:49:12,049
+a node of the tree
+
+1258
+00:49:12,049 --> 00:49:14,069
+are brought together
+in the same place.
+
+1259
+00:49:14,069 --> 00:49:16,049
+That's what we're going
+to very explicitly try to
+
+1260
+00:49:16,049 --> 00:49:18,450
+avoid is that involves a
+bunch of network transfers.
+
+1261
+00:49:18,450 --> 00:49:22,130
+So I can say logically this
+row is part of this node,
+
+1262
+00:49:22,130 --> 00:49:24,649
+but all the rows for a
+node could be like all
+
+1263
+00:49:24,649 --> 00:49:27,210
+over the place across
+different machines, okay?
+
+1264
+00:49:27,210 --> 00:49:28,869
+So that's the tree that
+we're working with.
+
+1265
+00:49:28,869 --> 00:49:31,310
+So where is the data
+actually physically?
+
+1266
+00:49:31,310 --> 00:49:32,770
+It's in spark partitions,
+
+1267
+00:49:32,770 --> 00:49:34,049
+right? In no particular order.
+
+1268
+00:49:34,049 --> 00:49:35,329
+I'm going to imagine
+that, you know,
+
+1269
+00:49:35,329 --> 00:49:37,330
+here's a spark partition
+on the first machine.
+
+1270
+00:49:37,330 --> 00:49:38,150
+Down at the bottom,
+
+1271
+00:49:38,150 --> 00:49:41,235
+I have two spark partitions
+on another machine.
+
+1272
+00:49:41,235 --> 00:49:43,560
+And if I want to, I could
+do some computation,
+
+1273
+00:49:43,560 --> 00:49:45,599
+I could tell you what node
+they each belonged to,
+
+1274
+00:49:45,599 --> 00:49:48,839
+but I wouldn't have to
+move them to do that.
+
+1275
+00:49:48,839 --> 00:49:50,359
+All right. So I've labeled it
+
+1276
+00:49:50,359 --> 00:49:52,559
+here what node they
+each belong to.
+
+1277
+00:49:52,559 --> 00:49:54,419
+And so now we have two
+approaches, right?
+
+1278
+00:49:54,419 --> 00:49:56,879
+Sometimes I might be
+dealing with say,
+
+1279
+00:49:56,879 --> 00:49:58,779
+nod and nod H.
+
+1280
+00:49:58,779 --> 00:50:00,879
+And those are small. They
+don't have a lot of data.
+
+1281
+00:50:00,879 --> 00:50:02,839
+And so that point what I'm
+going to do is I you know,
+
+1282
+00:50:02,839 --> 00:50:04,460
+let's just do the
+classic algorithm.
+
+1283
+00:50:04,460 --> 00:50:06,699
+Let's bring together all
+the rows in the same place.
+
+1284
+00:50:06,699 --> 00:50:08,600
+And we can do that with
+hash partitioning.
+
+1285
+00:50:08,600 --> 00:50:10,339
+It's like a group,
+right Group BI
+
+1286
+00:50:10,339 --> 00:50:11,719
+brings together related rows.
+
+1287
+00:50:11,719 --> 00:50:13,180
+Here we're going
+to bring together
+
+1288
+00:50:13,180 --> 00:50:15,219
+related rows, and
+we're going to do it.
+
+1289
+00:50:15,219 --> 00:50:17,599
+The key that we're
+grouping on is
+
+1290
+00:50:17,599 --> 00:50:20,399
+what node you are in this
+tree, which we can infer.
+
+1291
+00:50:20,399 --> 00:50:23,319
+So we'll do that. So we
+get all the nodes for F,
+
+1292
+00:50:23,319 --> 00:50:26,139
+all the nodes for H. And then
+
+1293
+00:50:26,139 --> 00:50:27,479
+we're just going to recursively
+
+1294
+00:50:27,479 --> 00:50:29,160
+run the end memory algorithm,
+
+1295
+00:50:29,160 --> 00:50:30,619
+and we'll finish the tree.
+
+1296
+00:50:30,619 --> 00:50:33,039
+So that's at. Sometimes I'll
+run that kind of spart job.
+
+1297
+00:50:33,039 --> 00:50:34,599
+Other times, it's
+going to run a kind
+
+1298
+00:50:34,599 --> 00:50:36,199
+of spart job that works
+for the Big Data,
+
+1299
+00:50:36,199 --> 00:50:37,699
+which is what we'll
+talk about next time.
+
+1300
+00:50:37,699 --> 00:50:39,439
+So have a fantastic day,
+
+1301
+00:50:39,439 --> 00:50:41,660
+and I'll see you on Friday.

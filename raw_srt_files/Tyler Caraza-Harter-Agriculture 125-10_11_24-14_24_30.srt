@@ -1,0 +1,5941 @@
+1
+00:00:00,000 --> 00:00:01,920
+Well for everybody.
+I'll try to get
+
+2
+00:00:01,920 --> 00:00:03,880
+the answers back to folks within
+
+3
+00:00:03,880 --> 00:00:08,480
+the next couple of days or so
+last time before the exam,
+
+4
+00:00:08,480 --> 00:00:10,140
+we were learning about databases
+
+5
+00:00:10,140 --> 00:00:12,000
+and by SQL in particular,
+
+6
+00:00:12,000 --> 00:00:15,120
+by SQL is an example
+of an OLTP database.
+
+7
+00:00:15,120 --> 00:00:16,859
+The T and OLTP beds.
+
+8
+00:00:16,859 --> 00:00:18,179
+It's for transaction processing.
+
+9
+00:00:18,179 --> 00:00:20,254
+So we're talking about
+like inserting rows.
+
+10
+00:00:20,254 --> 00:00:22,390
+Updating rows, looking up rows.
+
+11
+00:00:22,390 --> 00:00:24,270
+They can do other things
+like analysis as well,
+
+12
+00:00:24,270 --> 00:00:25,689
+but it's going to
+be slower at those,
+
+13
+00:00:25,689 --> 00:00:28,810
+B it's to have a row
+oriented data layout.
+
+14
+00:00:28,810 --> 00:00:31,010
+So I may spend most of
+the day actually giving
+
+15
+00:00:31,010 --> 00:00:32,330
+some more examples of my SQL
+
+16
+00:00:32,330 --> 00:00:33,949
+that we didn't have
+time for last time.
+
+17
+00:00:33,949 --> 00:00:36,130
+And then we can start
+talking a little
+
+18
+00:00:36,130 --> 00:00:38,189
+bit about some of these
+distributed systems.
+
+19
+00:00:38,189 --> 00:00:39,670
+We'll talk about
+something called
+
+20
+00:00:39,670 --> 00:00:41,730
+the Hadoop ecosystem today
+
+21
+00:00:41,730 --> 00:00:43,830
+and particularly the
+Hadoop file system.
+
+22
+00:00:43,830 --> 00:00:45,210
+And the next part of the course,
+
+23
+00:00:45,210 --> 00:00:46,409
+I think will be a
+lot of fun because
+
+24
+00:00:46,409 --> 00:00:47,789
+now that we have
+this foundation,
+
+25
+00:00:47,789 --> 00:00:50,249
+we can look at a lot of
+different big data systems
+
+26
+00:00:50,249 --> 00:00:52,304
+and understand what
+they're doing.
+
+27
+00:00:52,304 --> 00:00:55,439
+So I make a head over here
+where I was last time.
+
+28
+00:00:55,439 --> 00:00:57,140
+I had this notebook running.
+
+29
+00:00:57,140 --> 00:00:58,840
+This notebook was directly
+
+30
+00:00:58,840 --> 00:01:01,379
+running on my virtual machine.
+It's not at a continor.
+
+31
+00:01:01,379 --> 00:01:03,879
+I was connected to a
+MSQL database where
+
+32
+00:01:03,879 --> 00:01:06,979
+the user was route and
+the password was ABC.
+
+33
+00:01:06,979 --> 00:01:13,440
+I was going to Port 3306
+and database CS 544.
+
+34
+00:01:13,440 --> 00:01:15,140
+Let me just head
+over here and show
+
+35
+00:01:15,140 --> 00:01:17,099
+you what that looks
+like on this side.
+
+36
+00:01:17,099 --> 00:01:19,900
+So I'm going to SSHN again.
+
+37
+00:01:20,580 --> 00:01:26,980
+And L et me just clear
+this up a little bit.
+
+38
+00:01:26,980 --> 00:01:28,380
+If I do Docker PS,
+
+39
+00:01:28,380 --> 00:01:31,740
+I can see that there was this
+container ting with my SQL.
+
+40
+00:01:31,740 --> 00:01:33,739
+That was a generic M SQL image.
+
+41
+00:01:33,739 --> 00:01:37,619
+Port 3306 on my virtual machine
+
+42
+00:01:37,619 --> 00:01:40,899
+is forwarding to 3306
+inside of the container,
+
+43
+00:01:40,899 --> 00:01:43,580
+and that's where the M
+SQL server is running.
+
+44
+00:01:43,580 --> 00:01:44,760
+And so if I want to, I
+
+45
+00:01:44,760 --> 00:01:46,539
+could jump into this
+Docker container.
+
+46
+00:01:46,539 --> 00:01:50,139
+I'm going to do that right
+now with a Docker Exec.
+
+47
+00:01:50,139 --> 00:01:52,860
+And what's inside, we
+saw that we could run
+
+48
+00:01:52,860 --> 00:01:56,459
+SQL and connect to a database
+and type a password,
+
+49
+00:01:56,459 --> 00:01:58,000
+which is again, ABC.
+
+50
+00:01:58,000 --> 00:02:02,330
+And then I could do
+things like show tables.
+
+51
+00:02:02,330 --> 00:02:04,349
+So what we were doing last
+time is we were looking at
+
+52
+00:02:04,349 --> 00:02:05,390
+different ways we could create
+
+53
+00:02:05,390 --> 00:02:07,089
+tables and add
+some data to them.
+
+54
+00:02:07,089 --> 00:02:09,140
+So I'm going ahead over here.
+
+55
+00:02:09,140 --> 00:02:11,530
+And I read this from scratch.
+
+56
+00:02:11,530 --> 00:02:13,709
+Basically, this is the
+notebook we read last time.
+
+57
+00:02:13,709 --> 00:02:16,130
+The main thing I changed
+is I added some code
+
+58
+00:02:16,130 --> 00:02:19,310
+here that would drop tables
+if they already exist.
+
+59
+00:02:19,310 --> 00:02:20,370
+That way, I could just run
+
+60
+00:02:20,370 --> 00:02:21,670
+my notebook from top to bottom,
+
+61
+00:02:21,670 --> 00:02:23,770
+and it would recreate
+those as need be, right?
+
+62
+00:02:23,770 --> 00:02:25,509
+So one of the things we could do
+
+63
+00:02:25,509 --> 00:02:27,730
+is we could create a
+table from scratch,
+
+64
+00:02:27,730 --> 00:02:29,909
+and then we could
+insert data into it.
+
+65
+00:02:29,909 --> 00:02:31,489
+That was one of
+the things we did.
+
+66
+00:02:31,489 --> 00:02:35,310
+One of the other things we did
+at the very end is we were
+
+67
+00:02:35,310 --> 00:02:37,429
+using Padnus to automatically
+
+68
+00:02:37,429 --> 00:02:39,009
+generate some of
+these tables for us.
+
+69
+00:02:39,009 --> 00:02:41,870
+So I was using Pads to
+read various CSV files.
+
+70
+00:02:41,870 --> 00:02:43,289
+I would do schema puts on those.
+
+71
+00:02:43,289 --> 00:02:45,289
+I'd have type. And
+then I could say,
+
+72
+00:02:45,289 --> 00:02:47,029
+had to stat a frame two sequel.
+
+73
+00:02:47,029 --> 00:02:48,669
+I could dump these d. I
+
+74
+00:02:48,669 --> 00:02:50,909
+was able to create a few
+small tables that way.
+
+75
+00:02:50,909 --> 00:02:52,849
+I also want to create
+a bigger table
+
+76
+00:02:52,849 --> 00:02:54,690
+that I use for a lot
+of these examples.
+
+77
+00:02:54,690 --> 00:02:56,269
+And so I'm going head over here,
+
+78
+00:02:56,269 --> 00:02:58,769
+and I have that
+example right here.
+
+79
+00:02:58,769 --> 00:03:01,769
+And let me just grab this.
+
+80
+00:03:04,340 --> 00:03:06,999
+Cool. I'm a re paste
+this down here.
+
+81
+00:03:06,999 --> 00:03:09,239
+And what I'm doing
+is I'm reading in
+
+82
+00:03:09,239 --> 00:03:13,999
+this CSV file with Piero,
+
+83
+00:03:13,999 --> 00:03:15,959
+and then I'm writing it
+back to a Park file,
+
+84
+00:03:15,959 --> 00:03:17,899
+and then I'm reading
+in that Park file with
+
+85
+00:03:17,899 --> 00:03:20,239
+just a few select columns.
+
+86
+00:03:20,239 --> 00:03:22,220
+And what I want to
+do now is I want to
+
+87
+00:03:22,220 --> 00:03:26,280
+send it to my SQL. I'm
+to get that table.
+
+88
+00:03:26,280 --> 00:03:27,739
+There it is.
+
+89
+00:03:27,739 --> 00:03:30,159
+It just has a few columns
+that I'm interested in,
+
+90
+00:03:30,159 --> 00:03:34,859
+and I am going to send
+it. Two SQL, right?
+
+91
+00:03:34,859 --> 00:03:36,619
+So what I will do
+is I'll first say,
+
+92
+00:03:36,619 --> 00:03:38,119
+take this Piero table,
+
+93
+00:03:38,119 --> 00:03:41,359
+put it to PADs because Pads
+knows how to talk to SQL.
+
+94
+00:03:41,359 --> 00:03:43,619
+I'm ready to call
+my table loads.
+
+95
+00:03:43,619 --> 00:03:45,840
+And the only other
+thing I want to mention
+
+96
+00:03:45,840 --> 00:03:47,959
+here is that if I try to
+insert too much data at whats,
+
+97
+00:03:47,959 --> 00:03:50,059
+I tend to run out of
+memory on my SQL.
+
+98
+00:03:50,059 --> 00:03:52,300
+I actually played around
+with that a bit before,
+
+99
+00:03:52,300 --> 00:03:53,719
+but I can ask it to
+
+100
+00:03:53,719 --> 00:03:56,119
+do a certain number
+of rows at a time.
+
+101
+00:03:56,119 --> 00:03:58,300
+And so I will specify
+a chuck size.
+
+102
+00:03:58,300 --> 00:03:59,520
+I could have played
+with what was fast
+
+103
+00:03:59,520 --> 00:04:00,699
+without running out of memory.
+
+104
+00:04:00,699 --> 00:04:03,239
+So I'll insert 10,000
+rows at a time and
+
+105
+00:04:03,239 --> 00:04:07,319
+basically populate that
+loads table for us.
+
+106
+00:04:07,319 --> 00:04:09,799
+And then what I'm
+may be doing is
+
+107
+00:04:09,799 --> 00:04:11,719
+different examples
+where I can either
+
+108
+00:04:11,719 --> 00:04:13,019
+do transaction processing or
+
+109
+00:04:13,019 --> 00:04:15,440
+some analysis on this database.
+
+110
+00:04:15,440 --> 00:04:18,220
+Any question while
+that's loading up?
+
+111
+00:04:19,980 --> 00:04:23,600
+Alright, cool. So I was
+able to load, you know,
+
+112
+00:04:23,600 --> 00:04:26,480
+44,000 or something like
+
+113
+00:04:26,480 --> 00:04:29,379
+almost half 1 million rows.
+This is actually a real data.
+
+114
+00:04:29,379 --> 00:04:30,780
+It's all the load
+applications in
+
+115
+00:04:30,780 --> 00:04:32,559
+Wisconsin for a year. All
+that's public actually.
+
+116
+00:04:32,559 --> 00:04:35,220
+You can see which loads
+are accepted and rejected.
+
+117
+00:04:35,220 --> 00:04:36,940
+So Atom is, of course,
+but you can see all that.
+
+118
+00:04:36,940 --> 00:04:38,339
+It's try to a cool data set.
+
+119
+00:04:38,339 --> 00:04:40,300
+Alright, so sweet,
+I have that there.
+
+120
+00:04:40,300 --> 00:04:42,339
+And if I do show tables
+over here again,
+
+121
+00:04:42,339 --> 00:04:45,140
+I can see that now
+I have these loads.
+
+122
+00:04:45,140 --> 00:04:48,500
+So Those are a bunch
+of ways that we
+
+123
+00:04:48,500 --> 00:04:52,560
+could get our initial
+tables there.
+
+124
+00:04:52,560 --> 00:04:54,759
+We could either insert
+or we could use pads.
+
+125
+00:04:54,759 --> 00:04:56,400
+I want to take a
+moment to look at
+
+126
+00:04:56,400 --> 00:04:57,940
+how we can make
+changes to our data.
+
+127
+00:04:57,940 --> 00:04:59,959
+And in particular by
+making multiple changes,
+
+128
+00:04:59,959 --> 00:05:02,499
+how can I do it as
+part of a transaction?
+
+129
+00:05:02,499 --> 00:05:04,940
+We learned about last time how
+traditional databases have
+
+130
+00:05:04,940 --> 00:05:07,820
+these acid transactions
+that are atomic,
+
+131
+00:05:07,820 --> 00:05:10,540
+consistent, isolated
+and durable.
+
+132
+00:05:10,540 --> 00:05:12,000
+And I want to just give you
+
+133
+00:05:12,000 --> 00:05:14,320
+some sense of what that means.
+
+134
+00:05:14,320 --> 00:05:16,360
+So looking over here,
+
+135
+00:05:16,360 --> 00:05:20,720
+I actually do select star
+from accounts right now.
+
+136
+00:05:20,720 --> 00:05:22,440
+And last time I had these two
+
+137
+00:05:22,440 --> 00:05:24,300
+bank accounts that both are for
+
+138
+00:05:24,300 --> 00:05:26,540
+the same user B. I
+imagine maybe it's
+
+139
+00:05:26,540 --> 00:05:29,060
+like a check account
+and savings account.
+
+140
+00:05:29,060 --> 00:05:31,720
+And I want to write
+a transaction that
+
+141
+00:05:31,720 --> 00:05:35,440
+transfers somebody from
+my account A to count B.
+
+142
+00:05:35,440 --> 00:05:39,279
+So I will come over here
+and I can say connection
+
+143
+00:05:39,279 --> 00:05:44,629
+execute and I will
+gib it some text.
+
+144
+00:05:44,629 --> 00:05:48,689
+And I'm going say
+update accounts
+
+145
+00:05:48,689 --> 00:05:51,469
+and set amount equal to amount.
+
+146
+00:05:51,469 --> 00:05:54,749
+I'll make this a little
+bit shorter, so it fits.
+
+147
+00:05:54,830 --> 00:06:00,409
+It equals amount plus
+one or actually do,
+
+148
+00:06:00,409 --> 00:06:03,090
+I'll do plus one here,
+
+149
+00:06:03,090 --> 00:06:06,269
+where the name equals
+
+150
+00:06:06,269 --> 00:06:10,550
+B. I'm transferring $1
+to B. Let me do that.
+
+151
+00:06:10,680 --> 00:06:12,860
+And at this point, I may
+
+152
+00:06:12,860 --> 00:06:14,640
+come over here and I may
+take a look at this,
+
+153
+00:06:14,640 --> 00:06:17,700
+and I see that over here,
+
+154
+00:06:17,700 --> 00:06:19,420
+I cannot see that change yet,
+
+155
+00:06:19,420 --> 00:06:20,679
+right? That's a
+separate session.
+
+156
+00:06:20,679 --> 00:06:22,820
+It's not part of my transaction.
+
+157
+00:06:22,820 --> 00:06:24,520
+And for the acid,
+
+158
+00:06:24,520 --> 00:06:26,440
+right, the I means
+isolated, right?
+
+159
+00:06:26,440 --> 00:06:29,660
+So now we're seeing the
+isolation here, right?
+
+160
+00:06:29,660 --> 00:06:31,260
+We don't see these changes
+
+161
+00:06:31,260 --> 00:06:33,500
+visible until all the
+changes are made, right?
+
+162
+00:06:33,500 --> 00:06:36,240
+Because this change is really
+part of some other things.
+
+163
+00:06:36,240 --> 00:06:38,540
+It's also part of a
+change where I want to
+
+164
+00:06:38,540 --> 00:06:41,100
+subtract one for bake
+account A, right?
+
+165
+00:06:41,100 --> 00:06:43,380
+So I'm may do that. Of that,
+
+166
+00:06:43,380 --> 00:06:45,560
+again, I don't see
+that over here.
+
+167
+00:06:45,560 --> 00:06:50,979
+If I come over here, I could
+try to see these changes,
+
+168
+00:06:50,979 --> 00:06:52,920
+and I'll be able to
+because I'm going to do
+
+169
+00:06:52,920 --> 00:06:55,200
+the query over here as part
+of this transaction, right?
+
+170
+00:06:55,200 --> 00:06:59,440
+Ibo to do a select
+star from accounts.
+
+171
+00:06:59,710 --> 00:07:01,790
+And when I do that, I'm ready to
+
+172
+00:07:01,790 --> 00:07:03,810
+revert it to a list. I
+can actually see it.
+
+173
+00:07:03,810 --> 00:07:05,549
+So I can see that I was able to
+
+174
+00:07:05,549 --> 00:07:07,610
+subtract one from
+A and ibt to B,
+
+175
+00:07:07,610 --> 00:07:11,050
+even though I cannot see
+that separately over here.
+
+176
+00:07:11,050 --> 00:07:13,530
+One of the things I might want
+to do before I say, Okay,
+
+177
+00:07:13,530 --> 00:07:16,310
+I want this transaction to
+go through is I want to say,
+
+178
+00:07:16,310 --> 00:07:18,689
+am I still maintaining
+consistency?
+
+179
+00:07:18,689 --> 00:07:20,290
+I remember that
+consistency is whatever
+
+180
+00:07:20,290 --> 00:07:22,290
+in variants or rules we make up.
+
+181
+00:07:22,290 --> 00:07:23,470
+And so one of the rules is that
+
+182
+00:07:23,470 --> 00:07:24,909
+a bank account did
+not grow negative.
+
+183
+00:07:24,909 --> 00:07:27,010
+I can't make my
+checking go negative to
+
+184
+00:07:27,010 --> 00:07:30,430
+make myself have more money
+in my savings account, right?
+
+185
+00:07:30,430 --> 00:07:32,250
+And so what I'm actually
+going to do is I'm
+
+186
+00:07:32,250 --> 00:07:35,110
+re to select the
+amount from here.
+
+187
+00:07:37,240 --> 00:07:41,080
+Where the name equals A.
+
+188
+00:07:41,080 --> 00:07:46,400
+That's telling me how much
+money is in my u account A.
+
+189
+00:07:46,400 --> 00:07:48,239
+And it's a list of tuples,
+
+190
+00:07:48,239 --> 00:07:50,040
+so I could get the
+first tuple out,
+
+191
+00:07:50,040 --> 00:07:51,620
+and I could pull
+that number out.
+
+192
+00:07:51,620 --> 00:07:53,480
+And basically, I can figure out
+
+193
+00:07:53,480 --> 00:07:56,739
+how much money is left after
+I would do this transfer.
+
+194
+00:07:56,739 --> 00:07:58,100
+And so I might want to check.
+
+195
+00:07:58,100 --> 00:08:00,000
+I want to say, is that greater
+
+196
+00:08:00,000 --> 00:08:02,180
+than are equal to zero
+because it should be.
+
+197
+00:08:02,180 --> 00:08:04,680
+But if it is that
+I feel good about
+
+198
+00:08:04,680 --> 00:08:07,580
+committing this
+transaction, otherwise,
+
+199
+00:08:07,580 --> 00:08:09,859
+I realize that I
+messed up my data,
+
+200
+00:08:09,859 --> 00:08:13,539
+and none of these changes I
+have made should take effect.
+
+201
+00:08:13,539 --> 00:08:15,300
+So I want to roll
+back my transaction.
+
+202
+00:08:15,300 --> 00:08:19,199
+So I may say up here, commit,
+
+203
+00:08:19,260 --> 00:08:21,400
+And then down here,
+
+204
+00:08:21,400 --> 00:08:24,940
+where I say rollback. All right.
+
+205
+00:08:24,940 --> 00:08:26,420
+And in this case,
+
+206
+00:08:26,420 --> 00:08:28,879
+the amount was positive,
+so it should commit.
+
+207
+00:08:28,879 --> 00:08:31,599
+And at that point when we
+committed, all of a sudden,
+
+208
+00:08:31,599 --> 00:08:34,759
+it becomes visible
+elsewhere, right?
+
+209
+00:08:34,759 --> 00:08:36,960
+And so in database terminology,
+
+210
+00:08:36,960 --> 00:08:38,579
+this was the A and acid.
+
+211
+00:08:38,579 --> 00:08:41,240
+This was the atomicity
+that we really
+
+212
+00:08:41,240 --> 00:08:44,100
+get everything when
+it's committed,
+
+213
+00:08:44,100 --> 00:08:45,539
+or we're going to undo
+
+214
+00:08:45,539 --> 00:08:49,339
+it we'll never kind of
+end up in between, right?
+
+215
+00:08:49,339 --> 00:08:52,629
+So yeah, right here.
+A roll. Roll back do.
+
+216
+00:08:52,629 --> 00:08:53,970
+I was in make all these changes.
+
+217
+00:08:53,970 --> 00:08:55,269
+I just say I want to
+throw away any of
+
+218
+00:08:55,269 --> 00:08:57,890
+those changes I was
+trying to make. Y.
+
+219
+00:08:57,890 --> 00:08:58,969
+Yeah, great question.
+
+220
+00:08:58,969 --> 00:09:01,149
+Yeah, there are
+questions people have.
+
+221
+00:09:01,149 --> 00:09:04,469
+Let me try this again.
+I'm going to try to make
+
+222
+00:09:04,469 --> 00:09:08,609
+this code a little
+bit more concise.
+
+223
+00:09:08,609 --> 00:09:12,315
+In particular, I just want
+to get it all on one cell.
+
+224
+00:09:12,315 --> 00:09:16,100
+And this time, I'm going
+to try to transfer $5.
+
+225
+00:09:16,100 --> 00:09:19,140
+That also works just fine.
+
+226
+00:09:19,140 --> 00:09:21,500
+Now, at this point, if
+I run the cell again,
+
+227
+00:09:21,500 --> 00:09:23,840
+it's going to be taking
+my bank account negative.
+
+228
+00:09:23,840 --> 00:09:26,499
+And then it will
+roll it back, right?
+
+229
+00:09:26,499 --> 00:09:27,899
+Because it started
+making those changes,
+
+230
+00:09:27,899 --> 00:09:31,159
+and it sees that we're
+violating some invariance.
+
+231
+00:09:31,159 --> 00:09:34,499
+And actually, my
+apologies, right?
+
+232
+00:09:34,499 --> 00:09:36,899
+I want to do a
+connection rollback.
+
+233
+00:09:36,899 --> 00:09:38,460
+Let me just that was
+supposed to row.
+
+234
+00:09:38,460 --> 00:09:40,259
+I'd be put it out here
+just so I can try
+
+235
+00:09:40,259 --> 00:09:42,939
+to recover my state.
+
+236
+00:09:42,939 --> 00:09:45,240
+Let me just row this again
+so we see it proper.
+
+237
+00:09:45,240 --> 00:09:47,000
+I'll do a rollback, and it gets
+
+238
+00:09:47,000 --> 00:09:49,239
+rejected over here, right?
+
+239
+00:09:49,239 --> 00:09:53,380
+So Acid transactions are great.
+
+240
+00:09:53,380 --> 00:09:56,599
+They help me make the
+data make sense, right?
+
+241
+00:09:56,599 --> 00:09:58,039
+I can't have other
+things that see
+
+242
+00:09:58,039 --> 00:09:59,940
+data that's time
+temporarily weird.
+
+243
+00:09:59,940 --> 00:10:01,339
+It'd be weird if I
+was like, checking,
+
+244
+00:10:01,339 --> 00:10:03,239
+and somehow I was
+doing a transfer and
+
+245
+00:10:03,239 --> 00:10:04,400
+they had taken the money away
+
+246
+00:10:04,400 --> 00:10:05,600
+but it didn't show
+up somewhere els.
+
+247
+00:10:05,600 --> 00:10:06,800
+That'd be weird, right? I'd be
+
+248
+00:10:06,800 --> 00:10:08,140
+weird if somebody went negative.
+
+249
+00:10:08,140 --> 00:10:11,079
+So it's giving me all those
+der different guarantees.
+
+250
+00:10:11,079 --> 00:10:12,659
+This is what traditional
+databases do.
+
+251
+00:10:12,659 --> 00:10:14,300
+They give you acid transactions,
+
+252
+00:10:14,300 --> 00:10:15,880
+and I want people to be familiar
+
+253
+00:10:15,880 --> 00:10:16,979
+with that because
+where we talk about
+
+254
+00:10:16,979 --> 00:10:18,419
+other big data systems that
+
+255
+00:10:18,419 --> 00:10:20,219
+don't give you
+acid transactions.
+
+256
+00:10:20,219 --> 00:10:21,919
+I want to have this
+baseline to see,
+
+257
+00:10:21,919 --> 00:10:23,260
+what are we giving up in order
+
+258
+00:10:23,260 --> 00:10:24,899
+to get other nice
+properties like
+
+259
+00:10:24,899 --> 00:10:26,679
+highly scalable systems that can
+
+260
+00:10:26,679 --> 00:10:29,320
+run on thousands of machines.
+
+261
+00:10:29,990 --> 00:10:32,610
+One of the things that
+this should remind you of
+
+262
+00:10:32,610 --> 00:10:34,509
+is when we did the stuff
+with locking, right?
+
+263
+00:10:34,509 --> 00:10:35,729
+We had some of these properties
+
+264
+00:10:35,729 --> 00:10:36,989
+when we were using
+locks, too, right?
+
+265
+00:10:36,989 --> 00:10:38,609
+We might update
+multiple variables.
+
+266
+00:10:38,609 --> 00:10:42,570
+And the database engine itself
+internally has locking.
+
+267
+00:10:42,570 --> 00:10:44,190
+And locking is one of the things
+
+268
+00:10:44,190 --> 00:10:46,130
+they use to give you
+these properties.
+
+269
+00:10:46,130 --> 00:10:47,609
+So often it's the
+case that if you're
+
+270
+00:10:47,609 --> 00:10:49,589
+using database of transactions,
+
+271
+00:10:49,589 --> 00:10:52,629
+you would not have
+to use locks, right?
+
+272
+00:10:52,629 --> 00:10:54,050
+Because the database is doing
+
+273
+00:10:54,050 --> 00:10:55,910
+that work for you
+with transactions.
+
+274
+00:10:55,910 --> 00:10:57,410
+So you can try to figure out, a,
+
+275
+00:10:57,410 --> 00:10:59,390
+there are these goals
+we want to achieve by
+
+276
+00:10:59,390 --> 00:11:01,510
+doing it with,
+stated a database.
+
+277
+00:11:01,510 --> 00:11:02,889
+I have transactions.
+Maybe I have
+
+278
+00:11:02,889 --> 00:11:04,529
+all this stat in
+memory or some files.
+
+279
+00:11:04,529 --> 00:11:06,949
+Then I'd probably have to do
+some type of locking, right?
+
+280
+00:11:06,949 --> 00:11:13,020
+Yeah, question right. Oh,
+that's really interesting.
+
+281
+00:11:13,020 --> 00:11:14,339
+So you're saying I have
+like, two threads that
+
+282
+00:11:14,339 --> 00:11:15,779
+are interacting with
+the same database.
+
+283
+00:11:15,779 --> 00:11:17,819
+Maybe they're trying to
+make the same changes.
+
+284
+00:11:17,819 --> 00:11:20,199
+Yeah, so different databases
+
+285
+00:11:20,199 --> 00:11:21,879
+would do different
+things, right?
+
+286
+00:11:21,879 --> 00:11:22,719
+So I actually did
+
+287
+00:11:22,719 --> 00:11:24,120
+some experiments with
+that previously with
+
+288
+00:11:24,120 --> 00:11:26,739
+SQL to just understand
+what it does by default.
+
+289
+00:11:26,739 --> 00:11:29,459
+And because the database engine
+
+290
+00:11:29,459 --> 00:11:30,500
+itself has some block data,
+
+291
+00:11:30,500 --> 00:11:31,660
+what happen if I try touch
+
+292
+00:11:31,660 --> 00:11:33,539
+that same data is
+it would actually
+
+293
+00:11:33,539 --> 00:11:35,180
+block me much the same way
+
+294
+00:11:35,180 --> 00:11:36,939
+that I might block
+to acquire a lock.
+
+295
+00:11:36,939 --> 00:11:39,140
+So it's like that one
+transaction drove
+
+296
+00:11:39,140 --> 00:11:42,359
+through before the other
+one droves through.
+
+297
+00:11:42,359 --> 00:11:43,939
+Other things that
+might happen is
+
+298
+00:11:43,939 --> 00:11:48,069
+that Some databases will the
+transactions both go ahead.
+
+299
+00:11:48,069 --> 00:11:49,689
+But at the very end, when you
+
+300
+00:11:49,689 --> 00:11:51,150
+commit it, they'll see that, oh,
+
+301
+00:11:51,150 --> 00:11:52,810
+they're actually
+conflicting, it might
+
+302
+00:11:52,810 --> 00:11:55,589
+cause one of your
+transactions to fail, right?
+
+303
+00:11:55,589 --> 00:11:57,790
+Different databases
+do different things.
+
+304
+00:11:57,790 --> 00:11:59,750
+But even if the
+transaction might fail,
+
+305
+00:11:59,750 --> 00:12:01,649
+then you would have
+to retry, they can
+
+306
+00:12:01,649 --> 00:12:03,990
+still provide those properties.
+Yeah. Excellent question.
+
+307
+00:12:03,990 --> 00:12:06,129
+Yeah, all the
+questions people have.
+
+308
+00:12:08,000 --> 00:12:11,219
+Alright. Cool. So what
+
+309
+00:12:11,219 --> 00:12:13,380
+I want to do now is
+transition a little bit.
+
+310
+00:12:13,380 --> 00:12:15,200
+We've been doing
+transaction processing.
+
+311
+00:12:15,200 --> 00:12:16,879
+And again, I want
+to emphasize that
+
+312
+00:12:16,879 --> 00:12:18,640
+there's two different kinds
+of transaction processing.
+
+313
+00:12:18,640 --> 00:12:20,019
+There's like the
+acid transactions
+
+314
+00:12:20,019 --> 00:12:20,980
+that I showed right here.
+
+315
+00:12:20,980 --> 00:12:22,579
+Transaction
+processing might also
+
+316
+00:12:22,579 --> 00:12:23,359
+be that I'm doing things
+
+317
+00:12:23,359 --> 00:12:24,399
+like inserting rows or just
+
+318
+00:12:24,399 --> 00:12:25,839
+looking at rows or
+things like that,
+
+319
+00:12:25,839 --> 00:12:27,539
+operating on a row by row basis.
+
+320
+00:12:27,539 --> 00:12:29,880
+People use it in both senses.
+
+321
+00:12:29,880 --> 00:12:31,940
+Alright, so for
+the rest of these,
+
+322
+00:12:31,940 --> 00:12:34,680
+I want to demonstrate
+very quickly,
+
+323
+00:12:34,680 --> 00:12:37,680
+different clauses
+that you have in SQL.
+
+324
+00:12:37,680 --> 00:12:40,539
+And one of the skills that
+I think is actually very
+
+325
+00:12:40,539 --> 00:12:42,820
+useful is if somebody
+
+326
+00:12:42,820 --> 00:12:44,480
+asks you a question
+of natural language,
+
+327
+00:12:44,480 --> 00:12:47,139
+that you can translate
+that to SQL, right?
+
+328
+00:12:47,139 --> 00:12:48,800
+To actually get an
+answer for them.
+
+329
+00:12:48,800 --> 00:12:49,800
+And so I have a bunch of
+
+330
+00:12:49,800 --> 00:12:50,939
+questions here in
+natural language,
+
+331
+00:12:50,939 --> 00:12:52,740
+and we're going to get
+practice translating them,
+
+332
+00:12:52,740 --> 00:12:56,239
+and I'm just going to split
+some of these things up.
+
+333
+00:12:56,640 --> 00:12:59,359
+And that's probably
+enough for now.
+
+334
+00:12:59,359 --> 00:13:01,440
+And each of these is try
+
+335
+00:13:01,440 --> 00:13:03,339
+to have us practice
+adds something.
+
+336
+00:13:03,339 --> 00:13:05,039
+And the way I usually
+like to do this is
+
+337
+00:13:05,039 --> 00:13:06,839
+with Pandas read SQL.
+
+338
+00:13:06,839 --> 00:13:08,299
+So Pads actually smart enough to
+
+339
+00:13:08,299 --> 00:13:09,960
+directly read from one of
+
+340
+00:13:09,960 --> 00:13:11,439
+these database
+connections because
+
+341
+00:13:11,439 --> 00:13:13,279
+it's integrated
+with SQL Alchemy,
+
+342
+00:13:13,279 --> 00:13:14,619
+which is the module we're using.
+
+343
+00:13:14,619 --> 00:13:17,540
+So I could put a query here
+and then by connection.
+
+344
+00:13:17,540 --> 00:13:22,080
+And so I'd say select
+star from actions.
+
+345
+00:13:22,080 --> 00:13:24,359
+Oh, from actions.
+
+346
+00:13:24,359 --> 00:13:27,100
+Great. So this From
+
+347
+00:13:27,100 --> 00:13:29,139
+is telling me what database
+table I'm interested in,
+
+348
+00:13:29,139 --> 00:13:30,499
+and the select is
+telling me what
+
+349
+00:13:30,499 --> 00:13:31,999
+columns I'm
+interested in, right?
+
+350
+00:13:31,999 --> 00:13:34,420
+So I could have said
+just ID, for example,
+
+351
+00:13:34,420 --> 00:13:35,720
+or in this case,
+
+352
+00:13:35,720 --> 00:13:38,100
+I'm really interested in
+in everything, right?
+
+353
+00:13:38,100 --> 00:13:42,100
+So I can do that. Hang
+on just a moment.
+
+354
+00:13:42,100 --> 00:13:45,279
+So the next thing I want to
+do is I want to take a look
+
+355
+00:13:45,279 --> 00:13:49,639
+at the limit flaws. Excuse me.
+
+356
+00:13:49,930 --> 00:13:53,409
+And so the limit will
+be useful if I have
+
+357
+00:13:53,409 --> 00:13:54,749
+a large table that
+
+358
+00:13:54,749 --> 00:13:56,589
+I can't really just select
+the whole thing, right?
+
+359
+00:13:56,589 --> 00:13:59,469
+So if I ran this
+right now would be
+
+360
+00:13:59,469 --> 00:14:03,349
+pretty reasonable because
+the loan table is too big.
+
+361
+00:14:03,349 --> 00:14:05,710
+When it tries to bring that
+into a pandas data frame,
+
+362
+00:14:05,710 --> 00:14:07,230
+I'll probably run out of memory.
+
+363
+00:14:07,230 --> 00:14:08,650
+And so I can just say here,
+
+364
+00:14:08,650 --> 00:14:09,950
+limit to the first ten rows,
+
+365
+00:14:09,950 --> 00:14:11,149
+and I kind of arbitrarily
+
+366
+00:14:11,149 --> 00:14:14,709
+get whatever rows
+are there, right?
+
+367
+00:14:14,709 --> 00:14:18,270
+Nearly not necessarily
+in any particular order.
+
+368
+00:14:18,270 --> 00:14:21,509
+So whenever I'm working
+with a big database,
+
+369
+00:14:21,509 --> 00:14:23,069
+this is one of the
+first queries,
+
+370
+00:14:23,069 --> 00:14:24,589
+I'll do on a large
+table just to try
+
+371
+00:14:24,589 --> 00:14:26,649
+to see what the data looks like.
+
+372
+00:14:26,649 --> 00:14:29,250
+Now, I want to point
+out a couple of things.
+
+373
+00:14:29,250 --> 00:14:31,849
+I can Based on this,
+
+374
+00:14:31,849 --> 00:14:33,729
+I can control what
+columns I have.
+
+375
+00:14:33,729 --> 00:14:35,370
+And maybe based on a limit
+
+376
+00:14:35,370 --> 00:14:36,869
+or we're going to
+see aware soon.
+
+377
+00:14:36,869 --> 00:14:39,189
+I might control
+what rows I have.
+
+378
+00:14:39,189 --> 00:14:40,949
+So there's ways that
+kind of shraky down
+
+379
+00:14:40,949 --> 00:14:43,110
+the data with respect
+to columns or rows,
+
+380
+00:14:43,110 --> 00:14:44,310
+or maybe with columns,
+
+381
+00:14:44,310 --> 00:14:45,910
+I'm actually might be
+adding more columns.
+
+382
+00:14:45,910 --> 00:14:47,390
+And so there's a couple
+of words I want you
+
+383
+00:14:47,390 --> 00:14:50,030
+to remember proj selection.
+
+384
+00:14:50,030 --> 00:14:51,389
+And whoever came up with
+
+385
+00:14:51,389 --> 00:14:53,069
+the vocabulary did
+a horrible job
+
+386
+00:14:53,069 --> 00:14:55,630
+because projection is the word
+
+387
+00:14:55,630 --> 00:14:57,769
+we use for figuring out
+what columns we have.
+
+388
+00:14:57,769 --> 00:14:59,549
+And so projection is
+
+389
+00:14:59,549 --> 00:15:02,289
+used in combination
+with select, right?
+
+390
+00:15:02,289 --> 00:15:04,070
+So here I'm doing a projection
+
+391
+00:15:04,070 --> 00:15:06,675
+that gives me all
+of the columns.
+
+392
+00:15:06,675 --> 00:15:09,279
+Yeah. You would think selection
+would be with select,
+
+393
+00:15:09,279 --> 00:15:11,080
+but it is not selection
+
+394
+00:15:11,080 --> 00:15:13,719
+is when we're figuring out
+which rows we want, right?
+
+395
+00:15:13,719 --> 00:15:15,059
+So maybe like a ware clause or
+
+396
+00:15:15,059 --> 00:15:17,279
+a limit clause or
+something like that.
+
+397
+00:15:17,279 --> 00:15:18,760
+It's import to have
+that vocabulary
+
+398
+00:15:18,760 --> 00:15:20,460
+because when we're
+learning Spark later,
+
+399
+00:15:20,460 --> 00:15:22,039
+we're going to see for
+
+400
+00:15:22,039 --> 00:15:24,359
+a given job how it
+was answering that.
+
+401
+00:15:24,359 --> 00:15:25,500
+And when we were debugging,
+
+402
+00:15:25,500 --> 00:15:26,940
+it might use words
+like selection,
+
+403
+00:15:26,940 --> 00:15:28,840
+projection, and you have
+to know what they mean.
+
+404
+00:15:28,840 --> 00:15:30,439
+So just kind of a
+weird thing that you
+
+405
+00:15:30,439 --> 00:15:33,089
+have to remember, unfortunately.
+
+406
+00:15:33,089 --> 00:15:35,159
+All right, cool, what are
+
+407
+00:15:35,159 --> 00:15:36,820
+the first ten interest rates
+
+408
+00:15:36,820 --> 00:15:39,500
+and the loan amounts
+and thousands?
+
+409
+00:15:39,500 --> 00:15:43,220
+And so I'm going to
+grab this one again.
+
+410
+00:15:43,220 --> 00:15:45,559
+And as this gets longer,
+
+411
+00:15:45,559 --> 00:15:47,019
+I actually like to just do
+
+412
+00:15:47,019 --> 00:15:51,419
+a multiline string
+and like that.
+
+413
+00:15:51,419 --> 00:15:55,420
+I'm going to do a select
+from loans, limit ten.
+
+414
+00:15:55,420 --> 00:15:57,840
+And so I'm still
+limiting by ten,
+
+415
+00:15:57,840 --> 00:15:59,619
+and this is asking me about
+
+416
+00:15:59,619 --> 00:16:04,620
+interest rates and loan amounts.
+
+417
+00:16:04,620 --> 00:16:07,440
+So I can do that. So that's
+an example of projection.
+
+418
+00:16:07,440 --> 00:16:08,920
+Projection might also involve
+
+419
+00:16:08,920 --> 00:16:10,340
+doing things like
+adding two columns
+
+420
+00:16:10,340 --> 00:16:13,300
+together or doing other
+sort of operations on them.
+
+421
+00:16:13,300 --> 00:16:15,620
+Right? So projection might
+give me a different column.
+
+422
+00:16:15,620 --> 00:16:18,039
+That's not quite the
+same as original.
+
+423
+00:16:18,039 --> 00:16:21,479
+And of course, I might
+rename that, like so.
+
+424
+00:16:21,479 --> 00:16:23,079
+Alright. So we can figure out
+
+425
+00:16:23,079 --> 00:16:26,100
+which columns we want with
+this select statement here.
+
+426
+00:16:26,100 --> 00:16:28,460
+Alright, let's see which of
+
+427
+00:16:28,460 --> 00:16:30,499
+these loans are for
+
+428
+00:16:30,499 --> 00:16:32,920
+individuals with an
+income of over 1 million.
+
+429
+00:16:32,920 --> 00:16:34,999
+So may come down here.
+
+430
+00:16:34,999 --> 00:16:42,029
+And I will say let's just
+select everything for now.
+
+431
+00:16:42,029 --> 00:16:44,109
+And what I will do
+
+432
+00:16:44,109 --> 00:16:45,989
+instead of limiting, I
+will have a ware clause,
+
+433
+00:16:45,989 --> 00:16:47,089
+and then I can have some kind
+
+434
+00:16:47,089 --> 00:16:48,810
+of conditional statement here,
+
+435
+00:16:48,810 --> 00:16:50,069
+and that conditional
+statement will
+
+436
+00:16:50,069 --> 00:16:51,950
+be evaluated for each row.
+
+437
+00:16:51,950 --> 00:16:53,569
+And so I could say
+where income is
+
+438
+00:16:53,569 --> 00:16:55,950
+greater than 1 million,
+
+439
+00:16:55,950 --> 00:16:59,409
+and then I would get some
+number of rows here, right?
+
+440
+00:16:59,409 --> 00:17:01,349
+So I can see for each of
+
+441
+00:17:01,349 --> 00:17:03,709
+these people or
+maybe organizations.
+
+442
+00:17:03,709 --> 00:17:06,769
+I guess this one has income
+of 94 million a year,
+
+443
+00:17:06,769 --> 00:17:08,730
+but for some reason,
+they still need a loan.
+
+444
+00:17:08,730 --> 00:17:11,254
+But I can see that.
+
+445
+00:17:11,254 --> 00:17:13,540
+Col. Let me head down here.
+
+446
+00:17:13,540 --> 00:17:15,100
+This one's a little bit
+of a different question
+
+447
+00:17:15,100 --> 00:17:16,799
+instead of trying to
+filtering something exactly,
+
+448
+00:17:16,799 --> 00:17:20,579
+I want to get the, n biggest
+or smallest of something.
+
+449
+00:17:20,579 --> 00:17:24,779
+And so what we're going
+to do down here, oops.
+
+450
+00:17:25,220 --> 00:17:27,980
+Is we're going to
+limit to ten again,
+
+451
+00:17:27,980 --> 00:17:29,839
+or I guess here we're
+limiting to five.
+
+452
+00:17:29,839 --> 00:17:32,959
+And it says the biggest loans
+in terms of dollar amount.
+
+453
+00:17:32,959 --> 00:17:35,079
+The way I do that
+is I do an order
+
+454
+00:17:35,079 --> 00:17:37,179
+by before I do the
+limiting, right?
+
+455
+00:17:37,179 --> 00:17:39,619
+So I could limit by
+the loan amount,
+
+456
+00:17:39,619 --> 00:17:42,420
+and then By default,
+
+457
+00:17:42,420 --> 00:17:44,900
+when I do that, I see these
+are pretty small loans.
+
+458
+00:17:44,900 --> 00:17:46,519
+These are $5,000 loans.
+
+459
+00:17:46,519 --> 00:17:48,080
+That's because it's
+doing ascending,
+
+460
+00:17:48,080 --> 00:17:51,599
+ascending from the smallest
+values to the largest values.
+
+461
+00:17:51,599 --> 00:17:53,480
+If I wanted to, I
+could do descending,
+
+462
+00:17:53,480 --> 00:17:55,759
+and that would drove from
+the biggest to the smallest,
+
+463
+00:17:55,759 --> 00:17:59,819
+so I can see that the biggest
+loan here is actually what?
+
+464
+00:17:59,819 --> 00:18:02,139
+Hundreds thousands
+millions, right?
+
+465
+00:18:02,139 --> 00:18:04,519
+So a quarter of
+$1,000,000,000 for
+
+466
+00:18:04,519 --> 00:18:08,579
+the biggest loan application
+in Wisconsin for that year.
+
+467
+00:18:08,579 --> 00:18:10,020
+And who knows, maybe you
+could go overa the news
+
+468
+00:18:10,020 --> 00:18:11,779
+and figure out what that
+actually is? I don't know.
+
+469
+00:18:11,779 --> 00:18:14,139
+I'm guessing we did
+some kind of coverage.
+
+470
+00:18:14,139 --> 00:18:16,779
+Cool. So we'll often use
+order by in conjunction with
+
+471
+00:18:16,779 --> 00:18:18,239
+limit to get the most or
+
+472
+00:18:18,239 --> 00:18:20,680
+least of something
+within the dataset.
+
+473
+00:18:20,680 --> 00:18:23,779
+Any questions
+people have so far?
+
+474
+00:18:25,460 --> 00:18:30,179
+All right. Cool. Let me
+split some more of these up.
+
+475
+00:18:30,420 --> 00:18:34,959
+So I have each one on
+its own line. All right.
+
+476
+00:18:34,959 --> 00:18:37,739
+So what are the
+actions and types?
+
+477
+00:18:37,739 --> 00:18:40,340
+Actions taken and
+types for those loans?
+
+478
+00:18:40,340 --> 00:18:41,559
+And I want to show the texts,
+
+479
+00:18:41,559 --> 00:18:43,859
+not just the numbers. All right.
+
+480
+00:18:43,859 --> 00:18:46,699
+And so what I'm
+gonna do down here,
+
+481
+00:18:46,760 --> 00:18:50,440
+is first, I'll just select
+everything from the loans,
+
+482
+00:18:50,440 --> 00:18:51,500
+and we're going to
+look at it again.
+
+483
+00:18:51,500 --> 00:18:52,959
+I'm going to say limit ten.
+
+484
+00:18:52,959 --> 00:18:58,159
+And I want the actions
+taken and the loan types.
+
+485
+00:18:58,159 --> 00:18:59,600
+And it's saying specifically,
+
+486
+00:18:59,600 --> 00:19:01,859
+I have to show texts,
+not just these numbers.
+
+487
+00:19:01,859 --> 00:19:03,140
+So I have to figure
+out how to take
+
+488
+00:19:03,140 --> 00:19:04,299
+these numbers and replace
+
+489
+00:19:04,299 --> 00:19:07,119
+them with the actual
+description here, right?
+
+490
+00:19:07,119 --> 00:19:10,680
+So one of the ways I can do
+that is I could say up here,
+
+491
+00:19:10,680 --> 00:19:16,169
+let's select everything
+from actions. All right?
+
+492
+00:19:16,169 --> 00:19:17,469
+And then I can see for
+
+493
+00:19:17,469 --> 00:19:19,709
+these actions taken down here,
+like, what do they mean?
+
+494
+00:19:19,709 --> 00:19:21,289
+Like a six means that
+
+495
+00:19:21,289 --> 00:19:24,429
+the loan was purchased
+by an institution.
+
+496
+00:19:24,429 --> 00:19:28,589
+Okay, or maybe a four means
+it was withdrawn, right?
+
+497
+00:19:28,589 --> 00:19:30,129
+And so what I really
+want to do is I
+
+498
+00:19:30,129 --> 00:19:31,870
+want to have the
+table down here,
+
+499
+00:19:31,870 --> 00:19:33,169
+but I want to fill in
+
+500
+00:19:33,169 --> 00:19:34,570
+that information
+from another table.
+
+501
+00:19:34,570 --> 00:19:35,749
+So I'm really
+taking columns from
+
+502
+00:19:35,749 --> 00:19:37,329
+different tables
+and combining them.
+
+503
+00:19:37,329 --> 00:19:39,469
+And when I do that, that's
+called a join, right?
+
+504
+00:19:39,469 --> 00:19:40,889
+So what I want to do down here
+
+505
+00:19:40,889 --> 00:19:42,389
+is instead of just
+selecting from loans,
+
+506
+00:19:42,389 --> 00:19:44,990
+I want to do what is first
+called an enter join.
+
+507
+00:19:44,990 --> 00:19:48,229
+And I want to ter
+join on this up here.
+
+508
+00:19:48,229 --> 00:19:52,110
+This actions table. I
+want to eroin on actions.
+
+509
+00:19:52,280 --> 00:19:55,520
+And when I do that,
+I have to specify,
+
+510
+00:19:55,520 --> 00:19:57,060
+how do I pair up a row
+
+511
+00:19:57,060 --> 00:20:00,400
+from loans with a
+row from actions?
+
+512
+00:20:00,400 --> 00:20:01,860
+And it's a lot like
+a wear statement.
+
+513
+00:20:01,860 --> 00:20:03,660
+I have to have some
+tradition that says,
+
+514
+00:20:03,660 --> 00:20:05,860
+Oh, this row matches
+with that row.
+
+515
+00:20:05,860 --> 00:20:09,159
+And so I put that tradition
+after an on statement.
+
+516
+00:20:09,159 --> 00:20:13,879
+And the way I can do that is
+I can say that what is it?
+
+517
+00:20:13,879 --> 00:20:16,159
+Action taken down here, right?
+
+518
+00:20:16,159 --> 00:20:22,470
+So action taken,
+equals the ID up here.
+
+519
+00:20:22,470 --> 00:20:24,630
+Now notice that
+there's some overlap.
+
+520
+00:20:24,630 --> 00:20:26,529
+Action taken is one
+column up here with
+
+521
+00:20:26,529 --> 00:20:29,130
+one meaning in the loans table,
+it means something else.
+
+522
+00:20:29,130 --> 00:20:30,530
+I really have to specify.
+
+523
+00:20:30,530 --> 00:20:32,930
+I have to say the
+loans action taken
+
+524
+00:20:32,930 --> 00:20:35,830
+equals the actions dot ID.
+
+525
+00:20:35,830 --> 00:20:38,429
+I have to do that.
+And now I'm going to
+
+526
+00:20:38,429 --> 00:20:40,969
+get all of these columns
+from the loans table.
+
+527
+00:20:40,969 --> 00:20:42,409
+And at the very end,
+I can see I get
+
+528
+00:20:42,409 --> 00:20:45,429
+some things from the
+other one as well, right?
+
+529
+00:20:45,429 --> 00:20:48,410
+So that's straight. I was
+able to add in action take.
+
+530
+00:20:48,410 --> 00:20:50,569
+And eventually, I'll clean
+this up a little bit.
+
+531
+00:20:50,569 --> 00:20:53,949
+It also said we have to say
+what loan type we want.
+
+532
+00:20:53,949 --> 00:20:55,229
+So may come up here, I may
+
+533
+00:20:55,229 --> 00:20:58,689
+say select star from loan types.
+
+534
+00:20:58,810 --> 00:21:01,550
+All right. I can
+see those there.
+
+535
+00:21:01,550 --> 00:21:06,229
+So I will say ner
+join loan types,
+
+536
+00:21:06,229 --> 00:21:09,610
+on, and then I have to have
+some kind of filter again.
+
+537
+00:21:09,610 --> 00:21:12,210
+I have to say the
+loan type down here.
+
+538
+00:21:12,210 --> 00:21:17,990
+Loans loan type
+equals the D up here.
+
+539
+00:21:17,990 --> 00:21:19,990
+This is an ID and the
+loans type table.
+
+540
+00:21:19,990 --> 00:21:25,209
+So I can say loan types
+dot ID. I could do that.
+
+541
+00:21:25,209 --> 00:21:29,189
+And now I've added all of
+this information in as well.
+
+542
+00:21:29,189 --> 00:21:31,069
+Then finally, what I
+could do is I could get
+
+543
+00:21:31,069 --> 00:21:32,990
+something like the loan
+amount and I could
+
+544
+00:21:32,990 --> 00:21:37,749
+say the action taken
+and then the loan type.
+
+545
+00:21:37,749 --> 00:21:41,709
+I could specify which table
+each of these come from.
+
+546
+00:21:41,709 --> 00:21:43,590
+This comes from actions.
+
+547
+00:21:43,590 --> 00:21:46,529
+This comes from loan types.
+
+548
+00:21:46,880 --> 00:21:49,360
+I could have some combination
+
+549
+00:21:49,360 --> 00:21:50,660
+where I could actually
+understand what's
+
+550
+00:21:50,660 --> 00:21:52,060
+going on instead of having
+
+551
+00:21:52,060 --> 00:21:55,459
+those specific IDs there.
+Yeah question right here.
+
+552
+00:21:55,459 --> 00:22:01,979
+You have some. Oh,
+could I reverse this?
+
+553
+00:22:01,979 --> 00:22:04,539
+Yeah, that'd be totally
+fine just to flip this.
+
+554
+00:22:04,539 --> 00:22:07,979
+It would do exactly
+the same thing. Yeah.
+
+555
+00:22:07,979 --> 00:22:09,839
+Yeah, good question.
+Other questions
+
+556
+00:22:09,839 --> 00:22:13,299
+people have. All right.
+
+557
+00:22:13,299 --> 00:22:15,539
+This is what we call an energy
+and that means I only get
+
+558
+00:22:15,539 --> 00:22:18,780
+an output row if it
+finds an exact match.
+
+559
+00:22:18,780 --> 00:22:20,869
+I might get you know,
+
+560
+00:22:20,869 --> 00:22:22,729
+given that there might be
+different combinations,
+
+561
+00:22:22,729 --> 00:22:25,109
+maybe I might have more output
+rows in some cases than
+
+562
+00:22:25,109 --> 00:22:28,149
+I have rows in the
+original tables, right?
+
+563
+00:22:28,149 --> 00:22:31,750
+But I only get output rows
+when there's an exact match.
+
+564
+00:22:31,750 --> 00:22:34,690
+Sometimes I might be
+interested in seeing maybe
+
+565
+00:22:34,690 --> 00:22:37,809
+like a loan where there is no
+associated action with it.
+
+566
+00:22:37,809 --> 00:22:39,549
+Maybe that feels empty
+or who knows what?
+
+567
+00:22:39,549 --> 00:22:41,370
+And Sly other kinds of joins.
+
+568
+00:22:41,370 --> 00:22:44,749
+Here I'm doing inner joins
+where I get exact matches.
+
+569
+00:22:44,749 --> 00:22:47,310
+Other kinds of joins are held
+left join and right join.
+
+570
+00:22:47,310 --> 00:22:48,729
+In those cases, I
+
+571
+00:22:48,729 --> 00:22:51,169
+might output a row from
+one of these tables,
+
+572
+00:22:51,169 --> 00:22:54,294
+even though there's no
+match in another table.
+
+573
+00:22:54,294 --> 00:22:56,859
+All right, so in this case,
+I want to know what is
+
+574
+00:22:56,859 --> 00:22:59,860
+a loan purpose that doesn't
+appear in the loans table.
+
+575
+00:22:59,860 --> 00:23:03,100
+And for this, we're going
+to do a left or right join.
+
+576
+00:23:03,100 --> 00:23:04,139
+All right.
+
+577
+00:23:04,139 --> 00:23:10,860
+I say, let me paste this
+down here. Read sequel.
+
+578
+00:23:11,980 --> 00:23:17,720
+Yeah, and I need
+to have my great.
+
+579
+00:23:17,720 --> 00:23:20,059
+So what I will do
+is, I'll first say,
+
+580
+00:23:20,059 --> 00:23:26,660
+select star from
+Lane loan purposes.
+
+581
+00:23:34,610 --> 00:23:36,950
+I shouldn't matter.
+
+582
+00:23:36,950 --> 00:23:39,629
+What did I do? Let me just
+come over here and say,
+
+583
+00:23:39,629 --> 00:23:44,710
+show tables again.
+H, just purposes.
+
+584
+00:23:44,710 --> 00:23:48,049
+Okay. Fantastic. So I'll
+just do purposes. All right.
+
+585
+00:23:48,049 --> 00:23:49,449
+Great. And I can see those.
+
+586
+00:23:49,449 --> 00:23:52,029
+And what I'm going
+to do is I'm well,
+
+587
+00:23:52,029 --> 00:23:53,869
+first, let's say I
+would erjoin it, right?
+
+588
+00:23:53,869 --> 00:23:56,149
+If I enter join it to
+loans and then have
+
+589
+00:23:56,149 --> 00:23:58,869
+some kind of on whatever.
+
+590
+00:23:58,869 --> 00:24:00,989
+What that would mean is
+that whenever one of
+
+591
+00:24:00,989 --> 00:24:03,810
+these IDs matches
+something in the table,
+
+592
+00:24:03,810 --> 00:24:05,309
+I'm going to get an
+output row, right?
+
+593
+00:24:05,309 --> 00:24:07,349
+But what I'm really interested
+in is I want to see
+
+594
+00:24:07,349 --> 00:24:09,890
+each of these at least once,
+
+595
+00:24:09,890 --> 00:24:11,429
+even if there's no match for it.
+
+596
+00:24:11,429 --> 00:24:12,830
+So instead of enter join,
+
+597
+00:24:12,830 --> 00:24:14,970
+I'm going to say, left join.
+
+598
+00:24:14,970 --> 00:24:17,010
+And that means I want
+every purpose to show
+
+599
+00:24:17,010 --> 00:24:20,039
+up even if there's no loans.
+
+600
+00:24:20,039 --> 00:24:21,719
+So if there's no loans,
+
+601
+00:24:21,719 --> 00:24:24,159
+then I'll just have a
+purpose row by itself and
+
+602
+00:24:24,159 --> 00:24:27,139
+the other values from the
+other table will be null,
+
+603
+00:24:27,139 --> 00:24:30,419
+or if there is a match, then
+I will get one or more rows.
+
+604
+00:24:30,419 --> 00:24:33,700
+So I may I say over here
+is that purposes dot
+
+605
+00:24:33,700 --> 00:24:41,040
+ID equals loans loan purpose.
+
+606
+00:24:41,040 --> 00:24:42,919
+F, let's just limit to ten
+
+607
+00:24:42,919 --> 00:24:45,359
+so we can see what
+it looks like.
+
+608
+00:24:46,610 --> 00:24:52,430
+Unknown column purpose
+ID. Purposes dot ID.
+
+609
+00:24:52,430 --> 00:24:53,089
+Thank you.
+
+610
+00:24:53,089 --> 00:24:55,789
+Excellent. I'm going to get
+a bunch of these matches,
+
+611
+00:24:55,789 --> 00:24:56,929
+right? So here's
+a home purchase.
+
+612
+00:24:56,929 --> 00:24:58,330
+And you can see that one row.
+
+613
+00:24:58,330 --> 00:24:59,809
+We only had three
+rows from here,
+
+614
+00:24:59,809 --> 00:25:02,270
+but each of those rows
+has many matches.
+
+615
+00:25:02,270 --> 00:25:04,169
+But it turns out
+that there's one of
+
+616
+00:25:04,169 --> 00:25:07,790
+these rows and loan purposes
+that doesn't have any match.
+
+617
+00:25:07,790 --> 00:25:09,609
+And I can't see it here.
+
+618
+00:25:09,609 --> 00:25:11,049
+But if I stroll down
+far enough with it,
+
+619
+00:25:11,049 --> 00:25:12,929
+what look like is I
+would see a value here,
+
+620
+00:25:12,929 --> 00:25:15,269
+and everything else
+would be null,
+
+621
+00:25:15,269 --> 00:25:18,529
+indicating that there are
+no loans matching that.
+
+622
+00:25:18,529 --> 00:25:20,169
+And so I can actually
+filter that.
+
+623
+00:25:20,169 --> 00:25:22,609
+I can say, where, I don't know.
+
+624
+00:25:22,609 --> 00:25:25,359
+I can really choose any
+column, loans at LEI.
+
+625
+00:25:25,359 --> 00:25:28,329
+Is null, right? I can do that.
+
+626
+00:25:28,329 --> 00:25:30,509
+And then I'm going to get
+this one right here, right?
+
+627
+00:25:30,509 --> 00:25:32,169
+So refinancing, there is
+
+628
+00:25:32,169 --> 00:25:34,770
+no refinancing data
+in this data set.
+
+629
+00:25:34,770 --> 00:25:36,269
+It's just not included, right?
+
+630
+00:25:36,269 --> 00:25:38,030
+So it's a valid loan type,
+
+631
+00:25:38,030 --> 00:25:40,489
+but they don't have it here.
+
+632
+00:25:40,489 --> 00:25:45,279
+Yeah, question
+right here. Equal.
+
+633
+00:25:45,279 --> 00:25:47,159
+That's a good question.
+Do I say equal?
+
+634
+00:25:47,159 --> 00:25:49,179
+I think I think
+it will actually,
+
+635
+00:25:49,179 --> 00:25:51,399
+I guess I have to say is null.
+
+636
+00:25:51,399 --> 00:25:54,740
+Interesting. Yeah, Null
+
+637
+00:25:54,740 --> 00:25:55,919
+is always weird
+because it's like,
+
+638
+00:25:55,919 --> 00:25:57,999
+Well, I mean,
+
+639
+00:25:57,999 --> 00:26:01,220
+that column has a specific
+type, and who knows?
+
+640
+00:26:01,220 --> 00:26:02,619
+If something is null, does it
+
+641
+00:26:02,619 --> 00:26:04,380
+matter if I have two nulls
+of a different type.
+
+642
+00:26:04,380 --> 00:26:06,059
+So sometimes languages will
+
+643
+00:26:06,059 --> 00:26:07,980
+have special words and
+some do it differently.
+
+644
+00:26:07,980 --> 00:26:09,200
+I don't remember first equal,
+
+645
+00:26:09,200 --> 00:26:11,119
+but maybe they're doing
+it because of that.
+
+646
+00:26:11,119 --> 00:26:14,260
+Normally equal sign.
+
+647
+00:26:14,260 --> 00:26:16,160
+Normally for where we
+would use an equal sign,
+
+648
+00:26:16,160 --> 00:26:18,240
+but for null I guess
+is a special case.
+
+649
+00:26:18,240 --> 00:26:20,199
+Yeah. Yeah. Thanks for
+pointing that out.
+
+650
+00:26:20,199 --> 00:26:23,760
+Yeah, right here. So let join.
+
+651
+00:26:23,760 --> 00:26:29,439
+That's coming here, Yeah.
+
+652
+00:26:29,439 --> 00:26:31,579
+Purposes is to left and
+loans to the right.
+
+653
+00:26:31,579 --> 00:26:33,019
+Left joint means
+that everything to
+
+654
+00:26:33,019 --> 00:26:35,219
+the left should have at
+least one output row,
+
+655
+00:26:35,219 --> 00:26:37,179
+even if there's no match for it.
+
+656
+00:26:37,179 --> 00:26:39,220
+And then after the fact,
+
+657
+00:26:39,220 --> 00:26:40,959
+I specifically said, I want to
+
+658
+00:26:40,959 --> 00:26:43,380
+find the ones where
+there is no match.
+
+659
+00:26:43,380 --> 00:26:46,280
+That makes sense? Yeah.
+Thank you for clarifying.
+
+660
+00:26:46,280 --> 00:26:48,419
+Yeah, there are
+questions people have.
+
+661
+00:26:48,680 --> 00:26:51,620
+All right. Cool.
+
+662
+00:26:51,620 --> 00:26:54,480
+So let's talk about
+aggregate snow.
+
+663
+00:26:54,480 --> 00:26:56,720
+I have this, you
+know, big data set,
+
+664
+00:26:56,720 --> 00:26:58,119
+but I can crunch it down to
+
+665
+00:26:58,119 --> 00:26:59,679
+just one summary
+number if I want.
+
+666
+00:26:59,679 --> 00:27:02,160
+There's different ways I
+can summarize the data.
+
+667
+00:27:02,160 --> 00:27:03,719
+And so one of them is
+I might want to just
+
+668
+00:27:03,719 --> 00:27:05,679
+know how many loans there are.
+
+669
+00:27:05,679 --> 00:27:08,539
+And so I'm going to
+select star from loans.
+
+670
+00:27:08,539 --> 00:27:12,419
+But instead of selecting
+specific columns,
+
+671
+00:27:12,419 --> 00:27:13,979
+I could put an aggregation
+function here.
+
+672
+00:27:13,979 --> 00:27:16,179
+So count is an example of
+an aggregation function.
+
+673
+00:27:16,179 --> 00:27:18,079
+And I could say how
+many are there.
+
+674
+00:27:18,079 --> 00:27:20,000
+So what does this star?
+That means I want to count
+
+675
+00:27:20,000 --> 00:27:23,719
+every single row regardless
+of the values in those rows.
+
+676
+00:27:23,719 --> 00:27:26,780
+And alternative to that
+might show up for SFS.
+
+677
+00:27:26,780 --> 00:27:29,639
+How many non null
+values are in um,
+
+678
+00:27:29,639 --> 00:27:30,999
+the income column, right?
+
+679
+00:27:30,999 --> 00:27:32,960
+So if I do this, I
+can say select count
+
+680
+00:27:32,960 --> 00:27:35,220
+from come, and I can see, well,
+
+681
+00:27:35,220 --> 00:27:38,159
+people usually, but not always
+
+682
+00:27:38,159 --> 00:27:39,679
+specify their income when
+
+683
+00:27:39,679 --> 00:27:41,979
+they're applying
+for a loan, right?
+
+684
+00:27:41,979 --> 00:27:44,919
+So what you're doing, you
+might be interested in one
+
+685
+00:27:44,919 --> 00:27:48,349
+or the other of
+these. All right.
+
+686
+00:27:48,349 --> 00:27:51,169
+Cool. Oftentimes, instead of
+
+687
+00:27:51,169 --> 00:27:52,850
+wanting to get an
+overall aggregate,
+
+688
+00:27:52,850 --> 00:27:54,189
+we might be interested in
+
+689
+00:27:54,189 --> 00:27:56,909
+an aggregate for a
+specific category,
+
+690
+00:27:56,909 --> 00:27:58,690
+what I want to do
+is I want to figure
+
+691
+00:27:58,690 --> 00:28:00,509
+out which of these loans are
+
+692
+00:28:00,509 --> 00:28:01,929
+conventional and then get
+
+693
+00:28:01,929 --> 00:28:04,989
+the interest rate
+specifically for those.
+
+694
+00:28:04,989 --> 00:28:06,789
+Maybe what I'll do first
+is I'll try to get
+
+695
+00:28:06,789 --> 00:28:08,710
+the interest rate overall.
+
+696
+00:28:08,710 --> 00:28:12,544
+I'll say, what is the
+average interest rate?
+
+697
+00:28:12,544 --> 00:28:14,860
+Overall, this is
+a few years ago,
+
+698
+00:28:14,860 --> 00:28:17,539
+so kind of a very
+enviable interest rate
+
+699
+00:28:17,539 --> 00:28:19,519
+that everybody was
+getting back then.
+
+700
+00:28:19,519 --> 00:28:21,119
+But let's see what it is for
+
+701
+00:28:21,119 --> 00:28:23,779
+conventional loans
+specifically, right?
+
+702
+00:28:23,779 --> 00:28:25,139
+So I'm going to
+come down here, and
+
+703
+00:28:25,139 --> 00:28:26,479
+I'm going to take a look at
+
+704
+00:28:26,479 --> 00:28:28,060
+the loans again so
+I can try to figure
+
+705
+00:28:28,060 --> 00:28:30,539
+out how to get the
+conventional loans.
+
+706
+00:28:31,580 --> 00:28:34,259
+And what I have is
+
+707
+00:28:34,259 --> 00:28:38,459
+the loan type over
+here is an ID, right?
+
+708
+00:28:38,459 --> 00:28:41,339
+And so if I come
+up here and I say,
+
+709
+00:28:41,339 --> 00:28:45,209
+select star from loan types,
+
+710
+00:28:45,209 --> 00:28:47,660
+I can see there's these
+four different types.
+
+711
+00:28:47,660 --> 00:28:49,619
+And I could hard
+code, I could say,
+
+712
+00:28:49,619 --> 00:28:51,079
+I want to find one because I'm
+
+713
+00:28:51,079 --> 00:28:52,779
+supposed to find the
+conventional loans,
+
+714
+00:28:52,779 --> 00:28:54,099
+but that's bad because people
+
+715
+00:28:54,099 --> 00:28:56,199
+couldn't read my SQL, right?
+
+716
+00:28:56,199 --> 00:28:57,720
+And if that changes
+at some point,
+
+717
+00:28:57,720 --> 00:28:59,340
+well, then my code
+would just break.
+
+718
+00:28:59,340 --> 00:29:01,259
+Right? So what I have
+to do here is I have to
+
+719
+00:29:01,259 --> 00:29:03,980
+combine this with a
+couple of things.
+
+720
+00:29:03,980 --> 00:29:05,579
+I have to do a join to figure
+
+721
+00:29:05,579 --> 00:29:07,959
+out what does conventional mean?
+
+722
+00:29:07,959 --> 00:29:11,139
+And then I have to do so
+that I only get that.
+
+723
+00:29:11,139 --> 00:29:16,139
+I may do from join loan types
+
+724
+00:29:16,139 --> 00:29:23,360
+on loans loan type down here.
+
+725
+00:29:23,750 --> 00:29:31,969
+Equals loan types ID right
+here, so I could do that.
+
+726
+00:29:31,969 --> 00:29:33,949
+And once I do that,
+
+727
+00:29:33,949 --> 00:29:36,969
+maybe I should just, I'll
+
+728
+00:29:36,969 --> 00:29:38,429
+try to jump ahead
+a little bit more.
+
+729
+00:29:38,429 --> 00:29:41,389
+Then what I can say is I'm
+only interested in that when
+
+730
+00:29:41,389 --> 00:29:45,749
+the loan type name.
+
+731
+00:29:45,749 --> 00:29:48,990
+I guess that type loan type
+
+732
+00:29:48,990 --> 00:29:54,299
+equals conventional. Try
+to do double quotes.
+
+733
+00:29:54,299 --> 00:29:56,499
+I'm not quite sure.
+Let's try that.
+
+734
+00:29:56,499 --> 00:29:59,239
+And I can see for those
+loans specifically,
+
+735
+00:29:59,239 --> 00:30:00,899
+this is the interest
+rate for them.
+
+736
+00:30:00,899 --> 00:30:02,760
+So I can look at one
+specific category
+
+737
+00:30:02,760 --> 00:30:04,880
+of loans and then
+get an aggregate.
+
+738
+00:30:04,880 --> 00:30:06,139
+And you can start to
+see, like some of
+
+739
+00:30:06,139 --> 00:30:07,119
+these more complex queries,
+
+740
+00:30:07,119 --> 00:30:08,179
+where we're doing a
+few things, right?
+
+741
+00:30:08,179 --> 00:30:10,100
+We're doing joining, we're
+
+742
+00:30:10,100 --> 00:30:12,379
+doing filtering. We're
+doing aggregation.
+
+743
+00:30:12,379 --> 00:30:14,580
+As you start to combine
+more of these things,
+
+744
+00:30:14,580 --> 00:30:18,019
+you can answer more interesting
+questions about the data.
+
+745
+00:30:18,019 --> 00:30:20,160
+All right. T a more
+complicated query.
+
+746
+00:30:20,160 --> 00:30:22,379
+Any questions about that query?
+
+747
+00:30:26,000 --> 00:30:29,519
+All right. Cool.
+So come down here.
+
+748
+00:30:29,519 --> 00:30:31,400
+I'm going to delete these.
+
+749
+00:30:31,400 --> 00:30:34,940
+How many loans are
+there of each type?
+
+750
+00:30:34,940 --> 00:30:36,919
+That's very similar to
+this question, actually.
+
+751
+00:30:36,919 --> 00:30:38,059
+For this, I was looking for
+
+752
+00:30:38,059 --> 00:30:39,379
+one loan type and
+trying to get it.
+
+753
+00:30:39,379 --> 00:30:40,719
+But now I want to get an answer
+
+754
+00:30:40,719 --> 00:30:42,219
+for each of these loan types.
+
+755
+00:30:42,219 --> 00:30:44,700
+And so I will modify
+this a little bit.
+
+756
+00:30:44,700 --> 00:30:47,879
+Let me let me copy
+the whole thing.
+
+757
+00:30:49,340 --> 00:30:52,499
+Excuse me. So what
+
+758
+00:30:52,499 --> 00:30:55,119
+I will do instead of
+filtering it down to one,
+
+759
+00:30:55,119 --> 00:30:58,279
+instead of having that,
+what I can say is,
+
+760
+00:30:58,279 --> 00:31:02,420
+I want to group by by loan type.
+
+761
+00:31:02,420 --> 00:31:03,779
+So the first thing
+astray happen is
+
+762
+00:31:03,779 --> 00:31:05,339
+a stray oid all
+the data together.
+
+763
+00:31:05,339 --> 00:31:07,279
+And then the group
+stray split it
+
+764
+00:31:07,279 --> 00:31:09,559
+up in d different groups.
+
+765
+00:31:09,559 --> 00:31:10,880
+And I know the average
+
+766
+00:31:10,880 --> 00:31:12,940
+looks like it's happening
+before the group bi,
+
+767
+00:31:12,940 --> 00:31:15,059
+and that's one of the things
+that's confusing about SQL.
+
+768
+00:31:15,059 --> 00:31:16,680
+The group bi happens first,
+
+769
+00:31:16,680 --> 00:31:18,540
+and then the aggregate
+
+770
+00:31:18,540 --> 00:31:20,719
+happens after that
+aggregate is to happen
+
+771
+00:31:20,719 --> 00:31:25,424
+on each of these
+individual groups, right?
+
+772
+00:31:25,424 --> 00:31:29,110
+So I may run that.
+And I can see well,
+
+773
+00:31:29,110 --> 00:31:30,829
+I guess, yeah, why not?
+
+774
+00:31:30,829 --> 00:31:32,389
+We can leave that
+there, too. I guess
+
+775
+00:31:32,389 --> 00:31:34,510
+how many loans are
+there of each type,
+
+776
+00:31:34,510 --> 00:31:36,290
+right? So I'll say count star.
+
+777
+00:31:36,290 --> 00:31:38,129
+All right, C. So I can see how
+
+778
+00:31:38,129 --> 00:31:39,869
+many there are of each type,
+
+779
+00:31:39,869 --> 00:31:41,449
+and then what the
+interest rate is
+
+780
+00:31:41,449 --> 00:31:43,649
+for each of these categories.
+
+781
+00:31:43,649 --> 00:31:45,049
+Now, it's a little
+hard for me to
+
+782
+00:31:45,049 --> 00:31:46,710
+see here just what
+these aggregates,
+
+783
+00:31:46,710 --> 00:31:48,209
+what loan type they
+correspond to.
+
+784
+00:31:48,209 --> 00:31:49,850
+So it's extremely
+common that whatever
+
+785
+00:31:49,850 --> 00:31:51,589
+you're grouping by is
+
+786
+00:31:51,589 --> 00:31:53,469
+also going to go alongside
+
+787
+00:31:53,469 --> 00:31:55,289
+your aggregates up here like so.
+
+788
+00:31:55,289 --> 00:31:57,289
+So I can see, like
+for a con loan,
+
+789
+00:31:57,289 --> 00:31:58,489
+how many are there and what was
+
+790
+00:31:58,489 --> 00:32:00,470
+the interest rate for them.
+
+791
+00:32:00,470 --> 00:32:05,389
+Okay. Any questions
+about that about that,
+
+792
+00:32:05,389 --> 00:32:08,070
+query? Yeah, right here.
+
+793
+00:32:09,590 --> 00:32:13,810
+Could you group by
+with what? Oh, could
+
+794
+00:32:13,810 --> 00:32:15,330
+you group by an aggregate.
+
+795
+00:32:15,330 --> 00:32:20,389
+Oh, that's kind of interesting.
+Yes, you could, right?
+
+796
+00:32:20,389 --> 00:32:25,430
+So I guess you're
+trying to say, Let's
+
+797
+00:32:25,430 --> 00:32:25,929
+say this was like
+
+798
+00:32:25,929 --> 00:32:27,889
+a smaller number like
+one or two or three.
+
+799
+00:32:27,889 --> 00:32:30,449
+I could then try to
+say like how often for
+
+800
+00:32:30,449 --> 00:32:33,349
+how many groups was
+
+801
+00:32:33,349 --> 00:32:35,129
+the count three or
+something like that.
+
+802
+00:32:35,129 --> 00:32:39,709
+You cannot do it with a
+single query like this.
+
+803
+00:32:39,709 --> 00:32:41,209
+In SQL, you could have
+
+804
+00:32:41,209 --> 00:32:42,569
+somebody called a
+nested query, right?
+
+805
+00:32:42,569 --> 00:32:44,269
+So I could have this, and then
+
+806
+00:32:44,269 --> 00:32:46,089
+I could really do something
+like this, right?
+
+807
+00:32:46,089 --> 00:32:48,849
+I think what you're saying
+is I could select something
+
+808
+00:32:48,849 --> 00:32:51,189
+from And then I
+
+809
+00:32:51,189 --> 00:32:53,230
+can say and I could put
+all this in parentheses.
+
+810
+00:32:53,230 --> 00:32:55,509
+That would be an example
+of a nested query.
+
+811
+00:32:55,509 --> 00:32:59,770
+We're actually see in
+when we learned Spark,
+
+812
+00:32:59,770 --> 00:33:01,549
+I mean, what you're
+suggesting is very natural,
+
+813
+00:33:01,549 --> 00:33:03,890
+right, that, I'm doing all
+theerasformation of data.
+
+814
+00:33:03,890 --> 00:33:05,949
+I should be a group by
+aggregate group by aggregate.
+
+815
+00:33:05,949 --> 00:33:07,630
+It's just a chain
+of transformations.
+
+816
+00:33:07,630 --> 00:33:09,109
+SQL doesn't let you
+
+817
+00:33:09,109 --> 00:33:10,509
+do that natural. You
+have to do this nesting.
+
+818
+00:33:10,509 --> 00:33:11,610
+But in Spark, for example,
+
+819
+00:33:11,610 --> 00:33:13,730
+it'd be totally fine to have
+a long chain of operations,
+
+820
+00:33:13,730 --> 00:33:14,990
+where I have a
+bunch of group by,
+
+821
+00:33:14,990 --> 00:33:16,269
+a bunch of wares, whatever.
+
+822
+00:33:16,269 --> 00:33:18,049
+Right? So yeah, so it's a
+reasonable thing to do,
+
+823
+00:33:18,049 --> 00:33:20,189
+and it's just a little
+ugly to do it in SQL,
+
+824
+00:33:20,189 --> 00:33:22,050
+but totally doable either way.
+
+825
+00:33:22,050 --> 00:33:22,990
+Yeah, great question.
+
+826
+00:33:22,990 --> 00:33:25,029
+Yeah, all the
+questions people have.
+
+827
+00:33:25,270 --> 00:33:28,569
+All right. Cool. I think
+the last thing I want to
+
+828
+00:33:28,569 --> 00:33:31,789
+do is it's actually
+the same one,
+
+829
+00:33:31,789 --> 00:33:35,449
+but I want to filter
+down these groups,
+
+830
+00:33:35,449 --> 00:33:37,750
+so I'm only getting
+specific ones.
+
+831
+00:33:37,750 --> 00:33:40,890
+I only want it where the
+count is more than 10,000.
+
+832
+00:33:40,890 --> 00:33:42,530
+So I should probably
+give this a name.
+
+833
+00:33:42,530 --> 00:33:43,910
+Count is kind of a bad name
+
+834
+00:33:43,910 --> 00:33:45,769
+because it's the same
+as the function.
+
+835
+00:33:45,769 --> 00:33:47,229
+So I might abbreviate that.
+
+836
+00:33:47,229 --> 00:33:48,629
+And then it would be very
+
+837
+00:33:48,629 --> 00:33:50,649
+natural to say something
+like where, right?
+
+838
+00:33:50,649 --> 00:33:51,929
+So where that's straighter than
+
+839
+00:33:51,929 --> 00:33:54,129
+10,000. But that's
+not going to work.
+
+840
+00:33:54,129 --> 00:33:56,659
+The reason is that where is
+
+841
+00:33:56,659 --> 00:34:00,780
+operating on my data right
+after it does the ins,
+
+842
+00:34:00,780 --> 00:34:04,539
+trying to filter down the rows
+before I do any grouping.
+
+843
+00:34:04,539 --> 00:34:06,320
+And so the same concept,
+
+844
+00:34:06,320 --> 00:34:08,319
+but they have a
+separate word for
+
+845
+00:34:08,319 --> 00:34:10,780
+filtering after you've
+done group I in aggregate,
+
+846
+00:34:10,780 --> 00:34:12,940
+and that separate
+word is having.
+
+847
+00:34:12,940 --> 00:34:15,679
+This is another taste where
+we eventually see Spark
+
+848
+00:34:15,679 --> 00:34:17,280
+and Spark has a nicer syntax
+
+849
+00:34:17,280 --> 00:34:18,639
+like wear and having
+are the same thing,
+
+850
+00:34:18,639 --> 00:34:19,779
+and you could actually use the
+
+851
+00:34:19,779 --> 00:34:22,399
+same wear multiple
+times in this,
+
+852
+00:34:22,399 --> 00:34:25,639
+kind of, like, how
+however you like.
+
+853
+00:34:26,400 --> 00:34:29,419
+So what I want to end
+with is coming back to
+
+854
+00:34:29,419 --> 00:34:30,939
+this picture that I think
+
+855
+00:34:30,939 --> 00:34:32,959
+is so important, and I
+showed it last time.
+
+856
+00:34:32,959 --> 00:34:35,119
+I'm going to show it again.
+You should really get in
+
+857
+00:34:35,119 --> 00:34:37,460
+the habit of thinking of
+when you're writing a query,
+
+858
+00:34:37,460 --> 00:34:39,099
+your data is actually
+flowing through
+
+859
+00:34:39,099 --> 00:34:40,979
+a series of
+transformations, right?
+
+860
+00:34:40,979 --> 00:34:43,819
+First to join, takes multiple
+tables, and it combines it.
+
+861
+00:34:43,819 --> 00:34:45,259
+So we have some
+columns from each,
+
+862
+00:34:45,259 --> 00:34:47,360
+where filters down the rows.
+
+863
+00:34:47,360 --> 00:34:50,799
+Group by pulls
+together related rows.
+
+864
+00:34:50,799 --> 00:34:53,160
+An aggregation like
+summer average
+
+865
+00:34:53,160 --> 00:34:55,969
+gives you a single
+row for each group.
+
+866
+00:34:55,969 --> 00:34:59,319
+Having filters down
+your summary rows,
+
+867
+00:34:59,319 --> 00:35:02,899
+order by reorganize
+them in some way,
+
+868
+00:35:02,899 --> 00:35:08,099
+and then a limit will give
+you the top however so many.
+
+869
+00:35:08,099 --> 00:35:10,019
+You should think of your data
+flowing through a series of
+
+870
+00:35:10,019 --> 00:35:12,819
+transformations SQL forces you
+
+871
+00:35:12,819 --> 00:35:14,499
+to have them in this order.
+
+872
+00:35:14,499 --> 00:35:15,519
+You don't have to
+have all these steps,
+
+873
+00:35:15,519 --> 00:35:16,719
+but you choose a subset of
+
+874
+00:35:16,719 --> 00:35:19,399
+these for a signal query
+and then you do the order.
+
+875
+00:35:19,399 --> 00:35:21,579
+So the systems like spark
+them where you learn about,
+
+876
+00:35:21,579 --> 00:35:23,640
+they have each of
+these building blocks,
+
+877
+00:35:23,640 --> 00:35:25,139
+and you're a little
+bit more free.
+
+878
+00:35:25,139 --> 00:35:26,759
+You could have you know,
+
+879
+00:35:26,759 --> 00:35:29,659
+join, join, where, and
+one big chain, right?
+
+880
+00:35:29,659 --> 00:35:31,279
+So that's when you
+start thinking about.
+
+881
+00:35:31,279 --> 00:35:33,199
+How can you really
+
+882
+00:35:33,199 --> 00:35:35,699
+have these pipelines that
+your data flows through?
+
+883
+00:35:35,699 --> 00:35:37,279
+You do a bunch of
+transformations,
+
+884
+00:35:37,279 --> 00:35:39,840
+and then you get
+some final result.
+
+885
+00:35:39,840 --> 00:35:44,879
+SQL is one language for
+describing some pipelines.
+
+886
+00:35:44,879 --> 00:35:48,220
+Alright, Col. Any
+questions about SQL
+
+887
+00:35:48,220 --> 00:35:51,860
+before we move on
+to the new stuff?
+
+888
+00:35:52,660 --> 00:35:55,539
+Alright, cool. I
+may head over here.
+
+889
+00:35:55,539 --> 00:35:58,559
+And I'm really go
+
+890
+00:35:58,559 --> 00:36:01,419
+to spend the most time of the
+Hadoop file system first,
+
+891
+00:36:01,419 --> 00:36:03,039
+but it's part of a
+broader ecosystem,
+
+892
+00:36:03,039 --> 00:36:05,359
+so we'll start with the
+ecosystem of the Darrow Dud.
+
+893
+00:36:05,359 --> 00:36:06,959
+This elephant, here is
+
+894
+00:36:06,959 --> 00:36:09,679
+the mascot for the
+Hadoop ecosystem.
+
+895
+00:36:09,679 --> 00:36:11,739
+I have a few goals for you.
+
+896
+00:36:11,739 --> 00:36:14,019
+One is a little bit of a
+history lesson, right?
+
+897
+00:36:14,019 --> 00:36:15,819
+So, Google did a lot of
+
+898
+00:36:15,819 --> 00:36:17,200
+this founding work
+that has inspired
+
+899
+00:36:17,200 --> 00:36:18,400
+a lot of big data systems,
+
+900
+00:36:18,400 --> 00:36:20,860
+and so there's three
+famous big data systems
+
+901
+00:36:20,860 --> 00:36:22,820
+in particular that I
+want you to remember.
+
+902
+00:36:22,820 --> 00:36:25,100
+GFS is the Google File system,
+
+903
+00:36:25,100 --> 00:36:27,459
+Map reduce and Big Table.
+
+904
+00:36:27,459 --> 00:36:29,739
+And so we aren't going
+to use those things,
+
+905
+00:36:29,739 --> 00:36:32,399
+but I want you to at
+least describe them.
+
+906
+00:36:32,399 --> 00:36:34,519
+You could row Ue Big
+Table if you wanted to.
+
+907
+00:36:34,519 --> 00:36:35,879
+They sell it as a Cloud service.
+
+908
+00:36:35,879 --> 00:36:36,960
+I'm guessing it's expensive,
+
+909
+00:36:36,960 --> 00:36:39,879
+but you could row make a
+Big Table if you wanted to.
+
+910
+00:36:39,879 --> 00:36:42,470
+We're going to be
+focusing on Hadoop
+
+911
+00:36:42,470 --> 00:36:45,539
+Systems that have some
+similarities to these.
+
+912
+00:36:45,539 --> 00:36:48,220
+And respectively, the ones
+are the Fadu file system.
+
+913
+00:36:48,220 --> 00:36:49,480
+Spark and Cassandra.
+
+914
+00:36:49,480 --> 00:36:51,080
+Those are three of
+the big data systems
+
+915
+00:36:51,080 --> 00:36:52,640
+Rbulary this semester.
+
+916
+00:36:52,640 --> 00:36:54,320
+For all of these systems,
+
+917
+00:36:54,320 --> 00:36:55,639
+partitioning and replication are
+
+918
+00:36:55,639 --> 00:36:56,840
+going to be really important.
+
+919
+00:36:56,840 --> 00:36:59,739
+We saw that earlier on P two,
+
+920
+00:36:59,739 --> 00:37:02,320
+actually, how we might partition
+
+921
+00:37:02,320 --> 00:37:03,800
+our data or we might replicate
+
+922
+00:37:03,800 --> 00:37:04,960
+it to have multiple copies.
+
+923
+00:37:04,960 --> 00:37:06,800
+Those are things where
+we see repeatedly,
+
+924
+00:37:06,800 --> 00:37:08,585
+again, and again, this semester.
+
+925
+00:37:08,585 --> 00:37:10,329
+And then finally, when we're
+
+926
+00:37:10,329 --> 00:37:11,770
+talking about the
+Du file system,
+
+927
+00:37:11,770 --> 00:37:12,809
+specifically, we're
+going to have
+
+928
+00:37:12,809 --> 00:37:14,150
+this big distributed system.
+
+929
+00:37:14,150 --> 00:37:16,089
+Most of the nodes of the system
+are gonna be what we call
+
+930
+00:37:16,089 --> 00:37:18,149
+data nodes that are holding
+these big blocks of data.
+
+931
+00:37:18,149 --> 00:37:19,369
+We're gonna have
+something called a name
+
+932
+00:37:19,369 --> 00:37:20,609
+node that coordinates them all.
+
+933
+00:37:20,609 --> 00:37:23,010
+And then we have clients that
+are reading writing data,
+
+934
+00:37:23,010 --> 00:37:24,470
+and those clients
+have to interact
+
+935
+00:37:24,470 --> 00:37:25,969
+with both the name node
+and the data node,
+
+936
+00:37:25,969 --> 00:37:26,849
+and I want you to be able to
+
+937
+00:37:26,849 --> 00:37:27,910
+describe all those interaction.
+
+938
+00:37:27,910 --> 00:37:29,109
+So you could walk
+me through what
+
+939
+00:37:29,109 --> 00:37:30,709
+happens when you write some data
+
+940
+00:37:30,709 --> 00:37:34,689
+or when you read some
+data. All right.
+
+941
+00:37:34,690 --> 00:37:37,249
+So let's have a little bit of
+
+942
+00:37:37,249 --> 00:37:41,669
+motivation for where
+these systems came from.
+
+943
+00:37:41,669 --> 00:37:44,650
+I want to go back in
+contrast to simple system,
+
+944
+00:37:44,650 --> 00:37:46,169
+I should say simple, but
+
+945
+00:37:46,169 --> 00:37:49,050
+a single node
+system like my SQL.
+
+946
+00:37:49,050 --> 00:37:50,969
+So here you are, and
+
+947
+00:37:50,969 --> 00:37:52,730
+you're writing some
+data into MS equL,
+
+948
+00:37:52,730 --> 00:37:56,050
+and databases and storage
+systems in general are layered.
+
+949
+00:37:56,050 --> 00:37:57,930
+So inside of the MEQL edge,
+
+950
+00:37:57,930 --> 00:37:59,150
+they have some storage engine.
+
+951
+00:37:59,150 --> 00:38:00,670
+I think the default
+is called ODP,
+
+952
+00:38:00,670 --> 00:38:02,949
+but you could plug
+other things ODP is
+
+953
+00:38:02,949 --> 00:38:05,530
+re store data as files
+in a file system.
+
+954
+00:38:05,530 --> 00:38:07,149
+The file system is re store
+
+955
+00:38:07,149 --> 00:38:10,210
+that data maybe at a
+hard driver at SSD.
+
+956
+00:38:10,210 --> 00:38:11,489
+Maybe you have other programs of
+
+957
+00:38:11,489 --> 00:38:12,730
+the same computer like Excel
+
+958
+00:38:12,730 --> 00:38:15,630
+that might say files directly
+to that file system.
+
+959
+00:38:15,630 --> 00:38:17,769
+So we have this layer
+deside. Almost everything we
+
+960
+00:38:17,769 --> 00:38:21,084
+look at is going to have
+some kind of layering to it.
+
+961
+00:38:21,084 --> 00:38:23,719
+So the question is,
+what if this data
+
+962
+00:38:23,719 --> 00:38:26,259
+that you're putting
+into by SQL is too big.
+
+963
+00:38:26,259 --> 00:38:28,660
+Maybe too big in terms of
+it takes too many bytes,
+
+964
+00:38:28,660 --> 00:38:31,119
+or it takes too
+long to process it.
+
+965
+00:38:31,119 --> 00:38:32,539
+One option. Doing back to
+
+966
+00:38:32,539 --> 00:38:34,679
+the very first lecture is
+that we could scale up.
+
+967
+00:38:34,679 --> 00:38:37,039
+That means that
+we buy more CPUs,
+
+968
+00:38:37,039 --> 00:38:39,879
+or we have more RAM,
+right? We could do that.
+
+969
+00:38:39,879 --> 00:38:41,619
+Maybe instead of
+having one hard drive,
+
+970
+00:38:41,619 --> 00:38:43,280
+maybe we have a bunch
+of hard drives,
+
+971
+00:38:43,280 --> 00:38:45,240
+and they're in a ray.
+
+972
+00:38:45,240 --> 00:38:46,859
+We done a a array of
+inexpensive disks.
+
+973
+00:38:46,859 --> 00:38:48,239
+I could get more
+capacity, right?
+
+974
+00:38:48,239 --> 00:38:50,059
+But of course, if
+data keeps growing,
+
+975
+00:38:50,059 --> 00:38:52,019
+it simply will not
+fit on one server,
+
+976
+00:38:52,019 --> 00:38:54,454
+no matter how much money
+we want to throw at it.
+
+977
+00:38:54,454 --> 00:38:57,029
+So another approach is
+a scale out, right?
+
+978
+00:38:57,029 --> 00:38:59,310
+I could buy lots of
+different servers,
+
+979
+00:38:59,310 --> 00:39:00,969
+and maybe they each
+have one hard drive
+
+980
+00:39:00,969 --> 00:39:02,209
+or multiple doesn't matter,
+
+981
+00:39:02,209 --> 00:39:04,090
+but they could have
+all these different
+
+982
+00:39:04,090 --> 00:39:05,689
+my SQL instances running
+
+983
+00:39:05,689 --> 00:39:07,589
+in my cluster, maybe
+thousands of them.
+
+984
+00:39:07,589 --> 00:39:09,589
+And this is not crazy, right?
+
+985
+00:39:09,589 --> 00:39:10,930
+It's actually something
+that happened.
+
+986
+00:39:10,930 --> 00:39:12,550
+So Facebook, for example,
+
+987
+00:39:12,550 --> 00:39:14,030
+they started they using my SQL.
+
+988
+00:39:14,030 --> 00:39:16,089
+And I don't know I'm guessing
+they probably started with,
+
+989
+00:39:16,089 --> 00:39:17,769
+like one server, but
+as they kept growing,
+
+990
+00:39:17,769 --> 00:39:18,970
+then they had to have
+more and more servers,
+
+991
+00:39:18,970 --> 00:39:20,390
+and they were all
+running my SQL,
+
+992
+00:39:20,390 --> 00:39:23,189
+and they all had different
+users data on them, right?
+
+993
+00:39:23,189 --> 00:39:26,369
+They had to kind of figure
+out how to make this war.
+
+994
+00:39:26,369 --> 00:39:29,050
+And that's a lot
+harder than it sounds.
+
+995
+00:39:29,050 --> 00:39:31,810
+Let me show you. So
+in this situation,
+
+996
+00:39:31,810 --> 00:39:33,869
+we have tables that
+are huge, right?
+
+997
+00:39:33,869 --> 00:39:36,130
+A single table of data, I
+cannot fit on one machine.
+
+998
+00:39:36,130 --> 00:39:37,909
+And so you have to
+have some logic in
+
+999
+00:39:37,909 --> 00:39:40,209
+addition to what I showed
+that partitions it.
+
+1000
+00:39:40,209 --> 00:39:42,289
+So maybe I'm doing like
+some kind of sales thing,
+
+1001
+00:39:42,289 --> 00:39:44,349
+and I have a table of
+users and a table of
+
+1002
+00:39:44,349 --> 00:39:46,609
+things they're purchasing,
+and they're both huge.
+
+1003
+00:39:46,609 --> 00:39:47,849
+I could split them up, right?
+
+1004
+00:39:47,849 --> 00:39:50,149
+I could put some users data
+on each of the machines and
+
+1005
+00:39:50,149 --> 00:39:51,289
+some purchase data on each of
+
+1006
+00:39:51,289 --> 00:39:52,749
+the machines. I could do that.
+
+1007
+00:39:52,749 --> 00:39:53,389
+Here, I just have
+
+1008
+00:39:53,389 --> 00:39:55,030
+two computers instead
+of like thousands,
+
+1009
+00:39:55,030 --> 00:39:56,649
+but let's just start there.
+
+1010
+00:39:56,649 --> 00:39:58,549
+So that's all fine and well.
+
+1011
+00:39:58,549 --> 00:40:00,669
+If I have a query,
+like let's say I want
+
+1012
+00:40:00,669 --> 00:40:02,750
+to find all the purchases
+that are over some amount?
+
+1013
+00:40:02,750 --> 00:40:06,969
+I could send that same query
+to both my SQL databases,
+
+1014
+00:40:06,969 --> 00:40:08,149
+and they would both send me
+
+1015
+00:40:08,149 --> 00:40:10,150
+some rows back with an answer.
+
+1016
+00:40:10,150 --> 00:40:11,849
+And I could combine that, right?
+
+1017
+00:40:11,849 --> 00:40:13,129
+I can get some data from one and
+
+1018
+00:40:13,129 --> 00:40:14,489
+some data from other,
+and I could say,
+
+1019
+00:40:14,489 --> 00:40:18,409
+Okay, here are the amounts
+for each of these.
+
+1020
+00:40:18,409 --> 00:40:21,209
+So that seems like it
+would kind of work well.
+
+1021
+00:40:21,209 --> 00:40:24,530
+But I want you to think
+about this approach.
+
+1022
+00:40:24,530 --> 00:40:26,150
+I just send the same
+query to everybody,
+
+1023
+00:40:26,150 --> 00:40:28,769
+and then I just take the results
+back and con ttinate it.
+
+1024
+00:40:28,769 --> 00:40:30,369
+Did anybody think
+of some kind of
+
+1025
+00:40:30,369 --> 00:40:33,749
+query where that's not
+going to work for me?
+
+1026
+00:40:40,540 --> 00:40:42,859
+Right here.
+
+1027
+00:40:52,300 --> 00:40:53,879
+Excellent, right?
+
+1028
+00:40:53,879 --> 00:40:55,139
+So if I want to get
+the purchases for
+
+1029
+00:40:55,139 --> 00:40:56,699
+user three or maybe in general,
+
+1030
+00:40:56,699 --> 00:40:59,220
+I'm just trying to like
+group purchases by user,
+
+1031
+00:40:59,220 --> 00:41:01,780
+I have to do kind of a droid
+and some other operation.
+
+1032
+00:41:01,780 --> 00:41:04,059
+I'm may be in trouble,
+right, because as you said,
+
+1033
+00:41:04,059 --> 00:41:06,219
+purchases for user
+three is on the left,
+
+1034
+00:41:06,219 --> 00:41:09,459
+but user three is over
+on the right hand side.
+
+1035
+00:41:09,459 --> 00:41:11,980
+So something like a droid
+
+1036
+00:41:11,980 --> 00:41:14,220
+would break with that
+simple approach.
+
+1037
+00:41:14,220 --> 00:41:15,659
+If I actually want that to work,
+
+1038
+00:41:15,659 --> 00:41:17,820
+I have to be very
+careful about which rows
+
+1039
+00:41:17,820 --> 00:41:19,419
+go on which database server.
+
+1040
+00:41:19,419 --> 00:41:21,919
+If I very careful, maybe
+I can make it work.
+
+1041
+00:41:21,919 --> 00:41:25,260
+Can I clearly do that I say
+this users on that mache,
+
+1042
+00:41:25,260 --> 00:41:26,780
+that users of that mache?
+
+1043
+00:41:26,780 --> 00:41:28,200
+Sometimes, but not always.
+
+1044
+00:41:28,200 --> 00:41:30,059
+Imagine if I have like a
+Facebook message, right?
+
+1045
+00:41:30,059 --> 00:41:31,339
+There's like the
+user that said it,
+
+1046
+00:41:31,339 --> 00:41:32,779
+and the user that received it,
+
+1047
+00:41:32,779 --> 00:41:34,959
+like which server
+is that stored on,
+
+1048
+00:41:34,959 --> 00:41:36,620
+that gets very challenging
+
+1049
+00:41:36,620 --> 00:41:38,139
+fast, right? People do do this.
+
+1050
+00:41:38,139 --> 00:41:40,940
+They'll have thousands of
+my equal server instances,
+
+1051
+00:41:40,940 --> 00:41:44,319
+but then it doesn't work
+as well as a si SQL server
+
+1052
+00:41:44,319 --> 00:41:46,280
+does because you have to
+do all this extra stuff
+
+1053
+00:41:46,280 --> 00:41:48,499
+to make it even just half work.
+
+1054
+00:41:48,499 --> 00:41:50,520
+And so that raises the question,
+
+1055
+00:41:50,520 --> 00:41:53,019
+right If these basic
+things that we're used to,
+
+1056
+00:41:53,019 --> 00:41:55,219
+traditional databases
+don't work?
+
+1057
+00:41:55,219 --> 00:41:57,179
+I Joy doesn't work, maybe
+
+1058
+00:41:57,179 --> 00:41:59,304
+acid transactions
+don't quite work,
+
+1059
+00:41:59,304 --> 00:42:01,510
+If we're giving those
+things up anyway,
+
+1060
+00:42:01,510 --> 00:42:02,709
+maybe that gives us a chance
+
+1061
+00:42:02,709 --> 00:42:04,029
+to redesign everything
+from stretch.
+
+1062
+00:42:04,029 --> 00:42:05,629
+So, for example, one of
+the databases are we
+
+1063
+00:42:05,629 --> 00:42:07,589
+be learning the semester
+is called Cassandra.
+
+1064
+00:42:07,589 --> 00:42:10,670
+And Cassandra has
+CQL instead of SQL,
+
+1065
+00:42:10,670 --> 00:42:13,009
+and they don't even try to do
+join because they're like,
+
+1066
+00:42:13,009 --> 00:42:14,889
+Well, it's so hard to get
+it right when we have
+
+1067
+00:42:14,889 --> 00:42:18,809
+all these different machines
+that are involved, right?
+
+1068
+00:42:18,809 --> 00:42:19,970
+So there's just a completely
+
+1069
+00:42:19,970 --> 00:42:21,589
+different database
+compared to what
+
+1070
+00:42:21,589 --> 00:42:25,529
+we are learning as this
+basic traditional database.
+
+1071
+00:42:25,529 --> 00:42:26,809
+Another thing you
+have to worry about
+
+1072
+00:42:26,809 --> 00:42:28,190
+is when you have
+thousands of machines,
+
+1073
+00:42:28,190 --> 00:42:29,589
+is what if a server dies?
+
+1074
+00:42:29,589 --> 00:42:30,489
+How many people have had
+
+1075
+00:42:30,489 --> 00:42:32,609
+a computer die within
+the last year?
+
+1076
+00:42:32,609 --> 00:42:35,949
+So already, what, like,
+four or five people.
+
+1077
+00:42:35,949 --> 00:42:36,869
+And I don't know,
+
+1078
+00:42:36,869 --> 00:42:38,349
+we have less than 100
+people in the room.
+
+1079
+00:42:38,349 --> 00:42:40,329
+So imagine if you have
+thousands of computers, right?
+
+1080
+00:42:40,329 --> 00:42:42,230
+Then we're talking like
+dozens of failures.
+
+1081
+00:42:42,230 --> 00:42:43,849
+I just happens all
+the time, right?
+
+1082
+00:42:43,849 --> 00:42:45,509
+You have to be able
+to deal with that.
+
+1083
+00:42:45,509 --> 00:42:48,329
+And so this all leads us
+to this big motivation for
+
+1084
+00:42:48,329 --> 00:42:51,430
+redesigning systems
+for big data.
+
+1085
+00:42:51,430 --> 00:42:53,410
+Some of stuff like
+Joint and transaction,
+
+1086
+00:42:53,410 --> 00:42:55,389
+even though we like those, we're
+
+1087
+00:42:55,389 --> 00:42:57,464
+just not ready to get
+what we want there.
+
+1088
+00:42:57,464 --> 00:42:59,939
+So we already sacrifice those,
+
+1089
+00:42:59,939 --> 00:43:01,939
+but there are other
+things that we do
+
+1090
+00:43:01,939 --> 00:43:04,539
+really care about that
+are essential, right?
+
+1091
+00:43:04,539 --> 00:43:05,700
+We have to be able to scale
+
+1092
+00:43:05,700 --> 00:43:07,540
+to a large number of machines,
+
+1093
+00:43:07,540 --> 00:43:09,260
+and we have to have
+fault tolerance.
+
+1094
+00:43:09,260 --> 00:43:10,940
+So a fault is like
+a hard dry failing,
+
+1095
+00:43:10,940 --> 00:43:12,620
+a machine failing,
+a rack failing.
+
+1096
+00:43:12,620 --> 00:43:16,079
+When stuff goes bad, the system
+still has to work, right?
+
+1097
+00:43:16,079 --> 00:43:18,779
+So A this motivates
+building a new kind of
+
+1098
+00:43:18,779 --> 00:43:20,359
+big data system compared to
+
+1099
+00:43:20,359 --> 00:43:21,939
+that traditional database we
+
+1100
+00:43:21,939 --> 00:43:24,095
+were considering, like by SQL.
+
+1101
+00:43:24,095 --> 00:43:28,249
+So the history of this
+goes back to Google again,
+
+1102
+00:43:28,249 --> 00:43:30,470
+and they built these
+three systems,
+
+1103
+00:43:30,470 --> 00:43:31,929
+and they are all closed source,
+
+1104
+00:43:31,929 --> 00:43:33,550
+but they published fabs papers
+
+1105
+00:43:33,550 --> 00:43:35,290
+about them that
+have been extremely
+
+1106
+00:43:35,290 --> 00:43:36,509
+impactful in terms of
+
+1107
+00:43:36,509 --> 00:43:37,850
+all these different systems
+
+1108
+00:43:37,850 --> 00:43:40,009
+that resemble them in
+different ways, right?
+
+1109
+00:43:40,009 --> 00:43:42,809
+So I want you to learn a little
+bit about each of these,
+
+1110
+00:43:42,809 --> 00:43:45,630
+even if we don't ever use
+them or rever them in detail.
+
+1111
+00:43:45,630 --> 00:43:47,270
+So the first thing they
+did is they published
+
+1112
+00:43:47,270 --> 00:43:49,430
+a paper in 2003 about GFS,
+
+1113
+00:43:49,430 --> 00:43:51,110
+the Google File System.
+
+1114
+00:43:51,110 --> 00:43:53,089
+The Google file system is
+
+1115
+00:43:53,089 --> 00:43:55,930
+a file system that could have
+say thousands of workers,
+
+1116
+00:43:55,930 --> 00:43:57,770
+each with, you know, a
+number of hard drives,
+
+1117
+00:43:57,770 --> 00:43:59,230
+and it would have
+a way of storing
+
+1118
+00:43:59,230 --> 00:44:00,629
+files across all
+of these, right?
+
+1119
+00:44:00,629 --> 00:44:02,309
+So it had enormous capacity,
+
+1120
+00:44:02,309 --> 00:44:04,730
+enormous bad width potential.
+
+1121
+00:44:04,730 --> 00:44:07,429
+And one of their
+insights was that,
+
+1122
+00:44:07,429 --> 00:44:09,770
+instead of trying
+to buy the biggest,
+
+1123
+00:44:09,770 --> 00:44:12,449
+most reliable hardware,
+it's never good enough.
+
+1124
+00:44:12,449 --> 00:44:14,170
+You have to go to
+multiple machines anyway.
+
+1125
+00:44:14,170 --> 00:44:16,089
+So if you're kind
+of doing that and
+
+1126
+00:44:16,089 --> 00:44:18,290
+you're writing software that
+can deal with failures,
+
+1127
+00:44:18,290 --> 00:44:21,530
+why even spend all this
+money on high end hardware?
+
+1128
+00:44:21,530 --> 00:44:22,870
+Let's just buy cheap hardware?
+
+1129
+00:44:22,870 --> 00:44:24,129
+Let's buy a lot of it.
+
+1130
+00:44:24,129 --> 00:44:25,529
+That cheap hardware,
+I'm talking about
+
+1131
+00:44:25,529 --> 00:44:27,630
+word for it is
+commodity hardware.
+
+1132
+00:44:27,630 --> 00:44:29,189
+You know, you could grow at a
+
+1133
+00:44:29,189 --> 00:44:30,689
+store and buy it off the shelf.
+
+1134
+00:44:30,689 --> 00:44:32,189
+As a no person, right?
+
+1135
+00:44:32,189 --> 00:44:33,329
+So Google had this idea,
+
+1136
+00:44:33,329 --> 00:44:35,370
+let's build these giant clusters
+
+1137
+00:44:35,370 --> 00:44:37,350
+out of commodity hardware.
+
+1138
+00:44:37,350 --> 00:44:39,269
+Recently, that maybe
+is changing, right,
+
+1139
+00:44:39,269 --> 00:44:40,909
+their time doing
+some fancy things
+
+1140
+00:44:40,909 --> 00:44:42,490
+and building custom hardware,
+
+1141
+00:44:42,490 --> 00:44:44,489
+but this has really
+been an influential
+
+1142
+00:44:44,489 --> 00:44:46,649
+decision that was made early on.
+
+1143
+00:44:46,649 --> 00:44:49,390
+Now, we already saw
+that by SQL stores
+
+1144
+00:44:49,390 --> 00:44:54,149
+its data in files,
+right underneath.
+
+1145
+00:44:54,149 --> 00:44:56,329
+And so they also
+built the database
+
+1146
+00:44:56,329 --> 00:44:59,270
+in 2006, call BigTable.
+
+1147
+00:44:59,270 --> 00:45:01,049
+O they built it Ser.
+They published that.
+
+1148
+00:45:01,049 --> 00:45:02,849
+And that would store its data
+
+1149
+00:45:02,849 --> 00:45:04,249
+in the Google File
+system, right?
+
+1150
+00:45:04,249 --> 00:45:06,010
+So kind of by building
+this distributed database
+
+1151
+00:45:06,010 --> 00:45:07,570
+at top of the
+distributed file system,
+
+1152
+00:45:07,570 --> 00:45:08,769
+they could take advantage of all
+
+1153
+00:45:08,769 --> 00:45:10,305
+the good things about GFS.
+
+1154
+00:45:10,305 --> 00:45:12,260
+They also built Map reduce,
+
+1155
+00:45:12,260 --> 00:45:14,499
+which was a system for analyzing
+
+1156
+00:45:14,499 --> 00:45:17,540
+the data and these
+giant GFS files.
+
+1157
+00:45:17,540 --> 00:45:19,959
+It's maybe a little
+bit more restrictive
+
+1158
+00:45:19,959 --> 00:45:22,380
+or maybe more difficult
+to use than SQL.
+
+1159
+00:45:22,380 --> 00:45:24,440
+But ultimately, everything
+you could do in SQL,
+
+1160
+00:45:24,440 --> 00:45:27,020
+you could also do
+in Map reduces.
+
+1161
+00:45:27,020 --> 00:45:28,519
+That was a 2004 paper.
+
+1162
+00:45:28,519 --> 00:45:32,009
+So these three systems
+were hugely influential.
+
+1163
+00:45:32,009 --> 00:45:34,839
+Even though they were
+not open source.
+
+1164
+00:45:34,839 --> 00:45:36,519
+So other companies came
+log and they're like,
+
+1165
+00:45:36,519 --> 00:45:38,259
+Well, we should have some
+open source of this.
+
+1166
+00:45:38,259 --> 00:45:40,400
+In particular, Yahoo, Facebook,
+
+1167
+00:45:40,400 --> 00:45:42,279
+and Cloudera, we're
+really trying to
+
+1168
+00:45:42,279 --> 00:45:44,679
+push open source
+equivalents of these.
+
+1169
+00:45:44,679 --> 00:45:46,479
+And the family of
+all these systems is
+
+1170
+00:45:46,479 --> 00:45:48,459
+what we call the
+Hadoop ecosystem.
+
+1171
+00:45:48,459 --> 00:45:52,039
+So in the first generation
+of this would be the HDFS,
+
+1172
+00:45:52,039 --> 00:45:54,585
+the Hadoop file system,
+that's very similar to GFS.
+
+1173
+00:45:54,585 --> 00:45:57,890
+A Duke Map reduce is similar
+to Google's Map reduce.
+
+1174
+00:45:57,890 --> 00:46:01,029
+And then H base is similar
+to Google's big table.
+
+1175
+00:46:01,029 --> 00:46:02,509
+So all these things are
+open source. You can
+
+1176
+00:46:02,509 --> 00:46:04,289
+row use them if you want to.
+
+1177
+00:46:04,289 --> 00:46:05,789
+Now, of course, this is a long
+
+1178
+00:46:05,789 --> 00:46:07,390
+time ago and systems
+have evolved.
+
+1179
+00:46:07,390 --> 00:46:09,489
+And so even though some
+people still use those,
+
+1180
+00:46:09,489 --> 00:46:11,090
+I want to show you
+this semester,
+
+1181
+00:46:11,090 --> 00:46:12,529
+the things that are a little
+bit more popular, right?
+
+1182
+00:46:12,529 --> 00:46:13,989
+So for analysis, a lot of
+
+1183
+00:46:13,989 --> 00:46:15,869
+that work is done now with
+something called Spark.
+
+1184
+00:46:15,869 --> 00:46:17,730
+I teach you Spark this semester.
+
+1185
+00:46:17,730 --> 00:46:19,309
+And instead of HBase, I may be
+
+1186
+00:46:19,309 --> 00:46:20,970
+teach you a database of Cassra.
+
+1187
+00:46:20,970 --> 00:46:23,670
+Assara isn't maybe
+quite as popular,
+
+1188
+00:46:23,670 --> 00:46:25,109
+but it is kind of
+
+1189
+00:46:25,109 --> 00:46:27,050
+interesting from some of
+the design decisions.
+
+1190
+00:46:27,050 --> 00:46:29,850
+So I like to talk about
+it during the semester.
+
+1191
+00:46:29,850 --> 00:46:31,989
+Did I see a head up over here?
+
+1192
+00:46:31,989 --> 00:46:37,609
+No. Yeah. Any questions
+so far? All right.
+
+1193
+00:46:37,609 --> 00:46:39,769
+So let's talk a little bit about
+
+1194
+00:46:39,769 --> 00:46:42,050
+the Hadoop file
+system, in particular.
+
+1195
+00:46:42,050 --> 00:46:44,470
+In a do cluster,
+
+1196
+00:46:44,470 --> 00:46:47,010
+here I have a bunch of
+different computers,
+
+1197
+00:46:47,010 --> 00:46:48,149
+and they're each
+running a server
+
+1198
+00:46:48,149 --> 00:46:49,429
+called a data node server,
+
+1199
+00:46:49,429 --> 00:46:50,889
+and each data node server might
+
+1200
+00:46:50,889 --> 00:46:52,670
+manage some number
+of hard drives.
+
+1201
+00:46:52,670 --> 00:46:54,569
+And our goal is
+to take files and
+
+1202
+00:46:54,569 --> 00:46:56,869
+store it on those machines.
+
+1203
+00:46:56,869 --> 00:47:00,269
+And because some of
+these files are so huge,
+
+1204
+00:47:00,269 --> 00:47:02,750
+we have to break up the files
+into what we call blocks.
+
+1205
+00:47:02,750 --> 00:47:04,109
+And a block might
+be on the order
+
+1206
+00:47:04,109 --> 00:47:05,949
+of tens of megabytes, let's say.
+
+1207
+00:47:05,949 --> 00:47:08,050
+Here I imagine some
+pretty tiny blocks
+
+1208
+00:47:08,050 --> 00:47:09,689
+just to make it
+fit on the slide.
+
+1209
+00:47:09,689 --> 00:47:13,309
+But here, right, I have a
+file with a single block.
+
+1210
+00:47:13,309 --> 00:47:14,789
+So file wood, block wood.
+
+1211
+00:47:14,789 --> 00:47:18,630
+I could put that somewhere
+on one of these servers.
+
+1212
+00:47:18,910 --> 00:47:21,209
+I re imagine that we have
+
+1213
+00:47:21,209 --> 00:47:23,410
+very tiny blocks,
+let's say four bytes.
+
+1214
+00:47:23,410 --> 00:47:25,349
+And so this bigger
+file F two might
+
+1215
+00:47:25,349 --> 00:47:27,570
+get partitioned into two blocks.
+
+1216
+00:47:27,570 --> 00:47:29,929
+I have one block on the left,
+another block on the right.
+
+1217
+00:47:29,929 --> 00:47:31,889
+So I have file two, block one,
+
+1218
+00:47:31,889 --> 00:47:33,929
+file two block, block two.
+
+1219
+00:47:33,929 --> 00:47:35,949
+Of course, these
+machines might die.
+
+1220
+00:47:35,949 --> 00:47:38,869
+So when I create these files,
+I specify replication.
+
+1221
+00:47:38,869 --> 00:47:41,350
+And if I can specify
+I w three replicas,
+
+1222
+00:47:41,350 --> 00:47:42,669
+or two replicas or whatever.
+
+1223
+00:47:42,669 --> 00:47:45,009
+Here I may say triple
+replication for F one,
+
+1224
+00:47:45,009 --> 00:47:47,869
+so I have a copy of that
+block on each of these.
+
+1225
+00:47:47,869 --> 00:47:50,169
+And for F two, I would
+have double replication.
+
+1226
+00:47:50,169 --> 00:47:52,329
+And so I guess I would
+really have kind of
+
+1227
+00:47:52,329 --> 00:47:54,550
+four blocks total because
+I have two partitions,
+
+1228
+00:47:54,550 --> 00:47:57,314
+and they each have two replicas.
+
+1229
+00:47:57,314 --> 00:47:59,479
+The vocabulary I'll
+use here is when
+
+1230
+00:47:59,479 --> 00:48:01,380
+I'm looking at the file itself,
+
+1231
+00:48:01,380 --> 00:48:03,839
+I'll talk about the logical
+blocks of the file.
+
+1232
+00:48:03,839 --> 00:48:04,899
+But when I'm talking about
+
+1233
+00:48:04,899 --> 00:48:06,339
+the actual multiple
+copies of that,
+
+1234
+00:48:06,339 --> 00:48:08,319
+I'll say, well, that's a
+physical block, right?
+
+1235
+00:48:08,319 --> 00:48:10,100
+So if I have triple
+a replication,
+
+1236
+00:48:10,100 --> 00:48:12,359
+that each logical
+block is going to have
+
+1237
+00:48:12,359 --> 00:48:15,180
+three physical blocks
+corresponding to it somewhere.
+
+1238
+00:48:15,180 --> 00:48:22,779
+Yeah, c s here. Yeah.
+
+1239
+00:48:22,779 --> 00:48:25,819
+Yeah. I think in the
+first case, I just had,
+
+1240
+00:48:35,940 --> 00:48:41,819
+yeah. So kind of earlier, I
+know the database, right?
+
+1241
+00:48:41,819 --> 00:48:43,060
+You say, we don't necessarily
+
+1242
+00:48:43,060 --> 00:48:45,499
+know where the data is, right?
+
+1243
+00:48:46,940 --> 00:48:50,099
+Is that an issue
+here? Not quite.
+
+1244
+00:48:50,099 --> 00:48:52,300
+So I think that issue earlier
+
+1245
+00:48:52,300 --> 00:48:53,639
+was that I wanted things
+
+1246
+00:48:53,639 --> 00:48:55,219
+like oid to work and
+stuff like that.
+
+1247
+00:48:55,219 --> 00:48:57,999
+So I had to have related
+data on the same server.
+
+1248
+00:48:57,999 --> 00:49:00,119
+Here, I'm not building
+a database code.
+
+1249
+00:49:00,119 --> 00:49:01,560
+I've been just building
+a file system.
+
+1250
+00:49:01,560 --> 00:49:02,960
+So file systems are
+a little simple.
+
+1251
+00:49:02,960 --> 00:49:04,479
+I have some file Dave and
+then it's just like, Oh,
+
+1252
+00:49:04,479 --> 00:49:06,040
+here's a bunch of bytes.
+
+1253
+00:49:06,040 --> 00:49:07,260
+So what you're talking
+about, definitely
+
+1254
+00:49:07,260 --> 00:49:08,439
+is rabia a challenge again,
+
+1255
+00:49:08,439 --> 00:49:10,239
+if we want to build like
+a database on top of it.
+
+1256
+00:49:10,239 --> 00:49:11,459
+But if I'm just doing files,
+
+1257
+00:49:11,459 --> 00:49:13,220
+my life is a little bit easier.
+
+1258
+00:49:13,220 --> 00:49:15,359
+Yeah, thank you for
+contrasting that.
+
+1259
+00:49:15,359 --> 00:49:17,219
+Cool. So I have this set up.
+
+1260
+00:49:17,219 --> 00:49:19,039
+You know, if this
+data note dies, well,
+
+1261
+00:49:19,039 --> 00:49:21,039
+I still have some copies of
+
+1262
+00:49:21,039 --> 00:49:23,759
+all of my data elsewhere, right?
+
+1263
+00:49:23,759 --> 00:49:26,439
+So I'll just leave you
+with this question,
+
+1264
+00:49:26,439 --> 00:49:28,220
+maybe I'll get
+somebody to answer.
+
+1265
+00:49:28,220 --> 00:49:30,320
+Which of these files
+is safer in general?
+
+1266
+00:49:30,320 --> 00:49:32,520
+F one, F two. Everybody
+holds it over figures.
+
+1267
+00:49:32,520 --> 00:49:36,999
+F one safer, F two is
+safer. Yes, F one is safer.
+
+1268
+00:49:36,999 --> 00:49:38,780
+I have more replicas.
+More machines
+
+1269
+00:49:38,780 --> 00:49:40,519
+would have to die for me
+to actually lose data.
+
+1270
+00:49:40,519 --> 00:49:42,280
+It's possible, but less likely.
+
+1271
+00:49:42,280 --> 00:49:43,800
+Alright. Thanks, everybody.
+
+1272
+00:49:43,800 --> 00:49:44,999
+And I actually got to run today.
+
+1273
+00:49:44,999 --> 00:49:46,820
+So normally like to chat
+with people afterwards,
+
+1274
+00:49:46,820 --> 00:49:48,359
+but I got to scoot out of here.
+
+1275
+00:49:48,359 --> 00:49:50,900
+Have a fantastic weekend.

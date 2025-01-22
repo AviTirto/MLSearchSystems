@@ -1,0 +1,4497 @@
+1
+00:00:00,000 --> 00:00:03,179
+Last lecture where we're
+looking at new course content.
+
+2
+00:00:03,179 --> 00:00:06,040
+So may look at a few
+different Google Cloud
+
+3
+00:00:06,040 --> 00:00:07,920
+services a little
+bit more detail.
+
+4
+00:00:07,920 --> 00:00:09,340
+We'll probably have
+a little bit of
+
+5
+00:00:09,340 --> 00:00:10,860
+time to review today as well.
+
+6
+00:00:10,860 --> 00:00:13,459
+So I printed off the
+last two final exams,
+
+7
+00:00:13,459 --> 00:00:15,279
+so people can ask
+questions about
+
+8
+00:00:15,279 --> 00:00:17,520
+those if they want or ask
+questions in general.
+
+9
+00:00:17,520 --> 00:00:18,799
+And then Wednesday will
+
+10
+00:00:18,799 --> 00:00:20,219
+just be dedicated
+totally to review,
+
+11
+00:00:20,219 --> 00:00:22,420
+whatever questions you
+all have, I'll be here.
+
+12
+00:00:22,420 --> 00:00:25,040
+I'll print some maybe
+old quizzes out too.
+
+13
+00:00:25,040 --> 00:00:27,819
+Just bring a bunch of materials
+for you to ask about.
+
+14
+00:00:27,819 --> 00:00:29,519
+Okay. So before we
+jump into that,
+
+15
+00:00:29,519 --> 00:00:33,799
+I just wanted to do a quick
+tophat review from last time.
+
+16
+00:00:33,799 --> 00:00:39,239
+Is this one is about the
+Big query Billy models.
+
+17
+00:01:16,610 --> 00:01:20,010
+A 30 seconds left.
+
+18
+00:01:53,740 --> 00:01:56,440
+So people are saying
+
+19
+00:01:56,440 --> 00:01:57,860
+Closs storage, which
+is correct, right?
+
+20
+00:01:57,860 --> 00:02:00,880
+If I create a bunch of
+files Big query, right?
+
+21
+00:02:00,880 --> 00:02:02,259
+To are stored
+classes, and then I
+
+22
+00:02:02,259 --> 00:02:03,960
+have to pay for
+that storage space.
+
+23
+00:02:03,960 --> 00:02:06,500
+Great. I'm going
+to head back here.
+
+24
+00:02:06,500 --> 00:02:09,459
+And this is where
+we ended last time.
+
+25
+00:02:09,459 --> 00:02:11,359
+We had talked about
+
+26
+00:02:11,359 --> 00:02:13,640
+Docker and Docker images
+a little more detail.
+
+27
+00:02:13,640 --> 00:02:14,819
+And then we'll try
+to see how that
+
+28
+00:02:14,819 --> 00:02:16,319
+could fit into other tools.
+
+29
+00:02:16,319 --> 00:02:19,380
+I show three tools
+like that today?
+
+30
+00:02:19,380 --> 00:02:23,199
+First, we've been pulling
+stuff from the Docker hub,
+
+31
+00:02:23,199 --> 00:02:25,139
+which is an example
+of a registry.
+
+32
+00:02:25,139 --> 00:02:27,860
+We're see how we can create
+our own registry on Google,
+
+33
+00:02:27,860 --> 00:02:28,940
+that's private, and we already
+
+34
+00:02:28,940 --> 00:02:30,499
+see how we can push
+an image there.
+
+35
+00:02:30,499 --> 00:02:32,919
+And then we see two different
+ways we can deploy it.
+
+36
+00:02:32,919 --> 00:02:36,040
+The first way is we deploy
+it on an operating system,
+
+37
+00:02:36,040 --> 00:02:37,459
+called the container optimized
+
+38
+00:02:37,459 --> 00:02:39,039
+operating system that is
+
+39
+00:02:39,039 --> 00:02:40,840
+really it's only purpose
+is to run ptators.
+
+40
+00:02:40,840 --> 00:02:42,499
+It's very secure because
+it's just locked down.
+
+41
+00:02:42,499 --> 00:02:44,770
+It does just one thing.
+Well, so we can see how
+
+42
+00:02:44,770 --> 00:02:45,969
+we could drive from
+that image or the
+
+43
+00:02:45,969 --> 00:02:47,289
+directly deploy it there.
+
+44
+00:02:47,289 --> 00:02:48,890
+And then finally, I'm
+going to show you
+
+45
+00:02:48,890 --> 00:02:51,010
+Google Kubernetes
+engine briefly.
+
+46
+00:02:51,010 --> 00:02:54,549
+And we see how we can deploy
+that image there as well.
+
+47
+00:02:54,549 --> 00:02:58,149
+Google Kubernetes Engine
+actually uses COS,
+
+48
+00:02:58,149 --> 00:03:00,969
+the container operating system
+
+49
+00:03:00,969 --> 00:03:02,349
+to run its containers, right?
+
+50
+00:03:02,349 --> 00:03:04,110
+So all of these three
+pieces we're looking at
+
+51
+00:03:04,110 --> 00:03:07,124
+today are going to
+be working together.
+
+52
+00:03:07,124 --> 00:03:10,440
+So the artifact registry can
+have lots of different kinds
+
+53
+00:03:10,440 --> 00:03:12,980
+of resources out there
+
+54
+00:03:12,980 --> 00:03:14,340
+like Docker images
+are one of them,
+
+55
+00:03:14,340 --> 00:03:15,739
+but you can imagine pushing like
+
+56
+00:03:15,739 --> 00:03:17,520
+APT packages that you install
+
+57
+00:03:17,520 --> 00:03:18,699
+a new Bunto there or
+
+58
+00:03:18,699 --> 00:03:21,499
+Python packages or really
+whatever you'd want.
+
+59
+00:03:21,499 --> 00:03:25,279
+To use these things, I have
+to do a Docker log in, right?
+
+60
+00:03:25,279 --> 00:03:26,699
+So if I'm employing from
+
+61
+00:03:26,699 --> 00:03:28,539
+a public repository
+like Docker Hub,
+
+62
+00:03:28,539 --> 00:03:30,000
+I don't have to be
+logged in with Docker.
+
+63
+00:03:30,000 --> 00:03:31,419
+If I'm employing
+from my private one,
+
+64
+00:03:31,419 --> 00:03:32,919
+I have to authenticate.
+
+65
+00:03:32,919 --> 00:03:34,479
+Now, you could pay Docker hub to
+
+66
+00:03:34,479 --> 00:03:36,100
+give you your own
+private registry,
+
+67
+00:03:36,100 --> 00:03:38,490
+then you can authenticate
+it to a password.
+
+68
+00:03:38,490 --> 00:03:41,500
+For Google, what they have
+is called an access token.
+
+69
+00:03:41,500 --> 00:03:43,979
+And so we have an access
+token instead of a password,
+
+70
+00:03:43,979 --> 00:03:45,359
+and we have to feed that into
+
+71
+00:03:45,359 --> 00:03:46,819
+Docker so that we're logged in,
+
+72
+00:03:46,819 --> 00:03:48,159
+and then we can do a docker
+
+73
+00:03:48,159 --> 00:03:51,199
+pull from this other
+other source, right?
+
+74
+00:03:51,199 --> 00:03:53,440
+Now, when we generate
+this access token,
+
+75
+00:03:53,440 --> 00:03:55,400
+we're to specify
+very specific things
+
+76
+00:03:55,400 --> 00:03:57,399
+that it can work with.
+
+77
+00:03:57,399 --> 00:03:58,779
+And then we to give it to
+
+78
+00:03:58,779 --> 00:04:00,100
+something called a
+service account.
+
+79
+00:04:00,100 --> 00:04:03,319
+A service account is
+kind of like a user,
+
+80
+00:04:03,319 --> 00:04:05,840
+except that the user
+is not a human.
+
+81
+00:04:05,840 --> 00:04:07,719
+It's like a program or
+something like that.
+
+82
+00:04:07,719 --> 00:04:09,499
+And so in this case,
+Docker needs to have
+
+83
+00:04:09,499 --> 00:04:12,700
+a service account so it
+can access Gogle stuff.
+
+84
+00:04:12,700 --> 00:04:14,429
+And so When we give
+
+85
+00:04:14,429 --> 00:04:17,349
+that Docker service
+account, this access token.
+
+86
+00:04:17,349 --> 00:04:20,870
+We want to really give it the
+bare minimum access we can.
+
+87
+00:04:20,870 --> 00:04:22,410
+And there's a
+security principle,
+
+88
+00:04:22,410 --> 00:04:24,150
+called the security
+of lease privilege.
+
+89
+00:04:24,150 --> 00:04:25,430
+The idea is that if you give
+
+90
+00:04:25,430 --> 00:04:27,689
+every tool the bare
+minimum it needs,
+
+91
+00:04:27,689 --> 00:04:29,229
+that's trying to
+minimize your risk
+
+92
+00:04:29,229 --> 00:04:30,810
+if something gets
+compromised, right?
+
+93
+00:04:30,810 --> 00:04:32,350
+So we give it the minimum needs,
+
+94
+00:04:32,350 --> 00:04:34,470
+and then we're going
+to be logged in.
+
+95
+00:04:34,470 --> 00:04:35,930
+And to get that, we have
+
+96
+00:04:35,930 --> 00:04:37,089
+to have this thing
+called a key file.
+
+97
+00:04:37,089 --> 00:04:39,450
+It's kind of similar
+to an SSH private key,
+
+98
+00:04:39,450 --> 00:04:42,090
+and that's how we're going
+to get signed in. Right?
+
+99
+00:04:42,090 --> 00:04:46,210
+So head over here.
+And I have a bunch of
+
+100
+00:04:46,210 --> 00:04:48,289
+things under the
+lecture snippets
+
+101
+00:04:48,289 --> 00:04:52,050
+that are kind of walking
+you through some of this.
+
+102
+00:04:52,690 --> 00:04:54,790
+So the first thing
+we're doing is
+
+103
+00:04:54,790 --> 00:04:56,169
+we're creating that
+service account.
+
+104
+00:04:56,169 --> 00:04:58,069
+Remember that's that
+non human user,
+
+105
+00:04:58,069 --> 00:05:00,669
+that can do stuff on
+behalf of a program.
+
+106
+00:05:00,669 --> 00:05:02,469
+And so we're creating
+one called Docker.
+
+107
+00:05:02,469 --> 00:05:05,129
+IAM stands for identity
+and access management.
+
+108
+00:05:05,129 --> 00:05:06,089
+You'll see that acronym and
+
+109
+00:05:06,089 --> 00:05:07,769
+a lot of different Cloud stuff.
+
+110
+00:05:07,769 --> 00:05:12,389
+And so what we're doing now
+is we're attaching a project,
+
+111
+00:05:12,389 --> 00:05:14,410
+we want to create a
+member that we just
+
+112
+00:05:14,410 --> 00:05:16,509
+created with some
+specific roles.
+
+113
+00:05:16,509 --> 00:05:18,430
+And the role we want to have
+now is we want to be able to
+
+114
+00:05:18,430 --> 00:05:21,089
+read from an artifact registry.
+
+115
+00:05:21,089 --> 00:05:23,170
+We also want to give it
+the role of being able
+
+116
+00:05:23,170 --> 00:05:25,530
+to write to one of these
+registries, right?
+
+117
+00:05:25,530 --> 00:05:27,550
+So we're basically creating
+this new user and then
+
+118
+00:05:27,550 --> 00:05:30,529
+associating it with
+these capabilities.
+
+119
+00:05:30,529 --> 00:05:33,790
+And then if I actually want
+to do something as that user,
+
+120
+00:05:33,790 --> 00:05:35,310
+I need to be able to sign
+in as it I need to have
+
+121
+00:05:35,310 --> 00:05:37,909
+something like a password
+or this access token.
+
+122
+00:05:37,909 --> 00:05:39,309
+And so the very
+end, I'm creating
+
+123
+00:05:39,309 --> 00:05:41,849
+this stocker T file
+that's associated
+
+124
+00:05:41,849 --> 00:05:44,850
+with with this access account
+
+125
+00:05:44,850 --> 00:05:46,790
+that has these
+privileges, right?
+
+126
+00:05:46,790 --> 00:05:49,770
+And so I've already done
+that if I come over here,
+
+127
+00:05:51,130 --> 00:05:54,950
+I can see that I have
+
+128
+00:05:54,950 --> 00:05:56,669
+this docker dot K.
+I show you that
+
+129
+00:05:56,669 --> 00:05:58,649
+because I'll be showing
+you my SSH private,
+
+130
+00:05:58,649 --> 00:06:00,370
+right, that would
+allow you to gain
+
+131
+00:06:00,370 --> 00:06:01,510
+access to my stuff, right?
+
+132
+00:06:01,510 --> 00:06:03,790
+So I won't do that. But what I
+
+133
+00:06:03,790 --> 00:06:06,230
+will do is I will
+were to run this.
+
+134
+00:06:06,230 --> 00:06:10,269
+I would basically activate
+it, which I've already done.
+
+135
+00:06:10,269 --> 00:06:11,830
+If I were to do this, then it
+
+136
+00:06:11,830 --> 00:06:14,190
+would show me what
+that access token is.
+
+137
+00:06:14,190 --> 00:06:16,750
+And if I want to, I can feed
+that into a doctor log in.
+
+138
+00:06:16,750 --> 00:06:18,430
+If I just do a regular
+doctor log in,
+
+139
+00:06:18,430 --> 00:06:20,509
+I can say like my user
+name and password.
+
+140
+00:06:20,509 --> 00:06:22,090
+In this case, what
+I'm saying is that
+
+141
+00:06:22,090 --> 00:06:23,709
+the password is
+coming from standard.
+
+142
+00:06:23,709 --> 00:06:25,670
+And so I'm piping
+that in, right?
+
+143
+00:06:25,670 --> 00:06:27,489
+That's going to print
+the access token
+
+144
+00:06:27,489 --> 00:06:30,130
+and then it's going
+to feed that in.
+
+145
+00:06:30,130 --> 00:06:33,490
+And then that will sign me
+into a registry over here.
+
+146
+00:06:33,490 --> 00:06:36,570
+In the very end, I could
+log out if I wanted to.
+
+147
+00:06:36,570 --> 00:06:39,870
+So I'm ma I set these
+things up over here, right?
+
+148
+00:06:39,870 --> 00:06:42,170
+What I'd like to do is
+I'd like to sign in
+
+149
+00:06:42,170 --> 00:06:45,490
+to a different artifact
+registry other than that.
+
+150
+00:06:45,490 --> 00:06:47,390
+I may come over here. I
+may create a new one.
+
+151
+00:06:47,390 --> 00:06:48,830
+So I may come over here,
+
+152
+00:06:48,830 --> 00:06:50,610
+and I already found
+it and I penned it.
+
+153
+00:06:50,610 --> 00:06:52,750
+But if I go to
+Artifact Registry,
+
+154
+00:06:52,750 --> 00:06:56,029
+I see that they have all of
+these different repositories,
+
+155
+00:06:56,029 --> 00:06:59,150
+including one that I may
+just to prep for this.
+
+156
+00:06:59,150 --> 00:07:00,710
+Right? So what I'm
+may do now is I may
+
+157
+00:07:00,710 --> 00:07:02,730
+create a new repository.
+
+158
+00:07:02,730 --> 00:07:05,609
+And here you can see that
+I can give it a name,
+
+159
+00:07:05,609 --> 00:07:07,210
+so maybe I'll call
+this like Section one.
+
+160
+00:07:07,210 --> 00:07:08,570
+And I'm going to do a Docker one
+
+161
+00:07:08,570 --> 00:07:10,050
+because I want to push
+docker images there,
+
+162
+00:07:10,050 --> 00:07:10,990
+but you see there's all kinds of
+
+163
+00:07:10,990 --> 00:07:12,150
+different suff maybe MPM.
+
+164
+00:07:12,150 --> 00:07:16,249
+If you're pushing Java strip
+packages or you go packages.
+
+165
+00:07:16,249 --> 00:07:17,210
+Whatever you really want?
+
+166
+00:07:17,210 --> 00:07:18,990
+All right. So I
+have all of that.
+
+167
+00:07:18,990 --> 00:07:21,549
+I can say which region
+or if I want to,
+
+168
+00:07:21,549 --> 00:07:23,530
+I can say a multi region
+that it would be in.
+
+169
+00:07:23,530 --> 00:07:24,549
+I'm just to have it be in
+
+170
+00:07:24,549 --> 00:07:25,909
+the US broadly and
+they'll figure
+
+171
+00:07:25,909 --> 00:07:27,290
+out where they want
+to place that data
+
+172
+00:07:27,290 --> 00:07:28,890
+in specific regions.
+
+173
+00:07:28,890 --> 00:07:30,829
+There's some encryption
+stuff down here,
+
+174
+00:07:30,829 --> 00:07:32,550
+which I won't worry
+too much about,
+
+175
+00:07:32,550 --> 00:07:38,569
+and I'm going to go ahead and
+create this new registry.
+
+176
+00:07:38,569 --> 00:07:40,129
+Okay, I'm going to be creating.
+
+177
+00:07:40,129 --> 00:07:43,750
+And right now there are
+no docker images in it,
+
+178
+00:07:43,750 --> 00:07:48,509
+but I want to push a docker
+image to this registry.
+
+179
+00:07:48,509 --> 00:07:51,510
+Okay. So I'm going
+to come over here.
+
+180
+00:07:51,510 --> 00:07:53,389
+And in this directory,
+
+181
+00:07:53,389 --> 00:07:54,570
+I have a little server,
+
+182
+00:07:54,570 --> 00:07:56,889
+I look at server dot SH.
+
+183
+00:07:56,889 --> 00:07:59,070
+What is this doing? So it's
+
+184
+00:07:59,070 --> 00:08:02,120
+a making a directory
+called Test.
+
+185
+00:08:02,120 --> 00:08:03,800
+And inside of test,
+
+186
+00:08:03,800 --> 00:08:05,899
+I'm printing off my host name,
+
+187
+00:08:05,899 --> 00:08:07,920
+and I'm writing it to a
+file called Index HML.
+
+188
+00:08:07,920 --> 00:08:09,080
+So I'm just making like
+
+189
+00:08:09,080 --> 00:08:10,879
+the simplest possible web page
+
+190
+00:08:10,879 --> 00:08:13,500
+that has my host name on it.
+
+191
+00:08:13,500 --> 00:08:16,499
+And then I'm starting a little
+simple Python web server.
+
+192
+00:08:16,499 --> 00:08:20,259
+So it's just like the simplest
+possible little web server
+
+193
+00:08:20,259 --> 00:08:22,240
+we could get up and
+running, right?
+
+194
+00:08:22,240 --> 00:08:25,060
+And so if I look at the
+Docker file over here,
+
+195
+00:08:25,060 --> 00:08:26,719
+I see that we're installing
+
+196
+00:08:26,719 --> 00:08:28,820
+some python stuff. I don't know.
+
+197
+00:08:28,820 --> 00:08:31,460
+We don't really need to
+install Jupiter lab, but fine.
+
+198
+00:08:31,460 --> 00:08:33,280
+We're copying that server,
+
+199
+00:08:33,280 --> 00:08:35,059
+then we're actually
+running it, right?
+
+200
+00:08:35,059 --> 00:08:37,379
+And so if I want to, I can
+go ahead and build that.
+
+201
+00:08:37,379 --> 00:08:39,319
+I'm build it, I
+may call it demo.
+
+202
+00:08:39,319 --> 00:08:41,999
+Excuse me.
+
+203
+00:08:42,360 --> 00:08:45,540
+And then what I'll do is
+I'll show how I run it here,
+
+204
+00:08:45,540 --> 00:08:47,459
+and then I may push it
+to the registry and
+
+205
+00:08:47,459 --> 00:08:49,979
+then see how we can
+run it from there.
+
+206
+00:08:49,979 --> 00:08:51,699
+All right. So I built that. Do I
+
+207
+00:08:51,699 --> 00:08:53,180
+have anything running right
+now? Let me just check.
+
+208
+00:08:53,180 --> 00:08:54,360
+I looks like it's
+already running,
+
+209
+00:08:54,360 --> 00:08:59,999
+so I'm going to do Let
+me just delete this one.
+
+210
+00:09:02,160 --> 00:09:04,520
+Oops.
+
+211
+00:09:08,960 --> 00:09:11,120
+All right. And then if I look at
+
+212
+00:09:11,120 --> 00:09:12,779
+my images, there's a bunch here.
+
+213
+00:09:12,779 --> 00:09:14,359
+And what I will do is I will
+
+214
+00:09:14,359 --> 00:09:16,299
+run this demo one
+that I just right?
+
+215
+00:09:16,299 --> 00:09:18,439
+So I'm to do a Docker run.
+
+216
+00:09:18,600 --> 00:09:20,899
+I'm running the background.
+
+217
+00:09:20,899 --> 00:09:22,240
+I want to do port forwarding.
+
+218
+00:09:22,240 --> 00:09:25,780
+Let me just take a look quick
+at that server on SH again.
+
+219
+00:09:25,780 --> 00:09:28,680
+I see that it's listening
+on port eight inside.
+
+220
+00:09:28,680 --> 00:09:34,100
+And so outside I'll
+do port 5,000,
+
+221
+00:09:34,100 --> 00:09:36,060
+I'll map to port 80.
+
+222
+00:09:36,060 --> 00:09:37,900
+And then I want to run demo.
+
+223
+00:09:37,900 --> 00:09:39,719
+A be running that thing,
+
+224
+00:09:39,719 --> 00:09:42,159
+and I can curl it.
+
+225
+00:09:43,140 --> 00:09:46,679
+Local host, 5,000.
+
+226
+00:09:46,679 --> 00:09:49,620
+And that's putting off
+the container name.
+
+227
+00:09:49,620 --> 00:09:51,859
+If I do a talk or PS.
+
+228
+00:09:52,470 --> 00:09:55,930
+I see that well, I'm sorry,
+it's the container ID.
+
+229
+00:09:55,930 --> 00:09:57,409
+Remember that inside of that,
+
+230
+00:09:57,409 --> 00:09:59,309
+we are just printing off.
+
+231
+00:09:59,309 --> 00:10:02,249
+Like the web page has the
+host name in it, right?
+
+232
+00:10:02,249 --> 00:10:04,329
+And in this case, that's
+the container ID.
+
+233
+00:10:04,329 --> 00:10:06,030
+Alright, that's
+fine. That's kind of
+
+234
+00:10:06,030 --> 00:10:07,830
+stuff that we've done a
+bunch of times before.
+
+235
+00:10:07,830 --> 00:10:10,670
+What I want to do now is I
+want to get this image into
+
+236
+00:10:10,670 --> 00:10:12,150
+the Google Artifact registry
+
+237
+00:10:12,150 --> 00:10:14,209
+so I can start running
+it in the Cloud.
+
+238
+00:10:14,209 --> 00:10:16,469
+Okay. And so to do that,
+
+239
+00:10:16,469 --> 00:10:18,130
+I'm going to have to tag
+
+240
+00:10:18,130 --> 00:10:19,989
+it to indicate where
+it's going to go, right?
+
+241
+00:10:19,989 --> 00:10:22,169
+I'm going to say Doc tag,
+
+242
+00:10:22,169 --> 00:10:24,004
+and I'm going to say demo.
+
+243
+00:10:24,004 --> 00:10:26,540
+Then I have to give
+it some new tag.
+
+244
+00:10:26,540 --> 00:10:28,119
+Okay? And the way this will work
+
+245
+00:10:28,119 --> 00:10:29,760
+is they'll be
+something slash demo.
+
+246
+00:10:29,760 --> 00:10:32,239
+And so what this part is
+really going to do is t to
+
+247
+00:10:32,239 --> 00:10:35,439
+indicate a new home for it
+in that artifact registry.
+
+248
+00:10:35,439 --> 00:10:37,540
+Right? So when I come over here,
+
+249
+00:10:37,540 --> 00:10:41,519
+I can copy this artifact
+registry if I want.
+
+250
+00:10:41,519 --> 00:10:43,140
+And then I will just paste
+
+251
+00:10:43,140 --> 00:10:45,639
+that in front of
+the demo, right?
+
+252
+00:10:45,639 --> 00:10:46,599
+Let me just check
+
+253
+00:10:46,599 --> 00:10:47,880
+my notes here and make
+sure I got it right.
+
+254
+00:10:47,880 --> 00:10:49,360
+Okay, that's my
+artifact registry,
+
+255
+00:10:49,360 --> 00:10:51,439
+and at the end, it's the demo.
+
+256
+00:10:51,439 --> 00:10:54,499
+And I think that will
+work just fine, right?
+
+257
+00:10:54,499 --> 00:10:56,700
+So now if I see Docker images,
+
+258
+00:10:56,700 --> 00:10:59,119
+I can see I have the Demo one,
+
+259
+00:10:59,119 --> 00:11:00,960
+which has this image ID,
+
+260
+00:11:00,960 --> 00:11:03,919
+and that's the same as this one,
+
+261
+00:11:03,919 --> 00:11:06,100
+which has that name as well.
+
+262
+00:11:06,100 --> 00:11:08,540
+And so what will happen
+now is if I do a docker,
+
+263
+00:11:08,540 --> 00:11:11,079
+we've done lots of docker
+polls this semester.
+
+264
+00:11:11,079 --> 00:11:14,559
+But if I do a docker push,
+I can paste that in.
+
+265
+00:11:14,559 --> 00:11:16,419
+And what I push it is
+trying to figure out from
+
+266
+00:11:16,419 --> 00:11:18,500
+the name what the registry
+
+267
+00:11:18,500 --> 00:11:19,919
+is that it's supposed
+to push that to.
+
+268
+00:11:19,919 --> 00:11:21,699
+All right. So I'm going
+to do that. I'm going
+
+269
+00:11:21,699 --> 00:11:22,820
+to do all that stuff,
+
+270
+00:11:22,820 --> 00:11:24,419
+and then it uploaded it, right?
+
+271
+00:11:24,419 --> 00:11:28,070
+So if I come over
+here, and I refresh,
+
+272
+00:11:28,070 --> 00:11:31,920
+I can see that I now have
+this demo image here,
+
+273
+00:11:31,920 --> 00:11:33,920
+and I can see there's
+a name there.
+
+274
+00:11:33,920 --> 00:11:36,320
+Maybe over time, I I get
+a bunch of things here,
+
+275
+00:11:36,320 --> 00:11:38,139
+if I change the image
+and I repush, right,
+
+276
+00:11:38,139 --> 00:11:40,499
+I can see different
+IDs corresponding to
+
+277
+00:11:40,499 --> 00:11:44,399
+my different versions
+of it. All right.
+
+278
+00:11:44,399 --> 00:11:46,939
+You know, what else might I do?
+
+279
+00:11:46,939 --> 00:11:48,979
+If I did not have that for
+whatever reason, right?
+
+280
+00:11:48,979 --> 00:11:51,060
+So let me just do a RMI.
+
+281
+00:11:51,060 --> 00:11:53,339
+I could, for example,
+
+282
+00:11:53,339 --> 00:11:54,779
+I could pull from
+that, and if I'm
+
+283
+00:11:54,779 --> 00:11:56,359
+signed in, I could get it back.
+
+284
+00:11:56,359 --> 00:11:57,580
+If I was on a different machine,
+
+285
+00:11:57,580 --> 00:11:59,499
+I could also log in
+via the same process.
+
+286
+00:11:59,499 --> 00:12:01,100
+If I have access
+to that registry,
+
+287
+00:12:01,100 --> 00:12:02,520
+and I could pull this image
+
+288
+00:12:02,520 --> 00:12:04,954
+down on other machines as well.
+
+289
+00:12:04,954 --> 00:12:07,990
+Alright. Cool. So
+coming over here.
+
+290
+00:12:07,990 --> 00:12:09,489
+If I click on this,
+
+291
+00:12:09,489 --> 00:12:11,390
+I see that there's a
+bunch of deploy options.
+
+292
+00:12:11,390 --> 00:12:13,829
+I'm to talk about Cloud
+run this semester.
+
+293
+00:12:13,829 --> 00:12:16,669
+But I'm may I talk about
+how we can deploy to
+
+294
+00:12:16,669 --> 00:12:17,970
+the Google Compute engine
+
+295
+00:12:17,970 --> 00:12:19,829
+that refers to their
+virtual machines, right?
+
+296
+00:12:19,829 --> 00:12:21,989
+So how could I deploy this
+
+297
+00:12:21,989 --> 00:12:24,350
+Docker image onto
+a virtual machine?
+
+298
+00:12:24,350 --> 00:12:26,609
+And then this is the Google
+Cuber Daddy's engine.
+
+299
+00:12:26,609 --> 00:12:30,659
+How how could I deploy it there?
+
+300
+00:12:30,659 --> 00:12:32,670
+So, just tell me back here.
+
+301
+00:12:32,670 --> 00:12:34,230
+Let's talk about this container
+
+302
+00:12:34,230 --> 00:12:36,429
+optimized operating system.
+
+303
+00:12:36,429 --> 00:12:39,970
+So maybe a lot of you are
+familiar with Cro OS.
+
+304
+00:12:39,970 --> 00:12:41,949
+You can go buy a Crow
+book if you want.
+
+305
+00:12:41,949 --> 00:12:43,830
+It's a relatively locked
+
+306
+00:12:43,830 --> 00:12:47,389
+down security oriented
+operating system.
+
+307
+00:12:47,389 --> 00:12:49,149
+And so they modified it
+
+308
+00:12:49,149 --> 00:12:51,290
+to also be something that
+can run containers, right?
+
+309
+00:12:51,290 --> 00:12:53,270
+So they have the
+container optimized OS,
+
+310
+00:12:53,270 --> 00:12:56,170
+which they just
+abbreviated COS for short.
+
+311
+00:12:56,170 --> 00:12:58,209
+It has Docker installed with
+
+312
+00:12:58,209 --> 00:13:00,659
+it, They made it really smooth.
+
+313
+00:13:00,659 --> 00:13:03,039
+I can just say, Hey, I
+have a container image.
+
+314
+00:13:03,039 --> 00:13:04,579
+I want to run it,
+and they'll sped up
+
+315
+00:13:04,579 --> 00:13:07,539
+a new VM for me that's
+running those containers.
+
+316
+00:13:07,539 --> 00:13:09,099
+And because everything that it's
+
+317
+00:13:09,099 --> 00:13:10,659
+doing is just real de contators,
+
+318
+00:13:10,659 --> 00:13:12,299
+they make it really
+locked down, right?
+
+319
+00:13:12,299 --> 00:13:14,260
+So the root file
+system is read only,
+
+320
+00:13:14,260 --> 00:13:17,180
+and you cannot install packages.
+
+321
+00:13:17,180 --> 00:13:18,779
+That makes it more
+secure. Right? A lot
+
+322
+00:13:18,779 --> 00:13:20,360
+of vulnerabilities come through
+
+323
+00:13:20,360 --> 00:13:22,040
+installing packages that might
+
+324
+00:13:22,040 --> 00:13:24,319
+have security vulnerabilities
+in them, right?
+
+325
+00:13:24,319 --> 00:13:26,259
+So all we have to do
+is run containors,
+
+326
+00:13:26,259 --> 00:13:28,100
+then we can lock down
+everything else.
+
+327
+00:13:28,100 --> 00:13:30,340
+So it really look like
+that. I have a VM.
+
+328
+00:13:30,340 --> 00:13:32,280
+Running, there's COS audit,
+
+329
+00:13:32,280 --> 00:13:34,340
+Docker is running on COS,
+
+330
+00:13:34,340 --> 00:13:36,899
+and then I have containers
+inside of that.
+
+331
+00:13:36,899 --> 00:13:39,200
+Alright, so ray come over here.
+
+332
+00:13:39,200 --> 00:13:40,880
+And I'd re to run this sake.
+
+333
+00:13:40,880 --> 00:13:45,920
+So say, Let's deploy to
+the Dole Compute engine.
+
+334
+00:13:45,920 --> 00:13:50,419
+Excuse me. And what I
+
+335
+00:13:50,419 --> 00:13:51,700
+see is that they
+have to create a new
+
+336
+00:13:51,700 --> 00:13:54,459
+virtual machine for this,
+
+337
+00:13:54,459 --> 00:13:55,640
+right? Bring the COS.
+
+338
+00:13:55,640 --> 00:13:57,879
+I come down. And I
+think for this one,
+
+339
+00:13:57,879 --> 00:14:04,539
+I will just do an E two small.
+And what else did I do?
+
+340
+00:14:04,539 --> 00:14:07,119
+I want to see some of
+these advanced options.
+
+341
+00:14:07,119 --> 00:14:09,139
+Let me
+
+342
+00:14:23,220 --> 00:14:24,480
+I could
+
+343
+00:14:24,480 --> 00:14:27,859
+have sworn I had
+more options there.
+
+344
+00:14:27,859 --> 00:14:29,619
+Last time.
+
+345
+00:14:36,740 --> 00:14:39,659
+Alright, I think
+that, here it is.
+
+346
+00:14:39,659 --> 00:14:41,119
+They moved it over
+here, just like
+
+347
+00:14:41,119 --> 00:14:43,039
+they kind of changed
+the layout for me.
+
+348
+00:14:43,039 --> 00:14:44,819
+Right? So I can see
+that here is where I
+
+349
+00:14:44,819 --> 00:14:47,399
+have the image that it's
+deployed that, right?
+
+350
+00:14:47,399 --> 00:14:50,219
+So that's this right here,
+right that section one.
+
+351
+00:14:50,219 --> 00:14:52,099
+That's that artifact
+registry that I have.
+
+352
+00:14:52,099 --> 00:14:53,739
+So it'll be deployed that
+
+353
+00:14:53,739 --> 00:14:55,679
+for me. But what else
+do I want to do?
+
+354
+00:14:55,679 --> 00:14:59,020
+If I look at a network?
+This is a web server,
+
+355
+00:14:59,020 --> 00:15:01,660
+so I want to allow HTTP traffic.
+
+356
+00:15:01,660 --> 00:15:04,280
+And I think that's all
+the custom stuff that I
+
+357
+00:15:04,280 --> 00:15:07,119
+need to do for this one.
+Let's go ahead and create it.
+
+358
+00:15:07,119 --> 00:15:11,099
+And I come back and I can see
+it's creating right here,
+
+359
+00:15:11,099 --> 00:15:15,180
+and I'm sure be able
+to refresh it shortly.
+
+360
+00:15:15,180 --> 00:15:17,399
+And pretty quickly because
+
+361
+00:15:17,399 --> 00:15:18,739
+there's not a lot
+that it has to do.
+
+362
+00:15:18,739 --> 00:15:20,559
+I start to bids.
+
+363
+00:15:20,559 --> 00:15:23,160
+I may copy that IP address,
+
+364
+00:15:23,160 --> 00:15:25,079
+and then let's see if I
+get SSH to it, right?
+
+365
+00:15:25,079 --> 00:15:27,309
+So SSH.
+
+366
+00:15:27,309 --> 00:15:30,619
+TRH at that IP address.
+
+367
+00:15:30,619 --> 00:15:32,539
+What I'm here, I should be able
+
+368
+00:15:32,539 --> 00:15:34,599
+to see a bunch of things, right?
+
+369
+00:15:34,599 --> 00:15:38,700
+One, is that if I look
+at the OS release,
+
+370
+00:15:38,700 --> 00:15:41,799
+I can see that they
+automatically deploy that cotaor
+
+371
+00:15:41,799 --> 00:15:45,199
+optimized operating
+system four B, right?
+
+372
+00:15:45,199 --> 00:15:48,060
+If I touch a test, that's fed.
+
+373
+00:15:48,060 --> 00:15:49,719
+And why is that, right?
+
+374
+00:15:49,719 --> 00:15:51,280
+So if I look at the
+Mount name space,
+
+375
+00:15:51,280 --> 00:15:52,819
+there's a bunch of things here.
+
+376
+00:15:52,819 --> 00:15:55,020
+And for my home directory,
+
+377
+00:15:55,020 --> 00:15:56,839
+which is right here, that
+
+378
+00:15:56,839 --> 00:15:58,939
+is indeed a readable
+writable but, right?
+
+379
+00:15:58,939 --> 00:16:01,180
+So Mounted sub that's
+readable writable here.
+
+380
+00:16:01,180 --> 00:16:02,740
+But like I said,
+
+381
+00:16:02,740 --> 00:16:04,379
+the route is, right?
+
+382
+00:16:04,379 --> 00:16:06,805
+So if I touch sub I test here,
+
+383
+00:16:06,805 --> 00:16:10,109
+Even if I do a pseudo
+touch test, I can't do it.
+
+384
+00:16:10,109 --> 00:16:12,049
+It's permanently read only.
+
+385
+00:16:12,049 --> 00:16:13,410
+I wonder if I could
+fide that in here.
+
+386
+00:16:13,410 --> 00:16:16,029
+It's kind of a little
+bit log, right?
+
+387
+00:16:16,029 --> 00:16:18,609
+But here it is right here.
+I can see that that's
+
+388
+00:16:18,609 --> 00:16:20,849
+a read only but point
+at the root, right?
+
+389
+00:16:20,849 --> 00:16:22,109
+That's one of the
+ways that they're
+
+390
+00:16:22,109 --> 00:16:23,450
+locking this stuff down.
+
+391
+00:16:23,450 --> 00:16:26,230
+Alright, so I can
+see that. What else?
+
+392
+00:16:26,230 --> 00:16:28,760
+So if I say Docker PS,
+
+393
+00:16:28,760 --> 00:16:31,170
+I can see that when
+this Vb starts,
+
+394
+00:16:31,170 --> 00:16:32,990
+they automatically start
+running that contaor.
+
+395
+00:16:32,990 --> 00:16:35,830
+That's the whole purpose
+of having this Vb.
+
+396
+00:16:35,830 --> 00:16:39,830
+Excuse me. If I want to,
+
+397
+00:16:39,830 --> 00:16:41,109
+I could jump inside
+of it, right?
+
+398
+00:16:41,109 --> 00:16:45,530
+So I could say Doc Exact IT,
+
+399
+00:16:45,530 --> 00:16:48,010
+that it has this
+name right here.
+
+400
+00:16:48,010 --> 00:16:51,629
+Somebody paste this, and
+get a bash session here.
+
+401
+00:16:51,629 --> 00:16:53,430
+And inside of here,
+
+402
+00:16:53,430 --> 00:16:56,550
+I should be able
+to see that Then
+
+403
+00:16:56,550 --> 00:16:58,070
+I have my server running.
+
+404
+00:16:58,070 --> 00:17:00,069
+And so if I curl to
+it, if I do, you know,
+
+405
+00:17:00,069 --> 00:17:03,409
+local host, eight, I could see,
+
+406
+00:17:03,409 --> 00:17:05,889
+well, this was the name
+of that contor, right?
+
+407
+00:17:05,889 --> 00:17:07,589
+So the server is up
+and running here.
+
+408
+00:17:07,589 --> 00:17:09,610
+What if I exit out
+of the contator,
+
+409
+00:17:09,610 --> 00:17:11,409
+and I'm on my VM,
+
+410
+00:17:11,409 --> 00:17:13,249
+when I look at Docker PS,
+
+411
+00:17:13,249 --> 00:17:15,890
+I don't see any
+ports be forwarded,
+
+412
+00:17:15,890 --> 00:17:17,549
+but I'm still going
+to be able to do it.
+
+413
+00:17:17,549 --> 00:17:18,710
+Right? Let me just
+try this quick.
+
+414
+00:17:18,710 --> 00:17:23,610
+I'm going to do a
+curl local host, 80.
+
+415
+00:17:23,610 --> 00:17:26,089
+It still works. So
+why is that, right?
+
+416
+00:17:26,089 --> 00:17:29,189
+So if I drove back to my
+name over here and I say,
+
+417
+00:17:29,189 --> 00:17:32,190
+Docker Inspect,
+
+418
+00:17:33,940 --> 00:17:36,700
+I should be able to see under
+
+419
+00:17:36,700 --> 00:17:38,499
+the network settings
+that they have something
+
+420
+00:17:38,499 --> 00:17:41,580
+called host
+networking. I wonder.
+
+421
+00:17:49,340 --> 00:17:51,740
+So the network mode is host.
+
+422
+00:17:51,740 --> 00:17:53,319
+So basically, normally
+what they'll do,
+
+423
+00:17:53,319 --> 00:17:55,079
+what I normally create
+a Der contator is,
+
+424
+00:17:55,079 --> 00:17:57,979
+they create a separate
+virtual neck for it.
+
+425
+00:17:57,979 --> 00:17:59,760
+It's a separate
+networking space.
+
+426
+00:17:59,760 --> 00:18:01,060
+Here it's just sharing
+with the host.
+
+427
+00:18:01,060 --> 00:18:02,219
+That'll be a little bit faster
+
+428
+00:18:02,219 --> 00:18:04,280
+because there's less
+overhead there.
+
+429
+00:18:04,280 --> 00:18:06,599
+And I don't have to worry
+about port mappings.
+
+430
+00:18:06,599 --> 00:18:08,540
+Right? It does mean that I
+couldn't have deferent Cttors
+
+431
+00:18:08,540 --> 00:18:11,479
+that are usually the
+same port internally.
+
+432
+00:18:11,479 --> 00:18:15,499
+When I created this
+thing, I also opened up
+
+433
+00:18:15,499 --> 00:18:18,300
+I said allow HGP and
+that automatically
+
+434
+00:18:18,300 --> 00:18:20,839
+opened up port 80 for
+the firewall for me.
+
+435
+00:18:20,839 --> 00:18:23,659
+So if I come over here and
+I go in to a web browser,
+
+436
+00:18:23,659 --> 00:18:26,320
+if this works, then I should
+
+437
+00:18:26,320 --> 00:18:28,959
+be able to access
+my server there.
+
+438
+00:18:28,959 --> 00:18:30,639
+Right? So it's
+relatively slick, right?
+
+439
+00:18:30,639 --> 00:18:33,399
+I could just build
+a docker image on
+
+440
+00:18:33,399 --> 00:18:36,440
+my Vb or my laptop or wherever.
+
+441
+00:18:36,440 --> 00:18:38,200
+I push it to the
+artifact registry.
+
+442
+00:18:38,200 --> 00:18:39,939
+I click Deploy with
+a couple of things.
+
+443
+00:18:39,939 --> 00:18:42,099
+And all of a sudden,
+I have a server,
+
+444
+00:18:42,099 --> 00:18:46,020
+you know, in this relatively
+secure environment.
+
+445
+00:18:46,020 --> 00:18:49,059
+Alright, Cool. Do people
+have any questions about
+
+446
+00:18:49,059 --> 00:18:52,699
+COS or this whole
+deployment process?
+
+447
+00:18:55,740 --> 00:18:57,779
+Right.
+
+448
+00:18:57,940 --> 00:19:00,699
+Cool. So I'd bet to
+go kill that VM,
+
+449
+00:19:00,699 --> 00:19:02,939
+so I don't use up too
+many resources, right?
+
+450
+00:19:02,939 --> 00:19:06,219
+So let me go ahead
+and delete that one.
+
+451
+00:19:10,620 --> 00:19:14,159
+Alright. Now, let's talk about
+uber D etes in particular,
+
+452
+00:19:14,159 --> 00:19:16,239
+the Google uber dts engine.
+
+453
+00:19:16,239 --> 00:19:18,599
+So Google built uber detes
+
+454
+00:19:18,599 --> 00:19:19,820
+and they offered as
+a Cloud service.
+
+455
+00:19:19,820 --> 00:19:22,239
+They also open source,
+which is cool.
+
+456
+00:19:22,239 --> 00:19:24,684
+They have a couple of
+different bili bottles of
+
+457
+00:19:24,684 --> 00:19:26,769
+The main thing they're
+charging you for is
+
+458
+00:19:26,769 --> 00:19:28,489
+that you create these
+things called clusters,
+
+459
+00:19:28,489 --> 00:19:29,469
+where you can be running lots of
+
+460
+00:19:29,469 --> 00:19:30,630
+different containers in them,
+
+461
+00:19:30,630 --> 00:19:33,929
+and they charge $75
+a month per cluster.
+
+462
+00:19:33,929 --> 00:19:37,089
+But fortunately, the free tier
+covers one cluster, right?
+
+463
+00:19:37,089 --> 00:19:38,749
+So it's fine to like create
+wood and play around with it,
+
+464
+00:19:38,749 --> 00:19:40,130
+but if you create
+more than wood,
+
+465
+00:19:40,130 --> 00:19:41,329
+then you'll pay for more.
+
+466
+00:19:41,329 --> 00:19:43,089
+Now, there's additional
+fees on top of
+
+467
+00:19:43,089 --> 00:19:45,029
+that depending on
+what mode you have.
+
+468
+00:19:45,029 --> 00:19:46,889
+If you have a standard mode,
+
+469
+00:19:46,889 --> 00:19:48,769
+then what they'll do
+is they'll create
+
+470
+00:19:48,769 --> 00:19:51,849
+VMs for you to run your
+containers, right?
+
+471
+00:19:51,849 --> 00:19:52,529
+And you have to pay for
+
+472
+00:19:52,529 --> 00:19:54,409
+those VMs like you
+normally would.
+
+473
+00:19:54,409 --> 00:19:56,750
+They also have something
+called autopilot,
+
+474
+00:19:56,750 --> 00:19:58,510
+where you just pay
+per container.
+
+475
+00:19:58,510 --> 00:20:00,535
+They figure out
+where it's running.
+
+476
+00:20:00,535 --> 00:20:02,299
+So the cluster workers,
+
+477
+00:20:02,299 --> 00:20:04,399
+which are these VMs look
+like this out here.
+
+478
+00:20:04,399 --> 00:20:06,560
+I have a bunch of VMs,
+that are already COS.
+
+479
+00:20:06,560 --> 00:20:08,679
+They run pods like we
+talked about last time
+
+480
+00:20:08,679 --> 00:20:11,539
+Go Kubernetes has these pods,
+
+481
+00:20:11,539 --> 00:20:13,820
+each of which can have
+multiple containers.
+
+482
+00:20:13,820 --> 00:20:15,460
+So we have all those
+things running.
+
+483
+00:20:15,460 --> 00:20:16,720
+And I want to quickly go through
+
+484
+00:20:16,720 --> 00:20:18,399
+a few features that
+Kubernetes has.
+
+485
+00:20:18,399 --> 00:20:19,879
+So you get a sense of what
+
+486
+00:20:19,879 --> 00:20:22,319
+a full orchestrator could
+do beyond something that,
+
+487
+00:20:22,319 --> 00:20:24,379
+doctor Compose could do.
+
+488
+00:20:24,379 --> 00:20:26,159
+So one of the things
+that could do
+
+489
+00:20:26,159 --> 00:20:27,759
+is have replication, right?
+
+490
+00:20:27,759 --> 00:20:31,659
+It could say, Hey, we want
+to have multiple deployments
+
+491
+00:20:31,659 --> 00:20:33,679
+of the same pod on
+
+492
+00:20:33,679 --> 00:20:36,284
+different worker machines.
+I could do that.
+
+493
+00:20:36,284 --> 00:20:38,449
+I could do load
+balancing, right?
+
+494
+00:20:38,449 --> 00:20:40,629
+If I have a bunch of
+web requests coming in,
+
+495
+00:20:40,629 --> 00:20:42,669
+it could maybe I
+alterate them in
+
+496
+00:20:42,669 --> 00:20:45,649
+some way across these
+different replicas.
+
+497
+00:20:46,120 --> 00:20:50,319
+It could have fault detection
+and fault tolerance, right?
+
+498
+00:20:50,319 --> 00:20:52,679
+So it can monitor the
+health of these pods,
+
+499
+00:20:52,679 --> 00:20:54,280
+and if it seems like
+it's down or maybe
+
+500
+00:20:54,280 --> 00:20:56,620
+the machine hosting
+the pod is down,
+
+501
+00:20:56,620 --> 00:20:59,260
+it could basically start
+
+502
+00:20:59,260 --> 00:21:00,839
+running it again on a
+different machine, right?
+
+503
+00:21:00,839 --> 00:21:02,639
+So I can do all these things
+automatically for you.
+
+504
+00:21:02,639 --> 00:21:04,720
+Those are things
+that Door Compose
+
+505
+00:21:04,720 --> 00:21:06,639
+could not do right?
+Docer Compose.
+
+506
+00:21:06,639 --> 00:21:07,739
+It is talking about one machine,
+
+507
+00:21:07,739 --> 00:21:09,179
+it does exactly
+what you tell it.
+
+508
+00:21:09,179 --> 00:21:10,680
+It's not realizing, Oh,
+
+509
+00:21:10,680 --> 00:21:11,800
+your container is healthy,
+
+510
+00:21:11,800 --> 00:21:13,019
+I'm going to run it elsewhere.
+
+511
+00:21:13,019 --> 00:21:15,799
+That's more of a
+berates level feature.
+
+512
+00:21:15,799 --> 00:21:17,239
+And it's why, right? Like, it
+
+513
+00:21:17,239 --> 00:21:20,039
+takes so much time to actually
+get at Tuber Nate, right?
+
+514
+00:21:20,039 --> 00:21:22,990
+It's a pretty complicated
+piece of software.
+
+515
+00:21:22,990 --> 00:21:26,100
+The other thing that it has
+to do is something called
+
+516
+00:21:26,100 --> 00:21:29,259
+Bin packing Bin Packing is a
+general problem b systems.
+
+517
+00:21:29,259 --> 00:21:30,519
+I just want to
+kind of introduce.
+
+518
+00:21:30,519 --> 00:21:31,520
+I'm trying to talk a lot
+
+519
+00:21:31,520 --> 00:21:32,919
+about how they do
+the bin packing,
+
+520
+00:21:32,919 --> 00:21:34,599
+but it's something that
+should be on your radar if
+
+521
+00:21:34,599 --> 00:21:36,699
+you're doing any kind of
+distributed systems work.
+
+522
+00:21:36,699 --> 00:21:39,260
+The idea of Bin Pack is that
+we have different machines,
+
+523
+00:21:39,260 --> 00:21:40,919
+and maybe they have
+the same amount
+
+524
+00:21:40,919 --> 00:21:42,839
+of resources or
+different resources.
+
+525
+00:21:42,839 --> 00:21:44,160
+That resource can be Rab,
+
+526
+00:21:44,160 --> 00:21:46,359
+it could be CPU, it
+could be whatever.
+
+527
+00:21:46,359 --> 00:21:48,019
+And then we have a bunch
+of different containers.
+
+528
+00:21:48,019 --> 00:21:51,160
+And we have to say which
+containers go which machines.
+
+529
+00:21:51,160 --> 00:21:52,539
+And depending on how
+you do that, you might
+
+530
+00:21:52,539 --> 00:21:54,360
+get more or less efficiency.
+
+531
+00:21:54,360 --> 00:21:56,459
+So that problem is
+called Bin packing.
+
+532
+00:21:56,459 --> 00:21:57,560
+Down here on the bottom left,
+
+533
+00:21:57,560 --> 00:21:59,399
+I have an example
+of bad Bin packing.
+
+534
+00:21:59,399 --> 00:22:03,190
+So I had a three containers
+already running.
+
+535
+00:22:03,190 --> 00:22:04,629
+O had 1 gigabyte,
+
+536
+00:22:04,629 --> 00:22:07,050
+2 gigabytes and 3 gigabytes,
+
+537
+00:22:07,050 --> 00:22:11,009
+and I spread them evenly
+across by two worker machines,
+
+538
+00:22:11,009 --> 00:22:12,589
+each of which had 4 gigabytes.
+
+539
+00:22:12,589 --> 00:22:14,089
+Why is this bad bin packing?
+
+540
+00:22:14,089 --> 00:22:15,870
+Well, if I want to
+start another contator
+
+541
+00:22:15,870 --> 00:22:18,130
+that uses 2 gigabytes of rab,
+
+542
+00:22:18,130 --> 00:22:20,409
+there's no place where
+I could put it, right?
+
+543
+00:22:20,409 --> 00:22:21,690
+There's 2 gigabytes total,
+
+544
+00:22:21,690 --> 00:22:23,630
+but there's not 2
+gigabytes in one place.
+
+545
+00:22:23,630 --> 00:22:25,590
+I didn't pack the beds well.
+
+546
+00:22:25,590 --> 00:22:27,429
+In contrast, on the top right,
+
+547
+00:22:27,429 --> 00:22:28,989
+I have an example of
+a good bin packing.
+
+548
+00:22:28,989 --> 00:22:30,529
+Maybe I put the two
+and two together,
+
+549
+00:22:30,529 --> 00:22:32,649
+and then I put the one
+and three together.
+
+550
+00:22:32,649 --> 00:22:36,839
+And of course, this is a hard
+problem because You know,
+
+551
+00:22:36,839 --> 00:22:38,580
+sometimes you get to
+see everything at once.
+
+552
+00:22:38,580 --> 00:22:40,800
+Sometimes you're like, Hey,
+here's four containers,
+
+553
+00:22:40,800 --> 00:22:43,540
+bring them at the same time,
+find out where to put them.
+
+554
+00:22:43,540 --> 00:22:44,819
+More often, like somebody will
+
+555
+00:22:44,819 --> 00:22:46,359
+run something, they
+run somebody else.
+
+556
+00:22:46,359 --> 00:22:49,080
+And so you can imagine to end
+up with a good bin packing.
+
+557
+00:22:49,080 --> 00:22:50,639
+If you saw two in a two,
+
+558
+00:22:50,639 --> 00:22:52,620
+like, how do you really
+know to put them together?
+
+559
+00:22:52,620 --> 00:22:54,499
+It would be kind of more
+natural to put two of
+
+560
+00:22:54,499 --> 00:22:56,699
+two at each VM to
+spread out the work.
+
+561
+00:22:56,699 --> 00:23:00,479
+But bin packing means
+you're trying to free up,
+
+562
+00:23:00,479 --> 00:23:03,339
+you know, big pieces of
+memory somewhere, right?
+
+563
+00:23:03,339 --> 00:23:05,740
+So it's almost conflicting
+with load balancing.
+
+564
+00:23:05,740 --> 00:23:07,459
+Anyway, that's a
+complicated thing,
+
+565
+00:23:07,459 --> 00:23:09,359
+like people write a ton
+of research papers,
+
+566
+00:23:09,359 --> 00:23:11,539
+on different approaches
+to bin packing,
+
+567
+00:23:11,539 --> 00:23:12,779
+and I that something that
+
+568
+00:23:12,779 --> 00:23:15,274
+Tuber Nettie history to
+trying to do for you.
+
+569
+00:23:15,274 --> 00:23:18,029
+Alright, cool. So let's
+do some demos with
+
+570
+00:23:18,029 --> 00:23:20,930
+Kubernetes and soda
+come over here,
+
+571
+00:23:20,930 --> 00:23:23,129
+and going to the menu down here,
+
+572
+00:23:23,129 --> 00:23:28,910
+I will go to The
+uber Dates engine,
+
+573
+00:23:28,910 --> 00:23:30,510
+I throw to an overview.
+
+574
+00:23:30,510 --> 00:23:32,910
+And if I go to clusters,
+
+575
+00:23:32,910 --> 00:23:34,869
+I already have a
+cluster up and running.
+
+576
+00:23:34,869 --> 00:23:37,990
+And I see I have an auto
+pilot cluster right here.
+
+577
+00:23:37,990 --> 00:23:40,330
+That seems like it takes
+like four or 5 minutes.
+
+578
+00:23:40,330 --> 00:23:43,509
+I just did that before
+lecture, right?
+
+579
+00:23:43,509 --> 00:23:45,169
+So we would have to
+sit and watch it.
+
+580
+00:23:45,169 --> 00:23:46,830
+And then down here,
+they have these things
+
+581
+00:23:46,830 --> 00:23:48,029
+called workloads.
+
+582
+00:23:48,029 --> 00:23:49,730
+There's different
+types of workloads.
+
+583
+00:23:49,730 --> 00:23:51,510
+You can imagine some workloads,
+
+584
+00:23:51,510 --> 00:23:53,329
+might just like run
+once an exit, like,
+
+585
+00:23:53,329 --> 00:23:56,830
+maybe it like trades a model
+based on some data and exit,
+
+586
+00:23:56,830 --> 00:23:58,370
+so I could do a job.
+
+587
+00:23:58,370 --> 00:24:00,109
+What I'm do it set
+is a deployment.
+
+588
+00:24:00,109 --> 00:24:01,270
+That will be somebody
+that's running
+
+589
+00:24:01,270 --> 00:24:03,070
+long turb that would be a better
+
+590
+00:24:03,070 --> 00:24:04,350
+fit for like a web server
+
+591
+00:24:04,350 --> 00:24:06,189
+like I've been using
+for my examples, right?
+
+592
+00:24:06,189 --> 00:24:09,969
+Somebody deploy a web server.
+
+593
+00:24:09,969 --> 00:24:13,490
+And so there's lots of options
+here I have to go through.
+
+594
+00:24:13,490 --> 00:24:15,489
+I have to say what
+cluster it's on.
+
+595
+00:24:15,489 --> 00:24:17,469
+I only have one,
+right? Be have to
+
+596
+00:24:17,469 --> 00:24:19,650
+start paying quite a bit.
+
+597
+00:24:19,650 --> 00:24:21,329
+And, you know, I
+
+598
+00:24:21,329 --> 00:24:22,809
+can give it like a name
+and stuff like that.
+
+599
+00:24:22,809 --> 00:24:24,349
+That's not too
+interesting. I'm going to
+
+600
+00:24:24,349 --> 00:24:26,510
+move on to the
+container details.
+
+601
+00:24:26,510 --> 00:24:29,189
+In this case, I can
+either create like
+
+602
+00:24:29,189 --> 00:24:31,890
+a new container image.
+
+603
+00:24:31,890 --> 00:24:33,769
+If I'm doing that, maybe
+I have to say, Oh,
+
+604
+00:24:33,769 --> 00:24:36,009
+you have to build some
+docker file somewhere,
+
+605
+00:24:36,009 --> 00:24:38,569
+or I can say I want to use
+an existing container image,
+
+606
+00:24:38,569 --> 00:24:40,509
+which I want to do because
+I already built one.
+
+607
+00:24:40,509 --> 00:24:42,049
+They're giving me kind of
+
+608
+00:24:42,049 --> 00:24:44,364
+a generic one. So I select this?
+
+609
+00:24:44,364 --> 00:24:47,139
+And I could browse to that
+artifact registry where
+
+610
+00:24:47,139 --> 00:24:49,480
+I pushed it under
+Section one, right?
+
+611
+00:24:49,480 --> 00:24:50,979
+Soy come find it here.
+
+612
+00:24:50,979 --> 00:24:54,480
+I will click click on it
+and select that wood.
+
+613
+00:24:54,580 --> 00:24:57,119
+Then going down
+here, I say I can
+
+614
+00:24:57,119 --> 00:25:00,159
+expose some ports, right?
+
+615
+00:25:00,159 --> 00:25:01,979
+And so I want to expose this
+
+616
+00:25:01,979 --> 00:25:04,139
+to something called a
+Kubernetes Service.
+
+617
+00:25:04,139 --> 00:25:05,540
+And when I do that, I can create
+
+618
+00:25:05,540 --> 00:25:06,799
+some port mappings, right?
+
+619
+00:25:06,799 --> 00:25:08,999
+So say that 80 outside is
+
+620
+00:25:08,999 --> 00:25:11,419
+ready to go to 80 inside, right?
+
+621
+00:25:11,419 --> 00:25:12,979
+Now, they have different
+options out here,
+
+622
+00:25:12,979 --> 00:25:14,579
+and I'm going to do
+the load balancer one.
+
+623
+00:25:14,579 --> 00:25:16,799
+And what that means is
+that they're going to have
+
+624
+00:25:16,799 --> 00:25:19,980
+one IP address with port
+80 that's a load balancer.
+
+625
+00:25:19,980 --> 00:25:21,679
+And as I'm sending
+requests there,
+
+626
+00:25:21,679 --> 00:25:24,479
+it's going to actually forward
+them to different places.
+
+627
+00:25:24,479 --> 00:25:27,259
+They're going to start up a
+few different replicas of
+
+628
+00:25:27,259 --> 00:25:28,680
+my web server because they're
+
+629
+00:25:28,680 --> 00:25:30,479
+imagining this is some
+kind of scalable service,
+
+630
+00:25:30,479 --> 00:25:31,800
+and they're going to
+be trying to send
+
+631
+00:25:31,800 --> 00:25:33,929
+it to all of them, right?
+
+632
+00:25:33,929 --> 00:25:36,779
+So go ahead, I'm deploy this.
+
+633
+00:25:36,779 --> 00:25:38,660
+And it's kind of slow,
+
+634
+00:25:38,660 --> 00:25:40,939
+unfortunately, but
+we'll wait for it.
+
+635
+00:25:40,939 --> 00:25:44,200
+Any questions that is deployed?
+
+636
+00:25:51,800 --> 00:25:53,439
+Well, there we go.
+
+637
+00:25:53,439 --> 00:25:54,899
+Okay. So it seems like that is
+
+638
+00:25:54,899 --> 00:25:56,879
+kind of getting up and running.
+
+639
+00:25:56,879 --> 00:26:01,039
+So If I scroll down, right?
+
+640
+00:26:01,039 --> 00:26:02,959
+I see my deployment, I
+see they're running it
+
+641
+00:26:02,959 --> 00:26:05,340
+on three different
+cottors right now.
+
+642
+00:26:05,340 --> 00:26:06,840
+And I see wa way at the bob,
+
+643
+00:26:06,840 --> 00:26:09,779
+they have this exposing service
+with an endpoint, right?
+
+644
+00:26:09,779 --> 00:26:12,300
+So when I go to this. What it's
+
+645
+00:26:12,300 --> 00:26:14,780
+doing is it's forwarding
+to one of those ctaors.
+
+646
+00:26:14,780 --> 00:26:16,699
+It's showing me the idea
+of that ctator here.
+
+647
+00:26:16,699 --> 00:26:17,879
+And I think due to caching,
+
+648
+00:26:17,879 --> 00:26:20,379
+I probably won't see
+it changing, right?
+
+649
+00:26:20,379 --> 00:26:21,819
+It's probably just
+remembering it.
+
+650
+00:26:21,819 --> 00:26:24,519
+But if I go to curl,
+
+651
+00:26:24,519 --> 00:26:26,740
+curl will not do
+caching the same way
+
+652
+00:26:26,740 --> 00:26:30,160
+my web browser will
+curl to port 80,
+
+653
+00:26:30,160 --> 00:26:31,819
+and I see that as
+I'm doing this,
+
+654
+00:26:31,819 --> 00:26:33,659
+it's sending it to di
+
+655
+00:26:33,659 --> 00:26:36,519
+to different ctators that I
+have up and running, right?
+
+656
+00:26:36,519 --> 00:26:40,820
+I just balancing the work
+across those in some way.
+
+657
+00:26:40,820 --> 00:26:43,559
+Alright, how is it doing that?
+
+658
+00:26:43,559 --> 00:26:45,440
+Well, it started
+three automatically.
+
+659
+00:26:45,440 --> 00:26:47,439
+If I go to details,
+
+660
+00:26:47,439 --> 00:26:49,359
+Is it details, I think?
+
+661
+00:26:49,359 --> 00:26:51,620
+And I see that what they're
+
+662
+00:26:51,620 --> 00:26:53,539
+doing is something called
+auto scaling, right?
+
+663
+00:26:53,539 --> 00:26:54,600
+So they have these replicas,
+
+664
+00:26:54,600 --> 00:26:55,879
+and they're trying to
+figure out, like, Well,
+
+665
+00:26:55,879 --> 00:26:58,540
+how many do I need to
+service this workload?
+
+666
+00:26:58,540 --> 00:27:00,559
+And there's some
+complicated rules for that.
+
+667
+00:27:00,559 --> 00:27:02,299
+I can put some
+bounds. I always want
+
+668
+00:27:02,299 --> 00:27:04,700
+at least one replica,
+never more than five.
+
+669
+00:27:04,700 --> 00:27:06,100
+If I really want to scale, maybe
+
+670
+00:27:06,100 --> 00:27:07,720
+I'd increase it to
+more than five,
+
+671
+00:27:07,720 --> 00:27:09,219
+they're trying to
+determine, like, Well,
+
+672
+00:27:09,219 --> 00:27:10,699
+when should we add more, right?
+
+673
+00:27:10,699 --> 00:27:12,419
+So I can say, well, You know,
+
+674
+00:27:12,419 --> 00:27:14,919
+when the CPU usage
+is more than 80%,
+
+675
+00:27:14,919 --> 00:27:16,500
+and we'll start more.
+
+676
+00:27:16,500 --> 00:27:18,820
+Odds are if I read
+this long enough,
+
+677
+00:27:18,820 --> 00:27:21,260
+they'll realize that my
+CPU usage is tighty,
+
+678
+00:27:21,260 --> 00:27:23,099
+I'm not hating this
+server very heavily,
+
+679
+00:27:23,099 --> 00:27:25,680
+and they will probably drop
+me down to what replica.
+
+680
+00:27:25,680 --> 00:27:27,279
+But there's lots of
+things you'd tune here.
+
+681
+00:27:27,279 --> 00:27:29,479
+And you'd say, like, Well,
+what metrics do I care about?
+
+682
+00:27:29,479 --> 00:27:31,799
+Are there head of upper
+and lower bounds?
+
+683
+00:27:31,799 --> 00:27:35,379
+They'll try to automatically
+do the right thing for you.
+
+684
+00:27:35,660 --> 00:27:39,240
+Ah, right. Any questions
+
+685
+00:27:39,240 --> 00:27:42,460
+about load ballots the
+uber Dates engine.
+
+686
+00:27:43,500 --> 00:27:48,500
+Oh, right. So let
+me shut this down.
+
+687
+00:27:54,880 --> 00:27:57,419
+Alright, folks, that's
+all the content
+
+688
+00:27:57,419 --> 00:27:58,860
+I have for the semester.
+
+689
+00:27:58,860 --> 00:28:00,899
+So let me just head over here.
+
+690
+00:28:00,899 --> 00:28:04,000
+And we have about
+20 minutes left.
+
+691
+00:28:04,000 --> 00:28:06,679
+And you know, if you want
+to stay for a review,
+
+692
+00:28:06,679 --> 00:28:08,780
+you can, otherwise, I mean,
+we're done with a content.
+
+693
+00:28:08,780 --> 00:28:10,479
+You're also free
+to go if you like.
+
+694
+00:28:10,479 --> 00:28:12,080
+But I have two exams.
+
+695
+00:28:12,080 --> 00:28:16,380
+These are final exams from
+Fall 2023 and Spring 2023.
+
+696
+00:28:16,380 --> 00:28:18,559
+And so if people have
+questions about these or
+
+697
+00:28:18,559 --> 00:28:21,720
+just any about the
+final, go ahead and ask.
+
+698
+00:28:21,720 --> 00:28:23,519
+Anybody have any questions?
+
+699
+00:28:23,519 --> 00:28:29,150
+Yeah, right here.
+A question exam.
+
+700
+00:28:29,190 --> 00:28:32,969
+At least combination question.
+
+701
+00:28:32,969 --> 00:28:34,690
+Yeah. It's a cumulative exam.
+
+702
+00:28:34,690 --> 00:28:38,109
+So I think everything from
+the semester is fair game.
+
+703
+00:28:38,109 --> 00:28:40,150
+You know, I might put a
+little bit more emphasis
+
+704
+00:28:40,150 --> 00:28:41,669
+on the newer stuff,
+
+705
+00:28:41,669 --> 00:28:44,630
+like, you know,
+big query was new.
+
+706
+00:28:44,630 --> 00:28:46,370
+What did we have after the exam
+
+707
+00:28:46,370 --> 00:28:48,489
+Kafka was after the exam, right?
+
+708
+00:28:48,489 --> 00:28:50,629
+Let me just check it over
+
+709
+00:28:50,629 --> 00:28:52,289
+here, right? What
+was the exam one?
+
+710
+00:28:52,289 --> 00:28:55,830
+I'm still writing the
+exam, by the way.
+
+711
+00:28:56,630 --> 00:28:59,990
+Or maybe it was under mid term.
+
+712
+00:29:00,670 --> 00:29:03,770
+Alright, so Kafka was new,
+
+713
+00:29:03,770 --> 00:29:06,089
+all the Spark streaming
+stuff was new.
+
+714
+00:29:06,089 --> 00:29:07,870
+Big query was new. Now, I also
+
+715
+00:29:07,870 --> 00:29:10,389
+think I may significantly
+look at all these systems.
+
+716
+00:29:10,389 --> 00:29:11,690
+I really feel like
+there's like five
+
+717
+00:29:11,690 --> 00:29:13,429
+major systems that we learned
+this semester, right?
+
+718
+00:29:13,429 --> 00:29:14,869
+We learned about HDFS.
+
+719
+00:29:14,869 --> 00:29:17,329
+We learned about Spark, we
+learned about Cassandra,
+
+720
+00:29:17,329 --> 00:29:19,209
+Kafka and bi query, right?
+
+721
+00:29:19,209 --> 00:29:21,249
+So I think there's maybe, you
+know, some number of ques,
+
+722
+00:29:21,249 --> 00:29:21,929
+at least a couple of
+
+723
+00:29:21,929 --> 00:29:23,349
+questions about each
+of those, right?
+
+724
+00:29:23,349 --> 00:29:25,069
+So you have to be
+familiar with those.
+
+725
+00:29:25,069 --> 00:29:25,869
+There's a bunch of like
+
+726
+00:29:25,869 --> 00:29:27,129
+minor systems that
+we learned, like,
+
+727
+00:29:27,129 --> 00:29:28,449
+we talked about like Map reduce
+
+728
+00:29:28,449 --> 00:29:30,069
+and H base and stuff like that.
+
+729
+00:29:30,069 --> 00:29:31,849
+You know, there's like
+the earlier stuff about
+
+730
+00:29:31,849 --> 00:29:34,249
+like RPCs there's always,
+
+731
+00:29:34,249 --> 00:29:35,350
+like docker and stuff.
+
+732
+00:29:35,350 --> 00:29:36,610
+But I think where I'd
+
+733
+00:29:36,610 --> 00:29:37,949
+start is I'd try to
+make sure you are
+
+734
+00:29:37,949 --> 00:29:40,679
+very comfortable with
+those five big systems,
+
+735
+00:29:40,679 --> 00:29:44,020
+especially the two that
+have the Big C charts.
+
+736
+00:29:44,020 --> 00:29:46,580
+Maybe start there, first, like
+get really good at Tovka,
+
+737
+00:29:46,580 --> 00:29:48,839
+Sparks Stree Big query,
+
+738
+00:29:48,839 --> 00:29:51,539
+then try to get d at the
+other major systems,
+
+739
+00:29:51,539 --> 00:29:53,459
+and then kind of after that,
+
+740
+00:29:53,459 --> 00:29:55,419
+look at all the more
+miter things we did.
+
+741
+00:29:55,419 --> 00:29:56,699
+Yeah, there are
+questions people have.
+
+742
+00:29:56,699 --> 00:29:58,209
+Yeah, right over here.
+
+743
+00:29:58,209 --> 00:30:02,439
+P. Yeah.
+
+744
+00:30:02,439 --> 00:30:05,320
+Spring 2023, you
+said question six.
+
+745
+00:30:05,320 --> 00:30:08,979
+Question 16. All right,
+great. Let's take a look.
+
+746
+00:30:11,220 --> 00:30:13,879
+All right. So a Spark
+Stream equery is
+
+747
+00:30:13,879 --> 00:30:16,620
+Bata count for intervals
+already at six Ab.
+
+748
+00:30:16,620 --> 00:30:19,260
+At what time could Spark
+reasonably discard
+
+749
+00:30:19,260 --> 00:30:20,619
+the running count for events
+
+750
+00:30:20,619 --> 00:30:22,400
+occurring at this time interval.
+
+751
+00:30:22,400 --> 00:30:25,540
+Okay. So first off,
+
+752
+00:30:25,540 --> 00:30:28,779
+I see that the time stamp
+
+753
+00:30:28,779 --> 00:30:32,319
+that we're grouping by with
+the window is 1 hour, right?
+
+754
+00:30:32,319 --> 00:30:40,529
+So basically, we have six
+Ab to seven Ab, right?
+
+755
+00:30:40,529 --> 00:30:42,530
+And we're trying to see,
+like, how many events
+
+756
+00:30:42,530 --> 00:30:43,949
+are in that window.
+
+757
+00:30:43,949 --> 00:30:45,289
+Now, it's possible right if
+
+758
+00:30:45,289 --> 00:30:47,409
+these events are in
+Kafka or wherever,
+
+759
+00:30:47,409 --> 00:30:49,389
+they could be delayed, right?
+
+760
+00:30:49,389 --> 00:30:51,130
+So maybe over here,
+
+761
+00:30:51,130 --> 00:30:53,249
+I have a new event, right?
+
+762
+00:30:53,249 --> 00:30:57,329
+So kind of maybe like a
+new Kafka message, right?
+
+763
+00:30:59,480 --> 00:31:02,019
+Right? So the question then is,
+
+764
+00:31:02,019 --> 00:31:04,719
+how long do I have to keep this?
+
+765
+00:31:04,719 --> 00:31:08,879
+And this water mark tells
+us it is 4 hours, right?
+
+766
+00:31:08,879 --> 00:31:12,179
+This would be 11:00
+A.M. After that,
+
+767
+00:31:12,179 --> 00:31:13,679
+we're assuming that
+there's going be
+
+768
+00:31:13,679 --> 00:31:16,299
+no more late events coming
+in for this window, right?
+
+769
+00:31:16,299 --> 00:31:18,579
+And so the answer would be 11:00
+
+770
+00:31:18,579 --> 00:31:21,580
+A.M. Yeah, thanks for Aster.
+
+771
+00:31:21,580 --> 00:31:22,599
+Yeah, you follow ups on that
+
+772
+00:31:22,599 --> 00:31:24,799
+or other questions people have?
+
+773
+00:31:25,960 --> 00:31:28,439
+There here.
+
+774
+00:31:30,840 --> 00:31:33,659
+Oh, yeah, that's a really
+good question, right?
+
+775
+00:31:33,659 --> 00:31:35,219
+So I guess, does group B
+
+776
+00:31:35,219 --> 00:31:37,560
+only work I guess this is a
+question about water bark.
+
+777
+00:31:37,560 --> 00:31:38,939
+Does water Mark work
+with group by or
+
+778
+00:31:38,939 --> 00:31:40,580
+does it work with
+other things as well?
+
+779
+00:31:40,580 --> 00:31:42,359
+The other thing that
+group Bi can work
+
+780
+00:31:42,359 --> 00:31:45,459
+with is streaming joid.
+
+781
+00:31:45,459 --> 00:31:46,780
+And in particular, we talked
+
+782
+00:31:46,780 --> 00:31:48,359
+about, like, different
+joids, right?
+
+783
+00:31:48,359 --> 00:31:50,059
+The simplest case is we have two
+
+784
+00:31:50,059 --> 00:31:51,519
+tables that are a fixed size.
+
+785
+00:31:51,519 --> 00:31:53,039
+A little bit more
+complicated is we have
+
+786
+00:31:53,039 --> 00:31:54,820
+a fixed sized table
+and a growing table.
+
+787
+00:31:54,820 --> 00:31:56,259
+And the most complicated is we
+
+788
+00:31:56,259 --> 00:31:57,620
+have two tables
+that are growing.
+
+789
+00:31:57,620 --> 00:31:58,919
+When you're oid, you try to.
+
+790
+00:31:58,919 --> 00:32:01,219
+Can I pair up this row and
+
+791
+00:32:01,219 --> 00:32:04,100
+the first table with another
+row and the second table.
+
+792
+00:32:04,100 --> 00:32:08,059
+And by default, that could
+take a lot of memory, right?
+
+793
+00:32:08,059 --> 00:32:10,759
+Because if I see a row, I
+
+794
+00:32:10,759 --> 00:32:11,380
+don't know what story
+
+795
+00:32:11,380 --> 00:32:12,559
+happen to the future
+on the other table.
+
+796
+00:32:12,559 --> 00:32:14,060
+I'm like, do I have
+to remember this row?
+
+797
+00:32:14,060 --> 00:32:15,679
+The answer is, yes,
+because I never know what
+
+798
+00:32:15,679 --> 00:32:17,779
+at to have a new pair
+of the other one.
+
+799
+00:32:17,779 --> 00:32:21,780
+So if I'm joining
+on Type windows,
+
+800
+00:32:21,780 --> 00:32:24,379
+then I could also
+use watermarks for
+
+801
+00:32:24,379 --> 00:32:27,360
+that stream stream Joi.
+Are there other use cases?
+
+802
+00:32:27,360 --> 00:32:29,339
+Maybe? Those are the two that
+only two that I know about?
+
+803
+00:32:29,339 --> 00:32:32,679
+I gro grouping by a Te window or
+
+804
+00:32:32,679 --> 00:32:34,759
+stream Stream Joid a
+
+805
+00:32:34,759 --> 00:32:36,999
+like on a type window?
+Yeah, thanks for Ay.
+
+806
+00:32:36,999 --> 00:32:38,119
+Yeah, other questions people
+
+807
+00:32:38,119 --> 00:32:40,239
+have about that or other stuff.
+
+808
+00:32:48,720 --> 00:32:53,019
+Right here. Question I
+can't remember which one I
+
+809
+00:32:53,019 --> 00:32:58,180
+saw something to do
+with text Oh, yeah.
+
+810
+00:32:58,180 --> 00:33:00,720
+There's the texting your
+friend question that I asked.
+
+811
+00:33:00,720 --> 00:33:02,139
+So what was about item pots.
+
+812
+00:33:02,139 --> 00:33:05,759
+Cody remind me what item
+potent is want to defin it?
+
+813
+00:33:10,550 --> 00:33:18,309
+Stuff. Yeah, maybe it's related.
+
+814
+00:33:18,309 --> 00:33:22,149
+Anybody pop it does to
+fight item pots for me?
+
+815
+00:33:24,710 --> 00:33:29,309
+Yeah. Yeah, go for it. Does it.
+
+816
+00:33:37,230 --> 00:33:42,040
+So item pots means that
+whatever the operation is Like,
+
+817
+00:33:42,040 --> 00:33:42,979
+when I do an operation,
+
+818
+00:33:42,979 --> 00:33:44,579
+it changes the state
+of some system.
+
+819
+00:33:44,579 --> 00:33:46,260
+Maybe it changes the
+values of database
+
+820
+00:33:46,260 --> 00:33:48,139
+or whatever. Some operations.
+
+821
+00:33:48,139 --> 00:33:49,760
+If I do them a bunch of times,
+
+822
+00:33:49,760 --> 00:33:50,739
+I'll have a different result,
+
+823
+00:33:50,739 --> 00:33:53,460
+and if I do them what,
+that's not item potent.
+
+824
+00:33:53,460 --> 00:33:54,759
+If it's item potent,
+it means I can
+
+825
+00:33:54,759 --> 00:33:56,180
+do the same thing
+a bunch of times,
+
+826
+00:33:56,180 --> 00:33:58,059
+and I have the same end result.
+
+827
+00:33:58,059 --> 00:34:00,420
+And that means that when we
+have systems that have retry.
+
+828
+00:34:00,420 --> 00:34:01,859
+When I have retry,
+that's how I end
+
+829
+00:34:01,859 --> 00:34:03,559
+up with a bunch of
+duplicate operations.
+
+830
+00:34:03,559 --> 00:34:06,580
+If I have retry in combination
+with itepots, that's fine.
+
+831
+00:34:06,580 --> 00:34:08,519
+I'm still going to have
+exactly what Semantics,
+
+832
+00:34:08,519 --> 00:34:09,939
+because it doesn't matter
+
+833
+00:34:09,939 --> 00:34:11,539
+if I do it one time
+or many times.
+
+834
+00:34:11,539 --> 00:34:13,239
+So it's really important to
+
+835
+00:34:13,239 --> 00:34:15,620
+remember the context of retry.
+
+836
+00:34:15,620 --> 00:34:17,779
+Ip means that if you
+do it multiple times,
+
+837
+00:34:17,779 --> 00:34:19,399
+it's the same as if
+you did at once.
+
+838
+00:34:19,399 --> 00:34:21,319
+Yeah, other questions
+people have.
+
+839
+00:34:21,319 --> 00:34:23,520
+But he
+
+840
+00:34:32,880 --> 00:34:35,399
+Yeah, right here.
+
+841
+00:34:43,640 --> 00:34:48,179
+Yeah, aabicity related
+to apoda, right?
+
+842
+00:34:48,179 --> 00:34:50,599
+Well, I guess, topic
+
+843
+00:34:50,599 --> 00:34:52,199
+means that there's multiple
+things we're trying to do.
+
+844
+00:34:52,199 --> 00:34:56,359
+We either all or nothing, right?
+
+845
+00:34:56,920 --> 00:35:00,520
+Yeah. It's often
+related I guess,
+
+846
+00:35:00,520 --> 00:35:04,459
+if we are, Like,
+
+847
+00:35:04,459 --> 00:35:06,619
+if I'm trying to perform
+some operation, right?
+
+848
+00:35:06,619 --> 00:35:08,459
+I might try to do it multiple
+times. What is that?
+
+849
+00:35:08,459 --> 00:35:09,939
+I want to make sure if
+I do it multiple times,
+
+850
+00:35:09,939 --> 00:35:11,079
+I end up with the same result.
+
+851
+00:35:11,079 --> 00:35:12,639
+If that operation is
+kind of complicated,
+
+852
+00:35:12,639 --> 00:35:14,519
+I also want to make sure
+I don't at a state where
+
+853
+00:35:14,519 --> 00:35:16,999
+the operation is
+half done, right?
+
+854
+00:35:16,999 --> 00:35:22,079
+So yeah, it's another way I
+might describe an operation.
+
+855
+00:35:22,079 --> 00:35:25,219
+Oftentimes we want both, right?
+
+856
+00:35:25,219 --> 00:35:28,679
+Yeah, question. Yeah other
+questions people have?
+
+857
+00:35:40,050 --> 00:35:42,870
+All right. Well, let's
+other questions.
+
+858
+00:35:42,870 --> 00:35:44,269
+I'm happy to end
+early today, too.
+
+859
+00:35:44,269 --> 00:35:47,330
+I said, there's a question
+right over here. Yep.
+
+860
+00:35:47,850 --> 00:35:50,150
+Yeah, can we do Q Saba.
+
+861
+00:35:50,150 --> 00:35:52,369
+Okay, so Spark uses
+
+862
+00:35:52,369 --> 00:35:54,429
+the plant algorithm to
+trade decision trees.
+
+863
+00:35:54,429 --> 00:35:55,709
+The type of job that runs
+
+864
+00:35:55,709 --> 00:35:57,090
+on a set of decision tree nodes,
+
+865
+00:35:57,090 --> 00:35:58,429
+depends on whether
+those nodes have
+
+866
+00:35:58,429 --> 00:36:01,110
+few enough rows to run
+the abbery algorithm.
+
+867
+00:36:01,110 --> 00:36:03,949
+For the abbary case, the
+job uses hash partitioning.
+
+868
+00:36:03,949 --> 00:36:07,639
+What does it partitions, right?
+
+869
+00:36:07,639 --> 00:36:10,409
+Okay, so, would we have
+this decision tree,
+
+870
+00:36:10,409 --> 00:36:11,869
+like we're constantly
+growing it, right?
+
+871
+00:36:11,869 --> 00:36:14,089
+So at given point in time,
+we have a decision tree,
+
+872
+00:36:14,089 --> 00:36:18,430
+even if we're not done, and
+I also have my full dataset.
+
+873
+00:36:18,430 --> 00:36:20,569
+And if I look at any given row,
+
+874
+00:36:20,569 --> 00:36:22,430
+I can place it somewhere
+
+875
+00:36:22,430 --> 00:36:24,569
+in the partially
+complete tree based on,
+
+876
+00:36:24,569 --> 00:36:26,589
+like, the questions
+in each node, right?
+
+877
+00:36:26,589 --> 00:36:29,210
+And so if I look at
+my whole dataset,
+
+878
+00:36:29,210 --> 00:36:31,489
+and I look at my
+partially complete tree,
+
+879
+00:36:31,489 --> 00:36:35,589
+There are some nodes that
+have a lot of rows in them.
+
+880
+00:36:35,589 --> 00:36:37,690
+To many rows to fit in memory.
+
+881
+00:36:37,690 --> 00:36:38,950
+And there might be other nodes
+
+882
+00:36:38,950 --> 00:36:40,189
+that are partially
+complete tree,
+
+883
+00:36:40,189 --> 00:36:43,390
+where all of those nodes would
+fit in memory somewhere.
+
+884
+00:36:43,390 --> 00:36:45,169
+And when they all fit
+in memory somewhere,
+
+885
+00:36:45,169 --> 00:36:46,649
+then the fastest thing to do is
+
+886
+00:36:46,649 --> 00:36:48,490
+just put them all in memory,
+
+887
+00:36:48,490 --> 00:36:51,429
+and then keep growing
+the tree, right?
+
+888
+00:36:51,429 --> 00:36:53,229
+I have that node and
+maybe I split it.
+
+889
+00:36:53,229 --> 00:36:54,989
+I have like two
+children. I split those.
+
+890
+00:36:54,989 --> 00:36:56,509
+I have four grandchildren.
+
+891
+00:36:56,509 --> 00:36:58,010
+I just I kind of bring
+it all together,
+
+892
+00:36:58,010 --> 00:37:00,829
+and I keep running that in
+memory algorithm fast, right?
+
+893
+00:37:00,829 --> 00:37:02,469
+And so b rows, right,
+
+894
+00:37:02,469 --> 00:37:04,670
+they're kind of spread over
+lots of different machines.
+
+895
+00:37:04,670 --> 00:37:07,569
+And so I have to bring them
+all together in one place.
+
+896
+00:37:07,569 --> 00:37:10,409
+And that should kind to remind
+you of a group by, right?
+
+897
+00:37:10,409 --> 00:37:13,569
+Like, if I want to count
+everything for some group,
+
+898
+00:37:13,569 --> 00:37:15,089
+I have to bring
+together related data.
+
+899
+00:37:15,089 --> 00:37:16,729
+Same thing if I want to
+
+900
+00:37:16,729 --> 00:37:18,949
+trade on all the rows
+of decision tree.
+
+901
+00:37:18,949 --> 00:37:21,429
+So this case, what
+are we grouping by?
+
+902
+00:37:21,469 --> 00:37:24,709
+We are going to group
+the decision tree
+
+903
+00:37:24,709 --> 00:37:28,069
+node that the row
+belongs to, right?
+
+904
+00:37:28,069 --> 00:37:29,329
+So all the rows that belong to
+
+905
+00:37:29,329 --> 00:37:31,329
+the same decision
+tree node are end
+
+906
+00:37:31,329 --> 00:37:35,389
+up in memory on one single
+computer at one place.
+
+907
+00:37:35,389 --> 00:37:38,189
+Yeah. Any follow ups on
+that or does it make sense?
+
+908
+00:37:38,189 --> 00:37:41,149
+Yeah, good question. Yeah
+the questions people have.
+
+909
+00:37:56,140 --> 00:38:01,220
+I guess I can opt
+
+910
+00:38:01,220 --> 00:38:04,179
+I just want to
+clarify what they're
+
+911
+00:38:04,179 --> 00:38:07,659
+outputting after working
+on those partitioning.
+
+912
+00:38:07,659 --> 00:38:10,439
+If they're outputting a
+statistic or some type
+
+913
+00:38:10,439 --> 00:38:13,279
+of condition and then the other
+
+914
+00:38:13,279 --> 00:38:18,980
+notes I I forgot what
+they specifically out.
+
+915
+00:38:18,980 --> 00:38:25,529
+I know it's not Yes.
+
+916
+00:38:25,529 --> 00:38:28,350
+So what is our final output
+for the planet algorithm.
+
+917
+00:38:28,350 --> 00:38:29,749
+We want to have a description
+
+918
+00:38:29,749 --> 00:38:30,929
+of all the nodes of the tree,
+
+919
+00:38:30,929 --> 00:38:33,049
+and we want to know
+for each node,
+
+920
+00:38:33,049 --> 00:38:35,509
+what question it should
+be asked, right?
+
+921
+00:38:35,509 --> 00:38:37,269
+So that job input is, well,
+
+922
+00:38:37,269 --> 00:38:41,349
+all the nodes for that all
+the rows for that node,
+
+923
+00:38:41,349 --> 00:38:43,069
+the output would be
+a sub tree that we
+
+924
+00:38:43,069 --> 00:38:45,289
+could place inside
+of the bigger tree.
+
+925
+00:38:45,289 --> 00:38:47,050
+You, relative to
+the data itself,
+
+926
+00:38:47,050 --> 00:38:48,989
+like the tree is of
+a reasonable size,
+
+927
+00:38:48,989 --> 00:38:50,770
+it's fine to send it
+around over the network
+
+928
+00:38:50,770 --> 00:38:53,129
+and collect it all in
+one place in the area.
+
+929
+00:38:53,129 --> 00:38:54,869
+We aren't worried about
+the tree being too big.
+
+930
+00:38:54,869 --> 00:38:56,189
+We're just worried about having
+
+931
+00:38:56,189 --> 00:38:58,509
+too much data in the tree.
+
+932
+00:38:58,509 --> 00:39:01,150
+Yeah, thanks for asking.
+
+933
+00:39:08,550 --> 00:39:11,490
+Yeah, maybe I'll just seems
+
+934
+00:39:11,490 --> 00:39:12,769
+like people are
+already out question.
+
+935
+00:39:12,769 --> 00:39:13,589
+If there's more, that's fine.
+
+936
+00:39:13,589 --> 00:39:15,310
+So I'll just leave
+the last thoughts.
+
+937
+00:39:15,310 --> 00:39:18,589
+Like I said, right, we care
+about those five big systems.
+
+938
+00:39:18,589 --> 00:39:20,510
+Something that we
+talked about repeatedly
+
+939
+00:39:20,510 --> 00:39:22,369
+was partitioning,
+
+940
+00:39:22,369 --> 00:39:24,609
+so we can be, scaling out.
+
+941
+00:39:24,609 --> 00:39:26,969
+And so you should be, ask
+yourself, like, Well,
+
+942
+00:39:26,969 --> 00:39:29,239
+how does partitioning
+working smart,
+
+943
+00:39:29,239 --> 00:39:30,720
+how does partitioning
+work at HHF,
+
+944
+00:39:30,720 --> 00:39:31,999
+be able to think
+
+945
+00:39:31,999 --> 00:39:33,739
+about that and try to
+write it down, right?
+
+946
+00:39:33,739 --> 00:39:35,279
+Same thing with replication.
+
+947
+00:39:35,279 --> 00:39:37,779
+How does a system
+replicate data, if so?
+
+948
+00:39:37,779 --> 00:39:39,760
+Where does replication happen?
+
+949
+00:39:39,760 --> 00:39:42,579
+Be able to write that down
+for each of the systems.
+
+950
+00:39:42,579 --> 00:39:44,080
+Now, based on replication,
+
+951
+00:39:44,080 --> 00:39:46,199
+that's often for fault
+tolerance, right?
+
+952
+00:39:46,199 --> 00:39:49,159
+So you should be able to ask
+yourself in this system,
+
+953
+00:39:49,159 --> 00:39:51,139
+what happens if a computer dies
+
+954
+00:39:51,139 --> 00:39:53,679
+or there's some other
+type of problem, right?
+
+955
+00:39:53,679 --> 00:39:55,099
+I think maybe Smart is a
+
+956
+00:39:55,099 --> 00:39:56,399
+little different, but
+for most of these,
+
+957
+00:39:56,399 --> 00:39:57,599
+we want to think
+about, well, how do we
+
+958
+00:39:57,599 --> 00:39:59,619
+avoid losing data, right?
+
+959
+00:39:59,619 --> 00:40:02,039
+How do we cover that?
+Right? So what I do.
+
+960
+00:40:02,039 --> 00:40:03,819
+You start with all the
+major systems and say
+
+961
+00:40:03,819 --> 00:40:07,169
+partitioning replication,
+fault tolerance, right?
+
+962
+00:40:07,169 --> 00:40:08,329
+Try to write all
+those things down.
+
+963
+00:40:08,329 --> 00:40:08,969
+And once you do that,
+
+964
+00:40:08,969 --> 00:40:10,589
+then you can start
+to have you know,
+
+965
+00:40:10,589 --> 00:40:12,249
+there's lots of smaller
+details fed at Ed,
+
+966
+00:40:12,249 --> 00:40:12,889
+but that's probably, like,
+
+967
+00:40:12,889 --> 00:40:15,169
+a big picture for each of these.
+
+968
+00:40:15,169 --> 00:40:16,569
+Alright, so feel free to
+
+969
+00:40:16,569 --> 00:40:17,869
+come up and chat if you
+have any questions,
+
+970
+00:40:17,869 --> 00:40:20,729
+and I hope you all have
+a great rest of the day.
