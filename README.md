@@ -1,2 +1,1 @@
-# StockTradingBots
 # MLSearchSystems
